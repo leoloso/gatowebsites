@@ -1,1 +1,2 @@
-# gatographql.com
+# Website for Gato GraphQL (gatographql.com)
+

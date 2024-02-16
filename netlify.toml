@@ -1,0 +1,168 @@
+[build]
+  command = "npm run production"
+  publish = "dist"
+
+[[redirects]]
+  from = "/recipes/*"
+  to = "/tutorial/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/demo"
+  to = "/tutorial/intro"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/about-us"
+  status = 301
+
+[[redirects]]
+  from = "/guides/intro"
+  to = "/guides/intro/intro-to-graphql-and-gato-graphql"
+  status = 301
+
+[[redirects]]
+  from = "/guides/special-features"
+  to = "/guides/special-features/security"
+  status = 301
+
+[[redirects]]
+  from = "/guides/query"
+  to = "/guides/query/executing-queries-and-mutations"
+  status = 301
+
+[[redirects]]
+  from = "/guides/use"
+  to = "/guides/use/creating-a-custom-endpoint"
+  status = 301
+
+[[redirects]]
+  from = "/guides/schema"
+  to = "/guides/schema/namespacing-the-schema"
+  status = 301
+
+[[redirects]]
+  from = "/guides/config"
+  to = "/guides/config/installing-and-upgrading-a-bundle-or-extension"
+  status = 301
+
+[[redirects]]
+  from = "/guides/augment"
+  to = "/guides/augment/schema-extensions-via-introspection"
+  status = 301
+
+[[redirects]]
+  from = "/guides/interact"
+  to = "/guides/interact/working-with-custom-posts"
+  status = 301
+
+[[redirects]]
+  from = "/guides/deep"
+  to = "/guides/deep/fetching-dynamically-structured-data"
+  status = 301
+
+[[redirects]]
+  from = "/guides/resources"
+  to = "/guides/resources/graphql-best-practices"
+  status = 301
+
+[[redirects]]
+  from = "/tutorial/complementing-wp-cli"
+  to = "/guides/code/complementing-wp-cli"
+  status = 301
+
+[[redirects]]
+  from = "/tutorial/dry-code-for-blocks-in-javascript-and-php"
+  to = "/guides/code/dry-code-for-blocks-in-javascript-and-php"
+  status = 301
+
+[[redirects]]
+  from = "/tutorial/exposing-public-and-private-endpoints"
+  to = "/guides/code/exposing-public-and-private-endpoints"
+  status = 301
+
+[[redirects]]
+  from = "/tutorial/feeding-data-to-blocks-in-the-editor"
+  to = "/guides/code/feeding-data-to-blocks-in-the-editor"
+  status = 301
+
+[[redirects]]
+  from = "/tutorial/injecting-multiple-resources-into-wp-cli"
+  to = "/guides/code/injecting-multiple-resources-into-wp-cli"
+  status = 301
+
+[[redirects]]
+  from = "/tutorial/mapping-js-components-to-gutenberg-blocks"
+  to = "/guides/code/mapping-js-components-to-gutenberg-blocks"
+  status = 301
+
+[[redirects]]
+  from = "/bundles/content-translation"
+  to = "/bundles/simplest-wordpress-content-translation"
+  status = 301
+
+[[redirects]]
+  from = "/bundles/public-api"
+  to = "/bundles/responsible-wordpress-public-api"
+  status = 301
+
+[[redirects]]
+  from = "/bundles/application-glue-and-automator"
+  to = "/bundles/tailored-wordpress-automator"
+  status = 301
+
+[[redirects]]
+  from = "/bundles/all-extensions"
+  to = "/bundles/all-in-one-toolbox-for-wordpress"
+  status = 301
+
+# Campaigns
+[[redirects]]
+  from = "/raffle"
+  to = "/black-friday"
+  status = 302
+
+[[redirects]]
+  from = "/wpbuilds"
+  to = "/specials/wpbuilds"
+  status = 301
+
+# Proxying Plausible through Netlify
+# @see https://plausible.io/docs/proxy/guides/netlify
+[[redirects]]
+  from = "/masked-source/js/script.js"
+  to = "https://plausible.io/js/script.js"
+  status = 200
+
+[[redirects]]
+  from = "/masked-source/api/event"
+  to = "https://plausible.io/api/event"
+  status = 200
+
+# Download file redirects
+[[redirects]]
+  from = "/releases/latest/gatographql-testing-schema.zip"
+  to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/2.1.3/gatographql-testing-schema-2.1.3.zip"
+  force = true
+  status = 302
+
+[[redirects]]
+  from = "/releases/latest/gatographql-testing.zip"
+  to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/2.1.3/gatographql-testing-2.1.3.zip"
+  force = true
+  status = 302
+
+[[redirects]]
+  from = "/releases/latest/gatographql.zip"
+  to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/2.1.3/gatographql-2.1.3.zip"
+  force = true
+  status = 302
+
+[[redirects]]
+  from = "/releases/latest"
+  # to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/2.1.3/gatographql-2.1.3.zip"
+  # to = "https://downloads.wordpress.org/plugin/gatographql.2.1.3.zip"
+  to = "https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip"
+  force = true
+  status = 302
