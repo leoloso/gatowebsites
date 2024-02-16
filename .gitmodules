@@ -1,0 +1,3 @@
+[submodule "submodules/cruise-templates"]
+	path = submodules/cruise-templates
+	url = https://github.com/leoloso/cruip-templates
