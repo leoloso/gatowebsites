@@ -1,4 +1,4 @@
-import { allPosts } from 'contentlayer/generated'
+import { allGuides } from 'contentlayer/generated'
 import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
@@ -15,12 +15,12 @@ import Newsletter from '@/components/newsletter'
 export default function Blog() {
 
   // Sort posts by date
-  allPosts.sort((a, b) => {
+  allGuides.sort((a, b) => {
     return (new Date(a.publishedAt) > new Date(b.publishedAt)) ? -1 : 1
   })  
 
-  const featuredPost = allPosts[0]
-  const posts = allPosts.slice(1)
+  const featuredPost = allGuides[0]
+  const posts = allGuides.slice(1)
 
   return (
     <>
