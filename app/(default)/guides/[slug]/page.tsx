@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { allPosts } from 'contentlayer/generated'
+import { allGuides } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,7 +8,7 @@ import { PostMdx } from '@/components/mdx/post-mdx'
 import PostNav from './post-nav'
 
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({
+  return allGuides.map((post) => ({
     slug: post.slug,
   }))
 }
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: {
   params: { slug: string }
 }): Promise<Metadata | undefined> {
 
-  const post = allPosts.find((post) => post.slug === params.slug)
+  const post = allGuides.find((post) => post.slug === params.slug)
 
   if (!post) return
 
@@ -33,7 +33,7 @@ export default async function SinglePost({ params }: {
   params: { slug: string }
 }) {
 
-  const post = allPosts.find((post) => post.slug === params.slug)
+  const post = allGuides.find((post) => post.slug === params.slug)
 
   if (!post) notFound()
 
