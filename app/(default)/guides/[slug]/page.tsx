@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import PostDate from '@/components/post-date'
-import { Mdx } from '@/components/mdx/mdx'
+import { PostMdx } from '@/components/mdx/post-mdx'
 import PostNav from './post-nav'
 
 export async function generateStaticParams() {
@@ -78,7 +78,7 @@ export default async function SinglePost({ params }: {
 
                   {/* Article body */}
                   <div>
-                    <Mdx code={post.body.code} />
+                    <PostMdx code={post.body.code} />
                   </div>
 
                   <div className="text-lg text-gray-600">
