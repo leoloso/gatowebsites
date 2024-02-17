@@ -1,4 +1,5 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import rehypeSlug from 'rehype-slug'
 
 const Update = defineDocumentType(() => ({
   name: 'Update',
@@ -111,4 +112,9 @@ const Guide = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Update, Post, Guide],
+  mdx: {
+    rehypePlugins: [
+      rehypeSlug,
+    ],
+  },
 })
