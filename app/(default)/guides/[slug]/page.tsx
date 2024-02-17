@@ -93,7 +93,7 @@ export default async function SinglePost({ params }: {
                   <div className="text-lg text-gray-600">
                     <hr className="w-full h-px pt-px mt-8 bg-gray-200 border-0" />
                     <div className="mt-8">
-                      Interested in more tips like this? Check out <a className="text-gray-900 underline" href="#0">Introducing the Testing Field Guide</a>.
+                      Interested in more tips like this? Check out <a className="text-gray-500 underline" href="#0">Introducing the Testing Field Guide</a>.
                     </div>
                     <div className="mt-6">
                       <Link href="/guides" className="inline-flex items-center text-base text-blue-600 font-medium hover:underline">
