@@ -9,7 +9,7 @@ export default function GuidePostItem({ ...props }) {
       <header>
         {props.image &&
           <Link href={`/guides/${props.slug}`} className="block mb-6">
-            <figure className="relative h-0 pb-9/16 overflow-hidden rounded-sm">
+            <figure className="relative h-0 pb-[56.25%] overflow-hidden rounded-sm">
               <Image className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out" src={props.image} width={352} height={198} alt={props.title} />
             </figure>
           </Link>
