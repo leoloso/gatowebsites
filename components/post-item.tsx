@@ -1,39 +1,39 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
-import PostTags from './post-tags'
 
 export default function PostItem({ ...props }) {
   return (
-    <article className="flex flex-col h-full" data-aos="fade-up">
-      <header>
-        {props.image &&
-          <Link href={`/blog/${props.slug}`} className="block mb-6">
-            <figure className="relative h-0 pb-9/16 overflow-hidden rounded-sm">
-              <Image className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out" src={props.image} width={352} height={198} alt={props.title} />
-            </figure>
-          </Link>
-        }
-        {props.tags &&
-          <div className="mb-3">
-            <PostTags tags={props.tags} />
+    <article className="flex items-center py-4 border-b border-gray-200">
+      <div>
+        <header>
+          <h2 className="h4 mb-2">
+            <Link href={`/blog/${props.slug}`} className="hover:underline">{props.title}</Link>
+          </h2>
+        </header>
+        <div className="text-lg text-gray-600 mb-4">{props.summary}</div>
+        <footer className="text-sm">
+          <div className="flex items-center">
+            <div className="flex shrink-0 mr-3">
+              <a className="relative" href="#0">
+                <span className="absolute inset-0 -m-px" aria-hidden="true"><span className="absolute inset-0 -m-px bg-white rounded-full"></span></span>
+                <Image className="relative rounded-full" src={props.authorImg} width={32} height={32} alt={props.author} />
+              </a>
+            </div>
+            <div>
+              <span className="text-gray-600">By </span>
+              <a className="font-medium hover:underline" href="#0">{props.author}</a>
+              <span className="text-gray-600"> · <PostDate dateString={props.publishedAt} /></span>
+            </div>
           </div>
-        }
-        <h3 className="h4 mb-2">
-          <Link href={`/blog/${props.slug}`} className="hover:text-gray-100 transition duration-150 ease-in-out">{props.title}</Link>
-        </h3>
-      </header>
-      <p className="text-lg text-gray-400 grow">{props.summary}</p>
-      <footer className="flex items-center mt-4">
-        <Link href="#">
-          <img className="rounded-full shrink-0 mr-4" src={props.authorImg} width={40} height={40} alt={props.author} />
-        </Link>
-        <div className="font-medium">
-          <Link href="#" className="text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">{props.author}</Link>
-          <span className="text-gray-700"> - </span>
-          <span className="text-gray-500"><PostDate dateString={props.publishedAt} /></span>
-        </div>
-      </footer>
-    </article>  
+        </footer>
+      </div>
+      <Link href={`/blog/${props.slug}`} className="block shrink-0 ml-6">
+        <span className="sr-only">Read more</span>
+        <svg className="w-4 h-4 fill-current text-blue-600" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.3 14.7l-1.4-1.4L12.2 9H0V7h12.2L7.9 2.7l1.4-1.4L16 8z" />
+        </svg>
+      </Link>
+    </article>
   )
 }
