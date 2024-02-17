@@ -6,6 +6,7 @@ import Link from 'next/link'
 import PostDate from '@/components/post-date'
 import { PostMdx } from '@/components/mdx/post-mdx'
 import PostNav from './post-nav'
+import PostTags from '@/components/post-tags'
 
 export async function generateStaticParams() {
   return allGuides.map((post) => ({
@@ -61,18 +62,26 @@ export default async function SinglePost({ params }: {
                 <div>
 
                   {/* Article meta */}
-                  <div className="flex items-center mb-6">
-                    <div className="flex shrink-0 mr-3">
-                      <a className="relative" href="#0">
-                        <span className="absolute inset-0 -m-px" aria-hidden="true"><span className="absolute inset-0 -m-px bg-white rounded-full"></span></span>
-                        <Image className="relative rounded-full" src={post.authorImg} width={32} height={32} alt={post.author} />
-                      </a>
+                  <div className="md:flex md:items-center md:justify-between mt-3">
+                    <div className="flex items-center mb-6">
+                      <div className="flex shrink-0 mr-3">
+                        <a className="relative" href="#0">
+                          <span className="absolute inset-0 -m-px" aria-hidden="true"><span className="absolute inset-0 -m-px bg-white rounded-full"></span></span>
+                          <Image className="relative rounded-full" src={post.authorImg} width={32} height={32} alt={post.author} />
+                        </a>
+                      </div>
+                      <div>
+                        <span className="text-gray-600">By </span>
+                        <a className="font-medium hover:underline" href="#0">{post.author}</a>
+                        <span className="text-gray-600"> · <PostDate dateString={post.publishedAt} /></span>
+                      </div>
                     </div>
-                    <div>
-                      <span className="text-gray-600">By </span>
-                      <a className="font-medium hover:underline" href="#0">{post.author}</a>
-                      <span className="text-gray-600"> · <PostDate dateString={post.publishedAt} /></span>
-                    </div>
+                    {/* Article tags */}
+                    {post.tags &&
+                      <div className="flex justify-center mt-4 md:mt-0 items-center mb-6" data-aos="fade-up" data-aos-delay="600">
+                        <PostTags tags={post.tags} />
+                      </div>
+                    }
                   </div>
                   <hr className="w-16 h-px pt-px bg-gray-200 border-0 mb-6" />
 
