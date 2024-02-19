@@ -2,6 +2,7 @@ import { defineNestedType, defineDocumentType, makeSource } from 'contentlayer/s
 import remarkGfm from 'remark-gfm'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
+import AppConfig from './app/app.config'
 
 const Update = defineDocumentType(() => ({
   name: 'Update',
@@ -127,7 +128,7 @@ const NameSlugPair = defineNestedType(() => ({
 
 const Doc = defineDocumentType(() => ({
   name: 'Doc',
-  filePathPattern: `docs/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.docs}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -159,7 +160,7 @@ const Doc = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.docs + '/?'), ''),
     },    
   },
 }))
