@@ -8,10 +8,10 @@ export default function Home() {
 
   // Sort docs and doc topics by order
   allDocs.sort((a, b) => {
-    return (new Date(a.order) > new Date(b.order)) ? -1 : 1
+    return (a.order > b.order) ? -1 : 1
   })  
   allDocTopics.sort((a, b) => {
-    return (new Date(a.order) > new Date(b.order)) ? -1 : 1
+    return (a.order > b.order) ? -1 : 1
   })
 
   // First DocTopic

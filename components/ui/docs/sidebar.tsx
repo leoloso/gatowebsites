@@ -38,10 +38,10 @@ export default function SupportSidebar() {
 
   // Sort docs and doc topics by order
   allDocTopics.sort((a, b) => {
-    return (new Date(a.order) > new Date(b.order)) ? -1 : 1
+    return (a.order > b.order) ? -1 : 1
   })
   allDocs.sort((a, b) => {
-    return (new Date(a.order) > new Date(b.order)) ? -1 : 1
+    return (a.order > b.order) ? -1 : 1
   })
 
   return (
