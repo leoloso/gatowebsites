@@ -6,11 +6,11 @@ import AppConfig from '@/app/app.config'
 // Redirect to the first item on the docs collection
 export default function Home() {
 
-  // Sort docs and doc topics by order
-  allDocs.sort((a, b) => {
-    return (a.order > b.order) ? -1 : 1
-  })  
+  // Sort docs and doc topics by order  
   allDocTopics.sort((a, b) => {
+    return (a.order > b.order) ? -1 : 1
+  })
+  allDocs.sort((a, b) => {
     return (a.order > b.order) ? -1 : 1
   })
 
