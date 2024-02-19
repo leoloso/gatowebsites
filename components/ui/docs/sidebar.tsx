@@ -88,6 +88,7 @@ export default function SupportSidebar() {
                 <ul className="text-sm">
                   {/* 1st level */}
                   {allDocTopics.map((docTopic, docTopicIndex) => {
+                    // clicking on prev/next will recalculate the "open" state
                     const isDocTopicSelected = segments.length < 2 ? false : (segments[0] === AppConfig.paths.docs && segments[1] === docTopic.slug);
                     return (
                       <li className="mb-1" key={docTopicIndex}>
@@ -98,8 +99,7 @@ export default function SupportSidebar() {
                               <>
                                 <a
                                   href="#0"
-                                  className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${!isDocTopicSelected && 'before:hidden'
-                                    }`}
+                                  className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${!isDocTopicSelected && 'before:hidden'}`}
                                   onClick={(e) => {
                                     e.preventDefault();
                                     handleClick();

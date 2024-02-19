@@ -15,7 +15,9 @@ export default function SidebarLinkGroup({
     setOpenGroup(!openGroup);
   }  
 
+  // clicking on prev/next will recalculate the "open" state
+  // then, open the group when clicking on prev/next for some doc
   return (
-    children(handleClick, openGroup)
+    children(handleClick, open || openGroup)
   )
 }
