@@ -6,8 +6,8 @@ import Theme from './theme-provider'
 import AppProvider from './app-provider'
 import Image from 'next/image'
 import Illustration from '@/public/images/hero-illustration.svg'
-import Header from '@/components/ui/header'
-import Sidebar from '@/components/ui/sidebar'
+import Header from '@/components/ui/docs/header'
+import Sidebar from '@/components/ui/docs/sidebar'
 
 const nycd = Nothing_You_Could_Do({
   subsets: ['latin'],
@@ -50,42 +50,40 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>{/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}
-      <body className={`${nycd.variable} ${aspekta.variable} font-aspekta antialiased text-slate-800 font-[350] bg-white dark:bg-slate-900 dark:text-slate-200`}>
-        <Theme>
-          <AppProvider>
-            <div className="flex flex-col min-h-screen overflow-hidden">
+    <div className={`text-slate-800 font-[350] bg-white dark:bg-transparent dark:text-slate-200`}>
+      <Theme>
+        <AppProvider>
+          <div className="flex flex-col min-h-screen overflow-hidden">
 
-              <Header />
+            <Header />
 
-              {/*  Page content */}
-              <main className="grow">
-                <section className="relative">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none -z-10">
-                    <Image className="max-w-none" src={Illustration} priority alt="Page illustration" aria-hidden="true" />
-                  </div>
+            {/*  Page content */}
+            <main className="grow">
+              <section className="relative">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none -z-10">
+                  <Image className="max-w-none" src={Illustration} priority alt="Page illustration" aria-hidden="true" />
+                </div>
 
-                  <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    {/* Main content */}
-                    <div>
-                      {/* Sidebar */}
-                      <Sidebar />
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                  {/* Main content */}
+                  <div>
+                    {/* Sidebar */}
+                    <Sidebar />
 
-                      {/* Page container */}
-                      <div className="md:grow md:pl-64 lg:pr-6 xl:pr-0">
-                        <div className="pt-24 md:pt-28 pb-8 md:pl-6 lg:pl-12">
-                          {children}
-                        </div>
+                    {/* Page container */}
+                    <div className="md:grow md:pl-64 lg:pr-6 xl:pr-0">
+                      <div className="pt-24 md:pt-28 pb-8 md:pl-6 lg:pl-12">
+                        {children}
                       </div>
                     </div>
                   </div>
-                </section>
-              </main>
+                </div>
+              </section>
+            </main>
 
-            </div>
-          </AppProvider>
-        </Theme>
-      </body>
-    </html>
+          </div>
+        </AppProvider>
+      </Theme>
+    </div>
   )
 }

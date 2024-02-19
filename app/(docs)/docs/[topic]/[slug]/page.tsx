@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 import { allDocs } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { Mdx } from '@/components/mdx/mdx'
-import TopicTitle from '@/components/ui/topic-title'
-import Hamburger from '@/components/ui/hamburger'
+import TopicTitle from '@/components/ui/docs/topic-title'
+import Hamburger from '@/components/ui/docs/hamburger'
 import Feedback from '@/components/ui/feedback'
 import PageNavigation from '@/components/ui/page-navigation'
-import Footer from '@/components/ui/footer'
-import SecondaryNav from '@/components/ui/secondary-nav'
+import Footer from '@/components/ui/docs/footer'
+import SecondaryNav from '@/components/ui/docs/secondary-nav'
 
 export async function generateStaticParams() {
   return allDocs.map((post) => ({

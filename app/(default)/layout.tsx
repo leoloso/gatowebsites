@@ -24,7 +24,7 @@ export default function DefaultLayout({
   })
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
       <Header />
       
       <main className="grow">
@@ -34,6 +34,6 @@ export default function DefaultLayout({
       </main>
 
       <Footer />
-    </>
+    </div>
   )
 }
