@@ -37,7 +37,7 @@ export default async function SinglePost({ params }: {
     slug: string
   }
 }) {
-  const post = allDocs.find((post) => post.slug === params.slug)
+  const post = allDocs.find((post) => post.slug === `${params.topic}/${params.slug}`)
 
   if (!post) notFound()
 

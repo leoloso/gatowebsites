@@ -16,8 +16,6 @@ export default function SidebarLinkGroup({
   }  
 
   return (
-    <li className="mb-1">
-      {children(handleClick, openGroup)}
-    </li>
+    children(handleClick, openGroup)
   )
 }
