@@ -4,6 +4,7 @@ import { useRef, useEffect } from 'react'
 import { useAppProvider } from '@/app/(docs)/app-provider'
 import { useSelectedLayoutSegments } from 'next/navigation'
 import { Transition } from '@headlessui/react'
+import { allDocs } from 'contentlayer/generated'
 import Link from 'next/link'
 import SidebarLink from './sidebar-link'
 import SidebarLinkGroup from './sidebar-link-group'
@@ -34,6 +35,13 @@ export default function SupportSidebar() {
     document.addEventListener('keydown', keyHandler)
     return () => document.removeEventListener('keydown', keyHandler)
   })  
+
+  // Sort posts by date
+  allDocs.sort((a, b) => {
+    return (new Date(a.order) > new Date(b.order)) ? -1 : 1
+  })  
+
+  const docs = allDocs
 
   return (
     <>

@@ -150,7 +150,11 @@ const Doc = defineDocumentType(() => ({
     next: {
       type: 'nested',
       of: NameSlugPair,
-    },        
+    },
+    order: {
+      type: 'number',
+      required: true,
+    },   
   },
   computedFields: {
     slug: {
