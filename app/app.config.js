@@ -1,5 +1,9 @@
 module.exports = {
   paths: {
-    docs: "docs"
+    blog: "blog",
+    changelog: "update",
+    docs: "docs",
+    docTopics: "doc-topics",
+    guides: "guides"
   }
 }

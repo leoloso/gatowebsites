@@ -2,11 +2,11 @@ import { defineNestedType, defineDocumentType, makeSource } from 'contentlayer/s
 import remarkGfm from 'remark-gfm'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
-import AppConfig from './app/app.config'
+import AppConfig from '@/app/app.config'
 
 const Update = defineDocumentType(() => ({
   name: 'Update',
-  filePathPattern: `update/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.changelog}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -25,14 +25,14 @@ const Update = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/update\/?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.changelog + '/?'), ''),
     },    
   },
 }))
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: `blog/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.blog}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -66,14 +66,14 @@ const Post = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/blog\/?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.blog + '/?'), ''),
     },    
   },
 }))
 
 const Guide = defineDocumentType(() => ({
   name: 'Guide',
-  filePathPattern: `guides/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.guides}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -107,7 +107,7 @@ const Guide = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/guides\/?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.guides + '/?'), ''),
     },    
   },
 }))
@@ -167,7 +167,7 @@ const Doc = defineDocumentType(() => ({
 
 const DocTopic = defineDocumentType(() => ({
   name: 'DocTopic',
-  filePathPattern: `doc-topics/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.docTopics}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -182,7 +182,7 @@ const DocTopic = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/doc-topics\/?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.docTopics + '/?'), ''),
     },    
   },
 }))
