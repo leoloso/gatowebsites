@@ -7,7 +7,7 @@ import AppProvider from './app-provider'
 import Image from 'next/image'
 import Illustration from '@/public/images/hero-illustration.svg'
 import Header from '@/components/ui/header'
-import Sidebar from '@/components/ui/sidebar'
+import Sidebar from '@/components/ui/docs/sidebar'
 
 const nycd = Nothing_You_Could_Do({
   subsets: ['latin'],
