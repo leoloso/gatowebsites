@@ -73,7 +73,7 @@ const Post = defineDocumentType(() => ({
 
 const Guide = defineDocumentType(() => ({
   name: 'Guide',
-  filePathPattern: `guides/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.guides}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -107,7 +107,7 @@ const Guide = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/guides\/?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.guides + '/?'), ''),
     },    
   },
 }))

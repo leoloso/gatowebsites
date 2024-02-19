@@ -3,6 +3,7 @@ module.exports = {
     blog: "blog",
     changelog: "update",
     docs: "docs",
-    docTopics: "doc-topics"
+    docTopics: "doc-topics",
+    guides: "guides"
   }
 }
