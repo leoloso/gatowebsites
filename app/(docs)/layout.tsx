@@ -1,13 +1,19 @@
 import './css/style.css'
 
 import { Nothing_You_Could_Do } from 'next/font/google'
-import localFont from 'next/font/local'
 import Theme from './theme-provider'
 import AppProvider from './app-provider'
 import Image from 'next/image'
 import Illustration from '@/public/images/hero-illustration.svg'
 import Header from '@/components/ui/docs/header'
 import Sidebar from '@/components/ui/docs/sidebar'
+
+const nycd = Nothing_You_Could_Do({
+  subsets: ['latin'],
+  variable: '--font-nycd',
+  weight: '400',
+  display: 'swap'
+})
 
 export const metadata = {
   title: 'Create Next App',
@@ -20,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className={`text-slate-800 font-[350] bg-white dark:bg-transparent dark:text-slate-200`}>
+    <div className={`${nycd.variable} text-slate-800 font-[350] bg-white dark:bg-transparent dark:text-slate-200`}>
       <Theme>
         <AppProvider>
           <div className="flex flex-col min-h-screen overflow-hidden">
