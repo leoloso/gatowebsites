@@ -85,53 +85,56 @@ export default function SupportSidebar() {
               <nav className="md:block">
                 <ul className="text-sm">
                   {/* 1st level */}
-                  {allDocTopics.map((docTopic, docTopicIndex) => (
-                    <li className="mb-1" key={docTopicIndex}>
-                      <SidebarLinkGroup open={segments.includes(`${docTopic.slug}/`)}>
-                        {(handleClick, open) => {
-                          const docsByTopic = allDocs.filter((doc) => doc.topic.slug === docTopic.slug);
-                          return (
-                            <>
-                              <a
-                                href="#0"
-                                className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${!segments.includes('documentation') && 'before:hidden'
-                                  }`}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  handleClick();
-                                }}
-                              >
-                                <svg className="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                  <path
-                                    className="fill-blue-400"
-                                    d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z"
-                                  />
-                                  <path
-                                    className="fill-white dark:fill-slate-800"
-                                    d="M4.112 7.804a.889.889 0 0 0-.112.43v7.892c0 .31.161.597.426.758l7.11 4.346c.14.085.3.13.464.13v-8.736l-7.888-4.82Z"
-                                  />
-                                  <path
-                                    className="fill-blue-600"
-                                    d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z"
-                                  />
-                                </svg>
-                                <span>{docTopic.title}</span>
-                              </a>
-                              <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
-                                {docsByTopic.map((doc, docIndex) => (
-                                  <li className="mt-3" key={docIndex}>
-                                    <SidebarLink href={`/docs/${doc.slug}`}>
-                                      {doc.title}
-                                    </SidebarLink>
-                                  </li>
-                                ))}
-                              </ul>
-                            </>
-                          )
-                        }}
-                      </SidebarLinkGroup>
-                    </li>
-                  ))}    
+                  {allDocTopics.map((docTopic, docTopicIndex) => {
+                    const isDocTopicSelected = segments.includes(`${docTopic.slug}`);
+                    return (
+                      <li className="mb-1" key={docTopicIndex}>
+                        <SidebarLinkGroup open={isDocTopicSelected}>
+                          {(handleClick, open) => {
+                            const docsByTopic = allDocs.filter((doc) => doc.topic.slug === docTopic.slug);
+                            return (
+                              <>
+                                <a
+                                  href="#0"
+                                  className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${!isDocTopicSelected && 'before:hidden'
+                                    }`}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    handleClick();
+                                  }}
+                                >
+                                  <svg className="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                      className="fill-blue-400"
+                                      d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z"
+                                    />
+                                    <path
+                                      className="fill-white dark:fill-slate-800"
+                                      d="M4.112 7.804a.889.889 0 0 0-.112.43v7.892c0 .31.161.597.426.758l7.11 4.346c.14.085.3.13.464.13v-8.736l-7.888-4.82Z"
+                                    />
+                                    <path
+                                      className="fill-blue-600"
+                                      d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z"
+                                    />
+                                  </svg>
+                                  <span>{docTopic.title}</span>
+                                </a>
+                                <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
+                                  {docsByTopic.map((doc, docIndex) => (
+                                    <li className="mt-3" key={docIndex}>
+                                      <SidebarLink href={`/docs/${doc.slug}`}>
+                                        {doc.title}
+                                      </SidebarLink>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </>
+                            )
+                          }}
+                        </SidebarLinkGroup>
+                      </li>
+                    )
+                  })}    
                 </ul>
               </nav>
             </div>
