@@ -86,7 +86,7 @@ export default function SupportSidebar() {
                 <ul className="text-sm">
                   {/* 1st level */}
                   {allDocTopics.map((docTopic, docTopicIndex) => {
-                    const isDocTopicSelected = segments.includes(`${docTopic.slug}`);
+                    const isDocTopicSelected = segments.length < 2 ? false : (segments[0] === 'docs' && segments[1] === docTopic.slug);
                     return (
                       <li className="mb-1" key={docTopicIndex}>
                         <SidebarLinkGroup open={isDocTopicSelected}>
