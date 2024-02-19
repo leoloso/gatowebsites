@@ -1,6 +1,6 @@
 'use client'
 
-import { useAppProvider } from '@/app/app-provider'
+import { useAppProvider } from '@/app/(docs)/app-provider'
 
 export default function Hamburger() {
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import { useAppProvider } from '@/app/app-provider'
+import { useAppProvider } from '@/app/(docs)/app-provider'
 import { useSelectedLayoutSegments } from 'next/navigation'
 import { Transition } from '@headlessui/react'
 import Link from 'next/link'
