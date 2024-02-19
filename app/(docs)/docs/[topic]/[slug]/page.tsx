@@ -11,7 +11,6 @@ import SecondaryNav from '@/components/ui/docs/secondary-nav'
 import {
   getDocumentDocumentTopicSlug,
   getDocumentTopicBySlug,
-  sortDocumentTopics,
   sortDocuments,
 } from '@/components/utils/document'
 
