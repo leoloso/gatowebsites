@@ -1,5 +1,6 @@
 module.exports = {
   paths: {
-    docs: "docs"
+    docs: "docs",
+    docTopics: "doc-topics"
   }
 }

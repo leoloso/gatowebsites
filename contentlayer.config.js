@@ -167,7 +167,7 @@ const Doc = defineDocumentType(() => ({
 
 const DocTopic = defineDocumentType(() => ({
   name: 'DocTopic',
-  filePathPattern: `doc-topics/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.docTopics}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -182,7 +182,7 @@ const DocTopic = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/doc-topics\/?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.docTopics + '/?'), ''),
     },    
   },
 }))
