@@ -6,7 +6,7 @@ import AppConfig from './app/app.config'
 
 const Update = defineDocumentType(() => ({
   name: 'Update',
-  filePathPattern: `update/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.changelog}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -25,7 +25,7 @@ const Update = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/update\/?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(AppConfig.paths.changelog, ''),
     },    
   },
 }))
