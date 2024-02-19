@@ -50,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className={`text-slate-800 font-[350] bg-white dark:bg-slate-900 dark:text-slate-200`}>
+    <div className={`text-slate-800 font-[350] bg-white dark:bg-transparent dark:text-slate-200`}>
       <Theme>
         <AppProvider>
           <div className="flex flex-col min-h-screen overflow-hidden">
