@@ -10,8 +10,8 @@ import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
 
 export async function generateStaticParams() {
-  return allDocs.map((post) => ({
-    slug: post.slug,
+  return allDocs.map((doc) => ({
+    slug: doc.slug,
   }))
 }
 
@@ -19,11 +19,11 @@ export async function generateMetadata({ params }: {
   params: { slug: string }
 }): Promise<Metadata | undefined> {
 
-  const post = allDocs.find((post) => post.slug === params.slug)
+  const doc = allDocs.find((doc) => doc.slug === params.slug)
 
-  if (!post) return
+  if (!doc) return
 
-  const { title, summary: description } = post
+  const { title, summary: description } = doc
 
   return {
     title,
@@ -37,15 +37,15 @@ export default async function SinglePost({ params }: {
     slug: string
   }
 }) {
-  const post = allDocs.find((post) => post.slug === `${params.topic}/${params.slug}`)
+  const doc = allDocs.find((doc) => doc.slug === `${params.topic}/${params.slug}`)
 
-  if (!post) notFound()
+  if (!doc) notFound()
 
   return (
     <>
       {/* Page header */}
       <div className="h-16 flex items-center mb-6">
-        <TopicTitle name={post.topic.name} segment={post.topic.slug} />
+        <TopicTitle name={doc.topic.name} segment={doc.topic.slug} />
       </div>
 
       <article className="flex xl:space-x-12">
@@ -60,11 +60,11 @@ export default async function SinglePost({ params }: {
 
             {/* Breadcrumbs */}
             <div className="flex items-center text-sm whitespace-nowrap min-w-0 ml-3">
-              <span className="text-slate-600 dark:text-slate-400">{post.topic.name}</span>
+              <span className="text-slate-600 dark:text-slate-400">{doc.topic.name}</span>
               <svg className="fill-slate-400 shrink-0 mx-2 dark:fill-slate-500" width="8" height="10" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 2 2.414.586 6.828 5 2.414 9.414 1 8l3-3z" />
               </svg>
-              <span className="text-slate-800 font-medium truncate dark:text-slate-200">{post.title}</span>
+              <span className="text-slate-800 font-medium truncate dark:text-slate-200">{doc.title}</span>
             </div>
 
           </div>
@@ -72,19 +72,19 @@ export default async function SinglePost({ params }: {
           {/* Article content */}
           <div>
             <header className="mb-6">
-              <h1 className="h2 text-slate-800 mb-4 dark:text-slate-200">{post.title}</h1>
+              <h1 className="h2 text-slate-800 mb-4 dark:text-slate-200">{doc.title}</h1>
               <p className="text-lg text-slate-600 dark:text-slate-400">
-                {post.summary}
+                {doc.summary}
               </p>
             </header>
-            <Mdx code={post.body.code} />
+            <Mdx code={doc.body.code} />
           </div>
 
           {/* Feedback */}
           <Feedback />
 
           {/* Page navigation */}
-          <PageNavigation prevArticle={post.prev} nextArticle={post.next} />
+          <PageNavigation prevArticle={doc.prev} nextArticle={doc.next} />
 
           {/* Content footer */}
           <Footer />
