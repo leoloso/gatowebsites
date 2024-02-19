@@ -59,8 +59,8 @@ export default async function SinglePost({ params }: {
   if (!docTopic) notFound()
 
   // Calculate the prev/next items
-  const prevDoc = docIndex === 0 ? null : allDocs[docIndex - 1]
-  const nextDoc = docIndex === (allDocs.length - 1) ? null : allDocs[docIndex + 1]
+  const prevDoc = docIndex === 0 ? undefined : allDocs[docIndex - 1]
+  const nextDoc = docIndex === (allDocs.length - 1) ? undefined : allDocs[docIndex + 1]
 
   return (
     <>
@@ -90,7 +90,7 @@ export default async function SinglePost({ params }: {
 
           </div>
 
-          {/* Article content */}
+          {/* Doc content */}
           <div>
             <header className="mb-6">
               <h1 className="h2 text-slate-800 mb-4 dark:text-slate-200">{doc.title}</h1>
@@ -105,7 +105,7 @@ export default async function SinglePost({ params }: {
           <Feedback />
 
           {/* Page navigation */}
-          <PageNavigation prevArticle={prevDoc} nextArticle={nextDoc} />
+          <PageNavigation prevDoc={prevDoc} nextDoc={nextDoc} />
 
           {/* Content footer */}
           <Footer />
