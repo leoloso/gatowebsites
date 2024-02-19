@@ -6,7 +6,7 @@ import { useSelectedLayoutSegments } from 'next/navigation'
 import { Transition } from '@headlessui/react'
 import { allDocTopics } from 'contentlayer/generated'
 import { allDocs } from 'contentlayer/generated'
-import GlobaConfig from '@/app/app.config'
+import AppConfig from '@/app/app.config'
 import SidebarLink from './sidebar-link'
 import SidebarLinkGroup from './sidebar-link-group'
 
@@ -87,7 +87,7 @@ export default function SupportSidebar() {
                 <ul className="text-sm">
                   {/* 1st level */}
                   {allDocTopics.map((docTopic, docTopicIndex) => {
-                    const isDocTopicSelected = segments.length < 2 ? false : (segments[0] === GlobaConfig.paths.docs && segments[1] === docTopic.slug);
+                    const isDocTopicSelected = segments.length < 2 ? false : (segments[0] === AppConfig.paths.docs && segments[1] === docTopic.slug);
                     return (
                       <li className="mb-1" key={docTopicIndex}>
                         <SidebarLinkGroup open={isDocTopicSelected}>
@@ -123,7 +123,7 @@ export default function SupportSidebar() {
                                 <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
                                   {docsByTopic.map((doc, docIndex) => (
                                     <li className="mt-3" key={docIndex}>
-                                      <SidebarLink href={`/${GlobaConfig.paths.docs}/${doc.slug}`}>
+                                      <SidebarLink href={`/${AppConfig.paths.docs}/${doc.slug}`}>
                                         {doc.title}
                                       </SidebarLink>
                                     </li>
