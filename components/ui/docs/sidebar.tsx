@@ -9,6 +9,11 @@ import { allDocs } from 'contentlayer/generated'
 import AppConfig from '@/app/app.config'
 import SidebarLink from './sidebar-link'
 import SidebarLinkGroup from './sidebar-link-group'
+import {
+  sortDocumentTopics,
+  sortDocuments,
+  getDocumentsByTopic,
+} from '@/components/utils/document'
 
 export default function SupportSidebar() {
   const sidebar = useRef<HTMLDivElement>(null)
@@ -37,12 +42,8 @@ export default function SupportSidebar() {
   })  
 
   // Sort docs and doc topics by order
-  allDocTopics.sort((a, b) => {
-    return (a.order > b.order) ? -1 : 1
-  })
-  allDocs.sort((a, b) => {
-    return (a.order > b.order) ? -1 : 1
-  })
+  allDocTopics.sort(sortDocumentTopics)
+  allDocs.sort(sortDocuments)
 
   return (
     <>
@@ -92,7 +93,7 @@ export default function SupportSidebar() {
                       <li className="mb-1" key={docTopicIndex}>
                         <SidebarLinkGroup open={isDocTopicSelected}>
                           {(handleClick, open) => {
-                            const docsByTopic = allDocs.filter((doc) => doc.slug.startsWith(`${docTopic.slug}/`));
+                            const docsByTopic = getDocumentsByTopic(docTopic)
                             return (
                               <>
                                 <a

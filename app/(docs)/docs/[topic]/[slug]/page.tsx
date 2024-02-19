@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { allDocs } from 'contentlayer/generated'
-import { allDocTopics } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { Mdx } from '@/components/mdx/mdx'
 import TopicTitle from '@/components/ui/docs/topic-title'
@@ -9,6 +8,11 @@ import Feedback from '@/components/ui/feedback'
 import PageNavigation from '@/components/ui/page-navigation'
 import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
+import {
+  getDocumentDocumentTopicSlug,
+  getDocumentTopicBySlug,
+  sortDocuments,
+} from '@/components/utils/document'
 
 export async function generateStaticParams() {
   return allDocs.map((doc) => ({
@@ -38,15 +42,23 @@ export default async function SinglePost({ params }: {
     slug: string
   }
 }) {
-  const doc = allDocs.find((doc) => doc.slug === `${params.topic}/${params.slug}`)
+  // Sort docs. Needed to find the prev/next items below
+  allDocs.sort(sortDocuments)
+  const docIndex = allDocs.findIndex((doc) => doc.slug === `${params.topic}/${params.slug}`)
 
-  if (!doc) notFound()
+  if (docIndex === -1) notFound()
 
-  const docTopicSlug = doc.slug.substring(0, doc.slug.indexOf('/'))
+  const doc = allDocs[docIndex]
 
-  const docTopic = allDocTopics.find((docTopic) => docTopic.slug === docTopicSlug)
+  const docTopicSlug = getDocumentDocumentTopicSlug(doc)
+
+  const docTopic = getDocumentTopicBySlug(docTopicSlug)
 
   if (!docTopic) notFound()
+
+  // Calculate the prev/next items
+  const prevDoc = docIndex === 0 ? undefined : allDocs[docIndex - 1]
+  const nextDoc = docIndex === (allDocs.length - 1) ? undefined : allDocs[docIndex + 1]
 
   return (
     <>
@@ -76,7 +88,7 @@ export default async function SinglePost({ params }: {
 
           </div>
 
-          {/* Article content */}
+          {/* Doc content */}
           <div>
             <header className="mb-6">
               <h1 className="h2 text-slate-800 mb-4 dark:text-slate-200">{doc.title}</h1>
@@ -91,7 +103,7 @@ export default async function SinglePost({ params }: {
           <Feedback />
 
           {/* Page navigation */}
-          <PageNavigation prevArticle={doc.prev} nextArticle={doc.next} />
+          <PageNavigation prevDoc={prevDoc} nextDoc={nextDoc} />
 
           {/* Content footer */}
           <Footer />
