@@ -19,19 +19,19 @@ const nycd = Nothing_You_Could_Do({
 const aspekta = localFont({
   src: [
     {
-      path: '../public/fonts/Aspekta-350.woff2',
+      path: '../../public/fonts/Aspekta-350.woff2',
       weight: '350',
     },
     {
-      path: '../public/fonts/Aspekta-400.woff2',
+      path: '../../public/fonts/Aspekta-400.woff2',
       weight: '400',
     },    
     {
-      path: '../public/fonts/Aspekta-500.woff2',
+      path: '../../public/fonts/Aspekta-500.woff2',
       weight: '500',
     },
     {
-      path: '../public/fonts/Aspekta-650.woff2',
+      path: '../../public/fonts/Aspekta-650.woff2',
       weight: '650',
     },
   ],
