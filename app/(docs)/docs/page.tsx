@@ -1,6 +1,7 @@
 import { notFound, redirect } from 'next/navigation'
 import { allDocs } from 'contentlayer/generated'
 import { allDocTopics } from 'contentlayer/generated'
+import AppConfig from '@/app/app.config'
 
 // Redirect to the first item on the docs collection
 export default function Home() {
@@ -21,5 +22,5 @@ export default function Home() {
   const doc = allDocs.find((doc) => doc.topic.slug === docTopic.slug)
   if (!doc) notFound()
 
-  redirect(`/docs/${doc.slug}`)
+  redirect(`/${AppConfig.paths.docs}/${doc.slug}`)
 }
