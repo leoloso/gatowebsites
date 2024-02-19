@@ -25,14 +25,14 @@ const Update = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(AppConfig.paths.changelog, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.changelog + '/?'), ''),
     },    
   },
 }))
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: `blog/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.blog}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -66,7 +66,7 @@ const Post = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/blog\/?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.blog + '/?'), ''),
     },    
   },
 }))
