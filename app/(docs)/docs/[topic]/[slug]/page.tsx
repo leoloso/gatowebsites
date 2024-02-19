@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { allDocs } from 'contentlayer/generated'
+import { allDocTopics } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { Mdx } from '@/components/mdx/mdx'
 import TopicTitle from '@/components/ui/docs/topic-title'
@@ -41,11 +42,17 @@ export default async function SinglePost({ params }: {
 
   if (!doc) notFound()
 
+  const docTopicSlug = doc.slug.substring(0, doc.slug.indexOf('/'))
+
+  const docTopic = allDocTopics.find((docTopic) => docTopic.slug === docTopicSlug)
+
+  if (!docTopic) notFound()
+
   return (
     <>
       {/* Page header */}
       <div className="h-16 flex items-center mb-6">
-        <TopicTitle name={doc.topic.name} segment={doc.topic.slug} />
+        <TopicTitle name={docTopic.title} segment={docTopicSlug} />
       </div>
 
       <article className="flex xl:space-x-12">
@@ -60,7 +67,7 @@ export default async function SinglePost({ params }: {
 
             {/* Breadcrumbs */}
             <div className="flex items-center text-sm whitespace-nowrap min-w-0 ml-3">
-              <span className="text-slate-600 dark:text-slate-400">{doc.topic.name}</span>
+              <span className="text-slate-600 dark:text-slate-400">{docTopic.title}</span>
               <svg className="fill-slate-400 shrink-0 mx-2 dark:fill-slate-500" width="8" height="10" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 2 2.414.586 6.828 5 2.414 9.414 1 8l3-3z" />
               </svg>

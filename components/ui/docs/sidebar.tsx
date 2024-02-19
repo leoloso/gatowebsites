@@ -92,7 +92,7 @@ export default function SupportSidebar() {
                       <li className="mb-1" key={docTopicIndex}>
                         <SidebarLinkGroup open={isDocTopicSelected}>
                           {(handleClick, open) => {
-                            const docsByTopic = allDocs.filter((doc) => doc.topic.slug === docTopic.slug);
+                            const docsByTopic = allDocs.filter((doc) => doc.slug.startsWith(`${docTopic.slug}/`));
                             return (
                               <>
                                 <a

@@ -19,7 +19,7 @@ export default function Home() {
   const docTopic = allDocTopics[0]
 
   // First Doc for that DocTopic
-  const doc = allDocs.find((doc) => doc.topic.slug === docTopic.slug)
+  const doc = allDocs.find((doc) => doc.slug.startsWith(`${docTopic.slug}/`))
   if (!doc) notFound()
 
   redirect(`/${AppConfig.paths.docs}/${doc.slug}`)
