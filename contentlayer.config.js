@@ -181,7 +181,7 @@ const DocTopic = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(/doc-topics\/?/, ''),
     },    
   },
 }))
