@@ -4,8 +4,8 @@ import { useRef, useEffect } from 'react'
 import { useAppProvider } from '@/app/(docs)/app-provider'
 import { useSelectedLayoutSegments } from 'next/navigation'
 import { Transition } from '@headlessui/react'
-import { allDocs } from 'contentlayer/generated'
 import { allDocTopics } from 'contentlayer/generated'
+import { allDocs } from 'contentlayer/generated'
 import SidebarLink from './sidebar-link'
 import SidebarLinkGroup from './sidebar-link-group'
 
@@ -36,10 +36,10 @@ export default function SupportSidebar() {
   })  
 
   // Sort docs and doc topics by order
-  allDocs.sort((a, b) => {
-    return (new Date(a.order) > new Date(b.order)) ? -1 : 1
-  })  
   allDocTopics.sort((a, b) => {
+    return (new Date(a.order) > new Date(b.order)) ? -1 : 1
+  })
+  allDocs.sort((a, b) => {
     return (new Date(a.order) > new Date(b.order)) ? -1 : 1
   })
 
