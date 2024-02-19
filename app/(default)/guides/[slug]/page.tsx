@@ -78,7 +78,7 @@ export default async function SinglePost({ params }: {
                     </div>
                     {/* Article tags */}
                     {post.tags &&
-                      <div className="flex justify-center mt-4 md:mt-0 items-center mb-6" data-aos="fade-up" data-aos-delay="600">
+                      <div className="flex justify-center mt-4 md:mt-0 items-center mb-6">
                         <PostTags tags={post.tags} />
                       </div>
                     }
