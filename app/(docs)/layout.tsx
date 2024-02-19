@@ -6,7 +6,7 @@ import Theme from './theme-provider'
 import AppProvider from './app-provider'
 import Image from 'next/image'
 import Illustration from '@/public/images/hero-illustration.svg'
-import Header from '@/components/ui/header'
+import Header from '@/components/ui/docs/header'
 import Sidebar from '@/components/ui/docs/sidebar'
 
 const nycd = Nothing_You_Could_Do({

@@ -1,4 +1,3 @@
-// import Logo from '@/components/ui/logo'
 import Logo from '@/components/ui/logo'
 import ThemeToggle from './../theme-toggle'
 import Search from './../search'
