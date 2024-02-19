@@ -10,8 +10,8 @@ import PostTags from '@/components/post-tags'
 import AppConfig from '@/app/app.config'
 
 export async function generateStaticParams() {
-  return allGuides.map((post) => ({
-    slug: post.slug,
+  return allGuides.map((guide) => ({
+    slug: guide.slug,
   }))
 }
 
@@ -19,11 +19,11 @@ export async function generateMetadata({ params }: {
   params: { slug: string }
 }): Promise<Metadata | undefined> {
 
-  const post = allGuides.find((post) => post.slug === params.slug)
+  const guide = allGuides.find((guide) => guide.slug === params.slug)
 
-  if (!post) return
+  if (!guide) return
 
-  const { title, summary: description } = post
+  const { title, summary: description } = guide
 
   return {
     title,
@@ -35,9 +35,9 @@ export default async function SinglePost({ params }: {
   params: { slug: string }
 }) {
 
-  const post = allGuides.find((post) => post.slug === params.slug)
+  const guide = allGuides.find((guide) => guide.slug === params.slug)
 
-  if (!post) notFound()
+  if (!guide) notFound()
 
   return (
     <section>
@@ -50,7 +50,7 @@ export default async function SinglePost({ params }: {
               {/* Article header */}
               <header className="max-w-3xl mx-auto mb-20">
                 {/* Title */}
-                <h1 className="h1 text-center mb-4">{post.title}</h1>
+                <h1 className="h1 text-center mb-4">{guide.title}</h1>
               </header>
 
               {/* Article content */}
@@ -68,19 +68,19 @@ export default async function SinglePost({ params }: {
                       <div className="flex shrink-0 mr-3">
                         <a className="relative" href="#0">
                           <span className="absolute inset-0 -m-px" aria-hidden="true"><span className="absolute inset-0 -m-px bg-white rounded-full"></span></span>
-                          <Image className="relative rounded-full" src={post.authorImg} width={32} height={32} alt={post.author} />
+                          <Image className="relative rounded-full" src={guide.authorImg} width={32} height={32} alt={guide.author} />
                         </a>
                       </div>
                       <div>
                         <span className="text-gray-600">By </span>
-                        <a className="font-medium hover:underline" href="#0">{post.author}</a>
-                        <span className="text-gray-600"> · <PostDate dateString={post.publishedAt} /></span>
+                        <a className="font-medium hover:underline" href="#0">{guide.author}</a>
+                        <span className="text-gray-600"> · <PostDate dateString={guide.publishedAt} /></span>
                       </div>
                     </div>
                     {/* Article tags */}
-                    {post.tags &&
+                    {guide.tags &&
                       <div className="flex justify-center mt-4 md:mt-0 items-center mb-6">
-                        <PostTags tags={post.tags} />
+                        <PostTags tags={guide.tags} />
                       </div>
                     }
                   </div>
@@ -88,7 +88,7 @@ export default async function SinglePost({ params }: {
 
                   {/* Article body */}
                   <div>
-                    <PostMdx code={post.body.code} />
+                    <PostMdx code={guide.body.code} />
                   </div>
 
                   <div className="text-lg text-gray-600">
