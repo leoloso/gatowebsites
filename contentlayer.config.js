@@ -2,7 +2,7 @@ import { defineNestedType, defineDocumentType, makeSource } from 'contentlayer/s
 import remarkGfm from 'remark-gfm'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
-import AppConfig from '@/app/app.config'
+import AppConfig from './app/app.config'
 
 const Update = defineDocumentType(() => ({
   name: 'Update',
@@ -137,11 +137,6 @@ const Doc = defineDocumentType(() => ({
     },
     summary: {
       type: 'string',
-      required: true,
-    },
-    topic: {
-      type: 'nested',
-      of: NameSlugPair,
       required: true,
     },
     prev: {
