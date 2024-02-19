@@ -13,6 +13,7 @@ import {
   getDocumentTopicSlug,
   getDocumentTopicBySlug,
   sortDocumentTopics,
+  sortDocuments,
 } from '@/components/utils/document'
 
 export async function generateStaticParams() {
@@ -49,17 +50,7 @@ export default async function SinglePost({ params }: {
   })
   allDocs.sort((a, b) => {
     // Make sure that all documents respect the order of their topics (to find the next/prev below)
-    const aDocTopicSlug = getDocumentTopicSlug(a)
-    const bDocTopicSlug = getDocumentTopicSlug(b)
-    const aDocTopic = getDocumentTopicBySlug(aDocTopicSlug)
-    const bDocTopic = getDocumentTopicBySlug(bDocTopicSlug)
-    if (!aDocTopic || !bDocTopic) {
-      return 1;
-    }
-    if (aDocTopicSlug !== bDocTopicSlug) {
-      return sortDocumentTopics(aDocTopic, bDocTopic);
-    }
-    return (a.order > b.order) ? -1 : 1
+    return sortDocuments(a, b);
   })
 
   const docIndex = allDocs.findIndex((doc) => doc.slug === `${params.topic}/${params.slug}`)
