@@ -2,12 +2,14 @@ import { useState } from 'react'
 
 interface SidebarLinkGroupProps {
   children: (handleClick: () => void, openGroup: boolean) => React.ReactNode
-  open: boolean
+  open: boolean,
+  key: number
 }
 
 export default function SidebarLinkGroup({
   children,
-  open
+  open,
+  key
 }: SidebarLinkGroupProps) {
   const [openGroup, setOpenGroup] = useState<boolean>(open)
 
@@ -16,7 +18,7 @@ export default function SidebarLinkGroup({
   }  
 
   return (
-    <li className="mb-1">
+    <li className="mb-1" key={key}>
       {children(handleClick, openGroup)}
     </li>
   )
