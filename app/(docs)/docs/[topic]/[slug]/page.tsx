@@ -44,10 +44,9 @@ export default async function SinglePost({ params }: {
 }) {
   // Sort docs. Needed to find the prev/next items below
   allDocs.sort(sortDocuments)
-
   const docIndex = allDocs.findIndex((doc) => doc.slug === `${params.topic}/${params.slug}`)
 
-  if (!docIndex) notFound()
+  if (docIndex === -1) notFound()
 
   const doc = allDocs[docIndex]
 
