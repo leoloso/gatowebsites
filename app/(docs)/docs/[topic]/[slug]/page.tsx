@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { allPosts } from 'contentlayer/generated'
+import { allDocs } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { Mdx } from '@/components/mdx/mdx'
 import TopicTitle from '@/components/ui/topic-title'
@@ -10,7 +10,7 @@ import Footer from '@/components/ui/footer'
 import SecondaryNav from '@/components/ui/secondary-nav'
 
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({
+  return allDocs.map((post) => ({
     slug: post.slug,
   }))
 }
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: {
   params: { slug: string }
 }): Promise<Metadata | undefined> {
 
-  const post = allPosts.find((post) => post.slug === params.slug)
+  const post = allDocs.find((post) => post.slug === params.slug)
 
   if (!post) return
 
@@ -37,7 +37,7 @@ export default async function SinglePost({ params }: {
     slug: string
   }
 }) {
-  const post = allPosts.find((post) => post.slug === params.slug)
+  const post = allDocs.find((post) => post.slug === params.slug)
 
   if (!post) notFound()
 
