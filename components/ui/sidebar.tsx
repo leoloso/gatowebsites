@@ -198,7 +198,7 @@ export default function SupportSidebar() {
                           </a>
                           <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
                             <li className="mt-3">
-                              <SidebarLink href="/guides/marketing-api-quick-start">
+                              <SidebarLink href="/docs/guides/marketing-api-quick-start">
                                 Marketing API Quick Start
                               </SidebarLink>
                             </li>
@@ -230,7 +230,7 @@ export default function SupportSidebar() {
                   {/* 1st level */}
                   <li className="mb-1">
                     <Link
-                      href="/help/how-can-we-help"
+                      href="/docs/help/how-can-we-help"
                       className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${!segments.includes('help') && 'before:hidden'}`}
                       onClick={() => setSidebarOpen(false)}
                     >
