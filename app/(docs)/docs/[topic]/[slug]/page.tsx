@@ -9,6 +9,11 @@ import Feedback from '@/components/ui/feedback'
 import PageNavigation from '@/components/ui/page-navigation'
 import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
+import {
+  getDocumentTopicSlug,
+  getDocumentTopicBySlug,
+  sortDocumentTopics,
+} from '@/components/utils/document'
 
 export async function generateStaticParams() {
   return allDocs.map((doc) => ({
@@ -38,15 +43,38 @@ export default async function SinglePost({ params }: {
     slug: string
   }
 }) {
-  const doc = allDocs.find((doc) => doc.slug === `${params.topic}/${params.slug}`)
+  // Sort docs and doc topics by order. Needed to find the prev/next items below
+  allDocTopics.sort((a, b) => {
+    return sortDocumentTopics(a, b);
+  })
+  allDocs.sort((a, b) => {
+    // Make sure that all documents respect the order of their topics (to find the next/prev below)
+    const aDocTopicSlug = getDocumentTopicSlug(a)
+    const bDocTopicSlug = getDocumentTopicSlug(b)
+    const aDocTopic = getDocumentTopicBySlug(aDocTopicSlug)
+    const bDocTopic = getDocumentTopicBySlug(bDocTopicSlug)
+    if (!aDocTopic || !bDocTopic) {
+      return 1;
+    }
+    if (aDocTopicSlug !== bDocTopicSlug) {
+      return sortDocumentTopics(aDocTopic, bDocTopic);
+    }
+    return (a.order > b.order) ? -1 : 1
+  })
 
-  if (!doc) notFound()
+  const docIndex = allDocs.findIndex((doc) => doc.slug === `${params.topic}/${params.slug}`)
 
-  const docTopicSlug = doc.slug.substring(0, doc.slug.indexOf('/'))
+  if (!docIndex) notFound()
 
-  const docTopic = allDocTopics.find((docTopic) => docTopic.slug === docTopicSlug)
+  const doc = allDocs[docIndex]
+
+  const docTopicSlug = getDocumentTopicSlug(doc)
+
+  const docTopic = getDocumentTopicBySlug(docTopicSlug)
 
   if (!docTopic) notFound()
+
+  // Calculate the prev/next items
 
   return (
     <>
