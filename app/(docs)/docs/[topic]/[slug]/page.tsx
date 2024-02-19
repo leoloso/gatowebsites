@@ -45,13 +45,8 @@ export default async function SinglePost({ params }: {
   }
 }) {
   // Sort docs and doc topics by order. Needed to find the prev/next items below
-  allDocTopics.sort((a, b) => {
-    return sortDocumentTopics(a, b);
-  })
-  allDocs.sort((a, b) => {
-    // Make sure that all documents respect the order of their topics (to find the next/prev below)
-    return sortDocuments(a, b);
-  })
+  allDocTopics.sort(sortDocumentTopics)
+  allDocs.sort(sortDocuments)
 
   const docIndex = allDocs.findIndex((doc) => doc.slug === `${params.topic}/${params.slug}`)
 

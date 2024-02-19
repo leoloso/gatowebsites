@@ -2,17 +2,17 @@ import { notFound, redirect } from 'next/navigation'
 import { allDocs } from 'contentlayer/generated'
 import { allDocTopics } from 'contentlayer/generated'
 import AppConfig from '@/app/app.config'
+import {
+  sortDocumentTopics,
+  sortDocuments,
+} from '@/components/utils/document'
 
 // Redirect to the first item on the docs collection
 export default function Home() {
 
   // Sort docs and doc topics by order  
-  allDocTopics.sort((a, b) => {
-    return (a.order > b.order) ? -1 : 1
-  })
-  allDocs.sort((a, b) => {
-    return (a.order > b.order) ? -1 : 1
-  })
+  allDocTopics.sort(sortDocumentTopics)
+  allDocs.sort(sortDocuments)
 
   // First DocTopic
   if (allDocTopics.length === 0) notFound()
