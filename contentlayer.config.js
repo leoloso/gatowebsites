@@ -164,9 +164,31 @@ const Doc = defineDocumentType(() => ({
   },
 }))
 
+const DocTopic = defineDocumentType(() => ({
+  name: 'DocTopic',
+  filePathPattern: `doc-topics/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    order: {
+      type: 'number',
+      required: true,
+    },   
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/?/, ''),
+    },    
+  },
+}))
+
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Update, Post, Guide, Doc],
+  documentTypes: [Update, Post, Guide, Doc, DocTopic],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
