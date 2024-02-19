@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { allDocs } from 'contentlayer/generated'
-import { allDocTopics } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { Mdx } from '@/components/mdx/mdx'
 import TopicTitle from '@/components/ui/docs/topic-title'
@@ -44,8 +43,7 @@ export default async function SinglePost({ params }: {
     slug: string
   }
 }) {
-  // Sort docs and doc topics by order. Needed to find the prev/next items below
-  allDocTopics.sort(sortDocumentTopics)
+  // Sort docs. Needed to find the prev/next items below
   allDocs.sort(sortDocuments)
 
   const docIndex = allDocs.findIndex((doc) => doc.slug === `${params.topic}/${params.slug}`)
@@ -61,6 +59,8 @@ export default async function SinglePost({ params }: {
   if (!docTopic) notFound()
 
   // Calculate the prev/next items
+  const prevDoc = docIndex === 0 ? null : allDocs[docIndex - 1]
+  const nextDoc = docIndex === (allDocs.length - 1) ? null : allDocs[docIndex + 1]
 
   return (
     <>
