@@ -108,7 +108,7 @@ export default function SupportSidebar() {
                           </a>
                           <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
                             <li className="mt-3">
-                              <SidebarLink href="/documentation/fundamentals">
+                              <SidebarLink href="/docs/documentation/fundamentals">
                                 Fundamentals
                               </SidebarLink>
                             </li>
