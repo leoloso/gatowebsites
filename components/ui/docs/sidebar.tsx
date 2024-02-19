@@ -12,6 +12,7 @@ import SidebarLinkGroup from './sidebar-link-group'
 import {
   sortDocumentTopics,
   sortDocuments,
+  getDocumentsByTopic,
 } from '@/components/utils/document'
 
 export default function SupportSidebar() {
@@ -92,7 +93,7 @@ export default function SupportSidebar() {
                       <li className="mb-1" key={docTopicIndex}>
                         <SidebarLinkGroup open={isDocTopicSelected}>
                           {(handleClick, open) => {
-                            const docsByTopic = allDocs.filter((doc) => doc.slug.startsWith(`${docTopic.slug}/`));
+                            const docsByTopic = getDocumentsByTopic(docTopic)
                             return (
                               <>
                                 <a

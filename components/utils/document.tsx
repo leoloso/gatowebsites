@@ -1,12 +1,16 @@
 import { Doc, DocTopic } from "@/.contentlayer/generated";
-import { allDocTopics } from 'contentlayer/generated'
+import { allDocs, allDocTopics } from 'contentlayer/generated'
 
-export function getDocumentTopicSlug(doc: Doc) {
+export function getDocumentDocumentTopicSlug(doc: Doc) {
   return doc.slug.substring(0, doc.slug.indexOf('/'));
 }
 
 export function getDocumentTopicBySlug(slug: string) {
   return allDocTopics.find((docTopic) => docTopic.slug === slug);
+}
+
+export function getDocumentsByTopic(docTopic: DocTopic) {
+  return allDocs.filter((doc) => getDocumentDocumentTopicSlug(doc) === docTopic.slug)
 }
 
 export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
@@ -16,8 +20,8 @@ export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
 // Make sure that all documents respect the order
 // of their topics (to find the next/prev items for pagination)
 export function sortDocuments(a: Doc, b: Doc) {
-  const aDocTopicSlug = getDocumentTopicSlug(a)
-  const bDocTopicSlug = getDocumentTopicSlug(b)
+  const aDocTopicSlug = getDocumentDocumentTopicSlug(a)
+  const bDocTopicSlug = getDocumentDocumentTopicSlug(b)
   if (aDocTopicSlug === bDocTopicSlug) {
     return (a.order > b.order) ? -1 : 1
   }

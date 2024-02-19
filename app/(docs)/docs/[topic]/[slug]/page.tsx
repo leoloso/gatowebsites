@@ -10,7 +10,7 @@ import PageNavigation from '@/components/ui/page-navigation'
 import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
 import {
-  getDocumentTopicSlug,
+  getDocumentDocumentTopicSlug,
   getDocumentTopicBySlug,
   sortDocumentTopics,
   sortDocuments,
@@ -54,7 +54,7 @@ export default async function SinglePost({ params }: {
 
   const doc = allDocs[docIndex]
 
-  const docTopicSlug = getDocumentTopicSlug(doc)
+  const docTopicSlug = getDocumentDocumentTopicSlug(doc)
 
   const docTopic = getDocumentTopicBySlug(docTopicSlug)
 
