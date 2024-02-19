@@ -105,7 +105,7 @@ export default async function SinglePost({ params }: {
           <Feedback />
 
           {/* Page navigation */}
-          <PageNavigation prevArticle={doc.prev} nextArticle={doc.next} />
+          <PageNavigation prevArticle={prevDoc} nextArticle={nextDoc} />
 
           {/* Content footer */}
           <Footer />
