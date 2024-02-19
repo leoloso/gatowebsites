@@ -32,7 +32,7 @@ export default function SearchModal({
           leaveFrom="opacity-100 translate-y-0"
           leaveTo="opacity-0 translate-y-4"
         >
-          <Dialog.Panel className="bg-white overflow-auto max-w-2xl w-full max-h-full rounded shadow-lg">
+          <Dialog.Panel className="bg-white dark:bg-slate-800 overflow-auto max-w-2xl w-full max-h-full rounded shadow-lg">
             {/* Search form */}
             <form className="border-b border-slate-200 dark:border-slate-700">
               <div className="flex items-center">
