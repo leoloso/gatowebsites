@@ -173,6 +173,9 @@ const Extension = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    featured: {
+      type: 'boolean',
+    },
     category: {
       type: 'enum',
       options: [

@@ -125,8 +125,10 @@ export default async function SingleExtension({ params }: {
                       <div className="text-center mb-5">
                         <div className="mb-4">
                           <div className="relative inline-flex">
-                            <Image src={extension.icon || DefaultExtensionIcon} width={80} height={80} alt="Icon 08" />
-                            <Image className="absolute top-0 -right-1" src={Star} width={24} height={24} alt="Star" aria-hidden="true" />
+                            <Image src={extension.icon || DefaultExtensionIcon} width={80} height={80} alt="Extension icon" />
+                            {!! extension.featured && (
+                              <Image className="absolute top-0 -right-1" src={Star} width={24} height={24} alt="Star" aria-hidden="true" />
+                            )}
                           </div>
                         </div>
                         <a className="btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/70 before:rounded-full before:pointer-events-none" href={`/${AppConfig.paths.docs}/extensions/${extension.slug}`}>
