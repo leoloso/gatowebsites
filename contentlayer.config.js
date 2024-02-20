@@ -160,9 +160,31 @@ const DocTopic = defineDocumentType(() => ({
   },
 }))
 
+const Extension = defineDocumentType(() => ({
+  name: 'Extension',
+  filePathPattern: `${AppConfig.paths.extensions}/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    summary: {
+      type: 'string',
+      required: true,
+    },        
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.extensions + '/?'), ''),
+    },    
+  },
+}))
+
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Update, Post, Guide, Doc, DocTopic],
+  documentTypes: [Update, Post, Guide, Doc, DocTopic, Extension],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
