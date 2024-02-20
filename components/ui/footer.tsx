@@ -46,22 +46,34 @@ export default function Footer() {
 
           {/* 2nd block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h6 className="text-sm text-slate-50 font-medium mb-2">Products</h6>
+            <h6 className="text-sm text-slate-50 font-medium mb-2">Product</h6>
             <ul className="text-sm space-y-2">
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Features</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/pricing">Pricing</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Integrations</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/features">Features</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Pricing & Plans</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/guides">How to guides</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Changelog</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/docs">Documentation</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Our method</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/changelog">Changelog</a>
+              </li>
+              <li>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Download</a>
+              </li>
+              <li>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Test drive</a>
+              </li>
+              <li>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Purchase</a>
+              </li>
+              <li>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Refund policy</a>
               </li>
             </ul>
           </div>
@@ -106,7 +118,7 @@ export default function Footer() {
 
           {/* 5th block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h6 className="text-sm text-slate-50 font-medium mb-2">Legals</h6>
+            <h6 className="text-sm text-slate-50 font-medium mb-2">Support</h6>
             <ul className="text-sm space-y-2">
               <li>
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Refund policy</a>
