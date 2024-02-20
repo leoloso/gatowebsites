@@ -83,7 +83,7 @@ export default async function SingleExtension({ params }: {
 
                   {/* Content */}
                   <div>
-                    <div className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
+                    <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
                       <figure className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
                         <Image className="w-full rounded-2xl" src={IntegrationImg} width={586} height={316} alt="Integration image" />
@@ -93,7 +93,7 @@ export default async function SingleExtension({ params }: {
 
                       {/* Extension content */}
                       <ExtensionMdx code={extension.body.code} />
-                    </div>
+                    </article>
 
                     <aside className="pl-6 border-l-2 border-purple-500">
                       <p className="inline-flex font-medium italic text-lg bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">“ This integration is so perfect it tickles my brain. It ensures that your work is in sync across your entire team. ”</p>
