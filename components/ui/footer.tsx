@@ -1,4 +1,5 @@
 import Logo from './logo'
+import AppConfig from '@/app/app.config'
 
 export default function Footer() {
   return (
@@ -46,22 +47,34 @@ export default function Footer() {
 
           {/* 2nd block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h6 className="text-sm text-slate-50 font-medium mb-2">Products</h6>
+            <h6 className="text-sm text-slate-50 font-medium mb-2">Product</h6>
             <ul className="text-sm space-y-2">
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Features</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/pricing">Pricing</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Integrations</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/features">Features</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Pricing & Plans</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/guides">How to guides</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Changelog</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/docs">Documentation</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Our method</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/changelog">Changelog</a>
+              </li>
+              <li>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDownload}>Download</a>
+              </li>
+              <li>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Test drive</a>
+              </li>
+              <li>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.shopPurchase}>Purchase</a>
+              </li>
+              <li>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/refund-policy">Refund policy</a>
               </li>
             </ul>
           </div>
@@ -71,19 +84,25 @@ export default function Footer() {
             <h6 className="text-sm text-slate-50 font-medium mb-2">Company</h6>
             <ul className="text-sm space-y-2">
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">About us</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/blog">Blog</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Diversity & Inclusion</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/newsletter">Newsletter</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Blog</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/customers">Customers</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Careers</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.shopAffiliateProgram} target="_blank">Affiliate Program</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Financial statements</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/developers">Developer Partnership Program</a>
+              </li>
+              <li>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/about">About us</a>
+              </li>
+              <li>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/contact">Contact us</a>
               </li>
             </ul>
           </div>
@@ -93,32 +112,29 @@ export default function Footer() {
             <h6 className="text-sm text-slate-50 font-medium mb-2">Resources</h6>
             <ul className="text-sm space-y-2">
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Community</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDirectory} target="_blank">WordPress.org</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Terms of service</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.githubRepo} target="_blank">GitHub</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Report a vulnerability</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.githubExtensionStarter} target="_blank">Extension starter</a>
+              </li>
+              <li>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/specials/wpbuilds">WPBuilds series</a>
               </li>
             </ul>
           </div>
 
           {/* 5th block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h6 className="text-sm text-slate-50 font-medium mb-2">Legals</h6>
+            <h6 className="text-sm text-slate-50 font-medium mb-2">Support</h6>
             <ul className="text-sm space-y-2">
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Refund policy</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/shop/my-orders">My orders</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Terms & Conditions</a>
-              </li>
-              <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Privacy policy</a>
-              </li>
-              <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Brand Kit</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/support">Premium support</a>
               </li>
             </ul>
           </div>
