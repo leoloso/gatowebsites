@@ -32,9 +32,9 @@ export default function Header() {
                 <li>
                   <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/docs">Documentation</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/contact">Contact</Link>
-                </li>
+                </li> */}
               </ul>
             </nav>
             <div className="hidden md:flex md:grow">
@@ -44,6 +44,17 @@ export default function Header() {
 
           {/* Desktop sign in links */}
           <ul className="flex-1 flex justify-end items-center">
+            {/* <li>
+              <Link className="btn-sm inline-flex items-center text-slate-100 bg-blue-600 hover:bg-blue-700 shadow-sm" href="/support">Support</Link>
+            </li> */}
+            {/* <li className="ml-4">
+              <a className="btn-sm inline-flex items-center text-slate-100 bg-blue-600 hover:bg-blue-700 shadow-sm" href="#0">
+                Support
+              </a>
+            </li> */}
+            {/* <li className="ml-4">
+              <Link className="font-medium text-sm text-slate-300 hover:text-white whitespace-nowrap transition duration-150 ease-in-out" href="/support">Support</Link>
+            </li> */}
             <li className="ml-6">
               <Link className="btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out w-full group [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/30 before:rounded-full before:pointer-events-none" href="/signup">
                 <span className="relative inline-flex items-center">
