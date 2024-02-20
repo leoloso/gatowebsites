@@ -58,10 +58,10 @@ export default function MobileMenu() {
       >
         <ul className="border border-transparent [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] rounded-lg px-4 py-1.5">
           <li>
-            <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href="/features">Features</Link>
+            <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href="/pricing">Pricing</Link>
           </li>
           <li>
-            <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href="/pricing">Pricing</Link>
+            <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href="/extensions">Extensions</Link>
           </li>
           <li className="py-2 my-2 border-t border-b border-gray-700">
             <span className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5">Documentation</span>

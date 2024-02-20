@@ -76,7 +76,7 @@ export default function IntegrationsCarousel() {
                   <Image src={IntegrationImg01} width={40} height={40} alt="Icon 01" />
                   <Image className="absolute top-0 -right-1" src={Star} width={16} height={16} alt="Star" aria-hidden="true" />
                 </div>
-                <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href="/features/single-post">Retool</Link>
+                <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href="/extensions/single-post">Retool</Link>
               </div>
               <div className="grow mb-4">
                 <div className="text-sm text-slate-400">Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.</div>
@@ -105,7 +105,7 @@ export default function IntegrationsCarousel() {
                   <Image src={IntegrationImg02} width={40} height={40} alt="Icon 02" />
                   <Image className="absolute top-0 -right-1" src={Star} width={16} height={16} alt="Star" aria-hidden="true" />
                 </div>
-                <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href="/features/single-post">Zapier</Link>
+                <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href="/extensions/single-post">Zapier</Link>
               </div>
               <div className="grow mb-4">
                 <div className="text-sm text-slate-400">Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.</div>
@@ -133,7 +133,7 @@ export default function IntegrationsCarousel() {
                   <Image src={IntegrationImg03} width={40} height={40} alt="Icon 03" />
                   <Image className="absolute top-0 -right-1" src={Star} width={16} height={16} alt="Star" aria-hidden="true" />
                 </div>
-                <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href="/features/single-post">Airtable</Link>
+                <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href="/extensions/single-post">Airtable</Link>
               </div>
               <div className="grow mb-4">
                 <div className="text-sm text-slate-400">Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.</div>
@@ -162,7 +162,7 @@ export default function IntegrationsCarousel() {
                   <Image src={IntegrationImg04} width={40} height={40} alt="Icon 04" />
                   <Image className="absolute top-0 -right-1" src={Star} width={16} height={16} alt="Star" aria-hidden="true" />
                 </div>
-                <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href="/features/single-post">Jira</Link>
+                <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href="/extensions/single-post">Jira</Link>
               </div>
               <div className="grow mb-4">
                 <div className="text-sm text-slate-400">Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.</div>
@@ -191,7 +191,7 @@ export default function IntegrationsCarousel() {
                   <Image src={IntegrationImg05} width={40} height={40} alt="Icon 05" />
                   <Image className="absolute top-0 -right-1" src={Star} width={16} height={16} alt="Star" aria-hidden="true" />
                 </div>
-                <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href="/features/single-post">GitLab</Link>
+                <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href="/extensions/single-post">GitLab</Link>
               </div>
               <div className="grow mb-4">
                 <div className="text-sm text-slate-400">Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.</div>

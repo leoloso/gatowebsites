@@ -53,7 +53,7 @@ export default function Footer() {
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/pricing">Pricing</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/features">Features</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/extensions">Extensions</a>
               </li>
               <li>
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/guides">How to guides</a>
