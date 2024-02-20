@@ -1,4 +1,5 @@
 import Logo from './logo'
+import AppConfig from '@/app/app.config'
 
 export default function Footer() {
   return (
@@ -64,10 +65,10 @@ export default function Footer() {
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/changelog">Changelog</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Download</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDownload}>Download</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Test drive</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo}>Test drive</a>
               </li>
               <li>
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Purchase</a>
