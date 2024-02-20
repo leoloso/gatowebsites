@@ -4,8 +4,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import Illustration from '@/public/images/page-illustration.svg'
-import ExtensionImg from '@/public/images/integration-image.png'
-import ExtensionIcon from '@/public/images/integrations-08.svg'
+import DefaultExtensionImg from '@/public/images/default/extension-image.png'
+import DefaultExtensionIcon from '@/public/images/default/extension-icon.svg'
 import Star from '@/public/images/star.svg'
 import Avatar from '@/public/images/post-avatar.jpg'
 import Particles from '@/components/particles'
@@ -87,7 +87,7 @@ export default async function SingleExtension({ params }: {
                     <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
                       <figure className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
-                        <Image className="w-full rounded-2xl" src={extension.image || ExtensionImg} width={586} height={316} alt="Extension image" />
+                        <Image className="w-full rounded-2xl" src={extension.image || DefaultExtensionImg} width={586} height={316} alt="Extension image" />
                       </figure>
 
                       <h1 className="sr-only">{extension.title}</h1>
@@ -125,7 +125,7 @@ export default async function SingleExtension({ params }: {
                       <div className="text-center mb-5">
                         <div className="mb-4">
                           <div className="relative inline-flex">
-                            <Image src={extension.icon || ExtensionIcon} width={80} height={80} alt="Icon 08" />
+                            <Image src={extension.icon || DefaultExtensionIcon} width={80} height={80} alt="Icon 08" />
                             <Image className="absolute top-0 -right-1" src={Star} width={24} height={24} alt="Star" aria-hidden="true" />
                           </div>
                         </div>
