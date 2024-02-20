@@ -3,13 +3,15 @@ import { Dialog, Transition } from '@headlessui/react'
 
 interface SearchModalProps {
   isOpen: boolean
-  setIsOpen: (value: boolean) => void
+  setIsOpen: (value: boolean) => void,
+  placeholder?: string
 }
 
 export default function SearchModal({
   isOpen,
-  setIsOpen
-}: SearchModalProps) {
+  setIsOpen,
+  placeholder = "Search for anything…"
+}: SearchModalProps) {  
   return (
     <Transition appear show={isOpen}>
       <Dialog as="div" onClose={() => setIsOpen(false)}>
@@ -52,7 +54,7 @@ export default function SearchModal({
                   id="search-modal"
                   className="text-sm w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500"
                   type="search"
-                  placeholder="Search for anything…"
+                  placeholder={placeholder}
                 />
               </div>
             </form>

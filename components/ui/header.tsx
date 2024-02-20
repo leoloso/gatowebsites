@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Logo from './logo'
 import MobileMenu from './mobile-menu'
+import Search from './search'
 
 export default function Header() {
   return (
@@ -14,28 +15,32 @@ export default function Header() {
           </div>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex md:grow">
+          <div className="flex items-center">
+            <nav className="hidden md:flex md:grow">
 
-            {/* Desktop menu links */}
-            <ul className="flex grow justify-center flex-wrap items-center">
-              <li>
-                <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/features">Features</Link>
-              </li>
-              <li>
-                <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/pricing">Pricing</Link>
-              </li>
-              {/* <li>
-                <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/guides">How to guides</Link>
-              </li> */}
-              <li>
-                <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/docs">Documentation</Link>
-              </li>
-              <li>
-                <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/contact">Contact</Link>
-              </li>
-            </ul>
-
-          </nav>
+              {/* Desktop menu links */}
+              <ul className="flex grow justify-center flex-wrap items-center">
+                <li>
+                  <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/features">Features</Link>
+                </li>
+                <li>
+                  <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/pricing">Pricing</Link>
+                </li>
+                {/* <li>
+                  <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/guides">How to guides</Link>
+                </li> */}
+                <li>
+                  <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/docs">Documentation</Link>
+                </li>
+                <li>
+                  <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/contact">Contact</Link>
+                </li>
+              </ul>
+            </nav>
+            <div className="hidden md:flex md:grow">
+              <Search />
+            </div>
+          </div>
 
           {/* Desktop sign in links */}
           <ul className="flex-1 flex justify-end items-center">
