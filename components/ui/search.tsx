@@ -1,11 +1,22 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import SearchModal from './search-modal'
 
 export default function Search() {
 
   const [searchModalOpen, setSearchModalOpen] = useState<boolean>(false)
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {      
+      !searchModalOpen && event.preventDefault()
+      if(event.key === '/') {
+        setSearchModalOpen(true)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () =>  window.removeEventListener('keydown', handleKeyDown)
+  }, [searchModalOpen])
 
   return (
     <div className="grow ml-4 md:ml-8">
