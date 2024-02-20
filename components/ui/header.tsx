@@ -28,11 +28,11 @@ export default function Header({
           </div>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex md:grow">
-            {/* Desktop menu links */}
-            <ul className="flex grow justify-center flex-wrap items-center">
-              { ! documentation && (
-                <>
+          { ! documentation && (
+            <>
+              <nav className="hidden md:flex md:grow">
+                {/* Desktop menu links */}
+                <ul className="flex grow justify-center flex-wrap items-center">
                   <li>
                     <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/features">Features</Link>
                   </li>
@@ -49,24 +49,27 @@ export default function Header({
                       <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/docs">Reference docs</Link>
                     </li>
                   </Dropdown>
-                </>
-              )}
-              { documentation && (
-                <>
-                  <li>
-                    <Search />
-                  </li>
-                  {/* Lights switch */}
-                  <li>
-                    <ThemeToggle />
-                  </li>
-                </>
-              )}
-            </ul>
-          </nav>
+                </ul>
+              </nav>
+            </>
+          )}
 
-          {/* Desktop sign in links */}
-          <ul className="flex-1 flex justify-end items-center">
+          { documentation && (
+            <nav>
+              {/* Desktop menu links */}
+              <ul className="flex grow justify-center flex-wrap items-center">
+                <li>
+                  <Search />
+                </li>
+                {/* Lights switch */}
+                <li>
+                  <ThemeToggle />
+                </li>
+              </ul>
+            </nav>
+          )}
+
+          <ul className="hidden md:flex md:grow flex-1 flex justify-end items-center">
             <li className="ml-6">
               <PurchaseButton />
             </li>
