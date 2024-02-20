@@ -173,6 +173,19 @@ const Extension = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    category: {
+      type: 'enum',
+      options: [
+        'Clients',
+        'Endpoints',
+        'Performance',
+        'Productivity',
+        'Schema evolution',
+        'Schema extension',
+        'Security',
+      ],
+      required: true,
+    },
     integration: {
       type: 'nested',
       of: NameURLPair,
