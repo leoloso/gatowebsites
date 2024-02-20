@@ -177,6 +177,12 @@ const Extension = defineDocumentType(() => ({
       type: 'nested',
       of: NameURLPair,
     },
+    image: {
+      type: 'string',
+    },
+    icon: {
+      type: 'string',
+    },
   },
   computedFields: {
     slug: {

@@ -87,7 +87,7 @@ export default async function SingleExtension({ params }: {
                     <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
                       <figure className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
-                        <Image className="w-full rounded-2xl" src={ExtensionImg} width={586} height={316} alt="Integration image" />
+                        <Image className="w-full rounded-2xl" src={extension.image || ExtensionImg} width={586} height={316} alt="Extension image" />
                       </figure>
 
                       <h1 className="sr-only">{extension.title}</h1>
@@ -125,7 +125,7 @@ export default async function SingleExtension({ params }: {
                       <div className="text-center mb-5">
                         <div className="mb-4">
                           <div className="relative inline-flex">
-                            <Image src={ExtensionIcon} width={80} height={80} alt="Icon 08" />
+                            <Image src={extension.icon || ExtensionIcon} width={80} height={80} alt="Icon 08" />
                             <Image className="absolute top-0 -right-1" src={Star} width={24} height={24} alt="Star" aria-hidden="true" />
                           </div>
                         </div>
