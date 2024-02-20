@@ -26,7 +26,7 @@ import IntegrationsImg22 from '@/public/images/integrations-22.svg'
 import IntegrationsImg23 from '@/public/images/integrations-23.svg'
 import IntegrationsImg24 from '@/public/images/integrations-24.svg'
 
-export default function IntegrationsList() {
+export default function ExtensionsList() {
 
   const items = [
     {

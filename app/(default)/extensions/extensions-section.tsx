@@ -4,7 +4,7 @@ import Illustration from '@/public/images/page-illustration.svg'
 import Illustration02 from '@/public/images/page-illustration-02.svg'
 import IntegrationsCarousel from '@/components/integrations-carousel'
 
-export default function IntegrationsSection() {
+export default function ExtensionsSection() {
   return (
     <section className="relative">
 

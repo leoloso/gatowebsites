@@ -3,14 +3,14 @@ export const metadata = {
   description: 'Page description',
 }
 
-import IntegrationsSection from './integrations-section'
-import IntegrationsList from './integrations-list'
+import ExtensionsSection from './extensions-section'
+import ExtensionsList from './extensions-list'
 
 export default function Integrations() {
   return (
     <>
-      <IntegrationsSection />
-      <IntegrationsList />
+      <ExtensionsSection />
+      <ExtensionsList />
     </>
   )
 }
