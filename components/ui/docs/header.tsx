@@ -1,6 +1,6 @@
 import Logo from '@/components/ui/logo'
 import ThemeToggle from './../theme-toggle'
-import Search from './../search'
+import Search from './search'
 
 export default function Header() {
   return (
