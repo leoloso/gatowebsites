@@ -110,7 +110,7 @@ export default function CustomerSingle() {
 
             {/* Sidebar */}
             <aside className="md:w-64 lg:w-80 md:shrink-0 md:pt-[3.75rem] lg:pt-0 pb-12 md:pb-20">
-              <div className="sticky top-6 md:pl-6 lg:pl-10">
+              <div className="sticky top-20 md:pl-6 lg:pl-10">
 
                 {/* Sidebar content */}
                 <div className="space-y-6">
