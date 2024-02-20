@@ -10,6 +10,7 @@ import Star from '@/public/images/star.svg'
 import Avatar from '@/public/images/post-avatar.jpg'
 import Particles from '@/components/particles'
 import { ExtensionMdx } from '@/components/mdx/extension-mdx'
+import AppConfig from '@/app/app.config'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
@@ -128,11 +129,11 @@ export default async function SingleExtension({ params }: {
                             <Image className="absolute top-0 -right-1" src={Star} width={24} height={24} alt="Star" aria-hidden="true" />
                           </div>
                         </div>
-                        <button className="btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/70 before:rounded-full before:pointer-events-none">
+                        <a className="btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/70 before:rounded-full before:pointer-events-none" href={`/${AppConfig.paths.docs}/extensions/${extension.slug}`}>
                           <span className="relative inline-flex items-center">
-                            Install Integration <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+                            Reference docs <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                           </span>
-                        </button>
+                        </a>
                       </div>
                       <ul className="text-sm">
                         <li className="flex items-center justify-between space-x-2 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
@@ -150,14 +151,6 @@ export default async function SingleExtension({ params }: {
                             </a>
                           </li>
                         )}
-                        <li className="flex items-center justify-between space-x-2 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
-                          <span className="text-slate-400">Industry</span>
-                          <span className="text-slate-300 font-medium">Technology</span>
-                        </li>
-                        <li className="flex items-center justify-between space-x-2 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
-                          <span className="text-slate-400">Installs</span>
-                          <span className="text-slate-300 font-medium">100K+</span>
-                        </li>
                       </ul>
                     </div>
                   </div>
