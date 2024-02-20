@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import PurchaseButton from '../purchase-button'
 
 export default function MobileMenu() {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
@@ -72,6 +73,9 @@ export default function MobileMenu() {
                 <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href="/docs">Reference docs</Link>
               </li>
             </ul>
+          </li>
+          <li>
+            <PurchaseButton />
           </li>
         </ul>
       </nav>
