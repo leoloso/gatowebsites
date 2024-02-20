@@ -160,9 +160,55 @@ const DocTopic = defineDocumentType(() => ({
   },
 }))
 
+const Extension = defineDocumentType(() => ({
+  name: 'Extension',
+  filePathPattern: `${AppConfig.paths.extensions}/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    summary: {
+      type: 'string',
+      required: true,
+    },
+    integration: {
+      type: 'nested',
+      of: NameURLPair,
+    },
+    image: {
+      type: 'string',
+    },
+    icon: {
+      type: 'string',
+    },
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.extensions + '/?'), ''),
+    },    
+  },
+}))
+
+const NameURLPair = defineNestedType(() => ({
+  name: 'NameURLPair',
+  fields: {
+    name: {
+      type: 'string',
+      required: true
+    },
+    url: {
+      type: 'string',
+      required: true
+    },    
+  },
+}))
+
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Update, Post, Guide, Doc, DocTopic],
+  documentTypes: [Update, Post, Guide, Doc, DocTopic, Extension],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

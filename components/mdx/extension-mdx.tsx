@@ -1,0 +1,38 @@
+import { useMDXComponent } from 'next-contentlayer/hooks'
+import PostLink from './link'
+import PostImage from './image'
+import PostBanner from './banner'
+import PostModalVideo from './modal-video'
+import PostAccordion from './accordion'
+import PostTag from './tag'
+import PostTable, { TableHead, TableBody, TableHeadRow, TableBodyRow, TableTh, TableTd } from './table'
+
+const mdxComponents = {
+  Link: PostLink,
+  Image: PostImage,
+  Banner: PostBanner,
+  ModalVideo: PostModalVideo,
+  Accordion: PostAccordion,
+  Tag: PostTag,
+  Table: PostTable,
+  THead: TableHead,
+  TBody: TableBody,
+  ThRow: TableHeadRow,
+  TbRow: TableBodyRow,
+  Th: TableTh,
+  Td: TableTd,
+}
+
+interface ExtensionMdxProps {
+  code: string
+}
+
+export function ExtensionMdx({ code }: ExtensionMdxProps) {
+  const Component = useMDXComponent(code)
+
+  return (
+    <article className="prose max-w-none text-slate-400 prose-headings:text-slate-50 prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-4 prose-p:leading-relaxed prose-a:text-purple-500 prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-50 prose-strong:font-medium prose-blockquote:pl-5 prose-blockquote:xl:-ml-5 prose-blockquote:border-l-2 prose-blockquote:border-purple-500 prose-blockquote:font-medium prose-blockquote:text-slate-300 prose-blockquote:italic">
+      <Component components={{ ...mdxComponents }} />
+    </article>
+  )
+}
