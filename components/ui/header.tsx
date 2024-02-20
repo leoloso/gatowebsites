@@ -16,7 +16,7 @@ export default function Header({
   return (
     <header className="fixed w-full z-30">
       <div
-        className="absolute inset-0 bg-white bg-opacity-70 border-b border-slate-200 backdrop-blur -z-10 dark:bg-transparent dark:border-slate-800"
+        className={`absolute inset-0 bg-opacity-70 backdrop-blur -z-10 ${! documentation ? '' : 'bg-white border-slate-200 border-b'} dark:bg-transparent dark:border-slate-800`}
         aria-hidden="true"
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
