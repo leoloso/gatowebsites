@@ -68,13 +68,13 @@ export default function Footer() {
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDownload}>Download</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo}>Test drive</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Test drive</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Purchase</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.shopPurchase}>Purchase</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="#0">Refund policy</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/refund-policy">Refund policy</a>
               </li>
             </ul>
           </div>
