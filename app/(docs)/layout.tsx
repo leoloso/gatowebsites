@@ -7,6 +7,8 @@ import Image from 'next/image'
 import Illustration from '@/public/images/hero-illustration.svg'
 import Header from '@/components/ui/header'
 import Sidebar from '@/components/ui/docs/sidebar'
+import Search from '@/components/ui/search'
+import ThemeToggle from '@/components/ui/theme-toggle'
 
 const nycd = Nothing_You_Could_Do({
   subsets: ['latin'],
@@ -31,7 +33,20 @@ export default function RootLayout({
         <AppProvider>
           <div className="flex flex-col min-h-screen overflow-hidden">
 
-            <Header documentation={true} />
+            <Header useLightDarkMode={true}>
+              <nav>
+                {/* Desktop menu links */}
+                <ul className="flex grow justify-center flex-wrap items-center">
+                  <li>
+                    <Search />
+                  </li>
+                  {/* Lights switch */}
+                  <li>
+                    <ThemeToggle />
+                  </li>
+                </ul>
+              </nav>
+            </Header>
 
             {/*  Page content */}
             <main className="grow">
