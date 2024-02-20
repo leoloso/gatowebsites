@@ -176,7 +176,6 @@ const Extension = defineDocumentType(() => ({
     category: {
       type: 'enum',
       options: [
-        'Access control',
         'Clients',
         'Endpoints',
         'Performance',
