@@ -4,6 +4,7 @@ module.exports = {
     changelog: "update",
     docs: "docs",
     docTopics: "doc-topics",
+    extensions: "extensions",
     guides: "guides"
   },
   urls: {
