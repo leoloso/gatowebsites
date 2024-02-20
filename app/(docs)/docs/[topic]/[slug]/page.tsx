@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { allDocs } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
-import { Mdx } from '@/components/mdx/mdx'
+import { DocMdx } from '@/components/mdx/doc-mdx'
 import TopicTitle from '@/components/ui/docs/topic-title'
 import Hamburger from '@/components/ui/docs/hamburger'
 import Feedback from '@/components/ui/feedback'
@@ -96,7 +96,7 @@ export default async function SinglePost({ params }: {
                 {doc.summary}
               </p>
             </header>
-            <Mdx code={doc.body.code} />
+            <DocMdx code={doc.body.code} />
           </div>
 
           {/* Feedback */}
