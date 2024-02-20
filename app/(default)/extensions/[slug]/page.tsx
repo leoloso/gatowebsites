@@ -9,7 +9,7 @@ import IntegrationIcon from '@/public/images/integrations-08.svg'
 import Star from '@/public/images/star.svg'
 import Avatar from '@/public/images/post-avatar.jpg'
 import Particles from '@/components/particles'
-import { PostMdx } from '@/components/mdx/post-mdx'
+import { ExtensionMdx } from '@/components/mdx/extension-mdx'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
@@ -83,7 +83,7 @@ export default async function SingleExtension({ params }: {
 
                   {/* Content */}
                   <div>
-                    <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
+                    <div className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
                       <figure className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
                         <Image className="w-full rounded-2xl" src={IntegrationImg} width={586} height={316} alt="Integration image" />
@@ -92,11 +92,8 @@ export default async function SingleExtension({ params }: {
                       <h1 className="sr-only">GitHub</h1>
 
                       {/* Extension content */}
-                      <div className="prose max-w-none text-slate-400 prose-headings:text-slate-50 prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-4 prose-p:leading-relaxed prose-a:text-purple-500 prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-50 prose-strong:font-medium prose-blockquote:pl-5 prose-blockquote:xl:-ml-5 prose-blockquote:border-l-2 prose-blockquote:border-purple-500 prose-blockquote:font-medium prose-blockquote:text-slate-300 prose-blockquote:italic">
-                        {/* Article content */}
-                        <PostMdx code={extension.body.code} />
-                      </div>
-                    </article>
+                      <ExtensionMdx code={extension.body.code} />
+                    </div>
 
                     <aside className="pl-6 border-l-2 border-purple-500">
                       <p className="inline-flex font-medium italic text-lg bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">“ This integration is so perfect it tickles my brain. It ensures that your work is in sync across your entire team. ”</p>
