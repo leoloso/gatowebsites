@@ -112,20 +112,6 @@ const Guide = defineDocumentType(() => ({
   },
 }))
 
-const NameSlugPair = defineNestedType(() => ({
-  name: 'NameSlugPair',
-  fields: {
-    name: {
-      type: 'string',
-      required: true
-    },
-    slug: {
-      type: 'string',
-      required: true
-    },    
-  },
-}))
-
 const Doc = defineDocumentType(() => ({
   name: 'Doc',
   filePathPattern: `${AppConfig.paths.docs}/**/*.mdx`,
@@ -138,14 +124,6 @@ const Doc = defineDocumentType(() => ({
     summary: {
       type: 'string',
       required: true,
-    },
-    prev: {
-      type: 'nested',
-      of: NameSlugPair,
-    },
-    next: {
-      type: 'nested',
-      of: NameSlugPair,
     },
     order: {
       type: 'number',
