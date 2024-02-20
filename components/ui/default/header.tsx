@@ -2,7 +2,7 @@ import Header from '@/components/ui/header'
 import Link from 'next/link'
 import Dropdown from '@/components/utils/dropdown'
 
-export default function SiteHeader() {
+export default function DefaultHeader() {
   return (
     <Header>
       <nav className="hidden md:flex md:grow">
