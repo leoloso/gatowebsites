@@ -71,6 +71,26 @@ export default function MobileMenu() {
           <li>
             <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href="/changelog">Changelog</Link>
           </li>
+          <li className="py-2 my-2 border-t border-b border-gray-700">
+            <span className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5">Support</span>
+            <ul className="pl-4">
+              <li>
+                <Link href="/contact" className="text-sm flex font-medium text-gray-400 hover:text-gray-200 py-2" onClick={() => setMobileNavOpen(false)}>
+                  Contact us
+                </Link>
+              </li>
+              <li>
+                <Link href="/help/frequently-asked-questions" className="text-sm flex font-medium text-gray-400 hover:text-gray-200 py-2" onClick={() => setMobileNavOpen(false)}>
+                  Help center
+                </Link>
+              </li>
+              <li>
+                <Link href="/404" className="text-sm flex font-medium text-gray-400 hover:text-gray-200 py-2" onClick={() => setMobileNavOpen(false)}>
+                  404
+                </Link>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </div>
