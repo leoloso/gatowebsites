@@ -165,7 +165,7 @@ const Extension = defineDocumentType(() => ({
   filePathPattern: `${AppConfig.paths.extensions}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
-    title: {
+    name: {
       type: 'string',
       required: true
     },

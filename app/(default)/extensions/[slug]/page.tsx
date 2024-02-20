@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: {
 
   if (!extension) return
 
-  const { title, summary: description } = extension
+  const { name: title, summary: description } = extension
 
   return {
     title,
@@ -90,7 +90,7 @@ export default async function SingleExtension({ params }: {
                         <Image className="w-full rounded-2xl" src={extension.image || DefaultExtensionImg} width={586} height={316} alt="Extension image" />
                       </figure>
 
-                      <h1 className="sr-only">{extension.title}</h1>
+                      <h1 className="sr-only">{extension.name}</h1>
 
                       {/* Extension content */}
                       <ExtensionMdx code={extension.body.code} />
@@ -138,7 +138,7 @@ export default async function SingleExtension({ params }: {
                       <ul className="text-sm">
                         <li className="flex items-center justify-between space-x-2 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
                           <span className="text-slate-400">Extension</span>
-                          <span className="text-slate-300 font-medium">{extension.title}</span>
+                          <span className="text-slate-300 font-medium">{extension.name}</span>
                         </li>
                         {!! extension.integration && (
                           <li className="flex items-center justify-between space-x-2 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
