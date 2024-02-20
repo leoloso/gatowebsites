@@ -287,7 +287,7 @@ export default function ExtensionsList() {
 
                 {items.map((item, index) => (
                   item.category === 'Engineering' && (
-                    <IntegrationCard item={item} index={index} />
+                    <ExtensionCard item={item} index={index} />
                   )
                 ))}
 
@@ -300,7 +300,7 @@ export default function ExtensionsList() {
 
                 {items.map((item, index) => (
                   item.category === 'No-code' && (
-                    <IntegrationCard item={item} index={index} />
+                    <ExtensionCard item={item} index={index} />
                   )
                 ))}
 
@@ -313,7 +313,7 @@ export default function ExtensionsList() {
 
                 {items.map((item, index) => (
                   item.category === 'Collaboration' && (
-                    <IntegrationCard item={item} index={index} />
+                    <ExtensionCard item={item} index={index} />
                   )
                 ))}
 
@@ -326,7 +326,7 @@ export default function ExtensionsList() {
 
                 {items.map((item, index) => (
                   item.category === 'Productivity' && (
-                    <IntegrationCard item={item} index={index} />
+                    <ExtensionCard item={item} index={index} />
                   )
                 ))}
 
@@ -352,7 +352,7 @@ type CardProps = {
   index: number
 }
 
-export function IntegrationCard({ item, index }: CardProps) {
+export function ExtensionCard({ item, index }: CardProps) {
   return (
     <div key={index} className="bg-gradient-to-tr from-slate-800 to-slate-800/25 rounded-3xl border border-slate-800 hover:border-slate-700/60 transition-colors group relative">
       <div className="flex flex-col p-5 h-full">
