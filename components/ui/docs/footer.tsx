@@ -9,7 +9,7 @@ export default function Footer() {
             {/* Logo */}
             <Logo />
             <div className="text-sm text-slate-500 ml-4">
-              Copyright © Cruip<span className="md:hidden lg:inline">. All rights reserved.</span>
+              Copyright © Gato GraphQL<span className="md:hidden lg:inline">. All rights reserved.</span>
             </div>
           </div>
         </div>
