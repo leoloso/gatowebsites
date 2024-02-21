@@ -13,5 +13,5 @@ export default function Home() {
 
   // Redirect to the first one
   const doc = allDocs[0];
-  redirect( getDocURL(doc) )
+  redirect(getDocURL(doc))
 }
