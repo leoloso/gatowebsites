@@ -4,6 +4,7 @@ import PostDate from '@/components/post-date'
 import PostTags from './post-tags'
 import AppConfig from '@/app/app.config'
 import { Guide } from '@/.contentlayer/generated'
+import { getGuideURL } from '@/utils/application-urls'
 
 export default function GuidePostItem({ guide }: {
   guide: Guide,
@@ -12,7 +13,7 @@ export default function GuidePostItem({ guide }: {
     <article className="flex flex-col h-full" data-aos="fade-up">
       <header>
         {guide.image &&
-          <Link href={`/${AppConfig.paths.guides}/${guide.slug}`} className="block mb-6">
+          <Link href={ getGuideURL(guide) } className="block mb-6">
             <figure className="relative h-0 pb-[56.25%] overflow-hidden rounded-sm">
               <Image className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out" src={guide.image} width={352} height={198} alt={guide.title} />
             </figure>
@@ -24,7 +25,7 @@ export default function GuidePostItem({ guide }: {
           </div>
         }
         <h3 className="h4 mb-2">
-          <Link href={`/${AppConfig.paths.guides}/${guide.slug}`} className="hover:text-gray-100 transition duration-150 ease-in-out">{guide.title}</Link>
+          <Link href={ getGuideURL(guide) } className="hover:text-gray-100 transition duration-150 ease-in-out">{guide.title}</Link>
         </h3>
       </header>
       <p className="text-lg text-gray-400 grow">{guide.summary}</p>
