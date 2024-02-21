@@ -69,7 +69,9 @@ export default function ExtensionsList({ extensions }: {
 
                 {extensions.map((extension, index) => (
                   extension.category === 'Clients' && (
-                    <ExtensionCard extension={extension} index={index} />
+                    <div key={index}>
+                      <ExtensionCard extension={extension} />
+                    </div>
                   )
                 ))}
 
@@ -82,7 +84,9 @@ export default function ExtensionsList({ extensions }: {
 
                 {extensions.map((extension, index) => (
                   extension.category === 'Endpoints' && (
-                    <ExtensionCard extension={extension} index={index} />
+                    <div key={index}>
+                      <ExtensionCard extension={extension} />
+                    </div>
                   )
                 ))}
 
@@ -95,7 +99,9 @@ export default function ExtensionsList({ extensions }: {
 
                 {extensions.map((extension, index) => (
                   extension.category === 'Performance' && (
-                    <ExtensionCard extension={extension} index={index} />
+                    <div key={index}>
+                      <ExtensionCard extension={extension} />
+                    </div>
                   )
                 ))}
 
@@ -108,7 +114,9 @@ export default function ExtensionsList({ extensions }: {
 
                 {extensions.map((extension, index) => (
                   extension.category === 'Productivity' && (
-                    <ExtensionCard extension={extension} index={index} />
+                    <div key={index}>
+                      <ExtensionCard extension={extension} />
+                    </div>
                   )
                 ))}
 

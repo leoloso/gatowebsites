@@ -7,13 +7,12 @@ import DefaultExtensionIcon from '@/public/images/default/extension-icon.svg'
 
 type ExtensionCardProps = {
   extension: Extension
-  index: number
 }
 
-export default function ExtensionCard({ extension, index }: ExtensionCardProps) {
+export default function ExtensionCard({ extension }: ExtensionCardProps) {
   const extensionIcon = extension.icon || DefaultExtensionIcon
   return (
-    <div key={index} className="bg-gradient-to-tr from-slate-800 to-slate-800/25 rounded-3xl border border-slate-800 hover:border-slate-700/60 transition-colors group relative">
+    <div className="bg-gradient-to-tr from-slate-800 to-slate-800/25 rounded-3xl border border-slate-800 hover:border-slate-700/60 transition-colors group relative">
       <div className="flex flex-col p-5 h-full">
         <div className="flex items-center space-x-3 mb-3">
           <div className="relative">

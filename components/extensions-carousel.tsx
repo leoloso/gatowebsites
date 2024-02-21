@@ -49,8 +49,8 @@ export default function ExtensionsCarousel({ extensions }: ExtensionsSectionProp
         <div className="swiper-wrapper w-fit">
           {/* Carousel items */}
           {extensions.map((extension, extensionIndex) => (
-            <div className="swiper-slide h-auto">
-              <ExtensionCard index={extensionIndex} extension={extension} />
+            <div key={extensionIndex} className="swiper-slide h-auto">
+              <ExtensionCard extension={extension} />
             </div>
           ))}
         </div>
