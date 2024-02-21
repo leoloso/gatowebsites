@@ -56,11 +56,11 @@ export default function ExtensionsCarousel({ extensions }: ExtensionsSectionProp
       <div className="stellar-carousel swiper-container group">
         <div className="swiper-wrapper w-fit">
           {/* Carousel items */}
-          <div className="swiper-slide h-auto">
-            {extensions.map((extension, extensionIndex) => (
+          {extensions.map((extension, extensionIndex) => (
+            <div className="swiper-slide h-auto">
               <ExtensionCard index={extensionIndex} extension={extension} />
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
 
