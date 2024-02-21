@@ -1,228 +1,9 @@
 import { Extension } from '@/.contentlayer/generated'
 import ExtensionCard from './extension-card'
-import IntegrationsImg01 from '@/public/images/integrations-01.svg'
-import IntegrationsImg02 from '@/public/images/integrations-02.svg'
-import IntegrationsImg03 from '@/public/images/integrations-03.svg'
-import IntegrationsImg04 from '@/public/images/integrations-04.svg'
-import IntegrationsImg05 from '@/public/images/integrations-05.svg'
-import IntegrationsImg06 from '@/public/images/integrations-06.svg'
-import IntegrationsImg07 from '@/public/images/integrations-07.svg'
-import IntegrationsImg08 from '@/public/images/integrations-08.svg'
-import IntegrationsImg09 from '@/public/images/integrations-09.svg'
-import IntegrationsImg10 from '@/public/images/integrations-10.svg'
-import IntegrationsImg11 from '@/public/images/integrations-11.svg'
-import IntegrationsImg12 from '@/public/images/integrations-12.svg'
-import IntegrationsImg13 from '@/public/images/integrations-13.svg'
-import IntegrationsImg14 from '@/public/images/integrations-14.svg'
-import IntegrationsImg15 from '@/public/images/integrations-15.svg'
-import IntegrationsImg16 from '@/public/images/integrations-16.svg'
-import IntegrationsImg17 from '@/public/images/integrations-17.svg'
-import IntegrationsImg18 from '@/public/images/integrations-18.svg'
-import IntegrationsImg19 from '@/public/images/integrations-19.svg'
-import IntegrationsImg20 from '@/public/images/integrations-20.svg'
-import IntegrationsImg21 from '@/public/images/integrations-21.svg'
-import IntegrationsImg22 from '@/public/images/integrations-22.svg'
-import IntegrationsImg23 from '@/public/images/integrations-23.svg'
-import IntegrationsImg24 from '@/public/images/integrations-24.svg'
 
 export default function ExtensionsList({ extensions }: {
   extensions: Array<Extension>
 }) {
-
-  const items = [
-    {
-      img: IntegrationsImg06,
-      name: 'Vercel',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Engineering'
-    },
-    {
-      img: IntegrationsImg07,
-      name: 'Sentry',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: false,
-      category: 'Engineering'
-    },
-    {
-      img: IntegrationsImg04,
-      name: 'Jira',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Engineering'
-    },
-    {
-      img: IntegrationsImg08,
-      name: 'GitHub',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Engineering'
-    },
-    {
-      img: IntegrationsImg05,
-      name: 'GitLab',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Engineering'
-    },
-    {
-      img: IntegrationsImg01,
-      name: 'Retool',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Engineering'
-    },
-    {
-      img: IntegrationsImg02,
-      name: 'Zapier',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'No-code'
-    },
-    {
-      img: IntegrationsImg03,
-      name: 'Airtable',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'No-code'
-    },
-    {
-      img: IntegrationsImg09,
-      name: 'Framer',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'No-code'
-    },
-    {
-      img: IntegrationsImg10,
-      name: 'Jotform',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: false,
-      category: 'No-code'
-    },
-    {
-      img: IntegrationsImg11,
-      name: 'Webflow',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'No-code'
-    },
-    {
-      img: IntegrationsImg12,
-      name: 'Coda',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: false,
-      category: 'No-code'
-    },
-    {
-      img: IntegrationsImg13,
-      name: 'Asana',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Collaboration'
-    },
-    {
-      img: IntegrationsImg14,
-      name: 'Myngo',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Collaboration'
-    },
-    {
-      img: IntegrationsImg15,
-      name: 'Bonsai',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Collaboration'
-    },
-    {
-      img: IntegrationsImg16,
-      name: 'Decipad',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Collaboration'
-    },
-    {
-      img: IntegrationsImg17,
-      name: 'Miro',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Collaboration'
-    },
-    {
-      img: IntegrationsImg18,
-      name: 'Popform',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Collaboration'
-    },
-    {
-      img: IntegrationsImg19,
-      name: 'Linear',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Productivity'
-    },
-    {
-      img: IntegrationsImg20,
-      name: 'Microsoft',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Productivity'
-    },
-    {
-      img: IntegrationsImg21,
-      name: 'Google Drive',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Productivity'
-    },
-    {
-      img: IntegrationsImg22,
-      name: 'InVision',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Productivity'
-    },
-    {
-      img: IntegrationsImg23,
-      name: 'WeTransfer',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: false,
-      category: 'Productivity'
-    },
-    {
-      img: IntegrationsImg24,
-      name: 'Hotjar',
-      description: 'Stellar makes it easy to build extensions by providing an authentication provider that handles the OAuth flow.',
-      link: '/extensions/single-post',
-      featured: true,
-      category: 'Productivity'
-    }
-  ]
 
   return (
     <section>
@@ -286,9 +67,9 @@ export default function ExtensionsList({ extensions }: {
               <h3 id="engineering" className="scroll-mt-8 text-2xl font-bold inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8">Engineering</h3>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
-                {items.map((item, index) => (
-                  item.category === 'Engineering' && (
-                    <ExtensionCard item={item} index={index} />
+                {extensions.map((extension, index) => (
+                  extension.category === 'Clients' && (
+                    <ExtensionCard extension={extension} index={index} />
                   )
                 ))}
 
@@ -299,9 +80,9 @@ export default function ExtensionsList({ extensions }: {
               <h3 id="nocode" className="scroll-mt-8 text-2xl font-bold inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8">No-code</h3>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
-                {items.map((item, index) => (
-                  item.category === 'No-code' && (
-                    <ExtensionCard item={item} index={index} />
+                {extensions.map((extension, index) => (
+                  extension.category === 'Endpoints' && (
+                    <ExtensionCard extension={extension} index={index} />
                   )
                 ))}
 
@@ -312,9 +93,9 @@ export default function ExtensionsList({ extensions }: {
               <h3 id="collaboration" className="scroll-mt-8 text-2xl font-bold inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8">Collaboration</h3>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
-                {items.map((item, index) => (
-                  item.category === 'Collaboration' && (
-                    <ExtensionCard item={item} index={index} />
+                {extensions.map((extension, index) => (
+                  extension.category === 'Performance' && (
+                    <ExtensionCard extension={extension} index={index} />
                   )
                 ))}
 
@@ -325,9 +106,9 @@ export default function ExtensionsList({ extensions }: {
               <h3 id="productivity" className="scroll-mt-8 text-2xl font-bold inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8">Productivity</h3>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
-                {items.map((item, index) => (
-                  item.category === 'Productivity' && (
-                    <ExtensionCard item={item} index={index} />
+                {extensions.map((extension, index) => (
+                  extension.category === 'Productivity' && (
+                    <ExtensionCard extension={extension} index={index} />
                   )
                 ))}
 
