@@ -4,7 +4,6 @@ import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from '@/components/post-tags'
 import GuidePostItem from '@/components/guide-post-item'
-import AppConfig from '@/app/app.config'
 
 export const metadata = {
   title: 'Blog - Open PRO',
