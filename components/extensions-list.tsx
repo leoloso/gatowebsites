@@ -1,3 +1,4 @@
+import { Extension } from '@/.contentlayer/generated'
 import ExtensionCard from './extension-card'
 import IntegrationsImg01 from '@/public/images/integrations-01.svg'
 import IntegrationsImg02 from '@/public/images/integrations-02.svg'
@@ -24,7 +25,9 @@ import IntegrationsImg22 from '@/public/images/integrations-22.svg'
 import IntegrationsImg23 from '@/public/images/integrations-23.svg'
 import IntegrationsImg24 from '@/public/images/integrations-24.svg'
 
-export default function ExtensionsList() {
+export default function ExtensionsList({ extensions }: {
+  extensions: Array<Extension>
+}) {
 
   const items = [
     {

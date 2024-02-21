@@ -21,7 +21,9 @@ export default function Integrations() {
       <ExtensionsSection
         extensions={ featuredExtensions }
       />
-      <ExtensionsList />
+      <ExtensionsList
+        extensions={ allExtensions }
+      />
     </>
   )
 }
