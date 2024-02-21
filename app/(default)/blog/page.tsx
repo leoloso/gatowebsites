@@ -53,7 +53,7 @@ export default function Blog() {
           </div>
         </div>
       </section>
-      <Newsletter />
+      <Newsletter label="Want to be notified of new posts?" />
     </>
   )
 }

@@ -1,4 +1,8 @@
-export default function Newsletter() {
+export default function Newsletter({
+  label = "Want to receive news from us?"
+}: {
+  label?: string
+}) {
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -37,7 +41,7 @@ export default function Newsletter() {
 
               {/* CTA content */}
               <div className="text-center lg:text-left lg:max-w-xl">
-                <h3 className="h3 text-white mb-2">Want more tutorials & guides?</h3>
+                <h3 className="h3 text-white mb-2">{label}</h3>
                 <p className="text-purple-300 text-lg mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit nemo expedita voluptas culpa sapiente.</p>
 
                 {/* CTA form */}

@@ -125,7 +125,7 @@ export default async function SinglePost({ params }: {
           </div>
         </div>
       </section>
-      <Newsletter />
+      <Newsletter label="Want to be notified of new posts?"/>
     </>
   )
 }

@@ -122,7 +122,7 @@ export default function Blog() {
           </div>
         </div>
       </section>  
-      <Newsletter />
+      <Newsletter label="Want more tutorials & guides?" />
     </>
   )
 }
