@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Star from '@/public/images/star.svg'
-import AppConfig from '@/app/app.config'
 import { Extension } from '@/.contentlayer/generated'
 import DefaultExtensionIcon from '@/public/images/default/extension-icon.svg'
+import { getExtensionURL } from './utils/extension'
 
 type ExtensionCardProps = {
   extension: Extension
@@ -21,7 +21,7 @@ export default function ExtensionCard({ extension }: ExtensionCardProps) {
               <Image className="absolute top-0 -right-1" src={Star} width={16} height={16} alt="Star" aria-hidden="true" />
             )}
           </div>
-          <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href={`/${AppConfig.paths.extensions}/${extension.slug}`}>{extension.name}</Link>
+          <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href={getExtensionURL(extension)}>{extension.name}</Link>
         </div>
         <div className="grow">
           <div className="text-sm text-slate-400">{extension.description}</div>
