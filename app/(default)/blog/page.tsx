@@ -2,6 +2,7 @@ import { allPosts } from 'contentlayer/generated'
 import PostItem from '@/components/post-item'
 import PopularPosts from './popular-posts'
 import Topics from './topics'
+import StunningBackground from '@/components/stunning-background'
 
 export const metadata = {
   title: 'Blog - Simple',
@@ -17,6 +18,9 @@ export default function Blog() {
 
   return (
     <section>
+
+      <StunningBackground />
+      
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
