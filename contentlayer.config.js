@@ -222,9 +222,35 @@ const NameURLPair = defineNestedType(() => ({
   },
 }))
 
+const Customer = defineDocumentType(() => ({
+  name: 'Customer',
+  filePathPattern: `${AppConfig.paths.customers}/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    name: {
+      type: 'string',
+      required: true
+    },
+    name: {
+      type: 'string',
+      required: true
+    },
+    order: {
+      type: 'number',
+      required: true,
+    },   
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.customers + '/?'), ''),
+    },    
+  },
+}))
+
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Update, Post, Guide, Doc, DocTopic, Extension],
+  documentTypes: [Update, Post, Guide, Doc, DocTopic, Extension, Customer],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
