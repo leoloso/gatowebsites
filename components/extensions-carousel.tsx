@@ -1,14 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import IntegrationImg01 from '@/public/images/integrations-01.svg'
-import Star from '@/public/images/star.svg'
-import Avatar01 from '@/public/images/avatar-01.jpg'
-import Avatar02 from '@/public/images/avatar-02.jpg'
-import Avatar03 from '@/public/images/avatar-03.jpg'
-import Avatar04 from '@/public/images/avatar-04.jpg'
 
 // Import Swiper
 import Swiper, { Navigation } from 'swiper'
