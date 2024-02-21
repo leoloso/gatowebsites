@@ -32,9 +32,14 @@ import Avatar19 from '@/public/images/avatar-19.jpg'
 // Import Swiper
 import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
+import { Extension } from '@/.contentlayer/generated'
 Swiper.use([Navigation])
 
-export default function ExtensionsCarousel() {
+type ExtensionsSectionProps = {
+  extensions: Array<Extension>
+}
+
+export default function ExtensionsCarousel({ extensions }: ExtensionsSectionProps) {
 
   const [swiperInitialized, setSwiperInitialized] = useState<boolean>(false)
 
