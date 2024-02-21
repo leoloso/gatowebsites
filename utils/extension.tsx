@@ -1,6 +1,5 @@
 import { Extension } from "@/.contentlayer/generated";
 import { allExtensions } from 'contentlayer/generated'
-import AppConfig from '@/app/app.config'
 
 export function getFeaturedExtensions() {
   return allExtensions.filter((extension) => extension.featured).sort(sortExtensions)
