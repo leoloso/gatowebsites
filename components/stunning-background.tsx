@@ -6,7 +6,7 @@ import Illustration02 from '@/public/images/page-illustration-02.svg'
 export default function StunningBackground({
   addOpacityLayer = false,
 }: {
-  addOpacityLayer: boolean
+  addOpacityLayer?: boolean
 }) {
   return (
     <>
