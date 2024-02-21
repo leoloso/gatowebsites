@@ -1,19 +1,13 @@
 import { Doc } from '@/.contentlayer/generated'
 import Link from 'next/link'
-import AppConfig from '@/app/app.config'
+import { getDocURL } from '@/utils/application-urls'
 
 export default function PageNavigation({
   prevArticle,
   nextArticle
 }: {
-    prevArticle?: {
-      title: string,
-      slug: string
-    },
-    nextArticle?: {
-      title: string,
-      slug: string
-    }
+    prevArticle?: Doc,
+    nextArticle?: Doc
 }) {
   return (
     <div className="sm:flex items-center justify-between py-8 space-y-6 sm:space-y-0 sm:space-x-4">
@@ -23,7 +17,7 @@ export default function PageNavigation({
           <div>
             <div className="text-xs font-[650] text-blue-600 uppercase mb-1">Prev</div>
             <div>
-              <Link className="text-slate-800 font-[650] flex items-center dark:text-slate-200" href={`/${AppConfig.paths.docs}/${prevArticle.slug}`}>
+              <Link className="text-slate-800 font-[650] flex items-center dark:text-slate-200" href={getDocURL(prevArticle)}>
                 <svg className="fill-slate-400 shrink-0 mr-2 rotate-180 dark:fill-slate-500" width="8" height="10" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 2 2.414.586 6.828 5 2.414 9.414 1 8l3-3z" />
                 </svg>
@@ -39,7 +33,7 @@ export default function PageNavigation({
           <div>
             <div className="text-xs font-[650] text-blue-600 uppercase mb-1">Next</div>
             <div>
-              <Link className="text-slate-800 font-[650] flex items-center dark:text-slate-200" href={`/${AppConfig.paths.docs}/${nextArticle.slug}`}>
+              <Link className="text-slate-800 font-[650] flex items-center dark:text-slate-200" href={getDocURL(nextArticle)}>
                 <span>{nextArticle.title}</span>
                 <svg className="fill-slate-400 shrink-0 ml-2 dark:fill-slate-500" width="8" height="10" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 2 2.414.586 6.828 5 2.414 9.414 1 8l3-3z" />
