@@ -8,6 +8,7 @@ import { PostMdx } from '@/components/mdx/post-mdx'
 import PostNav from './post-nav'
 import PostTags from '@/components/post-tags'
 import AppConfig from '@/app/app.config'
+import StunningBackground from '@/components/stunning-background'
 
 export async function generateStaticParams() {
   return allGuides.map((guide) => ({
@@ -40,7 +41,10 @@ export default async function SinglePost({ params }: {
   if (!guide) notFound()
 
   return (
-    <section>
+    <section className="relative">
+
+      <StunningBackground />
+      
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-32 pb-12 md:pt-40 md:pb-20">
           <div className="max-w-3xl mx-auto lg:max-w-none">

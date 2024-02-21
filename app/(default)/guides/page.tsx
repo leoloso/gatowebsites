@@ -12,6 +12,7 @@ export const metadata = {
 
 import Newsletter from '@/components/newsletter'
 import { getGuideURL } from '@/utils/application-urls'
+import StunningBackground from '@/components/stunning-background'
 
 export default function Blog() {
 
@@ -26,6 +27,9 @@ export default function Blog() {
   return (
     <>
       <section className="relative">
+
+        <StunningBackground />
+        
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 

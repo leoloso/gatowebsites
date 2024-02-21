@@ -6,6 +6,7 @@ import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from '@/components/post-tags'
 import { PostMdx } from '@/components/mdx/post-mdx'
+import StunningBackground from '@/components/stunning-background'
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
@@ -39,6 +40,9 @@ export default async function SinglePost({ params }: {
 
   return (
     <section className="relative">
+
+      <StunningBackground />
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-32 pb-12 md:pt-40 md:pb-20">
           <div className="max-w-3xl mx-auto">
