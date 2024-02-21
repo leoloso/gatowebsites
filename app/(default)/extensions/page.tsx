@@ -3,8 +3,8 @@ export const metadata = {
   description: 'Page description',
 }
 
-import ExtensionsSection from './extensions-section'
-import ExtensionsList from './extensions-list'
+import ExtensionsSection from '@/components/extensions-section'
+import ExtensionsList from '@/components/extensions-list'
 
 export default function Integrations() {
   return (
