@@ -169,7 +169,7 @@ const Extension = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
-    summary: {
+    description: {
       type: 'string',
       required: true,
     },

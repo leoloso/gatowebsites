@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: {
 
   if (!extension) return
 
-  const { name: title, summary: description } = extension
+  const { name: title, description } = extension
 
   return {
     title,
