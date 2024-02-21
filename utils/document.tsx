@@ -9,6 +9,10 @@ export function getDocumentTopicBySlug(slug: string) {
   return allDocTopics.find((docTopic) => docTopic.slug === slug);
 }
 
+export function calculateDocumentSlug(topic: string, slug: string) {
+  return `${topic}/${slug}`
+}
+
 export function getDocumentsByTopic(docTopic: DocTopic) {
   return allDocs.filter((doc) => getDocumentDocumentTopicSlug(doc) === docTopic.slug)
 }
