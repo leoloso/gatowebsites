@@ -14,6 +14,7 @@ import {
   sortDocuments,
   getDocumentsByTopic,
 } from '@/utils/document'
+import { getDocURL } from '@/utils/application-urls'
 
 export default function SupportSidebar() {
   const sidebar = useRef<HTMLDivElement>(null)
@@ -124,7 +125,7 @@ export default function SupportSidebar() {
                                 <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
                                   {docsByTopic.map((doc, docIndex) => (
                                     <li className="mt-3" key={docIndex}>
-                                      <SidebarLink href={`/${AppConfig.paths.docs}/${doc.slug}`}>
+                                      <SidebarLink href={getDocURL(doc)}>
                                         {doc.title}
                                       </SidebarLink>
                                     </li>

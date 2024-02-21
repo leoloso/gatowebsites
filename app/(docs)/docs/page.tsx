@@ -1,8 +1,7 @@
 import { notFound, redirect } from 'next/navigation'
 import { allDocs } from 'contentlayer/generated'
-import { allDocTopics } from 'contentlayer/generated'
-import AppConfig from '@/app/app.config'
 import { sortDocuments } from '@/utils/document'
+import { getDocURL } from '@/utils/application-urls'
 
 // Redirect to the first item on the docs collection
 export default function Home() {
@@ -14,5 +13,5 @@ export default function Home() {
 
   // Redirect to the first one
   const doc = allDocs[0];
-  redirect(`/${AppConfig.paths.docs}/${doc.slug}`)
+  redirect(getDocURL(doc))
 }
