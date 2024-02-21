@@ -17,7 +17,7 @@ export default function Blog() {
   }) 
 
   return (
-    <section>
+    <section className="relative">
 
       <StunningBackground />
       
