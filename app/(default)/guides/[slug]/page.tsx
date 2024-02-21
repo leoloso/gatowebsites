@@ -41,7 +41,7 @@ export default async function SinglePost({ params }: {
   if (!guide) notFound()
 
   return (
-    <section>
+    <section className="relative">
 
       <StunningBackground />
       
