@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Particles from '@/components/particles'
 import Illustration from '@/public/images/page-illustration.svg'
 import Illustration02 from '@/public/images/page-illustration-02.svg'
-import IntegrationsCarousel from '@/components/integrations-carousel'
+import ExtensionsCarousel from '@/components/extensions-carousel'
 
 export default function ExtensionsSection() {
   return (
@@ -42,7 +42,7 @@ export default function ExtensionsSection() {
             </div>
           </div>
 
-          <IntegrationsCarousel />
+          <ExtensionsCarousel />
 
         </div>
       </div>

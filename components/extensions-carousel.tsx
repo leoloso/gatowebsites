@@ -34,7 +34,7 @@ import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
 Swiper.use([Navigation])
 
-export default function IntegrationsCarousel() {
+export default function ExtensionsCarousel() {
 
   const [swiperInitialized, setSwiperInitialized] = useState<boolean>(false)
 
