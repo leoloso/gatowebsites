@@ -6,6 +6,8 @@ export function getExtensionURL(extension: Extension) {
 }
 
 export function getExtensionDocumentationURL(extension: Extension) {
+  // The "extensions" name is the subfolder in docs/
+  // hosting all the extension files
   return `/${AppConfig.paths.docs}/extensions/${extension.slug}`
 }
 
