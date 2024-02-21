@@ -3,7 +3,9 @@ import Particles from '@/components/particles'
 import Illustration from '@/public/images/page-illustration.svg'
 import Illustration02 from '@/public/images/page-illustration-02.svg'
 
-export default function StunningBackground({ addOpacityLayer }: {
+export default function StunningBackground({
+  addOpacityLayer = false,
+}: {
   addOpacityLayer: boolean
 }) {
   return (
