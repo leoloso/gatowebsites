@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Star from '@/public/images/star.svg'
 import { Extension } from '@/.contentlayer/generated'
 import DefaultExtensionIcon from '@/public/images/default/extension-icon.svg'
-import { getExtensionURL } from '@/utils/extension'
+import { getExtensionURL } from '@/utils/application-urls'
 
 type ExtensionCardProps = {
   extension: Extension
