@@ -32,7 +32,7 @@ export default function Blog() {
             {/* Articles container */}
             <div className="md:grow -mt-4">
               {allPosts.map((post, postIndex) => (
-                <PostItem key={postIndex} {...post} />
+                <PostItem key={postIndex} post={post} />
               ))}
             </div>
 
