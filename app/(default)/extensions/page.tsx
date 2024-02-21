@@ -1,16 +1,29 @@
+import { allExtensions } from 'contentlayer/generated'
+
+import ExtensionsSection from '@/components/extensions-section'
+import ExtensionsList from '@/components/extensions-list'
+import {
+  sortExtensions,
+  getFeaturedExtensions,
+} from '@/components/utils/extension'
+
 export const metadata = {
   title: 'Integrations - Stellar',
   description: 'Page description',
 }
 
-import ExtensionsSection from './extensions-section'
-import ExtensionsList from './extensions-list'
-
 export default function Integrations() {
+  // Sort extensions
+  allExtensions.sort(sortExtensions)  
+  const featuredExtensions = getFeaturedExtensions()
   return (
     <>
-      <ExtensionsSection />
-      <ExtensionsList />
+      <ExtensionsSection
+        extensions={ featuredExtensions }
+      />
+      <ExtensionsList
+        extensions={ allExtensions }
+      />
     </>
   )
 }

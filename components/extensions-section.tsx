@@ -3,8 +3,11 @@ import Particles from '@/components/particles'
 import Illustration from '@/public/images/page-illustration.svg'
 import Illustration02 from '@/public/images/page-illustration-02.svg'
 import ExtensionsCarousel from '@/components/extensions-carousel'
+import { Extension } from '@/.contentlayer/generated'
 
-export default function ExtensionsSection() {
+export default function ExtensionsSection({ extensions }: {
+  extensions: Array<Extension>
+}) {
   return (
     <section className="relative">
 
@@ -42,7 +45,9 @@ export default function ExtensionsSection() {
             </div>
           </div>
 
-          <ExtensionsCarousel />
+          <ExtensionsCarousel
+            extensions={ extensions }
+          />
 
         </div>
       </div>
