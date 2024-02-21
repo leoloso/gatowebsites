@@ -15,7 +15,7 @@ export const metadata = {
 export default function Integrations() {
   // Sort extensions
   allExtensions.sort(sortExtensions)  
-  const featuredExtensions = getFeaturedExtensions()
+  const featuredExtensions = getFeaturedExtensions().sort(sortExtensions)  
   return (
     <>
       <ExtensionsSection
