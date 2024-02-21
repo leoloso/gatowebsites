@@ -1,4 +1,4 @@
-import { Extension, Guide } from "@/.contentlayer/generated";
+import { Doc, Extension, Guide } from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
 
 export function getExtensionURL(extension: Extension) {
@@ -11,4 +11,8 @@ export function getExtensionDocumentationURL(extension: Extension) {
 
 export function getGuideURL(guide: Guide) {
   return `/${AppConfig.paths.guides}/${guide.slug}`
+}
+
+export function getDocURL(doc: Doc) {
+  return `/${AppConfig.paths.docs}/${doc.slug}`
 }
