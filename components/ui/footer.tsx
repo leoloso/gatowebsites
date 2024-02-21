@@ -89,9 +89,10 @@ export default function Footer() {
               <li>
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/newsletter">Newsletter</a>
               </li>
-              <li>
+              {/* @todo Re-enable when adding Customers to the site */}
+              {/* <li>
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/customers">Customers</a>
-              </li>
+              </li> */}
               <li>
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.shopAffiliateProgram} target="_blank">Affiliate Program</a>
               </li>
