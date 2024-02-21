@@ -83,7 +83,9 @@ export default function Blog() {
               {/*  Articles container */}
               <div className="grid gap-12 md:grid-cols-3 md:gap-x-6 md:gap-y-8 items-start">
                 {guides.map((guide, guideIndex) => (
-                  <GuidePostItem key={guideIndex} {...guide} />             
+                  <div key={guideIndex}>
+                    <GuidePostItem guide={guide} />
+                  </div>
                 ))}
               </div>
 
