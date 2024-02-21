@@ -5,11 +5,9 @@ import Illustration02 from '@/public/images/page-illustration-02.svg'
 import ExtensionsCarousel from '@/components/extensions-carousel'
 import { Extension } from '@/.contentlayer/generated'
 
-type ExtensionsSectionProps = {
+export default function ExtensionsSection({ extensions }: {
   extensions: Array<Extension>
-}
-
-export default function ExtensionsSection({ extensions }: ExtensionsSectionProps) {
+}) {
   return (
     <section className="relative">
 
