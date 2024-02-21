@@ -47,7 +47,9 @@ export default function ExtensionsSection({ extensions }: ExtensionsSectionProps
             </div>
           </div>
 
-          <ExtensionsCarousel extensions={extensions} />
+          <ExtensionsCarousel
+            extensions={ extensions }
+          />
 
         </div>
       </div>

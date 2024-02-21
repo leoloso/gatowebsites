@@ -18,7 +18,9 @@ export default function Integrations() {
   const featuredExtensions = getFeaturedExtensions()
   return (
     <>
-      <ExtensionsSection extensions={featuredExtensions} />
+      <ExtensionsSection
+        extensions={ featuredExtensions }
+      />
       <ExtensionsList />
     </>
   )
