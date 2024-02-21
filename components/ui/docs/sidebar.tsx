@@ -13,7 +13,7 @@ import {
   sortDocumentTopics,
   sortDocuments,
   getDocumentsByTopic,
-} from '@/components/utils/document'
+} from '@/utils/document'
 
 export default function SupportSidebar() {
   const sidebar = useRef<HTMLDivElement>(null)

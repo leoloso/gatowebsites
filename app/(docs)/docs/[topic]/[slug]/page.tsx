@@ -12,7 +12,7 @@ import {
   getDocumentDocumentTopicSlug,
   getDocumentTopicBySlug,
   sortDocuments,
-} from '@/components/utils/document'
+} from '@/utils/document'
 
 export async function generateStaticParams() {
   return allDocs.map((doc) => ({

@@ -11,7 +11,7 @@ import Avatar from '@/public/images/post-avatar.jpg'
 import Particles from '@/components/particles'
 import { ExtensionMdx } from '@/components/mdx/extension-mdx'
 import AppConfig from '@/app/app.config'
-import { getExtensionDocumentationURL } from '@/components/utils/extension'
+import { getExtensionDocumentationURL } from '@/utils/extension'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({

@@ -2,7 +2,7 @@ import { notFound, redirect } from 'next/navigation'
 import { allDocs } from 'contentlayer/generated'
 import { allDocTopics } from 'contentlayer/generated'
 import AppConfig from '@/app/app.config'
-import { sortDocuments } from '@/components/utils/document'
+import { sortDocuments } from '@/utils/document'
 
 // Redirect to the first item on the docs collection
 export default function Home() {

@@ -5,7 +5,7 @@ import ExtensionsList from '@/components/extensions-list'
 import {
   sortExtensions,
   getFeaturedExtensions,
-} from '@/components/utils/extension'
+} from '@/utils/extension'
 
 export const metadata = {
   title: 'Integrations - Stellar',

@@ -1,6 +1,6 @@
 import { Extension } from '@/.contentlayer/generated'
 import ExtensionCard from './extension-card'
-import { getExtensionCategories } from '@/components/utils/extension'
+import { getExtensionCategories } from '@/utils/extension'
 import slugify from '@sindresorhus/slugify';
 
 export default function ExtensionsList({ extensions }: {
