@@ -1,6 +1,7 @@
 import { Extension } from '@/.contentlayer/generated'
 import ExtensionCard from './extension-card'
 import { getExtensionCategories } from '@/components/utils/extension'
+import slugify from '@sindresorhus/slugify';
 
 export default function ExtensionsList({ extensions }: {
   extensions: Array<Extension>
@@ -17,7 +18,7 @@ export default function ExtensionsList({ extensions }: {
             <ul className="flex flex-nowrap text-sm font-medium space-x-8">
               {extensionCategories.map((extensionCategory, index) => 
                 <li key={index}>
-                  <a className="flex items-center text-slate-50 hover:text-white whitespace-nowrap transition-colors space-x-2" href={`#${extensionCategory.toLowerCase()}`}>
+                  <a className="flex items-center text-slate-50 hover:text-white whitespace-nowrap transition-colors space-x-2" href={`#${slugify(extensionCategory)}`}>
                     <svg className="fill-slate-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
                       <path d="m7.7 7.3-5-5c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4L5.6 8l-4.3 4.3c-.4.4-.4 1 0 1.4.2.2.4.3.7.3.3 0 .5-.1.7-.3l5-5c.4-.4.4-1 0-1.4ZM8 12h7v2H8z" />
                     </svg>
@@ -52,7 +53,7 @@ export default function ExtensionsList({ extensions }: {
           <div>
             {extensionCategories.map((extensionCategory, index) => 
               <div key={index} className="mt-12 md:mt-16">
-                <h3 id={extensionCategory.toLowerCase()} className="scroll-mt-8 text-2xl font-bold inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8">{extensionCategory}</h3>
+                <h3 id={slugify(extensionCategory)} className="scroll-mt-8 text-2xl font-bold inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8">{extensionCategory}</h3>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {extensions.map((extension, index) => (
                     extension.category === extensionCategory && (
