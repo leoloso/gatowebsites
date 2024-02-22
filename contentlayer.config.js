@@ -161,7 +161,7 @@ const Doc = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('/docs' + AppConfig.paths.docs.guides + '/?'), ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^docs/' + AppConfig.paths.docs.guides + '/?'), ''),
     },    
   },
 }))
