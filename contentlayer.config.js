@@ -71,6 +71,28 @@ const Post = defineDocumentType(() => ({
   },
 }))
 
+const Page = defineDocumentType(() => ({
+  name: 'Page',
+  filePathPattern: `pages/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    summary: {
+      type: 'string',
+      required: true,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/pages\/?/, ''),
+    },    
+  },
+}))
+
 const Guide = defineDocumentType(() => ({
   name: 'Guide',
   filePathPattern: `${AppConfig.paths.guides}/**/*.mdx`,
@@ -224,7 +246,7 @@ const NameURLPair = defineNestedType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Update, Post, Guide, Doc, DocTopic, Extension],
+  documentTypes: [Update, Post, Page, Guide, Doc, DocTopic, Extension],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
