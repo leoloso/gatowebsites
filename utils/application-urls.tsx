@@ -6,10 +6,7 @@ export function getExtensionURL(extension: Extension) {
 }
 
 export function getExtensionDocumentationURL(extension: Extension) {
-  // The "extensions" name is the subfolder in docs/
-  // hosting all the extension files
-  // (it's content => not stored in AppConfig)
-  return `/${AppConfig.paths.docs.guides}/extensions/${extension.slug}`
+  return `/${AppConfig.paths.docs.extensions}/${extension.slug}`
 }
 
 export function getVideoPostURL(videoPost: VideoPost) {
