@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: {
   }
 }
 
-export default async function SinglePost({ params }: {
+export default async function SingleGuide({ params }: {
   params: { slug: string }
 }) {
 
