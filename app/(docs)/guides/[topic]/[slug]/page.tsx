@@ -6,7 +6,7 @@ import TopicTitle from '@/components/ui/docs/topic-title'
 import { topicTitleSVG1 } from '@/components/ui/docs/topic-title'
 import Hamburger from '@/components/ui/docs/hamburger'
 import Feedback from '@/components/ui/feedback'
-import PageNavigation from '@/components/ui/page-navigation'
+import DocNavigation from '@/components/ui/page-navigation'
 import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
 import {
@@ -105,7 +105,7 @@ export default async function SingleDoc({ params }: {
           <Feedback />
 
           {/* Page navigation */}
-          <PageNavigation prevArticle={prevDoc} nextArticle={nextDoc} />
+          <DocNavigation prevArticle={prevDoc} nextArticle={nextDoc} />
 
           {/* Content footer */}
           <Footer />
