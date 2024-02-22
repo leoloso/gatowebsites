@@ -10,9 +10,11 @@ export async function generateStaticParams() {
   }))
 }
 
+const pageSlug = 'refund-policy'
+
 export async function generateMetadata(): Promise<Metadata | undefined> {
 
-  const page = allPages.find((page) => page.slug === 'refund-policy')
+  const page = allPages.find((page) => page.slug === pageSlug)
 
   if (!page) return
 
@@ -26,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata | undefined> {
 
 export default async function SinglePage() {
 
-  const page = allPages.find((page) => page.slug === 'refund-policy')
+  const page = allPages.find((page) => page.slug === pageSlug)
 
   if (!page) notFound()
 
