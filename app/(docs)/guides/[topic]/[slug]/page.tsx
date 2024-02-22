@@ -6,7 +6,7 @@ import TopicTitle from '@/components/ui/docs/topic-title'
 import { topicTitleSVG1 } from '@/components/ui/docs/topic-title'
 import Hamburger from '@/components/ui/docs/hamburger'
 import Feedback from '@/components/ui/feedback'
-import DocNavigation from '@/components/ui/page-navigation'
+import DocNavigation from '@/components/ui/doc-navigation'
 import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
 import {
