@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: {
   }
 }
 
-export default async function SinglePost({ params }: {
+export default async function SingleDoc({ params }: {
   params: {
     topic: string,
     slug: string
