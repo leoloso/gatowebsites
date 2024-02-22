@@ -8,7 +8,6 @@ module.exports = {
       tutorial: "tutorial",
       queryLibrary: "library",
     },
-    docTopics: "doc-topics",
     extensions: "extensions",
     videoPosts: "videos"
   },
