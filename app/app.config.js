@@ -3,7 +3,10 @@ module.exports = {
     blog: "blog",
     changelog: "update",
     docs: {
+      extensions: "extensions",
       guides: "guides",
+      tutorial: "tutorial",
+      queryLibrary: "library",
     },
     docTopics: "doc-topics",
     extensions: "extensions",
