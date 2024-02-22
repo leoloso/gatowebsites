@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { allGuides } from 'contentlayer/generated'
+import { allVideoPosts } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,8 +12,8 @@ import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
 
 export async function generateStaticParams() {
-  return allGuides.map((guide) => ({
-    slug: guide.slug,
+  return allVideoPosts.map((videoPost) => ({
+    slug: videoPost.slug,
   }))
 }
 
@@ -21,11 +21,11 @@ export async function generateMetadata({ params }: {
   params: { slug: string }
 }): Promise<Metadata | undefined> {
 
-  const guide = allGuides.find((guide) => guide.slug === params.slug)
+  const videoPost = allVideoPosts.find((videoPost) => videoPost.slug === params.slug)
 
-  if (!guide) return
+  if (!videoPost) return
 
-  const { title, summary: description } = guide
+  const { title, summary: description } = videoPost
 
   return {
     title,
@@ -33,13 +33,13 @@ export async function generateMetadata({ params }: {
   }
 }
 
-export default async function SingleGuide({ params }: {
+export default async function SingleVideoPost({ params }: {
   params: { slug: string }
 }) {
 
-  const guide = allGuides.find((guide) => guide.slug === params.slug)
+  const videoPost = allVideoPosts.find((videoPost) => videoPost.slug === params.slug)
 
-  if (!guide) notFound()
+  if (!videoPost) notFound()
 
   return (
     <>
@@ -56,7 +56,7 @@ export default async function SingleGuide({ params }: {
                 {/* Article header */}
                 <header className="max-w-3xl mx-auto mb-20">
                   {/* Title */}
-                  <h1 className="h1 text-center mb-4">{guide.title}</h1>
+                  <h1 className="h1 text-center mb-4">{videoPost.title}</h1>
                 </header>
 
                 {/* Article content */}
@@ -74,19 +74,19 @@ export default async function SingleGuide({ params }: {
                         <div className="flex shrink-0 mr-3">
                           <a className="relative" href="#0">
                             <span className="absolute inset-0 -m-px" aria-hidden="true"><span className="absolute inset-0 -m-px bg-white rounded-full"></span></span>
-                            <Image className="relative rounded-full" src={guide.authorImg} width={32} height={32} alt={guide.author} />
+                            <Image className="relative rounded-full" src={videoPost.authorImg} width={32} height={32} alt={videoPost.author} />
                           </a>
                         </div>
                         <div>
                           <span className="text-gray-600">By </span>
-                          <a className="font-medium hover:underline" href="#0">{guide.author}</a>
-                          <span className="text-gray-600"> · <PostDate dateString={guide.publishedAt} /></span>
+                          <a className="font-medium hover:underline" href="#0">{videoPost.author}</a>
+                          <span className="text-gray-600"> · <PostDate dateString={videoPost.publishedAt} /></span>
                         </div>
                       </div>
                       {/* Article tags */}
-                      {guide.tags &&
+                      {videoPost.tags &&
                         <div className="flex justify-center mt-4 md:mt-0 items-center mb-6">
-                          <PostTags tags={guide.tags} />
+                          <PostTags tags={videoPost.tags} />
                         </div>
                       }
                     </div>
@@ -94,20 +94,20 @@ export default async function SingleGuide({ params }: {
 
                     {/* Article body */}
                     <div>
-                      <PostMdx code={guide.body.code} />
+                      <PostMdx code={videoPost.body.code} />
                     </div>
 
                     <div className="text-lg text-gray-600">
                       <hr className="w-full h-px pt-px mt-8 bg-gray-200 border-0" />
                       <div className="mt-8">
-                        Interested in more tips like this? Check out <a className="text-gray-500 underline" href="#0">Introducing the Testing Field Guide</a>.
+                        Interested in more tips like this? Check out <a className="text-gray-500 underline" href="#0">Introducing the Testing Field VideoPost</a>.
                       </div>
                       <div className="mt-6">
-                        <Link href={`/${AppConfig.paths.guides}`} className="inline-flex items-center text-base text-blue-600 font-medium hover:underline">
+                        <Link href={`/${AppConfig.paths.videoPosts}`} className="inline-flex items-center text-base text-blue-600 font-medium hover:underline">
                           <svg className="w-3 h-3 fill-current text-blue-400 shrink-0 mr-2" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                             <path d="M.293 5.282L5 .5l1.414 1.436-3 3.048H12v2.032H3.414l3 3.048L5 11.5.293 6.718a1.027 1.027 0 010-1.436z" />
                           </svg>
-                          <span>Back to the guides</span>
+                          <span>Back to the videoPosts</span>
                         </Link>
                       </div>
                     </div>                  
