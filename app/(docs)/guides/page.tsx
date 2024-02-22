@@ -1,6 +1,6 @@
 import { notFound, redirect } from 'next/navigation'
 import { getGuideDocuments, sortDocuments } from '@/utils/document'
-import { getGuideDocURL } from '@/utils/application-urls'
+import { getDocURL } from '@/utils/application-urls'
 
 // Redirect to the first item on the docs collection
 export default function Home() {
@@ -14,5 +14,5 @@ export default function Home() {
 
   // Redirect to the first one
   const doc = docs[0];
-  redirect(getGuideDocURL(doc))
+  redirect(getDocURL(doc))
 }

@@ -17,10 +17,6 @@ export function getDocURL(doc: Doc) {
   return `/${doc.groupSlug}`
 }
 
-export function getGuideDocURL(doc: Doc) {
-  return getDocURL(doc)
-}
-
 export function getPostURL(post: Post) {
   return `/${AppConfig.paths.blog}/${post.slug}`
 }
