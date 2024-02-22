@@ -18,7 +18,7 @@ export function getDocumentsByTopic(docTopic: DocTopic) {
 }
 
 export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
-  return (a.order > b.order) ? -1 : 1
+  return (a.order > b.order) ? 1 : -1
 }
 
 // Make sure that all documents respect the order
@@ -27,7 +27,7 @@ export function sortDocuments(a: Doc, b: Doc) {
   const aDocTopicSlug = getDocumentDocumentTopicSlug(a)
   const bDocTopicSlug = getDocumentDocumentTopicSlug(b)
   if (aDocTopicSlug === bDocTopicSlug) {
-    return (a.order > b.order) ? -1 : 1
+    return (a.order > b.order) ? 1 : -1
   }
 
   const aDocTopic = getDocumentTopicBySlug(aDocTopicSlug)
