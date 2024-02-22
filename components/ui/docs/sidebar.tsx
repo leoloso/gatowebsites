@@ -40,11 +40,15 @@ export default function SupportSidebar() {
     }
     document.addEventListener('keydown', keyHandler)
     return () => document.removeEventListener('keydown', keyHandler)
-  })  
+  })
+  
+  // Filter only needed docs (guides, extensions, tutorial, etc)
+  const requestedDocGroup = segments.length >= 2 ? segments[0] : ''
+  const requestedDocTopicSlug = segments.length >= 2 ? segments[1] : ''
 
-  // Sort docs and doc topics by order
-  allDocTopics.sort(sortDocumentTopics)
-  allDocs.sort(sortDocuments)
+  // Filter by group, sort docs and doc topics by order
+  const docTopics = allDocTopics.filter((docTopic) => docTopic.groupSlug.startsWith(`${requestedDocGroup}/`)).sort(sortDocumentTopics)
+  // const docs = allDocs.sort(sortDocuments)
 
   return (
     <>
@@ -88,9 +92,9 @@ export default function SupportSidebar() {
               <nav className="md:block">
                 <ul className="text-sm">
                   {/* 1st level */}
-                  {allDocTopics.map((docTopic, docTopicIndex) => {
+                  {docTopics.map((docTopic, docTopicIndex) => {
                     // clicking on prev/next will recalculate the "open" state
-                    const isDocTopicSelected = segments.length < 2 ? false : (segments[0] === AppConfig.paths.docs.guides && segments[1] === docTopic.slug);
+                    const isDocTopicSelected = docTopic.slug === requestedDocTopicSlug;
                     return (
                       <li className="mb-1" key={docTopicIndex}>
                         <SidebarLinkGroup open={isDocTopicSelected}>
