@@ -5,7 +5,7 @@ module.exports = {
     docs: "docs",
     docTopics: "doc-topics",
     extensions: "extensions",
-    guides: "guides"
+    videoPosts: "videos"
   },
   urls: {
     githubExtensionStarter: "https://github.com/GatoGraphQL/ExtensionStarter",

@@ -26,7 +26,7 @@ export default function TopicTitle({
           <span className="font-nycd text-xl text-blue-600 ml-4">{name}</span>
         </>
       }
-      {segment === 'guides' &&
+      {segment === 'videos' &&
         <>
           <svg width="64" height="54" viewBox="0 0 64 54" xmlns="http://www.w3.org/2000/svg">
             <path className="fill-purple-400" d="M43.832 7.206a1.32 1.32 0 0 0-.47-.492L32.694.195a1.333 1.333 0 0 0-1.39 0L20.64 6.714c-.198.12-.36.29-.471.492L32 14.436l11.832-7.23Z" />

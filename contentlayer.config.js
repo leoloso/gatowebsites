@@ -99,9 +99,9 @@ const Page = defineDocumentType(() => ({
   },
 }))
 
-const Guide = defineDocumentType(() => ({
-  name: 'Guide',
-  filePathPattern: `${AppConfig.paths.guides}/**/*.mdx`,
+const VideoPost = defineDocumentType(() => ({
+  name: 'VideoPost',
+  filePathPattern: `${AppConfig.paths.videoPosts}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -135,7 +135,7 @@ const Guide = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.guides + '/?'), ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.videoPosts + '/?'), ''),
     },    
   },
 }))
@@ -252,7 +252,7 @@ const NameURLPair = defineNestedType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Update, Post, Page, Guide, Doc, DocTopic, Extension],
+  documentTypes: [Update, Post, Page, VideoPost, Doc, DocTopic, Extension],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
