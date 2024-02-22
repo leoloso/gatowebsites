@@ -2,6 +2,7 @@ import { Page } from '@/.contentlayer/generated'
 import { PostMdx } from '@/components/mdx/post-mdx'
 import StunningBackground from '@/components/stunning-background'
 import Image from 'next/image'
+import PostDate from '../post-date'
 
 export default function PageSection({
   page,
@@ -27,6 +28,22 @@ export default function PageSection({
                   <h1 className="h1 mb-4" data-aos="fade-up">{page.title}</h1>
                   <p className="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="200">{page.summary}</p>
                 </div>
+                {/* Article meta */}
+                {!! page.lastModifiedAt && (
+                  <div className="md:flex md:items-center md:justify-between mt-3">
+                    {/* Author meta */}
+                    <div className="flex items-center justify-center" data-aos="fade-up" data-aos-delay="400">
+                      {/* <Link href="#">
+                        <Image className="rounded-full shrink-0 mr-4" src={post.authorImg} width={40} height={40} alt={post.author} />
+                      </Link> */}
+                      <div>
+                        {/* <Link href="#" className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">{post.author}</Link> */}
+                        {/* <span className="text-gray-700"> - </span> */}
+                        <span className="text-gray-500">Date last modification: <PostDate dateString={page.lastModifiedAt} /></span>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </header>
 
               {/* Article image */}
