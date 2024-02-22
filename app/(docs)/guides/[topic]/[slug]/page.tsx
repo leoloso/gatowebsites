@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { allDocs } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { DocMdx } from '@/components/mdx/doc-mdx'
 import TopicTitle from '@/components/ui/docs/topic-title'
@@ -14,10 +13,11 @@ import {
   getDocumentDocumentTopicSlug,
   getDocumentTopicBySlug,
   sortDocuments,
+  getGuideDocuments,
 } from '@/utils/document'
 
 export async function generateStaticParams() {
-  return allDocs.map((doc) => ({
+  return getGuideDocuments().map((doc) => ({
     slug: doc.slug,
   }))
 }
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: {
   params: { slug: string }
 }): Promise<Metadata | undefined> {
 
-  const doc = allDocs.find((doc) => doc.slug === params.slug)
+  const doc = getGuideDocuments().find((doc) => doc.slug === params.slug)
 
   if (!doc) return
 
@@ -45,12 +45,12 @@ export default async function SingleDoc({ params }: {
   }
 }) {
   // Sort docs. Needed to find the prev/next items below
-  allDocs.sort(sortDocuments)
-  const docIndex = allDocs.findIndex((doc) => doc.slug === calculateDocumentSlug(params.topic, params.slug))
+  const docs = getGuideDocuments().sort(sortDocuments)
+  const docIndex = docs.findIndex((doc) => doc.slug === calculateDocumentSlug(params.topic, params.slug))
 
   if (docIndex === -1) notFound()
 
-  const doc = allDocs[docIndex]
+  const doc = docs[docIndex]
 
   const docTopicSlug = getDocumentDocumentTopicSlug(doc)
 
@@ -59,8 +59,8 @@ export default async function SingleDoc({ params }: {
   if (!docTopic) notFound()
 
   // Calculate the prev/next items
-  const prevDoc = docIndex === 0 ? undefined : allDocs[docIndex - 1]
-  const nextDoc = docIndex === (allDocs.length - 1) ? undefined : allDocs[docIndex + 1]
+  const prevDoc = docIndex === 0 ? undefined : docs[docIndex - 1]
+  const nextDoc = docIndex === (docs.length - 1) ? undefined : docs[docIndex + 1]
 
   return (
     <>

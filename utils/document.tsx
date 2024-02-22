@@ -43,6 +43,10 @@ export function sortDocuments(a: Doc, b: Doc) {
   return sortDocumentTopics(aDocTopic, bDocTopic);
 }
 
+function getGroupDocuments(docGroup: string) {
+  return allDocs.filter((doc) => doc.groupSlug.startsWith(`${docGroup}/`))
+}
+
 export function getGuideDocuments() {
-  return allDocs.filter((doc) => doc.groupSlug.startsWith(`${AppConfig.paths.docs.guides}/`))
+  return getGroupDocuments(AppConfig.paths.docs.guides)
 }
