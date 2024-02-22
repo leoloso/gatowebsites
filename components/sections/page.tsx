@@ -1,6 +1,7 @@
 import { Page } from '@/.contentlayer/generated'
 import { PostMdx } from '@/components/mdx/post-mdx'
 import StunningBackground from '@/components/stunning-background'
+import Image from 'next/image'
 
 export default function PageSection({
   page,
@@ -27,6 +28,13 @@ export default function PageSection({
                   <p className="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="200">{page.summary}</p>
                 </div>
               </header>
+
+              {/* Article image */}
+              {page.image &&
+                <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="600">
+                  <Image className="w-full" src={page.image} width={1024} height={576} alt={page.title} priority />
+                </figure>
+              }
 
               {/* Article content */}
               <PostMdx code={page.body.code} />

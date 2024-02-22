@@ -84,6 +84,9 @@ const Page = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    image: {
+      type: 'string',
+    },
   },
   computedFields: {
     slug: {
