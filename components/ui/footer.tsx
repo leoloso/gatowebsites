@@ -50,16 +50,16 @@ export default function Footer() {
             <h6 className="text-sm text-slate-50 font-medium mb-2">Product</h6>
             <ul className="text-sm space-y-2">
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/extensions">Extensions</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.extensions}`}>Extensions</a>
               </li>
               <li>
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/pricing">Pricing</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/guides">How to guides</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.videoPosts}`}>How to guides</a>
               </li>
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/docs">Documentation</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs}`}>Documentation</a>
               </li>
               <li>
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/changelog">Changelog</a>
@@ -84,7 +84,7 @@ export default function Footer() {
             <h6 className="text-sm text-slate-50 font-medium mb-2">Company</h6>
             <ul className="text-sm space-y-2">
               <li>
-                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/blog">Blog</a>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.blog}`}>Blog</a>
               </li>
               <li>
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/newsletter">Newsletter</a>

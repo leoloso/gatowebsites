@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import PurchaseButton from '../purchase-button'
+import AppConfig from '@/app/app.config'
 
 export default function MobileMenu() {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
@@ -61,16 +62,16 @@ export default function MobileMenu() {
             <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href="/pricing">Pricing</Link>
           </li>
           <li>
-            <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href="/extensions">Extensions</Link>
+            <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href={`/${AppConfig.paths.extensions}`}>Extensions</Link>
           </li>
           <li className="py-2 my-2 border-t border-b border-gray-700">
             <span className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5">Documentation</span>
             <ul className="pl-4">
               <li>
-                <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href="/guides">How to guides</Link>
+                <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href={`/${AppConfig.paths.videoPosts}`}>How to guides</Link>
               </li>
               <li>
-                <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href="/docs">Reference docs</Link>
+                <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href={`/${AppConfig.paths.docs}`}>Reference docs</Link>
               </li>
             </ul>
           </li>
