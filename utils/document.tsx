@@ -1,5 +1,6 @@
 import { Doc, DocTopic } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from 'contentlayer/generated'
+import AppConfig from '@/app/app.config'
 
 export function getDocumentDocumentTopicSlug(doc: Doc) {
   return doc.slug.substring(0, doc.slug.indexOf('/'));
@@ -40,4 +41,8 @@ export function sortDocuments(a: Doc, b: Doc) {
   }
 
   return sortDocumentTopics(aDocTopic, bDocTopic);
+}
+
+export function getGuideDocuments() {
+  return allDocs.filter((doc) => doc.groupSlug.startsWith(`${AppConfig.paths.docs.guides}/`))
 }
