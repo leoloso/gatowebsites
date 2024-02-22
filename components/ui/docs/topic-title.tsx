@@ -66,14 +66,17 @@ export default function TopicTitle({
   name: string
   svgOption?: number
 }) {
-  const svg =
-    svgOption === topicTitleSVG1 ? getTopicTitleSVG1() :
-    svgOption === topicTitleSVG2 ? getTopicTitleSVG2() :
-    svgOption === topicTitleSVG3 ? getTopicTitleSVG3() :
-    getTopicTitleSVG1()
   return (
     <>
-      {svg}
+      {svgOption === topicTitleSVG1 && (
+        getTopicTitleSVG1()
+      )}
+      {svgOption === topicTitleSVG2 && (
+        getTopicTitleSVG2()
+      )}
+      {svgOption === topicTitleSVG3 && (
+        getTopicTitleSVG3()
+      )}
       <span className="font-nycd text-xl text-blue-600 ml-4">{name}</span>
     </>
   )
