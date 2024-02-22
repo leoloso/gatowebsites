@@ -6,7 +6,7 @@ export function getExtensionURL(extension: Extension) {
 }
 
 export function getExtensionDocumentationURL(extension: Extension) {
-  return `/${AppConfig.paths.docs.extensions}/${extension.slug}`
+  return `/${AppConfig.paths.docs.extensionsReference}/${extension.slug}`
 }
 
 export function getVideoPostURL(videoPost: VideoPost) {
