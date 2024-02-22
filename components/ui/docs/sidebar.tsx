@@ -5,13 +5,10 @@ import { useAppProvider } from '@/app/(docs)/app-provider'
 import { useSelectedLayoutSegments } from 'next/navigation'
 import { Transition } from '@headlessui/react'
 import { allDocTopics } from 'contentlayer/generated'
-import { allDocs } from 'contentlayer/generated'
-import AppConfig from '@/app/app.config'
 import SidebarLink from './sidebar-link'
 import SidebarLinkGroup from './sidebar-link-group'
 import {
   sortDocumentTopics,
-  sortDocuments,
   getDocumentsByTopic,
 } from '@/utils/document'
 import { getDocURL } from '@/utils/application-urls'
