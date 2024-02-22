@@ -14,7 +14,7 @@ export function getVideoPostURL(videoPost: VideoPost) {
 }
 
 export function getDocURL(doc: Doc) {
-  return `/${AppConfig.paths.docs.guides}/${doc.slug}`
+  return `/${doc.groupSlug}`
 }
 
 export function getPostURL(post: Post) {

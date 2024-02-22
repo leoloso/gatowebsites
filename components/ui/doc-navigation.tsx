@@ -1,4 +1,4 @@
-import { Doc } from '@/.contentlayer/generated'
+import { Doc, DocTopic } from '@/.contentlayer/generated'
 import Link from 'next/link'
 import { getDocURL } from '@/utils/application-urls'
 
