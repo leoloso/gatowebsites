@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { allPages } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import PageSection from '@/components/sections/page'
-import { getPage } from '@/utils/page'
+import { getPage, getPageMetadata } from '@/utils/page'
 
 export async function generateStaticParams() {
   return allPages.map((page) => ({
@@ -14,16 +14,11 @@ const pageSlug = 'refund-policy'
 
 export async function generateMetadata(): Promise<Metadata | undefined> {
 
-  const page = getPage(pageSlug)
+  const pageMetadata = getPageMetadata(pageSlug)
 
-  if (!page) return
+  if (!pageMetadata) return
 
-  const { title, summary: description } = page
-
-  return {
-    title,
-    description,
-  }
+  return pageMetadata
 }
 
 export default async function SinglePage() {
