@@ -25,7 +25,7 @@ const Update = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.changelog + '/?'), ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.changelog + '/?'), ''),
     },    
   },
 }))
@@ -66,7 +66,7 @@ const Post = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.blog + '/?'), ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.blog + '/?'), ''),
     },    
   },
 }))
@@ -135,7 +135,7 @@ const VideoPost = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.videoPosts + '/?'), ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.videoPosts + '/?'), ''),
     },    
   },
 }))
@@ -183,7 +183,7 @@ const DocTopic = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.docTopics + '/?'), ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.docTopics + '/?'), ''),
     },    
   },
 }))
@@ -231,7 +231,7 @@ const Extension = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.extensions + '/?'), ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.extensions + '/?'), ''),
     },    
   },
 }))
