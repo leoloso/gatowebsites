@@ -105,7 +105,7 @@ export default async function SingleDoc({ params }: {
           <Feedback />
 
           {/* Page navigation */}
-          <DocNavigation docTopic={docTopic} prevArticle={prevDoc} nextArticle={nextDoc} />
+          <DocNavigation prevArticle={prevDoc} nextArticle={nextDoc} />
 
           {/* Content footer */}
           <Footer />
