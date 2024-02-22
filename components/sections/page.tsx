@@ -2,8 +2,12 @@ import { Page } from '@/.contentlayer/generated'
 import { PostMdx } from '@/components/mdx/post-mdx'
 import StunningBackground from '@/components/stunning-background'
 
-export default function PageSection({ page }: {
+export default function PageSection({
+  page,
+  children,
+}: {
   page: Page,
+  children?: React.ReactNode,
 }) {
   return (
     <section className="relative">
@@ -26,6 +30,8 @@ export default function PageSection({ page }: {
 
               {/* Article content */}
               <PostMdx code={page.body.code} />
+
+              {children}
             </article>
 
           </div>
