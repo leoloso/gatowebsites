@@ -22,7 +22,7 @@ export default function DefaultHeader() {
           <Dropdown title="Documentation">
             {/* 2nd level: hover */}
             <li>
-              <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs}`}>Reference docs</Link>
+              <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs}`}>Guides</Link>
             </li>
           </Dropdown>
         </ul>
