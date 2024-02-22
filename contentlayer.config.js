@@ -142,7 +142,7 @@ const VideoPost = defineDocumentType(() => ({
 
 const Doc = defineDocumentType(() => ({
   name: 'Doc',
-  filePathPattern: `${AppConfig.paths.docs}/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.guides}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -161,7 +161,7 @@ const Doc = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.docs + '/?'), ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(AppConfig.paths.guides + '/?'), ''),
     },    
   },
 }))

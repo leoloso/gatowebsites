@@ -2,7 +2,7 @@ module.exports = {
   paths: {
     blog: "blog",
     changelog: "update",
-    docs: "docs",
+    guides: "guides",
     docTopics: "doc-topics",
     extensions: "extensions",
     videoPosts: "videos"
