@@ -64,12 +64,12 @@ export default function MobileMenu() {
           <li>
             <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href={`/${AppConfig.paths.extensions}`}>Extensions</Link>
           </li>
+          <li>
+            <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href={`/${AppConfig.paths.videoPosts}`}>Videos</Link>
+          </li>
           <li className="py-2 my-2 border-t border-b border-gray-700">
             <span className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5">Documentation</span>
             <ul className="pl-4">
-              <li>
-                <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href={`/${AppConfig.paths.videoPosts}`}>How to guides</Link>
-              </li>
               <li>
                 <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href={`/${AppConfig.paths.docs}`}>Reference docs</Link>
               </li>

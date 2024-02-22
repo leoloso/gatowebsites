@@ -15,12 +15,12 @@ export default function DefaultHeader() {
           <li>
             <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.extensions}`}>Extensions</Link>
           </li>
+          <li>
+            <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.videoPosts}`}>Videos</Link>
+          </li>
           {/* 1st level: hover */}
           <Dropdown title="Documentation">
             {/* 2nd level: hover */}
-            <li>
-              <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.videoPosts}`}>How to guides</Link>
-            </li>
             <li>
               <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs}`}>Reference docs</Link>
             </li>
