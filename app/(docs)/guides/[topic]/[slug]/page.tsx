@@ -3,6 +3,7 @@ import { allDocs } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { DocMdx } from '@/components/mdx/doc-mdx'
 import TopicTitle from '@/components/ui/docs/topic-title'
+import { topicTitleSVG1 } from '@/components/ui/docs/topic-title'
 import Hamburger from '@/components/ui/docs/hamburger'
 import Feedback from '@/components/ui/feedback'
 import PageNavigation from '@/components/ui/page-navigation'
@@ -65,7 +66,7 @@ export default async function SingleDoc({ params }: {
     <>
       {/* Page header */}
       <div className="h-16 flex items-center mb-6">
-        <TopicTitle name={docTopic.title} segment={docTopicSlug} />
+        <TopicTitle name={docTopic.title} svgOption={topicTitleSVG1} />
       </div>
 
       <article className="flex xl:space-x-12">
