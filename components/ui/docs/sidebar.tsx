@@ -90,7 +90,7 @@ export default function SupportSidebar() {
                   {/* 1st level */}
                   {allDocTopics.map((docTopic, docTopicIndex) => {
                     // clicking on prev/next will recalculate the "open" state
-                    const isDocTopicSelected = segments.length < 2 ? false : (segments[0] === AppConfig.paths.docs && segments[1] === docTopic.slug);
+                    const isDocTopicSelected = segments.length < 2 ? false : (segments[0] === AppConfig.paths.docs.guides && segments[1] === docTopic.slug);
                     return (
                       <li className="mb-1" key={docTopicIndex}>
                         <SidebarLinkGroup open={isDocTopicSelected}>

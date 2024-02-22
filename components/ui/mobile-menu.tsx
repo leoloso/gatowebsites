@@ -71,7 +71,7 @@ export default function MobileMenu() {
             <span className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5">Documentation</span>
             <ul className="pl-4">
               <li>
-                <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href={`/${AppConfig.paths.docs}`}>Reference docs</Link>
+                <Link className="flex font-medium text-sm text-slate-300 hover:text-white py-1.5" href={`/${AppConfig.paths.docs.guides}`}>Guides</Link>
               </li>
             </ul>
           </li>
