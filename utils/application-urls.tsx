@@ -13,8 +13,12 @@ export function getVideoPostURL(videoPost: VideoPost) {
   return `/${AppConfig.paths.videoPosts}/${videoPost.slug}`
 }
 
-export function getDocURL(doc: Doc) {
-  return `/${AppConfig.paths.docs.guides}/${doc.slug}`
+export function getDocURL(docTopicSlug: string, doc: Doc) {
+  return `/${docTopicSlug}/${doc.slug}`
+}
+
+export function getGuideDocURL(doc: Doc) {
+  return getDocURL(AppConfig.paths.docs.guides, doc)
 }
 
 export function getPostURL(post: Post) {
