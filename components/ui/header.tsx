@@ -58,7 +58,7 @@ export default function Header({
                 <ThemeToggle />
               </li>
             )}
-            <li className="ml-6">
+            <li className="ml-2">
               <Search showSearchInput={false} />
             </li>
             <li className="ml-2">
