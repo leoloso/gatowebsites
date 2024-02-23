@@ -31,7 +31,7 @@ export default function RootLayout({
         <AppProvider>
           <div className="flex flex-col min-h-screen overflow-hidden">
 
-          <Header useLightDarkMode={true} />
+          <Header enableLightDarkVersionToggleMode={true} />
 
             {/*  Page content */}
             <main className="grow">

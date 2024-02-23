@@ -8,14 +8,14 @@ import Dropdown from '@/components/utils/dropdown'
 import AppConfig from '@/app/app.config'
 
 export default function Header({
-  useLightDarkMode = false,
+  enableLightDarkVersionToggleMode = false,
 }: {
-  useLightDarkMode?: boolean
+  enableLightDarkVersionToggleMode?: boolean
 }) {
   return (
     <header className="fixed w-full z-30">
       <div
-        className={`absolute inset-0 bg-opacity-70 backdrop-blur -z-10 ${useLightDarkMode ? 'bg-white border-slate-200 border-b dark:bg-transparent dark:border-slate-800' : 'bg-transparent border-slate-800'}`}
+        className={`absolute inset-0 bg-opacity-70 backdrop-blur -z-10 ${enableLightDarkVersionToggleMode ? 'bg-white border-slate-200 border-b dark:bg-transparent dark:border-slate-800' : 'bg-transparent border-slate-800'}`}
         aria-hidden="true"
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -53,7 +53,7 @@ export default function Header({
 
           <ul className="hidden md:flex md:grow flex-1 flex justify-end items-center">
             {/* Lights switch */}
-            {useLightDarkMode && (
+            {enableLightDarkVersionToggleMode && (
               <li>
                 <ThemeToggle />
               </li>
