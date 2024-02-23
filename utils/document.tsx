@@ -25,10 +25,7 @@ export function sortDocuments(a: Doc, b: Doc) {
     return (a.order > b.order) ? 1 : -1
   }
 
-  const aDocTopic = getDocTopic(a)
-  const bDocTopic = getDocTopic(b)
-
-  return sortDocumentTopics(aDocTopic, bDocTopic);
+  return sortDocumentTopics(getDocTopic(a), getDocTopic(b));
 }
 
 function getGroupDocuments(docGroup: string) {
