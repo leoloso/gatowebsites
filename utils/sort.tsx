@@ -14,7 +14,11 @@ export function sortByOrder(a: { order: number }, b: { order: number }) {
   return (a.order > b.order) ? 1 : -1
 }
 
-export function sortByPublishedAt(a: { publishedAt: string }, b: { publishedAt: string }) {
+type SortByPublishedAtProps = {
+  publishedAt: string,
+}
+
+export function sortByPublishedAt(a: SortByPublishedAtProps, b: SortByPublishedAtProps) {
   return (new Date(a.publishedAt) > new Date(b.publishedAt)) ? -1 : 1
 }
 
