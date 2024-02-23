@@ -34,8 +34,8 @@ export default async function SinglePage() {
             <input id="first-name" type="text" className="form-input w-full text-gray-300" placeholder="Enter your first name" required />
           </div>
           <div className="w-full md:w-1/2 px-3">
-            <label className="block text-gray-300 font-medium mb-1" htmlFor="last-name">Last Name <span className="text-red-600">*</span></label>
-            <input id="last-name" type="text" className="form-input w-full text-gray-300" placeholder="Enter your last name" required />
+            <label className="block text-gray-300 font-medium mb-1" htmlFor="last-name">Last Name</label>
+            <input id="last-name" type="text" className="form-input w-full text-gray-300" placeholder="Enter your last name" />
           </div>
         </div>
         <div className="flex flex-wrap -mx-3 mb-4">
