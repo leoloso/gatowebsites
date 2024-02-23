@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import AppConfig from './app/app.config'
+import AppSettings from './app/app.settings'
 
 const Update = defineDocumentType(() => ({
   name: 'Update',
@@ -159,14 +160,18 @@ const Doc = defineDocumentType(() => ({
     },   
   },
   computedFields: {
+    group: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/([a-zA-Z_-]+)\/(.+)/, '$1'),
+    },
+    topicSlug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1'),
+    },
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\//, ''),
     },  
-    groupSlug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/?/, ''),
-    },     
   },
 }))
 
@@ -185,14 +190,14 @@ const DocTopic = defineDocumentType(() => ({
     },   
   },
   computedFields: {
+    group: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/doc-topics\/([a-zA-Z_-]+)\/(.+)?/, '$1'),
+    },
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/doc-topics\/[a-zA-Z_-]+\/?/, ''),
-    },  
-    groupSlug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/doc-topics\/?/, ''),
-    },    
+    },
   },
 }))
 

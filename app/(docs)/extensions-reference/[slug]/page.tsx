@@ -11,11 +11,11 @@ import SecondaryNav from '@/components/ui/docs/secondary-nav'
 import {
   getDocTopic,
   sortDocuments,
-  getGuideDocuments,
+  getExtensionReferenceDocuments,
 } from '@/utils/document'
 
 export async function generateStaticParams() {
-  return getGuideDocuments().map((doc) => ({
+  return getExtensionReferenceDocuments().map((doc) => ({
     slug: doc.slug,
   }))
 }
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: {
   params: { slug: string }
 }): Promise<Metadata | undefined> {
 
-  const doc = getGuideDocuments().find((doc) => doc.slug === params.slug)
+  const doc = getExtensionReferenceDocuments().find((doc) => doc.slug === params.slug)
 
   if (!doc) return
 
@@ -38,21 +38,18 @@ export async function generateMetadata({ params }: {
 
 export default async function SingleDoc({ params }: {
   params: {
-    topic: string,
     slug: string
   }
 }) {
   // Sort docs. Needed to find the prev/next items below
-  const docs = getGuideDocuments().sort(sortDocuments)
-  const docIndex = docs.findIndex((doc) => doc.topicSlug === params.topic && doc.slug === params.slug)
+  const docs = getExtensionReferenceDocuments().sort(sortDocuments)
+  const docIndex = docs.findIndex((doc) => doc.slug === params.slug)
 
   if (docIndex === -1) notFound()
 
   const doc = docs[docIndex]
 
   const docTopic = getDocTopic(doc)
-
-  if (!docTopic) notFound()
 
   // Calculate the prev/next items
   const prevDoc = docIndex === 0 ? undefined : docs[docIndex - 1]

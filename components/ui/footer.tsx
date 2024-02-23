@@ -62,6 +62,9 @@ export default function Footer() {
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.guides}`}>Guides</a>
               </li>
               <li>
+                <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.extensionsReference}`}>Extensions reference</a>
+              </li>
+              <li>
                 <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/changelog">Changelog</a>
               </li>
               <li>

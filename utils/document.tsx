@@ -2,20 +2,16 @@ import { Doc, DocTopic } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from 'contentlayer/generated'
 import AppConfig from '@/app/app.config'
 
-export function getDocumentDocumentTopicSlug(doc: Doc) {
-  return doc.slug.substring(0, doc.slug.indexOf('/'));
-}
-
-export function getDocumentTopicBySlug(slug: string) {
-  return allDocTopics.find((docTopic) => docTopic.slug === slug);
-}
-
-export function calculateDocumentSlug(topic: string, slug: string) {
-  return `${topic}/${slug}`
+export function getDocTopic(doc: Doc) {
+  const docTopic = allDocTopics.find((docTopic) => doc.group === docTopic.group && docTopic.slug === doc.topicSlug);
+  if (!docTopic) {
+    throw new Error(`There is no DocTopic with group ${doc.group} and slug ${doc.topicSlug}`)
+  }
+  return docTopic
 }
 
 export function getDocumentsByTopic(docTopic: DocTopic) {
-  return allDocs.filter((doc) => getDocumentDocumentTopicSlug(doc) === docTopic.slug).sort(sortDocuments)
+  return allDocs.filter((doc) => doc.group === docTopic.group && doc.topicSlug === docTopic.slug)
 }
 
 export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
@@ -25,28 +21,21 @@ export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
 // Make sure that all documents respect the order
 // of their topics (to find the next/prev items for pagination)
 export function sortDocuments(a: Doc, b: Doc) {
-  const aDocTopicSlug = getDocumentDocumentTopicSlug(a)
-  const bDocTopicSlug = getDocumentDocumentTopicSlug(b)
-  if (aDocTopicSlug === bDocTopicSlug) {
+  if (a.topicSlug === b.topicSlug) {
     return (a.order > b.order) ? 1 : -1
   }
 
-  const aDocTopic = getDocumentTopicBySlug(aDocTopicSlug)
-  const bDocTopic = getDocumentTopicBySlug(bDocTopicSlug)
-  if (!aDocTopic) {
-    return 1;
-  }
-  if (!bDocTopic) {
-    return -1;
-  }
-
-  return sortDocumentTopics(aDocTopic, bDocTopic);
+  return sortDocumentTopics(getDocTopic(a), getDocTopic(b));
 }
 
 function getGroupDocuments(docGroup: string) {
-  return allDocs.filter((doc) => doc.groupSlug.startsWith(`${docGroup}/`))
+  return allDocs.filter((doc) => doc.group === docGroup)
 }
 
 export function getGuideDocuments() {
   return getGroupDocuments(AppConfig.paths.docs.guides)
+}
+
+export function getExtensionReferenceDocuments() {
+  return getGroupDocuments(AppConfig.paths.docs.extensionsReference)
 }
