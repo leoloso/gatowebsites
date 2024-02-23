@@ -2,8 +2,8 @@ import { Doc, DocTopic } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from 'contentlayer/generated'
 import AppConfig from '@/app/app.config'
 
-export function getDocumentTopicBySlug(slug: string) {
-  return allDocTopics.find((docTopic) => docTopic.slug === slug);
+export function getDocTopic(doc: Doc) {
+  return allDocTopics.find((docTopic) => doc.group === docTopic.group && docTopic.slug === doc.topicSlug);
 }
 
 export function getDocumentTopicByPath(path: string) {
@@ -29,8 +29,8 @@ export function sortDocuments(a: Doc, b: Doc) {
     return (a.order > b.order) ? 1 : -1
   }
 
-  const aDocTopic = getDocumentTopicBySlug(a.topicSlug)
-  const bDocTopic = getDocumentTopicBySlug(b.topicSlug)
+  const aDocTopic = getDocTopic(a)
+  const bDocTopic = getDocTopic(b)
   if (!aDocTopic) {
     return 1;
   }
