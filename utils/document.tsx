@@ -10,10 +10,6 @@ export function getDocumentTopicByPath(path: string) {
   return allDocTopics.find((docTopic) => `${docTopic.group}/${docTopic.slug}` === path);
 }
 
-export function calculateDocumentSlug(topic: string, slug: string) {
-  return `${topic}/${slug}`
-}
-
 export function getDocumentsByTopic(docTopic: DocTopic) {
   return allDocs.filter((doc) => doc.group === docTopic.group && doc.topicSlug === docTopic.slug)
 }

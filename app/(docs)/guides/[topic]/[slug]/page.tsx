@@ -9,7 +9,6 @@ import DocNavigation from '@/components/ui/doc-navigation'
 import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
 import {
-  calculateDocumentSlug,
   getDocTopic,
   sortDocuments,
   getGuideDocuments,
@@ -45,7 +44,7 @@ export default async function SingleDoc({ params }: {
 }) {
   // Sort docs. Needed to find the prev/next items below
   const docs = getGuideDocuments().sort(sortDocuments)
-  const docIndex = docs.findIndex((doc) => doc.slug === calculateDocumentSlug(params.topic, params.slug))
+  const docIndex = docs.findIndex((doc) => doc.topicSlug === params.topic && doc.slug === params.slug)
 
   if (docIndex === -1) notFound()
 
