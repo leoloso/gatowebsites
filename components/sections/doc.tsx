@@ -25,7 +25,7 @@ export default function DocSection({
     <>
       {/* Page header */}
       <div className="h-16 flex items-center mb-6">
-        <TopicTitle name={docTopic.title} svgOption={svgOption} />
+        <TopicTitle name={docTopic.name} svgOption={svgOption} />
       </div>
 
       <article className="flex xl:space-x-12">
@@ -40,7 +40,7 @@ export default function DocSection({
 
             {/* Breadcrumbs */}
             <div className="flex items-center text-sm whitespace-nowrap min-w-0 ml-3">
-              <span className="text-slate-600 dark:text-slate-400">{docTopic.title}</span>
+              <span className="text-slate-600 dark:text-slate-400">{docTopic.name}</span>
               <svg className="fill-slate-400 shrink-0 mx-2 dark:fill-slate-500" width="8" height="10" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 2 2.414.586 6.828 5 2.414 9.414 1 8l3-3z" />
               </svg>

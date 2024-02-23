@@ -180,7 +180,7 @@ const DocTopic = defineDocumentType(() => ({
   filePathPattern: 'doc-topics/**/*.mdx',
   contentType: 'mdx',
   fields: {
-    title: {
+    name: {
       type: 'string',
       required: true
     },
