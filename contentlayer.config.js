@@ -194,6 +194,10 @@ const DocTopic = defineDocumentType(() => ({
     },   
   },
   computedFields: {
+    group: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/doc-topics\/([a-zA-Z_-]+)\/(.+)?/, '$1'),
+    },
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/doc-topics\/[a-zA-Z_-]+\/?/, ''),
