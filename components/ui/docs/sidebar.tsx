@@ -4,13 +4,13 @@ import { useRef, useEffect } from 'react'
 import { useAppProvider } from '@/app/(docs)/app-provider'
 import { useSelectedLayoutSegments } from 'next/navigation'
 import { Transition } from '@headlessui/react'
-import { allDocTopics } from 'contentlayer/generated'
 import SidebarLink from './sidebar-link'
 import SidebarLinkGroup from './sidebar-link-group'
 import {
   sortDocumentTopics,
   getDocumentsByTopic,
   sortDocuments,
+  getDocumentTopicsBySection,
 } from '@/utils/document'
 import { getDocURL } from '@/utils/application-urls'
 import AppSettings from '@/app/app.settings'
@@ -57,7 +57,7 @@ export default function SupportSidebar() {
   const requestedDocTopicSlug = segments.length >= 3 ? segments[1] : AppSettings.implicitDocTopicSlug
 
   // Filter by section, sort docs and doc topics by order
-  const docTopics = allDocTopics.filter((docTopic) => docTopic.section === requestedDocSection).sort(sortDocumentTopics)
+  const docTopics = getDocumentTopicsBySection(requestedDocSection).sort(sortDocumentTopics)
 
   return (
     <>

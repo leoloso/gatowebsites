@@ -49,3 +49,7 @@ export function getPrevNextDocs(docs: Array<Doc>, docIndex: number) {
     next: nextDoc
   }
 }
+
+export function getDocumentTopicsBySection(section: string) {
+  return allDocTopics.filter((docTopic) => docTopic.section === section)
+}
