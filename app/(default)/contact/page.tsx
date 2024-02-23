@@ -60,17 +60,25 @@ export default function Contact() {
                 <textarea id="message" rows={4} className="form-textarea w-full text-gray-300" placeholder="Write your message"></textarea>
               </div>
             </div>
-            <div className="flex flex-wrap -mx-3 mb-4">
+            {/* <div className="flex flex-wrap -mx-3 mb-4">
               <div className="w-full px-3">
                 <label className="flex items-center">
                   <input type="checkbox" className="form-checkbox" />
                   <span className="text-gray-400 ml-2">I agree to the privacy policy</span>
                 </label>
               </div>
-            </div>
+            </div> */}
             <div className="flex flex-wrap -mx-3 mt-6">
               <div className="w-full px-3">
                 <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Send</button>
+              </div>
+            </div>
+            <div className="flex flex-wrap -mx-3 mb-4">
+              <div className="w-full px-3">
+                <div className="text-sm text-gray-600 mt-4">
+                  By clicking "send" you consent to allow Gato GraphQL to store and process the personal information submitted above.
+                  {/* By clicking "send" you consent to allow Simple to store and process the personal information submitted above and agree to our <a className="underline" href="#0">terms and conditions</a> as well as our <a className="underline" href="#0">Privacy Policy</a>. */}
+                </div>
               </div>
             </div>
           </form>
