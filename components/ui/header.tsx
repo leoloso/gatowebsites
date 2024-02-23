@@ -47,6 +47,12 @@ export default function Header({
                 <li>
                   <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.extensionsReference}`}>Extensions reference</Link>
                 </li>
+                <li>
+                  <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.queryLibrary}`}>Queries Library</Link>
+                </li>
+                <li>
+                  <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.tutorial}`}>Tutorial</Link>
+                </li>
               </Dropdown>
             </ul>
           </nav>
