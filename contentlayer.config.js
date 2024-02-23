@@ -162,15 +162,15 @@ const Doc = defineDocumentType(() => ({
   computedFields: {
     group: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/([a-zA-Z_-]+)\/(.+)?/, '$1'),
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/([a-zA-Z_-]+)\/(.+)/, '$1'),
     },
     topicSlug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)?/, '$1'),
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1'),
     },
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+(\/_default)?\/?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\//, ''),
     },  
   },
 }))
