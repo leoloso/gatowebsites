@@ -45,7 +45,7 @@ export default async function SingleDoc({ params }: {
 }) {
   // Sort docs. Needed to find the prev/next items below
   const docs = getExtensionReferenceDocuments().sort(sortDocuments)
-  const docIndex = docs.findIndex((doc) => doc.slug === `${AppSettings.implicitDocTopicSlug}/${params.slug}`)
+  const docIndex = docs.findIndex((doc) => doc.slug === params.slug)
 
   if (docIndex === -1) notFound()
 
