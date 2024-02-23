@@ -19,7 +19,7 @@ export function calculateDocumentSlug(topic: string, slug: string) {
 }
 
 export function getDocumentsByTopic(docTopic: DocTopic) {
-  return allDocs.filter((doc) => getDocumentDocumentTopicSlug(doc) === docTopic.slug).sort(sortDocuments)
+  return allDocs.filter((doc) => doc.group === docTopic.group && doc.topicSlug === docTopic.slug).sort(sortDocuments)
 }
 
 export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
