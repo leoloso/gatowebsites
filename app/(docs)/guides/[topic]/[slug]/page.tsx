@@ -10,7 +10,6 @@ import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
 import {
   calculateDocumentSlug,
-  getDocumentDocumentTopicSlug,
   getDocumentTopicBySlug,
   sortDocuments,
   getGuideDocuments,
@@ -52,9 +51,7 @@ export default async function SingleDoc({ params }: {
 
   const doc = docs[docIndex]
 
-  const docTopicSlug = getDocumentDocumentTopicSlug(doc)
-
-  const docTopic = getDocumentTopicBySlug(docTopicSlug)
+  const docTopic = getDocumentTopicBySlug(doc.topicSlug)
 
   if (!docTopic) notFound()
 

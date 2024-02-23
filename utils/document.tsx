@@ -2,10 +2,6 @@ import { Doc, DocTopic } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from 'contentlayer/generated'
 import AppConfig from '@/app/app.config'
 
-export function getDocumentDocumentTopicSlug(doc: Doc) {
-  return doc.slug.substring(0, doc.slug.indexOf('/'));
-}
-
 export function getDocumentTopicBySlug(slug: string) {
   return allDocTopics.find((docTopic) => docTopic.slug === slug);
 }
@@ -29,14 +25,12 @@ export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
 // Make sure that all documents respect the order
 // of their topics (to find the next/prev items for pagination)
 export function sortDocuments(a: Doc, b: Doc) {
-  const aDocTopicSlug = getDocumentDocumentTopicSlug(a)
-  const bDocTopicSlug = getDocumentDocumentTopicSlug(b)
-  if (aDocTopicSlug === bDocTopicSlug) {
+  if (a.topicSlug === b.topicSlug) {
     return (a.order > b.order) ? 1 : -1
   }
 
-  const aDocTopic = getDocumentTopicBySlug(aDocTopicSlug)
-  const bDocTopic = getDocumentTopicBySlug(bDocTopicSlug)
+  const aDocTopic = getDocumentTopicBySlug(a.topicSlug)
+  const bDocTopic = getDocumentTopicBySlug(b.topicSlug)
   if (!aDocTopic) {
     return 1;
   }
