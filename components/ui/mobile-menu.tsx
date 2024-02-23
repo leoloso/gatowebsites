@@ -4,8 +4,13 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import PurchaseButton from '../purchase-button'
 import AppConfig from '@/app/app.config'
+import Search from './search'
 
-export default function MobileMenu() {
+export default function MobileMenu({
+  enableLightDarkVersionToggleMode = false,
+}: {
+  enableLightDarkVersionToggleMode?: boolean
+}) {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
 
   const trigger = useRef<HTMLButtonElement>(null)
@@ -34,6 +39,11 @@ export default function MobileMenu() {
 
   return (
     <div className="md:hidden flex items-center ml-4">
+      {/* Search button */}
+      <Search
+        showSearchInput={false}
+        enableLightDarkVersionToggleMode={enableLightDarkVersionToggleMode}
+      />
       {/* Hamburger button */}
       <button
         ref={trigger}

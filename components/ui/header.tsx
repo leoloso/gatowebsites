@@ -69,7 +69,9 @@ export default function Header({
             </li>
           </ul>
 
-          <MobileMenu />
+          <MobileMenu
+            enableLightDarkVersionToggleMode={enableLightDarkVersionToggleMode}
+          />
 
         </div>
       </div>
