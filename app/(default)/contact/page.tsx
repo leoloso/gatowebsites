@@ -46,11 +46,11 @@ export default function Contact() {
             </div>
             <div className="flex flex-wrap -mx-3 mb-4">
               <div className="w-full px-3">
-                <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="country">Country</label>
-                <select id="country" className="form-select w-full text-gray-300">
-                  <option>United States</option>
-                  <option>United Kingdom</option>
-                  <option>Germany</option>
+                <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="topic">Topic</label>
+                <select id="topic" className="form-select w-full text-gray-300">
+                  <option>General inquiry</option>
+                  <option>Affiliate program</option>
+                  <option>Developer partnership program</option>
                 </select>
               </div>
             </div>
