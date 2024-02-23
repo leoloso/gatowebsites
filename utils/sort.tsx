@@ -7,7 +7,7 @@ type SortByNameProps = {
 }
 
 export function sortByName(a: SortByNameProps, b: SortByNameProps) {
-  return (a.name > b.name) ? 1 : -1
+  return sortAlphabetically(a.name, b.name)
 }
 
 type SortByTitleProps = {
@@ -15,7 +15,7 @@ type SortByTitleProps = {
 }
 
 export function sortByTitle(a: SortByTitleProps, b: SortByTitleProps) {
-  return (a.title > b.title) ? 1 : -1
+  return sortAlphabetically(a.title, b.title)
 }
 
 type SortByOrderProps = {
