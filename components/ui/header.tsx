@@ -54,7 +54,7 @@ export default function Header({
           <ul className="hidden md:flex md:grow flex-1 flex justify-end items-center">
             {/* Lights switch */}
             {enableLightDarkVersionToggleMode && (
-              <li>
+              <li className="ml-2">
                 <ThemeToggle />
               </li>
             )}
