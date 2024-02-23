@@ -59,7 +59,10 @@ export default function Header({
               </li>
             )}
             <li className="ml-2">
-              <Search showSearchInput={false} />
+              <Search
+                showSearchInput={false}
+                enableLightDarkVersionToggleMode={enableLightDarkVersionToggleMode}
+              />
             </li>
             <li className="ml-2">
               <PurchaseButton />
