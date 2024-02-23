@@ -56,7 +56,7 @@ export default function SupportSidebar() {
   const requestedDocTopicSlug = segments.length >= 3 ? segments[1] : AppSettings.implicitDocTopicSlug
 
   // Filter by group, sort docs and doc topics by order
-  const docTopics = allDocTopics.filter((docTopic) => docTopic.groupSlug.startsWith(`${requestedDocGroup}/`)).sort(sortDocumentTopics)
+  const docTopics = allDocTopics.filter((docTopic) => docTopic.group === requestedDocGroup).sort(sortDocumentTopics)
   // const docs = allDocs.sort(sortDocuments)
 
   return (

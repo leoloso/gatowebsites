@@ -172,10 +172,6 @@ const Doc = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+(\/_default)?\/?/, ''),
     },  
-    groupSlug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/?/, ''),
-    },    
   },
 }))
 
@@ -201,11 +197,7 @@ const DocTopic = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/doc-topics\/[a-zA-Z_-]+\/?/, ''),
-    },  
-    groupSlug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/doc-topics\/?/, ''),
-    },    
+    },
   },
 }))
 

@@ -11,7 +11,7 @@ export function getDocumentTopicBySlug(slug: string) {
 }
 
 export function getDocumentTopicByPath(path: string) {
-  return allDocTopics.find((docTopic) => docTopic.groupSlug === path);
+  return allDocTopics.find((docTopic) => `${docTopic.group}/${docTopic.slug}` === path);
 }
 
 export function calculateDocumentSlug(topic: string, slug: string) {
@@ -48,7 +48,7 @@ export function sortDocuments(a: Doc, b: Doc) {
 }
 
 function getGroupDocuments(docGroup: string) {
-  return allDocs.filter((doc) => doc.groupSlug.startsWith(`${docGroup}/`))
+  return allDocs.filter((doc) => doc.group === docGroup)
 }
 
 export function getGuideDocuments() {
