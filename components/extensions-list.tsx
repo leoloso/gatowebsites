@@ -2,11 +2,12 @@ import { Extension } from '@/.contentlayer/generated'
 import ExtensionCard from './extension-card'
 import { getExtensionCategories } from '@/utils/extension'
 import slugify from '@sindresorhus/slugify';
+import { sortAlphabetically } from '@/utils/sort';
 
 export default function ExtensionsList({ extensions }: {
   extensions: Array<Extension>
 }) {
-  const extensionCategories = getExtensionCategories()
+  const extensionCategories = getExtensionCategories().sort(sortAlphabetically)
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">

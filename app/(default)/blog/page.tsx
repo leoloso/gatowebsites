@@ -4,6 +4,7 @@ import PopularPosts from './popular-posts'
 import Topics from './topics'
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
+import { sortByPublishedAt } from '@/utils/sort'
 
 export const metadata = {
   title: 'Blog - Simple',
@@ -13,10 +14,7 @@ export const metadata = {
 export default function Blog() {
 
   // Sort posts by date
-  allPosts.sort((a, b) => {
-    return (new Date(a.publishedAt) > new Date(b.publishedAt)) ? -1 : 1
-  }) 
-
+  const posts = allPosts.sort(sortByPublishedAt) 
   return (
     <>
       <section className="relative">
@@ -37,7 +35,7 @@ export default function Blog() {
 
               {/* Articles container */}
               <div className="md:grow -mt-4">
-                {allPosts.map((post, postIndex) => (
+                {posts.map((post, postIndex) => (
                   <PostItem key={postIndex} post={post} />
                 ))}
               </div>

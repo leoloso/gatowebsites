@@ -3,9 +3,9 @@ import { allExtensions } from 'contentlayer/generated'
 import ExtensionsSection from '@/components/extensions-section'
 import ExtensionsList from '@/components/extensions-list'
 import {
-  sortExtensions,
   getFeaturedExtensions,
 } from '@/utils/extension'
+import { sortByName } from '@/utils/sort'
 
 export const metadata = {
   title: 'Extensions - Stellar',
@@ -14,15 +14,15 @@ export const metadata = {
 
 export default function Extensions() {
   // Sort extensions
-  allExtensions.sort(sortExtensions)  
-  const featuredExtensions = getFeaturedExtensions()
+  const extensions = allExtensions.sort(sortByName)  
+  const featuredExtensions = getFeaturedExtensions().sort(sortByName)
   return (
     <>
       <ExtensionsSection
         extensions={ featuredExtensions }
       />
       <ExtensionsList
-        extensions={ allExtensions }
+        extensions={ extensions }
       />
     </>
   )
