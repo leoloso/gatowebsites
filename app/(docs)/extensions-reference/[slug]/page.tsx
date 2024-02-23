@@ -9,7 +9,6 @@ import DocNavigation from '@/components/ui/doc-navigation'
 import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
 import {
-  calculateDocumentSlug,
   getDocumentDocumentTopicSlug,
   getDocumentTopicBySlug,
   sortDocuments,
@@ -40,13 +39,12 @@ export async function generateMetadata({ params }: {
 
 export default async function SingleDoc({ params }: {
   params: {
-    topic: string,
     slug: string
   }
 }) {
   // Sort docs. Needed to find the prev/next items below
   const docs = getExtensionReferenceDocuments().sort(sortDocuments)
-  const docIndex = docs.findIndex((doc) => doc.slug === calculateDocumentSlug(params.topic, params.slug))
+  const docIndex = docs.findIndex((doc) => doc.slug === params.slug)
 
   if (docIndex === -1) notFound()
 
