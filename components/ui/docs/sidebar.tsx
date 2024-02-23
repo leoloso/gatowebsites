@@ -39,7 +39,15 @@ export default function SupportSidebar() {
     return () => document.removeEventListener('keydown', keyHandler)
   })
   
-  // Filter only needed docs (guides, extensions, tutorial, etc)
+  // Filter only needed docs (guides, extensions reference, tutorial, etc)
+  // If the docTopic is not provided in the URL, then it's implicit as "_default"
+  // (for extensions-reference, tutorial and queries library)
+  // segments[0] is the group, eg: "guides" or "extensions-reference"
+  // For guides:
+  // - segments[1] is the topic, segments[2] is the slug
+  // For extensions-reference:
+  // - segments[1] is the slug
+  // In this latter case, the topic is implicit as "_default"
   const requestedDocGroup = segments.length >= 2 ? segments[0] : ''
   const requestedDocTopicSlug = segments.length >= 3 ? segments[1] : 'default'
 
