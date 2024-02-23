@@ -60,7 +60,7 @@ export default function MobileMenu({
         onClick={() => setMobileNavOpen(!mobileNavOpen)}
       >
         <span className="sr-only">Menu</span>
-        <svg className="w-5 h-5 fill-current text-slate-300 hover:text-white transition duration-150 ease-in-out" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-5 h-5 fill-current text-slate-400 hover:text-slate-600 dark:text-slate-300 dark:hover:text-white transition duration-150 ease-in-out" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <rect y="2" width="20" height="2" rx="1" />
           <rect y="9" width="20" height="2" rx="1" />
           <rect y="16" width="20" height="2" rx="1" />
