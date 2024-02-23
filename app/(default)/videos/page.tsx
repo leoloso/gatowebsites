@@ -13,13 +13,12 @@ export const metadata = {
 import Newsletter from '@/components/newsletter'
 import { getVideoPostURL } from '@/utils/application-urls'
 import StunningBackground from '@/components/stunning-background'
+import { sortByPublishedAt } from '@/utils/sort'
 
 export default function Blog() {
 
   // Sort videoPosts by date
-  allVideoPosts.sort((a, b) => {
-    return (new Date(a.publishedAt) > new Date(b.publishedAt)) ? -1 : 1
-  })  
+  allVideoPosts.sort(sortByPublishedAt)  
 
   const featuredVideoPost = allVideoPosts[0]
   const videoPosts = allVideoPosts.slice(1)
