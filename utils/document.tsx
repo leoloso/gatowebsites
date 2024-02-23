@@ -3,15 +3,15 @@ import { allDocs, allDocTopics } from 'contentlayer/generated'
 import AppConfig from '@/app/app.config'
 
 export function getDocTopic(doc: Doc) {
-  const docTopic = allDocTopics.find((docTopic) => doc.group === docTopic.group && docTopic.slug === doc.topicSlug);
+  const docTopic = allDocTopics.find((docTopic) => doc.section === docTopic.section && docTopic.slug === doc.topicSlug);
   if (!docTopic) {
-    throw new Error(`There is no DocTopic with group ${doc.group} and slug ${doc.topicSlug}`)
+    throw new Error(`There is no DocTopic with group ${doc.section} and slug ${doc.topicSlug}`)
   }
   return docTopic
 }
 
 export function getDocumentsByTopic(docTopic: DocTopic) {
-  return allDocs.filter((doc) => doc.group === docTopic.group && doc.topicSlug === docTopic.slug)
+  return allDocs.filter((doc) => doc.section === docTopic.section && doc.topicSlug === docTopic.slug)
 }
 
 export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
@@ -28,8 +28,8 @@ export function sortDocuments(a: Doc, b: Doc) {
   return sortDocumentTopics(getDocTopic(a), getDocTopic(b));
 }
 
-function getGroupDocuments(docGroup: string) {
-  return allDocs.filter((doc) => doc.group === docGroup)
+function getGroupDocuments(docSection: string) {
+  return allDocs.filter((doc) => doc.section === docSection)
 }
 
 export function getGuideDocuments() {
