@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function Extensions() {
   // Sort extensions
-  allExtensions.sort(sortByName)  
+  const extensions = allExtensions.sort(sortByName)  
   const featuredExtensions = getFeaturedExtensions().sort(sortByName)
   return (
     <>
@@ -22,7 +22,7 @@ export default function Extensions() {
         extensions={ featuredExtensions }
       />
       <ExtensionsList
-        extensions={ allExtensions }
+        extensions={ extensions }
       />
     </>
   )

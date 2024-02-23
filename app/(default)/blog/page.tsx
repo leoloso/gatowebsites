@@ -13,7 +13,7 @@ export const metadata = {
 export default function Blog() {
 
   // Sort posts by date
-  allPosts.sort((a, b) => {
+  const posts = allPosts.sort((a, b) => {
     return (new Date(a.publishedAt) > new Date(b.publishedAt)) ? -1 : 1
   }) 
 
@@ -37,7 +37,7 @@ export default function Blog() {
 
               {/* Articles container */}
               <div className="md:grow -mt-4">
-                {allPosts.map((post, postIndex) => (
+                {posts.map((post, postIndex) => (
                   <PostItem key={postIndex} post={post} />
                 ))}
               </div>
