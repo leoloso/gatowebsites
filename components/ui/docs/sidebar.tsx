@@ -58,7 +58,6 @@ export default function SupportSidebar() {
 
   // Filter by group, sort docs and doc topics by order
   const docTopics = allDocTopics.filter((docTopic) => docTopic.group === requestedDocGroup).sort(sortDocumentTopics)
-  // const docs = allDocs.sort(sortDocuments)
 
   return (
     <>
