@@ -14,6 +14,7 @@ import {
   getExtensionReferenceDocuments,
 } from '@/utils/document'
 import AppConfig from '@/app/app.config'
+import AppSettings from '@/app/app.settings'
 
 export async function generateStaticParams() {
   return getExtensionReferenceDocuments().map((doc) => ({
@@ -44,13 +45,13 @@ export default async function SingleDoc({ params }: {
 }) {
   // Sort docs. Needed to find the prev/next items below
   const docs = getExtensionReferenceDocuments().sort(sortDocuments)
-  const docIndex = docs.findIndex((doc) => doc.slug === `default/${params.slug}`)
+  const docIndex = docs.findIndex((doc) => doc.slug === `${AppSettings.implicitDocTopicSlug}/${params.slug}`)
 
   if (docIndex === -1) notFound()
 
   const doc = docs[docIndex]
 
-  const docTopic = getDocumentTopicByPath(`${AppConfig.paths.docs.extensionsReference}/default`)
+  const docTopic = getDocumentTopicByPath(`${AppConfig.paths.docs.extensionsReference}/${AppSettings.implicitDocTopicSlug}`)
 
   if (!docTopic) notFound()
 
