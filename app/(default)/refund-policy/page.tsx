@@ -62,8 +62,8 @@ export default async function SinglePage() {
         </div>
         <div className="flex flex-wrap -mx-3 mb-4">
           <div className="w-full px-3">
-            <label className="block text-gray-300 font-medium mb-1" htmlFor="message">Message</label>
-            <textarea id="message" rows={4} className="form-textarea w-full text-gray-300" placeholder="Write your message"></textarea>
+            <label className="block text-gray-300 font-medium mb-1" htmlFor="message">Message <span className="text-red-600">*</span></label>
+            <textarea id="message" rows={4} className="form-textarea w-full text-gray-300" placeholder="Write your message" required></textarea>
           </div>
         </div>
         {/* <div className="flex flex-wrap -mx-3 mb-4">
