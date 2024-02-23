@@ -30,7 +30,7 @@ export default function Search({
       >
         <div className="flex items-center justify-center">
           <svg
-            className={`w-4 h-4 fill-slate-500 ${showSearchInput ? 'mr-3' : ''} shrink-0 dark:fill-slate-400`}
+            className={`w-4 h-4 ${showSearchInput ? 'mr-3 fill-slate-500 dark:fill-slate-400' : 'fill-slate-300 dark:fill-slate-200'} shrink-0`}
             width="16"
             height="16"
             viewBox="0 0 16 16"
