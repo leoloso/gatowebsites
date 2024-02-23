@@ -5,6 +5,7 @@ import {
   getGuideDocuments,
 } from '@/utils/document'
 import DocSection from '@/components/sections/doc'
+import { topicTitleSVG1 } from '@/components/ui/docs/topic-title'
 
 export async function generateStaticParams() {
   return getGuideDocuments().map((doc) => ({
@@ -51,6 +52,7 @@ export default async function SingleDoc({ params }: {
       doc={doc}
       prevDoc={prevDoc}
       nextDoc={nextDoc}
+      svgOption={topicTitleSVG1}
     />
   )
 }
