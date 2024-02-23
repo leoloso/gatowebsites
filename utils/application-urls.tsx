@@ -15,7 +15,6 @@ export function getVideoPostURL(videoPost: VideoPost) {
 }
 
 export function getDocURL(doc: Doc) {
-  console.log(doc)
   if (doc.topicSlug === AppSettings.implicitDocTopicSlug) {
     return `/${doc.group}/${doc.slug}`
   }
