@@ -18,3 +18,10 @@ export function sortByPublishedAt(a: { publishedAt: string }, b: { publishedAt: 
   return (new Date(a.publishedAt) > new Date(b.publishedAt)) ? -1 : 1
 }
 
+export function sortByOrderAndTitle(a: { order: number, title: string }, b: { order: number, title: string }) {
+  if (a.order === b.order) {
+    return sortByTitle(a, b)
+  }
+  return sortByOrder(a, b)
+}
+
