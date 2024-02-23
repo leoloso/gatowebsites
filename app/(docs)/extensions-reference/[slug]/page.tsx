@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import {
   sortDocuments,
   getExtensionReferenceDocuments,
+  getPrevNextDocs,
 } from '@/utils/document'
 import DocSection from '@/components/sections/doc'
 import { topicTitleSVG2 } from '@/components/ui/docs/topic-title'
@@ -41,16 +42,13 @@ export default async function SingleDoc({ params }: {
   if (docIndex === -1) notFound()
 
   const doc = docs[docIndex]
-
-  // Calculate the prev/next items
-  const prevDoc = docIndex === 0 ? undefined : docs[docIndex - 1]
-  const nextDoc = docIndex === (docs.length - 1) ? undefined : docs[docIndex + 1]
+  const paginationDocs = getPrevNextDocs(docs, docIndex)
 
   return (
     <DocSection
       doc={doc}
-      prevDoc={prevDoc}
-      nextDoc={nextDoc}
+      prevDoc={paginationDocs.prev}
+      nextDoc={paginationDocs.next}
       svgOption={topicTitleSVG2}
     />
   )

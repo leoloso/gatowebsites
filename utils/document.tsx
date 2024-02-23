@@ -39,3 +39,13 @@ export function getGuideDocuments() {
 export function getExtensionReferenceDocuments() {
   return getGroupDocuments(AppConfig.paths.docs.extensionsReference)
 }
+
+export function getPrevNextDocs(docs: Array<Doc>, docIndex: number) {
+  // Calculate the prev/next items
+  const prevDoc = docIndex === 0 ? undefined : docs[docIndex - 1]
+  const nextDoc = docIndex === (docs.length - 1) ? undefined : docs[docIndex + 1]
+  return {
+    prev: prevDoc,
+    next: nextDoc
+  }
+}
