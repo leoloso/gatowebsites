@@ -48,8 +48,9 @@ export default function SupportSidebar() {
   // For extensions-reference:
   // - segments[1] is the slug
   // In this latter case, the topic is implicit as "_default"
+  const implicitDocTopicSlug = '_default'
   const requestedDocGroup = segments.length >= 2 ? segments[0] : ''
-  const requestedDocTopicSlug = segments.length >= 3 ? segments[1] : '_default'
+  const requestedDocTopicSlug = segments.length >= 3 ? segments[1] : implicitDocTopicSlug
 
   // Filter by group, sort docs and doc topics by order
   const docTopics = allDocTopics.filter((docTopic) => docTopic.groupSlug.startsWith(`${requestedDocGroup}/`)).sort(sortDocumentTopics)
