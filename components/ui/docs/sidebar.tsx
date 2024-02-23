@@ -41,7 +41,7 @@ export default function SupportSidebar() {
   
   // Filter only needed docs (guides, extensions, tutorial, etc)
   const requestedDocGroup = segments.length >= 2 ? segments[0] : ''
-  const requestedDocTopicSlug = segments.length >= 2 ? segments[1] : ''
+  const requestedDocTopicSlug = segments.length >= 3 ? segments[1] : 'default'
 
   // Filter by group, sort docs and doc topics by order
   const docTopics = allDocTopics.filter((docTopic) => docTopic.groupSlug.startsWith(`${requestedDocGroup}/`)).sort(sortDocumentTopics)
