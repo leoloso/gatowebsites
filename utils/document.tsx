@@ -1,7 +1,7 @@
 import { Doc, DocTopic } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from 'contentlayer/generated'
 import AppConfig from '@/app/app.config'
-import { sortByOrder } from "./sort";
+import { sortByOrder, sortByOrderAndTitle } from "./sort";
 
 export function getDocTopic(doc: Doc) {
   const docTopic = allDocTopics.find((docTopic) => doc.section === docTopic.section && docTopic.slug === doc.topicSlug);
@@ -23,7 +23,7 @@ export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
 // of their topics (to find the next/prev items for pagination)
 export function sortDocuments(a: Doc, b: Doc) {
   if (a.topicSlug === b.topicSlug) {
-    return sortByOrder(a, b)
+    return sortByOrderAndTitle(a, b)
   }
 
   return sortDocumentTopics(getDocTopic(a), getDocTopic(b));
