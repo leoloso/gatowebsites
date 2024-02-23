@@ -39,6 +39,8 @@ type SortByOrderAndTitleProps = {
   title: string,
 }
 
+// Used to order docs, so that all docs in the Query Library have the
+// same order, then they are sorted alphabetically
 export function sortByOrderAndTitle(a: SortByOrderAndTitleProps, b: SortByOrderAndTitleProps) {
   if (a.order === b.order) {
     return sortByTitle(a, b)
