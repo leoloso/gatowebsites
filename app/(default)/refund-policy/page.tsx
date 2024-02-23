@@ -2,9 +2,10 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import PageSection from '@/components/sections/page'
 import { getPage, getPageMetadata } from '@/utils/page'
+import { getPageSlugFromPageScriptFile } from '@/utils/path'
 
 // Get the page slug from the folder name
-const pageSlug = __filename.replace(/^.*\/([a-zA-Z0-9_-]+)\/page\.[a-z]+$/, '$1')
+const pageSlug = getPageSlugFromPageScriptFile(__filename)
 
 export async function generateMetadata(): Promise<Metadata | undefined> {
 
