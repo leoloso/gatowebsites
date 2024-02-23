@@ -4,7 +4,7 @@ import FooterMenu from '../footer-menu'
 export default function Footer() {
   return (
     <footer className="border-t border-slate-200 pt-8 dark:border-slate-800">
-      <div className="flex flex-col md:flex-row md:justify-between mb-8">
+      <div className="grid sm:grid-cols-8 gap-8 py-8 md:py-12 mb-8">
         <FooterMenu />
       </div>
       <div className="flex flex-col md:flex-row items-center justify-center md:justify-between">
