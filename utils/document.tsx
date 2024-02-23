@@ -5,7 +5,7 @@ import AppConfig from '@/app/app.config'
 export function getDocTopic(doc: Doc) {
   const docTopic = allDocTopics.find((docTopic) => doc.section === docTopic.section && docTopic.slug === doc.topicSlug);
   if (!docTopic) {
-    throw new Error(`There is no DocTopic with group ${doc.section} and slug ${doc.topicSlug}`)
+    throw new Error(`There is no DocTopic with section ${doc.section} and slug ${doc.topicSlug}`)
   }
   return docTopic
 }
