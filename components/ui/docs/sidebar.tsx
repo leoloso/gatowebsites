@@ -133,7 +133,7 @@ export default function SupportSidebar() {
                                       d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z"
                                     />
                                   </svg>
-                                  <span>{docTopic.title}</span>
+                                  <span>{docTopic.name}</span>
                                 </a>
                                 <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
                                   {docsByTopic.map((doc, docIndex) => (
