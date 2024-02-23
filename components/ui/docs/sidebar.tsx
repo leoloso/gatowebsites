@@ -43,21 +43,21 @@ export default function SupportSidebar() {
   
   // Filter only needed docs (guides, extensions reference, tutorial, etc)
   // If the docTopic is not provided in the URL, then it's implicit as "_default",
-  // for those groups that have a single level, not two (extensions-reference,
+  // for those sections that have a single level, not two (extensions-reference,
   // tutorial and queries library). However, the data is still organized under
   // 2 levels, with all docs placed under the "_default" folder.
   // To tell one case from another, we check the length of segments:
-  // segments[0] is the group, eg: "guides" or "extensions-reference"
+  // segments[0] is the section, eg: "guides" or "extensions-reference"
   // For guides:
   // - segments[1] is the topic, segments[2] is the slug
   // For extensions-reference:
   // - segments[1] is the slug
   // In this latter case, the topic is implicit as "_default"
-  const requestedDocGroup = segments.length >= 2 ? segments[0] : ''
+  const requestedDocSection = segments.length >= 2 ? segments[0] : ''
   const requestedDocTopicSlug = segments.length >= 3 ? segments[1] : AppSettings.implicitDocTopicSlug
 
-  // Filter by group, sort docs and doc topics by order
-  const docTopics = allDocTopics.filter((docTopic) => docTopic.group === requestedDocGroup).sort(sortDocumentTopics)
+  // Filter by section, sort docs and doc topics by order
+  const docTopics = allDocTopics.filter((docTopic) => docTopic.section === requestedDocSection).sort(sortDocumentTopics)
 
   return (
     <>

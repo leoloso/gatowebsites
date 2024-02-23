@@ -16,9 +16,9 @@ export function getVideoPostURL(videoPost: VideoPost) {
 
 export function getDocURL(doc: Doc) {
   if (doc.topicSlug === AppSettings.implicitDocTopicSlug) {
-    return `/${doc.group}/${doc.slug}`
+    return `/${doc.section}/${doc.slug}`
   }
-  return `/${doc.group}/${doc.topicSlug}/${doc.slug}`
+  return `/${doc.section}/${doc.topicSlug}/${doc.slug}`
 }
 
 export function getPostURL(post: Post) {

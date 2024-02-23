@@ -160,7 +160,7 @@ const Doc = defineDocumentType(() => ({
     },   
   },
   computedFields: {
-    group: {
+    section: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/([a-zA-Z_-]+)\/(.+)/, '$1'),
     },
@@ -190,7 +190,7 @@ const DocTopic = defineDocumentType(() => ({
     },   
   },
   computedFields: {
-    group: {
+    section: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/doc-topics\/([a-zA-Z_-]+)\/(.+)?/, '$1'),
     },
