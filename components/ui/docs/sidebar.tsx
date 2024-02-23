@@ -10,6 +10,7 @@ import SidebarLinkGroup from './sidebar-link-group'
 import {
   sortDocumentTopics,
   getDocumentsByTopic,
+  sortDocuments,
 } from '@/utils/document'
 import { getDocURL } from '@/utils/application-urls'
 import AppSettings from '@/app/app.settings'
@@ -108,7 +109,7 @@ export default function SupportSidebar() {
                       <li className="mb-1" key={docTopicIndex}>
                         <SidebarLinkGroup open={isDocTopicSelected}>
                           {(handleClick, open) => {
-                            const docsByTopic = getDocumentsByTopic(docTopic)
+                            const docsByTopic = getDocumentsByTopic(docTopic).sort(sortDocuments)
                             return (
                               <>
                                 <a
