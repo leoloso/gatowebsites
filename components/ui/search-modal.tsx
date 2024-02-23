@@ -4,13 +4,15 @@ import { Dialog, Transition } from '@headlessui/react'
 interface SearchModalProps {
   isOpen: boolean
   setIsOpen: (value: boolean) => void,
-  placeholder?: string
+  placeholder?: string,
+  enableLightDarkVersionToggleMode?: boolean
 }
 
 export default function SearchModal({
   isOpen,
   setIsOpen,
-  placeholder = "Search for anything…"
+  placeholder = "Search for anything…",
+  enableLightDarkVersionToggleMode = false,
 }: SearchModalProps) {  
   return (
     <Transition appear show={isOpen}>
@@ -26,7 +28,7 @@ export default function SearchModal({
           aria-hidden="true"
         />
         <Transition.Child
-          className="fixed inset-0 z-50 overflow-hidden flex items-start top-20 mb-4 justify-center px-4 sm:px-6"
+          className={`${enableLightDarkVersionToggleMode ? '' : 'dark' } fixed inset-0 z-50 overflow-hidden flex items-start top-20 mb-4 justify-center px-4 sm:px-6`}
           enter="transition ease-in-out duration-200"
           enterFrom="opacity-0 translate-y-4"
           enterTo="opacity-100 translate-y-0"

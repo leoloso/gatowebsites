@@ -6,7 +6,7 @@ import AppProvider from './app-provider'
 import Image from 'next/image'
 import Illustration from '@/public/images/hero-illustration.svg'
 import Sidebar from '@/components/ui/docs/sidebar'
-import DocsHeader from '@/components/ui/docs/header'
+import Header from '@/components/ui/header'
 
 const nycd = Nothing_You_Could_Do({
   subsets: ['latin'],
@@ -31,7 +31,7 @@ export default function RootLayout({
         <AppProvider>
           <div className="flex flex-col min-h-screen overflow-hidden">
 
-            <DocsHeader />
+          <Header enableLightDarkVersionToggleMode={true} />
 
             {/*  Page content */}
             <main className="grow">
