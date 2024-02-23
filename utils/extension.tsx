@@ -1,8 +1,9 @@
 import { Extension } from "@/.contentlayer/generated";
 import { allExtensions } from 'contentlayer/generated'
+import { sortByName } from "./sort";
 
 export function getFeaturedExtensions() {
-  return allExtensions.filter((extension) => extension.featured).sort(sortExtensions)
+  return allExtensions.filter((extension) => extension.featured).sort(sortByName)
 }
 
 export function getExtensionCategories() {
