@@ -41,7 +41,6 @@ export function getGuideDocuments() {
   return getGroupDocuments(AppConfig.paths.docs.guides)
 }
 
-
 export function getExtensionReferenceDocuments() {
   return getGroupDocuments(AppConfig.paths.docs.extensionsReference)
 }
