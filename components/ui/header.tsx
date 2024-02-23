@@ -58,7 +58,7 @@ export default function Header({
                 <ThemeToggle />
               </li>
             )}
-            <li className="ml-2">
+            <li className="ml-1">
               <Search
                 showSearchInput={false}
                 enableLightDarkVersionToggleMode={enableLightDarkVersionToggleMode}
