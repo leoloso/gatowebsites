@@ -6,7 +6,11 @@ export function sortByName(a: { name: string }, b: { name: string }) {
   return (a.name > b.name) ? 1 : -1
 }
 
-export function sortByTitle(a: { title: string }, b: { title: string }) {
+type SortByTitleProps = {
+  title: string,
+}
+
+export function sortByTitle(a: SortByTitleProps, b: SortByTitleProps) {
   return (a.title > b.title) ? 1 : -1
 }
 
