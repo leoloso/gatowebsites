@@ -2,8 +2,10 @@ import AppConfig from '@/app/app.config'
 
 export default function FooterMenu({
   children,
+  columnClassname = "sm:col-span-6 md:col-span-3 lg:col-span-2"
 }: {
-  children?: React.ReactNode
+  children?: React.ReactNode,
+  columnClassname?: string
 }) {
   {/* Blocks */}
   return (
@@ -12,7 +14,7 @@ export default function FooterMenu({
       {children}
 
       {/* 2nd block */}
-      <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+      <div className={columnClassname}>
         <h6 className="text-sm text-slate-50 font-medium mb-2">Product</h6>
         <ul className="text-sm space-y-2">
           <li>
@@ -49,7 +51,7 @@ export default function FooterMenu({
       </div>
 
       {/* 3rd block */}
-      <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+      <div className={columnClassname}>
         <h6 className="text-sm text-slate-50 font-medium mb-2">Company</h6>
         <ul className="text-sm space-y-2">
           <li>
@@ -78,7 +80,7 @@ export default function FooterMenu({
       </div>
 
       {/* 4th block */}
-      <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+      <div className={columnClassname}>
         <h6 className="text-sm text-slate-50 font-medium mb-2">Resources</h6>
         <ul className="text-sm space-y-2">
           <li>
@@ -97,7 +99,7 @@ export default function FooterMenu({
       </div>
 
       {/* 5th block */}
-      <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+      <div className={columnClassname}>
         <h6 className="text-sm text-slate-50 font-medium mb-2">Support</h6>
         <ul className="text-sm space-y-2">
           <li>

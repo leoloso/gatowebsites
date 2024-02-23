@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-slate-200 pt-8 dark:border-slate-800">
       <div className="grid sm:grid-cols-8 gap-8 py-8 md:py-12">
-        <FooterMenu />
+        <FooterMenu columnClassname="col-span-4 lg:col-span-2" />
       </div>
       <div className="flex flex-col md:flex-row items-center justify-center md:justify-between">
         <div className="mb-4 md:mb-0">
