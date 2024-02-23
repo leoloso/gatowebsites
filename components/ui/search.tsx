@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import SearchModal from './search-modal'
 
 export default function Search({
@@ -13,16 +13,19 @@ export default function Search({
 
   const [searchModalOpen, setSearchModalOpen] = useState<boolean>(false)
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {      
-      !searchModalOpen && event.preventDefault()
-      if(event.key === '/') {
-        setSearchModalOpen(true)
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () =>  window.removeEventListener('keydown', handleKeyDown)
-  }, [searchModalOpen])
+  // This code makes the keyboard not be usable anymore!!!
+  // So commented out.
+  // @todo If this feature is needed, find out how to solve the issue
+  // useEffect(() => {
+  //   const handleKeyDown = (event: KeyboardEvent) => {      
+  //     !searchModalOpen && event.preventDefault()
+  //     if(event.key === '/') {
+  //       setSearchModalOpen(true)
+  //     }
+  //   }
+  //   window.addEventListener('keydown', handleKeyDown)
+  //   return () =>  window.removeEventListener('keydown', handleKeyDown)
+  // }, [searchModalOpen])
 
   return (
     <div className={showSearchInput ? 'grow ml-4 md:ml-8' : ''}>
