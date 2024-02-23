@@ -25,7 +25,7 @@ export default function Search({
   return (
     <div className={showSearchInput ? 'grow ml-4 md:ml-8' : ''}>
       <button
-        className={`${showSearchInput ? 'w-[200px] sm:w-[340px] text-[15px] pr-2 rounded' : 'rounded-full' } bg-white text-slate-400 inline-flex items-center justify-between leading-5 pl-3 py-[7px] border border-slate-200 hover:border-slate-300 shadow-sm whitespace-nowrap dark:text-slate-500 dark:bg-slate-800 dark:border-slate-700 dark:hover:border-slate-600`}
+        className={`${showSearchInput ? 'w-[200px] sm:w-[340px] text-[15px] pr-2 rounded bg-white dark:bg-slate-800 text-slate-400 inline-flex items-center justify-between leading-5 pl-3 py-[7px] border border-slate-200 hover:border-slate-300 shadow-sm whitespace-nowrap dark:text-slate-500 dark:border-slate-700 dark:hover:border-slate-600' : 'btn text-slate-200 hover:text-white bg-slate-900 bg-opacity-25 hover:bg-opacity-30 w-full transition duration-150 ease-in-out' }`}
         onClick={() => { setSearchModalOpen(true) }}
       >
         <div className="flex items-center justify-center">
