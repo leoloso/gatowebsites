@@ -6,10 +6,6 @@ export function getDocTopic(doc: Doc) {
   return allDocTopics.find((docTopic) => doc.group === docTopic.group && docTopic.slug === doc.topicSlug);
 }
 
-export function getDocumentTopicByPath(path: string) {
-  return allDocTopics.find((docTopic) => `${docTopic.group}/${docTopic.slug}` === path);
-}
-
 export function getDocumentsByTopic(docTopic: DocTopic) {
   return allDocs.filter((doc) => doc.group === docTopic.group && doc.topicSlug === docTopic.slug)
 }
