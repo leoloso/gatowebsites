@@ -1,8 +1,12 @@
 import Logo from '@/components/ui/docs/logo'
+import FooterMenu from '../footer-menu'
 
 export default function Footer() {
   return (
     <footer className="border-t border-slate-200 pt-8 dark:border-slate-800">
+      <div className="flex flex-col md:flex-row md:justify-between mb-8">
+        <FooterMenu />
+      </div>
       <div className="flex flex-col md:flex-row items-center justify-center md:justify-between">
         <div className="mb-4 md:mb-0">
           <div className="shrink-0 flex flex-col md:flex-row items-center">
