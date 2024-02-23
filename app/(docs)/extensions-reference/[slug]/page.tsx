@@ -9,11 +9,11 @@ import DocNavigation from '@/components/ui/doc-navigation'
 import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
 import {
-  getDocumentDocumentTopicSlug,
-  getDocumentTopicBySlug,
+  getDocumentTopicByPath,
   sortDocuments,
   getExtensionReferenceDocuments,
 } from '@/utils/document'
+import AppConfig from '@/app/app.config'
 
 export async function generateStaticParams() {
   return getExtensionReferenceDocuments().map((doc) => ({
@@ -50,9 +50,7 @@ export default async function SingleDoc({ params }: {
 
   const doc = docs[docIndex]
 
-  const docTopicSlug = getDocumentDocumentTopicSlug(doc)
-
-  const docTopic = getDocumentTopicBySlug(docTopicSlug)
+  const docTopic = getDocumentTopicByPath(`${AppConfig.paths.docs.extensionsReference}/default`)
 
   if (!docTopic) notFound()
 

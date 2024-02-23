@@ -10,6 +10,10 @@ export function getDocumentTopicBySlug(slug: string) {
   return allDocTopics.find((docTopic) => docTopic.slug === slug);
 }
 
+export function getDocumentTopicByPath(path: string) {
+  return allDocTopics.find((docTopic) => docTopic.groupSlug === path);
+}
+
 export function calculateDocumentSlug(topic: string, slug: string) {
   return `${topic}/${slug}`
 }
