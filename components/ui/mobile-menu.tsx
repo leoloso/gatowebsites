@@ -74,7 +74,7 @@ export default function MobileMenu({
         className="absolute top-full z-20 left-0 w-full px-4 sm:px-6 overflow-hidden transition-all duration-300 ease-in-out"
         style={mobileNavOpen ? { maxHeight: mobileNav.current?.scrollHeight, opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
       >
-        <ul className="border border-transparent [background:linear-gradient(theme(colors.blue.200),_theme(colors.blue.200))_padding-box,_conic-gradient(theme(colors.blue.200),_theme(colors.blue.500)_25%,_theme(colors.blue.500)_75%,_theme(colors.blue.200)_100%)_border-box] dark:[background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] rounded-lg px-4 py-1.5">
+        <ul className="border border-transparent [background:linear-gradient(theme(colors.blue.200),_theme(colors.blue.200))_padding-box,_conic-gradient(theme(colors.blue.100),_theme(colors.blue.400)_25%,_theme(colors.blue.400)_75%,_theme(colors.blue.100)_100%)_border-box] dark:[background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] rounded-lg px-4 py-1.5">
           <li>
             <Link className="flex font-medium text-sm text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href="/pricing">Pricing</Link>
           </li>
