@@ -8,11 +8,11 @@ import {
 } from '@/utils/extension'
 
 export const metadata = {
-  title: 'Integrations - Stellar',
+  title: 'Extensions - Stellar',
   description: 'Page description',
 }
 
-export default function Integrations() {
+export default function Extensions() {
   // Sort extensions
   allExtensions.sort(sortExtensions)  
   const featuredExtensions = getFeaturedExtensions()
