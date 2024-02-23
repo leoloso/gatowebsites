@@ -1,5 +1,6 @@
 import { Doc, Extension, VideoPost, Post } from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
+import AppSettings from "@/app/app.settings";
 
 export function getExtensionURL(extension: Extension) {
   return `/${AppConfig.paths.extensions}/${extension.slug}`
@@ -14,7 +15,11 @@ export function getVideoPostURL(videoPost: VideoPost) {
 }
 
 export function getDocURL(doc: Doc) {
-  return `/${doc.groupSlug}`
+  console.log(doc)
+  if (doc.topicSlug === AppSettings.implicitDocTopicSlug) {
+    return `/${doc.group}/${doc.slug}`
+  }
+  return `/${doc.group}/${doc.topicSlug}/${doc.slug}`
 }
 
 export function getPostURL(post: Post) {
