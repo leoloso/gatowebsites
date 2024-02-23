@@ -51,8 +51,6 @@ export default async function SingleDoc({ params }: {
 
   const docTopic = getDocTopic(doc)
 
-  if (!docTopic) notFound()
-
   // Calculate the prev/next items
   const prevDoc = docIndex === 0 ? undefined : docs[docIndex - 1]
   const nextDoc = docIndex === (docs.length - 1) ? undefined : docs[docIndex + 1]

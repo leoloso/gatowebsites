@@ -3,7 +3,11 @@ import { allDocs, allDocTopics } from 'contentlayer/generated'
 import AppConfig from '@/app/app.config'
 
 export function getDocTopic(doc: Doc) {
-  return allDocTopics.find((docTopic) => doc.group === docTopic.group && docTopic.slug === doc.topicSlug);
+  const docTopic = allDocTopics.find((docTopic) => doc.group === docTopic.group && docTopic.slug === doc.topicSlug);
+  if (!docTopic) {
+    throw new Error(`There is no DocTopic with group ${doc.group} and slug ${doc.topicSlug}`)
+  }
+  return docTopic
 }
 
 export function getDocumentsByTopic(docTopic: DocTopic) {
@@ -23,12 +27,6 @@ export function sortDocuments(a: Doc, b: Doc) {
 
   const aDocTopic = getDocTopic(a)
   const bDocTopic = getDocTopic(b)
-  if (!aDocTopic) {
-    return 1;
-  }
-  if (!bDocTopic) {
-    return -1;
-  }
 
   return sortDocumentTopics(aDocTopic, bDocTopic);
 }
