@@ -40,38 +40,32 @@ export default function MobileMenu({
 
   return (
     <div className="md:hidden flex items-center ml-4">
-      <ul className="flex-1 flex justify-end items-center">
-        {/* Lights switch */}
-        {enableLightDarkVersionToggleMode && (
-          <li className="ml-2">
-            <ThemeToggle />
-          </li>
-        )}
-        {/* Search button */}
-        <li className="ml-2">
-          <Search
-            showSearchInput={false}
-            enableLightDarkVersionToggleMode={enableLightDarkVersionToggleMode}
-          />
-        </li>
-        {/* Hamburger button */}
-        <li className="ml-2">
-          <button
-            ref={trigger}
-            className={`hamburger ${mobileNavOpen && 'active'}`}
-            aria-controls="mobile-nav"
-            aria-expanded={mobileNavOpen}
-            onClick={() => setMobileNavOpen(!mobileNavOpen)}
-          >
-            <span className="sr-only">Menu</span>
-            <svg className="w-5 h-5 fill-current text-slate-300 hover:text-white transition duration-150 ease-in-out" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <rect y="2" width="20" height="2" rx="1" />
-              <rect y="9" width="20" height="2" rx="1" />
-              <rect y="16" width="20" height="2" rx="1" />
-            </svg>
-          </button>
-        </li>
-      </ul>
+      {/* Lights switch */}
+      {enableLightDarkVersionToggleMode && (
+        <ThemeToggle />
+      )}
+
+      {/* Search button */}
+      <Search
+        showSearchInput={false}
+        enableLightDarkVersionToggleMode={enableLightDarkVersionToggleMode}
+      />
+
+      {/* Hamburger button */}
+      <button
+        ref={trigger}
+        className={`btn hamburger ${mobileNavOpen && 'active'}`}
+        aria-controls="mobile-nav"
+        aria-expanded={mobileNavOpen}
+        onClick={() => setMobileNavOpen(!mobileNavOpen)}
+      >
+        <span className="sr-only">Menu</span>
+        <svg className="w-5 h-5 fill-current text-slate-300 hover:text-white transition duration-150 ease-in-out" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <rect y="2" width="20" height="2" rx="1" />
+          <rect y="9" width="20" height="2" rx="1" />
+          <rect y="16" width="20" height="2" rx="1" />
+        </svg>
+      </button>
 
       {/*Mobile navigation */}
       <nav
