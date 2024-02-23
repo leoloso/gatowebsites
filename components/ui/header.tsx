@@ -1,6 +1,7 @@
 import Logo from './logo'
 import MobileMenu from './mobile-menu'
 import PurchaseButton from '../purchase-button'
+import Search from './search'
 
 interface HeaderProps {
   children: React.ReactNode,
@@ -29,6 +30,9 @@ export default function Header({
 
           <ul className="hidden md:flex md:grow flex-1 flex justify-end items-center">
             <li className="ml-6">
+              <Search showSearchInput={false} />
+            </li>
+            <li className="ml-2">
               <PurchaseButton />
             </li>
           </ul>
