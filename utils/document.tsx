@@ -41,6 +41,14 @@ export function getExtensionReferenceDocuments() {
   return getGroupDocuments(AppConfig.paths.docs.extensionsReference)
 }
 
+export function getQueryLibraryDocuments() {
+  return getGroupDocuments(AppConfig.paths.docs.queryLibrary)
+}
+
+export function getTutorialDocuments() {
+  return getGroupDocuments(AppConfig.paths.docs.tutorial)
+}
+
 export function getPrevNextDocs(docs: Array<Doc>, docIndex: number) {
   // Calculate the prev/next items
   const prevDoc = docIndex === 0 ? undefined : docs[docIndex - 1]
