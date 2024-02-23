@@ -48,9 +48,11 @@ export default function Contact() {
               <div className="w-full px-3">
                 <label className="block text-gray-300 font-medium mb-1" htmlFor="topic">Topic</label>
                 <select id="topic" className="form-select w-full text-gray-300">
-                  <option>General inquiry</option>
+                  <option>General</option>
+                  <option>Sales</option>
                   <option>Affiliate program</option>
                   <option>Developer partnership program</option>
+                  <option>Say hi 👋</option>
                 </select>
               </div>
             </div>
