@@ -81,7 +81,7 @@ const Page = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
-    summary: {
+    description: {
       type: 'string',
       required: true,
     },
@@ -150,7 +150,7 @@ const Doc = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
-    summary: {
+    description: {
       type: 'string',
       required: true,
     },

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: {
 
   if (!doc) return
 
-  const { title, summary: description } = doc
+  const { title, description } = doc
 
   return {
     title,
