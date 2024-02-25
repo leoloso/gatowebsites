@@ -3,8 +3,8 @@ title: Conditional Field Manipulation
 description: "Apply a directive on a field only if some condition is met."
 # image: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 500
-shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/87898187-fe40-4d23-917b-7a5ba56da027
-shopProductURL: https://shop.gatographql.com/checkout/buy/d1b5055d-7c98-465b-a6bd-81afdc5a24f1
+# shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/87898187-fe40-4d23-917b-7a5ba56da027
+# shopProductURL: https://shop.gatographql.com/checkout/buy/d1b5055d-7c98-465b-a6bd-81afdc5a24f1
 productPrices:
 - 9.99
 - 19.99

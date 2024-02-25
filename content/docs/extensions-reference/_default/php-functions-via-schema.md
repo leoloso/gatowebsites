@@ -3,8 +3,8 @@ title: PHP Functions via Schema
 description: "Manipulate the field output using standard programming language functions available in PHP."
 # image: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 2400
-shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/e88823b7-20dc-4914-afb3-aab42288709a
-shopProductURL: https://shop.gatographql.com/checkout/buy/f095499f-c598-4fb5-97c7-1a03f28b3dde
+# shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/e88823b7-20dc-4914-afb3-aab42288709a
+# shopProductURL: https://shop.gatographql.com/checkout/buy/f095499f-c598-4fb5-97c7-1a03f28b3dde
 productPrices:
 - 24.99
 - 49.99

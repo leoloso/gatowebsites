@@ -3,8 +3,8 @@ title: Response Error Trigger
 description: "Explicitly add an error entry to the response to trigger the failure of the GraphQL request (whenever a field does not meet the expected conditions)."
 # image: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 2500
-shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/65056485-6c39-46dd-8708-b195c1661cbd
-shopProductURL: https://shop.gatographql.com/checkout/buy/be5eeba2-60c9-4b64-8c7b-7a4d349c09c5
+# shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/65056485-6c39-46dd-8708-b195c1661cbd
+# shopProductURL: https://shop.gatographql.com/checkout/buy/be5eeba2-60c9-4b64-8c7b-7a4d349c09c5
 productPrices:
 - 4.99
 - 9.99

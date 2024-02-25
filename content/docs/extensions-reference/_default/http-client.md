@@ -3,8 +3,8 @@ title: HTTP Client
 description: "Addition of fields to execute HTTP requests against a webserver and fetch their response."
 # image: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 1800
-shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/72a4a1fc-2a3b-4985-bf95-97cbe498b070
-shopProductURL: https://shop.gatographql.com/checkout/buy/aa7906d2-92d3-4d24-b041-1837c01460f5
+# shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/72a4a1fc-2a3b-4985-bf95-97cbe498b070
+# shopProductURL: https://shop.gatographql.com/checkout/buy/aa7906d2-92d3-4d24-b041-1837c01460f5
 productPrices:
 - 24.99
 - 49.99
