@@ -1,0 +1,79 @@
+---
+title: Send an email to the admin notifying of a new post
+metaDesc: "Integrate this query with automation to notify the admin when there's a new post on the site"
+socialImage: /assets/GatoGraphQL-logo-suki.png
+#order: 100
+referencedTutorialLessonSlugs:
+- 'sending-a-notification-when-there-is-a-new-post'
+- 'sending-emails-with-pleasure'
+referencedExtensionSlugs:
+- 'email-sender'
+- 'field-to-input'
+- 'helper-function-collection'
+- 'multiple-query-execution'
+- 'php-functions-via-schema'
+# bundlesContainingReferencedExtensionSlugs:
+# - all-in-one-toolbox-for-wordpress
+# - better-wordpress-webhooks
+# - private-graphql-server-for-wordpress
+# - tailored-wordpress-automator
+# - unhindered-wordpress-email-notifications
+predefinedPersistedQueryTitleInPlugin: Send email to admin about post
+---
+
+This query sends an email to the admin user, notifying of the creation of a new post on the site:
+
+```graphql
+query GetPostAndExportData($postId: ID!) {
+  post(by: { id: $postId }, status: any) {
+    content @export(as: "postContent")
+    title @export(as: "postTitle")
+    url @export(as: "postURL")
+  }
+}
+
+query GetEmailData
+  @depends(on: "GetPostAndExportData")
+{
+  adminEmail: optionValue(name: "admin_email")
+    @export(as: "adminEmail")
+
+  emailMessageTemplate: _strConvertMarkdownToHTML(
+    text: """
+
+There is a [new post on the site]({$postURL}):
+
+**{$postTitle}**:
+
+{$postContent}
+
+    """
+  )
+  emailMessage: _strReplaceMultiple(
+    search: ["{$postTitle}", "{$postContent}", "{$postURL}"],
+    replaceWith: [$postTitle, $postContent, $postURL],
+    in: $__emailMessageTemplate
+  )
+    @export(as: "emailMessage")
+
+  emailSubject: _sprintf(
+    string: "New post: \"%s\"",
+    values: [$postTitle]
+  )
+    @export(as: "emailSubject")
+}
+
+mutation SendEmailToAdminAboutNewPost @depends(on: "GetEmailData") {
+  _sendEmail(
+    input: {
+      to: $adminEmail
+      subject: $emailSubject
+      messageAs: {
+        html: $emailMessage
+      }
+    }
+  ) {
+    status
+  }
+}
+```

@@ -1,0 +1,140 @@
+---
+title: Retrieve the latest artifact download URLs from GitHub
+metaDesc: "Access the latest version of your plugin on your GitHub repo (eg: to install it in your WordPress site using WP-CLI)"
+socialImage: /assets/GatoGraphQL-logo-suki.png
+#order: 100
+referencedTutorialLessonSlugs:
+- 'creating-an-api-gateway'
+- 'not-leaking-credentials-when-connecting-to-services'
+- 'retrieving-data-from-an-external-api'
+referencedExtensionSlugs:
+- 'field-on-field'
+- 'field-to-input'
+- 'field-value-iteration-and-manipulation'
+- 'http-client'
+- 'multiple-query-execution'
+- 'php-constants-and-environment-variables-via-schema'
+- 'php-functions-via-schema'
+# bundlesContainingReferencedExtensionSlugs:
+# - all-in-one-toolbox-for-wordpress
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - private-graphql-server-for-wordpress
+# - tailored-wordpress-automator
+---
+
+This query retrieves the latest artifacts from the GitHub Actions API, and extracts their URL to be downloaded, avoiding the need for the client to be signed in to GitHub (eg: using the `wp plugin install` WP-CLI command to install the latest version of your plugin under development).
+
+```graphql
+query RetrieveGitHubAccessToken {
+  githubAccessToken: _env(name: "GITHUB_ACCESS_TOKEN")
+    @export(as: "githubAccessToken")
+    @remove
+}
+
+query RetrieveProxyArtifactDownloadURLs(
+  $repoAccount: String!
+  $repoProject: String!
+  $numberArtifacts: Int! = 1
+)
+  @depends(on: "RetrieveGitHubAccessToken")
+{
+  githubArtifactsEndpoint: _sprintf(
+    string: "https://api.github.com/repos/%s/%s/actions/artifacts?per_page=%s",
+    values: [$repoAccount, $repoProject, $numberArtifacts]
+  )
+    @remove
+
+  # Retrieve Artifact data from GitHub Actions API
+  gitHubArtifactData: _sendJSONObjectItemHTTPRequest(
+    input: {
+      url: $__githubArtifactsEndpoint,
+      options: {
+        auth: {
+          password: $githubAccessToken
+        },
+        headers: [
+          {
+            name: "Accept",
+            value: "application/vnd.github+json"
+          }
+        ]
+      }
+    }
+  )
+    @remove
+  
+  # Extract the URL from within each "artifacts" item
+  gitHubProxyArtifactDownloadURLs: _objectProperty(
+    object: $__gitHubArtifactData,
+    by: {
+      key: "artifacts"
+    }
+  )
+    @underEachArrayItem(passValueOnwardsAs: "artifactItem")
+      @applyField(
+        name: "_objectProperty",
+        arguments: {
+          object: $artifactItem,
+          by: {
+            key: "archive_download_url"
+          }
+        },
+        setResultInResponse: true
+      )
+    @export(as: "gitHubProxyArtifactDownloadURLs")
+}
+
+query CreateHTTPRequestInputs
+  @depends(on: "RetrieveProxyArtifactDownloadURLs")
+{
+  httpRequestInputs: _echo(value: $gitHubProxyArtifactDownloadURLs)
+    @underEachArrayItem(
+      passValueOnwardsAs: "url"
+    )
+      @applyField(
+        name: "_objectAddEntry",
+        arguments: {
+          object: {
+            options: {
+              auth: {
+                password: $githubAccessToken
+              },
+              headers: {
+                name: "Accept",
+                value: "application/vnd.github+json"
+              },
+              allowRedirects: null
+            }
+          },
+          key: "url",
+          value: $url
+        },
+        setResultInResponse: true
+      )
+    @export(as: "httpRequestInputs")
+    @remove
+}
+
+query RetrieveActualArtifactDownloadURLs
+  @depends(on: "CreateHTTPRequestInputs")
+{
+  _sendHTTPRequests(
+    inputs: $httpRequestInputs
+  ) {
+    artifactDownloadURL: header(name: "Location")
+      @export(as: "artifactDownloadURLs", type: LIST)
+  }
+}
+
+query RetrieveLatestArtifactDownloadURLsFromGitHub
+  @depends(on: "RetrieveActualArtifactDownloadURLs")
+{
+  artifactDownloadURLs: _echo(value: $artifactDownloadURLs)
+}
+```
+
+And define in `wp-config.php`:
+
+```php
+define( 'GITHUB_ACCESS_TOKEN', '{ your github access token }' );
+```

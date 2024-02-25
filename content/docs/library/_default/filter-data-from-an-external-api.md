@@ -1,0 +1,67 @@
+---
+title: Filter data from an external API
+metaDesc: "If the API does not allow filtering results that satisfy some condition (such as having a field with a non-empty value), we can implement an API gateway that removes those entries that do not satifsy our condition"
+socialImage: /assets/GatoGraphQL-logo-suki.png
+#order: 100
+referencedTutorialLessonSlugs:
+- 'filtering-data-from-an-external-api'
+- 'retrieving-data-from-an-external-api'
+referencedExtensionSlugs:
+- 'conditional-field-manipulation'
+- 'field-on-field'
+- 'field-value-iteration-and-manipulation'
+- 'http-client'
+- 'php-functions-via-schema'
+# bundlesContainingReferencedExtensionSlugs:
+# - all-in-one-toolbox-for-wordpress
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - better-wordpress-webhooks
+# - private-graphql-server-for-wordpress
+# - selective-content-import-export-and-sync-for-wordpress
+# - tailored-wordpress-automator
+# - versatile-wordpress-request-api
+---
+
+If we need to fetch data from an external API, but we only need those results that satisfy some condition (such as having a field with a non-empty value), and the API does not support filtering, we can then use Gato GraphQL to implement an API gateway that removes those entries that do not satifsy our condition.
+
+For instance, when invoking the REST API endpoint `/users` from some WordPress site, we can filter out those users that have the `url` field empty:
+
+```graphql
+query FilterDataFromWordPressAPI(
+  # eg: https://somesite.com/wp-json/wp/v2/users/?_fields=id,name,url
+  $endpointURL: URL!
+) {
+  usersWithWebsiteURL: _sendJSONObjectCollectionHTTPRequest(
+    input: {
+      url: $endpointURL
+    }
+  )
+    # Remove users without a website URL
+    @underEachArrayItem(
+      passValueOnwardsAs: "userDataEntry"
+      affectDirectivesUnderPos: [1, 2, 3]
+    )
+      @applyField(
+        name: "_objectProperty"
+        arguments: {
+          object: $userDataEntry
+          by: {
+            key: "url"
+          }
+        }
+        passOnwardsAs: "websiteURL"
+      )
+      @applyField(
+        name: "_isEmpty"
+        arguments: {
+          value: $websiteURL
+        }
+        passOnwardsAs: "isWebsiteURLEmpty"
+      )
+      @if(
+        condition: $isWebsiteURLEmpty
+      )
+        @setNull
+    @arrayFilter
+}
+```

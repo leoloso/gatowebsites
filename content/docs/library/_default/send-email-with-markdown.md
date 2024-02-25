@@ -1,0 +1,57 @@
+---
+title: Send an email using Markdown
+metaDesc: "Converting Markdown into HTML content"
+socialImage: /assets/GatoGraphQL-logo-suki.png
+#order: 100
+referencedTutorialLessonSlugs:
+- 'sending-emails-with-pleasure'
+referencedExtensionSlugs:
+- 'email-sender'
+- 'helper-function-collection'
+- 'multiple-query-execution'
+# bundlesContainingReferencedExtensionSlugs:
+# - all-in-one-toolbox-for-wordpress
+# - better-wordpress-webhooks
+# - private-graphql-server-for-wordpress
+# - tailored-wordpress-automator
+# - unhindered-wordpress-email-notifications
+---
+
+This query uses Markdown (which is converted to HTML) to compose the email.
+
+```graphql
+query GetEmailData {
+  emailMessage: _strConvertMarkdownToHTML(
+    text: """
+
+We have great news: **Version 1.0 of our plugin will be released soon!**
+
+If you'd like to help us beta test it, please **please reply to this email by 30th June** 🙏
+
+Thanks!
+
+    """
+  )
+    @export(as: "emailMessage")
+}
+
+mutation SendEmailWithMarkdown @depends(on: "GetEmailData") {
+  _sendEmail(
+    input: {
+      to: "target@email.com"
+      subject: "Great news!"
+      messageAs: {
+        html: $emailMessage
+      }
+    }
+  ) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+}
+```

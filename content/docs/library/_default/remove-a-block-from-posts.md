@@ -1,0 +1,76 @@
+---
+title: Remove a block from posts
+metaDesc: Remove a block of a given type from all posts
+socialImage: /assets/GatoGraphQL-logo-suki.png
+#order: 100
+referencedTutorialLessonSlugs:
+- 'inserting-removing-a-gutenberg-block-in-bulk'
+referencedExtensionSlugs:
+- 'field-response-removal'
+- 'field-to-input'
+- 'multiple-query-execution'
+- 'php-functions-via-schema'
+# bundlesContainingReferencedExtensionSlugs:
+# - all-in-one-toolbox-for-wordpress
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - better-wordpress-webhooks
+# - private-graphql-server-for-wordpress
+# - selective-content-import-export-and-sync-for-wordpress
+# - simplest-wordpress-content-translation
+# - tailored-wordpress-automator
+# - versatile-wordpress-request-api
+predefinedPersistedQueryTitleInPlugin: Remove block from posts
+---
+
+This query removes a block of a given type (such as `mycompany:black-friday-campaign-video`) from all posts.
+
+**_This query requires the endpoint to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled._**
+
+```graphql
+query CreateVars(
+  $removeBlockType: String!
+) {
+  regex: _sprintf(
+    string: "#(<!-- %1$s -->[\\s\\S]+<!-- /%1$s -->)#",
+    values: [$removeBlockType]
+  )
+    @export(as: "regex")
+    @remove
+
+  search: _sprintf(
+    string: "\"<!-- /%1$s -->\"",
+    values: [$removeBlockType]
+  )
+    @export(as: "search")
+    @remove
+}
+
+mutation RemoveBlockFromPosts
+  @depends(on: "CreateVars")
+{
+  posts(filter: { search: $search } ) {
+    id
+    rawContent
+    adaptedRawContent: _strRegexReplace(
+      in: $__rawContent,
+      searchRegex: $regex,
+      replaceWith: ""
+    )
+    update(input: {
+      contentAs: { html: $__adaptedRawContent },
+    }) {
+      status
+      errors {
+        __typename
+        ...on ErrorPayload {
+          message
+        }
+      }
+      post {
+        id
+        rawContent
+      }
+    }
+  }
+}
+```
