@@ -233,7 +233,7 @@ If we do not want to treat any non-`200s` status code (such as `302`, `404` or `
 
 </div>
 
-<!-- These fields already convert the response to `JSONObject` or `[JSONObject]`. -->
+{/* <!-- These fields already convert the response to `JSONObject` or `[JSONObject]`. --> */}
 
 Adapting the previous query:
 
@@ -443,7 +443,7 @@ Passing these variables:
 
 ## Connecting to a GraphQL API
 
-<!-- (As the Mailchimp API doesn't support GraphQL, we switch to a different API for this example.) -->
+{/* <!-- (As the Mailchimp API doesn't support GraphQL, we switch to a different API for this example.) --> */}
 
 [**HTTP Client**](https://gatographql.com/extensions/http-client/) also provides a function field to conveniently connect to GraphQL APIs.
 
@@ -573,7 +573,7 @@ The `@cache` directive:
 - Is independent (i.e. it does not care about the logic of the fields where it is applied), hence it works whether the HTTP request method is `GET` or `POST`
 - It does not work with `_sendHTTPRequest`, as the `HTTPResponse` object it returns is a "transient" object (i.e. it is not stored in the WordPress database), that only lives during the current request
 
-<!-- `@cache` will store the value of the field at the moment in which this directive is applied. Then, if there are other directives on the same field, the order matters:
+{/* <!-- `@cache` will store the value of the field at the moment in which this directive is applied. Then, if there are other directives on the same field, the order matters:
 
 ```graphql
 {
@@ -589,7 +589,7 @@ The `@cache` directive:
       @cache
   }
 }
-``` -->
+``` --> */}
 
 </div>
 
