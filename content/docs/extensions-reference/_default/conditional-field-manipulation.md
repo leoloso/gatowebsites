@@ -1,6 +1,6 @@
 ---
 title: Conditional Field Manipulation
-metaDesc: "Apply a directive on a field only if some condition is met."
+description: "Apply a directive on a field only if some condition is met."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 500
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/87898187-fe40-4d23-917b-7a5ba56da027

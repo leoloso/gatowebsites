@@ -1,6 +1,6 @@
 ---
 title: Access Control
-metaDesc: "Grant granular access to the schema, based on the user being logged-in (or not), having a certain role or capability, and more."
+description: "Grant granular access to the schema, based on the user being logged-in (or not), having a certain role or capability, and more."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 100
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/63163f50-318a-4a43-9038-48bdf3a51eec

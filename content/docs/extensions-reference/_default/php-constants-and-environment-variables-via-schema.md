@@ -1,6 +1,6 @@
 ---
 title: PHP Constants and Environment Variables via Schema
-metaDesc: "Query the value from an environment variable or PHP constant."
+description: "Query the value from an environment variable or PHP constant."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 2300
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/2c20e69d-5af3-43fc-b5bc-b3534d175af2

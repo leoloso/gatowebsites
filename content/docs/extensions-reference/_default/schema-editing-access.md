@@ -1,6 +1,6 @@
 ---
 title: Schema Editing Access
-metaDesc: "Grant access to users other than admins to edit the GraphQL schema."
+description: "Grant access to users other than admins to edit the GraphQL schema."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 2600
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/8edd16a5-ce4e-41bc-973e-940c5bccc2fd

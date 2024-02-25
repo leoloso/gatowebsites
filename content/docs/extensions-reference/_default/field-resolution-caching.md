@@ -1,6 +1,6 @@
 ---
 title: Field Resolution Caching
-metaDesc: "Cache and retrieve the response for expensive field operations."
+description: "Cache and retrieve the response for expensive field operations."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 1200
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/7cf373db-5d40-4679-b564-535c8d23cb74

@@ -1,6 +1,6 @@
 ---
 title: Low-Level Persisted Query Editing
-metaDesc: "Make normally-hidden directives (which inject some functionality into the GraphQL server) visible when editing a persisted query."
+description: "Make normally-hidden directives (which inject some functionality into the GraphQL server) visible when editing a persisted query."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 2100
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/4068a7be-7cda-4b78-a387-0ac3e7fbe2e9
