@@ -1,0 +1,443 @@
+---
+title: "💬 Proposing a new approach for 'Gutenberg and Decoupled Applications'"
+summary: Use strong typing to model Gutenberg blocks? Or keep it flexible?
+image: /images/block-metadata-icon-256x256.jpg
+publishedAt: '2021-03-13'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - api
+  - wordpress
+  - plugin
+---
+
+A few days ago, WPGraphQL's creator Jason Bahl published [Gutenberg and Decoupled Applications](https://www.wpgraphql.com/2021/03/09/gutenberg-and-decoupled-applications/), analyzing the benefits and shortcomings of 3 approaches to integrating GraphQL with Gutenberg.
+
+A week earlier, he had also [said on Twitter](https://twitter.com/jasonbahl/status/1365713792412184576) that the GraphQL API for WordPress's approach to modeling Gutenberg is inappropriate:
+
+> This isn’t something to brag about, in my opinion. One thing GraphQL tries to solve with a Typed Schema is providing predictability and consistency for clients, and giving clients control to ask for what they want, down to the field.
+>
+> Returning a wildcard “Object” Type with no predictable shape means client applications can break at any time because there’s no longer a contract between the Server and the client. The server now has taken away control from the client.
+
+Through this article, I join the conversation. I'll address Jason's criticism and, in doing so, describe my plugin's approach, and show why I believe it can actually suit Gutenberg very well.
+
+## Using COPE to extract Gutenberg metadata
+
+My solution could be considered the 4th approach, and it's the following:
+
+To obtain the Gutenberg data to power GraphQL, do not create an additional schema on the PHP side, or duplicate any existing data. Instead, extract the data from the blocks' stored content, using the COPE ("Create Once, Publish Everywhere") strategy.
+
+(COPE is a strategy that enables to have a single source of truth of content, and expose it to different applications. In our case, the single source of truth is the Gutenberg block data, as it is stored in the database. I have described COPE, and its implementation for WordPress, in [this article](https://www.smashingmagazine.com/2019/10/create-once-publish-everywhere-wordpress/).)
+
+Finally, we can use GraphQL to retrieve the extracted data, for any Gutenberg block, by mapping all blocks to a single `Block` type.
+
+## This strategy is a trade-off, not a definitive solution
+
+This strategy does not solve the issue that Jason is pointing out: the lack of a schema on the server-side, which would enable the creation of a contract between the server and the client.
+
+COPE can't solve this issue because, solely from the stored content, we can't recreate the schema:
+
+- The stored content does not indicate the type of the field
+- The stored content does not indicate what restrictions the field has (is it nullable? is it a positive integer? is the string for an email or an URL?)
+- Nullable fields can have a default value, which won't be present on the stored content
+
+However, using the COPE strategy, and a single `Block` type to represent all blocks, the GraphQL API plugin can build a very decent integration with Gutenberg, that overcomes the existing limitations.
+
+I'll explain throughout this article.
+
+## GraphQL API's integration with Gutenberg
+
+This solution is a work in progress, but I can already explain how it will behave.
+
+Instead of depending on a different type per block (as WPGraphQL does when relying on the [WPGraphQL for Gutenberg](https://github.com/pristas-peter/wp-graphql-gutenberg) plugin), the GraphQL API plugin will provide a single `Block` type to represent all blocks.
+
+In this query, the field `Post.blockDataItems` retrieves a list of `Block` elements from the post (for different Gutenberg blocks, including paragraphs, images, lists, and others):
+
+```graphql
+{
+  post(by: { id: 1499 }) {
+    title
+    blockDataItems
+  }
+}
+```
+
+If we want to retrieve data for a specific block, we can filter based on the block's name (`core/paragraph`, `core/quote`, etc).
+
+In this query, we only retrieve the image blocks:
+
+```graphql
+{
+  post(by: { id: 1177 }) {
+    title
+    blockDataItems(
+      filterBy: { include: "core/image" }
+    )
+  }
+}
+```
+
+## Inspecting the single `Block` type
+
+With this approach, the response can vary depending on the stored content, not on a schema. This quality is both its advantage (since it makes the API flexible) and its disadvantage (we can't enforce server-client contracts).
+
+Every `Block` element contains two properties:
+
+- `name`: The name of the block (`core/paragraph`, `core/quote`, etc)
+- `meta`: The metadata contained in the block
+
+Every Gutenberg block is different, containing different data (a paragraph content, a Youtube video, an image source URL and dimensions, etc). Hence, the data contained in the response for the `meta` field will also be different.
+
+As such, the `meta` field has been mapped simply as a JSON object (which can contain "raw" data), via a corresponding `JSONObject` type in the GraphQL schema.
+
+It produces this response:
+
+```json
+{
+  "data": {
+    "post": {
+      "title": "COPE with WordPress: Post demo containing plenty of blocks",
+      "blockDataItems": [
+        {
+          "name": "core/paragraph",
+          "attributes": {
+            "content": "Lorem ipsum dolor sit amet"
+          }
+        },
+        {
+          "name": "core/image",
+          "attributes": {
+            "src": "https://ps.w.org/gutenberg/assets/banner-1544x500.jpg"
+          }
+        },
+        {
+          "name": "core/quote",
+          "attributes": {
+            "quote": "Etiam tempor orci eu lobortis elementum nibh tellus molestie",
+            "cite": "Aristoteles"
+          }
+        },
+        {
+          "name": "core/heading",
+          "attributes": {
+            "size": "xl",
+            "heading": "Welcome to my site"
+          }
+        },
+        {
+          "name": "core/list",
+          "attributes": {
+            "items": [
+              "First element",
+              "Second element",
+              "Third element"
+            ]
+          }
+        },
+      ]
+    }
+  }
+}
+```
+
+As we can see, we have different blocks retrieving different properties:
+
+- `core/paragraph` has property `content`
+- `core/image` has property `src`, and optionally properties `width`, `height` and `caption` (not appearing in the response above)
+- `core/quote` has properties `quote` and `cite` (for the quoted person)
+- `core/heading` has properties `header` and `size` (value `xl` represents `<h2>`, because COPE decouples the value from the target application, in this case a website)
+- `core/list` has property `items`, which is a list of elements
+
+## Why the `JSONObject` type is not part of the spec
+
+The `JSONObject` type I described above allows GraphQL to retrieve "dynamic" fields (such as fields that we don't know of), or fields which can have multiple configurations (as may be the case with Gutenberg blocks).
+
+Now, the [GraphQL spec](https://spec.graphql.org/) currently does not support the `JSONObject` or `Map` types. Adding support [has been requested](https://github.com/graphql/graphql-spec/issues/101), for reasons [such as](https://github.com/graphql/graphql-spec/issues/101#issuecomment-386836767):
+
+> [...] the lack of this feature is particularly problematic because it's supported in many of the type systems and services that GraphQL interfaces with.
+>
+> This leads to implementing custom resolvers on the server, followed by custom transforms on the client, to deal with situations where my server is sending a Map, and my client wants a Map, and GraphQL is in the middle with no support for Maps. Yes, **it is possible, and I have done it**, but it is fair bit of boilerplate and abstraction that seems to defeat the purpose of __writing the API spec in GraphQL__.
+
+This feature is not supported by the spec because dealing with dynamic fields goes against GraphQL's strong typing behavior, which breaks the contract between the server and the client.
+
+Still, this type can be benefitial to Gutenberg, as I will show later on.
+
+## Problems when using a different type per block, and a server-side registry
+
+If creating a new GraphQL type per block, then all plugins must have their blocks be added to the GraphQL schema. This could be automatically accomplished by having all blocks define their properties on the [proposed new server-side registry](https://www.wpgraphql.com/2021/03/09/gutenberg-and-decoupled-applications/#whats-next).
+
+If they don't, their blocks will be unavailable to the API, and this can have additional consequences. In some circumstances, the whole queried post's content may become unreliable.
+
+This may be the case when GraphQL interacts with an external cloud-based service, which applies some function to all the blocks in the post (think of translation, fixing grammar, SEO suggestions, analytics, etc). 
+
+Let's see an example of this.
+
+Since multilingual capabilities will be added to Gutenberg in phase 4, let's model how to translate all blocks in the plugin, via a call to the Google Translate API executed via a `@strTranslate` directive.
+
+(After this initial API-based translation, the user can keep editing the blog post, in the translated language, always within the WordPress editor.)
+
+Different blocks contain different pieces of information that must be translated:
+
+- `core/paragraph`: the text
+- `core/image`: the caption
+- `core/quote`: the quote, and the quoted person (since it could be the person's title, such as "The school headmaster")
+- `core/heading`: the header
+- `core/list`: all the items in the list
+
+Using a different type per block, the resulting query may be something like this:
+
+```graphql
+{
+  post(by: { id: 1 }) {
+    blocks {
+      ... on CoreParagraphBlock {
+        content @strTranslate
+      }
+      ... on CoreImageBlock {
+        caption @strTranslate
+      }
+      ... on CoreQuoteBlock {
+        quote @strTranslate
+        cite @strTranslate
+      }
+      ... on CoreHeadingBlock {
+        heading @strTranslate
+      }
+      ... on CoreListBlock {
+        items @strTranslateList
+      }
+      ... on EmbedTwitterBlock {
+        caption @strTranslate
+      }
+      ... on EmbedYoutubeBlock {
+        caption @strTranslate
+      }
+      ... on EmbedVimeoBlock {
+        caption @strTranslate
+      }
+    }
+  }
+}
+```
+
+And so on and on. The more blocks we have, the longer this query will be, easily spanning a hundred lines and even more.
+
+The obvious problem is that the query becomes a wild beast that we need to maintain.
+
+Also, we need to introduce custom functionality to make it work for every block. For instance, `@strTranslate` doesn't work with `CoreListBlock.items`, which returns a list of strings (i.e. it returns `[String]`, while the directive expects `String`), and so we have to create `@strTranslateList`.
+
+And then `core/table` would need its own custom directive (`@strTranslateTable`?).
+
+And custom 3rd-party blocks may need their own custom directives.
+
+And then, I see a couple more issues.
+
+### It's all or nothing
+
+A blog post may contain any block installed in the WordPress editor. And we don't know in advance (when coding the query) what blocks does the post consume.
+
+Then, at one type per block, the number of types to handle in the query will not be equivalent to the number of blocks in the post. Instead, it will be equivalent to the **number of blocks installed in the WordPress editor**.
+
+What happens if we have 100 blocks on our site, including both from WordPress core and plugins? Then we need to have 100 types mapped to the GraphQL schema. A single one that is not mapped can break the "content contract", resulting in some blocks being translated from English to French, while others remain in English.
+
+As a result, we won't be able to trust the translated posts anymore, whether they contain the offending block or not. So if not all blocks are added to the registry, then the application may become unreliable.
+
+### The query must be updated every time a new block is installed
+
+Likewise, every block must be handled on the GraphQL query. That means that, whenever installing a new block, we need to go to our application's code, update it, and re-deploy it.
+
+This is not just extra bureaucracy: We won't be able to install a block on a live site, without the fear of breaking the application (until all queries are updated).
+
+## GraphQL must serve WordPress, not the other way around
+
+Considering again why the `JSONObject` was not added to the GraphQL spec, it is because it doesn't suit the GraphQL way of doing things.
+
+However, here we are not truly concerned with GraphQL. We only care about WordPress and, more specifically in this case, Gutenberg.
+
+When integrating GraphQL with Gutenberg, GraphQL will operate within the context of WordPress. That means that WordPress will need to satisfy the requirements from GraphQL. But more importantly, it is GraphQL that needs to satisfy the requirements from WordPress.
+
+And in case of conflict, **WordPress has priority**.
+
+If a feature does not suit GraphQL, but it nevertheless suits Gutenberg, should it considered?
+
+I think it should.
+
+Let's see how a single `Block` type can better serve Gutenberg.
+
+## Solving the previous problems via a single `Block` type
+
+Following the previous example, translating all the blocks in a post from English to French, using a single `Block` type, will be done like this (or something around this concept):
+
+```graphql
+{
+  post(by: { id: 1 }) {
+    blocks {
+      name
+      meta
+        @advancePointersInArray(paths: "{{ translatablePaths }}")
+          @underEachArrayItem
+            @strTranslate(from: "en", to: "fr")
+    }
+  }
+}
+```
+
+That's it? The whole query? To translate all blocks? Yes.
+
+Will it work for all blocks, from both core and plugins, already existing or yet-to-be-created? Yes.
+
+Does this query look a bit strange to you? If it does, it's because it uses non-standard GraphQL features, supported only by the GraphQL API plugin:
+
+- `{{ translatablePaths }}` is an embeddable field, to input the value of a field as argument to another field or directive (in this case, the `Block` type will have a field `translatableFields`, whose value is injected to directive `@advancePointersInArray`)
+- directives can [be composed by other directives](https://gatographql.com/guides/special-features/composable-directives/)
+
+Now, if a feature satisfies exactly what the CMS needs, but the feature is non-standard, should we still use it? I think we should.
+
+I have also requested these features for the GraphQL spec (even though, they will not be accepted):
+
+- [#682: [RFC] Composable fields](https://github.com/graphql/graphql-spec/issues/682)
+- [#683: [RFC] Composable directives](https://github.com/graphql/graphql-spec/issues/683)
+
+## How the single `Block` type works
+
+Warning: technical section ahead.
+
+The `Block` type will have a field `translatablePaths`, returning an array of the properties from the `JSONObject` that must be translated:
+
+- `core/paragraph` returns `["content"]`
+- `core/image` returns `["caption"]`
+- `core/quote` returns `["quote", "cite"]`
+- `core/heading` returns `["header"]`
+- `core/list` returns `["items.0", "items.1", "items.2", ...]`
+
+[`@advancePointersInArray`](https://gatographql.com/guides/schema/using-composable-directives/#heading-@advancepointerinarray) is a meta-directive: it modifies the context for a subsequent directive. It makes the subsequent directive receive a sub-element from within the queried `JSONObject`, such as the `content` property from the paragraph block. The list of paths is obtained via field `translatablePaths`, evaluated on the same queried entity.
+
+Then, [`@underEachArrayItem`](https://gatographql.com/guides/schema/using-composable-directives/#heading-@foreach) is another meta-directive, which iterates over a list of elements from the queried entity, and passes a reference to the iterated element to the next directive. In this case, it gets all the list of the properties to translate for all entities, each of them of type `String`, and passes individual `String` elements down the line.
+
+Finally, directive `@strTranslate` receives an element of type `String` contained within the `JSONObject`, and it translates it right there, within the `JSONObject` itself.
+
+Please notice how flexible this solution is. Just providing the path to the string within the `JSONObject` is enough to access the value, modify it with `@strTranslate` (or any other directive), and possibly even store the value again on the DB (work to accomplish this is currently in progress).
+
+It already works for `core/list`, since all the elements in the list can be reached under their own path (`items.0` is the 1st element in the array, and so on). Then, it can access the `String` value from each, and pass it down to `@strTranslate`, so there is no need to create `@strTranslateList`.
+
+Similarly, it will also work with `core/table`. We just need to expose the data via property `cells`, which will be an array of 2 dimensions (one for rows, containing one for columns). Then, `translatablePaths` can reach all elements as `["cells.0.0", "cells.0.1", "cells.1.0", ...]`.
+
+And it will work for any 3rd-party block too. For that, we must pay attention how the block data is stored, and from there we can deduce the path to its properties.
+
+## A single `Block` requires configuration, based on PHP code
+
+Mapping the blocks, so that we know where to find their metadata properties, can be accomplished through configuration. So we can deal with it in a very flexible way.
+
+In Gutenberg, there are two places where a property from the block can be stored: as an attribute, or inside the rendered content.
+
+For instance, this is how the `core/image` block is stored:
+
+```html
+<!-- wp:image {"id":1670,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large">
+<img src="https://newapi.getpop.org/wp/wp-content/uploads/2021/01/dynamic-include-first-query.png" alt="" class="wp-image-1670"/>
+</figure>
+<!-- /wp:image -->
+```
+
+In this case, we have:
+
+1. Properties `id`, `sizeSlug` and `linkDestination` are stored as attributes
+2. Property `src` is stored inside the rendered content
+
+Now, when querying the API, the response for the `core/image` block will be the following:
+
+```json
+{
+  "data": {
+    "blocks": [
+      {
+        "name": "core/image",
+        "meta": {
+          "id": 1670,
+          "sizeSlug": "large",
+          "linkDestination": "none",
+          "src": "https://newapi.getpop.org/wp/wp-content/uploads/2021/01/dynamic-include-first-query.png"
+        }
+      }
+    ]
+  }
+}
+```
+
+The API knows how to retrieve the properties by parsing the stored block in Gutenberg (that is the COPE strategy). This process can be done automatically up to some degree, and then some manual input via hooks, or through some user interface.
+
+To obtain the properties directly mapped as attributes is trivial. The GraphQL server can already retrieve all attributes from the block, and make them available as properties. Or, if we want to explicitly define which ones to expose, we can do it via filter hooks:
+
+```php
+$attrs = apply_filters("blockPropsAsAttr:core/image", []);
+
+add_filter("blockPropsAsAttr:core/image", function ($attrs) {
+  return array_merge($attrs, ['id', 'sizeSlug', 'linkDestination']);
+})
+```
+
+The properties stored in the content can be extracted via some regex:
+
+```php
+$propRegexes = apply_filters("blockPropsAsRegex:core/image", []);
+
+add_filter("blockPropsAsRegex:core/image", function ($propRegexes) {
+  $propRegexes['src'] = '/<img src="(.*?)"/';
+  return $propRegexes;
+})
+```
+
+Finally, we indicate which are the block's translatable properties, for `@strTranslate` to act upon:
+
+```php
+$propRegexes = apply_filters("translatableProperties:core/image", []);
+
+add_filter("translatableProperties:core/image", function ($properties) {
+  $properties[] = 'caption';
+  return $properties;
+})
+```
+
+Now, these properties must still be satisfied by somebody, most likely the plugin developer. Hence, having the server-side registry will help achieve this goal.
+
+But what if the WordPress community does not want to add the proposed server-side registry? Well, this strategy can easily adapt, because the mapping can be done via PHP code, as just shown.
+
+If any block has not been mapped, the user can also do it, just knowing a bit about Gutenberg, and nothing about GraphQL or schemas.
+
+In addition, we can have GraphQL alert the user when there is block that has not been mapped (and so it can't be translated). We can do this by adding an `@if` meta-directive which, if the condition applies, executes the `@sendEmail` directive:
+
+```graphql
+{
+  post(by: { id: 1 }) {
+    blocks {
+      name
+      meta
+        @advancePointersInArray(paths: "{{ translatablePaths }}")
+          @underEachArrayItem
+            @strTranslate(from: "en", to: "fr")
+        @if(condition: "{{ isTranslatablePathsUnmapped }}")
+          @sendEmail(
+            to: "{{ root.adminEmail }}",
+            subject: "Block with name {{ name }} has 'translatablePaths' unmapped"
+          )
+    }
+  }
+}
+```
+
+This solution is flexible and simple, and has GraphQL serving WordPress, without requiring developers to learn a new technology, or changing how Gutenberg works.
+
+## Conclusion
+
+When thinking of how a possible integration between GraphQL and Gutenberg will look like (from a potential inclusion in WordPress core), we must make sure that GraphQL can handle all the future requirements by Gutenberg, including full support for:
+
+- multilingual blocks
+- Full Site Editing
+- collaborative editing
+- interacting with 3rd-party services on a live site
+
+All of this must be accomplished hopefully without needing to change Gutenberg (at least, not in a considerable way), and reducing the new tasks required from plugin developers.
+
+Taking these into account, I believe that the 4th approach I'm here suggesting can indeed work very well.

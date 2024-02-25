@@ -1,0 +1,132 @@
+---
+title: "🚀 Automate your WordPress tasks, with the new Gato GraphQL v2.1"
+summary: 'The latest release of the Gato GraphQL plugin and its PRO version brings an "automator" interface, to automatically execute GraphQL persisted queries when some event happens in the WordPress site'
+publishedAt: '2024-02-15'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - release
+---
+
+We are delighted to announce that Gato GraphQL `v2.1` has now been released!
+
+<p class="[ p-name text-center ]">
+    <a class="[ button bigger rounded ]" href="https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip" download>Download the latest <strong>Gato GraphQL</strong> release</a>
+</p>
+
+With this new version, and the [PRO extensions](/bundles/all-in-one-toolbox-for-wordpress/), you can do **GraphQL as Automator**, leveraging GraphQL persisted queries to automate data-related tasks in your WordPress site.
+
+Below are all the changes added to `v2.1` (a shorter version is available in the [Release notes in GitHub](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/2.1.0)).
+
+## Support providing the Schema Configuration to apply when invoking the Internal GraphQL Server
+
+We can now specify what Schema Configuration to apply when executing a query via an internal GraphQL Server (i.e. directly within the PHP application, not via an endpoint).
+
+This new feature enhances the [Internal GraphQL Server](https://gatographql.com/extensions/) extension: It now accepts a `$schemaConfigurationIDOrSlug` parameter on methods `executeQuery` and `executeQueryInFile` from the `GraphQLServer` class, and already extracts the schema configuration used by the persisted query on `executePersistedQuery`:
+
+```diff
+class GraphQLServer {
+  
+  public static function executeQuery(
+    string $query,
+    array $variables = [],
+    ?string $operationName = null,
++   // Accept parameter 
++   int|string|null $schemaConfigurationIDOrSlug = null,
+  ): Response {
+    // ...
+  }
+
+  public static function executeQueryInFile(
+    string $file,
+    array $variables = [],
+    ?string $operationName = null,
++   // Accept parameter 
++   int|string|null $schemaConfigurationIDOrSlug = null,
+  ): Response {
+    // ...
+  }
+
+  public static function executePersistedQuery(
+    string|int $persistedQueryIDOrSlug,
+    array $variables = [],
+    ?string $operationName = null,
++   // Schema Configuration is taken directly from the Persisted Query
+  ): Response {
+    // ...
+  }
+```
+
+## GraphQL as Automator [PRO]
+
+The feature above also provides the foundation for upgrading the [Automation](https://gatographql.com/extensions/automation/) extension.
+
+The **Automation** extension now provides an "automator" user interface (directly via the WordPress editor) called [Automation Configurator](https://gatographql.com/extensions/automation/#heading-automation-configurator). The automation trigger is any WordPress action hook, and the action is the execution of a GraphQL persisted query.
+
+<div class="img-width-1024" markdown="1">
+
+![Automation Rule editor](/assets/extensions/upstream-pro/automation-rule-editor.png "Automation Rule editor")
+
+</div>
+
+For instance, when creating a new post, automation rule **Add comments block to new post** (executing the [persisted query with the same name](/library/add-a-mandatory-comments-block-to-post/)) checks if the `core/comments` block is present and, if not, it adds it at the bottom of the post:
+
+<div class="img-width-640" markdown="1">
+
+![Automatically inserting the comments block to new 'draft' posts](/assets/extensions/upstream-pro/automation-rule-insert-mandatory-comments-block.gif "Automatically inserting the comments block to new 'draft' posts")
+
+</div>
+
+These are some ways you can use the automator:
+
+- Create (and optimize) a featured image for new posts using AI
+- Add a mandatory block to the post when published
+- Replace `http` with `https` in all image sources and links when a post is updated
+- Send an email to the admin when there's a new post
+- Send an email to the user whose comment has a new response
+- [Multisite] Translate a new post to different languages, and add the translated posts to each site
+- Execute an action on an external service (eg: automatically share new posts on Facebook)
+
+As you can compose the GraphQL persisted queries and automation rules directly within the wp-admin, it takes no time to create a super-customized automation pipeline, tailored to your needs.
+
+And as there are no constraints in the inputs (the GraphQL query can interact with all data in WordPress, and connect to any external service via an HTTP client), you should be able to satisfy 100% of your requirements.
+
+(Automator plugins typically satisfy 95% of our needs, as we often find that some input that we need hasn't been mapped.)
+
+Several automation rules are already created by the plugin (with status `draft`, so they must be updated to `publish` for them to take effect). You can already use them, and also check them out as examples to create your own automations (this list will be expanded on further releases):
+
+- Add comments block to new post
+- Insert block in new post
+- Send notification email to admin when there is a new post
+- Generate a post's featured image using AI (and optimize it) if a new post has none
+
+<div class="img-width-1024" markdown="1">
+
+![Automation Rules](/assets/extensions/upstream-pro/automation-rules.png "Automation Rules")
+
+</div>
+
+<p class="[ p-name text-center ]">
+    <a class="[ button bigger rounded alternate ]" href="https://app.instawp.io/launch?t=gatographql-demo&d=v2" target="_blank">Try it out in a <strong>testing site</strong>↗</a>
+</p>
+
+## Predefined persisted query "Insert block in post"
+
+The newly-added persisted GraphQL query "Insert block in post" allows to inject a block in a post. It identifies the nth block of a given type (`wp:paragraph` by default) in a post, and places the provided custom block's HTML content right after it.
+
+Used with the [Automation](https://gatographql.com/extensions/automation/) extension, this persisted query can be used to automatically inject mandatory blocks to a newly-published post (eg: a CTA block to promote an ongoing campaign).
+
+## Improvements
+
+- If initializing the service container from the cache fails, fallback to initializing PHP object from memory ([#2638](https://github.com/GatoGraphQL/GatoGraphQL/pull/2638))
+- Give unique operationName to all predefined persisted queries ([#2644](https://github.com/GatoGraphQL/GatoGraphQL/pull/2644))
+- Improved error message when fetching blocks from a post, and the block content has errors
+- Completed documentation for the Automation extension ([#2651](https://github.com/GatoGraphQL/GatoGraphQL/pull/2651))
+- On the "Generate a post's featured image using AI and optimize it" predefined persisted query, execute logic only if the post title is not empty ([#ec931dd](https://github.com/GatoGraphQL/GatoGraphQL/commit/ec931dd))
+
+## Fixed
+
+- Bug in multi-control JS component used by extensions (Access Control, Cache Control, and Field Deprecation) showing "undefined" on the block on the Schema Configuration ([#2639](https://github.com/GatoGraphQL/GatoGraphQL/pull/2639))
+- Bug in regex replacements in predefined persisted queries ([#2649](https://github.com/GatoGraphQL/GatoGraphQL/pull/2649))
+- Avoid reinstalling plugin setup data if deactivating/reactivating the plugin ([#2641](https://github.com/GatoGraphQL/GatoGraphQL/pull/2641))
+- Handle error from passing WP_Post as GraphQL variable to the Internal GraphQL Server ([#2652](https://github.com/GatoGraphQL/GatoGraphQL/pull/2652))

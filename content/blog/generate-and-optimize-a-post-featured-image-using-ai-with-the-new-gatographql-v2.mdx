@@ -1,0 +1,680 @@
+---
+title: "🚀 Generate and optimize a post's featured image using AI, with the new Gato GraphQL v2"
+summary: With the latest release, you can use generative AI to produce images for posts that do not have a featured image, and compress them for the web
+publishedAt: '2024-01-29'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - release
+---
+
+We are delighted to announce that Gato GraphQL `v2.0` has now been released!
+
+<p class="[ p-name text-center ]">
+    <a class="[ button bigger rounded ]" href="https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip" download>Download the latest Gato GraphQL release</a>
+</p>
+
+With this new version, and the [PRO extensions](/bundles/all-in-one-toolbox-for-wordpress/), you can use generative AI to create featured images for posts that do not have a thumbnail.
+
+Below are the most important changes added to `v2.0` (to see all changes, head over to the [release notes in GitHub](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/2.0.1)).
+
+## Added mutation `createMediaItem`
+
+Mutation `createMediaItem` allows uploading files to the Media Library. It offers 2 ways to provide the source file:
+
+1. Via URL
+2. Directly its contents
+
+Running this query:
+
+```graphql
+mutation CreateMediaItems {
+  fromURL: createMediaItem(input: {
+    from: {
+      url: {
+        source: "https://gatographql.com/assets/GatoGraphQL-logo.png"
+      }
+    }
+    caption: "Gato GraphQL logo"
+    altText: "This is the Gato GraphQL logo"
+  }) {
+    mediaItemID
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    mediaItem {
+      ...MediaItemData
+    }
+  }
+
+  directlyByContents: createMediaItem(input: {
+    from: {
+      contents: {
+        body: """
+<html>
+  <body>
+    Hello world!
+  </body>
+</html>
+        """
+        filename: "hello-world.html"
+      }
+    }
+    title: "Hello world!"
+  }) {
+    mediaItemID
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    mediaItem {
+      ...MediaItemData
+    }
+  }
+}
+
+fragment MediaItemData on Media {
+  altText
+  caption
+  mimeType
+  slug
+  src
+  title
+}
+```
+
+...will produce:
+
+```json
+{
+  "data": {
+    "fromURL": {
+      "mediaItemID": 1380,
+      "status": "SUCCESS",
+      "errors": null,
+      "mediaItem": {
+        "altText": "This is the Gato GraphQL logo",
+        "caption": "Gato GraphQL logo",
+        "mimeType": "image/png",
+        "slug": "gatographql-logo-png",
+        "src": "https://mysite.com/wp-content/uploads/GatoGraphQL-logo.png",
+        "title": "GatoGraphQL-logo.png"
+      }
+    },
+    "directlyByContents": {
+      "mediaItemID": 1381,
+      "status": "SUCCESS",
+      "errors": null,
+      "mediaItem": {
+        "altText": "",
+        "caption": "",
+        "mimeType": "text/html",
+        "slug": "hello-world-html",
+        "src": "https://mysite.com/wp-content/uploads/hello-world.html",
+        "title": "Hello world!"
+      }
+    }
+  }
+}
+```
+
+## Added fields `myMediaItemCount`, `myMediaItems` and `myMediaItem`
+
+Logged-in users can now retrieve all of their media files.
+
+Running this query:
+
+```graphql
+query GetMediaItems {
+  me {
+    slug
+  }
+  
+  myMediaItemCount
+
+  myMediaItems(pagination: {
+    limit: 3
+  }) {
+    ...MediaItemData
+  }
+
+  myMediaItem(by: { id: 1380 }) {
+    ...MediaItemData
+  }
+}
+
+fragment MediaItemData on Media {
+  id
+  mimeType
+  src
+  author {
+    slug
+  }
+}
+```
+
+...will produce:
+
+```json
+{
+  "data": {
+    "me": {
+      "slug": "admin"
+    },
+    "myMediaItemCount": 2,
+    "myMediaItems": [
+      {
+        "id": 1380,
+        "mimeType": "image/png",
+        "src": "https://mysite.com/wp-content/uploads/GatoGraphQL-logo.png",
+        "author": {
+          "slug": "admin"
+        }
+      },
+      {
+        "id": 1365,
+        "mimeType": "image/png",
+        "src": "https://mysite.com/wp-content/uploads/browser.png",
+        "author": {
+          "slug": "admin"
+        }
+      }
+    ],
+    "myMediaItem": {
+      "id": 1380,
+      "mimeType": "image/png",
+      "src": "https://mysite.com/wp-content/uploads/GatoGraphQL-logo.png",
+      "author": {
+        "slug": "admin"
+      }
+    }
+  }
+}
+```
+
+## Added a predefined persisted query "Generate a post's featured image using AI and optimize it"
+
+_(This functionality requires the [PRO extensions](/bundles/all-in-one-toolbox-for-wordpress/).)_
+
+A new predefined Persisted query, with title "Generate a post's featured image using AI and optimize it", has been added.
+
+It uses generative AI to produce images for posts without a featured image, using the post's title as the prompt. We can choose from these service providers:
+
+- [OpenAI's DALL-E](https://openai.com/dall-e-3)
+- [Stable Diffusion](https://stablediffusionapi.com/)
+
+The query first checks if a post has a featured image. If it does not, it creates one by calling the generative AI service. We must provide the corresponding API key for the chosen service to use.
+
+As the generative AI images are not optimized for the web (OpenAI's images could weigh 3MB!), the query also sends the newly-generated image to [TinyPNG](https://tinypng.com/) to compress it. We must provide the API key to use this service.
+
+Finally, the query creates a new media item with the image (using the post's title as the filename for the attachment, truncated to 20 chars), and sets it as the post's featured image.
+
+This is the GraphQL query:
+
+```graphql
+query InitializeVariables(
+  $openAIAPIKey: String
+  $stableDiffusionAPIKey: String
+  $tinyPngAPIKey: String
+)
+  @configureWarningsOnExportingDuplicateVariable(enabled: false)
+{
+  isFeaturedImageMissing: _echo(value: false)
+    @export(as: "isFeaturedImageMissing")
+    @remove
+
+  generatedImageURL: _echo(value: null)
+    @export(as: "generatedImageURL")
+    @remove
+
+  isImageGenerated: _echo(value: false)
+    @export(as: "isImageGenerated")
+    @remove
+
+  mimeType: _echo(value: null)
+    @export(as: "mimeType")
+    @remove
+
+  isMediaItemCreated: _echo(value: false)
+    @export(as: "isMediaItemCreated")
+    @remove
+
+  useOpenAI: _notEmpty(value: $openAIAPIKey)
+    @export(as: "useOpenAI")
+    @remove
+
+  useStableDiffusion: _notEmpty(value: $stableDiffusionAPIKey)
+    @export(as: "useStableDiffusion")
+    @remove
+
+  useTinyPng: _notEmpty(value: $tinyPngAPIKey)
+    @export(as: "useTinyPng")
+    @remove
+}
+
+query ExportPostData(
+  $postId: ID!
+)
+  @depends(on: "InitializeVariables")
+{
+  post(by: { id: $postId }) {
+    hasFeaturedImage
+    isFeaturedImageMissing: hasFeaturedImage
+      @boolOpposite
+      @export(as: "isFeaturedImageMissing")
+    title
+      @export(as: "postTitle")
+    mediaItemFilename: rawTitle
+      @default(value: "untitled", condition: IS_EMPTY)
+      @strLowerCase
+      @strSubstr(offset: 0, length: 20)
+      @export(as: "filename")
+      @remove
+  }
+}
+
+query MaybeGenerateImageUsingOpenAI(
+  $openAIAPIKey: String
+  $imageSize: String! = "1024x1024" # 256x256, 512x512, or 1024x1024 pixels
+)
+  @depends(on: "ExportPostData")
+  @include(if: $isFeaturedImageMissing)
+  @include(if: $useOpenAI)
+{
+  openAIResponse: _sendJSONObjectItemHTTPRequest(input: {
+    url: "https://api.openai.com/v1/images/generations",
+    method: POST,
+    options: {
+      auth: {
+        password: $openAIAPIKey
+      },
+      json: {
+        prompt: $postTitle,
+        size: $imageSize,
+        n: 1,
+        response_format: "url",
+      }
+    }
+  })
+    @underJSONObjectProperty(by: { key: "data" })
+      @underArrayItem(index: 0)
+        @underJSONObjectProperty(by: { key: "url" })
+          @export(as: "generatedImageURL")
+  
+  openAPIImageCaption: _sprintf(
+    string: "Image created by DALL-E using prompt: '%s'",
+    values: [$postTitle]
+  )
+      @export(as: "imageCaption")
+  
+  openAIMediaItemFilename: _sprintf(
+    string: "%s.png",
+    values: [$filename]
+  )
+    @export(as: "filename")
+}
+
+query MaybeGenerateImageUsingStableDiffusion(
+  $stableDiffusionAPIKey: String
+  $width: Int! = 1024
+  $height: Int! = 1024
+)
+  @depends(on: "ExportPostData")
+  @include(if: $isFeaturedImageMissing)
+  @include(if: $useStableDiffusion)
+{
+  stableDiffusionResponse: _sendJSONObjectItemHTTPRequest(input: {
+    url: "https://stablediffusionapi.com/api/v3/text2img",
+    method: POST,
+    options: {
+      json: {
+        key: $stableDiffusionAPIKey
+        prompt: $postTitle,
+        width: $width
+        height: $height
+        samples: 1
+      }
+    }
+  })
+    @underJSONObjectProperty(by: { key: "output" })
+      @underArrayItem(index: 0)
+        @export(as: "generatedImageURL")
+  
+  stableDiffusionImageCaption: _sprintf(
+    string: "Image created by Stable Diffusion using prompt: '%s'",
+    values: [$postTitle]
+  )
+    @export(as: "imageCaption")
+  
+  stableDiffusionMediaItemFilename: _sprintf(
+    string: "%s.png",
+    values: [$filename]
+  )
+    @export(as: "filename")
+}
+
+query CheckIsImageGenerated
+  @depends(on: [
+    "MaybeGenerateImageUsingOpenAI",
+    "MaybeGenerateImageUsingStableDiffusion"
+  ])
+  @include(if: $isFeaturedImageMissing)
+{
+  isImageGenerated: _notEmpty(value: $generatedImageURL)
+    @export(as: "isImageGenerated")
+}
+
+query MaybeCompressGeneratedImage(
+  $tinyPngAPIKey: String
+)
+  @depends(on: "CheckIsImageGenerated")
+  @include(if: $isImageGenerated)
+  @include(if: $useTinyPng)
+{
+  compressedImageResponse: _sendHTTPRequest(input: {
+    url: "https://api.tinify.com/shrink",
+    method: POST,
+    options: {
+      auth: {
+        password: $tinyPngAPIKey
+      },
+      headers: [
+        {
+          name: "Content-Type",
+          value: "application/json"
+        }
+      ],
+      json: {
+        source: {
+          url: $generatedImageURL
+        }
+      }
+    }
+  }) {
+    body
+      @remove
+    bodyJSONObject: _strDecodeJSONObject(string: $__body)
+
+    mimeType: _objectProperty(
+      object: $__bodyJSONObject
+      by: { path: "output.type" }
+    )
+      @export(as: "mimeType")
+
+    generatedImageURL: header(name: "Location")
+      @export(as: "generatedImageURL")
+  }
+}
+
+mutation CreateMediaItemFromGeneratedImage
+  @depends(on: "MaybeCompressGeneratedImage")
+  @include(if: $isImageGenerated)
+{
+  createMediaItem(input: {
+    from: {
+      url: {
+        source: $generatedImageURL
+        filename: $filename
+      }
+    }
+    title: $postTitle
+    caption: $imageCaption
+    altText: $postTitle
+    mimeType: $mimeType
+  }) {
+    mediaItemID
+      @export(as: "mediaItemID")
+    isMediaItemCreated: _notNull(value: $__mediaItemID)
+      @export(as: "isMediaItemCreated")
+      @remove
+
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    mediaItem {
+      altText
+      caption
+      mimeType
+      slug
+      src
+      title
+    }
+  }
+}
+
+mutation SetMediaItemAsPostFeaturedImage(
+  $postId: ID!
+)
+  @depends(on: "CreateMediaItemFromGeneratedImage")
+  @include(if: $isMediaItemCreated)
+{
+  setFeaturedImageOnCustomPost(input: {
+    customPostID: $postId
+    mediaItemBy: { id: $mediaItemID }
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    customPost {
+      __typename
+      ...on CustomPost {
+        featuredImage {
+          id
+          altText
+          caption
+          mimeType
+          slug
+          src
+          title
+        }
+      }
+    }
+  }
+}
+```
+
+## [PRO] Added field `_dataMatrixOutputAsCSV` on the Helper Function Collection extension
+
+_(This functionality was added to the [PRO extensions](/bundles/all-in-one-toolbox-for-wordpress/).)_
+
+Field `_dataMatrixOutputAsCSV` has been added to the Helper Function Collection extension (and all bundles containing this extension).
+
+This field takes a matrix of data, and produces a CSV string. For instance, this query:
+
+```graphql
+csv: _dataMatrixOutputAsCSV(
+  fields: 
+    ["Name", "Surname", "Year"]
+  data: [
+    ["John", "Smith", 2003],
+    ["Pedro", "Gonzales", 2012],
+    ["Manuel", "Perez", 2008],
+    ["Jose", "Pereyra", 1999],
+    ["Jacinto", "Bloomberg", 1998],
+    ["Jun-E", "Song", 1983],
+    ["Juan David", "Santamaria", 1943],
+    ["Luis Miguel", null, 1966],
+  ]
+)
+```
+
+...will produce:
+
+```json
+{
+  "data": {
+    "csv": "Name,Surname,Year\nJohn,Smith,2003\nPedro,Gonzales,2012\nManuel,Perez,2008\nJose,Pereyra,1999\nJacinto,Bloomberg,1998\nJun-E,Song,1983\nJuan David,Santamaria,1943\nLuis Miguel,,1966\n"
+  }
+}
+```
+
+This functionality allow us to export data from our WordPress site into Google Sheets or others.
+
+For instance, this query will fetch the data for 100 posts, and create a CSV file with it that is uploaded to the Media Library, with columns `ID`, `Title`, `Slug`, `Author name`, `Published date`, `URL`, and `Content`:
+
+```graphql
+query ExportPostData(
+  $limit: Int! = 100,
+  $offset: Int! = 0
+) {
+  posts(
+    pagination: { limit: $limit, offset: $offset },
+    sort: { by: ID, order: ASC }
+  ) {
+    id @export(as: "postIds", type: LIST)
+    title @export(as: "postTitles", type: LIST)
+    slug @export(as: "postSlugs", type: LIST)
+    author {
+      name @export(as: "postAuthorNames", type: LIST)
+    }
+    dateStr(format: "d/m/Y") @export(as: "postPublishedDates", type: LIST)
+    url @export(as: "postUrls", type: LIST)
+    content @export(as: "postContents", type: LIST)
+  }
+}
+
+query CreateDataMatrix
+  @depends(on: "ExportPostData")
+{
+  csvDataMatrix: _echo(value: $postIds)
+    @underEachArrayItem(
+      passIndexOnwardsAs: "key"
+      passValueOnwardsAs: "postId"
+      affectDirectivesUnderPos: [1, 2, 3, 4, 5, 6, 7]
+    )
+      @applyField(
+        name: "_arrayItem",
+        arguments: {
+          array: $postTitles,
+          position: $key,
+        },
+        passOnwardsAs: "postTitle"
+      )
+      @applyField(
+        name: "_arrayItem",
+        arguments: {
+          array: $postSlugs,
+          position: $key,
+        },
+        passOnwardsAs: "postSlug"
+      )
+      @applyField(
+        name: "_arrayItem",
+        arguments: {
+          array: $postAuthorNames,
+          position: $key,
+        },
+        passOnwardsAs: "postAuthorName"
+      )
+      @applyField(
+        name: "_arrayItem",
+        arguments: {
+          array: $postPublishedDates,
+          position: $key,
+        },
+        passOnwardsAs: "postPublishedDate"
+      )
+      @applyField(
+        name: "_arrayItem",
+        arguments: {
+          array: $postUrls,
+          position: $key,
+        },
+        passOnwardsAs: "postUrl"
+      )
+      @applyField(
+        name: "_arrayItem",
+        arguments: {
+          array: $postContents,
+          position: $key,
+        },
+        passOnwardsAs: "postContent"
+      )
+      @applyField(
+        name: "_echo",
+        arguments: {
+          value: [
+            $postId,
+            $postTitle,
+            $postSlug,
+            $postAuthorName,
+            $postPublishedDate,
+            $postUrl,
+            $postContent
+          ]
+        },
+        setResultInResponse: true
+      )
+    @export(as: "csvDataMatrix")
+}
+
+query OutputCSV
+  @depends(on: "CreateDataMatrix")
+{
+  csvString: _dataMatrixOutputAsCSV(
+    fields: [
+      "ID",
+      "Title",
+      "Slug",
+      "Author name",
+      "Published date",
+      "URL",
+      "Content",
+    ]
+    data: $csvDataMatrix
+  )
+    @export(as: "csvString")
+}
+
+mutation CreateMediaItem
+  @depends(on: "OutputCSV")
+{
+  createMediaItem(input: {
+    from: {
+      contents: {
+        body: $csvString
+        filename: "posts.csv"
+      }
+    }
+    title: "Post data as CSV"
+  }) {
+    mediaItemID
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    mediaItem {
+      mimeType
+      slug
+      src
+      title
+    }
+  }
+}
+```
+
+## Preparing for `v3.0`
+
+We hope that you enjoy the new features in this latest release.
+
+Is there any new feature you'd like Gato GraphQL to have next? [Send us a message](/contact/) and let us know.
+
+Enjoy!

@@ -1,0 +1,40 @@
+---
+title: "🎙 WPMRR Podcast: Growing a Powerful Decoupled WordPress Solution"
+summary: Interview by Joe Howard on building the GraphQL API plugin
+image: /images/WPMRR-137-Thumbnail.jpg
+publishedAt: '2021-03-20'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - api
+  - wordpress
+  - plugin
+  - media
+  - youtube
+---
+
+Joe Howard, host from the WPMRR podcast, interviewed me (Leonardo Losoviz) for his show. We talked about many things, mostly concerning decoupled WordPress (and GraphQL in particular), and the ongoing challenges of the business of building a plugin.
+
+I think it came out great. The questions were really good, and I made my best to provide honest responses, showing the picture as it is (or, at least, as I'm experiencing it while building the GraphQL API). I'll encourage you to [check out the podcast](https://wpmrr.com/podcast/leonardo-losoviz-graphql-api/).
+
+The interview is also on Youtube:
+
+<iframe width="1141" height="642" src="https://www.youtube.com/embed/0Ob_iAxUXHY?start=48" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Timestamps:
+
+⏱️ 00:00 -​ Intro by WP Buffs<br/>
+⏱️ 00:48 -​ Welcome to the pod, Leonardo!<br/>
+⏱️ 01:31 -​ The freedom of building websites as a hobby<br/>
+⏱️ 03:42 -​ What is GraphQL API?<br/>
+⏱️ 11:26 -​ Security issues on open source API<br/>
+⏱️ 16:22 -​ Pulling SEO data on a decoupled site<br/>
+⏱️ 21:05 -​ The struggles of promoting a product<br/>
+⏱️ 25:44 -​ How do you rate success?<br/>
+⏱️ 29:45 -​ Coming soon: a behind-the-scene monthly newsletter on plugin development<br/>
+⏱️ 33:03 -​ The building-in-public strategy<br/>
+⏱️ 37:02 -​ Strategies to eventually compete in the plugin market<br/>
+⏱️ 42:43 -​ Find Leonardo online!
+
+I hope you enjoy it!

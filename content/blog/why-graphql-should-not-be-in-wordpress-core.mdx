@@ -1,0 +1,86 @@
+---
+title: "🙅‍♀️ Why GraphQL should not be in WordPress core"
+summary: The risks from GraphQL may pose a great danger to WordPress
+image: /images/graphql-wordpress-threat.jpg
+publishedAt: '2021-08-09'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - wordpress
+  - core
+  - graphql
+---
+
+Yep, you read that title correctly. Even though I am myself the creator of a GraphQL server for WordPress, I've changed my mind concerning if WordPress should ship with GraphQL or not.
+
+Until not long ago, I believed that [GraphQL should be in WordPress core](/blog/why-wordpress-should-have-a-graphql-api-in-core/). The logic was that contributors were spending time and effort on implementing functionality for the WP REST API (batch operations) which is native to GraphQL.
+
+However, I have lately learnt some new information which made me think again, and now I believe WordPress should not ship with GraphQL, because of the added risks.
+
+![GraphQL in WordPress core? 😁](/images/graphql-wordpress-threat.jpg "GraphQL in WordPress core? 😁")
+
+These are my reasons.
+
+## 1. It doesn't satisfy the 80/20 rule
+
+Historically, a certain functionality is added to WordPress core only if it satisfies [the 80/20 rule](https://wordpress.org/about/philosophy/), meaning that 80% or more of the users will use it.
+
+Would that be the case with GraphQL? I think the answer is "no", based on the precedent from the introduction of the WP REST API to WordPress 4.7.
+
+In his talk [WordPress as Data, 5 Years In](https://youtu.be/OBVg5x8uQ6M), K. Adam White (main lead of the initial development and release of the WP REST API) described that the contributors expected the REST API to be widely used once it was released with core. But that didn't happen: developers kept creating WordPress sites the same way as before, paying little attention to "headless" or the REST API.
+
+Fortunes changed only later, with the introduction of the Gutenberg editor in WordPress 5.0, which was based on the REST API. Could Gutenberg then justify the addition of GraphQL to WordPress core?
+
+![Expected future with the REST API. Screenshot from K. Adam White's talk](/images/society-if-wp-had-a-rest-api-video.png "Expected future with the REST API. Screenshot from K. Adam White's talk")
+
+## 2. Headless is already satisfied via the REST API
+
+The WordPress editor can be enhanced with a native GraphQL server, allowing block developers to use GraphQL (in addition to the existing REST API) to fetch data for their blocks. In addition, themes and plugins could make use of GraphQL to power their own internal functionality. These are strong reasons to add GraphQL to WordPress core.
+
+However, WordPress already has the REST API, and [whatever you can do with GraphQL can also be done with REST](https://stepzen.com/blog/are-rest-and-graphql-different). Introducing GraphQL in addition to REST is akin to buying a BMW when you're already driving a Toyota. You will reach your destination faster, and the driving experience will be more appealing. But both cars will take you to where you want to go.
+
+Because GraphQL will not provide a previously-unavailable functionality, then its inclusion in core is not fully justified. GraphQL would certainly enhance the experience of interacting with the API, but this could be perfectly considered plugin-land.
+
+![GraphQL improves the experience of interacting with the API, but it doesn't create anything new](/images/graphiql.gif "GraphQL improves the experience of interacting with the API, but it doesn't create anything new")
+
+## 3. WordPress themes and plugins can use `webonyx/graphql-php`
+
+Public plugins cannot require a website to install either WPGraphQL or the GraphQL API for WP in order to use the plugin, since that will diminish their potential reach. As such, [public plugins cannot rely on GraphQL](https://www.smashingmagazine.com/2021/04/making-graphql-work-in-wordpress/#use-graphql-api-if-distributing-blocks-via-a-plugin), and that's a real pity.
+
+I thought hard about this issue, and I came up with a potential solution: the [GraphQL API Private](https://github.com/GatoGraphQL/GatoGraphQL/issues/519), a self-contained GraphQL engine that plugins can embed for their own use, distributed as a Composer package. (I haven't started working on this project yet.)
+
+But then, a few weeks ago, a GraphQL-powered WordPress plugin [was released](https://twitter.com/swashata/status/1418387987511996418). I wondered how the author did it: would it be using WPGraphQL or the GraphQL API for WP under the hood? So I checked [its source code](https://plugins.trac.wordpress.org/browser/wpeform-lite/trunk/inc/GraphQL/Schema.php?rev=2570462) and, as it turns out, it's directly using [`webonyx/graphql-php`](https://github.com/webonyx/graphql-php)!
+
+This is an interesting solution, which demonstrates that, with a bit of effort, developers currently do have access to GraphQL for their themes and plugins.
+
+This plugin uses GraphQL to fetch its own data entities, and not those of WordPress (posts, users, comments, etc). Then, it doesn't need to recreate the GraphQL schema containing the WordPress data model, as done by WPGraphQL and the GraphQL API for WP (and eventually the GraphQL API Private). As such, relying on `webonyx/graphql-php` makes sense.
+
+![webonyx/graphql-php is a 'PHP port of GraphQL reference implementation'](/images/webonyx-graphql-php.png "webonyx/graphql-php is a 'PHP port of GraphQL reference implementation'")
+
+## 4. GraphQL presents additional risks
+
+All three issues above suggest that GraphQL would enhance WordPress, even though it's not extremely compelling. In this light, we could still add GraphQL to WordPress core, and either benefit from it or nothing happens.
+
+But this 4th issue suggests that, if GraphQL will not add much value to WordPress, then it should not be added, because of its added risks.
+
+GraphQL is susceptible to the following attack vectors (among others):
+
+- The single endpoint provides access to all information from the website, so we could have private data unintentionally exposed.
+- The queries can be very complex and may overwhelm the web and database servers.
+- The same mutation can be executed multiple times in a single query, and multiple queries can be executed together in a single request, allowing attackers to attempt gaining access to the back-end by providing many combinations of user/passwords.
+
+These attacks can be really damaging. In his presentation [Damn GraphQL - Defending and Attacking APIs](https://www.youtube.com/watch?v=EVRf708-zq4), the cybersecurity researcher Dolev Farhi managed to bring down a WordPress site in less than 30 seconds, by attacking the WPGraphQL endpoint with a batch of complex queries.
+
+The WPGraphQL team [fixed the issue immediately](https://github.com/wp-graphql/wp-graphql/releases/tag/v1.3.6). But how can we be sure that no other exploit can take place? (I mean not only WPGraphQL, but [the GraphQL API for WP too](https://github.com/GatoGraphQL/GatoGraphQL/issues/865).)
+
+These attacks can happen with GraphQL, and not with REST, because GraphQL is more powerful than REST. While in REST the query is defined in advance and stored in the server, in GraphQL it is provided on runtime by the client (unless using [persisted queries](/guides/special-features/persisted-queries)).
+
+If website admins are sloppy configuring who can access the endpoint, or which data gets exposed, then bad things can happen. And due to the popularity of WordPress, which is used by millions of people who are not tech-savvy, then bad things will most likely happen.
+
+![Attacking the GraphQL endpoint to bring a WordPress site down. Screenshot from Dolev Farhi's talk](/images/damn-graphql-video.png "Attacking the GraphQL endpoint to bring a WordPress site down. Screenshot from Dolev Farhi's talk")
+
+## Wrapping up
+
+Just to be sure: I am not advocating to not use GraphQL in WordPress (of course I am not!), but to use GraphQL responsibly. GraphQL is powerful, which means it is dangerous. When using GraphQL, we need to be sure we know what we are doing.
+
+Shipping GraphQL in WordPress core would put it in the hands a lot of people, many of which will not be aware of its risks, and not take appropriate measures. It's a recipe for potential disaster. And as such, it is now my opinion, it should be avoided.

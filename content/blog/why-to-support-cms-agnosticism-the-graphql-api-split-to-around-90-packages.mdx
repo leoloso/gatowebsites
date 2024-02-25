@@ -1,0 +1,328 @@
+---
+title: 💁🏽‍♂️ Why to support CMS-agnosticism, the GraphQL API was split to ~90 packages, and benefits and drawbacks of this approach
+summary: Granular management of the codebase... is it any good?
+image: /images/dependency-graph.png
+publishedAt: '2021-04-03'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - api
+  - wordpress
+  - plugin
+  - codebase
+  - engineering
+---
+
+Last week I published article [💁🏻‍♀️ Why the GraphQL API needs a Monorepo, and How it's optimized](https://gatographql.com/blog/extending-the-monorepo-builder/), explaining how and why the `GatoGraphQL/GatoGraphQL` monorepo, which hosts the code for the GraphQL API for WordPress, can manage the plugin's codebase efficiently.
+
+I shared my article on Reddit, and I got the [following comment](https://www.reddit.com/r/programming/comments/mh5ds3/i_wrote_about_why_my_project_with_php_packages/gswsrw2?utm_source=share&utm_medium=web2x&context=3):
+
+> The article from the OP and the articles it links to, kind of read like a monorepo is the greatest thing since sliced bread.
+>
+> A more interesting article would be to explain why you thought CMS-agnosticism requires splitting up everything into its own little package, and why you thought each of the over 200 packages needed to be in its own repo to begin with.
+
+This is an interesting question. So I decided to write this article, to address it a bit further.
+
+But first, I'll address two related topics: how many packages are actually required by the plugin, and why do I claim that the underlying GraphQL server is CMS-agnostic.
+
+## How many packages make-up the plugin
+
+Even though I've mentioned 200-over PHP packages, that is for the monorepo; for the plugin, it is actually way less than that.
+
+The [`GatoGraphQL/GatoGraphQL` monorepo](https://github.com/GatoGraphQL/GatoGraphQL) encompasses 5 projects:
+
+1. PoP, a server-side component model library (like React, but for the back-end)
+2. [GraphQL by PoP](https://graphql-by-pop.com/), a CMS-agnostic GraphQL server for PHP
+3. the [GraphQL API for WordPress](https://gatographql.com)
+4. a site builder (WIP)
+5. Wassup, a website theme based on the site builder (WIP)
+
+Hosting these projects in a monorepo simplifies working with them, because of their interdependencies:
+
+- GraphQL by PoP is based on PoP
+- GraphQL API for WordPress is based on GraphQL by PoP
+- The site builder uses the component model library as its engine (similar to Gatsby using GraphQL)
+- Wassup is based on the site builder
+
+It is concerning the code for all 5 projects that `GatoGraphQL/GatoGraphQL` contains over 200 PHP packages. Concerning the GraphQL API for WordPress, it is "only" 91 packages. And GraphQL by PoP, the underlying GraphQL server, contains "only" 98 packages.
+
+(The GraphQL API for WordPress plugin requires fewer packages than its underlying GraphQL server, because some packages, such as the [Google Translate `@strTranslate` directive](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/Schema/packages/google-translate-directive), haven't been added to the plugin yet.)
+
+## How is GraphQL by PoP CMS-agnostic? How is it different than webonyx?
+
+I have been saying that [GraphQL by PoP is CMS-agnostic](https://graphql-by-pop.com/docs/architecture/cms-agnosticism.html). But what does that mean?
+
+For that matter, [`webonyx/graphql-php`](https://github.com/webonyx/graphql-php) also is CMS-agnostic. So how are they different?
+
+`webonyx/graphql-php` is CMS-agnostic, in that it is a package distributed via Composer, containing only "vanilla" PHP code. However, it is not a GraphQL server all by itself; instead, it is an implementation in PHP of the GraphQL specification, to be embedded within some GraphQL server in PHP.
+
+Now, these implementing GraphQL servers, such as [Lighthouse](https://github.com/nuwave/lighthouse) or [WPGraphQL](https://github.com/wp-graphql/wp-graphql), are not CMS-agnostic. We can't run Lighthouse on WordPress, or WPGraphQL on Laravel.
+
+It is in this sense that GraphQL by PoP is CMS-agnostic: it is the "almost-final" GraphQL server, almost ready to run with any CMS or framework, whether Laravel, WordPress, or any other. (For sake of brevity, from now on, whenever I say "CMS", it means "CMS or framework".)
+
+To make it final for some CMS, the GraphQL server will still need some custom code for that CMS, via some corresponding package.
+
+I'll now address the questions in the comment.
+
+## Why each package needed to be in its own repo
+
+Because [Packagist](https://packagist.org/) (Composer's registry of PHP packages) requires to provide a repository URL for publishing/distributing a package.
+
+(Btw, my article [Hosting all your PHP packages together in a monorepo](https://blog.logrocket.com/hosting-all-your-php-packages-together-in-a-monorepo/), also published last week, talks about this issue.)
+
+## Why CMS-agnosticism requires splitting up everything into its own little package
+
+There are a few reasons.
+
+### Have the CMS inject its own code
+
+It is impossible to make a GraphQL server that works everywhere, using 100% the same PHP code.
+
+For instance, to enable any piece of code to modify the value of some variable somewhere else, WordPress relies on [filter hooks](https://developer.wordpress.org/plugins/hooks/filters/), Symfony uses the [EventDispatcher component](https://symfony.com/doc/current/components/event_dispatcher.html), and Laravel has its own system of [events and listeners](https://laravel.com/docs/8.x/events). The PHP code for these 3 different methods will also be different.
+
+This is where the approach of splitting the code into granular packages comes in. Instead of having a solution for events and listeners be part of the application, it is injected into the application via a package, and this package will contain code that is specific to the CMS.
+
+For this to work, every functionality must be split into 2 packages:
+
+- a CMS-agnostic package, containing all business logic, using only "vanilla" PHP code. This package will include the contracts to be satisfied by the CMS-specific package
+- a CMS-specific package, satisfying the contracts for that CMS
+
+For instance, GraphQL by PoP has a package `hooks` containing the [following contract](https://github.com/GatoGraphQL/GatoGraphQL/blob/9aadcea277b0b3d9a2a3ba5427dee07b4a96f47e/layers/Engine/packages/hooks/src/HooksAPIInterface.php):
+
+```php
+interface HooksAPIInterface
+{
+  public function addFilter(string $tag, callable $function_to_add, int $priority = 10, int $accepted_args = 1): void;
+  public function removeFilter(string $tag, callable $function_to_remove, int $priority = 10): bool;
+  public function applyFilters(string $tag, mixed $value, mixed ...$args): mixed;
+  public function addAction(string $tag, callable $function_to_add, int $priority = 10, int $accepted_args = 1): void;
+  public function removeAction(string $tag, callable $function_to_remove, int $priority = 10): bool;
+  public function doAction(string $tag, mixed ...$args): void;
+}
+```
+
+And then, package `hooks-wp` [satisfies the contract for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/blob/9aadcea277b0b3d9a2a3ba5427dee07b4a96f47e/layers/Engine/packages/hooks-wp/src/HooksAPI.php):
+
+```php
+class HooksAPI implements HooksAPIInterface
+{
+  public function addFilter(string $tag, callable $function_to_add, int $priority = 10, int $accepted_args = 1): void
+  {
+    \add_filter($tag, $function_to_add, $priority, $accepted_args);
+  }
+  public function removeFilter(string $tag, callable $function_to_remove, int $priority = 10): bool
+  {
+    return \remove_filter($tag, $function_to_remove, $priority);
+  }
+  public function applyFilters(string $tag, mixed $value, mixed ...$args): mixed
+  {
+    return \apply_filters($tag, $value, ...$args);
+  }
+  public function addAction(string $tag, callable $function_to_add, int $priority = 10, int $accepted_args = 1): void
+  {
+    \add_action($tag, $function_to_add, $priority, $accepted_args);
+  }
+  public function removeAction(string $tag, callable $function_to_remove, int $priority = 10): bool
+  {
+    return \remove_action($tag, $function_to_remove, $priority);
+  }
+  public function doAction(string $tag, mixed ...$args): void
+  {
+    \do_action($tag, ...$args);
+  }
+}
+```
+
+Now, even though the concept of hooks comes from WordPress, it can work with other CMSs also (for instance, using events and listeners to implement hooks). Then, we can replace `hooks-wp` with `hooks-laravel`, `hooks-symfony`, `hooks-drupal`, `hooks-octobercms`, or any other, to satisfy the contracts using the code specific to each CMS.
+
+### Allow the CMS to discard functionality it can't support
+
+Not all CMSs can support all functionality. For instance, WordPress enables to [sort posts by some `meta_value` entry](https://developer.wordpress.org/reference/classes/wp_query/#order-orderby-parameters), but OctoberCMS does not.
+
+That's why GraphQL by PoP contains package [`metaquery`](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/Schema/packages/metaquery) (satisfied for WordPress via [`metaquery-wp`](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/Schema/packages/metaquery-wp)). Then, the GraphQL server implemented for WordPress will include this package, but the one for OctoberCMS will not.
+
+## Benefits of this approach
+
+Splitting our packages granularly offers a few advantages.
+
+### Decouple business logic from CMS-specific code
+
+Instead of coding the application based on the opinionatedness (way of coding, features, limitations, and others) from a CMS, we can abstract our code and use business logic only.
+
+For instance, to obtain a list of posts, the application can execute the method `getPosts` from some interface on a CMS-agnostic package `posts`. Then, posts will be retrieved always the same way, independently from the implementation by the underlying CMS.
+
+### Bypass technical debt, and use the latest standards
+
+Following the example above, we retrieve our posts executing method `getPosts`, which follows the `PSR-4` convention, instead of calling `get_posts`, as defined by WordPress.
+
+Similarly, we can execute `getCustomPost` to retrieve a custom post, instead of the inaccurate `get_post` (this is part of WordPress' technical debt).
+
+### It's easy to scope
+
+Using [PHP-Scoper](https://github.com/humbug/php-scoper) to scope a WordPress plugin [is not easy](https://github.com/humbug/php-scoper#wordpress), and even when doable, it is prone to bugs.
+
+Keeping the CMS-specific code and the application's business logic thoroughly decoupled, enables to apply PHP-Scoper on one set of packages only (the ones with the business logic), and avoid it on the others (the ones containing WordPress code). I have described this strategy in detail, [here](https://gatographql.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/).
+
+In addition, similar to PHP-Scoper, there may be other tools which fail when applied on some CMS-specific code (such as WordPress). In those cases, splitting the packages granularly can save the day.
+
+### We can produce different applications, each containing only the code it needs
+
+We can reuse our packages to produce more applications, containing only those packages it needs and nothing else.
+
+For instance, a personal blog may need only `posts`, `tags` and `categories`, so it can avoid dealing with functionality for `users` or `user-login`.
+
+Indeed, I plan to benefit from this feature soon: I'm currently [working on the "Private GraphQL API"](https://github.com/GatoGraphQL/GatoGraphQL/issues/519), a self-contained GraphQL engine, to be made available to WordPress plugin developers to bundle it within their plugins, granting a GraphQL API for their Gutenberg blocks.
+
+I can effortlessly create the "Private GraphQL API" simply by removing those packages from the GraphQL API for WordPress plugin which are not needed (those dealing with UI, clients, custom endpoints, HTTP caching, persisted queries, and a few others).
+
+Finally, since it's easy to scope (as seen above), I can prefix all the required packages, so the Private GraphQL API will work without conflict (which could happen when 2 different plugins bundle different versions of the Private GraphQL API).
+
+## Drawbacks of this approach
+
+Needless to say, this approach is far from perfect.
+
+### Greater effort, code becomes more verbose
+
+Normally, if our application runs on WordPress, to retrieve a list of posts we just execute `get_posts`. Simple and easy.
+
+Making it CMS-agnostic complicates matters significantly. To retrieve a list of posts, we must:
+
+- Create packages `posts` and `posts-wp`
+- Create a contract with function `getPosts` in package `posts`
+- Satisfy the contract via `get_posts` in package `posts-wp`
+- Always make sure to invoke the functionality via the contract, never directly
+
+### It (quite likely) requires dependency injection
+
+We need to bind every contract from the CMS-agnostic package, and its implementation from the CMS-specific package. In my case, I'm using a service container, provided by Symfony's [DependencyInjection component](https://symfony.com/doc/current/components/dependency_injection.html).
+
+I love this approach, I believe it greatly simplifies the application. However, I understand that not every application would otherwise require dependency injection, adding complexity to it.
+
+### It (most likely) requires a monorepo
+
+The GraphQL API for WordPress ended up containing 91 packages. In the past, I hosted each of them on its own repository, making it very difficult to create PRs. So I have been "forced" to switch to the monorepo approach.
+
+To be clear: I really like the monorepo. But I understand that not everyone likes it, and it also requires its own effort to maintain.
+
+## Useful links
+
+I have previously written about my motivations and strategy for abstracting my WordPress website, rendering it CMS-agnostic. It is this same strategy that I applied to split up the codebase for the GraphQL API for WordPress:
+
+- [Abstracting WordPress Code To Reuse With Other CMSs: Concepts (Part 1)](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-cms-concepts/)
+- [Abstracting WordPress Code To Reuse With Other CMSs: Implementation (Part 2)](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-reuse-with-other-cms-implementation/)
+
+## Addendum: List of the 91 packages making up the plugin
+
+The GraphQL API for WordPress contains the following 91 packages.
+
+Engine functionality:
+
+```
+getpop/access-control
+getpop/cache-control
+getpop/component-model
+getpop/definitions
+getpop/engine
+getpop/engine-wp
+getpop/field-query
+getpop/guzzle-helpers
+getpop/hooks
+getpop/hooks-wp
+getpop/loosecontracts
+getpop/mandatory-directives-by-configuration
+getpop/modulerouting
+getpop/query-parsing
+getpop/root
+getpop/routing
+getpop/routing-wp
+getpop/translation
+getpop/translation-wp
+graphql-api/markdown-convertor
+```
+
+API functionality:
+
+```
+getpop/api
+getpop/api-clients
+getpop/api-endpoints
+getpop/api-endpoints-for-wp
+getpop/api-graphql
+getpop/api-mirrorquery
+```
+
+GraphQL server functionality:
+
+```
+graphql-by-pop/graphql-clients-for-wp
+graphql-by-pop/graphql-endpoint-for-wp
+graphql-by-pop/graphql-parser
+graphql-by-pop/graphql-query
+graphql-by-pop/graphql-request
+graphql-by-pop/graphql-server
+```
+
+Data model:
+
+```
+pop-schema/basic-directives
+pop-schema/categories
+pop-schema/categories-wp
+pop-schema/comment-mutations
+pop-schema/comment-mutations-wp
+pop-schema/commentmeta
+pop-schema/commentmeta-wp
+pop-schema/comments
+pop-schema/comments-wp
+pop-schema/custompost-mutations
+pop-schema/custompost-mutations-wp
+pop-schema/custompostmedia
+pop-schema/custompostmedia-mutations
+pop-schema/custompostmedia-mutations-wp
+pop-schema/custompostmedia-wp
+pop-schema/custompostmeta
+pop-schema/custompostmeta-wp
+pop-schema/customposts
+pop-schema/customposts-wp
+pop-schema/generic-customposts
+pop-schema/media
+pop-schema/media-wp
+pop-schema/menus
+pop-schema/menus-wp
+pop-schema/meta
+pop-schema/metaquery
+pop-schema/metaquery-wp
+pop-schema/pages
+pop-schema/pages-wp
+pop-schema/post-categories
+pop-schema/post-categories-wp
+pop-schema/post-mutations
+pop-schema/post-tags
+pop-schema/post-tags-wp
+pop-schema/posts
+pop-schema/posts-wp
+pop-schema/queriedobject
+pop-schema/queriedobject-wp
+pop-schema/schema-commons
+pop-schema/tags
+pop-schema/tags-wp
+pop-schema/taxonomies
+pop-schema/taxonomies-wp
+pop-schema/taxonomymeta
+pop-schema/taxonomymeta-wp
+pop-schema/taxonomyquery
+pop-schema/taxonomyquery-wp
+pop-schema/user-roles
+pop-schema/user-roles-access-control
+pop-schema/user-roles-wp
+pop-schema/user-state
+pop-schema/user-state-access-control
+pop-schema/user-state-mutations
+pop-schema/user-state-mutations-wp
+pop-schema/user-state-wp
+pop-schema/usermeta
+pop-schema/usermeta-wp
+pop-schema/users
+pop-schema/users-wp
+```

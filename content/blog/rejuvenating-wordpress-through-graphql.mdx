@@ -1,0 +1,337 @@
+---
+title: 👶🏻 Rejuvenating WordPress through GraphQL
+summary: Thanks to GraphQL, the WordPress data model gets a facelift
+image: /images/own-good-together-best.jpg
+publishedAt: '2021-02-05'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - api
+  - wordpress
+  - plugin
+---
+
+WordPress is a legacy CMS: having been invented over 17 years ago, it's filled with PHP code that, given a new chance, it would be coded in a different way.
+
+GraphQL is a modern interface to access data. Please notice the word "interface": it doesn't care how the underlying data system is implemented, but only how to expose the data.
+
+What happens when we put these two together? How should we design the GraphQL interface to access data from WordPress?
+
+There are a couple of obvious strategies that we can put in place:
+
+1. Respect tradition, and provide a mapping that keeps the WordPress data model as is, including the technical debt it accumulated during the years
+
+2. Fix the technical debt, providing an interface exposing data in an abstract, not-necessarily-fixed-to-WordPress way
+
+Both approaches have benefits and drawbacks, and there is no right or wrong. It's just opinionatedness, prioritizing some behavior over another.
+
+For plugin [GraphQL API for WordPress](https://gatographql.com) I have chosen the latter approach, attempting to create a GraphQL schema that, even though it is based on WordPress and works for WordPress, it is not tied to WordPress (for instance, by removing inconsistent names and relationships).
+
+The result is that GraphQL rejuvenates WordPress: while we still have WordPress as our underlying CMS, with its legacy PHP code, its data layer can be created anew, based on common sense, not tradition. The data layer goes back from being an adolescent, to become a toddler again.
+
+![GraphQL + WordPress rock](/images/own-good-together-best.jpg)
+
+The result is [this GraphQL schema, representing the WordPress data model](https://newapi.getpop.org/graphql-interactive/), and also [supporting nested mutations](https://newapi.getpop.org/graphql-interactive/?mutation_scheme=nested).
+
+Let's check out it was carried out.
+
+## The WordPress data model
+
+WordPress has the following entities:
+
+- posts
+- pages
+- custom posts
+- media elements
+- users
+- user roles
+- tags
+- categories
+- comments
+- blocks
+- meta properties
+- others (options, plugins, themes, etc)
+
+These entities can have a hierarchy. For instance, post, page and media elements are both custom post types, and tags and categories are both taxonomies.
+
+This is the WordPress database diagram, showing how data for all entities is stored:
+
+![The WordPress database diagram](/assets/guides/downstream/wordpress/wp-data-model.png "The WordPress database diagram")
+
+## Is the mapping an exact replica of the DB diagram?
+
+When mapping the WordPress database into a GraphQL schema, is the same diagrame above respected 1 to 1?
+
+No, it is not. While the database diagram is an actual implementation, GraphQL is an interface to access the data from the client. These two are related, but they can be different. GraphQL doesn't care about the database: it doesn't think in SQL commands, or know there are database tables called `wp_posts` and `wp_users`.
+
+So we don't need to worry too much about the database diagram when creating the GraphQL schema for WordPress. That means that we can produce a GraphQL schema that fixes some of the technical debt from the WordPress data model.
+
+## Mapping the WordPress data model as a GraphQL schema
+
+Let's do the mapping. First, we map the original entities as types, as much as possible. From the list of entities in the WordPress data model, we produce the following types for the GraphQL schema:
+
+- `Post`
+- `Page`
+- `Media`
+- `User`
+- `UserRole`
+- `PostTag`
+- `PostCategory`
+- `Comment`
+
+Then, we add all the expected fields to every type. To represent the schema, we can use the SDL, or Schema Definition Language. (This is used for documentation purposes only; the plugin itself does not use SDL to codify the schema: it's all PHP code).
+
+These are the fields (among many others) for a `Post`:
+
+```graphql
+type Post {
+  id: ID!
+  title: String
+  content: String
+  excerpt: String
+  publishedAt: Date!
+}
+```
+
+These are the fields (among many others) for a `User`:
+
+```graphql
+type User {
+  id: ID!
+  name: String
+  email: String!
+}
+```
+
+We also create the corresponding connections, which are fields that return another entity (instead of a scalar, such as a number or a string). For instance, we represent a post having an author, and a user owning posts:
+
+```graphql
+type Post {
+  author: User!
+}
+
+type User {
+  posts: [Post]
+}
+```
+
+Fields and connections can also accept arguments. For instance, we enable `Post.date` to be formatted, and `User.posts` to search entries and limit their number:
+
+```graphql
+type Post {
+  date(format: String): Date!
+}
+
+type User {
+  posts(limit: Int, search: String): [Post]
+}
+```
+
+We keep doing this for all entities in the WordPress data model. Once we are done, we'll arrive at the GraphQL schema for WordPress, as visible using the Voyager client (available as "Interactive Schema" on the plugin's menu):
+
+![The GraphQL schema for WordPress](/assets/guides/upstream/interactive-schema.png "The GraphQL schema for WordPress")
+
+This schema has similarities to the WordPress database diagram, but also many differences. Let's analyse them.
+
+### Operations without entity are mapped as Root fields
+
+In the WordPress database diagram represents how data is stored, so there is no "beginning". GraphQL, though, is an interface to retrieve data, hence there must be an initial stage from which to execute the query.
+
+This initial stage is the `Root` type, or, to be more precise, the `QueryRoot` and `MutationRoot` types (to deal with queries and mutations, respectively).
+
+In these two types, we map all operations that do not depend on an entity, such as when executing `get_posts()`, `get_users()` or `wp_signon()`:
+
+```graphql
+type QueryRoot {
+  posts: [Post]!
+  users: [User]!
+}
+
+type MutationRoot {
+  logUserIn(username: String, password: String): User
+}
+```
+
+The fields do not need to have the same name or signature as the operation they represent. For instance, calling field `logUserIn` can be considered more suitable than `signOn`.
+
+### All mutations go under MutationRoot
+
+There are operations which do depend on an entity, such as `wp_update_post()`, which is applied on some post. The corresponding mutation on the GraphQL schema must be added to the `MutationRoot` type, because that's how GraphQL works.
+
+Then, this operation is mapped like this:
+
+```graphql
+type MutationRoot {
+  updatePost(input: {
+    postID: ID!,
+    newTitle: String,
+    newContent: String
+  }): Post
+}
+```
+
+This plugin also supports nested mutations, which are offered as an opt-in feature (because this is not standad GraphQL behavior). Then, mutations can also be added under any type, not just `MutationRoot`. In this case, we obtain:
+
+```graphql
+type Post {
+  update(input: {
+    newTitle: String,
+    newContent: String
+  }): Post!
+}
+```
+
+### Dealing with custom posts
+
+There is no type inheritance in GraphQL. Hence, we can't have a type `CustomPost`, and declare that `Post` and `Page` extend it.
+
+GraphQL offers two resources to compensate for this lack: interfaces and union types.
+
+For the first one, we create an interface `CustomPost` for the schema, declaring all the fields expected from a custom post, and we define types `Post` and `Page` to implement the interface:
+
+```graphql
+interface CustomPost {
+  title: String
+  content: String
+  excerpt: String
+  date(format: String): Date!
+}
+
+type Post implements CustomPost {
+  title: String
+  content: String
+  excerpt: String
+  date(format: String): Date!
+}
+
+type Page implements CustomPost {
+  title: String
+  content: String
+  excerpt: String
+  date(format: String): Date!
+}
+```
+
+For the second one, we create a `CustomPostUnion` type for the schema returning all the custom post types:
+
+```graphql
+union CustomPostUnion = Post | Page
+```
+
+And have fields return this type whenever appropriate:
+
+```graphql
+type QueryRoot {
+  customPost(id: ID): CustomPostUnion
+  customPosts: [CustomPostUnion]!
+}
+
+type User {
+  customPosts: [CustomPostUnion]
+}
+
+type Comment {
+  customPost: CustomPostUnion!
+}
+```
+
+As it can be observed, in the GraphQL schema we need to explicitly assert when we are dealing with posts, and when with custom posts, since they are not the same! Calling these two interchangeably is technical debt from WordPress, which we can fix.
+
+For this reason, a custom post is always called `CustomPost` and not `Post`, a field dealing with custom posts is always called `customPosts` and not `posts`, and a field argument receiving the ID for a custom post is called `customPostID` and not `postID` (even though that's how it's called in the mapped WordPress function).
+
+Then, the expectation is always clear:
+
+- field `User.customPosts` can return a list of any custom post, including posts and pages, and `User.posts` only returns posts
+- field `Root.setFeaturedImageOnCustomPost` can add a featured image to any custom post, that's why it's not called `setFeaturedImageOnPost`
+
+### Not grouping tags (and categories) under a single type
+
+Why is type `PostTag` (and same for `PostCategory`) called like that, instead of just `Tag`?
+
+Because, when executing this query (where a product is a CPT), the results from field `tags` for posts and products will always be different, non-overlapping:
+
+```graphql
+query {
+  posts {
+    tags {
+      id
+      name
+    }
+  }
+  products {
+    tags {
+      id
+      name
+    }
+  }
+}
+```
+
+Tags added to posts will not show up when retrieving tags for products, and the other way around (unless a product also uses the `post_tag` taxonomy, but then it can also be represented with the `PostTag` type). This does not represent a big deal in WordPress, since these items can be considered different rows from the same database table. But it does matter for GraphQL, which is strongly typed.
+
+Then, it's a good design decision to keep these entities separate, under their own types, and have tags for posts returned under the `PostTag` type and, if a custom plugin implements its own product CPT, it must use the `ProductTag` type for its tags.
+
+### Giving media items their own identity
+
+Media entities in WordPress are custom post types, only because it was convenient from an implementation point of view. However, the GraphQL schema can avoid this technical debt, and model media elements as a distinct entity, not as custom posts.
+
+This implies the following decisions for the GraphQL schema:
+
+- When querying field `customPosts`, it will not fetch media elements
+- The `Media` type does not implement the `CustomPost` interface, and won't be part of the `CustomPostUnion` type
+- The `Media` type doesn't have many fields expected from a custom post type, such as `excerpt`, `date` and `status`. Instead, it only has those fields expected from a media element:
+
+```graphql
+type Media {
+  id: ID!
+  src: String!
+  width: Int
+  height: Int
+}
+```
+
+### Identifying and mapping enums
+
+In some situations, WordPress uses fixed values from a given set. For instance, the status of a post can only be `"publish"`, `"draft"`, `"pending"` or `"trash"`.
+
+In GraphQL, we can treat these as enums (instead of strings), and create a corresponding enumeration type. Following the GraphQL standard, enums should be written in uppercase, like this:
+
+```graphql
+enum CUSTOM_POST_STATUS {
+  PUBLISH
+  DRAFT
+  PENDING
+  TRASH
+}
+```
+
+However, then the query can't be directly used to interact with WordPress, since executing `get_posts( [ "post_status" => "PUBLISH" ] )` doesn't work.
+
+So, as a compromise, we keep these enum values in lowercase:
+
+```graphql
+enum CUSTOM_POST_STATUS {
+  publish
+  draft
+  pending
+  trash
+}
+```
+
+### Mapping additional types
+
+Blocks are not directly visible in the WordPress database diagram, since they are stored in `wp_posts` (there is no table `wp_blocks`), but nevertheless thay are a distinct entity.
+
+Hence, we introduce the type `Block` to map them:
+
+```graphql
+type Post {
+  blocks: [Block]
+}
+
+type Block {
+  type: String!
+  attributes: JSONObject
+}
+```

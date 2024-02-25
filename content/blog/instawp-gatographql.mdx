@@ -1,0 +1,115 @@
+---
+title: "🚀 Automatically sending the newsletter subscribers from InstaWP to Mailchimp"
+summary: Using InstaWP + Gato GraphQL to forward webhook data into an API
+image: /assets/logos/GatoGraphQL-plus-InstaWP-logo.png
+publishedAt: '2023-10-25'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - wordpress
+  - plugin
+  - instawp
+  - api
+---
+
+For Gato GraphQL, we are using [InstaWP](https://instawp.com) to allow visitors to play with the commercial extensions of the plugin in a sandbox site of their own, before deciding to buy them.
+
+Two days ago I upgraded the InstaWP subscription to the Personal plan, as to increase the lifespan of the sandbox sites from 4 hours to 7 days, and be able to capture the emails subscribed to the newsletter when [test driving Gato GraphQL](https://app.instawp.io/launch?t=gatographql-demo&d=v2):
+
+<div class="img-width-610" markdown="1">
+
+![Test Driving Gato GraphQL with InstaWP](/images/instawp-test-drive-gatographql.png "Test Driving Gato GraphQL with InstaWP")
+
+</div>
+
+The new plan gives me access to the "Advanced Options" tab, where I can provide a webhook that will receive the data from a newly-created sandbox site:
+
+<div class="img-width-1024" markdown="1">
+
+![Advanced options for InstaWP templates](/images/instawp-template-advanced-options.png "Advanced options for InstaWP templates")
+
+</div>
+
+I'd like to automatically capture the email from the visitors who ticked the "Subscribe to mailing list" checkbox, and send it straight to my Mailchimp list, without any manual intervention.
+
+The [documentation for the webhook](https://docs.instawp.com/en/article/webhooks-1m7qpja/) provides an example on capturing the new sandbox site's data, based on using the [Make](https://www.make.com) platform to create a webhook that extracts the payload fields and sends them to Google Sheet:
+
+![Make + InstaWP](/images/instawp-make.jpeg "Make + InstaWP")
+
+However, this workflow does not fully satisfy my needs, as I don't want to depend on yet another service provider, and have to input my Mailchimp credentials there. I want something simpler.
+
+## Using InstaWP + Gato GraphQL to forward webhook data
+
+The solution jumped right in front of my eyes: I can directly use InstaWP to host a reserved site, and install the Gato GraphQL plugin with the [“All in One Toolbox for WordPress” Bundle](/bundles/all-in-one-toolbox-for-wordpress/) (that includes the [HTTP Client](/extensions/http-client/) and all other required extensions).
+
+This combination gives me an "API Gateway" instance on the cheap. I can now use this instance to receive the webhook payload, extract the data, and send it over to Mailchimp, coding this logic in a GraphQL query.
+
+Using GraphQL may not be an obvious option at first, because a GraphQL server normally exposes a single endpoint to receive the query, resolve it, and return its response. Even though possible, it would be very awkward to use the single endpoint as the webhook URL, while passing the GraphQL query via as a param:
+
+```apacheconf
+https://my-api-gateway.instawp.xyz/graphql/?query=query HasSubscribedToNewsletter { hasSubscriberOptin: _httpRequestHasParam(name: "marketing_optin") subscriberOptin: _httpRequestStringParam(name: "marketing_optin") isNotSubscriberOptinNAValue: _notEquals(value1: $__subscriberOptin, value2: "NA") subscribedToNewsletter: _and(values: [$__hasSubscriberOptin, $__isNotSubscriberOptinNAValue]) @export(as: "subscribedToNewsletter") } query MaybeCreateContactOnMailchimp @depends(on: "HasSubscribedToNewsletter") @include(if: $subscribedToNewsletter) { subscriberEmail: _httpRequestStringParam(name: "email") mailchimpUsername: _env(name: "MAILCHIMP_API_CREDENTIALS_USERNAME") @remove mailchimpPassword: _env(name: "MAILCHIMP_API_CREDENTIALS_PASSWORD") @remove mailchimpListMembersJSONObject: _sendJSONObjectItemHTTPRequest(input: { url: "https://us7.api.mailchimp.com/3.0/lists/bdfd6885fe/members", method: POST, options: { auth: { username: $__mailchimpUsername, password: $__mailchimpPassword }, json: { email_address: $__subscriberEmail, status: "subscribed" } } }) }
+```
+
+Not pretty, right?
+
+Gato GraphQL offers a better way to deal with this: [Persisted Queries](/guides/special-features/persisted-queries/). A persisted query is similar to a REST endpoint in that it is accessible under its own URL, and its output is predefined (the GraphQL query is provided in advance and stored in the database):
+
+![Persisted query editor](/assets/guides/upstream/persisted-query.png "Persisted query editor")
+
+Now, the webhook URL will look like this:
+
+```apacheconf
+https://my-api-gateway.instawp.xyz/graphql-query/process-instawp-sandbox-webhook/?operationName=MaybeCreateContactOnMailchimp
+```
+
+And the GraphQL query stored as a Persisted query is this one:
+
+```graphql
+query HasSubscribedToNewsletter {
+  hasSubscriberOptin: _httpRequestHasParam(name: "marketing_optin")
+  subscriberOptin: _httpRequestStringParam(name: "marketing_optin")
+  isNotSubscriberOptinNAValue: _notEquals(value1: $__subscriberOptin, value2: "NA")
+  subscribedToNewsletter: _and(values: [$__hasSubscriberOptin, $__isNotSubscriberOptinNAValue])
+    @export(as: "subscribedToNewsletter")
+}
+
+query MaybeCreateContactOnMailchimp
+   @depends(on: "HasSubscribedToNewsletter")
+   @include(if: $subscribedToNewsletter)
+{
+  subscriberEmail: _httpRequestStringParam(name: "email")
+  
+  mailchimpUsername: _env(name: "MAILCHIMP_API_CREDENTIALS_USERNAME")
+    @remove
+  mailchimpPassword: _env(name: "MAILCHIMP_API_CREDENTIALS_PASSWORD")
+    @remove
+  
+  mailchimpListMembersJSONObject: _sendJSONObjectItemHTTPRequest(input: {
+    url: "https://us7.api.mailchimp.com/3.0/lists/{listCode}/members",
+    method: POST,
+    options: {
+      auth: {
+        username: $__mailchimpUsername,
+        password: $__mailchimpPassword
+      },
+      json: {
+        email_address: $__subscriberEmail,
+        status: "subscribed"
+      }
+    }
+  })
+}
+```
+
+Much better, right?
+
+Now, when creating a new sandbox site on InstaWP, and the user signs up to the newsletter, I automatically get that email added to my Mailchimp list:
+
+<div class="img-width-1024" markdown="1">
+
+![Email automatically added to Mailchimp list](/images/instawp-mailchimp.png "Email automatically added to Mailchimp list")
+
+</div>
+
+If you're interested in learning how this GraphQL query works, check out blog post [👨🏻‍🏫 GraphQL query to automatically send the newsletter subscribers from InstaWP to Mailchimp](/blog/instawp-gatographql-query/)

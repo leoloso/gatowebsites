@@ -1,0 +1,121 @@
+---
+title: "🤔 Should GraphQL Be Different for Different Users?"
+summary: As GraphQL is being used for different purposes, can everyone be satisfied with a fixed spec?
+image: /images/graphql-logo-with-name-square.jpg
+publishedAt: '2022-06-02'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - spec
+  - discussion
+---
+
+GraphQL is an interface to retrieve data from some origin, with the GraphQL spec defining the requirements for the interface. As long as these requirements are satisfied, GraphQL does not care how it is accomplished. The GraphQL server can then be implemented in JavaScript using promises, using a concurrent architecture based in Golang, mapped to an Excel file, or whatnot, and all of these can be valid implementations of the GraphQL spec.
+
+![GraphQL stands in-between the client and backend services](/images/graphql-for-be-devs.png "GraphQL stands in-between the client and backend services. Image source: <a href='https://www.netlify.com/blog/2020/01/21/advice-from-a-graphql-expert/'>netlify.com</a>")
+
+How is the server's engine implemented is not important for the successful execution of a GraphQL request, as the interaction between client and server is always the same, taking place by submitting a GraphQL query using a defined syntax, and obtaining a corresponding response in JSON format.
+
+Now, when I say that the implementation is not important, I mean it from the perspective of the user of the API, who is simply intending to obtain data from the server. How the returned data was produced is of no interest.
+
+But the situation changes for the server-side developer working on the API, for who the details of the implementation are indeed very important. If I code my GraphQL API in PHP, then I'll do my best for my API to be resolved as efficiently as possible, and to have an architectural design that is as elegant as possible, using the capabilities offered by PHP.
+
+![PHP vs Java vs JavaScript](/images/php-vs-java-vs-javascript.png "PHP vs Java vs JavaScript. Image source: <a href='https://twitter.com/themarcba/status/1245273834577711104'>@themarcba</a>")
+
+Then, we have a possible conflict of interests between the need to safeguard the API, and the expected capabilities by developers working on the API, who do not want features supported by the underlying language taken away from them (such as being able to execute recursive code).
+
+This conflict became evident in issue [#929: Allow recursive references in fragments](https://github.com/graphql/graphql-spec/issues/929), which contends that GraphQL should not ban recursions in fragments.
+
+In a past meetup from the GraphQL working group, Roman, who is the developer who raised the issue, expressed why he is in [disagreement with the limitation imposed by the spec](https://github.com/graphql/graphql-wg/blob/10387b5848c2b49fdab09c731e0dc3b92b7dc284/notes/2022/2022-02-03.md#allowing-recursive-references-in-fragments):
+
+> I'm a server-side developer, and I feel like the spec speaks too much about server-side execution, whereas it should focus on what the client wants to be delivered - not how
+
+The rule banning recursions in fragments has been justified on the premise of keeping the public API secure. After all, GraphQL was created by Facebook in order to deliver data to their public-facing application, and users should not be able to exploit a flaw in the design of the API that could bring the service down.
+
+GraphQL creator's Lee Byron expressed three major concerns:
+
+> infinite recursion; limitations wouldn't just be specification - how should it halt and when
+>
+> data validation; returning the same value multiple times, how is that represented in the data. Ideally you want to detect it's cyclic and halt straight away, but some servers cannot detect this and may loop many times before they detect something went wrong and stop
+>
+> what's the cost of not having this; does it warrant these problems? No it doesn't; it's always possible for you to specify the number of levels deep in your query - that's effectively the desugared version of what we'd do if we were to handle this in GraphQL
+
+Coming from their own perspectives, both Roman and Lee are right. Lee Byron is worried about the security of the public GraphQL API. Avoiding recursive fragments is justified as to make sure that no malicious actors can take down the system by executing a never-ending cycling loop in the query, and even remove the chance of a team “self-DDoSing”, which could happen if they unintentionally publish a query that halts the system.
+
+Roman, however, is concerned with the limitations to his own capabilities for creating a GraphQL API. Because Roman may be the only consumer of his API (i.e. a private API that is not exposed to users), or because his server may have the capability to detect and stop recurring cycles, then he believes the GraphQL limitation is harmful and not justifiable.
+
+At the core of the discussion, the issue is not whether recursive fragments should be allowed or not, but something more fundamental: Who is GraphQL's target? If not a single group, could a single API specification satisfy the requirements from all of the different stakeholders? And if the conflict cannot be prevented, can at least be somehow remediated?
+
+Let's explore these questions.
+
+## Who is GraphQL's target?
+
+GraphQL is being used by different kinds of stakeholders, among which we can identify:
+
+**1. API users**: Those consuming data from some GraphQL endpoint, for whatever reason. For instance, we can all be API users of GitHub's [public GraphQL API](https://docs.github.com/en/graphql), as to retrieve data concerning our GitHub repos.
+
+**2. Client-side devs:** Those creating client-side applications which are powered by some GraphQL endpoint. For instance, developers building sites with [Gatsby](https://www.gatsbyjs.com) rely on GraphQL to fetch the content for the site.
+
+**3. Backend devs:** Those creating the resolvers for the GraphQL API.
+
+In addition, we must note that the GraphQL API can be public or private:
+
+**Public API:** Because anyone has access to the GraphQL endpoint, we must be concerned with security measures to avoid attacks by malicious actors.
+
+**Private API:** Because only intended actors are granted access to the API, there are no inherent security risks, and self-DDoSing can be easily avoided with good coding practices.
+
+## Does a single API specification satisfy the requirements of all stakeholders?
+
+The issue raised by Roman can be interpreted like this: “If my GraphQL API is private, and I know exactly what I'm doing (having 100% certainty that my code will work as expected and no halting executions will be produced), then why can't I use recursions in fragments?”
+
+![Recursions @ xkcd](/images/xkcd-recursion.png "Recursions @ xkcd. Image source: <a href='https://xkcd.com/1270/'>xkcd</a>")
+
+An example of this situation happens whenever we use a GraphQL-powered framework for building static sites (such as Gatsby, [Next.js](https://nextjs.org) or [RedwoodJS](https://redwoodjs.com)), because the GraphQL API will often be private, and we cannot inadvertently DDoS our application and suffer adverse consequences (at most it will crash when building the static site on a development or staging environment).
+
+Developers using the above set-up may perfectly wonder why the GraphQL spec forbids them from using benefitial features, which have no adverse consequences whatsoever **for their set-up**.
+
+In conclusion, by banning recursive fragments, the GraphQL spec is imposing a security measure that applies to a selection of all potential uses of GraphQL, not all of them, as to be on the safe side.
+
+## Could the GraphQL spec better satisfy all stakeholders?
+
+If different stakeholders have different requirements, how can the GraphQL spec satisfy all of them? (The idea is to avoid forking the spec and produce customized versions for specific targets.)
+
+Let's explore a couple of ideas, where the first one would need to go through the spec-contribution process, while the second would not.
+
+### Feature-toggle at the GraphQL spec level
+
+One possible route to take is to have the spec “suggest” but not “impose” rules. In this case, the rule forbidding recursions in fragments could be strongly suggested, but the feature would still be accepted.
+
+Now, this solution would change the defaut condition of recursive fragments from “mandatory” to “optional”, which would produce two negative consequences:
+
+- The API would be unsafe by default (the scenario that Lee Byron wants to avoid)
+- It would produce a breaking change, since a forbidden query would then be allowed
+
+Then, it would be better to revert the option on its head, by having recursions in fragments still banned by default but give the possibility to toggle a feature-flag that disables this behavior. Since the feature must be explicitly disabled, it will be done only by admins who know what they are doing.
+
+As the feature is most valuable under certain set-ups, GraphQL servers and frameworks could decide if/how/when to offer the configuration. For instance, Gatsby could prominently display the option via some UI whenever creating static sites, and hide it otherwise.
+
+The general idea is for the GraphQL spec to support “enabled but optional features”, which can be enabled/disabled via configuration, and their default state is the one they already have in the spec.
+
+Banning recursive fragments would be one of them, and there could be other such features too, such as a [`Map` type](https://github.com/graphql/graphql-spec/issues/101), which was not accepted for the spec by Lee Byron [because](https://github.com/graphql/graphql-spec/issues/101#issuecomment-170170967):
+
+> There are significant tradeoffs to a Map type vs a list of key/value pairs. One issue is paginating over the collection. Lists of values can have clear pagination rules while Maps which often have non-ordered key-value pairs are much more difficult to paginate.
+>
+> Another issue is usage. Most often Map is used within APIs where one field of the value is being indexed, which is in my opinion is an API anti-pattern as indexing is an issue of storage and an issue of client caching but not an issue of transport. This anti-pattern concerns me. While there are some good uses for Maps in APIs, I fear that the common usage will be for these anti-patterns so I'm suggesting proceeding with caution.
+
+Lee Byron expressed his fear that the feature will be used as an anti-pattern. However, he also recognized that there are good uses for it. Then, as the issue garnered plenty of support by the community (with over 150 👍), developers could be given the option of explicitly enabling the addition of a `Map` type to their schemas, and deal with the consequences.
+
+### Feature-toggle by GraphQL servers
+
+If the proposal above does not gather support since it is too risky for the GraphQL spec, an alternative is to implement it at the GraphQL server level. Then, GraphQL servers could provide a custom feature that disables recursions in fragments.
+
+Generalizing the idea, GraphQL servers could offer to disable certain features from the spec, and enable others which are missing from the spec. For this behavior to not produce surprises, the servers must make sure that the default state is that one required by the spec, and the admin of the API must be made fully aware of the consequences of toggling the feature. (This is the strategy followed by the GraphQL API for WordPress for its “[innovative features](https://gatographql.com#features)”.)
+
+## Wrapping up
+
+As GraphQL has been increasingly becoming more popular, new frameworks supporting new capabilities have made it part of their stack, and new stakeholders (and new types of them) have got involved. Then, a specification initially created by Facebook to define how its applications would get data from its servers needs to increasingly contend with more use cases.
+
+It is inevitable for conflicts to arise, where a set of stakeholders needs a feature that is counterproductive, or even harmful, to other stakeholders, as is the case with recursive fragments. What can be done to improve the situation, and avoid that unsatisfied stakeholders don't get disappointed with GraphQL?
+
+I've argued that the spec could offer the chance to “disable” a feature, allowing admins who know what they are doing to remove some limitations as to satisfy their own requirements. Now, I myself don't agree with this solution, but I bring it out into the open nevertheless because this discussion needs to be had. Since this idea is controversial, a better alternative is for GraphQL servers to provide this behavior via custom features, which must be explicitly enabled.

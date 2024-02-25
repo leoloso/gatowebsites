@@ -1,0 +1,329 @@
+---
+title: "🛠 Should WordPress have a GraphQL API in core?"
+summary: Would contributors benefit from some rest from REST?
+image: /images/rest-copying-graphql-meme.jpg
+publishedAt: '2021-02-27'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - api
+  - wordpress
+  - plugin
+---
+
+WordPress 5.7 is [coming out soon](https://make.wordpress.org/core/2021/02/23/wordpress-5-7-field-guide/). As it has been for many releases now, the WP REST API will also be [shipping several new features](https://make.wordpress.org/core/2021/02/23/rest-api-changes-in-wordpress-5-7/).
+
+Among the new features, one caught my attention: "Image Editor Accepts a List of Modifiers".
+
+> The `/wp/v2/media/<id>/edit` endpoint introduced in WordPress 5.5 came with a limited API that accepted top-level rotation and crop declarations. In [50124](https://core.trac.wordpress.org/changeset/50124) this API was made more powerful and flexible by accepting an array of modifications in the new `modifiers` request parameter.
+
+```js
+import apiFetch from '@wordpress/api-fetch';
+ 
+const data = {
+  modifiers: [
+    {
+      type: 'crop',
+      args: {
+        left  : 0,
+        top   : 0,
+        width : 80,
+        height: 80
+      }
+    },
+    {
+      type: 'rotate',
+      args: {
+        angle: 90
+      }
+    }
+  ]
+};
+apiFetch( { data, method: 'POST', path: '/wp/v2/media/5/edit' } );
+```
+
+This development has been a while on the making.
+
+First, on WordPress 5.5, the [image editing endpoint](https://make.wordpress.org/core/2020/07/16/new-and-modified-rest-api-endpoints-in-wordpress-5-5/#image-editing) was introduced.
+
+This endpoint was initially a bit rigid, requiring to pass all the data together concerning all operations to apply on the image. For instance, to rotate the image, and modify its size, we would pass this data:
+
+```json
+{
+  "x": 0,
+  "y": 0,
+  "width": 80,
+  "height": 80,
+  "rotate": 90
+}
+```
+
+Then, in WordPress 5.6, [batch operations](https://make.wordpress.org/core/2020/11/20/rest-api-batch-framework-in-wordpress-5-6/) were introduced to the WP REST API.
+
+Finally, in the upcoming WordPress 5.7, the operations to apply on the image have been decoupled, so we have operations `"crop"` and `"rotate"`. These operations can be executed on their own, but also together on the same request via batching.
+
+As seen earlier on, passing data to the endpoint now looks much more elegant:
+
+```json
+{
+  "modifiers": [
+    {
+      "type": "crop",
+      "args": {
+        "left"  : 0,
+        "top"   : 0,
+        "width" : 80,
+        "height": 80
+      }
+    },
+    {
+      "type": "rotate",
+      "args": {
+        "angle": 90
+      }
+    }
+  ]
+}
+```
+
+## Re-doing what already exists?
+
+The WP REST API is not the only API for WordPress. There are (at least) two alternatives:
+
+- GraphQL, via [WPGraphQL](https://www.wpgraphql.com/)
+- GraphQL + persisted queries, via the [GraphQL API for WordPress](https://gatographql.com)<br/>(☝🏽 This is me, your host for this blog post ☝🏽)
+
+[GraphQL](https://graphql.org) is a newish type of API, which excels at batching operations. If using GraphQL, there is no need to spend time and energy developing a custom solution for them, as is the case for REST.
+
+Indeed, REST could be seen as "copying" this feature from GraphQL.
+
+![REST copying GraphQL?](/images/rest-copying-graphql-meme.jpg "REST copying GraphQL?")
+
+Supporting batch operations in the WP REST API took at least 2, possibly 3, release cycles to accomplish. This is not an insignificant amount of time, and it required the [contribution from several people](https://core.trac.wordpress.org/ticket/50244).
+
+If WordPress could also make use of GraphQL, and the image editing endpoint was based on GraphQL instead of REST, then these contributors could instead work on other developments.
+
+Wouldn't WordPress be better off, and be developed much faster, if it could use the best qualities from each API, whenever convenient?
+
+## Batch operations in GraphQL
+
+I'll show not one, but several ways in which the GraphQL API for WordPress supports batch operations.
+
+The first one is the simplest one: adding several fields to the root of the query. For instance, this query logs the user in, and then adds a comment:
+
+```graphql
+mutation LogUserInAndAddCommentToPost {
+  loginUser(
+    by: { credentials: { usernameOrEmail: "test", password: "pass" } }
+  ) {
+    id
+    name
+  }
+  addCommentToCustomPost(
+    input: {
+      customPostID: 1459
+      commentAs: { html: "Adding a comment: bla bla bla" }
+    }
+  ) {
+    id
+    content
+    date
+  }
+}
+```
+
+(Btw, this is the GraphiQL client. [Here is a tutorial](https://gatographql.com/guides/intro/intro-to-the-graphiql-client/) on using it.)
+
+Now, these two operations were applied on different objects, but we want to apply several operations to the same object.
+
+Let's do that next: this query adds two comments to the same post.
+
+```graphql
+mutation AddTwoCommentsToPost {
+  firstComment: addCommentToCustomPost(
+    input: {
+      customPostID: 1459
+      commentAs: { html: "This is my first response" }
+    }
+  ) {
+    id
+    content
+    date
+  }
+  secondComment: addCommentToCustomPost(
+    input: {
+      customPostID: 1459
+      commentAs: { html: "This is my second response" }
+    }
+  ) {
+    id
+    content
+    date
+  }
+}
+```
+
+These two comments were added to an already-existing post. But what would happen if the post also needs be created in first place?
+
+In that case, the simple query will not work anymore, because we don't know the ID of the post-yet-to-be-created, which is needed as argument to the other operations (notice the `?` in the field argument):
+
+```graphql
+mutation CreatePostAndAddTwoCommentsToPost {
+  createPost(input: { title: "Some post" }) {
+    id  # <= I don't know what this value will be
+  }
+  addCommentToCustomPost(input: {
+    customPostID: ?,
+    commentAs: { html: "Blah blah blah" }
+  }) {
+    id
+    content
+    date
+  }
+}
+```
+
+But despair not, that the GraphQL API has your back covered. It provides not one, but two solutions!
+
+![The GraphQL API cares about you](/images/count-on-you-meme.jpg "The GraphQL API cares about you")
+
+The first one is to use the [multiple-query execution](https://gatographql.com/guides/special-features/multiple-query-execution/) feature.
+
+In this query, we execute the first operation, export its result via directive `@export`, and then inject this value as input to the second query:
+
+```graphql
+mutation AddComment {
+  addCommentToCustomPost(
+    customPostID: 1459
+    commentAs: { html: "Some insightful comment" }
+  ) {
+    id @export(as: "newCommentID")
+    content
+    date
+  }
+}
+
+mutation AddResponseToComment @depends(on: "AddComment") {
+  replyComment(
+    parentCommentID: $newCommentID
+    commentAs: { html: "Debunking your insightful comment" }
+  ) {
+    id
+    date
+    content
+    parent {
+      id
+    }
+  }
+}
+```
+
+More elegant still, we can use [nested mutations](https://gatographql.com/guides/special-features/nested-mutations/).
+
+In this query, we execute the first operation, and nest the second operation within, so it will be applied on the object created during the first operation (and then repeat, nesting a 3rd operation, and so on):
+
+```graphql
+mutation AddCommentAndResponseAndResponse {
+  addCommentToCustomPost(
+    input: {
+      customPostID: 1459
+      commentAs: { html: "Some insightful comment" }
+    }
+  ) {
+    id
+    content
+    date
+    reply(input: { commentAs: { html: "Debunking your insightful comment" } }) {
+      id
+      date
+      content
+      parent {
+        id
+      }
+      reply(input: { commentAs: { html: "No, it was right!" } }) {
+        id
+        date
+        content
+        parent {
+          id
+        }
+      }
+    }
+  }
+}
+```
+
+As a bonus, the batch operations can be applied not just on a single entity, but on many entities at the same time, on the same request.
+
+In this query, the new comments and all their responses are being added to several posts:
+
+```graphql
+mutation AddCommentAndResponseToManyPosts {
+  posts(ids: [1657, 1153, 1499, 1459]) {
+    id
+    addComment(input: { commentAs: { html: "Some insightful comment" } }) {
+      id
+      content
+      date
+      reply(
+        input: { commentAs: { html: "Debunking your insightful comment" } }
+      ) {
+        id
+        date
+        content
+        parent {
+          id
+        }
+      }
+    }
+  }
+}
+```
+
+And the plugin has yet one more trick under its sleeve: by using the embeddable fields feature, we can customize the content passed to each field argument, using data from the object itself!
+
+In this query, the comments contain information from the object upon which they are being created:
+
+```graphql
+mutation AddCustomCommentAndResponseToManyPosts {
+  posts(ids: [1657, 1153, 1499, 1459]) {
+    id
+    addComment(
+      input: {
+        commentAs: { html: "The post has ID {{ id }} and title {{ title }}" }
+      }
+    ) {
+      id
+      content
+      date
+      reply(
+        input: {
+          commentAs: {
+            html: "The parent comment was posted on {{ dateStr(format: \"d/m/Y\") }}. Cool, right?"
+          }
+        }
+      ) {
+        id
+        date
+        content
+        parent {
+          id
+        }
+      }
+    }
+  }
+}
+```
+
+## Getting the best from REST and GraphQL whenever convenient
+
+As [Full Site Editing](https://github.com/WordPress/theme-experiments) is developed and expanded, WordPress will increasingly depend on its API(s).
+
+Concerning existing features, the REST API has so far fared very well. There is no need to rebuild what is not broken.
+
+However, concerning new, yet-to-be-developed features, wouldn't WordPress benefit from using either REST or GraphQL, depending on whatever is more convenient for that specific feature?
+
+The answer is yours...
+
+![What's your opinion?](/images/rest-plus-graphql-meme.jpg "What's your opinion?")

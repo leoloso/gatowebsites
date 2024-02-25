@@ -1,0 +1,99 @@
+---
+title: "👨🏻‍💻 (Starting this Wed 18/10) Gato GraphQL Webinar Series @ WPBuilds"
+summary: WPBuilds podcast host by Nathan Wrigley will receive Leonardo Losoviz for a webinar series on using Gato GraphQL in WordPress.
+image: /images/WP-Builds-Gato-GraphQL-Episode-1-1.jpeg
+publishedAt: '2023-10-16'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - wordpress
+  - plugin
+  - podcast
+  - webinar
+---
+
+Starting this Wednesday 18th October, I will kick-start a webinar series on using **Gato GraphQL** at the **WPBuilds podcast**, hosted by the one and only **Nathan Wrigley**.
+
+Whether you have used GraphQL or not, if you'd like to learn _(and be surprised at)_ what is possible to attain with GraphQL in WordPress, then this webinar series is for you.
+
+If you are not interested a tiny bit in GraphQL, but you do care about discovering tools that help you manage your WordPress site, then this webinar series is for you too.
+
+_(And psst, don't tell anyone, but if you care about getting a good deal, this webinar series is also for you! There might be a coupon code for a nice discount announced at it 🙊)_
+
+![Gato GraphQL Webinar Series - 1st Episode](/images/WP-Builds-Gato-GraphQL-Episode-1-1.jpeg "Gato GraphQL Webinar Series - 1st Episode")
+
+**Where:** [wpbuilds.com/live](https://wpbuilds.com/live)
+
+**When:** This Wednesday 18th October 2023, at 3pm UK / 10am Eastern / 7am Pacific time
+
+**Calendar:** [Google](https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20231018T140000Z%2F20231018T145900Z&details=Introduction%20to%20Gato%20GraphQL%2C%20Running%20queries%20in%20the%20admin%2C%20Creating%20API%20endpoints%2C%20Access%20Control%2C%20Caching.%0Ahttps%3A%2F%2Fwpbuilds.com%2Flive&location=WP%20Builds%20LIVE%20Page&text=Gato%20GraphQL%20Webinar%20Series%20%231) / [Outlook](https://outlook.live.com/calendar/0/action/compose?allday=false&body=Introduction%20to%20Gato%20GraphQL%2C%20Running%20queries%20in%20the%20admin%2C%20Creating%20API%20endpoints%2C%20Access%20Control%2C%20Caching.%0Ahttps%3A%2F%2Fwpbuilds.com%2Flive&enddt=2023-10-18T14%3A59%3A00%2B00%3A00&location=WP%20Builds%20LIVE%20Page&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2023-10-18T14%3A00%3A00%2B00%3A00&subject=Gato%20GraphQL%20Webinar%20Series%20%231) / [365](https://outlook.office.com/calendar/action/compose?allday=false&body=Introduction%20to%20Gato%20GraphQL%2C%20Running%20queries%20in%20the%20admin%2C%20Creating%20API%20endpoints%2C%20Access%20Control%2C%20Caching.%0Ahttps%3A%2F%2Fwpbuilds.com%2Flive&enddt=2023-10-18T14%3A59%3A00%2B00%3A00&location=WP%20Builds%20LIVE%20Page&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2023-10-18T14%3A00%3A00%2B00%3A00&subject=Gato%20GraphQL%20Webinar%20Series%20%231)
+
+---
+
+The series will span over 5 sessions, going deeply into solving 20 problems that we usually encounter when building our WordPress sites.
+
+Below is the program for each session (they all start at 3pm UK time).
+
+## 1st Episode: Wed 18th October
+
+**“Introduction to Gato GraphQL, Running queries in the admin, Creating API endpoints, Access Control, Caching”**
+
+<ins>Live demo:</ins>
+
+1. Searching WP data _(eg: finding posts or users by metadata)_
+2. Querying dynamic data
+3. Complementing WP-CLI _(eg: selecting on which resources to apply a command)_
+4. Publishing an API endpoint without any PHP code, and making it password-protected or private
+5. Caching the API response without using 3rd-party libraries
+
+## 2nd Episode: Wed 25th October
+
+**“Integrating with Gutenberg, Customizing content for users, Duplicating posts”**
+
+<ins>Live demo:</ins>
+
+6. Feeding data to custom blocks from your application
+7. Retrieving data for blocks for both client-side rendering (CSR) and server-side rendering (SSR), using DRY logic!
+8. Retrieving and exposing structured data from blocks
+9. Mapping JavaScript components to blocks
+10. Sending personalized emails
+11. Customizing content for different users
+12. Duplicating a blog post, and also multiple blog posts at once
+
+## 3rd Episode: Wed 29th November
+
+**“Updating content in bulk, Automating tasks”**
+
+<ins>Live demo:</ins>
+
+13. Adapting content in bulk _(eg: replacing a string in all posts, as when migrating the site's domain)_
+14. Automating admin tasks _(eg: automatically inserting a mandatory block whenever missing)_
+15. Adding a custom call-to-action block to all posts (before a campaign), and removing it (after the campaign)
+16. Sending a notification when there's a new post, and a daily summary of activity to your email
+
+## 4th Episode: Wed 6th December
+
+**“Translating content, Interacting with external services, Importing/distributing content”**
+
+<ins>Live demo:</ins>
+
+17. Translating a blog post (at the block-property level!), and also multiple blog posts at once
+18. Interacting with external services _(eg: combining data from Mailchimp subscribers and website users)_
+19. Importing a post from another WordPress site
+20. Distributing content to multiple downstream sites _(eg: syncing data within a multisite)_
+
+## 5th Episode: Wed 13th December
+
+**“Extending the GraphQL schema”**
+
+We will learn how to create an extension plugin, containing resolvers that fetch custom data, to power our themes, plugins and applications.
+
+---
+
+## See you there!?
+
+I hope so!
+
+👋 Ciao,<br/>
+Leo

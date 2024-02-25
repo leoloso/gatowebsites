@@ -1,0 +1,221 @@
+---
+title: "👷🏽‍♂️ Building the GraphQL API in the Open #1 (March '21)"
+summary: Monthly tracking the progress of the plugin
+image: /images/building-in-the-open-episode-1/welcome.png
+publishedAt: '2021-03-06'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - api
+  - wordpress
+  - plugin
+  - newsletter
+---
+
+Welcome to the very first "Building in the Open" newsletter!
+
+This is a channel to share news concerning the development of the GraphQL API for WordPress with the community, sent the first week of each month.
+
+Through this space, we will learn everything that happened during the last month, including:
+
+✅ What we've been working on, what new features we released<br/>
+✅ What we will be working on the upcoming month<br/>
+✅ Amount of traffic we got on the site<br/>
+✅ How did the plugin do: Number of downloads, newsletter subscriptions, GitHub stars<br/>
+✅ Progress on achieving financial sustainability<br/>
+✅ Newly published guides<br/>
+✅ Summary of our recently published blog posts<br/>
+✅ Reaching out / Plugin mentions<br/>
+✅ General news
+
+If you enjoy this newsletter, please invite your friends to [subscribe](https://gatographql.com/newsletter/).
+
+Let's start!
+
+**Heads up:** This newsletter is a two-way communication channel. If there's anything you'd like to say, be welcome to [add a comment](#comments) (at the bottom of the blog post).
+
+![A welcome to the newsletter, by your host](/images/building-in-the-open-episode-1/welcome.png)
+
+## What we've been coding on
+
+If you notice the [Guides](https://gatographql.com/guides/), section "Extending the GraphQL API" is still pretty empty:
+
+![Guides for "Extending the plugin" are not yet complete](/images/building-in-the-open-episode-1/guides-extending-section.jpg "Guides for 'Extending the plugin' are not yet complete")
+
+My priority is to complete these guides. But before I do that, I want the plugin's code to be as simple as possible. The simpler it is, the less documentation is required, and the more anyone and everyone is able to understand it.
+
+With this in mind, I've decided to refactor the code, to have it be fully based on [Symfony's DependencyInjection Component](https://symfony.com/doc/current/components/dependency_injection.html).
+
+The idea is that any extension to the plugin (such as a custom `TypeResolver`, `FieldResolver` or `DirectiveResolver`) is simply defined as a service in the container, and the service is automatically configured via [Compiler passes](https://symfony.com/doc/current/service_container/compiler_passes.html).
+
+Fully relying on Symfony's dependency injection has several advantages:
+
+✅ There is a single, consistent way to create extensions<br/>
+✅ Just creating a PHP class implementing some interface does the whole job, and the developer needs not be aware of the nitty-gritty details<br/>
+✅ Symfony's documentation is very extensive. By pointing developers to it, that is documentation that **I do not need to write**
+
+Interested in the code? Check out my latest merged PRs ([#453](https://github.com/GatoGraphQL/GatoGraphQL/pull/453), [#452](https://github.com/GatoGraphQL/GatoGraphQL/pull/452), [#449](https://github.com/GatoGraphQL/GatoGraphQL/pull/449) and several others).
+
+I will keep working on this code for the upcoming weeks, until the migration is 100% complete, and I get to write the missing guides.
+
+## Traffic to gatographql.com
+
+Let me be clear on something: I care about how many people visit the plugin's website, as a proxy to know how many people know about the plugin.
+
+I don't have deep pockets to publicize my plugin. And even if I did, I wouldn't spend my money on promoting it, since that goes against the spirit of open source. (This would be different if open source were just a channel to sell some product or service, but that's not my case.)
+
+That means that I rely fully on word of mouth to promote it. For that, I've been devoting plenty of effort in writing high-quality content for [the plugin's blog](https://gatographql.com/blog/), hoping this content would get shared around, reaching people who would otherwise not know about the plugin.
+
+And so far, I'm pretty happy with the results.
+
+During the past month, I've had 4.5k visitors, with 6k page views:
+
+![Show me the money!](/images/building-in-the-open-episode-1/traffic.jpg "Show me the money!")
+
+Let's break down these stats.
+
+Most of my visitors come from Hacker News, where I managed to pull a few "Show HN" front pages, and Reddit, mostly from [/r/PHP](https://www.reddit.com/r/PHP/) and [/r/graphql](https://www.reddit.com/r/graphql/) (where I always share my articles).
+
+I managed to [rank #1 on Google when searching "wordpress core graphql"](https://twitter.com/losoviz/status/1365873932675391488), and that brought plenty of traffic. Unfortunately, it was a one time-off: after 24hs it went away as suddenly as it arrived. Otherwise, on a typical day I get between 3 and 10 visitors from Google.
+
+Twitter and Facebook bring a sizable amount of traffic, but I don't know from who (not from me, since I am extremely bad at social media). I do share my articles on Twitter, but they seldom get retweeted. And I do not use 👎🏾 Facebook.
+
+(Btw, for those of you who share my articles on social media, thanks ❤️)
+
+I get some modest but consistent traffic from the [listing of GraphQL servers in PHP on graphql.org](https://graphql.org/code/#php), and from [an article I've published on dev.to](https://dev.to/leoloso/executing-multiple-queries-in-a-single-operation-in-graphql-goe), which ranks #1 when [googling "graphql execute multiple queries"](https://www.google.com/search?q=graphql+execute+multiple+queries).
+
+Finally, my articles consistently appear in WordPress' main newsletters (including [WP Owls](https://wpowls.co), [wpMail.me](https://wpmail.me/), [Post Status](https://poststatus.com/newsletter/), [WP Builds](https://wpbuilds.com/), and [The WP Weekly](https://thewpweekly.com/)). I don't know exactly how much traffic each of them brings, since the referrer will appear as Gmail and similar others. However, when taken together, these newsletters produce a sizable number of visitors.
+
+My blog posts are by far my most popular content, with the last three ([this one](https://gatographql.com/blog/why-wordpress-should-have-a-graphql-api-in-core/), [this one](https://gatographql.com/blog/graphql-api-vs-wpgraphql-the-fight/) and [this one](https://gatographql.com/blog/rejuvenating-wordpress-through-graphql/)) bringing over 1k visitors each.
+
+These numbers look pretty good, more since I barely launched the website less than 2 months ago. However, not everything looks good: At 88%, the bounce rate is quite high. I need to work on that.
+
+## Metrics
+
+Traffic to the site is only a decorative metric, to estimate awareness of the plugin. But far more important to ask is: How many people started using the plugin during the past month?
+
+![My reputation precedes me](/images/building-in-the-open-episode-1/multiply.png "My reputation precedes me")
+
+During the past month, the plugin fared like this:
+
+🎯 Number of plugin downloads: 170<br/>
+⭐️ GitHub stars: 27
+
+The number of downloads can be retrieved from the GitHub API, passing param `per_page=3` to include only the 3 releases created during the last month:
+
+```bash
+curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/GatoGraphQL/GatoGraphQL/releases?per_page=3 | grep "download_count"
+```
+
+I am neither happy nor unhappy about these numbers. They are not great (and I wish they were better), but they are a good start.
+
+Concerning **downloads**, it is said that getting the first user is the most difficult task. Only after a few people start using the plugin, and start talking about it, that its use will become more widespread. I am still within this initial stage of finding the first batch of commited users.
+
+Concerning **GitHub stars**, I must say it looks pretty flat: around 1 star per day on average. This is certainly nothing great. If you like what I'm building with the GraphQL API for WordPress, and you don't mind showing some ❤️ love, then please consider [giving it a ⭐️ star on GitHub](https://github.com/GatoGraphQL/GatoGraphQL).
+
+## Financial Sustainability
+
+This one is the tough issue: the project must be financially sustainable. It either generates a bit of money, or it won't make it for long.
+
+![In this goes my life](/images/building-in-the-open-episode-1/cheese.png "In this goes my life")
+
+If I am able to make an income for myself, then I can keep working on it, for as long as needed. That's all I need: an income. Not investors knocking on my door looking for millions. Just a couple thousands per month, to pay for the roof above my head.
+
+My goal is to keep the plugin fully open source. For that, I'm currently reaching out to a couple of potential sponsors, asking if they'd like to help fund the development of the plugin. It will be a win-win situation.
+
+Why am I resorting to some "big guns" sponsors, instead of relying on regular sponsorship, by anyone from the community?
+
+Yes, I've been trying that too: I am on [GitHub Sponsors](https://github.com/sponsors/leoloso). However, it doesn't really work, unless you already have thousands of users, followers, or people subscribed to your mailing list, to whom you can reach out to, expecting many of them to fund you.
+
+For instance, asking for a standard u$d 5 or 10 per month, I'd need several hundred funders for this approach to fund my work. And I'm nowhere near that stage.
+
+But even more, who can really succeed with this approach? I know that Caleb Porzio (creator of Livewire) [has made it](https://calebporzio.com/i-just-hit-dollar-100000yr-on-github-sponsors-heres-how-i-did-it), and has now [reached over 1350 sponsors](https://github.com/sponsors/calebporzio#sponsors)! But that's more the exception than the norm.
+
+Take Composer, for instance. Composer has fundamentally changed how we develop PHP applications, yet [they barely have 90 sponsors](https://github.com/sponsors/composer). How could I ever expect to get more sponsors than Composer?
+
+That's why my current approach is to create a win-win situation for my project and the few companies willing to sponsor it. Let's hope it will work out, and the GraphQL API is free for everyone, for all the features, and I don't need to lock the good stuff behind a paywall.
+
+(If you'd like to find out how it's a win-win, please [send me an email](https://gatographql.com/contact/) or [DM](https://twitter.com/losoviz). Maybe your company may be interested too?)
+
+I'll give this approach a few months, hopefully I will make it happen. If I don't succeed, only then I will need to consider building a PRO version of the plugin, and restricting some of the features for the paid version. (Yeah, that would suck, so I hope I can avoid that stage.)
+
+In the upcoming newsletters, I will keep you updated if I managed to get sponsors or not.
+
+## Blog posts
+
+The blog posts have been my absolute pride and joy.
+
+**Heads up:** Did you know there's an [RSS feed on the site](https://gatographql.com/feed.xml)? You can subscribe to receiving all my blog posts, read them on your favorite reader.
+
+During the past month, I've managed to publish a high-quality blog post every week:
+
+[🛠 Should WordPress have a GraphQL API in core?](https://gatographql.com/blog/why-wordpress-should-have-a-graphql-api-in-core/) makes the case that WordPress could benefit from GraphQL, since the WP REST API was given a new functionality in WordPress 5.6 (batch operations), that a GraphQL API can deliver natively.
+
+[🥊 GraphQL API vs WPGraphQL: the fight!](https://gatographql.com/blog/graphql-api-vs-wpgraphql-the-fight/) compares my plugin with [WPGraphQL](https://www.wpgraphql.com/), on a clash to be remembered for ages to come, and which will keep boxing fans asking for more.
+
+[👶🏻 Rejuvenating WordPress through GraphQL](https://gatographql.com/blog/rejuvenating-wordpress-through-graphql/) demonstrates how a headless WordPress can be decoupled from the WordPress codebase, providing an opportunity to fix (or, at least, bypass) the accumulated technical debt.
+
+[🍾 GraphQL API for WordPress is now scoped, thanks to PHP-Scoper!](https://gatographql.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/) describes a strategy to scope a WordPress plugin using [PHP-Scoper](https://github.com/humbug/php-scoper), as to avoid conflicts with other plugins.
+
+## Reaching out / Plugin mentions
+
+I'm delighted that the plugin has been featured in a few places.
+
+✅ I have given talk "Intro to the GraphQL API for WordPress" in WordCamp India 2021, doing a demo of the plugin, and (surprisingly from doing a demo) it all came out perfectly! Check out [the Youtube video](https://www.youtube.com/watch?v=LnyNyT2RwwI).
+
+✅ Joe Howard has interviewed me for the [WPMRR podcast](https://wpmrr.com/podcast/). The recording will come out soon.
+
+✅ Chris Coyier featured my plugin in the [CSS-Tricks newsletter #239](https://css-tricks.com/newsletter/239-new-css-tricks-and-design-engineers/)!
+
+![This made my day](/images/building-in-the-open-episode-1/css-tricks-newsletter.jpg "This made my day")
+
+## A bit of everything
+
+Some general news, about anything taking place during the last month.
+
+### Jason Bahl goes to WP Engine
+
+Congrats to [Jason for joining WP Engine](https://www.wpgraphql.com/2021/02/07/whats-next-for-wpgraphql/)! I hope he'll keep rocking, as he's been doing so far for WPGraphQL.
+
+Btw, the fact that we're competitors (well, I'm the one competing with him, he's way far ahead) doesn't mean that we can't be friends, or collaborate to improve each other's projects. Indeed, we both share the same goal: to bring GraphQL to WordPress (even though we have different ideas on how that should happen).
+
+But I believe that competition is good, and it will benefit everyone.
+
+![Yeah, competition is good, as long as you're the one on top](/images/building-in-the-open-episode-1/elephant.gif "Yeah, competition is good, as long as you're the one on top")
+
+### WP Engine launches Atlas, and claims to know everything about headless (do they?)
+
+I also congratulate WP Engine for [launching Atlas](https://wpengine.com/blog/wp-engine-launches-atlas-the-future-of-headless-wordpress/), their new headless WordPress solution.
+
+Unfortunately, they state some inaccurate information:
+
+> Companies that use an entirely headless solution will typically host a separate JavaScript application for the front end, which pulls specific WordPress data via APIs—the [WordPress REST API](https://developer.wordpress.org/rest-api/) or the [WPGraphQL](https://www.wpgraphql.com/) plugin.
+
+Yeah, the GraphQL API for WordPress does not exist, right?
+
+![Hey there, I'm here, or am I not?](/images/building-in-the-open-episode-1/invisible.png "Hey there, I'm here, or am I not?")
+
+I would normally not be troubled about this, since I don't expect everyone to know about my plugin. But I do believe that they know about my project, and they seem to be wilfully ignoring it.
+
+After they launched [developers.wpengine.com](https://developers.wpengine.com/) (the "one-stop hub for best practices, tutorials, blogs, and documentation for headless WordPress"), I did reach out to them:
+
+- Matt Landers, Developer Relations at WP Engine for Headless WordPress, [on Twitter](https://twitter.com/losoviz/status/1359686315004993536)
+- Their development team, [on their headless framework GitHub repo](https://github.com/wpengine/headless-framework/discussions/59)
+- Somebody from Torque (the magazine owned by WP Engine), via DMs with [@TheTorqueMag](https://twitter.com/TheTorqueMag).
+
+I guess they haven't taken my project seriously. Or well, maybe they just didn't care about it, since they are fully invested in WPGraphQL.
+
+Now, I'm OK if they don't want to mention my plugin. However, stating that the WP REST API and WPGraphQL are the **only** two options is very misleading. As a consequence, my plugin gets harmed, and the community of developers gets confused.
+
+So then yeah, I must admit I'm annoyed. This is not cool at all. I hope they will rectify their inaccurate information (I sent them an email already).
+
+## Wrapping up
+
+So this is the end of the first ever "Building the GraphQL API in the open".
+
+How did you like it? Be welcome to share your thoughts in the comments.
+
+If you did like it, I will appreciate if you can share the newsletter with your friends (or, even better, invite them to [subscribe](https://gatographql.com/newsletter/)).
+
+See you next month!
