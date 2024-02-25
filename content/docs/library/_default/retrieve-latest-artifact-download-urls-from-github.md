@@ -2,7 +2,7 @@
 title: Retrieve the latest artifact download URLs from GitHub
 description: "Access the latest version of your plugin on your GitHub repo (eg: to install it in your WordPress site using WP-CLI)"
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'creating-an-api-gateway'
 - 'not-leaking-credentials-when-connecting-to-services'

@@ -2,7 +2,7 @@
 title: Retrieve user data stored in a different WordPress site
 description: Fetch data corresponding to your users, stored in another WordPress site
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'retrieving-data-from-an-external-api'
 referencedExtensionSlugs:

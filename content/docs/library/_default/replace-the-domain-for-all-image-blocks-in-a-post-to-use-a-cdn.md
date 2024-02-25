@@ -2,7 +2,7 @@
 title: Replace the domain for all image blocks in a post (to use a CDN)
 description: "Update image URLs to route them via a CDN"
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'modifying-and-storing-again-the-image-urls-from-all-image-blocks-in-a-post'
 referencedExtensionSlugs:

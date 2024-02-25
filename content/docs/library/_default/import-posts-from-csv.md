@@ -2,7 +2,7 @@
 title: Import posts from CSV
 description: Create a new post using the data from some CSV source
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'retrieving-data-from-an-external-api'
 referencedExtensionSlugs:

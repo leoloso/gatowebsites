@@ -2,7 +2,7 @@
 title: Send an email with summary of activity
 description: "Integrate this query with automation to receive updates on your email account"
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'querying-dynamic-data'
 - 'sending-a-daily-summary-of-activity'

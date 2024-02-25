@@ -2,7 +2,7 @@
 title: Send an email using Markdown
 description: "Converting Markdown into HTML content"
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'sending-emails-with-pleasure'
 referencedExtensionSlugs:

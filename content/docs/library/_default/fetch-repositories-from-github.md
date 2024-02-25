@@ -2,7 +2,7 @@
 title: Fetch repositories from GitHub
 description: Connect to GitHub's API to fetch repository data for some account
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'not-leaking-credentials-when-connecting-to-services'
 - 'retrieving-data-from-an-external-api'

@@ -2,7 +2,7 @@
 title: Augment data from an external API
 description: "Adapt the response from an external API to anything you need it to be"
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'creating-an-api-gateway'
 - 'retrieving-data-from-an-external-api'

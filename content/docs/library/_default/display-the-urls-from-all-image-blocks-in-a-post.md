@@ -2,7 +2,7 @@
 title: Display the URLs from all image blocks in a post
 description: Extract the URL property for all core/image blocks in a post (including inner blocks)
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'retrieving-structured-data-from-blocks'
 referencedExtensionSlugs:

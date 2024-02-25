@@ -2,7 +2,7 @@
 title: Replace an old post slug with a new post slug in all posts
 description: Convert all content to point to the new URL for some post
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'adapting-content-in-bulk'
 - 'search-replace-and-store-again'

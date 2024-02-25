@@ -2,7 +2,7 @@
 title: Export post to WordPress site
 description: Fetch the data for a post from this WordPress site, and replicate it in some downstream WordPress site
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'handling-errors-when-connecting-to-services'
 - 'not-leaking-credentials-when-connecting-to-services'

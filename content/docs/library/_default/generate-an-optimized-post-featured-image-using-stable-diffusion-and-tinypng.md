@@ -2,7 +2,7 @@
 title: Generate an optimized post's featured image using Stable Diffusion and TinyPNG
 description: "Using generative AI to produce images for posts without a featured image, and compress it for the web"
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedExtensionSlugs:
 - 'field-default-value'
 - 'field-response-removal'

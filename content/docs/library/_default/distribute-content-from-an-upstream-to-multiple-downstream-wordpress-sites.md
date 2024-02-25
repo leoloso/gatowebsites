@@ -2,7 +2,7 @@
 title: Distribute content from an upstream to multiple downstream WordPress sites
 description: "Implement a distributed server architecture using Gato GraphQL extensions on the upstream WordPress site only"
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'distributing-content-from-an-upstream-to-multiple-downstream-sites'
 - 'handling-errors-when-connecting-to-services'

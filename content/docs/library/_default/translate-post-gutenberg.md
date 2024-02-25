@@ -2,7 +2,7 @@
 title: 'Translate a post from the WordPress editor (Gutenberg)'
 description: 'Query to translate a "Gutenberg" post to the desired language'
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'translating-block-content-in-a-post-to-a-different-language'
 referencedExtensionSlugs:

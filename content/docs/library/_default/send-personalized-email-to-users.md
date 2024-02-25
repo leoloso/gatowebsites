@@ -2,7 +2,7 @@
 title: Send a personalized email to your users
 description: "Iterate over the users on your site, and send a customized email to each of them"
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'sending-emails-with-pleasure'
 referencedExtensionSlugs:

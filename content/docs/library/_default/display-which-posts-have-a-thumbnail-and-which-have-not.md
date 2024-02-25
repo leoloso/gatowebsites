@@ -2,7 +2,7 @@
 title: Display which posts have a thumbnail, and which have not
 description: Identify posts that need to add/replace/remove their thumbnail
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'searching-wordpress-data'
 predefinedPersistedQueryTitleInPlugin: Fetch posts by thumbnail

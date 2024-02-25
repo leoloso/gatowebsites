@@ -2,7 +2,7 @@
 title: Fetch US weather forecast data for a location
 description: Connect to the US National Weather Service's API to fetch weather forecast data
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'retrieving-data-from-an-external-api'
 referencedExtensionSlugs:

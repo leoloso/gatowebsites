@@ -2,7 +2,7 @@
 title: Display different content to different users
 description: Retrieve a different GraphQL response depending on the role of the logged-in user
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'customizing-content-for-different-users'
 referencedExtensionSlugs:

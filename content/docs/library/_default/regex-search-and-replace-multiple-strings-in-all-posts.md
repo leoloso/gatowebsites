@@ -2,7 +2,7 @@
 title: "Regex search and replace multiple strings in all posts"
 description: "Search and replace multiple strings in the posts' title, excerpt and content"
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'adapting-content-in-bulk'
 - 'search-replace-and-store-again'

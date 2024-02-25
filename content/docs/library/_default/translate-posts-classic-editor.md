@@ -2,7 +2,7 @@
 title: 'Translate posts (in bulk) from the "Classic editor"'
 description: 'Query to translate multiple "Classic editor" posts to the desired language, executing a single call to the Google Translate API'
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedExtensionSlugs:
 - 'field-on-field'
 - 'field-response-removal'

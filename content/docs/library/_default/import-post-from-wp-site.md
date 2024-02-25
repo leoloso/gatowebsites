@@ -2,7 +2,7 @@
 title: Import post from another WordPress site
 description: Create a new post using the data exposed by the GraphQL API on some other WordPress site
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'handling-errors-when-connecting-to-services'
 - 'importing-a-post-from-another-wordpress-site'

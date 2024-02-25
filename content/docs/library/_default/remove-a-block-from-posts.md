@@ -2,7 +2,7 @@
 title: Remove a block from posts
 description: Remove a block of a given type from all posts
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'inserting-removing-a-gutenberg-block-in-bulk'
 referencedExtensionSlugs:

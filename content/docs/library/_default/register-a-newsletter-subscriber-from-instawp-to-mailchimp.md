@@ -2,7 +2,7 @@
 title: Register a newsletter subscriber from InstaWP to Mailchimp
 description: Using InstaWP + Gato GraphQL to forward webhook data into an API
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'automatically-sending-newsletter-subscribers-from-instawp-to-mailchimp'
 - 'interacting-with-external-services-via-webhooks'

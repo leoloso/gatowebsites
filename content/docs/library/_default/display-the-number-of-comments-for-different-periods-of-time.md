@@ -2,7 +2,7 @@
 title: Display the number of comments for different periods of time
 description: Analyze the trend of users adding comments to your site, based on several periods of time
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'querying-dynamic-data'
 referencedExtensionSlugs:

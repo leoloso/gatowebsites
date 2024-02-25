@@ -2,7 +2,7 @@
 title: 'Translate a post from the "Classic editor"'
 description: 'Query to translate a "Classic editor" post to the desired language'
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedExtensionSlugs:
 - 'field-value-iteration-and-manipulation'
 - 'google-translate'

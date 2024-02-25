@@ -2,7 +2,7 @@
 title: Fetch user data from Mailchimp list
 description: Connect to Mailchimp's API to fetch user data from a list
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'not-leaking-credentials-when-connecting-to-services'
 - 'retrieving-data-from-an-external-api'

@@ -2,7 +2,7 @@
 title: 'Add missing links in post'
 description: Search for URLs which have no link in the post's HTML content and add a link around them
 # image: /assets/GatoGraphQL-logo-suki.png
-#order: 100
+order: 0
 referencedTutorialLessonSlugs:
 - 'search-replace-and-store-again'
 referencedExtensionSlugs:
