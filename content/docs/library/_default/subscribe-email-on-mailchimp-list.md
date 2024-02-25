@@ -1,6 +1,6 @@
 ---
 title: Subscribe an email on a Mailchimp list
-metaDesc: Connect to Mailchimp's API to register an email in a list
+description: Connect to Mailchimp's API to register an email in a list
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

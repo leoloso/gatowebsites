@@ -1,6 +1,6 @@
 ---
 title: Generate an optimized post's featured image using OpenAI's DALL-E and TinyPNG
-metaDesc: "Using generative AI to produce images for posts without a featured image, and compress it for the web"
+description: "Using generative AI to produce images for posts without a featured image, and compress it for the web"
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedExtensionSlugs:

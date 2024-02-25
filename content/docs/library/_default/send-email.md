@@ -1,6 +1,6 @@
 ---
 title: Send an email
-metaDesc: "Using text and HTML content"
+description: "Using text and HTML content"
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

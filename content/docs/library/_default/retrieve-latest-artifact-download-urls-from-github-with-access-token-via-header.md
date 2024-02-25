@@ -1,6 +1,6 @@
 ---
 title: Retrieve the latest artifact download URLs from GitHub, passing the access token via a header
-metaDesc: "Access the latest version of your plugin on your GitHub repo, while passing the access token via a header (eg: for an API gateway)"
+description: "Access the latest version of your plugin on your GitHub repo, while passing the access token via a header (eg: for an API gateway)"
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

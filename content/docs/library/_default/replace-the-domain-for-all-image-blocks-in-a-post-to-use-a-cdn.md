@@ -1,6 +1,6 @@
 ---
 title: Replace the domain for all image blocks in a post (to use a CDN)
-metaDesc: "Update image URLs to route them via a CDN"
+description: "Update image URLs to route them via a CDN"
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

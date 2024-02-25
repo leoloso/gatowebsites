@@ -1,6 +1,6 @@
 ---
 title: Send an email with summary of activity
-metaDesc: "Integrate this query with automation to receive updates on your email account"
+description: "Integrate this query with automation to receive updates on your email account"
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

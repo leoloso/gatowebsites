@@ -1,6 +1,6 @@
 ---
 title: Duplicate multiple posts
-metaDesc: Create duplicates for all the indicated posts
+description: Create duplicates for all the indicated posts
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

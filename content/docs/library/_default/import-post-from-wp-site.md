@@ -1,6 +1,6 @@
 ---
 title: Import post from another WordPress site
-metaDesc: Create a new post using the data exposed by the GraphQL API on some other WordPress site
+description: Create a new post using the data exposed by the GraphQL API on some other WordPress site
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

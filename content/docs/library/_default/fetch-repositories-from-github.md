@@ -1,6 +1,6 @@
 ---
 title: Fetch repositories from GitHub
-metaDesc: Connect to GitHub's API to fetch repository data for some account
+description: Connect to GitHub's API to fetch repository data for some account
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

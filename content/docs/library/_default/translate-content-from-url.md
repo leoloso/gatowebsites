@@ -1,6 +1,6 @@
 ---
 title: Translate content from URL
-metaDesc: Fetch the content from any URL, and translate it with Google Translate
+description: Fetch the content from any URL, and translate it with Google Translate
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

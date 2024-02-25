@@ -1,6 +1,6 @@
 ---
 title: 'Add missing links in post'
-metaDesc: Search for URLs which have no link in the post's HTML content and add a link around them
+description: Search for URLs which have no link in the post's HTML content and add a link around them
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

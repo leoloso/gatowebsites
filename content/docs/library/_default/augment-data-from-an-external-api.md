@@ -1,6 +1,6 @@
 ---
 title: Augment data from an external API
-metaDesc: "Adapt the response from an external API to anything you need it to be"
+description: "Adapt the response from an external API to anything you need it to be"
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

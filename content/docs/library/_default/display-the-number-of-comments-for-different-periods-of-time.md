@@ -1,6 +1,6 @@
 ---
 title: Display the number of comments for different periods of time
-metaDesc: Analyze the trend of users adding comments to your site, based on several periods of time
+description: Analyze the trend of users adding comments to your site, based on several periods of time
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

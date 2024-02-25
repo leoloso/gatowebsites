@@ -1,6 +1,6 @@
 ---
 title: Display different content to different users
-metaDesc: Retrieve a different GraphQL response depending on the role of the logged-in user
+description: Retrieve a different GraphQL response depending on the role of the logged-in user
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

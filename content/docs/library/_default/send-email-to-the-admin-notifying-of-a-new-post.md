@@ -1,6 +1,6 @@
 ---
 title: Send an email to the admin notifying of a new post
-metaDesc: "Integrate this query with automation to notify the admin when there's a new post on the site"
+description: "Integrate this query with automation to notify the admin when there's a new post on the site"
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

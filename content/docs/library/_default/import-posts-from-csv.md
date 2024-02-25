@@ -1,6 +1,6 @@
 ---
 title: Import posts from CSV
-metaDesc: Create a new post using the data from some CSV source
+description: Create a new post using the data from some CSV source
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

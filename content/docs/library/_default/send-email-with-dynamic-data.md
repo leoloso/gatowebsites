@@ -1,6 +1,6 @@
 ---
 title: Send an email with dynamic data
-metaDesc: "Fetch data from the DB and dynamically insert it into the email message"
+description: "Fetch data from the DB and dynamically insert it into the email message"
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

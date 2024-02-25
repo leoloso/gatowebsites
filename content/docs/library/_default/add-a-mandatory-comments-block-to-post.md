@@ -1,6 +1,6 @@
 ---
 title: Add a mandatory comments block to a post
-metaDesc: "If missing, add the comments block at the bottom of the post"
+description: "If missing, add the comments block at the bottom of the post"
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

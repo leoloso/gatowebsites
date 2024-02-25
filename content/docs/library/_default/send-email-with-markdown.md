@@ -1,6 +1,6 @@
 ---
 title: Send an email using Markdown
-metaDesc: "Converting Markdown into HTML content"
+description: "Converting Markdown into HTML content"
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

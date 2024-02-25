@@ -1,6 +1,6 @@
 ---
 title: 'Translate a post from the WordPress editor (Gutenberg)'
-metaDesc: 'Query to translate a "Gutenberg" post to the desired language'
+description: 'Query to translate a "Gutenberg" post to the desired language'
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

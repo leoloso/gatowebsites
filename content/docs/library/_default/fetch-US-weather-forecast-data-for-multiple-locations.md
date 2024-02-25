@@ -1,6 +1,6 @@
 ---
 title: Fetch US weather forecast data for multiple locations
-metaDesc: Connect to the US National Weather Service's API to fetch weather forecast data
+description: Connect to the US National Weather Service's API to fetch weather forecast data
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

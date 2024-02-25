@@ -1,6 +1,6 @@
 ---
 title: Register a newsletter subscriber from InstaWP to Mailchimp
-metaDesc: Using InstaWP + Gato GraphQL to forward webhook data into an API
+description: Using InstaWP + Gato GraphQL to forward webhook data into an API
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

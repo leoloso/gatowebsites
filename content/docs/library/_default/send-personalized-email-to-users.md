@@ -1,6 +1,6 @@
 ---
 title: Send a personalized email to your users
-metaDesc: "Iterate over the users on your site, and send a customized email to each of them"
+description: "Iterate over the users on your site, and send a customized email to each of them"
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

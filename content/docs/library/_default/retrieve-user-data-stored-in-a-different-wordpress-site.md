@@ -1,6 +1,6 @@
 ---
 title: Retrieve user data stored in a different WordPress site
-metaDesc: Fetch data corresponding to your users, stored in another WordPress site
+description: Fetch data corresponding to your users, stored in another WordPress site
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

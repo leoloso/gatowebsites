@@ -1,6 +1,6 @@
 ---
 title: Send an email to the admin
-metaDesc: "Fetching the admin email from the DB"
+description: "Fetching the admin email from the DB"
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

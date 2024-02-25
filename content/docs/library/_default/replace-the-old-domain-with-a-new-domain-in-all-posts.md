@@ -1,6 +1,6 @@
 ---
 title: Replace the old domain with a new domain in all posts
-metaDesc: Convert all content to point to the new URL for the site
+description: Convert all content to point to the new URL for the site
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:

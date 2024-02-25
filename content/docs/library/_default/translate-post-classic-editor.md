@@ -1,6 +1,6 @@
 ---
 title: 'Translate a post from the "Classic editor"'
-metaDesc: 'Query to translate a "Classic editor" post to the desired language'
+description: 'Query to translate a "Classic editor" post to the desired language'
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedExtensionSlugs:

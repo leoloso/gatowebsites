@@ -1,6 +1,6 @@
 ---
 title: Fetch user data from Mailchimp list
-metaDesc: Connect to Mailchimp's API to fetch user data from a list
+description: Connect to Mailchimp's API to fetch user data from a list
 socialImage: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
