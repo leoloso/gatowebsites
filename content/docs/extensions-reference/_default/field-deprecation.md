@@ -1,6 +1,6 @@
 ---
 title: Field Deprecation
-description: "Deprecate fields, and explain how to replace them, through a user interface."
+summary: "Deprecate fields, and explain how to replace them, through a user interface."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 1000
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/0c05b29a-a828-4278-b65a-039e98194580

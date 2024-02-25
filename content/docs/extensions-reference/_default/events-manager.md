@@ -1,6 +1,6 @@
 ---
 title: Events Manager
-description: "Integration with the Events Manager plugin, to fetch event data."
+summary: "Integration with the Events Manager plugin, to fetch event data."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 800
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/b103557f-48eb-4017-8b9c-4460493e8a20

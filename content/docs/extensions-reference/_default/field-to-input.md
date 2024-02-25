@@ -1,6 +1,6 @@
 ---
 title: Field To Input
-description: "Retrieve the value of a field, manipulate it, and input it into another field or directive, all within the same operation."
+summary: "Retrieve the value of a field, manipulate it, and input it into another field or directive, all within the same operation."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 1400
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/69064b8f-cb78-40dc-ab7b-216382d6e7d5

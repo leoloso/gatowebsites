@@ -1,6 +1,6 @@
 ---
 title: Automation
-description: "Use GraphQL to automate tasks in your app: Execute queries when some event happens, chain queries, and schedule and trigger queries via WP-Cron."
+summary: "Use GraphQL to automate tasks in your app: Execute queries when some event happens, chain queries, and schedule and trigger queries via WP-Cron."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 300
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/98fdfdc3-e38c-4442-9d5e-00ddbe3539e3

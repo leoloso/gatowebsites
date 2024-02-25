@@ -1,6 +1,6 @@
 ---
 title: Google Translate
-description: "Translate content to multiple languages using the Google Translate API."
+summary: "Translate content to multiple languages using the Google Translate API."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 1600
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/0067fe40-7889-40bc-a7ba-bde80f94674d

@@ -1,6 +1,6 @@
 ---
 title: Field Response Removal
-description: "Remove the output of a field from the response."
+summary: "Remove the output of a field from the response."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 1300
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/0337e5a2-6824-4936-a39f-d04b73826d36

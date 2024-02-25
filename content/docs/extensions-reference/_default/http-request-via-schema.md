@@ -1,6 +1,6 @@
 ---
 title: HTTP Request via Schema
-description: "Addition of fields to retrieve the current HTTP request data."
+summary: "Addition of fields to retrieve the current HTTP request data."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 1900
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/1b3c254c-e87f-4c4e-a0e0-d48e1230fa68

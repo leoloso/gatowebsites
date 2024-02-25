@@ -1,6 +1,6 @@
 ---
 title: Multiple Query Execution
-description: "Combine multiple queries into a single query, sharing state across them and executing them in the requested order."
+summary: "Combine multiple queries into a single query, sharing state across them and executing them in the requested order."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 2200
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/9de8afdb-84d2-48f6-bde7-e0f96c81a0da
