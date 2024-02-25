@@ -5,18 +5,18 @@ description: "Query the value from an environment variable or PHP constant."
 order: 2300
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/2c20e69d-5af3-43fc-b5bc-b3534d175af2
 # shopProductURL: https://shop.gatographql.com/checkout/buy/1771ff98-5fc8-428b-a24d-b3f9bb63360d
-productPrices:
-- 9.99
-- 19.99
-- 39.99
-bundles:
-- automated-content-translation-and-sync-for-wordpress-multisite
-- better-wordpress-webhooks
-- private-graphql-server-for-wordpress
-- selective-content-import-export-and-sync-for-wordpress
-- tailored-wordpress-automator
-- unhindered-wordpress-email-notifications
-- versatile-wordpress-request-api
+# productPrices:
+# - 9.99
+# - 19.99
+# - 39.99
+# bundles:
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - better-wordpress-webhooks
+# - private-graphql-server-for-wordpress
+# - selective-content-import-export-and-sync-for-wordpress
+# - tailored-wordpress-automator
+# - unhindered-wordpress-email-notifications
+# - versatile-wordpress-request-api
 ---
 
 Query the value from an environment variable or PHP constant.

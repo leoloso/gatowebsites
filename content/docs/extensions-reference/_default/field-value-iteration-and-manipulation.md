@@ -5,21 +5,21 @@ description: "Iterate and manipulate the value elements of array and object fiel
 order: 1500
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/bb573e62-b274-464c-b01e-7817761ec47b
 # shopProductURL: https://shop.gatographql.com/checkout/buy/ed659ee8-0f32-4741-a683-76f0b61b183d
-productPrices:
-- 24.99
-- 49.99
-- 99.99
-bundles:
-- automated-content-translation-and-sync-for-wordpress-multisite
-- better-wordpress-webhooks
-- easy-wordpress-bulk-transform-and-update
-- private-graphql-server-for-wordpress
-- responsible-wordpress-public-api
-- selective-content-import-export-and-sync-for-wordpress
-- simplest-wordpress-content-translation
-- tailored-wordpress-automator
-- unhindered-wordpress-email-notifications
-- versatile-wordpress-request-api
+# productPrices:
+# - 24.99
+# - 49.99
+# - 99.99
+# bundles:
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - better-wordpress-webhooks
+# - easy-wordpress-bulk-transform-and-update
+# - private-graphql-server-for-wordpress
+# - responsible-wordpress-public-api
+# - selective-content-import-export-and-sync-for-wordpress
+# - simplest-wordpress-content-translation
+# - tailored-wordpress-automator
+# - unhindered-wordpress-email-notifications
+# - versatile-wordpress-request-api
 ---
 
 Addition of meta directives to the GraphQL schema, for iterating and manipulating the value elements of array and object fields:

@@ -5,18 +5,18 @@ description: "Collection of fields providing useful functionality."
 order: 1700
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/a3cf2e83-523b-4e47-934a-9c23bb4d2e45
 # shopProductURL: https://shop.gatographql.com/checkout/buy/36f89509-f2e1-48f3-9dee-ef81f088ae2e
-productPrices:
-- 9.99
-- 19.99
-- 39.99
-bundles:
-- better-wordpress-webhooks
-- easy-wordpress-bulk-transform-and-update
-- private-graphql-server-for-wordpress
-- selective-content-import-export-and-sync-for-wordpress
-- tailored-wordpress-automator
-- unhindered-wordpress-email-notifications
-- versatile-wordpress-request-api
+# productPrices:
+# - 9.99
+# - 19.99
+# - 39.99
+# bundles:
+# - better-wordpress-webhooks
+# - easy-wordpress-bulk-transform-and-update
+# - private-graphql-server-for-wordpress
+# - selective-content-import-export-and-sync-for-wordpress
+# - tailored-wordpress-automator
+# - unhindered-wordpress-email-notifications
+# - versatile-wordpress-request-api
 ---
 
 Collection of fields added to the GraphQL schema, providing useful functionality concerning URLs, date formatting, text manipulation, and others.

@@ -5,12 +5,12 @@ description: "Cache the GraphQL response on the client-side or intermediate stag
 order: 400
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/17856110-cc7d-4d31-b883-0983d3f0c182
 # shopProductURL: https://shop.gatographql.com/checkout/buy/74a7ad33-5d80-44d6-8cde-e1a664aac335
-productPrices:
-- 24.99
-- 49.99
-- 99.99
-bundles:
-- responsible-wordpress-public-api
+# productPrices:
+# - 24.99
+# - 49.99
+# - 99.99
+# bundles:
+# - responsible-wordpress-public-api
 ---
 
 When executing queries against the GraphQL server via the `GET` method, the GraphQL response can be cached on the client-side or intermediate stages between client and server (such as a CDN), by relying on standard HTTP caching.

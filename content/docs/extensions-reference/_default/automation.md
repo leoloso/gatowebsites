@@ -5,13 +5,13 @@ description: "Use GraphQL to automate tasks in your app: Execute queries when so
 order: 300
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/98fdfdc3-e38c-4442-9d5e-00ddbe3539e3
 # shopProductURL: https://shop.gatographql.com/checkout/buy/5d539c81-ab55-4bd6-82a7-2295ac08dc87
-productPrices:
-- 24.99
-- 49.99
-- 99.99
-bundles:
-- automated-content-translation-and-sync-for-wordpress-multisite
-- tailored-wordpress-automator
+# productPrices:
+# - 24.99
+# - 49.99
+# - 99.99
+# bundles:
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - tailored-wordpress-automator
 ---
 
 Use GraphQL to automate tasks in your app: Execute queries when some event happens, chain queries, and schedule and trigger queries via WP-Cron. (The **Internal GraphQL Server** extension is required).

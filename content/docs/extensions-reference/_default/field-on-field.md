@@ -5,20 +5,20 @@ description: "Manipulate the value of a field by applying some other field on it
 order: 1100
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/4ddc713f-807d-4ba0-8b33-74d6bb3d2aab
 # shopProductURL: https://shop.gatographql.com/checkout/buy/6f7c8152-8060-427d-ad83-c5f8758c66df
-productPrices:
-- 9.99
-- 19.99
-- 39.99
-bundles:
-- automated-content-translation-and-sync-for-wordpress-multisite
-- better-wordpress-webhooks
-- easy-wordpress-bulk-transform-and-update
-- private-graphql-server-for-wordpress
-- selective-content-import-export-and-sync-for-wordpress
-- simplest-wordpress-content-translation
-- tailored-wordpress-automator
-- unhindered-wordpress-email-notifications
-- versatile-wordpress-request-api
+# productPrices:
+# - 9.99
+# - 19.99
+# - 39.99
+# bundles:
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - better-wordpress-webhooks
+# - easy-wordpress-bulk-transform-and-update
+# - private-graphql-server-for-wordpress
+# - selective-content-import-export-and-sync-for-wordpress
+# - simplest-wordpress-content-translation
+# - tailored-wordpress-automator
+# - unhindered-wordpress-email-notifications
+# - versatile-wordpress-request-api
 ---
 
 `@applyField` directive, to execute a certain field on the resolved field's value.

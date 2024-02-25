@@ -5,18 +5,18 @@ description: "Set a field to some default value (whenever it is null or empty)."
 order: 900
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/107a5b42-6f5b-4c0f-8d1d-2c203318c4d4
 # shopProductURL: https://shop.gatographql.com/checkout/buy/c21e9bec-91db-4b69-b5d3-4497cff0fdd0
-productPrices:
-- 4.99
-- 9.99
-- 19.99
-bundles:
-- better-wordpress-webhooks
-- easy-wordpress-bulk-transform-and-update
-- private-graphql-server-for-wordpress
-- responsible-wordpress-public-api
-- selective-content-import-export-and-sync-for-wordpress
-- tailored-wordpress-automator
-- versatile-wordpress-request-api
+# productPrices:
+# - 4.99
+# - 9.99
+# - 19.99
+# bundles:
+# - better-wordpress-webhooks
+# - easy-wordpress-bulk-transform-and-update
+# - private-graphql-server-for-wordpress
+# - responsible-wordpress-public-api
+# - selective-content-import-export-and-sync-for-wordpress
+# - tailored-wordpress-automator
+# - versatile-wordpress-request-api
 ---
 
 `@default` directive, to set a value to null or empty fields.

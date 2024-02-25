@@ -5,13 +5,13 @@ description: "Grant access to the schema based on the visitor's IP address (Acce
 order: 200
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/a62a717d-d0b7-4b9d-ad1b-c3ca0bdaca45
 # shopProductURL: https://shop.gatographql.com/checkout/buy/98eec2b5-a2a5-41a6-b962-6360ffe929b5
-productPrices:
-- 14.99
-- 29.99
-- 59.99
-bundles:
-- better-wordpress-webhooks
-- responsible-wordpress-public-api
+# productPrices:
+# - 14.99
+# - 29.99
+# - 59.99
+# bundles:
+# - better-wordpress-webhooks
+# - responsible-wordpress-public-api
 ---
 
 Grant access to the schema based on the visitor's IP address (Access Control extension is required).

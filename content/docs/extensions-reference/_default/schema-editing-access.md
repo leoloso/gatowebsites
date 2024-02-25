@@ -5,14 +5,14 @@ description: "Grant access to users other than admins to edit the GraphQL schema
 order: 2600
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/8edd16a5-ce4e-41bc-973e-940c5bccc2fd
 # shopProductURL: https://shop.gatographql.com/checkout/buy/a0e12a35-53f9-47fe-be84-55ff91896805
-productPrices:
-- 4.99
-- 9.99
-- 19.99
-bundles:
-- automated-content-translation-and-sync-for-wordpress-multisite
-- responsible-wordpress-public-api
-- tailored-wordpress-automator
+# productPrices:
+# - 4.99
+# - 9.99
+# - 19.99
+# bundles:
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - responsible-wordpress-public-api
+# - tailored-wordpress-automator
 ---
 
 Grant access to users other than admins to edit the GraphQL schema.

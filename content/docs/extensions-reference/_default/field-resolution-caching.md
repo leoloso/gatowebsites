@@ -5,15 +5,15 @@ description: "Cache and retrieve the response for expensive field operations."
 order: 1200
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/7cf373db-5d40-4679-b564-535c8d23cb74
 # shopProductURL: https://shop.gatographql.com/checkout/buy/b851cd2a-6fcf-4437-919b-81c86e3100d5
-productPrices:
-- 4.99
-- 9.99
-- 19.99
-bundles:
-- better-wordpress-webhooks
-- private-graphql-server-for-wordpress
-- tailored-wordpress-automator
-- versatile-wordpress-request-api
+# productPrices:
+# - 4.99
+# - 9.99
+# - 19.99
+# bundles:
+# - better-wordpress-webhooks
+# - private-graphql-server-for-wordpress
+# - tailored-wordpress-automator
+# - versatile-wordpress-request-api
 ---
 
 Addition of the `@cache` directive to the GraphQL schema, which stores the result from a field in disk for a requested amount of time. When executing the same field within that time span, the cached value is returned.

@@ -5,21 +5,21 @@ description: "Combine multiple queries into a single query, sharing state across
 order: 2200
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/9de8afdb-84d2-48f6-bde7-e0f96c81a0da
 # shopProductURL: https://shop.gatographql.com/checkout/buy/f7bde59b-c180-4aff-99df-7561d0bbed3b
-productPrices:
-- 24.99
-- 49.99
-- 99.99
-bundles:
-- automated-content-translation-and-sync-for-wordpress-multisite
-- better-wordpress-webhooks
-- easy-wordpress-bulk-transform-and-update
-- private-graphql-server-for-wordpress
-- responsible-wordpress-public-api
-- selective-content-import-export-and-sync-for-wordpress
-- simplest-wordpress-content-translation
-- tailored-wordpress-automator
-- unhindered-wordpress-email-notifications
-- versatile-wordpress-request-api
+# productPrices:
+# - 24.99
+# - 49.99
+# - 99.99
+# bundles:
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - better-wordpress-webhooks
+# - easy-wordpress-bulk-transform-and-update
+# - private-graphql-server-for-wordpress
+# - responsible-wordpress-public-api
+# - selective-content-import-export-and-sync-for-wordpress
+# - simplest-wordpress-content-translation
+# - tailored-wordpress-automator
+# - unhindered-wordpress-email-notifications
+# - versatile-wordpress-request-api
 ---
 
 Combine multiple queries into a single query, sharing state across them and executing them in the requested order.

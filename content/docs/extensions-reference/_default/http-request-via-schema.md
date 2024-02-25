@@ -5,15 +5,15 @@ description: "Addition of fields to retrieve the current HTTP request data."
 order: 1900
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/1b3c254c-e87f-4c4e-a0e0-d48e1230fa68
 # shopProductURL: https://shop.gatographql.com/checkout/buy/3c1dffd2-93e0-468f-9986-0ea3137654f3
-productPrices:
-- 4.99
-- 9.99
-- 19.99
-bundles:
-- better-wordpress-webhooks
-- private-graphql-server-for-wordpress
-- tailored-wordpress-automator
-- versatile-wordpress-request-api
+# productPrices:
+# - 4.99
+# - 9.99
+# - 19.99
+# bundles:
+# - better-wordpress-webhooks
+# - private-graphql-server-for-wordpress
+# - tailored-wordpress-automator
+# - versatile-wordpress-request-api
 ---
 
 Addition of fields to the GraphQL schema to retrieve the current HTTP request data.

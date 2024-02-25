@@ -5,20 +5,20 @@ description: "Manipulate the field output using standard programming language fu
 order: 2400
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/e88823b7-20dc-4914-afb3-aab42288709a
 # shopProductURL: https://shop.gatographql.com/checkout/buy/f095499f-c598-4fb5-97c7-1a03f28b3dde
-productPrices:
-- 24.99
-- 49.99
-- 99.99
-bundles:
-- automated-content-translation-and-sync-for-wordpress-multisite
-- better-wordpress-webhooks
-- easy-wordpress-bulk-transform-and-update
-- private-graphql-server-for-wordpress
-- selective-content-import-export-and-sync-for-wordpress
-- simplest-wordpress-content-translation
-- tailored-wordpress-automator
-- unhindered-wordpress-email-notifications
-- versatile-wordpress-request-api
+# productPrices:
+# - 24.99
+# - 49.99
+# - 99.99
+# bundles:
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - better-wordpress-webhooks
+# - easy-wordpress-bulk-transform-and-update
+# - private-graphql-server-for-wordpress
+# - selective-content-import-export-and-sync-for-wordpress
+# - simplest-wordpress-content-translation
+# - tailored-wordpress-automator
+# - unhindered-wordpress-email-notifications
+# - versatile-wordpress-request-api
 ---
 
 This extension adds fields and directives to the GraphQL schema which expose functionalities commonly found in programming languages (such as PHP).

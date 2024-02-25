@@ -5,15 +5,15 @@ description: "Send emails via global mutation \"_sendEmail\"."
 order: 700
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/2fd0154e-a736-48aa-8c36-5917c6e5c61a
 # shopProductURL: https://shop.gatographql.com/checkout/buy/9e3dc732-7a35-4424-9de5-646c71559c31
-productPrices:
-- 4.99
-- 9.99
-- 19.99
-bundles:
-- better-wordpress-webhooks
-- private-graphql-server-for-wordpress
-- tailored-wordpress-automator
-- unhindered-wordpress-email-notifications
+# productPrices:
+# - 4.99
+# - 9.99
+# - 19.99
+# bundles:
+# - better-wordpress-webhooks
+# - private-graphql-server-for-wordpress
+# - tailored-wordpress-automator
+# - unhindered-wordpress-email-notifications
 ---
 
 Send emails via global mutation `_sendEmail`.

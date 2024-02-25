@@ -5,12 +5,12 @@ description: "Make normally-hidden directives (which inject some functionality i
 order: 2100
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/4068a7be-7cda-4b78-a387-0ac3e7fbe2e9
 # shopProductURL: https://shop.gatographql.com/checkout/buy/3ee46292-0e19-44b6-9714-67b01be15f29
-productPrices:
-- 4.99
-- 9.99
-- 19.99
-bundles:
-- responsible-wordpress-public-api
+# productPrices:
+# - 4.99
+# - 9.99
+# - 19.99
+# bundles:
+# - responsible-wordpress-public-api
 ---
 
 Make normally-hidden directives (which inject some functionality into the GraphQL server) visible when editing a persisted query.

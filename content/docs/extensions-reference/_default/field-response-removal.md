@@ -5,18 +5,18 @@ description: "Remove the output of a field from the response."
 order: 1300
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/0337e5a2-6824-4936-a39f-d04b73826d36
 # shopProductURL: https://shop.gatographql.com/checkout/buy/2a9339dd-e1bd-4707-81e3-23f210549a18
-productPrices:
-- 4.99
-- 9.99
-- 19.99
-bundles:
-- automated-content-translation-and-sync-for-wordpress-multisite
-- better-wordpress-webhooks
-- private-graphql-server-for-wordpress
-- selective-content-import-export-and-sync-for-wordpress
-- simplest-wordpress-content-translation
-- tailored-wordpress-automator
-- versatile-wordpress-request-api
+# productPrices:
+# - 4.99
+# - 9.99
+# - 19.99
+# bundles:
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - better-wordpress-webhooks
+# - private-graphql-server-for-wordpress
+# - selective-content-import-export-and-sync-for-wordpress
+# - simplest-wordpress-content-translation
+# - tailored-wordpress-automator
+# - versatile-wordpress-request-api
 ---
 
 Addition of the `@remove` directive to the GraphQL schema, which removes the output of a field from the response.

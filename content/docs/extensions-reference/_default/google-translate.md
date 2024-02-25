@@ -5,13 +5,13 @@ description: "Translate content to multiple languages using the Google Translate
 order: 1600
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/0067fe40-7889-40bc-a7ba-bde80f94674d
 # shopProductURL: https://shop.gatographql.com/checkout/buy/30e8ad73-b852-4ec0-88c9-10cc1d777549
-productPrices:
-- 24.99
-- 49.99
-- 99.99
-bundles:
-- automated-content-translation-and-sync-for-wordpress-multisite
-- simplest-wordpress-content-translation
+# productPrices:
+# - 24.99
+# - 49.99
+# - 99.99
+# bundles:
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - simplest-wordpress-content-translation
 ---
 
 Directive `@strTranslate` to translate a field value to over 130 languages using the Google Translate API.

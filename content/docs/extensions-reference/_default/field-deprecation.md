@@ -5,12 +5,12 @@ description: "Deprecate fields, and explain how to replace them, through a user 
 order: 1000
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/0c05b29a-a828-4278-b65a-039e98194580
 # shopProductURL: https://shop.gatographql.com/checkout/buy/5fd5812d-77db-481e-a241-e097a4f1e5e9
-productPrices:
-- 14.99
-- 29.99
-- 59.99
-bundles:
-- responsible-wordpress-public-api
+# productPrices:
+# - 14.99
+# - 29.99
+# - 59.99
+# bundles:
+# - responsible-wordpress-public-api
 ---
 
 When upgrading our GraphQL schemas, some fields may not be needed anymore, possibly replaced by better implementation of that field. We can then deprecate the obsolete fields, providing a deprecation reason that will inform and urge our users to switch to the new field in their clients.

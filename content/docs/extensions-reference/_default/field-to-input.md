@@ -5,21 +5,21 @@ description: "Retrieve the value of a field, manipulate it, and input it into an
 order: 1400
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/69064b8f-cb78-40dc-ab7b-216382d6e7d5
 # shopProductURL: https://shop.gatographql.com/checkout/buy/1122d28f-64c8-4768-a599-7c33168bb135
-productPrices:
-- 19.99
-- 39.99
-- 79.99
-bundles:
-- automated-content-translation-and-sync-for-wordpress-multisite
-- better-wordpress-webhooks
-- easy-wordpress-bulk-transform-and-update
-- private-graphql-server-for-wordpress
-- responsible-wordpress-public-api
-- selective-content-import-export-and-sync-for-wordpress
-- simplest-wordpress-content-translation
-- tailored-wordpress-automator
-- unhindered-wordpress-email-notifications
-- versatile-wordpress-request-api
+# productPrices:
+# - 19.99
+# - 39.99
+# - 79.99
+# bundles:
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - better-wordpress-webhooks
+# - easy-wordpress-bulk-transform-and-update
+# - private-graphql-server-for-wordpress
+# - responsible-wordpress-public-api
+# - selective-content-import-export-and-sync-for-wordpress
+# - simplest-wordpress-content-translation
+# - tailored-wordpress-automator
+# - unhindered-wordpress-email-notifications
+# - versatile-wordpress-request-api
 ---
 
 Retrieve the value of a field, manipulate it, and input it into another field or directive, all within the same operation.

@@ -5,17 +5,17 @@ description: "Addition of fields to execute HTTP requests against a webserver an
 order: 1800
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/72a4a1fc-2a3b-4985-bf95-97cbe498b070
 # shopProductURL: https://shop.gatographql.com/checkout/buy/aa7906d2-92d3-4d24-b041-1837c01460f5
-productPrices:
-- 24.99
-- 49.99
-- 99.99
-bundles:
-- automated-content-translation-and-sync-for-wordpress-multisite
-- better-wordpress-webhooks
-- private-graphql-server-for-wordpress
-- selective-content-import-export-and-sync-for-wordpress
-- tailored-wordpress-automator
-- versatile-wordpress-request-api
+# productPrices:
+# - 24.99
+# - 49.99
+# - 99.99
+# bundles:
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - better-wordpress-webhooks
+# - private-graphql-server-for-wordpress
+# - selective-content-import-export-and-sync-for-wordpress
+# - tailored-wordpress-automator
+# - versatile-wordpress-request-api
 ---
 
 Addition of fields to the GraphQL schema to execute HTTP requests against a webserver and fetch their response:

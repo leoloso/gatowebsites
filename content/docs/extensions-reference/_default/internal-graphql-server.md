@@ -5,14 +5,14 @@ description: "Execute GraphQL queries directly within your application, using PH
 order: 2000
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/a4f45a5c-d318-442a-929e-0feb2109cb33
 # shopProductURL: https://shop.gatographql.com/checkout/buy/ca6a4ed8-78e8-4d29-bb59-1b93471f9b1e
-productPrices:
-- 24.99
-- 49.99
-- 99.99
-bundles:
-- automated-content-translation-and-sync-for-wordpress-multisite
-- private-graphql-server-for-wordpress
-- tailored-wordpress-automator
+# productPrices:
+# - 24.99
+# - 49.99
+# - 99.99
+# bundles:
+# - automated-content-translation-and-sync-for-wordpress-multisite
+# - private-graphql-server-for-wordpress
+# - tailored-wordpress-automator
 ---
 
 This extension installs an internal GraphQL Server, that can be invoked within your application, using PHP code.
