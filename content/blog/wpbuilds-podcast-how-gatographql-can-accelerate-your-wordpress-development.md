@@ -1,0 +1,26 @@
+---
+title: "🎤 WPBuilds Podcast: How Gato GraphQL can accelerate your WordPress development"
+summary: Leonardo Losoviz was invited to the WPBuilds podcast to talk about WordPress + GraphQL
+image: /images/wpbuilds-podcast.jpg
+publishedAt: '2023-11-06'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - podcast
+---
+
+I (Leonardo Losoviz) was invited to talk about **WordPress + GraphQL** in the **WPBuilds podcast**:
+
+[How the Gato GraphQL plugin can accelerate your WordPress development](https://wpbuilds.com/2023/11/02/348-how-the-gato-graphql-plugin-can-accelerate-your-wordpress-development/)
+
+<p markdown=1>
+
+<a href="https://wpbuilds.com/2023/11/02/348-how-the-gato-graphql-plugin-can-accelerate-your-wordpress-development/" markdown=1>
+
+![WPBuilds Podcast: How Gato GraphQL can accelerate your WordPress development](/images/wpbuilds-podcast.jpg "WPBuilds Podcast: How Gato GraphQL can accelerate your WordPress development")
+
+</a>
+
+</p>
+
+Enjoy!

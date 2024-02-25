@@ -1,0 +1,212 @@
+---
+title: "I got my first sale. This is what worked, what failed, and what failed miserably."
+summary: Post for IndieHackers
+publishedAt: '2023-11-29'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - business
+draft: true
+hidden: true
+---
+
+After around 2.5 months, I've finally made my first sale:
+
+<div class="img-width-1024" markdown=1>
+
+![First product sale in my shop in LemonSqueezy](/images/externals/indiehackers/first-sale/revenue-chart-in-lemonsqueezy-shop.png "First product sale in my shop in LemonSqueezy")
+
+</div>
+
+Yay! 🎉
+
+[Gato GraphQL](https://gatographql.com) is a plugin for WordPress, and it is [open source](https://github.com/GatoGraphQL/GatoGraphQL).
+
+People usually consider GraphQL as a way to fetch data from the server, useful for building headless websites or powering dynamic functionality in JS, and not much more. Then they are surprised I'm creating yet another GraphQL server for WordPress (as there is already WPGraphQL), and what's the point of having another one?
+
+The thing is that GraphQL can be more useful than just for retrieving data from the server: It can also fetch data from cloud services, extract/filter data, transform data, and store it again in the DB. It can sync content across sites, act as an API gateway, and modify hundreds of records with a single operation. It can read and parse a CSV file, RSS feed, or XML document, and process that data.
+
+There is a lot of power there.
+
+Gato GraphQL attempts to harness this power, providing a server that acts as a developer tool to manage admin tasks (such as duplicating posts, sending emails to users, translating content, inserting mandatory blocks, and more). You can think of it as a sort of WP-CLI, but instead of typing and executing commands in the terminal, you compose and execute GraphQL queries.
+
+The Gato GraphQL plugin is free. In order to make this project sustainable, I decided to commercialize its [extensions](https://gatographql.com/extensions/) (which add extra features to the GraphQL server, and expand the GraphQL schema). By selling the extensions, I should be able to make an income that allows me to devote my full time to this project. (Or so the thinking goes.)
+
+But so far I've struggled to have anyone purchase any extension, or bundle of extensions. One reason is that I have close-to-zero impact on social media, as I've never been a social media person myself (I had never used it, and I don't normally engage).
+
+Another reason is that using GraphQL for admin tasks is a new concept, so I first need to educate people on the possibilities. As an example, I've offered the plugin to several WordPress developers and website admins to try it out, and a few of them rejected the offer outright, claiming they have no use for GraphQL. (i.e. What they meant is that they don't build headless sites.)
+
+Below I'll explain all the tactics I've tried so far. What has definitely not worked. What might be possibly working (but it's just slow in yielding results). And how the first sale came to be.
+
+But before, let me tell you about my decision to offer my PRO plugin as a bundle of extensions.
+
+## Creating bundles of extensions, and pricing them accordingly
+
+I had originally divided my GraphQL server into 2 plugins: The free Gato GraphQL plugin, and the commercial PRO plugin as an addon, priced at u$d 99. This price was just a number that I pulled out of thin air, as it kind of sounded right.
+
+But then I [read in the Freemius blog](https://freemius.com/blog/sell-wordpress-plugin-bundle/) about creating bundles of extensions, and I found the argument convincing. Among other benefits, it enables identifying all of the independent PRO features, and price them independently for the value each of them adds.
+
+In my case, I identified 26 independent features. When pricing them, I gave a low price to those which are not super useful (eg: u$d 5 for [Low-Level Persisted Query Editing](https://gatographql.com/extensions/low-level-persisted-query-editing/)), and a higher price for those which are super useful (eg: u$d 25 for [Access Control](https://gatographql.com/extensions/access-control/)).
+
+When bundling all 26 extensions and adding up their prices, it came up to u$d 375. That is the price that I honestly assessed my plugin to be worth.
+
+That is a lot of money, and I don't expect anyone to be willing to pay that amount. But now, I can [offer the bundle at u$d 149](https://gatographql.com/bundles/all-extensions/), which is a full 60% discount on the actual "real" price.
+
+Bundling also enables grouping subsets of extensions in all type of combinations, to tackle some specific use case. For instance, the [Content Translation bundle is priced at u$d 79](https://gatographql.com/bundles/simplest-wordpress-content-translation/). (Indeed, this is the bundle from my first sale.)
+
+Takeaways of bundling: I was persuaded that the PRO plugin could be priced at u$d 149 (instead of the u$d 99 I had originally considered), while offering a sizable 60% discount to my customers (and being able to justify it).
+
+In addition, I can now also offer smaller bundles for a cheaper price, that clients will appreciate as they will save money, and that I can hopefully sell better (as a "Content Translation" bundle provides better SEO than an "All Extensions" bundle).
+
+Bundling doesn't come for free though: It adds extra complexity to the development, testing and release process of the codebase. It may require a monorepo, or even a [multi-monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/) (having the PRO codebase embed the plugin's open source codebase), to be managed properly.
+
+<div class="img-width-1024" markdown=1>
+
+![The extensions are stored in a monorepo](/images/externals/indiehackers/first-sale/monorepo-with-extensions.png "The extensions are stored in a monorepo")
+
+</div>
+
+---
+
+Next, I'll describe what strategies have failed.
+
+## Targetting visitors from Google
+
+I get most of the traffic to gatographql.com from Google:
+
+<div class="img-width-1024" markdown=1>
+
+![Traffic to gatographql.com during November 2023](/images/externals/indiehackers/first-sale/plausible-traffic.png "Traffic to gatographql.com during November 2023")
+
+</div>
+
+I am not upset at receiving 1.5k visitors from Google; it's not a huge amount, but it's not insignificant either. If those visitors were my intended target audience, I could then build a business based on this number.
+
+But they are not.
+
+These are the search terms for the visitors from Google:
+
+<div class="img-width-1024" markdown=1>
+
+![Search terms for visitors from Google](/images/externals/indiehackers/first-sale/plausible-google-search-terms.png "Search terms for visitors from Google")
+
+</div>
+
+My target audience are people working with WordPress. And possibly GraphQL. So the search term "wordpress graphql" would be suitable in my case. But that's not what I'm getting.
+
+Instead, I'm getting plenty of hits for combinations of these search terms:
+
+- Multiple query execution
+- Nested mutations
+- @oneof directive
+
+That's because these features, which are all supported by Gato GraphQL, are quite special: None of them is part of the GraphQL spec, and as such are not supported by the majority of GraphQL servers (but developers still crave for them).
+
+This traffic is most likely coming from developers who want to use these features in their GraphQL server, and they are looking for information. But the majority of GraphQL developers do not use WordPress; they use JS (such as Apollo) or some other language.
+
+And they won't switch to using WordPress only because Gato GraphQL offers multiple query execution, nested mutations or the `@oneOf` directive.
+
+Then, the visitors arriving at gatographql.com from Google are not likely to purchase any of Gato GraphQL's bundles or extensions.
+
+This isn't working. I need to refocus the SEO efforts, and target the "wordpress graphql" keywords.
+
+## Offering a license giveaway to build an audience for Black Friday
+
+I had read that, during the Black Friday sale, most of my customers would come from my newsletter. To have a successful Black Friday, I should then strive to expand my newsletter list in advance of the sale, as to target these subscribers during the sales period.
+
+That's what I did. Or, well, what I tried to do.
+
+Around 1 month before the sale, I launched a [Twitter-based campaign](https://twitter.com/losoviz/status/1716373506831823245) to gain subscribers, by giving two licenses of the bundle for free:
+
+- 1 license to anyone retweeting my tweet
+- 1 license to anyone subscribing to my newsletter
+
+<div class="img-width-598" markdown=1>
+
+![Twitter campaign](/images/externals/indiehackers/first-sale/twitter-campaign.png "Twitter campaign")
+
+</div>
+
+How did it fare? Not very well:
+
+- Less than 15 retweets (at least 1 of those 15 is mine 😂)
+- Some 20 newsletter subscribers
+
+(I actually got some 30 newsletter subscribers, only to find out that around a third of them, originating from Kiev, were non-existing emails and got unsubscribed immediately when sending my newsletter.)
+
+These results are disappointing. But at least I've learnt something from it: Twitter is dead. Or, to be more specific, the combination of not having built a presence on Twitter, plus the fact that I'm not paying for the blue check, leads to Twitter being a dead end.
+
+(Knowing myself, I won't be able to start building an audience in Twitter... I'm simply not a social media guy, and that's not something that I can change, or that I'm particularly eager to change...)
+
+Next campaign I launch, I shall not base it on Twitter.
+
+## Black Friday
+
+Black Friday came, and because that's what everyone does, I also offered a sale: [40% off the bundle](https://gatographql.com/black-friday/).
+
+But guess what? Nobody bought it.
+
+(Well, Black Friday is not technically over yet: There are still 16 hours left of it as I write this post... So who knows? Maybe a little miracle does happen at the last minute? 🤞)
+
+Black Friday has been disappointing, but its failure has not been unexpected: I hadn't managed to build a sizable newsletter base. If the conversion rate is say 1%, I'd need to have 100 potential targets to expect 1 sale. But by the time I sent my newsletter promoting the Black Friday sale, I had less than that (and several of them where Ukrainian non-existing accounts):
+
+<div class="img-width-880" markdown=1>
+
+![Black Friday newsletter stats](/images/externals/indiehackers/first-sale/black-friday-newsletter-stats.png "Black Friday newsletter stats")
+
+</div>
+
+Or maybe my Black Friday deal was not good enough? Should I have offered 50% off? 60% off? A lifetime deal (LTD)? All these questions, I have no answer for. I'll need to wait until next year and try again.
+
+By then, I will hopefully have built a more robust newsletter base: I plan to work on it throughout the year, leading to the 2024 Black Friday period.
+
+---
+
+Next, let's see what I believe might be working, even though the positive results arrive very slowly.
+
+## Social media everyday
+
+I have been very diligent: Every day, as I start my working day, [I visit a bunch of Reddit channels](https://www.reddit.com/user/leoleoloso) and Facebook Groups (on topics concerning WordPress, GraphQL, PHP, webdev, and building a business), I scroll the timeline for the last 24hs and, if anyone is asking for help with something that my plugin can solve, I volunteer a comment (that obviously promotes my plugin).
+
+(I was also doing it on Twitter, for a bunch of hashtags. But there's not much activity there, I was wasting my time, so I decided to stop it.)
+
+I do not spam. I only engage when my plugin can truly solve the issue. To demonstrate that, my comment will (as much as possible) already provide the GraphQL query that solves the problem.
+
+I even get out of my way to deliver: In at least a couple of occasions my solution was only 95% complete; then I coded the missing 5%, generated a new release of the plugin, and then added my comment with the solution.
+
+(Check out [this example](https://www.reddit.com/r/Wordpress/comments/17h2fdh/comment/k6nu40g/?utm_source=share&utm_medium=web2x&context=3). I truly expected that developer to purchase my plugin. Unfortunately, his client decided to cancel the project... too bad for me.)
+
+Even if the original poster (OP) doesn't buy the extension, at least people browsing that Reddit post will get to know about Gato GraphQL and what it can do for them. And OP may decide to use my plugin for some future project, when the same problem shows up.
+
+## First sale: Reddit!
+
+Which leads to my first sale. Someone [posted on Reddit](https://www.reddit.com/r/WordpressPlugins/comments/184z9lp/help_translate_original_content_without_multi/):
+
+> are there any plugins that just Google translate the content and replace the original language?
+
+Do you remember that I created the "Content Translation" bundle? It's the perfect solution to this problem! Hence [my simple response](https://www.reddit.com/r/WordpressPlugins/comments/184z9lp/comment/kb1nwg8/?utm_source=share&utm_medium=web2x&context=3), with the link to that bundle:
+
+> Yes, Gato GraphQL: https://gatographql.com/bundles/simplest-wordpress-content-translation/
+
+Of course, OP had many questions more, and I replied to all of them. Not only that, but [I took the initiative to compose the GraphQL query to solve his problem](https://www.reddit.com/r/WordpressPlugins/comments/184z9lp/comment/kb3hl5f/?utm_source=share&utm_medium=web2x&context=3), for which I'm very proud of myself (what a wonderful customer service, if I may say so! I pat on my own back 🤣)
+
+(Later on, understanding that OP's use case is a common one, I also added the solution as a persisted query to the new version of the plugin, and [I released it that same day](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/1.2.0).)
+
+Why did I finally succeed with the sale? I think it is because:
+
+- The bundle is called "Content Translation", offering exactly what OP needed
+- There is a video in the [bundle's page](https://gatographql.com/bundles/simplest-wordpress-content-translation/), demonstrating how it works. I'm sure OP watched this video and thought, “this is exactly what I need”
+- I was super responsive to his questions, and I even created the GraphQL query for his particular use case
+- u$d 79 might not be a small amount, but OP finds it's worth paying given how much time he will save
+
+## Conclusion
+
+My first customer is super happy with the bundle! This is [his last comment](https://www.reddit.com/r/WordpressPlugins/comments/184z9lp/comment/kb4dyqx/?context=3):
+
+> Amazing! I've got it working and have translated most of my posts and pages, still lots of work to do but this was brilliant.
+
+In the previous days, I had started to doubt myself, thinking that maybe my product doesn't have a market fit. Accomplishing this first sale then made me super happy, and gave me a lot of validation and reassurance.
+
+It took 2.5 months to sell my first product, but not because it is not good. It's because I'm bad at marketing and have no social media skills. But I'm learning as I go, and getting better at it.
+
+And now I also appreciate that having the plugin provide a living wage will take longer than I had expected. (But I'm bound to achieve it.)

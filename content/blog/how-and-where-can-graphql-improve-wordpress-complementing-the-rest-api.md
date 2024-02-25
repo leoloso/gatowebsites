@@ -1,0 +1,319 @@
+---
+title: 🕸 How and Where can GraphQL improve WordPress, complementing the REST API
+summary: My take on the the discussion from /r/php
+image: /images/rest-graphql-meme.jpg
+publishedAt: '2021-04-17'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - plugin
+  - rest
+---
+
+Last weekend I published blog post [🦸🏿‍♂️ The GraphQL API for WordPress is now transpiled from PHP 8.0 to 7.1](https://gatographql.com/blog/the-plugin-is-now-transpiled-from-php-80-to-71/).
+
+After [sharing the post on Reddit's /r/php](https://www.reddit.com/r/PHP/comments/mo7gwm/the_graphql_api_for_wordpress_is_now_transpiled/), the community started a lively discussion on how worth it is using GraphQL in WordPress, how different it is from the WP REST API, and how justified it is bringing yet another API to WordPress.
+
+I think most comments are spot on, and others are missing some key information. GraphQL is not just an interface, but also an implementation. This means that different GraphQL servers, from different providers, may have been designed to prioritize different characteristics. As such, we can't always have a unified expectation of what GraphQL offers, or a complete understanding of how a GraphQL engine works.
+
+For instance, the GraphQL experience in WordPress and in Laravel will be different, as well as the experience provided by the different servers, WPGraphQL or the GraphQL API for WP.
+
+This article is my take on the matter, addressing several of the comments from the Reddit post.
+
+## GraphQL vs WP REST API
+
+> [Such a bad idea] to have a GraphQL API on top of WordPress which already uses its own REST API. Just use the REST API.
+> [[Source]](https://www.reddit.com/r/PHP/comments/mo7gwm/the_graphql_api_for_wordpress_is_now_transpiled/gu2ydp3?utm_source=share&utm_medium=web2x&context=3)
+
+Both the REST API and GraphQL serve the same purpose: to provide the application with the data it needs. However, they behave differently in how they achieve this: while REST has pre-defined endpoints providing a specific set of data, GraphQL can provide exactly the data that is needed.
+
+This different behavior can have a direct impact on the performance of the application. With REST, if we need to fetch a list of posts plus some data from each author of the post, that will need sending extra requests. Possibly 1 extra request for all author data, or 1 extra request per author. In the meantime, the website's visitor may be waiting for the page to be rendered.
+
+GraphQL improves this situation, since we can directly fetch all post and author data in a single request, and the rendering of the webpage will be faster:
+
+```graphql
+{
+  posts {
+    id
+    title
+    excerpt
+    date
+    url
+    author {
+      id
+      name
+      url
+    }
+  }
+}
+```
+
+Then, even if we already have the REST API in WordPress, it doesn't mean it's always the most suitable tool for every task. Sure, we can always use it, but if we also have access to GraphQL, then we can decide to use this API whenever it provides an advantage over REST, and we'll be better off.
+
+## Difficult initial setup for GraphQL + Having to write resolvers
+
+> There is definitely an argument to be made that initial setup for GraphQL is exponentially higher than for REST; you're correct that the associations have to be set up. 
+> [[Source]](https://www.reddit.com/r/PHP/comments/mo7gwm/the_graphql_api_for_wordpress_is_now_transpiled/gu6d6dm?utm_source=share&utm_medium=web2x&context=3)
+
+And...
+
+> What you and almost everyone else on the web is leaving out is that in order for this API format to work, you have to write the parser (resolvers + types) which brings in a slew of issues that aren't present with REST.
+> [[Source]](https://www.reddit.com/r/PHP/comments/mo7gwm/the_graphql_api_for_wordpress_is_now_transpiled/gu3fbfi?utm_source=share&utm_medium=web2x&context=3)
+
+These comments are not completely accurate, because both WPGraphQL and the GraphQL API for WordPress have already mapped the WordPress data model into the GraphQL schema (WPGraphQL fully, my plugin most of it).
+
+Then, after you install any of these plugins, you can immediately start fetching data for your application, without the need to create any resolver, or having to set up associations among entities.
+
+It is true that, in order to fetch custom data from the application's own entities (such as from CPTs), these need to be mapped via resolvers, and you will need to do it. But this is no different than in REST: if you need custom data from your CPT, you will need to create a REST endpoint to fetch that custom data. A custom endpoint is also a resolver.
+
+Hence, concerning the need for resolvers, REST and the GraphQL API are pretty much the same.
+
+Now, from browsing websites and documentation, it does give the impression that GraphQL requires more effort to set-up. So there's truthfulness to this presumption.
+
+I believe there are a few reasons for this. For one, GraphQL involves (at least) two parts: 
+
+1. the concept of what it is, and how it works
+2. the servers providing some actual implementation
+
+When browsing documentation for GraphQL, such as the official site [graphql.org](https://graphql.org/), it focuses on the concepts behind GraphQL, going into detail into resolvers, what they are and why they are needed.
+
+This is useful when you are building an application from scratch, such as if using Laravel and [Lighthouse](https://lighthouse-php.com/). In that case, you do need to code your resolvers (but so you'd also need to create your REST endpoints).
+
+However, WordPress is already the application, and WPGraphQL and GraphQL API for WP are solutions. These two plugins have already created the resolvers for us, so we don't need to worry about them (similarly to the WP REST API also providing an initial set of endpoints, so we don't need to worry about them).
+
+In addition, GraphQL is more developer-centric, and its documentation seems to talk straight to developers. Developers create the resolvers in the server-side, and developers consume those resolvers with custom queries in the client-side. Since building resolvers is a task for developers, it just shows up naturally and often.
+
+For REST, the expectation (I believe) is that the endpoint providing the required data will already exist (as shipped by the WP REST API). If it doesn't, only then we need to worry about setting-up a custom endpoint. Hence, there is less emphasis on creating resolvers for REST.
+
+Hence, both REST and GraphQL provide the required data. But while REST encourages a static approach, where endpoints should already exist, and only whenever they do not we worry about them, GraphQL encourages a dynamic approach, where every query is custom made, and then we can code the perfect resolver for it.
+
+So, in the end, there are no fundamental differences between REST and GraphQL, just different interpretations on how they must satisfy their requirements.
+
+## Vulnerabilities + Security considerations in GraphQL
+
+> We are gonna see a huge vulnerability from GraphQL some day because writing secure interpreters is really hard.
+> [[Source]](https://www.reddit.com/r/PHP/comments/mo7gwm/the_graphql_api_for_wordpress_is_now_transpiled/gu34viu?utm_source=share&utm_medium=web2x&context=3)
+
+And...
+
+> WordPress is already so massive that it already has a huge target on its back; bolting on ANY plugin adds a lot of risk, and a plugin offering to expose literally all of WordPress, including [lots](https://www.wpgraphql.com/recipes/making-menus-and-menu-items-public/) of [code](https://www.wpgraphql.com/recipes/make-all-users-public/) samples for [bypassing the security model](https://www.wpgraphql.com/recipes/showing-post-type-labels-in-public-queries/), is a big no for me. Non-theme-driven output should be as restricted as possible (non-existent unless I ask) beyond what is absolutely necessary to expose. I hope this never makes it into core.
+> [[Source]](https://www.reddit.com/r/PHP/comments/mo7gwm/the_graphql_api_for_wordpress_is_now_transpiled/gu3iwfa?utm_source=share&utm_medium=web2x&context=3)
+
+GraphQL does impose additional security risks that we need to tackle. I fully agree with this feeling.
+
+But I don't think it is such a blocking issue, as to prevent a potential inclusion of GraphQL in WP core. Moreover, I do not even think it's really hard to address.
+
+What is needed is for the GraphQL server to tap on the existing security mechanisms by WordPress, and then for the developer to use these mechanisms, making sure that some field can only be accessed by the appropriate users only:
+
+- is the user logged in?
+- is the user the admin?
+- does the user have some role or capability?
+- is the user the author of the post?
+
+To satisfy this proposition, the GraphQL API for WP offers [Access Control Lists](https://gatographql.com/guides/special-features/access-control), so we can define who can access each field and directive, and by configuration.
+
+Now, sometimes using an ACL alone does not cut it, and the GraphQL server needs to provide extra security measures. I'll describe what I'm working on right now for the upcoming v0.8 of the GraphQL API for WP.
+
+Field `posts` (to retrieve post data) does not require authorization, any user can access it, either logged-in or not. Hence, for security reasons, it only fetches published posts.
+
+But there are situations when we need to retrieve draft/pending/trashed posts also, such as:
+
+- For building a static website, which is executed by the admin, with access to all data from the site
+- For authors of the post, to list all draft posts so they can keep editing them
+
+Then, I came up with the following scheme. To fetch posts, there will be 3 fields:
+
+- `posts`: open to anyone, can only fetch published posts
+- `myPosts`: open to anyone, it only fetches posts from the logged-in user, with any status (published/draft/pending/trashed)
+- `postsForAdmin`: only the admin can access it, fetches any post with any status
+
+And then, `postsForAdmin` is by default disabled, so it doesn't even show up on the GraphQL schema, unless the admin explicitly enables it (and, most likely, it will be enabled for building static sites only).
+
+Another situation is when some field can retrieve both public and private data. For  instance, the `option` field retrieves data from table `wp_options`. Some entries are public (such as `blogname`), while others are not (such as `admin_email`).
+
+A similar situation is for retrieving meta values, through fields `Post.metaValue`, `User.metaValue`, and others. For instance, user meta includes entry `wp_capabilities`, which is certainly private, while `description` is public. And then there is `last_name`, which may be public or private depending on the application.
+
+To make accessing this data secure, the plugin will enable to specify which entries can be queried via an allow/denylist in the settings page, accepting both the full entry or a regex:
+
+![Defining allowed/denied entries for the 'option' field](/images/schema-configuration-settings.png "Defining allowed/denied entries for the 'option' field")
+
+Then, querying the allowed option will work, while the denied option will just return `null`:
+
+```graphql
+{
+  # This option is allowed
+  siteName: optionValue(name: "blogname")
+  # This optionValue is not allowed
+  adminEmail: optionValue(name: "admin_email")
+}
+```
+
+With proper security measures provided by the GraphQL server, and common sense by the developer, creating a secure GraphQL API should not be difficult.
+
+## GraphQL bringing the DB down
+
+> GraphQL is a rich syntax allowing for deep relational queries to be expressed, so for an ecosystem like WordPress, where the extensibility of the data model comes from the [entity-attribute-value pattern](https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model), this translates to unbelievable amounts of wear and tear on a database, which may cause your site to become unresponsive if the GraphQL query is deep, complicated, or recursive. WordPress is already famous for being able to bring a MySQL/MariaDB instance to its knees, so adding GraphQL could make this so much worse if the queries aren't properly written, authenticated and rate limited.
+> [[Source]](https://www.reddit.com/r/PHP/comments/mo7gwm/the_graphql_api_for_wordpress_is_now_transpiled/gu3efu0?utm_source=share&utm_medium=web2x&context=3)
+
+Bringing the DB down is a serious concern for GraphQL servers. I will describe how GraphQL by PoP (the CMS-agnostic GraphQL server in PHP over which the GraphQL API for WP is based) attempts to avoid this scenario.
+
+GraphQL by PoP [avoids the N+1 problem from ever taking place](https://graphql-by-pop.com/docs/architecture/suppressing-n-plus-one-problem.html), already by architectural design. It accomplishes it by having the engine be responsible for loading the entities from the database, **not the developer**.
+
+When resolving connections in a resolver, the returned value is the ID (or list of IDs) of the object(s), and not the object itself. For instance, retrieving the custom post's author is [done like this](https://github.com/GatoGraphQL/GatoGraphQL/blob/717701efb9dfc87276a598938ba31889099ef4cd/layers/Schema/packages/users/src/Conditional/CustomPosts/FieldResolvers/CustomPostFieldResolver.php):
+
+```php
+class CustomPostFieldResolver extends AbstractDBDataFieldResolver
+{
+  private CustomPostUserTypeAPIInterface $customPostUserTypeAPI;
+
+  public function getClassesToAttachTo(): array
+  {
+    return [
+      CustomPostFieldInterfaceResolver::class,
+    ];
+  }
+
+  public function getSchemaFieldType(string $fieldName): ?string
+  {
+    return match($fieldName) {
+      'author' => SchemaDefinition::TYPE_ID,
+      default => null,
+    };
+  }
+
+  public function resolveValue(
+    TypeResolverInterface $typeResolver,
+    object $customPost,
+    string $fieldName,
+    array $fieldArgs = []
+  ): mixed {
+    switch ($fieldName) {
+      case 'author':
+        return $this->customPostUserTypeAPI->getAuthorID($customPost);
+    }
+
+    return null;
+  }
+
+  public function resolveFieldTypeResolverClass(
+    TypeResolverInterface $typeResolver,
+    string $fieldName
+  ): ?string {
+    switch ($fieldName) {
+      case 'author':
+        return UserTypeResolver::class;
+    }
+
+    return null;
+  }
+}
+```
+
+Having the DB entity's ID from `resolveValue`, and the type of the object from `resolveFieldTypeResolverClass` (represented via class `UserTypeResolver`), the GraphQL engine can then load the data for the object.
+
+To load the data, the engine [uses an algorithm that is super efficient](https://graphql-by-pop.com/docs/architecture/dataloading-engine.html#analyzing-the-time-complexity-of-the-solution): it has [time complexity](https://en.wikipedia.org/wiki/Time_complexity) `O(n)`, where `n` is the number of types in the query, not the number of nodes.
+
+The algorithm achieves this efficiency because it does not traverse a graph, but it [converts the data structure to a stack of components](https://graphql-by-pop.com/docs/architecture/using-components-instead-of-graphs.html), which is much simpler to resolve. (The "graph" in GraphQL is a concept, not an actual implementation.)
+
+Then, even if the query has multiple levels, each retrieving many entities, the algorithm can still withstand it pretty well. For instance, there's no big impact when running the following query, which has a depth of 10 levels:
+
+```graphql
+{
+  posts(pagination: { limit: 10 }) {
+    excerpt
+    title
+    url
+    author {
+      name
+      url
+      posts(pagination: { limit: 10 }) {
+        title
+        tags(pagination: { limit: 10 }) {
+          slug
+          url
+          posts(pagination: { limit: 10 }) {
+            title
+            comments(pagination: { limit: 10 }) {
+              content
+              date
+              author {
+                name
+                posts(pagination: { limit: 10 }) {
+                  title
+                  url
+                  comments(pagination: { limit: 10 }) {
+                    content
+                    date
+                    author {
+                      name
+                      username
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+The exception to this efficiency is when retrieving meta values, through `Post.metaValue`, `User.metaValue`, `Comment.metaValue`, `PostTag.metaValue` and `PostCategory.metaValue` (and also their `metaValues` field). That's because the WordPress functions (`get_post_meta`, `get_user_meta`, etc) fetch data for 1 ID at a time, meaning that each entity will require a database call to fetch its meta value. As a result, resolving meta values scales up based on the number of nodes, not the number of types (the OP's comment hits the nail on the head, in this regard).
+
+To avoid bad actors using and abusing the meta fields, the GraphQL API for WordPress (in v0.8) will ship with these fields disabled by default. Then, the admin has to explicitly enable them and, while doing so, can place these fields under some Access Control List, so at no time should the DB be at risk of attack.
+
+Rate limiting is a great idea too, I plan to [support it for some upcoming release](https://github.com/GatoGraphQL/GatoGraphQL/issues/220).
+
+And then there's analyzing and imposing limitations on the complexity of the query (such as how many levels deep it is). The GraphQL server resolves the query with time complexity `O(n)`, so there's not much harm that can be done concerning looping. However, a single query could still retrieve unlimited amounts of data from the DB, and that's something we may want to avoid.
+
+For instance, this simple query will bring a huge amount of data in a single request (my demo site barely has a few hundred records, so I can afford to demonstrate executing the query):
+
+```graphql
+{
+  posts000: posts(pagination: { limit: 100 }) {
+    ...PostFields
+  }
+  posts100: posts(pagination: { limit: 100, offset: 100 }) {
+    ...PostFields
+  }
+  posts200: posts(pagination: { limit: 100, offset: 200 }) {
+    ...PostFields
+  }
+  posts300: posts(pagination: { limit: 100, offset: 300 }) {
+    ...PostFields
+  }
+  posts400: posts(pagination: { limit: 100, offset: 400 }) {
+    ...PostFields
+  }
+  posts500: posts(pagination: { limit: 100, offset: 500 }) {
+    ...PostFields
+  }
+  posts600: posts(pagination: { limit: 100, offset: 600 }) {
+    ...PostFields
+  }
+  posts700: posts(pagination: { limit: 100, offset: 700 }) {
+    ...PostFields
+  }
+  posts800: posts(pagination: { limit: 100, offset: 800 }) {
+    ...PostFields
+  }
+  posts900: posts(pagination: { limit: 100, offset: 900 }) {
+    ...PostFields
+  }
+}
+
+fragment PostFields on Post {
+  id
+  title
+  content
+  date
+}
+```
+
+As it can be appreciated, the query doesn't even need be nested to create trouble. So analyzing the complexity of a query is a tricky business, which will require fine-tuning to be useful.
+
+I hope to support query analysis too, but it's not on my list of high priorities, because with a combination of the other features (such as [persisted queries](https://gatographql.com/guides/special-features/persisted-queries) or [custom endpoints](https://gatographql.com/guides/special-features/custom-endpoints), coupled with Access Control Lists) we can already keep out the bad actors, and we ourselves will not (should not!) abuse our own GraphQL service.

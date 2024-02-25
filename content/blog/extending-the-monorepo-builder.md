@@ -1,0 +1,213 @@
+---
+title: 💁🏻‍♀️ Why the GraphQL API needs a Monorepo, and How it's optimized
+summary: Managing the codebase requires some effort
+image: /images/spaghetti-the-other-end.jpg
+publishedAt: '2021-03-27'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - api
+  - wordpress
+  - plugin
+  - monorepo
+  - engineering
+templateEngineOverride: md
+---
+
+A few days ago I published article [Hosting all your PHP packages together in a monorepo](https://blog.logrocket.com/hosting-all-your-php-packages-together-in-a-monorepo/), explaining why we may want to use a monorepo to manage our PHP codebase, and how to do it via the [Monorepo Builder](https://github.com/symplify/monorepo-builder).
+
+Here I'd like to complement that article, explaining a bit more in detail why the [`GatoGraphQL/GatoGraphQL` codebase](https://github.com/GatoGraphQL/GatoGraphQL) (which hosts the GraphQL API for WordPress, its underlying engine [GraphQL by PoP](https://graphql-by-pop.com/), and the component-model architecture over which it is based) needs to be hosted on a monorepo, and the optimizations I've made for it.
+
+## Why the GraphQL API needs a monorepo
+
+In order to [support CMS-agnosticism](https://graphql-by-pop.com/docs/architecture/cms-agnosticism.html), the codebase for the GraphQL API and associated projects was split into a multitude of packages, managed via Composer. In total, over 100 packages were created! (Currently, the number is over 200.)
+
+The big number of packages adds no extra complexity for assembling them all together via Composer: we just run `composer install`, and everything works. However, it does become problematic for development when each single package lives on its own repository, because of versioning.
+
+Each package must be versioned, and every version of a package will depend on some version of another package. With so many packages, configuring how all versions depend on each other when creating PRs would become a nightmare, resembling a plate of spaghetti code, where you can see the tip of one noodle, but you don't know where it ends.
+
+![Searching for the other end](/images/spaghetti-the-other-end.jpg "Searching for the other end")
+
+Truth is, it became so difficult to link all the versions of the multiple branches from all the involved repositories, that I'd directly skip this process altogether, pushing the code straight to the `master` branch on each repo, and then depend on the `dev-master` version across each.
+
+It was not proper. Switching to the monorepo model, hosting all code in `GatoGraphQL/GatoGraphQL`, has effectively solved the problem.
+
+### Welcome side-effect: Lower barrier for contributions
+
+As I mentioned in the article, back in the day when the project used one repo per package, one contributor abandoned the project before even joining, from his inability to set-up the working environment.
+
+Before switching to the monorepo, setting-up the development environment was very difficult. Since I was the author, I could manage to clone all the repos, and add them all together under a single VSCode workspace, so it kind-of-worked for me.
+
+I tried to make it easier for potential contributors to set-up the same environment, via [this bash script](https://github.com/GraphQLAPI/graphql-api-for-wp/blob/9eacd84a90030bd7f281a73217cf088fe71e23f7/dev-helpers/scripts/clone-all-dependencies-from-github.sh). But seriously, that could never work, it was a lost battle from the very beginning, and nobody could start contributing to the project.
+
+With the monorepo, I can sleep at night soundly, knowing that I won't be rejecting contributors with unreasonable bureaucracy, if they ever want to become involved.
+
+## Optimizing the monorepo
+
+As I mentioned in the article, the advantage of using the Monorepo Builder library over the alternatives, is that it is built with PHP, and that we can extend it.
+
+For instance, when doing a push to `master` and splitting the monorepo, the matrix in the GitHub Action will normally spawn one runner instance per package, to synchronize its code with its own repository (for distribution via Packagist).
+
+Because `GatoGraphQL/GatoGraphQL` contains over 200 packages, that meant that over 200 runner instances were being launched.
+
+![Processing over 200 packages](/images/github-action-over-200-packages.png "Processing over 200 packages")
+
+The issue here is that [GitHub gives you a limit of 20 jobs running in parallel](https://docs.github.com/en/actions/reference/usage-limits-billing-and-administration#usage-limits). Because all actions are placed in a queue, I needed to wait for them to finish, to continue executing other actions.
+
+In addition, every so often GitHub will not provision a runner immediately, and make you wait until some later time:
+
+![Waiting for runners to become available](/images/github-action-waiting-for-runner-instance.png "Waiting for runners to become available")
+
+All of this translates into waiting time. With over 200 packages, merging a single PR could take up to 1 hour! This is an issue that needed solving.
+
+Extending the monorepo with custom commands can solve the problem.
+
+### Extending the Monorepo builder
+
+Normally, when executing the following command, we will obtain the list of all packages in the repo:
+
+```bash
+vendor/bin/monorepo-builder packages-json
+```
+
+![Retrieving the list of all packages in the repo](/images/monorepo-builder-packages-json-command.png "Retrieving the list of all packages in the repo")
+
+But then I thought: there is no need to synchronize all packages, but only those containing code that was modified in the PR.
+
+If we can find out the list of modified files, we can calculate which are the modified packages that contain them. In other words: execute `git diff`, and feed the results to command `packages-json`, via a `filter` input, like this:
+
+```bash
+vendor/bin/monorepo-builder packages-json --filter=modified_file_1 --filter=modified_file_2 --filter=...
+```
+
+Now, the `packages-json` command shipped with the Monorepo Builder does not accept a `filter` input. So this is where we must extend it with our custom commands.
+
+The Monorepo builder uses [Symfony's DependencyInjection](https://symfony.com/doc/current/service_container.html), so it can be extended by injecting new services into its container. Indeed, the configuration file `monorepo-builder.php` is already a [service configurator](https://symfony.com/doc/current/service_container/configurators.html#using-the-configurator).
+
+So I extended the Monorepo builder with a [new command named `package-entries-json`](https://github.com/GatoGraphQL/GatoGraphQL/blob/5377cfb540a9c8c7baf632912a3504c65097fa5f/src/Extensions/Symplify/MonorepoBuilder/Command/PackageEntriesJsonCommand.php), which supports the `filter` input:
+
+```php
+final class PackageEntriesJsonCommand extends AbstractSymplifyCommand
+{
+  private PackageEntriesJsonProvider $packageEntriesJsonProvider;
+
+  public function __construct(PackageEntriesJsonProvider $packageEntriesJsonProvider)
+  {
+    $this->packageEntriesJsonProvider = $packageEntriesJsonProvider;
+
+    parent::__construct();
+  }
+
+  protected function configure(): void
+  {
+    $this->setDescription('Provides package entries in json format. Useful for GitHub Actions Workflow');
+    $this->addOption(
+      Option::FILTER,
+      null,
+      InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
+      'Filter the packages to those from the list of files. Useful to split monorepo on modified packages only',
+      []
+    );
+  }
+
+  protected function execute(InputInterface $input, OutputInterface $output): int
+  {
+    /** @var string[] $fileFilter */
+    $fileFilter = $input->getOption(Option::FILTER);
+
+    $packageEntries = $this->packageEntriesJsonProvider->providePackageEntries($fileFilter);
+
+    // must be without spaces, otherwise it breaks GitHub Actions json
+    $json = Json::encode($packageEntries);
+    $this->symfonyStyle->writeln($json);
+
+    return ShellCode::SUCCESS;
+  }
+}
+```
+
+It is injected into the service container [like this](https://github.com/GatoGraphQL/GatoGraphQL/blob/ba20f72ef087f743962bb315003022924bf60a8c/monorepo-builder.php#L100):
+
+```php
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator->services();
+    $services->defaults()->autowire()->autoconfigure();
+    $services->set(PackageEntriesJsonCommand::class);
+}
+```
+
+Now, the new command named `package-entries-json` will be available to the GitHub Action workflow.
+
+### Obtaining the list of modified files in the GitHub Action
+
+Let's now see how to update the workflow.
+
+I conveniently use action [`technote-space/get-diff-action`](https://github.com/technote-space/get-diff-action), which provides the `git diff` of all [modified files in the PR](https://github.com/GatoGraphQL/GatoGraphQL/blob/8dd917acef21c0d393fa2f461dfdc1349e26c8ea/.github/workflows/split_monorepo.yaml#L29-L32):
+
+```yaml
+# git diff to generate matrix with modified packages only
+- uses: technote-space/get-diff-action@v4
+  with:
+    PATTERNS: layers/*/*/*/**
+```
+
+From these results (stored under `${{ env.GIT_DIFF }}`) I then generate the call to the custom command `package-entries-json`, and [set it as an output](https://github.com/GatoGraphQL/GatoGraphQL/blob/8dd917acef21c0d393fa2f461dfdc1349e26c8ea/.github/workflows/split_monorepo.yaml#L40):
+
+```yaml
+- id: output_data
+  name: Calculate matrix for packages
+  run: |
+    quote=\'
+    clean_diff="$(echo "${{ env.GIT_DIFF }}" | sed -e s/$quote//g)"
+    packages_in_diff="$(echo $clean_diff | grep -E -o 'layers/[A-Za-z0-9_\-]*/[A-Za-z0-9_\-]*/[A-Za-z0-9_\-]*/' | sort -u)"
+    echo "[Packages in diff] $(echo $packages_in_diff | tr '\n' ' ')"
+    filter_arg="--filter=$(echo $packages_in_diff | sed -e 's/ / --filter=/g')"
+    echo "::set-output name=matrix::$(vendor/bin/monorepo-builder package-entries-json $(echo $filter_arg))"
+```
+
+The resulting packages are then used to [create the matrix](https://github.com/GatoGraphQL/GatoGraphQL/blob/8dd917acef21c0d393fa2f461dfdc1349e26c8ea/.github/workflows/split_monorepo.yaml#L51-L52):
+
+```yaml
+outputs:
+  matrix: ${{ steps.output_data.outputs.matrix }}
+```
+
+It works great! In [this instance](https://github.com/GatoGraphQL/GatoGraphQL/runs/2191625393?check_suite_focus=true#step:6:13), only two packages were modified, and so only 2 instances were launched in the matrix:
+
+![Obtaining the list of modified packages](/images/monorepo-git-diff.jpg "Obtaining the list of modified packages")
+
+Now, merging the PR might take just a few minutes (down from 1 hour), so I'm a happy developer once again.
+
+## Further Optimizations/Challenges
+
+There is another instance in which I can reduce time from GitHub Action: when executing the PHPUnit tests.
+
+Currently, whenever a new piece of code is uploaded, the whole battery of tests for all packages is executed. But once again, this can be optimized.
+
+Let's say that the monorepo contains 3 packages: A, B and C, where B depends on A, and C depends on B.
+
+Then, if we modify code from a single package alone, the tests that require execution will vary:
+
+- Modify code from A: must test A, B and C
+- Modify code from B: must test B and C
+- Modify code from C: must test C
+
+The optimization will then depend on obtaining the list of modified packages (as in the previous optimization), and execute tests for them and for all packages that depend on them.
+
+However, I currently do not possess the information of how every package in the monorepo depends on each other.
+
+Even though the root `composer.json` contains all the local packages, I can't obtain their dependencies via Composer by executing `composer info ${ package_name }`, because they have been defined in the [`replace` section](https://getcomposer.org/doc/04-schema.md#replace), instead of `require`.
+
+Alternatively, I could step into every package's subfolder, execute `composer install`, and then do `composer info`. But executing `composer install` over 200 times would be sheer madness.
+
+Hence, I have not optimized this scenario yet. I've so far [created the issue](https://github.com/GatoGraphQL/GatoGraphQL/issues/273), and hope to eventually find a solution.
+
+## Wrapping up
+
+I must say I'm extremely happy from discovering the Monorepo Builder. I don't think I could be able to manage the codebase for the GraphQL API otherwise.
+
+I'm not saying that every project should use it. But when you have over 200 packages, like in my case, or possibly even over 20, then it absolutely simplifies your life. 
+
+Managing the monorepo does take a bit time and effort to set-up and maintain, but I save that time and effort multiple times every day, just from ongoing development.
+

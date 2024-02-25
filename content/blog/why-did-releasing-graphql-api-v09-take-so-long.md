@@ -1,0 +1,329 @@
+---
+title: "🤔 Why did the new GraphQL API take 1.5 years to be released?"
+summary: A story that took a long time to be written
+image: /images/waiting-meme.jpg
+publishedAt: '2023-01-26'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - wordpress
+  - plugin
+templateEngineOverride: md
+---
+
+Version `0.9` of the GraphQL API for WordPress was [just released](/blog/released-graphql-api-v09). It took almost 1.5 years of development, and over 16000 commits, to be ready. That's a long time indeed!
+
+Upon sharing the announcement on Hacker News, I [got the following question](https://news.ycombinator.com/item?id=34354179#34355592):
+
+> [...] I'm curious to know what took 16k commits. The projects that I've been on with more then ten thousand commits had many dozens or hundreds of folks working full time. [...] Is there some complexity that needed to be overcome that the post doesn't get into?
+
+<!-- As a [response to that question](https://news.ycombinator.com/item?id=34354179#34357827), we are told that developing the WP REST API required only 1/4th of the number of commits:
+
+> For comparison, the WordPress REST API was about 4k commits over ~4 years or so (prior to us merging it into WordPress itself): https://github.com/WP-API/WP-API
+>
+> (That said, commit count is a pretty useless metric.) -->
+
+The commit count is not a very reliable metric, as I might just do a very simple change and push that as a single commit. Many of those 16k commits were `"typo"` commits, or just improved a description in some `README`.
+
+Nevertheless, the commit count does give an idea of the actual effort involved. There were also plenty of commits packed with modifications, including dozens, and even hundres of changes at a time. The changes between versions `0.8` and `0.9` are indeed huge, and that took effort and time to pull out.
+
+In this blog post, I'll describe what those changes are, as to explain why it took so long. And in doing so, I'll also give a preview of some advanced features that were added to the codebase, and which will see the light of the day with the upcoming version `1.0`.
+
+<!-- It's no coincidence that the release notes for version `0.9` are over 40 minutes reading time! -->
+
+## Background of the GraphQL server
+
+First, I'll share a bit of the history of the engine, and technical details of how it works.
+
+(This is mostly relevant to developers; if you're not interested in technical stuff, be welcome to skip to the next section.)
+
+The GraphQL API for WordPress is based on top of PoP, an engine that renders components in PHP (similar to React or Vue on JavaScript). Its dependency on this engine is absolute, which is why the plugin is hosted under the [`GatoGraphQL/GatoGraphQL` monorepo in GitHub](https://github.com/GatoGraphQL/GatoGraphQL).
+
+Under the hood, this dependency looks like this:
+
+The GraphQL API for WordPress resolves a GraphQL query by first [transforming it into an equivalent component model](https://graphql-by-pop.com/docs/architecture/using-components-instead-of-graphs.html), which PoP then resolves by fetching all required data, and then [this data is given the shape of the GraphQL query](https://graphql-by-pop.com/docs/architecture/dataloading-engine.html#analyzing-the-time-complexity-of-the-solution).
+
+When I started working on PoP sometime around 2013/2014, there was no GraphQL, and the methodology for resolving a component model into data was designed and implemented from scratch. The lack of having a model to follow (such as GraphQL for concepts, and the [`graphql-js` reference project](https://github.com/graphql/graphql-js) for an implementation) has been both a hindrance and a blessing, as I'll explain later on.
+
+PoP was initially designed to render the whole website as HTML on the server-side, while exposing the raw data in JSON format when appending `?output=json` to the URL of the page, and further selecting what data to retrieve (settings, DB object data) with additional URL params.
+
+Please click on the following links (all of them pointing to the same webpage, just with different URL params) and notice how they differ:
+
+- HTML content: [mesym.com/en/posts/](https://www.mesym.com/en/posts/)
+- Raw JSON data (settings + DB): [mesym.com/en/posts/?output=json](https://www.mesym.com/en/posts/?output=json)
+- Raw JSON data (DB): [mesym.com/en/posts/?output=json&module=data](https://www.mesym.com/en/posts/?output=json&module=data)
+
+When clicking on the last link, a realization hits home: This is pretty much GraphQL! The only big difference is that the data in the response is implicit, as it has been already defined by the components (in PHP) that were included in the page. GraphQL, instead, allows us to decide what data to fetch via a query.
+
+So when I learnt about GraphQL sometime around 2019, it was a no brainer for me to have PoP also satisfy a GraphQL server. All it had to do was to accept the GraphQL query as input, and create a component model on-the-fly based on the query.
+
+And that's what I did. And it worked well. But it was slow, because PoP understood its own input format, so the GraphQL query had to be adapted to the PoP format:
+
+1. Parse the GraphQL query; then
+2. Transform the query into the PoP format; then
+3. Parse the PoP format
+
+Parsing the GraphQL query was then done twice (once for GraphQL, once for PoP), and the PoP format was not being resolved via an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree), but just by parsing the query string time and again. (Not using an AST was terrible coding, but I didn't have a spec to follow, and its development happened organically, where a simple `substr(...)` would save the day, every day.)
+
+This is why I say that not having the GraphQL spec was a hindrance, as my solution was slow (and this was the situation by version `0.8`). So I decided to fix it.
+
+## Converting the engine into GraphQL-first
+
+The solution I decided upon is to have PoP natively speak the GraphQL language. Then, passing a GraphQL query to PoP as input would already be converted to the component model, without the need of any additional adapter, or doing things twice.
+
+This meant that the PoP project had to be repurposed, from being a PHP library that renders components for websites in the server-side that was adapted to resolve GraphQL queries, to actually becoming a GraphQL server.
+
+The codebase then underwent a massive transformation, introducing the GraphQL AST as the foundation to communicate state across all PHP services in the engine. GraphQL AST objects are now the inputs to PoP (instead of query strings).
+
+Other GraphQL servers in PHP rely on [`graphql-php`](https://github.com/webonyx/graphql-php), but plugin GraphQL API for WordPress does not. This is bad news concerning maintenance effort (as I can't reuse what someone else has coded), but good news concerning independence: I can decide to add custom features to my plugin at my own speed, and under my own criterion (which is why the plugin already provides the ["oneof" input object](/guides/augment/oneof-input-object/)).
+
+And as will be shown in the section below, this is a great advantage.
+
+<!-- As a side not, PoP can possibly still render components as HTML, as to produce a website in the server-side. However, GraphQL is meant to handle pure object data (such as a post title), and not component configuration data (such as priting the title with CSS class `"title-big"`). So to satisfy this use case, I'd have to implement the adapter in the opposite direction: from GraphQL query to component. That's currently a TODO that may or may not ever happen. (Anyone interested to take on this challenge?) -->
+
+## Incorporating original features to GraphQL
+
+GraphQL is normally associated with data fetching. Natually, you can retrieve any piece of data (posts, users, comments, etc) from the GraphQL API for WordPress:
+
+```graphql
+query {
+  posts(
+    pagination: { limit: 5, offset: 20 }
+    sort: { by: DATE, order: ASC }
+  ) {
+    id
+    title
+    content
+    url
+    author {
+      id
+      name
+      url
+    }
+    comments {
+      id
+      date
+      content
+    }
+  }
+}
+```
+
+But this is a low-hanging fruit. GraphQL can also be used for many other use cases, including data manipulation and transformation, and even placing GraphQL in a pipeline to mediate between services.
+
+Some examples where GraphQL is useful are:
+
+- Extracting information from one or more sources (such as users from the WordPress sites and the newsletter contact data from Mailchimp), combining the data, and analyzing it all together as a single dataset
+- Executing operations to adapt the content on the site:
+  - As a one-off, as when migrating a site to another domain and replacing `"www.myoldsite.com"` to `"mynewsite.com"` everywhere in the content and metadata
+  - On an ongoing basis, as to replace any `"http://"` to `"https://"` whenever a writer publishes a new blog post
+- Connecting to the Google Translate API to translate all the blog posts to a different language
+- Sending a tweet automatically after a blog post is published
+<!-- - Sending notifications (by email, Slack, etc) after something happened (a new post, comment, etc) -->
+
+PoP had been designed to support these other use cases, via features which are not (naturally) supported by GraphQL, such as:
+
+- Supporting "functionality" fields (in addition to "data" fields), which are added to all types in the schema
+- Passing the result of a field as input to another field, within the same query
+- Composing directives, as to have a directive modify the behavior of another directive
+- Deciding to apply a directive or not dynamically, based on the value of the field
+<!-- (such as a dynamic `@skip` or `@include` based on dynamic data, not on static variables) -->
+
+And I certainly did not want to remove these features from the GraphQL server: I had already coded them, and they are certainly valuable.
+
+So the second reason why `v0.9` took so long is that I also had to find a way to incorporate these novel capabilities into GraphQL, in a way that did not break the GraphQL spec (for instance, introducing new elements to the GraphQL syntax was a no-go).
+
+## An example of data manipulation in GraphQL
+
+The novel capabilities introduced to GraphQL in the plugin will become more visible in the near future, when version `1.0` is released. But you can already get a taste of some of them.
+
+The following GraphQL query retrieves a list of user entries from an external REST API (which can be `@remove`d from the response); inputs this data into another field, right within the same query; extracts the email property from each entry; and finally transforms the email to upper case, but only if the language on that same entry is English or German:
+
+```graphql
+###################################################################
+# Fetch data from a REST endpoint, extract the emails, and make
+# uppercase those ones from users with a special language.
+###################################################################
+query ExtractEmailsFromAPIAndUpperCaseSpecialOnes
+{
+  # Retrieve data from a REST API endpoint
+  userEntries: _sendJSONObjectCollectionHTTPRequest(
+    input: {
+      url: "https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions"
+    }
+  ) # @remove   # <= Uncomment this directive to not print the API data
+
+  emails: _echo(value: $__userEntries)
+
+    # Iterate all the entries, passing every entry
+    # (under the dynamic variable $userEntry)
+    # to each of the next 4 directives
+    @underEachArrayItem(
+      passValueOnwardsAs: "userEntry"
+      affectDirectivesUnderPos: [1, 2, 3, 4]
+    )
+
+      # Extract property "lang" from the entry
+      # via the functionality field `_objectProperty`,
+      # and pass it onwards as dynamic variable $userLang
+      @applyField(
+        name: "_objectProperty"
+        arguments: {
+          object: $userEntry,
+          by: {
+            key: "lang"
+          }
+        }
+        passOnwardsAs: "userLang"
+      )
+
+      # Execute functionality field `_inArray` to find out
+      # if $userLang is either "en" or "de", and place the
+      # result under dynamic variable $isSpecialLang
+      @applyField(
+        name: "_inArray"
+        arguments: {
+          value: $userLang,
+          array: ["en", "de"]
+        }
+        passOnwardsAs: "isSpecialLang"
+      )
+
+      # Extract property "email" from the entry
+      # and set it back as the value for that entry
+      @applyField(
+        name: "_objectProperty"
+        arguments: {
+          object: $userEntry,
+          by: {
+            key: "email"
+          }
+        }
+        setResultInResponse: true
+      )
+
+      # If $isSpecialLang is `true` then execute
+      # directive `@strUpperCase` 
+      @if(condition: $isSpecialLang)
+        @strUpperCase
+}
+```
+
+This is the response (please notice how only certain emails were uppercased):
+
+```json
+{
+  "data": {
+    "userEntries": [
+      {
+        "email": "abracadabra@ganga.com",
+        "lang": "de"
+      },
+      {
+        "email": "longon@caramanon.com",
+        "lang": "es"
+      },
+      {
+        "email": "rancotanto@parabara.com",
+        "lang": "en"
+      },
+      {
+        "email": "quezarapadon@quebrulacha.net",
+        "lang": "fr"
+      },
+      {
+        "email": "test@test.com",
+        "lang": "de"
+      },
+      {
+        "email": "emilanga@pedrola.com",
+        "lang": "fr"
+      }
+    ],
+    "emails": [
+      "ABRACADABRA@GANGA.COM",
+      "longon@caramanon.com",
+      "RANCOTANTO@PARABARA.COM",
+      "quezarapadon@quebrulacha.net",
+      "TEST@TEST.COM",
+      "emilanga@pedrola.com"
+    ]
+  }
+}
+```
+
+Check it out by yourself! Press the "Run" button to execute the query:
+
+```graphql
+###################################################################
+# Fetch data from a REST endpoint, extract the emails, and make
+# uppercase those ones from users with a special language.
+###################################################################
+query ExtractEmailsFromAPIAndUpperCaseSpecialOnes {
+  # Retrieve data from a REST API endpoint
+  userEntries: _sendJSONObjectCollectionHTTPRequest(
+    input: {
+      url: "https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions"
+    }
+  )
+  # @remove   # <= Uncomment this directive to not print the API data
+  emails: _echo(value: $__userEntries)
+    # Iterate all the entries, passing every entry
+    # (under the dynamic variable $userEntry)
+    # to each of the next 4 directives
+    @underEachArrayItem(
+      passValueOnwardsAs: "userEntry"
+      affectDirectivesUnderPos: [1, 2, 3, 4]
+    )
+      # Extract property "lang" from the entry
+      # via the functionality field `_objectProperty`,
+      # and pass it onwards as dynamic variable $userLang
+      @applyField(
+        name: "_objectProperty"
+        arguments: { object: $userEntry, by: { key: "lang" } }
+        passOnwardsAs: "userLang"
+      )
+      # Execute functionality field `_inArray` to find out
+      # if $userLang is either "en" or "de", and place the
+      # result under dynamic variable $isSpecialLang
+      @applyField(
+        name: "_inArray"
+        arguments: { value: $userLang, array: ["en", "de"] }
+        passOnwardsAs: "isSpecialLang"
+      )
+      # Extract property "email" from the entry
+      # and set it back as the value for that entry
+      @applyField(
+        name: "_objectProperty"
+        arguments: { object: $userEntry, by: { key: "email" } }
+        setResultInResponse: true
+      )
+      # If $isSpecialLang is `true` then execute
+      # directive `@strUpperCase`
+      @if(condition: $isSpecialLang)
+        @strUpperCase
+}
+```
+
+I had mentioned that not being guided by GraphQL was a hindrance, but (in retrospect) also a blessing. This is because I didn't have the constraints of the GraphQL spec, so I could afford to dream of these novel capabilities.
+
+And now that these features have been migrated to the GraphQL API for WordPress, it can be an incredibly useful ally for anything related to content retrieval, manipulation, and transformation for your WordPress site. (Even though they will be accessible only with the upcoming `v1.0`).
+
+It took a while, but the effort was certainly worth it.
+
+## Give it a try!
+
+Are you convinced that the long wait was worth it? I hope so!
+
+Go ahead, download the plugin, and check it out:
+
+<a class="button rounded" href="/download/">Click here to go to the downloads page</a>
+
+Interested in getting news concerning its development, new documentation, and upcoming releases, including `v1.0`? Then be welcome to [subscribe to the newsletter](/newsletter/).
+
+Want to explore the open source code in GitHub? [Check out `GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL) (and be welcome to give it a star... We love stars! ⭐️⭐️⭐️)
+
+Btw, what content transformations do you need to do in WordPress (for which you may be already using some dedicated commercial plugin)? Please [send me a message telling me your use case](/contact/).
+
+If you like what you see, please share with your friends and colleagues, help spread the love ❤️.

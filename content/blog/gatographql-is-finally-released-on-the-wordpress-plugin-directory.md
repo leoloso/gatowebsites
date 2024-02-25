@@ -1,0 +1,45 @@
+---
+title: "🥳 Gato GraphQL has been (finally) released in the WordPress plugin directory"
+summary: The Gato GraphQL plugin can now be installed directly from within your WordPress site
+publishedAt: '2024-01-09'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - release
+useGlobalTopSection: false
+image: /assets/campaigns/GatoGraphQL-logo-suki-text-square-wp-org.png
+---
+
+We are delighted to announce that Gato GraphQL is now available via the WordPress plugin directory!
+
+**👉🏽 [wordpress.org/plugins/gatographql](https://wordpress.org/plugins/gatographql/)**
+
+<div class="img-width-1024" markdown=1>
+
+<a href="https://wordpress.org/plugins/gatographql/" target="_blank">
+
+![Gato GraphQL on the WordPress plugin directory](/images/gatographql-on-wordpress-plugin-directory.png "Gato GraphQL on the WordPress plugin directory")
+
+</a>
+
+</div>
+
+Yay! 🎉🥳🙌🎈🥂
+
+## Let's celebrate with a discount
+
+To celebrate the launch, the first 10 customers that purchase any bundle or extension can do so with an incredible deal:
+
+<div class="highlight" markdown=1>
+
+**30% off any bundle or extension, using code `GATOLAUNCH30`**
+
+<br/>
+
+This is a Lifetime Deal! Purchase now, and obtain the discount forever.
+
+<br/>
+
+_(Limited to the first 10 customers)_
+
+</div>

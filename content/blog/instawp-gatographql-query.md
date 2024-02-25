@@ -1,0 +1,239 @@
+---
+title: "👨🏻‍🏫 GraphQL query to automatically send the newsletter subscribers from InstaWP to Mailchimp"
+summary: Step-by-step analysis of the query to extract data from InstaWP's webhook payload and sent it over to the Mailchimp API
+image: /assets/logos/GatoGraphQL-plus-InstaWP-logo.png
+publishedAt: '2023-10-25'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - wordpress
+  - plugin
+  - instawp
+  - api
+---
+
+_(Read blog post [🚀 Automatically sending the newsletter subscribers from InstaWP to Mailchimp](/blog/instawp-gatographql/) to see the context for this query.)_
+
+This GraphQL query captures the email from the visitors who ticked the "Subscribe to mailing list" checkbox from InstaWP (when creating a new sandbox site), and subscribes this email to a Mailchimp list:
+
+```graphql
+query HasSubscribedToNewsletter {
+  hasSubscriberOptin: _httpRequestHasParam(name: "marketing_optin")
+  subscriberOptin: _httpRequestStringParam(name: "marketing_optin")
+  isNotSubscriberOptinNAValue: _notEquals(value1: $__subscriberOptin, value2: "NA")
+  subscribedToNewsletter: _and(values: [$__hasSubscriberOptin, $__isNotSubscriberOptinNAValue])
+    @export(as: "subscribedToNewsletter")
+}
+
+query MaybeCreateContactOnMailchimp
+   @depends(on: "HasSubscribedToNewsletter")
+   @include(if: $subscribedToNewsletter)
+{
+  subscriberEmail: _httpRequestStringParam(name: "email")
+  
+  mailchimpUsername: _env(name: "MAILCHIMP_API_CREDENTIALS_USERNAME")
+    @remove
+  mailchimpPassword: _env(name: "MAILCHIMP_API_CREDENTIALS_PASSWORD")
+    @remove
+  
+  mailchimpListMembersJSONObject: _sendJSONObjectItemHTTPRequest(input: {
+    url: "https://us7.api.mailchimp.com/3.0/lists/{listCode}/members",
+    method: POST,
+    options: {
+      auth: {
+        username: $__mailchimpUsername,
+        password: $__mailchimpPassword
+      },
+      json: {
+        email_address: $__subscriberEmail,
+        status: "subscribed"
+      }
+    }
+  })
+}
+```
+
+Let's see how this GraphQL query does its magic.
+
+## Splitting the GraphQL query into independent units
+
+A GraphQL document can contain multiple operations (queries and mutations), but only one of them will be executed. We indicate which one via the `?operationName=...` parameter on the GraphQL endpoint; otherwise, the last operation will be executed.
+
+Notice that there are 2 `query` operations in the document above:
+
+1. `HasSubscribedToNewsletter`
+2. `MaybeCreateContactOnMailchimp`
+
+The webhook URL contains `?operationName=MaybeCreateContactOnMailchimp`, so that's the operation that will be executed.
+
+Thanks to the [Multiple Query Execution](/extensions/multiple-query-execution/) extension, `MaybeCreateContactOnMailchimp` will first execute `HasSubscribedToNewsletter`, as indicated via the `@depends` directive:
+
+```graphql
+query MaybeCreateContactOnMailchimp
+   @depends(on: "HasSubscribedToNewsletter")
+   # ...
+{
+  #
+}
+```
+
+In addition, the `MaybeCreateContactOnMailchimp` will be conditionally executed, only if the value of variable `$subscribedToNewsletter` is `true`:
+
+```graphql
+query MaybeCreateContactOnMailchimp
+   @depends(on: "HasSubscribedToNewsletter")
+   @include(if: $subscribedToNewsletter)
+{
+  #
+}
+```
+
+`$subscribedToNewsletter` is a [dynamic variable](/guides/augment/dynamic-variables/), exported within the `HasSubscribedToNewsletter` operation:
+
+```graphql
+query HasSubscribedToNewsletter {
+  # ...
+  subscribedToNewsletter: _and(values: [$__hasSubscriberOptin, $__isNotSubscriberOptinNAValue])
+    @export(as: "subscribedToNewsletter")
+}
+```
+
+Hence, operation `MaybeCreateContactOnMailchimp` will only be executed when the user has ticked on the "Subscribe to mailing list" checkbox.
+
+## Computing if the user ticked the checkbox
+
+InstaWP's [documentation for the webhook](https://docs.instawp.com/en/article/webhooks-1m7qpja/) indicates that the payload data contains the following fields (among others):
+
+- `marketing_optin`: Indicates if the user ticked the checkbox
+- `email`: Visitor's email
+
+The doc only explains that field `marketing_optin` has value `NA` when the checkbox is not ticked, so we will have to work with that.
+
+To find out if the user ticked the checkbox, the logic is:
+
+- Check if field `marketing_optin` is present, and
+- Check that its value is not `NA`
+
+This is computed in the `HasSubscribedToNewsletter` operation. Here it is with comments, explaining what each line in the query is doing:
+
+```graphql
+query HasSubscribedToNewsletter {
+
+  # Check if field `marketing_optin` is present
+  hasSubscriberOptin: _httpRequestHasParam(name: "marketing_optin")
+
+  # Get the value of field `marketing_optin`
+  subscriberOptin: _httpRequestStringParam(name: "marketing_optin")
+
+  # Check if the value of the field is not "NA"
+  isNotSubscriberOptinNAValue: _notEquals(value1: $__subscriberOptin, value2: "NA")
+
+  # Perform an AND operation: field present && value != "NA"
+  subscribedToNewsletter: _and(values: [$__hasSubscriberOptin, $__isNotSubscriberOptinNAValue])
+    
+    # Export the result under dynamic variable $subscribedToNewsletter
+    @export(as: "subscribedToNewsletter")
+}
+```
+
+There are several interesting things in this query.
+
+### Global Fields
+
+Have you noticed the fields starting with `_`? Namely:
+
+- `_httpRequestHasParam`
+- `_httpRequestStringParam`
+- `_notEquals`
+- `_and`
+
+These are [global fields](/guides/special-features/global-fields/), which are fields that are available under all types in the GraphQL schema. Global fields offer functionality instead of data, and by convention they start with `_`.
+
+### Field to Input
+
+Have you noticed those variables starting with `$__`? Namely:
+
+- `$__subscriberOptin`
+- `$__hasSubscriberOptin`
+- `$__isNotSubscriberOptinNAValue`
+
+These are dynamic variables that contain the value of a field defined before them within the same operation. For instance, variable `$__subscriberOptin` contains the value of field `subscriberOptin` declared above it.
+
+This is a feature provided by the [Field to Input](/extensions/field-to-input/) extension, which allows to use the output of a field as input into another field. This is how we can create functionality within the GraphQL query.
+
+In the query, field `isNotSubscriberOptinNAValue` checks that the value of the previously queried field `subscriberOptin` does not equal `"NA"`, and `subscribedToNewsletter` computes an `AND` operation involving the values of fields `hasSubscriberOptin` and `isNotSubscriberOptinNAValue`.
+
+## Connecting to Mailchimp
+
+Operation `MaybeCreateContactOnMailchimp` contains the logic to extract the payload data, and call the Mailchimp API to sign up the email to the newsletter list.
+
+Here is the operation with comments, explaining what each line is doing:
+
+```graphql
+query MaybeCreateContactOnMailchimp
+   @depends(on: "HasSubscribedToNewsletter")
+   @include(if: $subscribedToNewsletter)
+{
+  # Extract form field `email` from the body of the request
+  subscriberEmail: _httpRequestStringParam(name: "email")
+  
+  # Obtain Mailchimp credentials, defined in wp-config.php
+  mailchimpUsername: _env(name: "MAILCHIMP_API_CREDENTIALS_USERNAME")
+    # Do not print the credentials in the response
+    @remove
+  mailchimpPassword: _env(name: "MAILCHIMP_API_CREDENTIALS_PASSWORD")
+    @remove
+  
+  # Connect to Mailchimp to add a new member to the list
+  mailchimpListMembersJSONObject: _sendJSONObjectItemHTTPRequest(input: {
+    url: "https://us7.api.mailchimp.com/3.0/lists/{listCode}/members",
+    method: POST,
+    options: {
+      # Provide credentials to connect to the API
+      auth: {
+        username: $__mailchimpUsername,
+        password: $__mailchimpPassword
+      },
+      # Provide form data
+      json: {
+        email_address: $__subscriberEmail,
+        status: "subscribed"
+      }
+    }
+  })
+}
+```
+
+Let's explore the features used in this query.
+
+### Environment Variables
+
+We need to provide our credentials when connecting to the Mailchimp API. However, we do not want to directly input these in the GraphQL query, as they [may leak somewhere](/tutorial/not-leaking-credentials-when-connecting-to-services/) (eg: they could be printed in some log).
+
+That's why we use global field `_env` (provided by the [PHP Constants and Environment via Schema](/extensions/php-constants-and-environment-variables-via-schema/) extension) to read an environment variable or PHP constant, together with the `@remove` directive (provided by the [**Field Response Removal**](/extensions/field-response-removal/) extension) to skip printing the credentials in the response.
+
+Now, we can declare our credentials in `wp-config.php`:
+
+```php
+define( 'MAILCHIMP_API_CREDENTIALS_USERNAME', '{ username }' );
+define( 'MAILCHIMP_API_CREDENTIALS_PASSWORD', '{ password }' );
+```
+
+### Sending the HTTP request to Mailchimp
+
+The last piece of the logic is field `_sendJSONObjectItemHTTPRequest`, which sends an HTTP request to some service.
+
+As we want to connect to the Mailchimp API, field `mailchimpListMembersJSONObject` provides the data required by Mailchimp's REST API endpoint, as indicated in the docs to [subscribe a member to a Mailchimp list](https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/):
+
+- Send a `POST` request
+- The endpoint is `https://{subdomain}.api.mailchimp.com/3.0/lists/{listCode}/members`
+- The body must include fields `email_address` and `status`
+
+## Creating a webhook to interact with any API
+
+The GraphQL query in this post forwards data from InstaWP to Mailchimp.
+
+You can apply the same idea for whatever combination you need, extracting the data from some source service (whichever that is), adapting it, and sending it over to some destination service (whichever that is).
+
+Have fun!

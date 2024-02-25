@@ -1,0 +1,759 @@
+---
+title: "👨🏻‍💻 GraphQL as a (sort of) programming language"
+summary: Using GraphQL to accomplish more things than just fetching data
+# image: /assets/logos/GatoGraphQL-plus-InstaWP-logo.png
+publishedAt: '2023-10-31'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - wordpress
+  - plugin
+  - php
+  - api
+---
+
+GraphQL, even though having the [GraphQL language](https://graphql.org/learn/queries/), would not be normally called a programming language, as there are so many things that we can do with programming languages that we cannot do with GraphQL.
+
+GraphQL is normally used to fetch data, for instance to render a website on the client, and to mutate data, for instance to create a post. And that's pretty much it.
+
+(Other uses are simply combinations of these 2 previous cases. For instance, an API gateway may fetch/mutate data from an internal server, which is not exposed to the client.)
+
+Accessing data in GraphQL:
+
+```graphql
+query PrintPostTitle($postID: ID!)
+{
+  post(by: { id: $postID }) {
+    title
+  }
+}
+```
+
+...has this (sort of) equivalent in PHP:
+
+```php
+function printPostTitle(int $postID)
+{
+  $post = getPost($postID);
+  echo $post->title;
+}
+```
+
+_(All the examples below will use PHP as the programming language for comparison.)_
+
+Mutating data in GraphQL:
+
+```graphql
+query UpdatePost($postID: ID!, $title: String!)
+{
+  updatePost(
+    by: { id: $postID },
+    input: { title: $title }
+  ) {
+    title
+  }
+}
+```
+
+...has this (sort of) equivalent in PHP:
+
+```php
+function updatePost(int $postID, string $title)
+{
+  $post = getPost($postID);
+  $post->update(['title' => $title]);
+}
+```
+
+This is enough because GraphQL is normally accessed from a client (coded in some programming language, such as JavaScript, PHP, Java, or other) which will contain the logic of what to do with the data. So GraphQL is not used on its own, but as a companion to somebody else.
+
+But if GraphQL could be used on its own, then many new use cases could be solved just using GraphQL, allowing GraphQL to be deployed to novel environments and be responsible for additional tasks in the application stack.
+
+For that to happen, though, GraphQL must support many of the features of programming languages.
+
+The programming language features that GraphQL supports are limited. For instance, using directive `@include` (or `@skip`) and passing a variable as input can be considered (sort of) conditional logic:
+
+```graphql
+query PrintPostProperties($postID: ID!, $addContent: Boolean!)
+{
+  post(by: { id: $postID }) {
+    title
+    content @include(if: $addContent)
+  }
+}
+```
+
+This query has this PHP equivalent:
+
+```php
+function printPostProperties(int $postID, bool $addContent)
+{
+  $post = getPost($postID);
+  echo $post->title;
+  if ($addContent) {
+    echo $post->content;
+  }
+}
+```
+
+That's pretty much it. GraphQL lacks recursions, dynamic variables (where their values are computed and assigned to the variable on runtime, not as input in the dictionary), variable assignments (eg: assigning a field output to a variable, which can then be provided as argument into another field), and others.
+
+Consider how you would implement a solution, just using GraphQL, for the following problem:
+
+- Create a webhook to be invoked by a service whenever a new user signs up to that service; the user may have subscribed to the newsletter (indicated by field `marketing_optin` in the webhook's payload); in that case, the webook must register the user's email (in field `email` in the webhook's payload) in a Mailchimp list.
+
+Do you consider it's doable? easy? difficult? impossible?
+
+At [Gato GraphQL](/), we want to solve this problem just using GraphQL. Any many more problems. That's why we've thought hard on how to support characterists from programming languages.
+
+Let's explore what programming features we've supported on our GraphQL server. At the end of this post, we will see how we can solve that problem.
+
+## Functionality
+
+Fields in GraphQL normally bring data, such as a post's title, content or data. But we can also implement fields as "functionality".
+
+For instance, printing the time in PHP:
+
+```php
+function printTime()
+{
+  echo time();
+}
+```
+
+...can be done with field `_time` in GraphQL:
+
+```graphql
+{
+  _time
+}
+```
+
+Notice that function `time` does not belong to any type, hence field `_time` does not either. As such, it is a [global field](/guides/special-features/global-fields/), and it can be accessed under every type from the GraphQL schema:
+
+```graphql
+{
+  posts {
+    _time
+  }
+}
+```
+
+Other examples of [functionality fields](/guides/special-features/function-fields/) are:
+
+- `_arrayItem`
+- `_arrayJoin`
+- `_date`
+- `_equals`
+- `_inArray`
+- `_intAdd`
+- `_isEmpty`
+- `_isNull`
+- `_makeTime`
+- `_objectProperty`
+- `_sprintf`
+- `_strContains`
+- `_strRegexReplace`
+- `_strSubstr`
+
+## Functions
+
+We can split units of logic into functions, and have a function invoke another function:
+
+```php
+function printPostProperties(int $postID)
+{
+  $post = getPost($postID);
+  printPostTitle();
+  printPostContent();
+}
+
+function printPostTitle(Post $post)
+{
+  echo $post->title;
+}
+
+function printPostContent(Post $post)
+{
+  echo $post->content;
+}
+```
+
+In GraphQL, we can similarly split the `query` (or `mutation`) operation in the document into multiple `query` operations, and have an operation "depend" on other ones, thus executing those ones first:
+
+```graphql
+query PrintPostTitle($postID: ID!)
+{
+  postWithTitle: post(by: { id: $postID }) {
+    title
+  }
+}
+
+query PrintPostContent($postID: ID!)
+{
+  postWithContent: post(by: { id: $postID }) {
+    content
+  }
+}
+
+query PrintPostProperties
+  @depends(on: [
+    "PrintPostTitle",
+    "PrintPostContent"
+  ])
+{
+  # ...
+}
+```
+
+In this query, executing the GraphQL query passing `?operationName=PrintPostProperties` to the endpoint will first execute queries `PrintPostTitle` and `PrintPostContent`, and only then `PrintPostProperties`.
+
+This is possible via [Multiple Query Execution](/guides/special-features/multiple-query-execution/).
+
+## Dynamic Variables
+
+We can compute a value and assign it to a variable on runtime. Then, based on that value, we can conditionally execute some functionality or not:
+
+```php
+function printPostProperties(int $postID)
+{
+  $post = getPost($postID);
+  echo $post->title;
+  
+  $addContent = isUserLoggedIn();
+  if ($addContent) {
+    echo $post->content;
+  }
+}
+```
+
+In GraphQL, we can "export" a value under a dynamic variable in some operation, and then read this value on another operation:
+
+```graphql
+query ExportAddContent
+{
+  addContent: isUserLoggedIn
+    @export(as: "addContent")
+}
+
+query PrintPostProperties($postID: ID!)
+  @depends(on: "ExportAddContent")
+{
+  post(by: { id: $postID }) {
+    title
+    content @include(if: $addContent)
+  }
+}
+```
+
+Notice that variable `$addContent`, which holds a value that was computed on runtime, is read by but not declared on operation `PrintPostProperties`, as it is a [dynamic variable](/guides/augment/dynamic-variables/).
+
+## Conditionally executing functions
+
+An alternative to the previous example is to group logic into functions, and then conditionally execute a function or not depending on the value of the dynamic variable:
+
+```php
+function printPostProperties(int $postID)
+{
+  $post = getPost($postID);
+  printPostTitle();
+  
+  $addContent = isUserLoggedIn();
+  if ($addContent) {
+    printPostContent();
+  }
+}
+
+function printPostTitle(Post $post)
+{
+  echo $post->title;
+}
+
+function printPostContent(Post $post)
+{
+  echo $post->content;
+}
+```
+
+In GraphQL we can add the `@include` directive on the operation:
+
+```graphql
+query ExportAddContent
+{
+  addContent: isUserLoggedIn
+    @export(as: "addContent")
+}
+
+query PrintPostTitle($postID: ID!)
+{
+  postWithTitle: post(by: { id: $postID }) {
+    title
+  }
+}
+
+query PrintPostContent($postID: ID!)
+  @depends(on: "ExportAddContent")
+  @include(if: $addContent)
+{
+  postWithContent: post(by: { id: $postID }) {
+    content
+  }
+}
+
+query PrintPostProperties
+  @depends(on: [
+    "PrintPostTitle",
+    "PrintPostContent"
+  ])
+{
+  # ...
+}
+```
+
+Now, operation `PrintPostContent` will only be executed if `$addContent` is `true`.
+
+## Assigning variables, Inputting them back
+
+Let's modify slightly the previous example, in which the condition `"addContent"` was tied to the user being logged-in or not.
+
+In this other example, `"addContent"` is `true` whenever today is weekend, which involves some logic to compute:
+
+- Get today's date
+- Format it to the day's name, in lowercase
+- Check it's either `"saturday"` or `"sunday"`
+
+In PHP:
+
+```php
+function addContent()
+{
+  $today = time();
+  $dayName = date('l', $today);
+  $lcDayName = strtolower($dayName);
+  $isWeekend = in_array(
+    $lcDayName,
+    ['saturday', 'sunday']
+  );
+  return $isWeekend;
+}
+
+function printPostProperties(int $postID)
+{
+  $post = getPost($postID);
+  echo $post->title;
+
+  $addContent = addContent();
+  if ($addContent) {
+    echo $post->content;
+  }
+}
+```
+
+In GraphQL:
+
+```graphql
+query ExportAddContent
+{
+  today: _time
+  dayName: _date(format: "l", timestamp: $__today)
+  lcDayName: _strLowerCase(text: $__dayName)
+  isWeekend: _inArray(
+    value: $__lcDayName
+    array: ["saturday", "sunday"],
+  )
+    @export(as: "addContent")
+}
+
+query PrintPostProperties($postID: ID!)
+  @depends(on: "ExportAddContent")
+{
+  post(by: { id: $postID }) {
+    title
+    content @include(if: $addContent)
+  }
+}
+```
+
+In operation `ExportAddContent`, the value for every queried field is immediately available to the fields below, under dynamic variable `$__fieldName`. This way the output of a field can be immediately be used as input to another field, already within the same operation.
+
+This is possible thanks to [Field to Input](/guides/special-features/field-to-input/).
+
+## Dynamically modifying a value
+
+In this example in PHP, we modify the value of a variable whenever the logged-in user is an admin, in which case we the post's content is added a link to edit the post:
+
+```php
+function isAdminUser()
+{
+  $user = getCurrentUser();
+  return in_array("administrator", $user->roles);
+}
+
+function printPostContent(int $postID)
+{
+  $post = getPost($postID);
+  $postContent = $post->content;
+
+  $isAdminUser = isAdminUser();
+  if ($isAdminUser) {
+    $postContent = sprintf(
+      '%s<p><a href="%s">%s</a></p>',
+      $postContent,
+      $post->edit_url,
+      '(Admin only) Edit post'
+    ) 
+  }
+
+  echo $postContent;
+}
+```
+
+In GraphQL, we can conditionally execute an operation or another one, producing different values for some field:
+
+```graphql
+query InitializeDynamicVariables
+{
+  isAdminUser: _echo(value: false)
+    @export(as: "isAdminUser")
+}
+
+query ExportConditionalVariables
+  @depends(on: "InitializeDynamicVariables")
+{
+  me {
+    roleNames
+    isAdminUser: _inArray(
+      value: "administrator",
+      array: $__roleNames
+    )
+      @export(as: "isAdminUser")
+  }
+}
+
+query RetrieveContentForAdminUser($postId: ID!)
+  @depends(on: "ExportConditionalVariables")
+  @include(if: $isAdminUser)
+{
+  post(by: { id : $postId }) {
+    originalContent: content
+    wpAdminEditURL
+    content: _sprintf(
+      string: "%s<p><a href=\"%s\">%s</a></p>",
+      values: [
+        $__originalContent,
+        $__wpAdminEditURL,
+        "(Admin only) Edit post"
+      ]
+    )
+  }
+}
+
+query RetrieveContentForNonAdminUser($postId: ID!)
+  @depends(on: "ExportConditionalVariables")
+  @skip(if: $isAdminUser)
+{
+  post(by: { id : $postId }) {
+    content
+  }
+}
+
+query ExecuteAll
+  @depends(on: [
+    "RetrieveContentForAdminUser",
+    "RetrieveContentForNonAdminUser"
+  ])
+{
+  # ...
+}
+```
+
+By using directives `@include` and `@skip` with the same dynamic variable as input, operations `RetrieveContentForAdminUser` and `RetrieveContentForNonAdminUser` are mutually exclusive.
+
+## Iterating arrays
+
+Let's say we want to iterate the items in an array, and convert those values to uppercase:
+
+```php
+function printUserRolesAsUppercase(int $userID)
+{
+  $user = getUser($userID);
+  foreach ($user->roles as $role) {
+    echo strtoupper($role);
+  }
+}
+```
+
+In GraphQL, we can have directive `@underEachArrayItem` iterate over the array items, and provide each of those values to the following directive in the chain, in this case `@strUpperCase`:
+
+```graphql
+query PrintUserRolesAsUppercase($userID: ID!)
+{
+  user(by: { id: $userID }) {
+    roles
+      @underEachArrayItem
+        @strUpperCase
+  }
+}
+```
+
+This is possible thanks to [composable directives](/guides/special-features/composable-directives/).
+
+## Bulk CRUD operations
+
+CRUD stands for Create, Read, Update and Delete, these are the operations we apply on resources (posts, users, etc).
+
+Reading in bulk in PHP looks like this:
+
+```php
+function getPostTitles()
+{
+  $posts = getPosts();
+  foreach ($posts as $post) {
+    echo $post->title;
+  }
+}
+```
+
+This use case is naturally satisfied by GraphQL:
+
+```graphql
+query GetPostTitles
+{
+  posts {
+    title
+  }
+}
+```
+
+Updating in bulk in PHP looks like this:
+
+```php
+function updatePostTitlesAsUppercase()
+{
+  $posts = getPosts();
+  foreach ($posts as $post) {
+    $post->update(['title' => strtoupper($post->title)]);
+  }
+}
+```
+
+Executing updates in bulk in GraphQL is normally supported by creating a dedicated mutation `updatePosts`, that takes the data for all the posts.
+
+I do not like this approach, as it effectively duplicates the number of mutations in the schema (one to mutate the single resource, one to mutate multiple resources), and we need to maintain the logic for both of them:
+
+- `updatePost` + `updatePosts`
+- `createPost` + `createPosts`
+- etc
+
+In my opinion, a more elegant approach is to use [nested mutations](/guides/special-features/nested-mutations/), where the mutation `Post.update` is applied to each of the queried resources:
+
+```graphql
+mutation UpdatePostTitlesAsUppercase
+{
+  posts {
+    title
+    ucTitle: _strUpperCase(text: $__title)
+    update(
+      input: { title: $__ucTitle }
+    ) {
+      status
+      post {
+        title
+      }
+    }
+  }
+}
+```
+
+The same approach works for deleting resources:
+
+```php
+function deletePosts()
+{
+  $posts = getPosts();
+  foreach ($posts as $post) {
+    $post->delete();
+  }
+}
+```
+
+In GraphQL:
+
+```graphql
+mutation DeletePosts
+{
+  posts {
+    delete {
+      status
+    }
+  }
+}
+```
+
+For creation, we don't pass the resources as they don't exist yet; instead, we provide an array with the data inputs for all resources to create:
+
+```php
+function createPosts()
+{
+  $postDataItems = [
+    [
+      'title' => 'First title',
+      'content' => 'First content',
+    ],
+    [
+      'title' => 'Second title',
+      'content' => 'Second content',
+    ],
+  ];
+  foreach ($postDataItems as $postDataItem) {
+    $post = new Post($postDataItem['title'], $postDataItem['content']);
+    $post->save();
+  }
+}
+```
+
+Creating posts in bulk in GraphQL using a single `createPost` mutation is a bit tricky, but it is nevertheless doable.
+
+The idea is to iterate over the array with the data inputs, assign each under a dynamic variable `$input`, and then execute the `createPost` mutation passing that input. Finally we get the resulting IDs from the created posts under the dynamic variable `$createdPostIDs`, and we retrieve their data:
+
+```graphql
+mutation CreatePosts
+  @depends(on: "GetPostsAndExportData")
+{
+  createdPostIDs: _echo(value: [
+    {
+      title: "First title",
+      content: "First content"
+    },
+    {
+      title: "Second title",
+      content: "Second content"
+    },
+  ])
+    @underEachArrayItem(
+      passValueOnwardsAs: "input"
+    )
+      @applyField(
+        name: "createPost"
+        arguments: {
+          input: $input
+        },
+        setResultInResponse: true
+      )
+    @export(as: "createdPostIDs")
+}
+
+query RetrieveCreatedPosts
+  @depends(on: "CreatePosts")
+{
+  createdPosts: posts(
+    filter: {
+      ids: $createdPostIDs,
+    }
+  ) {
+    title
+    content
+  }
+}
+```
+
+## Sending an HTTP request (and other functions)
+
+Sending an HTTP request to some webserver can be satisfied via a dedicated function in PHP, such as `file_get_contents` or `curl_exec`.
+
+Using `file_get_contents`:
+
+```php
+$xml = file_get_contents("http://www.example.com/file.xml");
+```
+
+In GraphQL, the logic for executing an HTTP request can be satisfied via a functionality field, such as `_sendHTTPRequest`:
+
+```graphql
+query {
+  _sendHTTPRequest(input: {
+    url: "http://www.example.com/file.xml",
+    method: GET
+  }) {
+    xml: body
+  }
+}
+```
+
+The same concept applies for any functionality.
+
+For instance, we access the value of a constant in PHP like this:
+
+```php
+$mailchimpUsername = constant('MAILCHIMP_API_CREDENTIALS_USERNAME');
+```
+
+We can implement a corresponding functionality field in GraphQL:
+
+```graphql
+{
+  mailchimpUsername: _env(name: "MAILCHIMP_API_CREDENTIALS_USERNAME")
+}
+```
+
+## Solving the challenge using only GraphQL
+
+With all the programming language features we've just covered, we are now able to use only GraphQL to solve the problem posed earlier:
+
+- Create a webhook to be invoked by a service whenever a new user signs up to that service; the user may have subscribed to the newsletter (indicated by field `marketing_optin` in the webhook's payload); in that case, the webook must register the user's email (in field `email` in the webhook's payload) in a Mailchimp list.
+
+The solution is to use a [GraphQL persisted query](/guides/special-features/persisted-queries/) as a webhook, with this query:
+
+```graphql
+query HasSubscribedToNewsletter {
+  hasSubscriberOptin: _httpRequestHasParam(name: "marketing_optin")
+  subscriberOptin: _httpRequestStringParam(name: "marketing_optin")
+  isNotSubscriberOptinNAValue: _notEquals(value1: $__subscriberOptin, value2: "NA")
+  subscribedToNewsletter: _and(values: [$__hasSubscriberOptin, $__isNotSubscriberOptinNAValue])
+    @export(as: "subscribedToNewsletter")
+}
+
+query MaybeCreateContactOnMailchimp
+   @depends(on: "HasSubscribedToNewsletter")
+   @include(if: $subscribedToNewsletter)
+{
+  subscriberEmail: _httpRequestStringParam(name: "email")
+  
+  mailchimpUsername: _env(name: "MAILCHIMP_API_CREDENTIALS_USERNAME")
+   
+  mailchimpPassword: _env(name: "MAILCHIMP_API_CREDENTIALS_PASSWORD")
+   
+  
+  mailchimpListMembersJSONObject: _sendJSONObjectItemHTTPRequest(input: {
+    url: "https://us7.api.mailchimp.com/3.0/lists/{listCode}/members",
+    method: POST,
+    options: {
+      auth: {
+        username: $__mailchimpUsername,
+        password: $__mailchimpPassword
+      },
+      json: {
+        email_address: $__subscriberEmail,
+        status: "subscribed"
+      }
+    }
+  })
+}
+```
+
+In this solution, operation `MaybeCreateContactOnMailchimp`, which executes the HTTP request against Mailchimp's API, will be conditionally executed, depending on the value of the `marketing_optin` field.
+
+_(Read blog post [👨🏻‍🏫 GraphQL query to automatically send the newsletter subscribers from InstaWP to Mailchimp](/blog/instawp-gatographql-query/) to see how this query works.)_
+
+## GraphQL is more powerful than you thought!
+
+GraphQL can be used for much more than just fetching and mutating data... Adapt data, dynamically modify the output, customize content for different contexts, create an API gateway with barely a few lines of code, and many others.
+
+By supporting programming language features, we can solve the challenge above just using GraphQL, and avoid deploying a client to go alongside it. We are then simplifying the application stack: Less moving parts, less complexity, less code to debug, less technologies to deal with.
+
+GraphQL rocks 🤘
+
+<p class="[ p-name text-center ]">
+    <a href="https://app.instawp.io/launch?t=gatographql-demo&d=v2" target="_blank" class="[ button bigger rounded ]">Launch a sandbox site to play with Gato GraphQL</a>
+</p>

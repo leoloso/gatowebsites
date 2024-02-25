@@ -1,0 +1,265 @@
+---
+title: 🦸🏿‍♂️ The GraphQL API for WordPress is now transpiled from PHP 8.0 to 7.1
+summary: Using the latest PHP features for development
+image: /images/merged-codebase-min-php-80.jpg
+publishedAt: '2021-04-10'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - api
+  - wordpress
+  - plugin
+  - codebase
+  - engineering
+---
+
+Some time ago, I wrote about the art of transpiling PHP code:
+
+- [Transpiling PHP code from 8.0 to 7.x via Rector](https://blog.logrocket.com/transpiling-php-code-from-8-0-to-7-x-via-rector/)
+- [Coding in PHP 7.4 and deploying to 7.1 via Rector and GitHub Actions](https://blog.logrocket.com/coding-in-php-7-4-and-deploying-to-7-1-via-rector-and-github-actions/)
+
+Transpiling PHP code enables to use the latest PHP features for development, yet release the plugin with its code converted to an older PHP version for production, as to target a bigger user base.
+
+I spent the past few weeks further tuning this process for the [GraphQL API for WordPress](https://gatographql.com) plugin.
+
+I'm happy to announce that, from now on, it's required PHP version has been upgraded, to PHP 8.0:
+
+![Upgrading to min PHP version 8.0](/images/merged-codebase-min-php-80.jpg "Upgrading to min PHP version 8.0")
+
+Since the plugin can now count on PHP 8.0, I've been able to complete adding a type to all properties for all PHP classes across the code base, now also including union types.
+
+Awesome!
+
+Here is the summary of all the new PHP 8.0 features available when developing the plugin.
+
+## New PHP 8.0 features
+
+When developing the GraphQL API plugin, the following PHP 8.0 features are now available:
+
+- [Union types](https://php.watch/versions/8.0/union-types)
+- [`mixed` pseudo type](https://php.watch/versions/8.0/mixed-type)
+- [`static` return type](https://php.watch/versions/8.0/static-return-type)
+- [`::class` magic constant on objects](https://php.watch/versions/8.0/class-constant-on-objects)
+- [`match` expressions](https://php.watch/versions/8.0/match-expression)
+- [`catch` exceptions only by type](https://php.watch/versions/8.0/catch-exception-type)
+- [Null-safe operator](https://php.watch/versions/8.0/null-safe-operator)
+- [Class constructor property promotion](https://php.watch/versions/8.0/constructor-property-promotion)
+- [Trailing commas in parameter lists and closure `use` lists](https://php.watch/versions/8.0/trailing-comma-parameter-use-list)
+
+Let's see an example of each, how they are used in the plugin for development, and what they get transpiled down to when generating [`graphql-api.zip`](https://github.com/GatoGraphQL/GatoGraphQL/releases/download/0.10.0/graphql-api.zip).
+
+### Union types
+
+[Code example](https://github.com/GatoGraphQL/GatoGraphQL/blob/b9d379dc34195701e3afac2be4c132da6728ab75/layers/Schema/packages/custompost-mutations/src/TypeAPIs/CustomPostTypeAPIInterface.php#L18):
+
+```php
+interface CustomPostTypeAPIInterface
+{
+  public function createCustomPost(array $data): string | int | null | Error;
+}
+```
+
+Transpiled to:
+
+```php
+interface CustomPostTypeAPIInterface
+{
+  public function createCustomPost(array $data)
+}
+```
+
+### `mixed` pseudo type
+
+[Code example](https://github.com/GatoGraphQL/GatoGraphQL/blob/21a2c0bc2102068f76e9f42594c2d2f47df90760/layers/Engine/packages/engine/src/CMS/CMSServiceInterface.php#L9):
+
+```php
+interface CMSServiceInterface
+{
+  public function getOption(string $option, mixed $default = false): mixed;
+}
+```
+
+Transpiled to:
+
+```php
+interface CMSServiceInterface
+{
+  public function getOption(string $option, $default = false);
+}
+```
+
+### `::class` magic constant on objects
+
+[Code example](https://github.com/GatoGraphQL/GatoGraphQL/blob/a546b2769958b385e86a20f74900f8d5349b9736/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/src/Services/SchemaConfigurators/AbstractGraphQLQueryConfigurator.php#L119):
+
+```php
+foreach ($directiveResolvers as $directiveResolver) {
+  $directiveResolverName = $directiveResolver->getDirectiveName();
+  $this->directiveNameClasses[$directiveResolverName][] = $directiveResolver::class;
+}
+```
+
+Transpiled to:
+
+```php
+foreach ($directiveResolvers as $directiveResolver) {
+  $directiveResolverName = $directiveResolver->getDirectiveName();
+  $this->directiveNameClasses[$directiveResolverName][] = get_class($directiveResolver);
+}
+```
+
+### `match` expressions
+
+[Code example](https://github.com/GatoGraphQL/GatoGraphQL/blob/0b73acc0d59bb74cb5e6dab9ec8061401c26526a/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/src/ConditionalOnEnvironment/Admin/SchemaServices/FieldResolvers/CPTFieldResolver.php#L66):
+
+```php
+public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
+{
+  $ret = match($fieldName) {
+    'accessControlLists' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
+    'cacheControlLists' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
+    'fieldDeprecationLists' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
+    'schemaConfigurations' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
+    default => parent::getSchemaFieldType($typeResolver, $fieldName),
+  };
+  return $ret;
+}
+```
+
+Transpiled to:
+
+```php
+public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
+{
+  switch ($fieldName) {
+    case 'accessControlLists':
+      $ret = TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID);
+      break;
+    case 'cacheControlLists':
+      $ret = TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID);
+      break;
+    case 'fieldDeprecationLists':
+      $ret = TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID);
+      break;
+    case 'schemaConfigurations':
+      $ret = TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID);
+      break;
+    default:
+      $ret = parent::getSchemaFieldType($typeResolver, $fieldName);
+      break;
+  }
+  return $ret;
+}
+```
+
+### `catch` exceptions only by type
+
+[Code example](https://github.com/GatoGraphQL/GatoGraphQL/blob/145aad0ecfbfc9c2edbd54960a943cb154ecb0a8/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/src/ModuleResolvers/HasMarkdownDocumentationModuleResolverTrait.php#L53):
+
+```php
+try {
+  // ...
+} catch (InvalidArgumentException) {
+  return sprintf(
+    '<p>%s</p>',
+    \__('Oops, the documentation for this module is not available', 'graphql-api')
+  );
+}
+```
+
+Transpiled to:
+
+```php
+try {
+  // ...
+} catch (InvalidArgumentException $exception) {
+  return sprintf(
+    '<p>%s</p>',
+    \__('Oops, the documentation for this module is not available', 'graphql-api')
+  );
+}
+```
+
+### Null-safe operator
+
+[Code example](https://github.com/GatoGraphQL/GatoGraphQL/blob/6dd729a67ab8952df8a69f6f8898ece141ff3843/layers/Engine/packages/component-model/src/DirectiveResolvers/AbstractDirectiveResolver.php#L513):
+
+```php
+public function getSchemaDirectiveDeprecationDescription(TypeResolverInterface $typeResolver): ?string
+{
+  return $this->getSchemaDefinitionResolver($typeResolver)?->getSchemaDirectiveDeprecationDescription($typeResolver);
+}
+```
+
+Transpiled to:
+
+```php
+public function getSchemaDirectiveDeprecationDescription(TypeResolverInterface $typeResolver): ?string
+{
+  return $this->getSchemaDefinitionResolver($typeResolver) ? $this->getSchemaDefinitionResolver($typeResolver)->getSchemaDirectiveDeprecationDescription($typeResolver) : null;
+}
+```
+
+### Class constructor property promotion
+
+[Code example](https://github.com/GatoGraphQL/GatoGraphQL/blob/57a7a21a378f718e1ecfd378fe34ea99fa62c168/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/src/Services/EndpointResolvers/AbstractEndpointResolver.php#L12):
+
+```php
+abstract class AbstractEndpointResolver
+{
+  function __construct(protected EndpointHelpers $endpointHelpers)
+  {
+  }
+}
+```
+
+Transpiled to:
+
+```php
+ abstract class AbstractEndpointResolver
+ {
+  /**
+   * @var \GraphQLAPI\GraphQLAPI\Services\Helpers\EndpointHelpers
+   */
+  protected $endpointHelpers;
+
+  function __construct(EndpointHelpers $endpointHelpers)
+  {
+    $this->endpointHelpers = $endpointHelpers;
+  }
+}
+```
+
+### Trailing commas in parameter lists and closure `use` lists
+
+[Code example](https://github.com/GatoGraphQL/GatoGraphQL/blob/fe5c96e2d936f9da3fb0015ed76e393d51b4e2e0/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/src/ConditionalOnEnvironment/Admin/SchemaServices/FieldResolvers/CPTFieldResolver.php#L222):
+
+```php
+public function resolveFieldTypeResolverClass(TypeResolverInterface $typeResolver, string $fieldName): ?string
+{
+    switch ($fieldName) {
+        case 'accessControlLists':
+            return CustomPostTypeResolver::class;
+    }
+
+    return parent::resolveFieldTypeResolverClass(
+        $typeResolver,
+        $fieldName,
+    );
+}
+```
+
+Transpiled to:
+
+```php
+public function resolveFieldTypeResolverClass(TypeResolverInterface $typeResolver, string $fieldName): ?string
+{
+    switch ($fieldName) {
+        case 'accessControlLists':
+            return CustomPostTypeResolver::class;
+    }
+
+    return parent::resolveFieldTypeResolverClass($typeResolver, $fieldName);
+}
+```

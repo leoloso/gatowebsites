@@ -1,0 +1,30 @@
+---
+title: "🎉 Gato GraphQL v1.0 is finally out!"
+summary: After several years of development, the first major version of the plugin is finally available.
+image: /assets/GatoGraphQL-logo-suki.png
+publishedAt: '2023-09-07'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - wordpress
+  - plugin
+---
+
+After a really long time (spanning several years), development of the Gato GraphQL plugin has finally reached `v1.0`!
+
+Yaaaaaaaaaaay 🎉🍾🎊🥳🍻👏🥂🎈🙌
+
+Alongside the release, we have also launched this current website, [gatographql.com](/).
+
+The plugin has been renamed from the previous "GraphQL API for WordPress" (even tough this old name still appears in all previous blog posts), and it features a brand-new logo:
+
+![New Gato GraphQL logo](/assets/GatoGraphQL-logo-suki.png "New Gato GraphQL logo")
+
+Starting from this version, the plugin will be released in the [WordPress plugins directory](https://wordpress.org/plugins/) (submission process currently ongoing), so you'll be able to install the plugin directly from your WordPress dashboard.
+
+[Version 1.0 brings plenty of improvements](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/1.0.6), including the **integration with the (Gutenberg) block editor**, support for **private and password-protected endpoints**, and the **availability of (commercial) extensions** to extend the GraphQL schema and provide further functionality.
+
+![The brand-new Extensions page](https://raw.githubusercontent.com/GatoGraphQL/GatoGraphQL/1.0.5/layers/GatoGraphQLForWP/plugins/gatographql/docs/images/releases/v1.0/extensions-page.png "The brand-new Extensions page")
+
+Head over to the [Downloads](/download) page, and check it out!

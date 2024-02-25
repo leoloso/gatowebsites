@@ -1,0 +1,94 @@
+---
+title: "♻️ Maximizing the PHP compatibility for WordPress 6.4 and the plugin directory"
+summary: Strategy on supporting the latest version of WordPress, and our WordPress plugins
+image: /images/wordpress-6.4-shirley.png
+publishedAt: '2023-11-08'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - wordpress
+  - release
+  - rector
+  - downgrade
+---
+
+[WordPress 6.4 "Shirley" has been released](https://wordpress.org/news/2023/11/shirley/). Is is recommended to run it using PHP 8.1 or 8.2, but the minimum supported PHP version is still 7.0.
+
+Hence, our WordPress plugins need to (as much as possible) support PHP all the way down to 7.0, and be compatible with PHP 8.1 and 8.2.
+
+The most logical way to do that is to code our plugins using PHP 7.0, while:
+
+- Using no features that have been deprecated in PHP 7.x, as those will have been removed in PHP 8.x
+- Using no features that have been deprecated in PHP 8.x, as those will raise warnings
+
+To be sure that the plugin code is compatible, we need to thoroughly test it on several environments, running the different versions of PHP.
+
+Coding in PHP 7.x has a clear disadvantage: The plugin code must be compatible with PHP 8.x, however it cannot use any of its features, such as union types, the match expression, the nullsafe operator, and many others.
+
+There is a better alternative.
+
+## Downgrading PHP code from 8.x to 7.x
+
+Instead of coding in PHP 7 and making sure it works with PHP 8, we can do the inverse: Code the plugin in PHP 8, and downgrade it to PHP 7.
+
+This is possible thanks to [Rector](https://github.com/rectorphp/rector/), a tool to automate PHP code refactoring.
+
+Rector provides [rules to downgrade code from PHP 8.1 to PHP 7.2](https://github.com/rectorphp/rector-downgrade-php/blob/main/docs/rector_rules_overview.md). This means we can use these modern features in our WordPress plugins, as these can be downgraded into PHP 7.2 code.
+
+For instance, rule [`DowngradeMatchToSwitchRector`](https://github.com/rectorphp/rector-downgrade-php/blob/main/docs/rector_rules_overview.md#downgradematchtoswitchrector) converts the `match` operator into a `switch` operator:
+
+```diff
+class SomeClass
+{
+    public function run()
+    {
+-        $message = match ($statusCode) {
+-            200, 300 => null,
+-            400 => 'not found',
+-            default => 'unknown status code',
+-        };
++        switch ($statusCode) {
++            case 200:
++            case 300:
++                $message = null;
++                break;
++            case 400:
++                $message = 'not found';
++                break;
++            default:
++                $message = 'unknown status code';
++                break;
++        }
+    }
+}
+```
+
+Notice that the rules are for good for downgrading down to PHP 7.2, not all the way down to PHP 7.1 and 7.0. However this is not a big deal, as [these two PHP versions combined account for only 3% of WordPress sites](https://wordpress.org/about/stats/#php_versions).
+
+Downgrading code is a better approach, because:
+
+- By coding in PHP 8.1, we are absolutely sure that our code will be compatible with PHP 8.1 and 8.2.
+- As long as we use PHP features for which there are downgrade rules, the code will also work in PHP 7.2, 7.3 and 7.4.
+- We can make use of PHP 8.x features, such as union types, the match expression, the nullsafe operator, and many others.
+
+Notice that not all PHP 8.x features are available. For instance, there is no rule (yet) to downgrade enumerations, hence we can't use these.
+
+Concerning testing, there is no difference: We must also thoroughly test the plugin on several environments, running the different versions of PHP, to be on the safe side.
+
+## How to downgrade code
+
+[Gato GraphQL](/) is developed with PHP 8.1, and downgraded to PHP 7.2 for production.
+
+Downgrading the code and testing it, and then releasing the plugin for production, is all automated via GitHub Actions workflows:
+
+- [`downgrade_php_tests.yml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.15/.github/workflows/downgrade_php_tests.yml): Downgrade the code and analyse it using PHP 7.2
+- [`generate_plugins.yml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.15/.github/workflows/generate_plugins.yml): Generate the plugin for release, downgrading it to PHP 7.2
+- [`integration_tests.yml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.15/.github/workflows/integration_tests.yml): Install the newly-generated plugin in a set of InstaWP instances running different versions of PHP, and run integration tests
+
+To learn more, I've written a few articles on this topic:
+
+- [🦸🏿‍♂️ Gato GraphQL is now transpiled from PHP 8.0 to 7.1](/blog/the-plugin-is-now-transpiled-from-php-80-to-71/)
+- [Transpiling PHP code from 8.0 to 7.x via Rector](https://blog.logrocket.com/transpiling-php-code-from-8-0-to-7-x-via-rector/)
+- [Coding in PHP 7.4 and deploying to 7.1 via Rector and GitHub Actions](https://blog.logrocket.com/coding-in-php-7-4-and-deploying-to-7-1-via-rector-and-github-actions/)
+
+I hope you find it useful 🙏

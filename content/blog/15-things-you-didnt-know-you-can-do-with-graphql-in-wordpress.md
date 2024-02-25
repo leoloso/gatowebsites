@@ -1,0 +1,70 @@
+---
+title: "😲 15 things (you didn’t know) you can do with GraphQL in WordPress"
+summary: The WordCamp Malaysia 2023 presentation on Gato GraphQL is now live.
+image: /assets/presentations/wc-malaysia-2023-talk.jpg
+publishedAt: '2023-10-03'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - wordpress
+  - plugin
+---
+
+I was invited to present Gato GraphQL on [WordCamp Malaysia 2023](https://malaysia.wordcamp.org/2023/) last September, and the video of the talk is now live:
+
+<a href="https://wordpress.tv/2023/10/01/15-things-you-didnt-know-you-can-do-with-graphql-in-wordpress/">15 things (you didn’t know) you can do with GraphQL in WordPress</a>.
+
+Here is the video:
+
+<iframe width="1206" height="678" src="https://www.youtube.com/embed/4gDkunLl-rQ" title="15 things (you didn’t know) you can do with GraphQL in WordPress" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+Timestamps:
+
+**[00:00]** Intro
+
+**[00:49]** What we usually know about using GraphQL in WordPress
+
+**[02:43]** **Exploring Gato GraphQL in the wp-admin:**
+
+- **[02:53]** Private GraphiQL client
+- **[04:00]** Private Interactive schema client
+- **[04:36]** Public GraphiQL client
+- **[05:39]** Public Interactive schema client
+- **[06:19]** Custom endpoints
+- **[06:52]** Persisted queries
+  
+**[08:14]** **15 things we can do with Gato GraphQL in WordPress:**
+
+- **[08:51]** Intro to Recipes section
+- **[09:29]** (#1) Search WP data _(eg: finding posts or users by metadata)_
+- **[12:40]** (#2) Complement WP-CLI _(eg: selecting on which resources to apply a command)_
+- **[14:10]** (#3) Send personalized emails
+- **[16:18]** (#4) Retrieve data for blocks for both CSR and SSR (using DRY logic!) _[skip demo]_
+- **[16:40]** (#5) Map JavaScript components to blocks _[skip demo]_
+- **[16:49]** (#6) Duplicate a blog post
+- **[18:22]** (#7) Customize content for different users _[skip demo]_
+- **[18:28]** (#8) Adapt content in bulk _(eg: replacing a string in all posts, as when migrating the site's domain)_
+- **[20:14]** (#9) Automate admin tasks _(eg: inserting a mandatory block whenever missing) [skip demo]_
+- **[20:53]** (#10) Add a custom CTA block before a campaign to all posts, and remove it afterwards _[skip demo]_
+- **[20:56]** (#11) Translate a blog post (at the block-property level!)
+- **[23:13]** (#12) Send a notification when there's a new post, and a daily summary of activity to your email _[skip demo]_
+- **[23:17]** (#13) Combine data from Mailchimp subscribers and website users _[skip demo]_
+- **[23:24]** (#14) Import a post from another WordPress site _[skip demo]_
+- **[23:26]** (#15) Distribute content to multiple downstream sites _(eg: sync data within a multisite) [skip demo]_
+  
+**[23:34]** Conclusion
+
+**[23:53]** **Q&A:**
+
+- **[23:54]** "What prompted you to build this plugin? Was there any problem that you encountered as a developer, so you decided to create this plugin?"
+- **[25:13]** "Is it possible to do it with the REST API? For instance Gato REST API?"
+- **[25:52]** "The part with the tables with the relationships [The GraphQL schema], what is that about?"
+- **[27:58]** "[About the GraphQL schema] Is it automated, or do we need to do manual mapping?"
+- **[29:47]** "Can it be used to power an AI assistant? (Using GraphQL instead of the REST API)"
+
+These are the slides:
+
+<iframe src="https://slides.com/leoloso/graphql-in-wordpress/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+Enjoy!

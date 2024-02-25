@@ -1,0 +1,682 @@
+---
+title: "🥊 GraphQL API vs WPGraphQL: the fight!"
+summary: 2 heavyweights bout to become the 'GraphQL in WordPress' world champion
+image: /images/box/graphql-api-vs-wpgraphql-boxers.jpg
+publishedAt: '2021-02-20'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - api
+  - wordpress
+  - plugin
+---
+
+Ladiessssssssssss, and gentlemen.
+
+![Announcing the upcoming match](/images/box/announcer.jpg "Announcing the upcoming match")
+
+Welcome to the MGM Grand Garden Arena for the bout of the century! Tonight, we are making history. Two young fighters will face each other out in the ring, clashing for the prize they have worked so hard for:
+
+To become the **"GraphQL in WordPress" world champion** 🏆
+
+To our right, we have the current champion. Even though only 4 years old, he's already full of experience, having recently reached the 1.0 version and been published on the wp.org directory, and he is very popular among the crowds.
+
+🥁 Give 🥁 the 🥁 welcome 🥁 tooooo 🥁 ...... [WPGraphQL](https://www.wpgraphql.com)!
+
+![The current champion, WPGraphQL](/images/box/wpgraphql-boxer.jpg "The current champion, WPGraphQL")
+
+To our left, we have the challenger. He's been barely out into the world for 1 month, but he's highly energetic and ambitious, displaying his strength from the very first day. He has been the one seeking for today's encounter. Tonight is his chance, and the world is paying attention.
+
+🥁 Give 🥁 the 🥁 welcome 🥁 tooooo 🥁 ...... [GraphQL API for WordPress](https://gatographql.com/)!
+
+![The challenger, GraphQL API for WordPress](/images/box/graphql-api-boxer.jpg "The challenger, GraphQL API for WordPress")
+
+Tonight, our contenders will meet face to face for the first time, in a bout of 12 rounds. As they take their positions in the center of the ring, waiting for the opening bell, they study each other, trying to find each other's vulnerable points. However, they exhibit only confidence.
+
+![The 2 glorious fighters study each other out](/images/box/graphql-api-vs-wpgraphql-boxers.jpg "The 2 glorious fighters study each other out")
+
+Who will prevail? Will WPGraphQL maintain his advantage, based on the support from his followers? Or will the newcomer GraphQL API convince an unsuspecting community of the might of his fists, leaving a trail of awe that converts the crowds to his side?
+
+Tonight, ladies and gentlemen, we will find out.
+
+Make your bets. And enjoy the match!
+
+---
+
+🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣
+
+---
+
+I've been recently asked to explain the differences between my plugin, the GraphQL API for WordPress, and WPGraphQL.
+
+Both plugins are GraphQL servers for WordPress, so they serve the same purpose. However, under they hood they have different characteristics, which can make one better than the other one to satisfy some required behavior.
+
+Even though I'm biased towards my own plugin, I've tried to draw a comparison that is fair, based on topics which I consider important for both GraphQL and WordPress. (If readers would like a comparison on another topic, I'll be happy to comply.)
+
+The comparison is not exhaustive. For instance, I'd also like to do some benchmarking, measuring the speed of resolving the same GraphQL query with both servers. (If readers find this proposal attractive, I can do it for an upcoming article.)
+
+I have split my comparison into 4 main areas: Popularity, Code style and standards, Pressing matters, and Widening the scope, with 3 items for each, giving a total of 12 "rounds". At the end, the judges give their verdict, to name the champion.
+
+Click below to jump straight to some topic:
+
+- [Popularity](#heading-popularity)
+  - [Round 1: **Who is using it, and how complete is it**](#heading-round-1-who-is-using-it-and-how-complete-is-it)
+  - [Round 2: **Availability of extensions**](#heading-round-2-availability-of-extensions)
+  - [Round 3: **Target audience**](#heading-round-3-target-audience)
+- [Code style and standards](#heading-code-style-and-standards)
+  - [Round 4: **PHP requirements**](#heading-round-4-php-requirements)
+  - [Round 5: **Coding practices**](#heading-round-5-coding-practices)
+  - [Round 6: **Extending the schema**](#heading-round-6-extending-the-schema)
+- [Intermission](#heading-intermission)
+- [Pressing matters](#heading-pressing-matters)
+  - [Round 7: **Persisted queries**](#heading-round-7-persisted-queries)
+  - [Round 8: **Caching**](#heading-round-8-caching)
+  - [Round 9: **Integration with Gutenberg**](#heading-round-9-integration-with-gutenberg)
+- [Widening the scope](#heading-widening-the-scope)
+  - [Round 10: **Support for custom directives**](#heading-round-10-support-for-custom-directives)
+  - [Round 11: **Support for REST**](#heading-round-11-support-for-rest)
+  - [Round 12: **Support for novel features**](#heading-round-12-support-for-novel-features)
+- **[Verdict!](#heading-verdict)**
+
+🔔 Ding 🔔 ding 🔔 diiiiiing...
+
+The opening bell has sounded...
+
+The match has started!
+
+---
+## Popularity
+
+Any piece of software (or technology, for that matter) must be used by people, or otherwise its being better than the alternatives will just be an anecdote.
+
+For instance, even though there are alternatives which allow to type faster, we still mainly use the QWERTY keyboard.
+
+How popular are the two plugins?
+
+### Round 1: Who is using it, and how complete is it
+
+WPGraphQL has been, until now, a synonym with GraphQL in WordPress. During the 4 years plus that it has been developed (starting in November, 2016), it gathered [over 2.8k stars on the repo](https://github.com/wp-graphql/wp-graphql), a community of [over 4600 followers](https://twitter.com/wpgraphql), and [almost 100 contributors to the project](https://github.com/wp-graphql/wp-graphql/graphs/contributors).
+
+It reached version 1.0 and was [uploaded to the plugin directory in wp.org](https://wordpress.org/plugins/wp-graphql/) in November 2020. Since then, it has gathered over 8000 active instalations. It is currently the only solution for [sourcing WordPress content to Gatsby](https://www.gatsbyjs.com/plugins/gatsby-source-wordpress/) and, more recently, several projects have added it to their stacks, including [WPEngine's Headless framework](https://github.com/wpengine/headless-framework) and [WebDevStudios' Next.js WordPress starter](https://github.com/WebDevStudios/nextjs-wordpress-starter).
+
+In other words, WPGraphQL is popular.
+
+Development for the GraphQL API for WordPress started in earnest around 1.5 years ago (as part of a wider project), and it reached a ["good enough" status 6 months ago](https://leoloso.com/posts/introducing-the-graphql-api-for-wordpress/), receiving [150 stars on the repo](https://github.com/GatoGraphQL/GatoGraphQL) since then. The plugin is currently [on version 0.7](https://github.com/GatoGraphQL/GatoGraphQL/releases/download/0.7.9/graphql-api.zip), and it's still several months away from reaching 1.0 (for instance, it doesn't have categories on the schema yet).
+
+Last month I launched this current site gatographql.com, and since then I have been promoting the plugin via [the blog](https://gatographql.com/blog/) (like the article you are reading now), and also published an [intro article on CSS-Tricks](https://css-tricks.com/rendering-the-wordpress-philosophy-in-graphql/). These attempts have brought in several hundred people to the site, and over 100 visitors have downloaded the plugin.
+
+In other words, the GraphQL API for WordPress is slowly but steadily getting popular, and it is a work in progress.
+
+Winner of the round: WPGraphQL.
+
+![It's a hit! WPGraphQL's punch reaches the GraphQL API](/images/box/wpgraphql-hits.jpg "It's a hit! WPGraphQL's punch reaches the GraphQL API")
+
+### Round 2: Availability of extensions
+
+Extensions enable to interact with other plugins via the GraphQL API.
+
+WPGraphQL has extensions for [ACF](https://github.com/wp-graphql/wp-graphql-acf), [WooCommerce](https://github.com/wp-graphql/wp-graphql-woocommerce), [Yoast](https://github.com/ashhitch/wp-graphql-yoast-seo) and a few others.
+
+GraphQL API for WP has no extensions yet, and I don't expect there will be many before releasing version 1.0.
+
+However, the GraphQL API for WP has a big emphasis on extensions in its architecture, allowing the user to manage them (enable, disable, configure, and read their documentation) from a central place, the "Modules" page:
+
+![Modules page in the GraphQL API for WordPress](/assets/guides/downstream/modules.png "Modules page in the GraphQL API for WordPress")
+
+In other words, while WPGraphQL already has extensions, the GraphQL API is preparing the field for them.
+
+Winner of the round: WPGraphQL.
+
+![WPGraphQL hits again!](/images/box/wpgraphql-hits-again.jpg "WPGraphQL hits again!")
+
+### Round 3: Target audience
+
+WPGraphQL targets developers: if you want to extract data from your WordPress site, you need to store your GraphQL query somewhere in your code (most likely, in some JavaScript function). Then, to be able to use it, you need to be good enough at programming.
+
+The GraphQL API for WordPress, instead, [follows the WordPress philosophy that anyone should be able to use it](https://css-tricks.com/rendering-the-wordpress-philosophy-in-graphql/#reconciling-the-wordpress-philosophy-within-the-graphql-service), including non-techies. To achieve this goal, it enables to create and manage a GraphQL query via the WordPress editor, so that making the WordPress site's data accessible via an API becomes as easy as creating a blog post.
+
+In addition, the GraphQL API for WordPress puts more emphasis on offering clients to interact with the GraphQL service in a visual manner. While both plugins provide the [GraphiQL client](https://github.com/graphql/graphiql), to execute the query, only the GraphQL API for WordPress also provides the [Voyager client](https://github.com/APIs-guru/graphql-voyager), to interactively explore the schema:
+
+![Visualizing the GraphQL schema](/assets/features/interactive-schema.gif "Visualizing the GraphQL schema")
+
+Winner of the round: GraphQL API for WordPress.
+
+![GraphQL API for WP delivers a good left blow!](/images/box/graphql-api-hits.jpg "GraphQL API for WP delivers a good left blow!")
+
+---
+
+## Code style and standards
+
+Let's talk code!
+
+If you are using GraphQL, chances are, you are doing headless WordPress and rendering the website using some JavaScript framework, which is a modern paradigm. Moreover, WordPress may be an old CMS, but GraphQL is a modern interface to access data from the site. Hence, I can safely assume that you're a wise developer, keen on producing elegant code, and will not accept using a suboptimal solution.
+
+How elegant is the code (from their own codebase, and expected from our custom implementations) from these two plugins?
+
+### Round 4: PHP requirements
+
+Both WPGraphQL and the GraphQL API for WordPress require PHP 7.1+.
+
+However, there is a difference: the GraphQL API for WordPress is actually [coded using PHP 7.4](https://github.com/GatoGraphQL/GatoGraphQL#php-versions), and is then [transpiled to PHP 7.1 for production](https://blog.logrocket.com/transpiling-php-code-from-8-0-to-7-x-via-rector/).
+
+Hence, coding the GraphQL API is much more pleasurable: you can use newer PHP features, including the [`object` type](https://www.php.net/manual/en/migration72.new-features.php#migration72.new-features.object-type), [typed properties](https://www.php.net/manual/en/migration74.new-features.php#migration74.new-features.core.typed-properties) and [arrow functions](https://www.php.net/manual/en/functions.arrow.php). And once support for PHP 8.0 is added (which will happen when the new version of [Lando](https://docs.lando.dev/) is released), you will also be able to use [union types](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.union), the [match expression](https://www.php.net/manual/en/control-structures.match.php), and others.
+
+Winner of the round: GraphQL API for WordPress.
+
+![The GraphQL API is leaving his mark!](/images/box/graphql-api-hits-again.jpg "The GraphQL API is leaving his mark!")
+
+### Round 5: Coding practices
+
+Let's start with WPGraphQL. Heading over to the [`wp-graphql/wp-graphql` repo](https://github.com/wp-graphql/wp-graphql/), there is something that stands out for me:
+
+![The vendor folder stored in the repo](/images/wpgraphql-comparison/vendor-folder.jpg "The vendor folder stored in the repo")
+
+Zooming in:
+
+![Contents of the vendor folder](/images/wpgraphql-comparison/vendor-folder-zoom.jpg "Contents of the vendor folder")
+
+Sorry, but there's only one way I can react about this:
+
+![I can forgive you many things in life, but not this](/images/wpgraphql-comparison/vendor-folder-in-repo-meme.jpg "I can forgive you many things in life, but not this")
+
+Commiting Composer's `vendor` folder to the repo is a bad practice, and [Composer explicitly discourages it](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
+
+Fixing this problem is not difficult (I even [described a way based on GitHub actions](https://leoloso.com/posts/github-action-to-release-wp-plugin/)), so I wonder why it's there.
+
+I'd say that, in this round, WPGraphQL is hitting himself!
+
+![Ouch!](/images/box/wpgraphql-hitting-own-face.jpg "Ouch!")
+
+Let's continue. Developing for WPGraphQL requires knowing a super extensive collection of hooks (actions and filters). Heading to WPGraphQL's [Developer reference](https://www.wpgraphql.com/developer-reference/), we can appreciate the extent of this.
+
+To take a screenshot to the [list of actions](https://www.wpgraphql.com/actions/), I had to zoom my browser out to 50%:
+
+![Action hooks for extending WPGraphQL](/images/wpgraphql-comparison/wpgraphql-actions.jpg "Action hooks for extending WPGraphQL")
+
+For the [list of filters](https://www.wpgraphql.com/filters/), I zoomed out to 30% (the lowest that Firefox supports), and even then I couldn't get the whole list:
+
+![Filter hooks for extending WPGraphQL](/images/wpgraphql-comparison/wpgraphql-filters.jpg "Filter hooks for extending WPGraphQL")
+
+---
+
+Let's switch over to the [`GatoGraphQL/GatoGraphQL` repo](https://github.com/GatoGraphQL/GatoGraphQL), which is the monorepo containing the GraphQL API for WordPress (among other projects).
+
+These are some of the characteristics of the code:
+
+✅ Compliant with standards [`PSR-1`](https://www.php-fig.org/psr/psr-1), [`PSR-4`](https://www.php-fig.org/psr/psr-4) and [`PSR-12`](https://www.php-fig.org/psr/psr-12).
+
+✅ All code is split into multiple, atomic packages, and all of them (over 100 for the plugin, over 200 for the whole project) are hosted in the same monorepo.
+
+✅ Uses [Composer](https://getcomposer.org) to manage all dependencies.
+
+✅ Uses [Symfony Dependency Injection](https://symfony.com/doc/current/components/dependency_injection.html) to manage all services in the application. To register a new type resolver, field resolver or directive resolver, we must just register a new service in the container.
+
+✅ Every class is a service, and Symfony Dependency Injection takes care of autowiring the whole application together.
+
+✅ The underlying GraphQL server (called [GraphQL by PoP](https://graphql-by-pop.com/)) [is CMS-agnostic](https://graphql-by-pop.com/docs/architecture/cms-agnosticism.html). The GraphQL API for WordPress implements the contracts for WordPress, and adds a bit of custom logic (for instance, to provide the clients).
+
+The WordPress-specific code is only around 10% of the overall code. Replicating this 10% for another framework or CMS (Laravel/Drupal/etc) can provide an implementation of a GraphQL server for them too.
+
+✅ As a consequence of being CMS-agnostic, coding a resolver implies coding its generic business logic, powered by reusable services. We never think in terms of WordPress code, and we rarely need to deal with its technical debt.
+
+✅ Likewise, [the GraphQL schema is not a 1:1 replica of the WordPress data model](https://gatographql.com/blog/rejuvenating-wordpress-through-graphql/), bypassing the technical debt accumulated by WordPress at the data layer, and providing a clean interface.
+
+✅ GraphQL's N+1 problem cannot happen, [by architectural design](https://graphql-by-pop.com/docs/architecture/suppressing-n-plus-one-problem.html), and without troubling the developer at all.
+
+✅ The server is not only a GraphQL server: it's actually an API server, where the response can be output in other formats or specifications (eg: REST) from a single source of truth. (More on this on round 11).
+
+✅ No `vendor` directory is committed. Instead, the source code is transformed to distribution code (i.e. the final plugin to install on the WordPress site) [via GitHub actions](https://github.com/GatoGraphQL/GatoGraphQL/blob/6e5c89088cc94c1f9b77b0e4e0a1d1876cb159d4/.github/workflows/generate_graphql_api_for_wp_plugin.yml), and deployed to [a `dist` repo](https://github.com/GraphQLAPI/graphql-api-for-wp-dist), where it does contain the `vendor` folder.
+
+✅ When generating the code for distribution, it [is scoped with PHP-Scoper](https://gatographql.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/), and the source code, which contains PHP 7.4 code, which [is transpiled to PHP 7.1](https://blog.logrocket.com/coding-in-php-7-4-and-deploying-to-7-1-via-rector-and-github-actions/).
+
+✅ Because it has solved scoping, the plugin can rely on any 3rd-party dependency. Currently, it makes use of Symfony's DependencyInjection, [Cache](https://symfony.com/doc/current/components/cache.html) and [Dotenv](https://symfony.com/components/Dotenv), [Guzzle](https://docs.guzzlephp.org/en/stable/) (to interact with external APIs), the League's [Pipeline](https://github.com/thephpleague/pipeline), and several others.
+
+This is important not just for the present, but also for the future: I can have the certainty that I can use any dependency from the [Packagist](https://packagist.org/) repository, so I don't need to reinvent the wheel.
+
+✅ [Fields are subscribed to types](https://graphql-by-pop.com/docs/architecture/subscribing-fields-to-types.html), making the GraphQL schema easy to extend.
+
+Winner of the round: GraphQL API for WordPress (by a big margin, I dare say, if you don't mind).
+
+![After a tough round, WPGraphQL needs some rest](/images/box/wpgraphql-needs-a-break.jpg "After a tough round, WPGraphQL needs some rest")
+
+### Round 6: Extending the schema
+
+Let's add a field to the GraphQL schema.
+
+We [follow the tutorial](https://www.wpgraphql.com/recipes/register-graphql-field-with-argument/) for WPGraphQL. The suggested code is the one below. It declares an action hook to execute a function that declares an array. Both the description of the fields, and its resolution, is provided within the array:
+
+```php
+add_action( 'graphql_register_types', function() {
+
+	register_graphql_field( 'RootQuery', 'myNewField', [
+		'type' => 'String',
+		'args' => [
+			'myArg' => [
+				'type' => 'String',
+        'description' => __( 'Description for how the argument will impact the field resolver', 'your-textdomain' ),
+			],
+		],
+		'resolve' => function( $source, $args, $context, $info ) {
+			if ( isset( $args['myArg'] ) ) {
+				return 'The value of myArg is: ' . $args['myArg'];
+			}
+			return 'test';
+		},
+	]);
+
+});
+```
+
+This example is as simple as it can get: the resolver basically does nothing. Yet, I already have trouble looking at the code and understanding at once what it does. No, I'm not being snarky: all colors from that code in my editor are fighting for my attention. In addition, there's no separation of concerns, and the code doesn't seem to be very reusable.
+
+Hence, it will be up to the developer (that is, to you) to make the code easy to read, reusable, bug-free, and many others, while developing the application; the library itself doesn't seem to help much in this regard.
+
+I call this style "ADD": Array-Driven Development. I can't say I'm a fan of it.
+
+(To be fair to WPGraphQL, this is a standard coding practice, and is also the one [employed by the underlying engine `webonyx/graphql-php`](https://webonyx.github.io/graphql-php/type-system/object-types/).)
+
+---
+
+In the GraphQL API, all code [is SOLID](https://graphql-by-pop.com/docs/architecture/solid.html). To register a field in the GraphQL schema, we create a class implementing interface [`FieldResolverInterface`](https://github.com/GatoGraphQL/GatoGraphQL/blob//d2d835c8f1c1a8e0f743228fa57ac981d5a4c5ea/layers/Engine/packages/component-model/src/FieldResolvers/FieldResolverInterface.php) (actually, extending from [`AbstractSchemaFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/f805ccafd6240a3467582ff73286b02c0722c25b/layers/Engine/packages/component-model/src/FieldResolvers/AbstractSchemaFieldResolver.php), which has many methods already implemented), and we [register it in the container](https://github.com/GatoGraphQL/GatoGraphQL/blob/992202c713c9857a2537c70d051173bd8bbd2e81/layers/Schema/packages/users/config/schema-services.yaml#L6).
+
+For instance, [this code](https://github.com/getpop/users/blob/4ea244c419ad21bf9297d476180acf9435d9d104/src/FieldResolvers/UserFieldResolver.php) provides fields `username`, `email` and `url` to the `User` type:
+
+```php
+class UserFieldResolver extends AbstractSchemaFieldResolver
+{
+  public static function getClassesToAttachTo(): array
+  {
+    return [
+      UserTypeResolver::class,
+    ];
+  }
+
+  public static function getFieldNamesToResolve(): array
+  {
+    return [
+      'username',
+      'email',
+      'url',
+    ];
+  }
+
+  public function getSchemaFieldDescription(TypeResolverInterface $typeResolver, string $fieldName): ?string
+  {
+    $descriptions = [
+      'username' => $this->translationAPI->__("User's username handle", "users"),
+      'email' => $this->translationAPI->__("User's email", "users"),
+      'url' => $this->translationAPI->__("URL of the user's profile in the website", "users"),
+    ];
+    return $descriptions[$fieldName];
+  }
+
+  public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
+  {
+    $types = [
+      'username' => SchemaDefinition::TYPE_STRING,
+      'email' => SchemaDefinition::TYPE_EMAIL,
+      'url' => SchemaDefinition::TYPE_URL,
+    ];
+    return $types[$fieldName];
+  }
+
+  public function resolveValue(TypeResolverInterface $typeResolver, object $user, string $fieldName, array $fieldArgs = [])
+  {
+    switch ($fieldName) {
+      case 'username':
+        return $this->usersAPI->getUserLogin($user);
+
+      case 'email':
+        return $this->usersAPI->getUserEmail($user);
+
+      case 'url':
+        return $this->usersAPI->getUserURL($user);
+    }
+
+    return null;
+  }
+}
+```
+
+I do believe that my solution is more elegant than the one from WPGraphQL. However, that is a matter of taste. I know that many developers do not mind Array-Driven Development, and actually prefer it since, in a compact blob of code, they can implement all the logic.
+
+Winner of the round: it's a draw.
+
+![A draw](/images/box/its-a-draw.jpg "A draw")
+
+---
+
+## Intermission
+
+What a night we have, ladies and gentlemen.
+
+![Time to analyze the match so far](/images/box/boxing-commentator.jpg "Time to analyze the match so far")
+
+We have reached the middle of the fight, so this is good time for a toilet break, and to do some commentary on what we have experienced so far.
+
+(In the meantime, I should display an ad from [my sponsors](https://github.com/sponsors/leoloso/). Unfortunately, I don't have any yet. If you'd like your company to fund development of the GraphQL API for WordPress, and get exposure in prime media like this event, [send me a message](https://gatographql.com/contact/).)
+
+![Sponsor me, to get access to prime advertising for your brand](/images/box/box-arena-screen.jpg "Sponsor me, to get access to prime advertising for your brand")
+
+What a match we have! WPGraphQL was initially all fire and fury! He started the match in great shape, dealing terribly mighty blows to the GraphQL API, who was barely able to stand on his two feet. Blow after blow after blow. I didn't want to be in the GraphQL API's shoes.
+
+I must admit, I thought after the first 2 rounds, the match would soon be over. I was expecting the knock-down to come at any moment. To see a wavering towel asking for mercy. But the GraphQL API resisted. We have to give it to him. What an unshakable determination, it is truly remarkable!
+
+And then, the transformation happened. Somewhere starting on the 3rd round, the GraphQL API seemed to get some energies out of nowhere, and started not just defending himself, but throwing punches back, many of which landed on WPGraphQL's face. I saw WPGraphQL quiver and shake! We had never seen anything like that, from our current world champion. What a truly remarkable transformation we have just experienced!
+
+And then, having his opponent's confidence shaken, starting on the 4th round GraphQL API took it upon himself to deal a series of lethal blows. That was startling! Luckily facing him is our world champion, the WPGraphQL, and he could withstand the blows, uplifted by the cheers and compassion from the crowds. What a hero he is! Anyone else would've succumbed right on the spot, but not him, he endured the blows as the champion he is.
+
+But champion, will he be for much longer? Nobody got knocked-down yet, nobody threw the towel yet. The fight could at any moment take a decisive turn. The two fighters know what they want, and I'm sure they'll come out again with all their might, and all their determination, to lash at their opponent, to prevail.
+
+What a match we have!
+
+And now, ladies and gentlemen, the two warriors are coming back to the ring.
+
+![The contenders are coming back to the ring](/images/box/graphql-api-back-on-ring.jpg "The contenders are coming back to the ring")
+
+On to the rest of the fight!
+
+---
+
+## Pressing matters
+
+The GraphQL server needs to pay attention to many considerations, just to satisfy the proposition "retrieve the data you need, nothing more or less".
+
+For instance:
+
+- How secure is it? How do we make sure we are not exposing private data on a public endpoint?
+- How performant is it? How can we reduce the load on the server when sending time and again the same query, while making it as fast as possible?
+- How simple is it? How well integrated is it with WordPress, as to leverage the features provided by the CMS?
+
+And many more questions. This is just a small sample that I have chosen, and which I will deal with in the following 3 rounds.
+
+### Round 7: Persisted queries
+
+Persisted queries combine the best of both GraphQL and REST: they are created using GraphQL, so it has no under/over fetching of data, but they are published on the server as an endpoint, with its own URL.
+
+Persisted queries provide these benefits:
+
+✅ It's safe: instead of giving access to any piece of data through the single endpoint, we can pre-define what data to expose.
+
+✅ It's fast: being accessed via its own URL, it can be cached on every layer between the client and back-ends (in the server, CDN, browser) using the standard [HTTP caching](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching).
+
+WPGraphQL offers support for persisted queries through these two extensions:
+
+- [WPGraphQL Lock](https://www.wpgraphql.com/extenstion-plugins/wpgraphql-lock/)
+- [WPGraphQL Persisted Queries](https://github.com/Quartz/wp-graphql-persisted-queries)
+
+In addition, Jason Bahl (creator of WPGraphQL) recently announced that in the near future [he will add support for persisted queries in WPGraphQL](https://www.wpgraphql.com/2021/02/07/whats-next-for-wpgraphql/#whats-next-for-wpgraphql).
+
+I wonder what he has in mind, since there are the 2 extensions already. How will it be different from those? Maybe he wants to make it part of the plugin's core, as to beef up the overall plugin's security measures without depending on a 3rd party?
+
+Or maybe he saw the implementation from the GraphQL API for WordPress, and wants to provide a similar experience, operating it via a visual editor instead of pure code? 
+
+Which brings us to the GraphQL API for WordPress. It not only [offers persisted queries](https://gatographql.com/guides/special-features/persisted-queries), but has strived to make it a central part of the offering:
+
+✅ The plugin comes with the single endpoint [disabled by default](https://gatographql.com/guides/special-features/security), and users are encouraged to expose data via persisted queries only.
+
+(In contrast, WPGraphQL only [disables introspection by default](https://www.wpgraphql.com/docs/security/#introspection-disabled-by-default), not the actual endpoint. In other words, attackers may still be able to access private data; they are just made their task harder, since they won't know in advance what private data there is.)
+
+✅ It is deeply integrated with the WordPress editor, so that creating a persisted query takes the same effort as creating a blog post, and anyone can do it, not only programmers.
+
+✅ Persisted queries are not static: they can use GraphQL variables, whose value can be provided through URL params when executing the endpoint.
+
+Check out the experience of [creating](https://gatographql.com/guides/use/creating-a-persisted-query/) and executing a persisted query in my plugin:
+
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/490071589" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+Winner of the round: GraphQL API for WordPress.
+
+### Round 8: Caching
+
+GraphQL has a big pain point: it is not easily cacheable. The reason is that it depends on sending `POST` operations to a single endpoint. Since the single endpoint will produce different results, and since the query is sent in the body of the request instead of URL parameters, then we can't have the single endpoint being cached.
+
+The standard solution offered by many GraphQL servers is to shift the caching to the client, and rely on objects' IDs as identifiers of the entity to be cached instead of an endpoint's URL. The most popular library providing this functionality is the [Apollo client](https://github.com/apollographql/apollo-client).
+
+There is a [discussion on the WPGraphQL repo](https://github.com/wp-graphql/wp-graphql/discussions/1478) on all options available for caching for WPGraphQL. Interestingly enough, most of them are external tools (such as the Apollo client, or the WordPress Object Cache), which means adding an extra layer to the application, increasing its complexity, and also possibly making it slower.
+
+(These reasons must be partly behind the decision to implement persisted queries natively in WPGraphQL.)
+
+For instance, Apollo client runs, well, on the client. If accessing the website from a low-end mobile phone, without much power, that extra JavaScript code will take a hit on the application's performance.
+
+Likewise, developers working with WordPress may be proficient with PHP, but not so much with JavaScript. Now, caching their APIs will mean they need to worry about the JavaScript layer also.
+
+The GraphQL API for WordPress has been smarter about this topic. Since it provides persisted queries, meaning that queries are executed on their own endpoint, it allows to [cache these endpoint URLs via HTTP caching](https://gatographql.com/guides/special-features/http-caching).
+
+The HTTP caching header has the `max-age` value automatically calculated from all the `max-age` values for all fields in the query, and this information is [configured using the WordPress editor](https://gatographql.com/guides/use/adding-http-caching/), on a field-by-field basis.
+
+As a consequence, the API can be cached across several layers (in the client, CDN, and server), and it's handled natively within the plugin, without the need to add another layer.
+
+Check out this video showing how API endpoints are being cached:
+
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/413503188" width="640" height="400" frameborder="0" allowfullscreen></iframe>
+
+Winner of the round: GraphQL API for WordPress.
+
+### Round 9: Integration with Gutenberg
+
+It used to be that [Gutenberg](https://wordpress.org/gutenberg/) would be the future of WordPress. Not anymore: Gutenberg is now the present of WordPress (so we can refer to it as the WordPress editor), and [Full Site Editing](https://github.com/WordPress/theme-experiments) has become the new future.
+
+Needless to say, our APIs need to have a good integration with the WordPress editor. This means not only for retrieving and posting data for blocks, but also to potentially power features in the WordPress editor itself.
+
+For instance, because GraphQL subscriptions can have the server push data to the client in real time, it would be suitable for powering the [collaborative editing](https://github.com/WordPress/gutenberg/issues/1930) and [notifications](https://make.wordpress.org/core/tag/feature-notifications/) features.
+
+WPGraphQL can query block data via the [WPGraphQL Gutenberg](https://github.com/pristas-peter/wp-graphql-gutenberg) extension. This extension creates a new type to map every block, so we have `CoreParagraphBlock`, `CoreQuoteBlock`, etc.
+
+GraphQL API for WordPress will soon be able to query block data (it's a work in progress). However, instead of creating a new type per block, it will have a single `Block` type to represent all blocks, and then we can extract the specific metadata for some block based on its name.
+
+For instance, check out how you can translate the content inside of a paragraph block (using the `@strTranslate` directive, which connects to the Google Translate API):
+
+```graphql
+query TranslateStringsInBlocks {
+  post(by: { id: 1657 }) {
+    title
+    paragraphBlocks: blockDataItems(
+      filterBy: { include: "core/paragraph" }
+    )
+    translatedParagraphBlocks: blockDataItems(
+      filterBy: { include: "core/paragraph" }
+    )
+      @underJSONObjectProperty(by: { path: "attributes.content" })
+        @underEachArrayItem
+          @strTranslate(from: "en", to: "fr")
+  }
+}
+```
+
+Winner of the round: it's a draw.
+
+---
+
+## Widening the scope
+
+"I have a dream."
+
+Gutenberg blocks have been conceived to provide a single interface for creating content in WordPress, greatly simplifying the development of the code for the CMS, and the learning required from users.
+
+While introduced for creating content, blocks are steadily taking over all other areas from the CMS, including widgets, menus and, coming soon, themes via Full Site Editing. And in the future, they will also support multilingual capabilities and collaborative editing (features that we might not even think of when thinking in blocks), and who knows what else.
+
+We can think in GraphQL in the same terms: as a single interface for interacting with data. That means, not only fetching and posting data, but any interaction that involves data, including editing.
+
+WordPress has a unique chance to truly become the OS of the web: a system powered by Gutenberg, that lets the user input any type of content (text, images, video, audio, etc), process it via its own tools or some cloud-based service, and publish it to its final destination, be it the WordPress site or somewhere else.
+
+But behind this powerful dream, there must be a truly powerful API, to deliver whatever requirement we place on it. An API that could be based on GraphQL, but that was designed to also transcend its limitations.
+
+### Round 10: Support for custom directives
+
+![Beginning of round 10](/images/box/round-10.jpg "Beginning of round 10")
+
+WPGraphQL does not ship with a single [directive](https://graphql.org/learn/queries/#directives). I'm not saying it doesn't support them (it's engine [`webonyx/graphql-php` does](https://webonyx.github.io/graphql-php/type-system/directives/)), but that it doesn't offer an implementation of any custom directive.
+
+"So what?" you might think. "What do we need directives for? If somebody needs to modify the result of the query, they can do it on their own client!"
+
+![Why do I need directives?](/images/wpgraphql-comparison/directives-what-for.jpg "Why do I need directives?")
+
+This is a matter of opinion, and there's no right or wrong. But let me tell you something: directives are an incredibly useful feature, one that helps set GraphQL apart from REST. If you're not using them, you're most likely not making the most out of your API.
+
+Directives are [unregulated by the spec](https://blog.logrocket.com/graphql-directives-are-underrated/#whyaredirectivesimportant), so GraphQL servers can implement them any way they like, make them as powerful as they need to. That is why plenty of new functionality in GraphQL is first introduced via directives, such as [`@stream` and `@defer`](https://foundation.graphql.org/news/2020/12/08/improving-latency-with-defer-and-stream-directives/).
+
+The GraphQL API for WordPress treats directives with reverence. They are [executed only once](https://graphql-by-pop.com/docs/architecture/directive-design.html) with the data from all entities, for all the fields they are applied to (which explains why the `@strTranslate` directive can fetch results from the Google Translate API so quickly), and the GraphQL engine itself is based on a [directive pipeline](https://graphql-by-pop.com/docs/architecture/directive-pipeline.html).
+
+Ahhhh, but you're scared of making all this power available to the users, right? That's a valid concern. But then, you can just remove access to the single endpoint, and provide access to data only through persisted queries, where you (the admin of the site) are the only person with access to the directives.
+
+So either you benefit, or nothing happens.
+
+If you love directives, great, you will love the GraphQL API for WordPress! ❤️
+
+But, on the other hand, if you don't like it, nothing happens.
+
+Winner of the round: the GraphQL API for WordPress.
+
+(If you believe that "we don't need stinky directives", please don't be angry at me... I'm just doing my job.)
+
+### Round 11: Support for REST
+
+"Ahhhhh? REST? What REST? Aren't we talking GraphQL here? Why do you talk about REST then? Why do you want to complicate my life?"
+
+![More than this, I can't do for you](/images/wpgraphql-comparison/rest-meme.jpg "More than this, I can't do for you")
+
+Yeah, at first sight this topic seems out of place. But I've added it in this comparison for a very simple reason: Matt Mullenweg has said that [he's checking on GraphQL for a potential inclusion in WordPress core](https://youtu.be/QI3qCoiuG3w?t=2268), and the one thing that contributors will worry about is having to maintain two codebases.
+
+Which leads to the obvious question: can the GraphQL server also handle REST?
+
+The answer is "partially yes" for WPGraphQL, and "completely yes" for the GraphQL API for WordPress.
+
+Concerning WPGraphQL. It is possible to define a REST endpoint which, when being resolved, simply executes a GraphQL query containing the required fields, either as a internal call to the GraphQL engine, or as an external `POST` operation executed against the same webserver.
+
+But that is not enough to satisfy the WP REST API, because it also [has a JSON schema](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/), and we can't do without it.
+
+Concerning the GraphQL API for WordPress. I must admit I've been lucky, because work on its underlying engine (the server-side component model called [PoP](https://github.com/GatoGraphQL/GatoGraphQL)) started circa 2013, that is several years before I knew of something called GraphQL, and this project evolved with some ideas of its own (which I documented in [this vintage article of mine](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/)).
+
+Then, when I started coding the CMS-agnostic [GraphQL by PoP](https://graphql-by-pop.com/) (on which the GraphQL API for WordPress stands) around 1.5 years ago, I merged the ideas developed for PoP, with the foundations established by GraphQL, creating a system that supports the GraphQL spec in its entirety, while being able to add a different set of features to it.
+
+In this regard, the schema that PoP uses is API-agnostic, and it's a superset of the one by GraphQL. Wanna see the PoP schema? Sure? Ok, here it is: [/api/graphql/?query=fullSchema](https://nextapi.getpop.org/api/graphql/?query=fullSchema).
+
+Then, the GraphQL by PoP layer formats the PoP schema following the GraphQL specification, which produces the GraphQL schema. And similarly, we can produce the JSON schema required by the WP REST API.
+
+Generating this JSON schema hasn't been done yet, but it's doable. 
+
+Now, what has been done already, is to produce the response of the query in multiple formats. For instance, this GraphQL query:
+
+```graphql
+{
+  posts {
+    id
+    title
+    date
+    author {
+      name
+    }
+  }
+}
+```
+
+It is also resolved via this REST endpoint: [/posts/api/rest/?query=id|title|date|author.name](https://nextapi.getpop.org/posts/api/rest/?query=id%7Ctitle%7Cdate%7Cauthor.name).
+
+And we don't need to stop there. Do you need to produce the results using yet a different format, such as XML? No problemo: [/api/?query=posts.id|title|date|author.name&datastructure=xml](https://nextapi.getpop.org/api/?query=posts.id%7Ctitle%7Cdate%7Cauthor.name&datastructure=xml).
+
+(This could help implement the [proposal for a new import/export tool for WordPress, based on a schema](https://pento.net/2021/01/20/wordpress-importers-defining-a-schema/). This also makes a bit more evident what I said earlier on: a single interface can power all data interactions, both within the CMS, and also from the CMS with external APIs.)
+
+Winner of the round: the GraphQL API for WordPress.
+
+### Round 12: Support for novel features
+
+Is the [GraphQL spec](https://spec.graphql.org/draft/) final? The answer is no: the spec is constantly evolving. In this moment, there are [100 open issues](https://github.com/graphql/graphql-spec/issues), many of them containing proposals that will be formalized some time in the future.
+
+Now, among those 100 issues, there will certainly be new features from which we can benefit today, right? If so, why wait?
+
+That's exactly my way of thinking.
+
+![We can't wait forever](/images/wpgraphql-comparison/life-is-gone-meme.jpg "We can't wait forever")
+
+"But if something is not in the GraphQL spec, then we should not add it to the GraphQL server, or the users will get confused!"
+
+Good point. However, if we make the novel features available as opt-in only, then users will necessarily be aware of it, and no issue or misunderstanding will happen.
+
+Once again, that's my way of thinking. This is a matter of opinion though, so if you'd rather only use features that every single GraphQL server out there is also using, that's OK.
+
+I believe this is how WPGraphQL operates. At least, I haven't seen a single feature that goes beyond what has been approved in the spec.
+
+For the GraphQL API for WordPress, though, I regularly scan the list of issues in the spec and, if I find some cool feature, which can be satisfied by my server without much effort, then I implement it. (Indeed, this is one of my hobbies.)
+
+These are the "forward-looking" features I have implemented to publishedAt:
+
+✅ [Multiple query execution](https://gatographql.com/guides/special-features/multiple-query-execution/)<br/>
+✅ [Schema namespacing](https://gatographql.com/guides/special-features/schema-namespacing/)<br/>
+✅ [Nested mutations](https://gatographql.com/guides/special-features/nested-mutations/)<br/>
+✅ [Composable directives](https://gatographql.com/guides/special-features/composable-directives/)<br/>
+✅ [Proactive feedback](https://gatographql.com/guides/special-features/proactive-feedback/)<br/>
+✅ [Field and directive-based versioning](https://gatographql.com/guides/special-features/field-and-directive-based-versioning/)
+
+And I'm already planning to add:
+
+✳️ [Subscriptions](https://github.com/GatoGraphQL/GatoGraphQL/issues/194) (this is already part of the spec)<br/>
+✳️ [`@stream` and `@defer` directives](https://github.com/GatoGraphQL/GatoGraphQL/issues/190)<br/>
+✳️ [Flat chain syntax](https://github.com/GatoGraphQL/GatoGraphQL/issues/213)
+
+Winner of the round: the GraphQL API for WordPress.
+
+---
+
+## Verdict!
+
+Ladies, gentlemen.
+
+![It's time for the verdict](/images/box/boxing-judge.jpg "It's time for the verdict")
+
+What an unforgettable night we've had! What a match we just experienced! Two heavy heavyweights giving their best for their dream.
+
+A dream that both of them are chasing, but only one of them can catch.
+
+And now, we will know who that person is. Now, it's time for the truth! 
+
+Who will the "GraphQL in WordPress" world champion be?
+
+Is it going to be the widely-acclaimed, loved-by-the-masses, featured-in-big-publications current champion, WPGraphQL?
+
+Or it it going to be the irreverent, step-on-your-toes-without-asking-for-forgiveness, comes-uninvited-to-the-party contender, the GraphQL API for WordPress?
+
+![The contenders wait for the verdict](/images/box/wpgraphql-vs-graphql-api-verdict.jpg "The contenders wait for the verdict")
+
+We are waiting for the verdict by the judge. What a tension! Oh Santa Maria, make my heart resist this moment!
+
+🥁 And 🥁 the 🥁 winner 🥁 iiiiiissssssssssssss 🥁 ...
+
+<span style="font-size: 170px;">🥁</span>
+
+It's a draw!
+
+The 2 fighters, the 2 heavyweights, they have a draw!
+
+![The contenders hug each other](/images/box/wpgraphql-and-graphql-api-friends.jpg "The contenders hug each other")
+
+What a wonderful moment! The two contenders hug each other, showing that we are all friends within the WordPress community, like a big family we are.
+
+So, what is the justification for the draw? The judge explains:
+
+👑 WPGraphQL is the more popular one, and its use is more widespread.
+
+👑 The GraphQL API has a better architecture, and it could potentially better serve WordPress in the long run.
+
+Ladies and gentlemen, you've had the verdict from the judge!
+
+And our trophy has two gloves: one for each contender.
+
+![The 'GraphQL in WordPress' trophy](/images/box/trophy.jpg "The 'GraphQL in WordPress' trophy")
+
+But what is **your** verdict?
+
+Will you keep unconditionally using WPGraphQL for your headless needs?
+
+Or will you give the GraphQL API for WordPress the opportunity it is claiming for, [download the plugin](https://gatographql.com/download), and give it a try?
+
+---
+
+Ladies and gentlemen. This is all for the night.
+
+We sincerely hope you have enjoyed the match.
+
+And let's hope we have a new encounter soon between our two champions.
+
+Good night.

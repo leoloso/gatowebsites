@@ -1,0 +1,305 @@
+---
+title: "🥳 GraphQL API v0.9 has been released!"
+summary: TL;DR of the most important changes
+image: /images/graphql-logo-with-name-square.jpg
+publishedAt: '2023-01-12'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - wordpress
+  - plugin
+---
+
+After almost 1.5 years of development, and over 16000 commits, a new version of the GraphQL API for WordPress has been finally released! 🥳
+
+<a class="button rounded" href="/download/">Click here to go to the downloads page</a>
+
+Version `0.9` is the biggest release in the history of the plugin. [Here is the changelog](https://github.com/GatoGraphQL/GatoGraphQL/blob/f51fb69bcf36217ec123a9cf8809cb99ff6f25c8/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/CHANGELOG.md#090---12012013), and here is the full breakdown of all the new features:
+
+[github.com/GatoGraphQL/GatoGraphQL/releases/tag/0.9.3](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/0.9.3)
+
+This document is pretty long (over 40 min reading time!), so below is a TL;DR with the most important changes.
+
+## Significantly completed the GraphQL Schema
+
+The WordPress data model has been significantly mapped into the GraphQL schema.
+
+![GraphQL schema](/images/releases/v09/graphql-schema.png "GraphQL schema")
+
+Among others, the schema has the following improvements:
+
+- Query data from any CPT, including from any theme and plugin
+- Mapped custom taxonomies (tags and categories)
+- Created and return more suitable GraphQL types (eg: `HTML`, `URL`, `DateTime`)
+- Organized field args via input objects
+- Use oneof input objects to select an entity by different properties (eg: `id`, `slug`)
+- Return mutation payloads
+- Query settings (from `wp_options`) and meta values (for posts, users, comments, and taxonomies)
+
+## Custom scalars
+
+Support for custom [scalar types](https://graphql.org/learn/schema/#scalar-types) has been added to the GraphQL server. Custom scalars allow you to better represent your data, whether for getting an input via a field argument, or printing a customized output in the response.
+
+Several standard custom scalar types have been implemented, so they are readily-available to be used in your GraphQL schema:
+
+- `Date`
+- `DateTime`
+- `Email`
+- `HTML`
+- `URL`
+- `URLAbsolutePath`
+
+## Custom enums
+
+Custom [enum types](https://graphql.org/learn/schema/#enumeration-types) are now supported. Enums are a special kind of scalar that is restricted to a particular set of allowed values. This allows you to:
+
+- Validate that any arguments of this type are one of the allowed values
+- Communicate through the type system that a field will always be one of a finite set of values
+
+Several enum types have been implemented, and used whenever appropriate in the GraphQL schema, including:
+
+- `CommentOrderByEnum`
+- `CommentStatusEnum`
+- `CommentTypeEnum`
+- `CustomPostOrderByEnum`
+- `CustomPostStatusEnum`
+- `MediaItemOrderByEnum`
+- `MenuOrderByEnum`
+- `TaxonomyOrderByEnum`
+- `UserOrderByEnum`
+
+## Input Objects
+
+The GraphQL server now also supports [input types](https://graphql.org/learn/schema/#input-types), and you can add your own input objects to the GraphQL schema. Input objects allow you to pass complex objects as inputs to fields, which is particularly useful for mutations.
+
+Several input objects were added wherever appropriate to the schema. For instance, fields to query data (such as `posts`, `users`, `comments`, etc) receive complex input objects under field args `filter`, `sort` and `pagination`, and fields that mutate data (such as `createPost`, `addCommentToCustomPost`, etc) receive an input object under field arg `input`.
+
+## Oneof Input Objects
+
+The ["oneof" input object](https://github.com/graphql/graphql-spec/pull/825) is a particular type of input object, where exactly one of the input fields must be provided as input, or otherwise it returns a validation error. This behavior introduces polymorphism for inputs.
+
+For instance, the field `Root.post` now receives a field argument `by`, which is a oneof input object allowing is to retrieve the post via different properties, such as by `id` or by `slug`:
+
+```graphql
+{
+  postByID: post(by: {
+    id: 1
+  }) {
+    id
+    title
+  }
+
+  postBySlug: post(by: {
+    slug: "hello-world"
+  }) {
+    id
+    title
+  }
+}
+```
+
+The benefit is that a single field can then be used to tackle different use cases, so we can avoid creating a different field for each use case (such as `postByID`, `postBySlug`, etc), thus making the GraphQL schema leaner and more elegant.
+
+Several Oneof Input Objects have been implemented:
+
+- `Root.customPost(by:)`
+- `Root.mediaItem(by:)`
+- `Root.menu(by:)`
+- `Root.page(by:)`
+- `Root.postCategory(by:)`
+- `Root.postTag(by:)`
+- `Root.post(by:)`
+- `Root.user(by:)`
+
+## Operation Directives
+
+GraphQL operations (i.e. `query` and `mutation` operations) can now also receive directives.
+
+## Restrict Directives to Specific Types
+
+(Field) directives can be restricted to be applied on fields of some specific type only. For instance, a directive `@strUpperCase` that transforms the field value to upper case makes sense on `String` fields only, not on `Int` or `Float` or `Boolean`. This restriction can now be declared in the directive resolver.
+
+## Print the full path to the GraphQL query node producing errors
+
+The response now contains the full path to the nodes in the GraphQL query that return an error (under the subentry `extensions.path`), making it easier to find out the source of the problem.
+
+For instance, in the following query, the directive `@nonExisting` does not exist:
+
+```graphql
+query {
+  myField @nonExisting
+}
+```
+
+The response is the following:
+
+```json
+{
+  "errors": [
+    {
+      "message": "There is no directive with name 'nonExisting'",
+      "locations": [
+        {
+          "line": 2,
+          "column": 7
+        }
+      ],
+      "extensions": {
+        "type": "QueryRoot",
+        "field": "myField @nonExisting",
+        "path": [
+          "@nonExisting",
+          "myField @nonExisting",
+          "query { ... }"
+        ],
+        "code": "PoP\\ComponentModel\\e20"
+      }
+    }
+  ],
+  "data": {
+    "id": "root"
+  }
+}
+```
+
+## Enable unsafe default settings
+
+The GraphQL API for WordPress provides safe default settings:
+
+- The single endpoint is disabled
+- The “sensitive” data elements in the GraphQL schema (such as `User.roles`, or filtering posts by `status`) are not exposed
+- Only a handful of the settings options and meta keys (for posts, users, etc) can be queried
+- The number of entities that can be queried at once is limited (for posts, users, etc)
+
+These safe default settings are needed to make "live" sites secure, to prevent malicious attacks. However, they are not needed when building "static" sites, where the WordPress site is not vulnerable to attacks (as when it's a development site on a laptop, sitting behind a secure firewall, or not exposed to the Internet in general).
+
+Starting from `v0.9`, we can enable unsafe defaults by adding in `wp-config.php`:
+
+```php
+define( 'GRAPHQL_API_ENABLE_UNSAFE_DEFAULTS', true );
+```
+
+Alternatively, we can define this same key/value as an environment variable.
+
+When enabling unsafe defaults, the default plugin settings are transformed like this:
+
+- The single endpoint is enabled
+- The “sensitive” data elements are exposed in the GraphQL schema
+- All settings options and meta keys can be queried
+- The number of entities that can be queried at once is unlimited
+
+## Organize Custom Endpoints and Persisted Queries by Category
+
+When creating a Custom Endpoint or Persisted Query, we can add a "GraphQL endpoint category" to it, to organize all of our endpoints:
+
+![Endpoint categories when editing a Custom Endpoint](/images/releases/v09/graphql-custom-endpoint-editor-with-categories.png "Endpoint categories when editing a Custom Endpoint")
+
+For instance, we can create categories to manage endpoints by client, application, or any other required piece of information:
+
+![List of endpoint categories](/images/releases/v09/graphql-endpoint-categories.png "List of endpoint categories")
+
+On the list of Custom Endpoints and Persisted Queries, we can visualize their categories and, clicking on any category link, or using the filter at the top, will only display all entries for that category.
+
+![List of Custom Endpoints with their categories](/images/releases/v09/graphql-custom-endpoints-with-categories.png "List of Custom Endpoints with their categories")
+
+## Query schema extensions via introspection
+
+Custom metadata attached to schema elements can now be queried via field `extensions`. 
+
+All introspection elements of the schema have been upgraded with the new field, each of them returning an object of a corresponding "`Extensions`" type, which exposes the custom properties for that element.
+
+```graphql
+# Using "_" instead of "__" in introspection type name to avoid errors in graphql-js
+type _SchemaExtensions {
+  # Is the schema being namespaced?
+  isNamespaced: Boolean!
+}
+
+extend type __Schema {
+  extensions: _SchemaExtensions!
+}
+
+type _NamedTypeExtensions {
+  # The type name
+  elementName: String!
+
+  # The "namespaced" type name
+  namespacedName: String!
+
+  # Enum-like "possible values" for EnumString type resolvers, `null` otherwise
+  possibleValues: [String!]
+
+  # OneOf Input Objects are a special variant of Input Objects where the type system asserts that exactly one of the fields must be set and non-null, all others being omitted.
+  isOneOf: Boolean!
+}
+
+extend type __Type {
+  # Non-null for named types, null for wrapping types (Non-Null and List)
+  extensions: _NamedTypeExtensions
+}
+
+type _DirectiveExtensions {
+  # If no objects are returned in the field (eg: because they failed validation), does the directive still need to be executed?
+  needsDataToExecute: Boolean!
+
+  # Names or descriptions of the types the field directives is restricted to, or `null` if it supports any type (i.e. it defines no restrictions)
+  fieldDirectiveSupportedTypeNamesOrDescriptions: [String!]
+}
+
+extend type __Directive {
+  extensions: _DirectiveExtensions!
+}
+
+type _FieldExtensions {
+  isGlobal: Boolean!
+
+  # Useful for nested mutations
+  isMutation: Boolean!
+
+  # `true` => Only exposed when "Expose “sensitive” data elements" is enabled
+  isSensitiveDataElement: Boolean!
+}
+
+extend type __Field {
+  extensions: _FieldExtensions!
+}
+
+type _InputValueExtensions {
+  isSensitiveDataElement: Boolean!
+}
+
+extend type __InputValue {
+  extensions: _InputValueExtensions!
+}
+
+type _EnumValueExtensions {
+  isSensitiveDataElement: Boolean!
+}
+
+extend type __EnumValue {
+  extensions: _EnumValueExtensions!
+}
+```
+
+## Finished decoupling the GraphQL server code from WordPress
+
+The underlying GraphQL server powering the plugin can now be installed and executed as a standalone PHP component, i.e. independently of WordPress.
+
+This opens the doors to using the GraphQL API with other frameworks (eg: Laravel), and on any PHP environment, whether WordPress is available or not (such as when executing a Continous Integration task).
+
+## Browse documentation when editing a Schema Configuration, Custom Endpoint and Persisted Query
+
+All the blocks shown when editing a Schema Configuration, Custom Endpoint and Persisted Query now have an "info" button which, when clicked, displays documentation on a modal window.
+
+![Clicking on an 'info' button...](/images/releases/v09/modal-window-with-module-doc-1.png "Clicking on an 'info' button...")
+
+![...opens a modal window with documentation](/images/releases/v09/modal-window-with-module-doc-2.png "...opens a modal window with documentation")
+
+## Plenty more
+
+To discover all the other new features, review the [full description of the new release](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/0.9.3), or browse the [changelog](https://github.com/GatoGraphQL/GatoGraphQL/blob/f51fb69bcf36217ec123a9cf8809cb99ff6f25c8/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/CHANGELOG.md#090---12012013).
+
+And [download the plugin from here](/download).
+
+If you like what you see, please help spread the love ❤️

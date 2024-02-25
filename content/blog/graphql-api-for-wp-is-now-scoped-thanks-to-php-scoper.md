@@ -1,0 +1,626 @@
+---
+title: 🍾 GraphQL API for WordPress is now scoped, thanks to PHP-Scoper!
+summary: And you can scope your plugin too. Here is how to do it.
+image: /images/talking-business.jpg
+publishedAt: '2021-01-30'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - graphql
+  - api
+  - wordpress
+  - plugin
+  - scoping
+  - engineering
+templateEngineOverride: md
+---
+
+Plugin GraphQL API for WordPress is now scoped. This means the plugin can be finally uploaded to the [WordPress plugin directory](https://wordpress.org/plugins/).
+
+![Talking business](/images/talking-business.jpg)
+
+To do it, I'm using the wonderful [PHP-Scoper](https://github.com/humbug/php-scoper). Using this library with WordPress does not go without its challenges, so I'll explain in this blog post how I managed to pull it out.
+
+Sections:
+
+- [Taking the decision to scope](#heading-taking-the-decision-to-scope)
+- [Checking out the options](#heading-checking-out-the-options)
+- [Trying out Mozart, and failing](#heading-trying-out-mozart-and-failing)
+- [Checking PHP-Scoper, and coming out in panic](#heading-checking-php-scoper-and-coming-out-in-panic)
+- [Coming back to PHP-Scoper, this time for good](#heading-coming-back-to-php-scoper-this-time-for-good)
+- [PHP-Scoper, the easy way 😎](#heading-php-scoper-the-easy-way) 👈🏽 Here starts my solution
+- [Show me the real stuff](#heading-show-me-the-real-stuff)
+- [Testing](#heading-testing)
+- [Check out the results](#heading-check-out-the-results)
+
+## Taking the decision to scope
+
+A few weeks ago, Matt Mullenweg announced he'll be [keeping an eye on "the GraphQL plugin"](https://youtu.be/QI3qCoiuG3w?t=2268), obviously referring to [WPGraphQL](https://www.wpgraphql.com/). His expression demonstrates that he believes there is only one GraphQL plugin, when in fact there are two (the one left out is, well, mine). That made me realize how little visibility my plugin has, and I felt bad about it.
+
+Matt didn't know my plugin existed. Nor does most of the WordPress community, for that matter. Clearly I'm not publicizing it well enough. I know that I suck in marketing and social media; I'm just OK with technical stuff (or so I believe). So I decided to do something about it, at least within my capabilities.
+
+So this is what I'm working on:
+
+- I just finished coding this same website, [gatographql.com](https://gatographql.com), and launched it 2 weeks ago (yay! 🥳 Btw, how do you like it? Be welcome to give me feedback, via [DM](https://twitter.com/losoviz/) or [email](mailto:leo@getpop.org))
+- 3 days ago, I finally started scoping the plugin, and finished this task yesterday! (At 3 am, but it was worth it 😅)
+- And finally, I'm already working on the upcoming version `0.8`, which will be the first one available in the plugin repository
+
+Scoping the plugin is mandatory to upload it to the repository, because otherwise it could conflict with a different plugin, which requires the same dependency as my plugin, but with a different version. Having done it is a really big milestone; no other development is as important. For instance, I must still complete the GraphQL schema to fully match the WordPress data model, but that will be done steadily on each new release.
+
+So in a few weeks from now, the plugin will show up when searching for "GraphQL", and the people who are actually needing to implement a GraphQL API will get to know of my plugin's existence.
+
+Indeed, I do want my plugin to be seriously considered for the future of WordPress. I've been working on it for several years now. [The repo](https://github.com/GatoGraphQL/GatoGraphQL) was started back in August 2016; that is even before WPGraphQL existed, and at the beginning of GraphQL. But I didn't know that the project would become a GraphQL server; it took that direction only around 1.5 years ago.
+
+(The project is actually a framework to build applications using server-side components, and a GraphQL server could perfectly be built using this architecture. So then I just built it).
+
+WPGraphQL is an established plugin, and rightly so: it was started a few years ago, and a community was built around it. The work by [Jason Bahl](https://twitter.com/jasonbahl) (who is employed by Gatsby) and [the contributors to his project](https://github.com/wp-graphql/wp-graphql/graphs/contributors) has been outstanding: integrating WordPress into the Jamstack is now easier than ever.
+
+But one thing is Gatsby and the Jamstack, and another thing is WordPress. WordPress is 40% of the web, not just an input to a static site generator.
+
+So now, we can consider if WPGraphQL is the right option, without having this decision taken for us out of lack of alternatives. We can now analyze both plugins to see whose goals are more aligned to what's important for WordPress.
+
+The GraphQL API for WordPress can also work with the Jamstack. But its main objectives are, I believe, more splendid: To "democratize data publishing", so that editing an API becomes as easy as editing a post (something everyone can do), and to make WordPress become the OS of the web.
+
+Once the plugin is available on the repository, I hope more people will try it out and say "Hey, this is so friking awesome! How comes I didn't know about this stuff before?".
+
+And then, the choice of "the GraphQL plugin" is not pre-determined, and the WordPress community can consider both WPGraphQL and the GraphQL API for WordPress based on their own merits.
+
+Now that my motivations are out of the way, let's talk technical stuff 🤓.
+
+## Checking out the options
+
+Scoping a plugin involves running some tooling, that takes the plugin code as input, and spits out the scoped plugin. No big deal, right? How hard can that be?
+
+![Talking technical](/images/dog-scope-plugin.jpg)
+
+Well, depending on the codebase, just executing the scope command alone won't be enough. After that, we need to check for errors in the console, fix them, test the application thoroughly, identify errors and why they happen, fix them, and iterate. To get it completely right, it might require some time.
+
+There are 2 libraries for scoping, which have different goals:
+
+- [Mozart](https://github.com/coenjacobs/mozart), for WordPress code
+- [PHP-Scoper](https://github.com/humbug/php-scoper), for any PHP code, particularly when producing PHARs
+
+Because I have a WordPress plugin, I tried out Mozart first. Let's see how it fared.
+
+## Trying out Mozart, and failing
+
+I tried Mozart around 1 year ago. For what it says in the documentation, "the `mozart compose` command does all the magic". So I expected it all to be very quick and simple, and go enjoy a daiquiri for the rest of the day.
+
+Alas, Mozart never worked for my codebase. It kept running into issues, so the scoping never materialized. And I couldn't get the required assistance: I submitted a PR, but [it was not considered for merging](https://github.com/coenjacobs/mozart/pull/36#issuecomment-633013728), and I was not even notified about it, so I kept waiting until I naturally lost interest in this project.
+
+I believe that Mozart couldn't handle some of the dependencies in my plugin. I'm making use of several of Symfony's components, including [DependencyInjection](https://symfony.com/doc/current/components/dependency_injection.html), [Cache](https://symfony.com/doc/current/components/cache.html) and [Dotenv](https://github.com/symfony/dotenv), with everything managed through Composer.
+
+Scoping PHP is not just about PHP, so the scoper will have many hurdles to avoid and challenges to solve. For instance, Symfony DependencyInjection uses `YAML` files to set-up configuration, and these must be scoped too. And the `composer.json` file contains the configuration for `PSR-4` autoloading, and this must be scoped too. And, I believe, Mozart couldn't handle these complexities properly.
+
+But I'm sure that my experience is not the only one, and that there are many happy users our there. Also, my failed attempt happened 1 year ago, so I wonder if the tool has been improved since then. And then, don't forget the saying: "All scoped plugins are alike; each unscoped plugin is unscoped in its own way", so possibly it fails just for me.
+
+If your WordPress plugin is simple, with self-contained logic, and scoping must be performed within PHP code only, then chances are that Mozart will work. You just gotta find out.
+
+## Checking PHP-Scoper, and coming out in panic
+
+So I headed for PHP-Scoper. However, I never even tried to try it, because I got frightened immediately by it.
+
+To start with, [this tool does not naturally support WordPress](https://github.com/humbug/php-scoper#wordpress). And to continue, they recommend to take a look at [their own Makefile](https://github.com/humbug/php-scoper/blob/master/Makefile), which looks like this:
+
+```bash
+# See https://tech.davis-hansson.com/p/make/
+MAKEFLAGS += --warn-undefined-variables
+MAKEFLAGS += --no-builtin-rules
+
+.DEFAULT_GOAL := help
+
+PHPBIN=php
+PHPNOGC=php -d zend.enable_gc=0
+IS_PHP8=$(shell php -r "echo version_compare(PHP_VERSION, '8.0.0', '>=') ? 'true' : 'false';")
+
+SRC_FILES=$(shell find bin/ src/ -type f)
+
+.PHONY: help
+help:
+	@echo "\033[33mUsage:\033[0m\n  make TARGET\n\n\033[32m#\n# Commands\n#---------------------------------------------------------------------------\033[0m\n"
+	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//' | awk 'BEGIN {FS = ":"}; {printf "\033[33m%s:\033[0m%s\n", $$1, $$2}'
+
+
+#
+# Build
+#---------------------------------------------------------------------------
+
+.PHONY: clean
+clean:	 ## Clean all created artifacts
+clean:
+	git clean --exclude=.idea/ -ffdx
+
+update-root-version: ## Check the lastest GitHub release and update COMPOSER_ROOT_VERSION accordingly
+update-root-version:
+	rm .composer-root-version || true
+	$(MAKE) .composer-root-version
+```
+
+And 600 more lines, all like this. It looks like a riddle. Believing that I needed to understand that code just to scope my plugin, made me flee unceremoniously.
+
+(Well, understanding that code is their recommendation to test the scoped application, but it is not required. We can also just run the command `php-scoper add-prefix`, let it do all the magic, and go drink our daiquiris.)
+
+## Coming back to PHP-Scoper, this time for good
+
+So, 3 days ago, I took a decision to implement scoping, somehow. I had to make it happen.
+
+I came back to PHP-Scoper, to try it out in earnest. I knew that WordPress could be scoped with it from reading [PHP Scoper: How to Avoid Namespace Issues in your Composer Dependencies](https://deliciousbrains.com/php-scoper-namespace-composer-depencies/) (by the brilliant folks from Delicious Brains). It was just a matter of attitude, and perseverence.
+
+I explored some of the existing solutions, including:
+
+- [This one](https://github.com/humbug/php-scoper/issues/442#issuecomment-736598602) by Lucas Bustamante
+- [This one](https://github.com/Yoast/wordpress-seo/blob/11.3/src/config/dependency-management.php) by Yoast
+- [This one](https://github.com/google/site-kit-wp/blob/80e3bd88317bf20bc5e5d6600428692fa8e3fc08/includes/loader.php) by Google Site Kit
+- [This one](https://github.com/google/web-stories-wp/blob/main/scoper.inc.php) by Google Web Stories
+
+But they all look not fully satisfying to me: either the code seems hacky, or fragile and waiting to break at some time or another.
+
+For instance, the Google Web Stories plugin scopes the code, and then reverts back each one of the conflicts:
+
+```php
+return [
+  'patchers'                   => [
+		function ( $file_path, $prefix, $contents ) {
+			/*
+			 * There is currently no easy way to simply whitelist all global WordPress functions.
+			 *
+			 * This list here is a manual attempt after scanning through the AMP plugin, which means
+			 * it needs to be maintained and kept in sync with any changes to the dependency.
+			 *
+			 * As long as there's no built-in solution in PHP-Scoper for this, an alternative could be
+			 * to generate a list based on php-stubs/wordpress-stubs. devowlio/wp-react-starter/ seems
+			 * to be doing just this successfully.
+			 *
+			 * @see https://github.com/humbug/php-scoper/issues/303
+			 * @see https://github.com/php-stubs/wordpress-stubs
+			 * @see https://github.com/devowlio/wp-react-starter/
+			 */
+			$contents = str_replace( "\\$prefix\\_doing_it_wrong", '\\_doing_it_wrong', $contents );
+			$contents = str_replace( "\\$prefix\\__", '\\__', $contents );
+			$contents = str_replace( "\\$prefix\\esc_html_e", '\\esc_html_e', $contents );
+			$contents = str_replace( "\\$prefix\\esc_html", '\\esc_html', $contents );
+			$contents = str_replace( "\\$prefix\\esc_attr", '\\esc_attr', $contents );
+			$contents = str_replace( "\\$prefix\\esc_url", '\\esc_url', $contents );
+      $contents = str_replace( "\\$prefix\\do_action", '\\do_action', $contents );
+      // ...
+    }
+  ]
+]
+```
+
+I understand why they do it, but I don't like it. Whenever a new WordPress function gets referenced, they need to make sure it also makes it to this list. It's too manual, too fragile.
+
+So this was my challenge: Isn't there a simpler way to scope a plugin, and relying on code that we can present to our friends and colleagues without blushing?
+
+## PHP-Scoper, the easy way 😎
+
+It actually turned out to be easier than I thought! In just a few hours, I had it all working.
+
+![Scoping in a few hours](/images/koala-scoping-in-few-hours.jpg)
+
+Now, when I say "easy" and "hours", I actually mean: It all worked immediately, but only after spending 2 months creating the proper structure for the codebase (I'll explain better later on).
+
+But the important thing is: If you have the right set-up for the project, scoping it can be accomplished in no time.
+
+The problem with scoping WordPress code is, well, WordPress code. The issue [is explained here](https://github.com/humbug/php-scoper/issues/303), but it boils down to all WordPress functions and classes being namespaced too. So if we reference `WP_Query` or call `get_posts` in our code, these will be transformed to `MyPrefixedNamespace\WP_Query` and `MyPrefixedNamespace\get_posts`, producing an epic fail on runtime. And that cannot be avoided in PHP-Scoper without hacks.
+
+So, what is the solution to this? Easy peasy: don't reference `WP_Query`, or call `get_posts`, or use any WordPress code in the codebase **that will be scoped**.
+
+![Crazy me?](/images/crazy-bird.jpg)
+
+No, I'm not crazy, and I'm sure you're not either. And yeah, I know that we're building a WordPress plugin... Let me explain.
+
+How can we not include WordPress code? By splitting the codebase into 2 sets of packages:
+
+- Those containing WordPress code, **without referencing code from any external library**
+- Those containing business logic, **without containing any WordPress code**, and **including all required dependencies and references to their code**
+
+This way, instead of having a single codebase, we have multiple codebases (or packages), where some of them will get scoped and some not, and they all form the plugin, tied together via Composer.
+
+Then, we do not scope the package containing WordPress code, avoiding the conflict. This works because it doesn't reference any code belonging to any external dependency. All references are internal, such as `MyNamespace\MyPlugin\MyClass`. But these need not be scoped, because we can safely assume that there will be only 1 version of the plugin installed in the WordPress site, and we can whitelist our namespace `MyNamespace\*`.
+
+Moreover, if our plugin can be extended, then whitelisting our own namespace is mandatory. For instance, a field resolver for the GraphQL API for WordPress is implemented by extending from class `PoP\ComponentModel\FieldResolvers\AbstractFieldResolver`. If I scoped it, developers would be forced to reference `PoP\ComponentModel\FieldResolvers\AbstractFieldResolver` for development, and `PrefixedByPoP\PoP\ComponentModel\FieldResolvers\AbstractFieldResolver` for production. That's a no go.
+
+Then, we only scope the business-logic packages, which contain references to all external libraries but no WordPress code.
+
+In summary, we are switching this strategy:
+
+"Have a single codebase, scope it, and then painfully and with plenty of patience undo the damage, while praying that no conflict goes unnoticed and it 💣 booms in production"
+
+To this one:
+
+"Split up the codebase into 2 groups, scope only the one containing the references to the external dependencies and no WordPress code, and go have your well-earned daiquiri 🍹".
+
+## Show me the real stuff
+
+It's time open up the sausage and see if it has real meat inside 🌭.
+
+4 days ago, I had [the following code](https://github.com/GatoGraphQL/GatoGraphQL/blob/380f16c46a91bb3d40fff53c6770a31c30d6d457/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/src/ContentProcessors/MarkdownContentParser.php) in my plugin:
+
+```php
+namespace GraphQLAPI\GraphQLAPI\ContentProcessors;
+
+use Parsedown;
+
+class MarkdownContentParser
+{
+  protected function getHTMLContent(string $fileContent): string
+  {
+    return (new Parsedown())->text($markdownContent);
+  }
+}
+```
+
+Class `Parsedown` comes from the external dependency [`erusev/parsedown`](https://packagist.org/packages/erusev/parsedown), as defined in the [plugin's `composer.json`](https://github.com/GatoGraphQL/GatoGraphQL/blob/380f16c46a91bb3d40fff53c6770a31c30d6d457/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/composer.json#L19):
+
+```json
+{
+  "require": {
+    "erusev/parsedown": "^1.7"
+  }
+}
+```
+
+Hence, my plugin contained references to an external library, so I needed to scope it, to transform `Parsedown` into `PrefixedByPoP\Parsedown`. But doing so would also scope all WordPress code in the plugin, causing the conflicts.
+
+So I extracted the code into a separate package, called [`graphql-api/markdown-convertor`](https://github.com/GatoGraphQL/GatoGraphQL/tree/cfa98cf9470425016b8cdc88639bafb375d88375/layers/GraphQLAPIForWP/packages/markdown-convertor), and replaced the 3rd-party dependency in `composer.json` [with my own dependency](https://github.com/GatoGraphQL/GatoGraphQL/blob/cfa98cf9470425016b8cdc88639bafb375d88375/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/composer.json#L19):
+
+```json
+{
+  "require": {
+    "graphql-api/markdown-convertor": "^0.8"
+  }
+}
+```
+
+Now, the plugin avoids referencing the external library; instead, it [references the service `MarkdownConvertorInterface` from the new package](https://github.com/GatoGraphQL/GatoGraphQL/blob/cfa98cf9470425016b8cdc88639bafb375d88375/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/src/ContentProcessors/MarkdownContentParser.php):
+
+```php
+namespace GraphQLAPI\GraphQLAPI\ContentProcessors;
+
+use GraphQLAPI\MarkdownConvertor\MarkdownConvertorInterface;
+
+class MarkdownContentParser extends AbstractContentParser
+{
+    protected MarkdownConvertorInterface $markdownConvertorInterface;
+
+    function __construct(MarkdownConvertorInterface $markdownConvertorInterface)
+    {
+        $this->markdownConvertorInterface = $markdownConvertorInterface;
+    }
+
+    protected function getHTMLContent(string $fileContent): string
+    {
+        return $this->markdownConvertorInterface->convertMarkdownToHTML($fileContent);
+    }
+}
+```
+
+Referencing the 3rd-party dependency is done [in the new package](https://github.com/GatoGraphQL/GatoGraphQL/blob/cfa98cf9470425016b8cdc88639bafb375d88375/layers/GraphQLAPIForWP/packages/markdown-convertor/src/MarkdownConvertor.php):
+
+```php
+namespace GraphQLAPI\MarkdownConvertor;
+
+use Parsedown;
+
+class MarkdownConvertor implements MarkdownConvertorInterface
+{
+  public function convertMarkdownToHTML(string $markdownContent): string
+  {
+    return (new Parsedown())->text($markdownContent);
+  }
+}
+```
+
+Finally, we must:
+
+- Scope dependency `graphql-api/markdown-convertor`
+- Skip scoping the plugin code
+- Whitelist namespace `GraphQLAPI\*`, to avoid my own classes from being scoped
+
+This is pretty much the strategy. From now on, it will be a repetition of this same idea, to remove all external dependencies from the code, until voilà, the plugin can be scoped.
+
+The dependencies to extract are only those from the `require` section on your `composer.json` file; for `require-dev` you can keep any dependency, external or not, since we don't need to scope dependencies used for development; only those ones to create and ship the plugin, for production, need be scoped.
+
+At the end, the `composer.json` from your plugin should not contain any external dependency. For my plugin, it [looks like this](https://github.com/GatoGraphQL/GatoGraphQL/blob/cfa98cf9470425016b8cdc88639bafb375d88375/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/composer.json):
+
+```json
+{
+  "require": {
+    "php": "^7.4|^8.0",
+    "getpop/engine-wp": "^0.8",
+    "graphql-api/markdown-convertor": "^0.8",
+    "graphql-by-pop/graphql-clients-for-wp": "^0.8",
+    "graphql-by-pop/graphql-endpoint-for-wp": "^0.8",
+    "graphql-by-pop/graphql-server": "^0.8",
+    "pop-schema/basic-directives": "^0.8",
+    "pop-schema/comment-mutations-wp": "^0.8",
+    "pop-schema/commentmeta-wp": "^0.8",
+    "pop-schema/comments-wp": "^0.8",
+    "pop-schema/custompost-mutations-wp": "^0.8",
+    "pop-schema/custompostmedia-mutations-wp": "^0.8",
+    "pop-schema/custompostmedia-wp": "^0.8",
+    "pop-schema/custompostmeta-wp": "^0.8",
+    "pop-schema/generic-customposts": "^0.8",
+    "pop-schema/media-wp": "^0.8",
+    "pop-schema/pages-wp": "^0.8",
+    "pop-schema/post-mutations": "^0.8",
+    "pop-schema/post-tags-wp": "^0.8",
+    "pop-schema/posts-wp": "^0.8",
+    "pop-schema/taxonomymeta-wp": "^0.8",
+    "pop-schema/taxonomyquery-wp": "^0.8",
+    "pop-schema/user-roles-access-control": "^0.8",
+    "pop-schema/user-roles-wp": "^0.8",
+    "pop-schema/user-state-mutations-wp": "^0.8",
+    "pop-schema/user-state-wp": "^0.8",
+    "pop-schema/usermeta-wp": "^0.8",
+    "pop-schema/users-wp": "^0.8"
+  }
+}
+```
+
+All those packages, with namespaces `getpop`, `graphql-api`, `graphql-by-pop`, and `pop-schema`, are all mine: dependencies containing the whole code for the plugin. They are distributed into different namespaces to better manage the code, but you don't need to: using a single namespace works well.
+
+Now, as the number of packages in your application grows, you'll need to have them all hosted in a monorepo, or you'll go bunkers creating pull requests involving more than one package (believe me, I've been there). In my case, all my packages are hosted in the [`GatoGraphQL/GatoGraphQL` monorepo](https://github.com/GatoGraphQL/GatoGraphQL), and I keep them in sync via the wonderful [Monorepo Builder](https://github.com/symplify/monorepo-builder) (I need to write an article about this tool, it's such a life saver!).
+
+The namespaces for these packages are `PoP`, `GraphQLAPI`, `GraphQLByPoP` and `PoPSchema`. Since they are mine, I know they will appear only once in the application, and so I can avoid scoping them.
+
+To do that, I [whitelist them in `scoper.inc.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/858d2fc24b766236f79379a837f4130dfb76a6ff/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/scoper.inc.php#L69:L79):
+
+```php
+return [
+  'whitelist' => [
+    // Own namespaces
+    'PoPSchema\*',
+    'PoP\*',
+    'GraphQLByPoP\*',
+    'GraphQLAPI\*',
+    // Own container cache
+    'PoPContainer\*',
+  ],
+];
+```
+
+The last entry corresponds to the dependency injection container, which also needs be scoped. By default, this container is assigned name `ProjectServiceContainer`, directly in the global namespace. But PHP-Scoper doesn't support whitelisting specific classes from the global namespace. Hence, I added the artificial namespace `PoPContainer` to the whitelist, and [assigned this namespace](https://github.com/GatoGraphQL/GatoGraphQL/blob/27087ec23e6e393aa726f9461ad1c6806249c532/layers/Engine/packages/root/src/Container/ContainerBuilderFactory.php#L141) when dumping the container to disk:
+
+```php
+$dumper = new PhpDumper($containerBuilder);
+file_put_contents(
+  self::$cacheFile,
+  $dumper->dump(
+    // Save under own namespace to avoid conflicts
+    array('namespace' => 'PoPContainer')
+  )
+);
+```
+
+You may notice that, concerning the packages, some of them end with `-wp` (like `pop-schema/users-wp`) while some don't (like `graphql-by-pop/graphql-server`). Yep, you guessed it right: the former ones contain WordPress code and no references to external libraries, and the latter ones can contain references to external libraries, but no WordPress code whatsoever.
+
+Then, I [skip scoping the WordPress packages](https://github.com/GatoGraphQL/GatoGraphQL/blob/858d2fc24b766236f79379a837f4130dfb76a6ff/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/scoper.inc.php#L50:L52):
+
+```php
+return [
+  'finders' => [
+    // Scope packages under vendor/, excluding local WordPress packages
+    Finder::create()
+      ->files()
+      ->notPath([
+        // Exclude libraries ending in "-wp"
+        '#getpop/[a-zA-Z0-9_-]*-wp/#',
+        '#pop-schema/[a-zA-Z0-9_-]*-wp/#',
+        '#graphql-by-pop/[a-zA-Z0-9_-]*-wp/#',
+      ])
+      ->in('vendor')
+  ]
+];
+```
+
+What happens if some WordPress package needs to reference an external library, and this cannot be extracted into another package? For instance, my package `getpop/routing-wp` depends on [`brain/cortex`](https://packagist.org/packages/brain/cortex), and [this is unavoidable](https://github.com/GatoGraphQL/GatoGraphQL/blob/17936bbd59b51a91fa584ed612e524832bbd03d0/layers/Engine/packages/routing-wp/src/Component.php#L58).
+
+I can't scope the whole package, since `getpop/routing-wp` contains WordPress code. Instead, what I do is to identify the files where those references are done, and make sure that they do not contain any WordPress code. Then I can scope those files only.
+
+In this case, the reference to `Cortex/Brain` is done in 2 files, including [`layers/Engine/packages/routing-wp/src/Hooks/SetupCortexHookSet.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/f805ccafd6240a3467582ff73286b02c0722c25b/layers/Engine/packages/routing-wp/src/Hooks/SetupCortexHookSet.php#L8):
+
+```php
+namespace PoP\RoutingWP\Hooks;
+
+use PoP\Hooks\AbstractHookSet;
+use Brain\Cortex\Route\RouteCollectionInterface;
+use Brain\Cortex\Route\RouteInterface;
+use Brain\Cortex\Route\QueryRoute;
+use PoP\RoutingWP\WPQueries;
+use PoP\Routing\Facades\RoutingManagerFacade;
+
+class SetupCortexHookSet extends AbstractHookSet
+{
+  protected function init()
+  {
+    $this->hooksAPI->addAction(
+      'cortex.routes',
+      [$this, 'setupCortex'],
+      1
+    );
+  }
+
+  /**
+   * @param RouteCollectionInterface<RouteInterface> $routes
+   */
+  public function setupCortex(RouteCollectionInterface $routes): void
+  {
+    $routingManager = RoutingManagerFacade::getInstance();
+    foreach ($routingManager->getRoutes() as $route) {
+      $routes->addRoute(new QueryRoute(
+        $route,
+        function (array $matches) {
+          return WPQueries::STANDARD_NATURE;
+        }
+      ));
+    }
+  }
+}
+```
+
+Can you notice the oddity here? This is an implementation of a hook, but no `add_action` is called, since I can't have any WordPress code here. Instead, it calls function `addAction` from service [`HooksAPIInterface`](https://github.com/GatoGraphQL/GatoGraphQL/blob/f805ccafd6240a3467582ff73286b02c0722c25b/layers/Engine/packages/hooks/src/HooksAPIInterface.php), and this service is implemented by [class `HooksAPI` in package `getpop/hooks-wp`](https://github.com/GatoGraphQL/GatoGraphQL/blob/b79c5bef5f7abb5b8ebebb374fa1da252011d7ed/layers/Engine/packages/hooks-wp/src/HooksAPI.php#L27), where we can have WordPress code:
+
+```php
+namespace PoP\HooksWP;
+
+use PoP\Hooks\HooksAPIInterface;
+
+class HooksAPI implements HooksAPIInterface
+{
+  public function addAction(string $tag, callable $function_to_add, int $priority = 10, int $accepted_args = 1): void
+  {
+    add_action($tag, $function_to_add, $priority, $accepted_args);
+  }
+}
+```
+
+Now that the code is cleanly split, we can [scope those 2 files referencing external dependencies](https://github.com/GatoGraphQL/GatoGraphQL/blob/858d2fc24b766236f79379a837f4130dfb76a6ff/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/scoper.inc.php#L64:L67):
+
+```php
+return [
+  'finders' => [
+    Finder::create()->append([
+      'vendor/getpop/routing-wp/src/Component.php',
+      'vendor/getpop/routing-wp/src/Hooks/SetupCortexHookSet.php',
+    ])
+  ]
+];
+```
+
+Earlier on I mentioned that setting-up the scoping took a few hours, but only after 2 months of work. Well, this example demonstrates what I meant: The actual work lies in dividing the codebase cleanly into the 2 sets.
+
+In my case, the work took 2 months because the level of detail was extreme: The plugin became a composition of 125 packages! But this is an exceptional case, with the goal to have [GraphQL by PoP](https://graphql-by-pop.com) (the underlying server for the plugin) [be CMS-agnostic](https://graphql-by-pop.com/docs/architecture/cms-agnosticism.html), as to support an implementation for other CMSs/frameworks just by reimplementing the corresponding `-wp` packages.
+
+(I wrote in detail about this strategy, in article [Abstracting WordPress Code To Reuse With Other CMSs: Concepts](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-cms-concepts/) and [Implementation](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-reuse-with-other-cms-implementation/).)
+
+It's certainly quite some work, but the improved cleanliness of the code makes it worth it. And not just for scoping the plugin, which came as a total surprise to me, and I'm still gidding in my unexpected happiness. For instance, I run PHPStan and PHPUnit separately on WordPress and non-WordPress code, avoiding me many headaches.
+
+Once the codebase is tidied-up, the world suddenly becomes such a better place.
+
+## Testing
+
+So, how do we test this beast?
+
+The solution I came up with is to rely on [Rector](https://github.com/rectorphp/rector), the same tool I use for [downgrading code from PHP 7.4, for development, to 7.1, for production](https://blog.logrocket.com/transpiling-php-code-from-8-0-to-7-x-via-rector/).
+
+The idea is the following:
+
+1. Scope the plugin
+2. Analyze it with Rector, applying any rule (it doesn't matter which one)
+
+If something went wrong when scoping, then Rector won't be able to load some class, and it will throw an error. For instance, if class `Brain\Cortex` was scoped as `PrefixedByPoP\Brain\Cortex`, but some reference to it was left as `Brain\Cortex`, then autoloading this class will fail.
+
+This is my [GitHub Action for testing](https://github.com/GatoGraphQL/GatoGraphQL/blob/acaeeec4bcc3d93bffd8b6875ed3cbfbe1c18de8/.github/workflows/scope_graphql_api_for_wp_tests.yml) (`working-directory` is being used, because I'm operating from the root of the monorepo, but the scoping happens on the plugin folder):
+
+```yaml
+name: Scope GraphQL API for WP tests
+on:
+  push:
+    branches:
+      - master
+  pull_request: null
+
+env:
+  COMPOSER_ROOT_VERSION: "dev-master"
+
+jobs:
+  main:
+    defaults:
+      run:
+        working-directory: layers/GraphQLAPIForWP/plugins/graphql-api-for-wp
+
+    name: Scope the plugin code via PHP-Scoper, and execute tests
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set-up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          coverage: none
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install root dependencies
+        uses: "ramsey/composer-install@v1"
+
+      - name: Install plugin dependencies for PROD
+        run: composer install --no-dev --no-progress --no-interaction --ansi
+
+      - name: Install PHP-Scoper
+        run: |
+          composer global config minimum-stability dev
+          composer global config prefer-stable true
+          composer global require humbug/php-scoper
+
+      # The scoped results correspond to vendor/, so must generate them in such folder
+      - name: Scope plugin into separate folder
+        run: php-scoper add-prefix --output-dir ../../../../build-prefixed/vendor --ansi
+
+      - name: Copy scoped code back into plugin
+        run: rsync -av build-prefixed/ layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/ --quiet
+        working-directory: .
+
+      - name: Regenerate autoloader
+        run: composer dumpautoload --optimize --classmap-authoritative --ansi
+
+      - name: Run Rector on the scoped code
+        run: vendor/bin/rector process --config=layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/rector-test-scoping.php --ansi
+        working-directory: .
+
+```
+
+And [this is my Rector configuration](https://github.com/GatoGraphQL/GatoGraphQL/blob/96ff3535f288548c2c02892136431ce886015ac9/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/rector-test-scoping.php#L1-L58):
+
+```php
+use Rector\CodeQuality\Rector\LogicalAnd\AndAssignsToSeparateLinesRector;
+use Rector\Core\Configuration\Option;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+  $services = $containerConfigurator->services();
+  $services->set(AndAssignsToSeparateLinesRector::class);
+  $parameters->set(Option::AUTO_IMPORT_NAMES, true);
+
+  $parameters->set(Option::AUTOLOAD_PATHS, [
+    __DIR__ . '/vendor/scoper-autoload.php',
+    __DIR__ . '/vendor/erusev/parsedown/Parsedown.php',
+    __DIR__ . '/vendor/jrfnl/php-cast-to-type/cast-to-type.php',
+    __DIR__ . '/vendor/jrfnl/php-cast-to-type/class.cast-to-type.php',
+  ]);
+
+  // files to rector
+  $parameters->set(Option::PATHS, [
+    __DIR__ . '/vendor',
+  ]);
+
+  // files to skip
+  $parameters->set(Option::SKIP, [
+    // Exclude tests
+    '*/tests/*',
+    __DIR__ . '/vendor/nikic/fast-route/test/*',
+    __DIR__ . '/vendor/psr/log/Psr/Log/Test/*',
+    __DIR__ . '/vendor/symfony/service-contracts/Test/*',
+  ]);
+};
+```
+
+You can notice that some dependency files, such as `erusev/parsedown/Parsedown.php'` need to be added to `Option::AUTOLOAD_PATHS`. That's because scoping the package's `composer.json` is not 100% reliable, and then their autoloading may fail.
+
+Whenever that happens, Rector will complain that some class failed autoloading. From there, we identify the corresponding file, and manually add it to the autoloading paths.
+
+## Check out the results
+
+[This is the plugin's source code](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp), and [this is its scoped (and downgraded to PHP 7.1) version](https://github.com/GraphQLAPI/graphql-api-for-wp-dist).
+
+Find the 7 differences 😁. (I give you a hint: search for `PrefixedByPoP`.)
+
+And [this is the final `graphql-api.zip` plugin file](https://github.com/GatoGraphQL/GatoGraphQL/releases/download/0.7.9/graphql-api.zip), ready to be installed on your site.
+
+That's all. I hope this has been useful 😃💪🚀
