@@ -1,65 +1,60 @@
 ---
-title: "Cache Control"
-summary: "Everything you need to know right here at your fingertips. Ask questions, browse around for answers, or submit your feature requests."
-order: 200
+title: Cache Control
+description: "Cache the GraphQL response on the client-side or intermediate stages between client and server (such as a CDN) via standard HTTP caching."
+# image: /assets/product-logos/GatoGraphQL-suki-extension.png
+order: 400
+# shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/17856110-cc7d-4d31-b883-0983d3f0c182
+# shopProductURL: https://shop.gatographql.com/checkout/buy/74a7ad33-5d80-44d6-8cde-e1a664aac335
+# productPrices:
+# - 24.99
+# - 49.99
+# - 99.99
+# bundles:
+# - responsible-wordpress-public-api
 ---
 
-## Overview
+When executing queries against the GraphQL server via the `GET` method, the GraphQL response can be cached on the client-side or intermediate stages between client and server (such as a CDN), by relying on standard HTTP caching.
 
-<Accordion title="Does Docs support other data sources, like Excel or Airtable?" active>
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
-<Accordion title="Can I collaborate on campaigns with others?">
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
-<Accordion title="Will you help me build my campaign?">
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
-<Accordion title="How can I become a partner?">
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
+This works naturally for persisted queries, and for the single endpoint and custom endpoints it works by appending param `?query={ GraphQL query }` to the endpoint.
 
-## Support
+## Description
 
-<Accordion title="How can I talk to someone at Docs?" active>
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
-<Accordion title="Why should I connect my clients?">
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
-<Accordion title="Can I collaborate on campaigns with others?">
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
-<Accordion title="Is Glide Docs and CCPA compliant?">
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
+HTTP caching works by sending a `Cache-Control` header with a `max-age` value in the response, indicating for how long the response must be cached.
 
-## Security & Privacy
+The Cache Control extension offers Cache Control Lists, where custom `max-age` values are defined for fields and directives. Hence, different queries containing different combinations of fields and directives will produce a different `max-age` value.
 
-<Accordion title="What are Private Users of Private Pro campaigns?" active>
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
-<Accordion title="Does Docs sell or share the content of my campaigns with third parties?">
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
-<Accordion title="What access does Docs have to my campaigns?">
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
+The response's `max-age` value is automatically calculated by the GraphQL engine. Its value is the lowest `max-age` from all the fields and directives in the requested query (as defined in the Cache Control List), or `no-store` if either:
 
-## Troubleshooting
+- any mutation is executed
+- any field or directive has `max-age` with value `0`
+- an Access Control rule must check the user state for any field or directive (in which case, the response is specific to the user, so it cannot be cached)
 
-<Accordion title="What are Private Users of Private Pro campaigns?" active>
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
-<Accordion title="Does Docs sell or share the content of my campaigns with third parties?">
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
-<Accordion title="What access does Docs have to my campaigns?">
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
-<Accordion title="Why should I connect my clients?">
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
-<Accordion title="Can I collaborate on campaigns with others?">
-  There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
-</Accordion>
+![Defining a cache control policy](/assets/extensions/upstream-pro/cache-control.gif "Defining a cache control policy")
+
+## Cache Control Lists
+
+A new "Cache Control List" Custom Post Type is added to the site. We can browse its entries on the "Cache Control Lists" page in the menu, and click on "Add New Cache Control List" to add a new entry in the editor.
+
+<div class="img-width-1024" markdown="1">
+
+![Cache Control Lists](/assets/extensions/upstream-pro/cache-control-lists.png "Cache Control Lists")
+
+</div>
+
+![Cache Control List editor](/assets/extensions/upstream-pro/cache-control-list.png "Cache Control List editor")
+
+Every Cache Control List contains one or many entries, each of them with the following elements:
+
+- The fields and directives which, if they appear on the GraphQL query, the selected max-age takes effect
+- The max-age
+
+![Cache Control entry](/assets/extensions/upstream-pro/cache-control-entry.png "Cache Control entry")
+
+After creating the Cache Control List, we can have the endpoint use it by editing the corresponding Schema Configuration, and selecting the item from the list under block "Cache Control Lists".
+
+![Selecting a Cache Control List in the Schema Configuration](/assets/extensions/upstream-pro/schema-config-cache-control-lists.png "Selecting a Cache Control List in the Schema Configuration")
+
+{/* <!-- ## Bundles including extension
+
+- [“All in One Toolbox for WordPress” Bundle](../../bundles/all-in-one-toolbox-for-wordpress)
+- [“Responsible WordPress Public API” Bundle](../../bundles/responsible-wordpress-public-api) --> */}
