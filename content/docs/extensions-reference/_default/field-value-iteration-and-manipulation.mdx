@@ -30,7 +30,7 @@ Addition of meta directives to the GraphQL schema, for iterating and manipulatin
 4. `@underEachJSONObjectProperty`
 5. `@objectClone`
 
-<!-- ## Description
+{/* <!-- ## Description
 
 📣 _Please read the documentation for module "Composable Directives" to understand what meta directives are, and how to use them._
 
@@ -40,7 +40,7 @@ This module introduces these meta-directives into the GraphQL schema:
 2. `@underJSONObjectProperty`
 3. `@underEachArrayItem`
 4. `@underEachJSONObjectProperty`
-5. `@objectClone` -->
+5. `@objectClone` --> */}
 
 ## `@underArrayItem`
 
@@ -196,7 +196,7 @@ query {
 }
 ```
 
-<!-- `@underEachArrayItem` can pass both the index and the value of the iterated-upon element as a dynamic variable to its nested directive(s), via directive args `passIndexOnwardsAs` and `passValueOnwardsAs`.
+{/* <!-- `@underEachArrayItem` can pass both the index and the value of the iterated-upon element as a dynamic variable to its nested directive(s), via directive args `passIndexOnwardsAs` and `passValueOnwardsAs`.
 
 This query demonstrates the use of dynamic variables `$index` and `$value`:
 
@@ -296,7 +296,7 @@ This query:
     ]
   }
 }
-``` -->
+``` --> */}
 
 ## `@underEachJSONObjectProperty`
 
@@ -332,7 +332,7 @@ In this query, we iterate all entries in the JSON object and replace any `null` 
 }
 ```
 
-<!-- `@underEachJSONObjectProperty` can pass the key and the value it is iterating on as a dynamic variable to its nested directive(s), via directive args `passKeyOnwardsAs` and `passValueOnwardsAs`.
+{/* <!-- `@underEachJSONObjectProperty` can pass the key and the value it is iterating on as a dynamic variable to its nested directive(s), via directive args `passKeyOnwardsAs` and `passValueOnwardsAs`.
 
 This query demonstrates the use of dynamic variables `$key` and `$value`:
 
@@ -436,7 +436,7 @@ This query:
     }
   }
 }
-``` -->
+``` --> */}
 
 ## `@objectClone`
 
@@ -634,14 +634,14 @@ query {
 }
 ```
 
-<!-- ## Bundles including extension
+{/* <!-- ## Bundles including extension
 
 - [“All in One Toolbox for WordPress” Bundle](../../bundles/all-in-one-toolbox-for-wordpress)
 - [“Tailored WordPress Automator” Bundle](../../bundles/tailored-wordpress-automator)
 - [“Simplest WordPress Content Translation” Bundle](../../bundles/simplest-wordpress-content-translation)
-- [“Responsible WordPress Public API” Bundle](../../bundles/responsible-wordpress-public-api) -->
+- [“Responsible WordPress Public API” Bundle](../../bundles/responsible-wordpress-public-api) --> */}
 
-<!-- ## Tutorial lessons referencing extension
+{/* <!-- ## Tutorial lessons referencing extension
 
 - [Duplicating multiple blog posts at once](../../tutorial/duplicating-multiple-blog-posts-at-once)
 - [Retrieving structured data from blocks](../../tutorial/retrieving-structured-data-from-blocks)
@@ -654,4 +654,4 @@ query {
 - [Filtering data from an external API](../../tutorial/filtering-data-from-an-external-api)
 - [Updating large sets of data](../../tutorial/updating-large-sets-of-data)
 - [Importing a post from another WordPress site](../../tutorial/importing-a-post-from-another-wordpress-site)
-- [Distributing content from an upstream to multiple downstream sites](../../tutorial/distributing-content-from-an-upstream-to-multiple-downstream-sites) -->
+- [Distributing content from an upstream to multiple downstream sites](../../tutorial/distributing-content-from-an-upstream-to-multiple-downstream-sites) --> */}

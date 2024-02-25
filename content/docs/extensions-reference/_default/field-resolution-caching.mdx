@@ -26,8 +26,8 @@ This directive can boost performance when executing expensive operations (such a
 
 The `@strTranslate` connects to the Google Translate API. By using `@cache(time: 10)`, the translated value for the `title` field will be cached for 10 seconds, and executing the same query again within this time span will avoid connecting to Google Translate, resulting in a very fast resolution.
 
-<!-- @todo Un-comment here when FeedbackCategories::LOG is enabled and documented, and `@traceExecutionTime` is supported -->
-<!-- A log entry will indicate if the field is being retrieved from the cache. -->
+{/* <!-- @todo Un-comment here when FeedbackCategories::LOG is enabled and documented, and `@traceExecutionTime` is supported --> */}
+{/* <!-- A log entry will indicate if the field is being retrieved from the cache. --> */}
 
 ```graphql
 query {
@@ -40,8 +40,8 @@ query {
 }
 ```
 
-<!-- @todo Un-comment here when FeedbackCategories::LOG is enabled and documented, and `@traceExecutionTime` is supported -->
-<!-- Use `@traceExecutionTime` to log the difference in field resolution time:
+{/* <!-- @todo Un-comment here when FeedbackCategories::LOG is enabled and documented, and `@traceExecutionTime` is supported --> */}
+{/* <!-- Use `@traceExecutionTime` to log the difference in field resolution time:
 
 ```graphql
 query {
@@ -54,13 +54,13 @@ query {
   }
 }
 ```
--->
+--> */}
 
-<!-- ## Bundles including extension
+{/* <!-- ## Bundles including extension
 
 - [“All in One Toolbox for WordPress” Bundle](../../bundles/all-in-one-toolbox-for-wordpress)
-- [“Tailored WordPress Automator” Bundle](../../bundles/tailored-wordpress-automator) -->
+- [“Tailored WordPress Automator” Bundle](../../bundles/tailored-wordpress-automator) --> */}
 
-<!-- ## Tutorial lessons referencing extension
+{/* <!-- ## Tutorial lessons referencing extension
 
-- [Retrieving data from an external API](../../tutorial/retrieving-data-from-an-external-api) -->
+- [Retrieving data from an external API](../../tutorial/retrieving-data-from-an-external-api) --> */}
