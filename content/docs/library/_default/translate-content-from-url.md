@@ -8,9 +8,6 @@ referencedTutorialLessonSlugs:
 referencedExtensionSlugs:
 - 'google-translate'
 - 'http-client'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
 predefinedPersistedQueryTitleInPlugin: Translate content from URL
 ---
 

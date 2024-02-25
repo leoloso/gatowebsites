@@ -11,14 +11,6 @@ referencedExtensionSlugs:
 - 'field-to-input'
 - 'http-client'
 - 'php-constants-and-environment-variables-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - selective-content-import-export-and-sync-for-wordpress
-# - tailored-wordpress-automator
-# - versatile-wordpress-request-api
 ---
 
 This query connects to [GitHub's GraphQL API](https://docs.github.com/en/graphql) and retrieves the list of repos for the indicated owner.

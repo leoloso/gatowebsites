@@ -10,12 +10,6 @@ referencedExtensionSlugs:
 - 'field-to-input'
 - 'helper-function-collection'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
-# - unhindered-wordpress-email-notifications
 ---
 
 This query retrieves a list of users, obtains their data (name, email and number of remaining credits, which is stored as meta), and sends a personalized email to each of them.

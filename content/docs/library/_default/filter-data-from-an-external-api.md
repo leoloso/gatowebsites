@@ -12,14 +12,6 @@ referencedExtensionSlugs:
 - 'field-value-iteration-and-manipulation'
 - 'http-client'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - selective-content-import-export-and-sync-for-wordpress
-# - tailored-wordpress-automator
-# - versatile-wordpress-request-api
 ---
 
 If we need to fetch data from an external API, but we only need those results that satisfy some condition (such as having a field with a non-empty value), and the API does not support filtering, we can then use Gato GraphQL to implement an API gateway that removes those entries that do not satifsy our condition.

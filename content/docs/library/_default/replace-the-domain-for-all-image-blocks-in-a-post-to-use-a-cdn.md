@@ -12,15 +12,6 @@ referencedExtensionSlugs:
 - 'field-value-iteration-and-manipulation'
 - 'multiple-query-execution'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - selective-content-import-export-and-sync-for-wordpress
-# - simplest-wordpress-content-translation
-# - tailored-wordpress-automator
-# - versatile-wordpress-request-api
 ---
 
 This query modifies the URL of images in the `core/image` blocks in a post, replacing `mysite.com` (provided via variable `$domain`) to `cdn.mysite.com` (provided via variable `$cdnDomain`), as to start serving those assets from a CDN.

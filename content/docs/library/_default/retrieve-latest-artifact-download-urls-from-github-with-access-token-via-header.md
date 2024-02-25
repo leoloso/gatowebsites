@@ -17,12 +17,6 @@ referencedExtensionSlugs:
 - 'multiple-query-execution'
 - 'php-functions-via-schema'
 - 'response-error-trigger'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
-# - versatile-wordpress-request-api
 ---
 
 This query is similar to [Retrieve the latest artifact download URLs from GitHub](../retrieve-latest-artifact-download-urls-from-github/), with the difference that it receives the GitHub credentials via the header `X-Github-Access-Token` in the request.

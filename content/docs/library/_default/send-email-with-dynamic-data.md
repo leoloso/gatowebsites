@@ -12,12 +12,6 @@ referencedExtensionSlugs:
 - 'helper-function-collection'
 - 'multiple-query-execution'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
-# - unhindered-wordpress-email-notifications
 ---
 
 This query contains a message template with placeholders, and these are replaced with dynamic data before sending the email.

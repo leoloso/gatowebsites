@@ -16,14 +16,6 @@ referencedExtensionSlugs:
 - 'multiple-query-execution'
 - 'php-functions-via-schema'
 - 'response-error-trigger'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - selective-content-import-export-and-sync-for-wordpress
-# - tailored-wordpress-automator
-# - versatile-wordpress-request-api
 predefinedPersistedQueryTitleInPlugin: Export post to WordPress site
 ---
 

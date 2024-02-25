@@ -11,13 +11,6 @@ referencedExtensionSlugs:
 - 'http-client'
 - 'multiple-query-execution'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - selective-content-import-export-and-sync-for-wordpress
-# - tailored-wordpress-automator
-# - versatile-wordpress-request-api
 predefinedPersistedQueryTitleInPlugin: Import post from WordPress RSS feed
 ---
 

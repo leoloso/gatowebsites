@@ -7,12 +7,6 @@ referencedTutorialLessonSlugs:
 - 'sending-emails-with-pleasure'
 referencedExtensionSlugs:
 - 'email-sender'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
-# - unhindered-wordpress-email-notifications
 ---
 
 This query sends an email as text content, and an email as HTML content.

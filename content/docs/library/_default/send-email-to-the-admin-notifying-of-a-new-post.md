@@ -12,12 +12,6 @@ referencedExtensionSlugs:
 - 'helper-function-collection'
 - 'multiple-query-execution'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
-# - unhindered-wordpress-email-notifications
 predefinedPersistedQueryTitleInPlugin: Send email to admin about post
 ---
 

@@ -13,11 +13,6 @@ referencedExtensionSlugs:
 - 'http-request-via-schema'
 - 'multiple-query-execution'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
 ---
 
 When a user triggers an event on ConvertKit (such as subscribing or unsubscribing), the service will [call a webhook passing event data](https://developers.convertkit.com/#webhooks). We can set-up a Persisted Query as a webhook that processes this incoming data, and executes an action with it.

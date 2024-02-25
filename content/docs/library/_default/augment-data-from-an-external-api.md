@@ -13,13 +13,6 @@ referencedExtensionSlugs:
 - 'field-value-iteration-and-manipulation'
 - 'http-client'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - selective-content-import-export-and-sync-for-wordpress
-# - tailored-wordpress-automator
-# - versatile-wordpress-request-api
 ---
 
 If we need to fetch data from an external API, but we need to somehow modify the results (such as providing a default value when some field is empty), we can then use Gato GraphQL to implement an API gateway that transforms the entries as needed.

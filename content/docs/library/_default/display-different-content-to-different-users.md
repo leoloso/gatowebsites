@@ -10,15 +10,6 @@ referencedExtensionSlugs:
 - 'field-to-input'
 - 'multiple-query-execution'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - selective-content-import-export-and-sync-for-wordpress
-# - simplest-wordpress-content-translation
-# - tailored-wordpress-automator
-# - versatile-wordpress-request-api
 ---
 
 This query retrieves the post content, and only for users with the `admin` role, it appends an `"(Edit this post)"` link at the bottom of the content.

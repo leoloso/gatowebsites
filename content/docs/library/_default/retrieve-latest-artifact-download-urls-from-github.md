@@ -15,11 +15,6 @@ referencedExtensionSlugs:
 - 'multiple-query-execution'
 - 'php-constants-and-environment-variables-via-schema'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
 ---
 
 This query retrieves the latest artifacts from the GitHub Actions API, and extracts their URL to be downloaded, avoiding the need for the client to be signed in to GitHub (eg: using the `wp plugin install` WP-CLI command to install the latest version of your plugin under development).

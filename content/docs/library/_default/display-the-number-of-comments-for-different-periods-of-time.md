@@ -9,15 +9,6 @@ referencedExtensionSlugs:
 - 'field-to-input'
 - 'php-constants-and-environment-variables-via-schema'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - selective-content-import-export-and-sync-for-wordpress
-# - tailored-wordpress-automator
-# - unhindered-wordpress-email-notifications
-# - versatile-wordpress-request-api
 predefinedPersistedQueryTitleInPlugin: Fetch comments by period
 ---
 

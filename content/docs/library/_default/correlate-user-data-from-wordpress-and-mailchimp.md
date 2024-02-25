@@ -14,14 +14,6 @@ referencedExtensionSlugs:
 - 'http-client'
 - 'multiple-query-execution'
 - 'php-constants-and-environment-variables-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - selective-content-import-export-and-sync-for-wordpress
-# - tailored-wordpress-automator
-# - versatile-wordpress-request-api
 ---
 
 This query combines the user data from the local WordPress site, and data from those same users from Mailchimp, using the user's email as the common identificator between the two systems.

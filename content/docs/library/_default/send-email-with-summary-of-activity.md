@@ -14,11 +14,6 @@ referencedExtensionSlugs:
 - 'helper-function-collection'
 - 'multiple-query-execution'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
 ---
 
 This query sends an email indicating the number of new comments added to the site for several periods of time:

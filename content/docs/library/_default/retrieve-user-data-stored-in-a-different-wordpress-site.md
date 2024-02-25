@@ -9,14 +9,6 @@ referencedExtensionSlugs:
 - 'field-to-input'
 - 'http-client'
 - 'multiple-query-execution'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - selective-content-import-export-and-sync-for-wordpress
-# - tailored-wordpress-automator
-# - versatile-wordpress-request-api
 ---
 
 This query fetches the user data (from a WordPress site) stored on a different WordPress site, using the user's slug as the common identifier between the 2 sites.

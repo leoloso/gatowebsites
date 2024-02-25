@@ -8,12 +8,6 @@ referencedTutorialLessonSlugs:
 referencedExtensionSlugs:
 - 'email-sender'
 - 'multiple-query-execution'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
-# - unhindered-wordpress-email-notifications
 ---
 
 This query retrieves the email of the admin user from the WordPress `wp_options` table, and injects this value into the `to` field.

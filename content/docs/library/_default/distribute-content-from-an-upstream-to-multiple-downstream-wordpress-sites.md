@@ -17,14 +17,6 @@ referencedExtensionSlugs:
 - 'multiple-query-execution'
 - 'php-functions-via-schema'
 - 'response-error-trigger'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - selective-content-import-export-and-sync-for-wordpress
-# - tailored-wordpress-automator
-# - versatile-wordpress-request-api
 ---
 
 Let's say that a media company has a network of WordPress sites for different regions, with every news article being published on a site or not only if it's suitable for that region.

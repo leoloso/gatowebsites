@@ -9,12 +9,6 @@ referencedExtensionSlugs:
 - 'email-sender'
 - 'helper-function-collection'
 - 'multiple-query-execution'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
-# - unhindered-wordpress-email-notifications
 ---
 
 This query uses Markdown (which is converted to HTML) to compose the email.

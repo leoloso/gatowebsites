@@ -9,11 +9,6 @@ referencedExtensionSlugs:
 - 'field-to-input'
 - 'multiple-query-execution'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
 predefinedPersistedQueryTitleInPlugin: Add comments block to post
 ---
 

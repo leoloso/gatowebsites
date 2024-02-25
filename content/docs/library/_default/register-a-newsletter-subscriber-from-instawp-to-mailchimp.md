@@ -16,12 +16,6 @@ referencedExtensionSlugs:
 - 'multiple-query-execution'
 - 'php-constants-and-environment-variables-via-schema'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - better-wordpress-webhooks
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
-# - versatile-wordpress-request-api
 predefinedPersistedQueryTitleInPlugin: Register a newsletter subscriber from InstaWP to Mailchimp
 ---
 

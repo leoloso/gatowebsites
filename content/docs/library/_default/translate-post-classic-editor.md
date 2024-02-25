@@ -8,10 +8,6 @@ referencedExtensionSlugs:
 - 'google-translate'
 - 'multiple-query-execution'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - simplest-wordpress-content-translation
 predefinedPersistedQueryTitleInPlugin: Translate post (Classic editor)
 ---
 

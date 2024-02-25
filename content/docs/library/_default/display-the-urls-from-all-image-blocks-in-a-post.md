@@ -9,17 +9,6 @@ referencedExtensionSlugs:
 - 'field-on-field'
 - 'field-value-iteration-and-manipulation'
 - 'php-functions-via-schema'
-# bundlesContainingReferencedExtensionSlugs:
-# - all-in-one-toolbox-for-wordpress
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - better-wordpress-webhooks
-# - easy-wordpress-bulk-transform-and-update
-# - private-graphql-server-for-wordpress
-# - selective-content-import-export-and-sync-for-wordpress
-# - simplest-wordpress-content-translation
-# - tailored-wordpress-automator
-# - unhindered-wordpress-email-notifications
-# - versatile-wordpress-request-api
 predefinedPersistedQueryTitleInPlugin: Fetch image URLs in blocks
 ---
 
