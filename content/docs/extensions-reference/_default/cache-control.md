@@ -1,6 +1,6 @@
 ---
 title: Cache Control
-summary: "Cache the GraphQL response on the client-side or intermediate stages between client and server (such as a CDN) via standard HTTP caching."
+description: "Cache the GraphQL response on the client-side or intermediate stages between client and server (such as a CDN) via standard HTTP caching."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 400
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/17856110-cc7d-4d31-b883-0983d3f0c182

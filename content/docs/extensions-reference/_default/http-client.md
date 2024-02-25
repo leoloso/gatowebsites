@@ -1,6 +1,6 @@
 ---
 title: HTTP Client
-summary: "Addition of fields to execute HTTP requests against a webserver and fetch their response."
+description: "Addition of fields to execute HTTP requests against a webserver and fetch their response."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 1800
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/72a4a1fc-2a3b-4985-bf95-97cbe498b070

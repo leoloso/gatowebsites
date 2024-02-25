@@ -1,6 +1,6 @@
 ---
 title: Field Value Iteration and Manipulation
-summary: "Iterate and manipulate the value elements of array and object fields."
+description: "Iterate and manipulate the value elements of array and object fields."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 1500
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/bb573e62-b274-464c-b01e-7817761ec47b

@@ -1,6 +1,6 @@
 ---
 title: Deprecation Notifier
-summary: "Send deprecations in the response to the query (and not only when doing introspection)."
+description: "Send deprecations in the response to the query (and not only when doing introspection)."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 600
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/4f79d7ce-583b-46b6-93f4-893a8f500754

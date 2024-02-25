@@ -1,6 +1,6 @@
 ---
 title: PHP Functions via Schema
-summary: "Manipulate the field output using standard programming language functions available in PHP."
+description: "Manipulate the field output using standard programming language functions available in PHP."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 2400
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/e88823b7-20dc-4914-afb3-aab42288709a

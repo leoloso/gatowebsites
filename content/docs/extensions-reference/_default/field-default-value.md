@@ -1,6 +1,6 @@
 ---
 title: Field Default Value
-summary: "Set a field to some default value (whenever it is null or empty)."
+description: "Set a field to some default value (whenever it is null or empty)."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 900
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/107a5b42-6f5b-4c0f-8d1d-2c203318c4d4

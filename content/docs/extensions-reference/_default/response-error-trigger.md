@@ -1,6 +1,6 @@
 ---
 title: Response Error Trigger
-summary: "Explicitly add an error entry to the response to trigger the failure of the GraphQL request (whenever a field does not meet the expected conditions)."
+description: "Explicitly add an error entry to the response to trigger the failure of the GraphQL request (whenever a field does not meet the expected conditions)."
 socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 2500
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/65056485-6c39-46dd-8708-b195c1661cbd
