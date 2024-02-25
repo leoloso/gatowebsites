@@ -1,0 +1,46 @@
+---
+title: Field Deprecation
+metaDesc: "Deprecate fields, and explain how to replace them, through a user interface."
+socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
+order: 1000
+shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/0c05b29a-a828-4278-b65a-039e98194580
+shopProductURL: https://shop.gatographql.com/checkout/buy/5fd5812d-77db-481e-a241-e097a4f1e5e9
+productPrices:
+- 14.99
+- 29.99
+- 59.99
+bundles:
+- responsible-wordpress-public-api
+---
+
+When upgrading our GraphQL schemas, some fields may not be needed anymore, possibly replaced by better implementation of that field. We can then deprecate the obsolete fields, providing a deprecation reason that will inform and urge our users to switch to the new field in their clients.
+
+This extension provides a user interface to deprecate fields.
+
+## Description
+
+A new "Field Deprecation List" Custom Post Type is added to the site. We can browse its entries on the "Field Deprecation Lists" page in the menu, and click on "Add New Field Deprecation List" to add a new entry in the editor.
+
+<div class="img-width-1024" markdown=1>
+
+![Field Deprecation Lists](/assets/extensions/upstream-pro/field-deprecation-lists.png "Field Deprecation Lists")
+
+</div>
+
+![Field Deprecation List editor](/assets/extensions/upstream-pro/field-deprecation-list.png "Field Deprecation List editor")
+
+Every Field Deprecation List contains one or many entries, each of them with the following elements:
+
+- The fields to deprecate
+- The deprecation reason (to be shown in the GraphQL response when the deprecated field is queried)
+
+![Field Deprecation entry](/assets/extensions/upstream-pro/field-deprecation-entry.png "Field Deprecation entry")
+
+After creating the Field Deprecation List, we can have the Custom Endpoint and Persisted Query use it by editing the corresponding Schema Configuration, and selecting the item from the list under block "Field Deprecation Lists".
+
+![Selecting a Field Deprecation List in the Schema Configuration](/assets/extensions/upstream-pro/schema-config-field-deprecation-lists.png "Selecting a Field Deprecation List in the Schema Configuration")
+
+<!-- ## Bundles including extension
+
+- [“All in One Toolbox for WordPress” Bundle](../../bundles/all-in-one-toolbox-for-wordpress)
+- [“Responsible WordPress Public API” Bundle](../../bundles/responsible-wordpress-public-api) -->
