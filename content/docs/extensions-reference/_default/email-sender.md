@@ -1,7 +1,7 @@
 ---
 title: Email Sender
 description: "Send emails via global mutation \"_sendEmail\"."
-socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
+# image: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 700
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/2fd0154e-a736-48aa-8c36-5917c6e5c61a
 shopProductURL: https://shop.gatographql.com/checkout/buy/9e3dc732-7a35-4424-9de5-646c71559c31

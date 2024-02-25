@@ -1,7 +1,7 @@
 ---
 title: "Access Control: Visitor IP"
 description: "Grant access to the schema based on the visitor's IP address (Access Control extension is required)."
-socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
+# image: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 200
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/a62a717d-d0b7-4b9d-ad1b-c3ca0bdaca45
 shopProductURL: https://shop.gatographql.com/checkout/buy/98eec2b5-a2a5-41a6-b962-6360ffe929b5

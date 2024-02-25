@@ -1,7 +1,7 @@
 ---
 title: Field on Field
 description: "Manipulate the value of a field by applying some other field on it."
-socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
+# image: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 1100
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/4ddc713f-807d-4ba0-8b33-74d6bb3d2aab
 shopProductURL: https://shop.gatographql.com/checkout/buy/6f7c8152-8060-427d-ad83-c5f8758c66df

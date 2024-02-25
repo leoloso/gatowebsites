@@ -1,7 +1,7 @@
 ---
 title: Helper Function Collection
 description: "Collection of fields providing useful functionality."
-socialImage: /assets/product-logos/GatoGraphQL-suki-extension.png
+# image: /assets/product-logos/GatoGraphQL-suki-extension.png
 order: 1700
 shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/a3cf2e83-523b-4e47-934a-9c23bb4d2e45
 shopProductURL: https://shop.gatographql.com/checkout/buy/36f89509-f2e1-48f3-9dee-ef81f088ae2e
