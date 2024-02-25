@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import Recruitment01 from '@/public/images/recruitment-01.jpg'
-import Recruitment02 from '@/public/images/recruitment-02.jpg'
-import Recruitment03 from '@/public/images/recruitment-03.jpg'
-import Recruitment04 from '@/public/images/recruitment-04.jpg'
+import Recruitment01 from '@/public/assets/theme/recruitment-01.jpg'
+import Recruitment02 from '@/public/assets/theme/recruitment-02.jpg'
+import Recruitment03 from '@/public/assets/theme/recruitment-03.jpg'
+import Recruitment04 from '@/public/assets/theme/recruitment-04.jpg'
 
 interface Item {
   area: string

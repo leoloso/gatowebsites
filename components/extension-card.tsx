@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import Star from '@/public/images/star.svg'
+import Star from '@/public/assets/theme/star.svg'
 import { Extension } from '@/.contentlayer/generated'
-import DefaultExtensionIcon from '@/public/images/default/extension-icon.svg'
+import DefaultExtensionIcon from '@/public/assets/theme/default/extension-icon.svg'
 import { getExtensionURL } from '@/utils/application-urls'
 
 type ExtensionCardProps = {

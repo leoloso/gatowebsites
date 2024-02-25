@@ -1,13 +1,13 @@
 import Image from 'next/image'
-import CustomerImg01 from '@/public/images/customer-01.jpg'
-import CustomerImg02 from '@/public/images/customer-02.jpg'
-import CustomerImg03 from '@/public/images/customer-03.jpg'
-import CustomerImg04 from '@/public/images/customer-04.jpg'
-import CustomerImg05 from '@/public/images/customer-05.jpg'
-import CustomerImg06 from '@/public/images/customer-06.jpg'
-import CustomerImg07 from '@/public/images/customer-07.jpg'
-import CustomerImg08 from '@/public/images/customer-08.jpg'
-import CustomerImg09 from '@/public/images/customer-09.jpg'
+import CustomerImg01 from '@/public/assets/theme/customer-01.jpg'
+import CustomerImg02 from '@/public/assets/theme/customer-02.jpg'
+import CustomerImg03 from '@/public/assets/theme/customer-03.jpg'
+import CustomerImg04 from '@/public/assets/theme/customer-04.jpg'
+import CustomerImg05 from '@/public/assets/theme/customer-05.jpg'
+import CustomerImg06 from '@/public/assets/theme/customer-06.jpg'
+import CustomerImg07 from '@/public/assets/theme/customer-07.jpg'
+import CustomerImg08 from '@/public/assets/theme/customer-08.jpg'
+import CustomerImg09 from '@/public/assets/theme/customer-09.jpg'
 
 export default function Customers() {
 

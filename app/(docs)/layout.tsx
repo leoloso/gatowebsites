@@ -4,7 +4,7 @@ import { Nothing_You_Could_Do } from 'next/font/google'
 import Theme from './theme-provider'
 import AppProvider from './app-provider'
 import Image from 'next/image'
-import Illustration from '@/public/images/hero-illustration.svg'
+import Illustration from '@/public/assets/theme/hero-illustration.svg'
 import Sidebar from '@/components/ui/docs/sidebar'
 import Header from '@/components/ui/header'
 
