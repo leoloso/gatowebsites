@@ -1,7 +1,7 @@
 ---
 title: 'Replace "http" with "https" in all image sources in a post'
 description: Switch to incorporating SSL when loading images in your site
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'search-replace-and-store-again'

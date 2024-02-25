@@ -1,7 +1,7 @@
 ---
 title: Send a farewell email to users who unsubscribe from ConvertKit (via a webhook)
 description: "Receive, process, and execute an action using data submitted by ConvertKit (or any other service)"
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'interacting-with-external-services-via-webhooks'

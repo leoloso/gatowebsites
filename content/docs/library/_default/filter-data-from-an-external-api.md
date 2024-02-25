@@ -1,7 +1,7 @@
 ---
 title: Filter data from an external API
 description: "If the API does not allow filtering results that satisfy some condition (such as having a field with a non-empty value), we can implement an API gateway that removes those entries that do not satifsy our condition"
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'filtering-data-from-an-external-api'

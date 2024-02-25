@@ -1,7 +1,7 @@
 ---
 title: Duplicate multiple posts
 description: Create duplicates for all the indicated posts
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'duplicating-multiple-blog-posts-at-once'

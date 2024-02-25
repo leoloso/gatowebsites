@@ -1,7 +1,7 @@
 ---
 title: Fetch users by locale
 description: Retrieve all users with a certain locale, providing a regex to identify them
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'searching-wordpress-data'

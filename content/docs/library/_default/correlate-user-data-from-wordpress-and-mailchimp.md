@@ -1,7 +1,7 @@
 ---
 title: Correlate user data from WordPress and Mailchimp
 description: Augment the user data in your WordPress site, by appending extra fields from an external source such as Mailchimp
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'combining-user-data-from-different-sources'

@@ -1,7 +1,7 @@
 ---
 title: Display all links in all posts
 description: Extract all links added in the HTML source for all posts
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedExtensionSlugs:
 - 'conditional-field-manipulation'

@@ -1,7 +1,7 @@
 ---
 title: 'Translate posts (in bulk) from the WordPress editor (Gutenberg)'
 description: 'Query to translate multiple "Gutenberg" posts to the desired language, executing a single call to the Google Translate API'
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'bulk-translating-block-content-in-multiple-posts-to-a-different-language'

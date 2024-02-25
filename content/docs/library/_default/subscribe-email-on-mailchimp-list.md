@@ -1,7 +1,7 @@
 ---
 title: Subscribe an email on a Mailchimp list
 description: Connect to Mailchimp's API to register an email in a list
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'not-leaking-credentials-when-connecting-to-services'

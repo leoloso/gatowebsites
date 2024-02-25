@@ -1,7 +1,7 @@
 ---
 title: Export post to WordPress site
 description: Fetch the data for a post from this WordPress site, and replicate it in some downstream WordPress site
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'handling-errors-when-connecting-to-services'

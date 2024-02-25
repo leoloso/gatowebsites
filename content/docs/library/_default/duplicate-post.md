@@ -1,7 +1,7 @@
 ---
 title: Duplicate a post
 description: Create a duplicate of the indicated post
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'duplicating-a-blog-post'

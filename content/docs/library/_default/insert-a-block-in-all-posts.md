@@ -1,7 +1,7 @@
 ---
 title: Insert a block in all posts
 description: Identify the nth block of a given type in all posts, and place a custom block right after it
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'inserting-removing-a-gutenberg-block-in-bulk'

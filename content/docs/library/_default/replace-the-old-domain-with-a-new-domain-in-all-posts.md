@@ -1,7 +1,7 @@
 ---
 title: Replace the old domain with a new domain in all posts
 description: Convert all content to point to the new URL for the site
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'adapting-content-in-bulk'

@@ -1,7 +1,7 @@
 ---
 title: Import post from WordPress RSS feed
 description: Create a new post using the data from some WordPress RSS feed
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 #order: 100
 referencedTutorialLessonSlugs:
 - 'retrieving-data-from-an-external-api'
