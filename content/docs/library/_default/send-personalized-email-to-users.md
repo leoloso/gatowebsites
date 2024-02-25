@@ -3,13 +3,13 @@ title: Send a personalized email to your users
 description: "Iterate over the users on your site, and send a customized email to each of them"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'sending-emails-with-pleasure'
-referencedExtensionSlugs:
-- 'email-sender'
-- 'field-to-input'
-- 'helper-function-collection'
-- 'php-functions-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'sending-emails-with-pleasure'
+# referencedExtensionSlugs:
+# - 'email-sender'
+# - 'field-to-input'
+# - 'helper-function-collection'
+# - 'php-functions-via-schema'
 ---
 
 This query retrieves a list of users, obtains their data (name, email and number of remaining credits, which is stored as meta), and sends a personalized email to each of them.

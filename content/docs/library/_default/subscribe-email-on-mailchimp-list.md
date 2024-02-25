@@ -3,14 +3,14 @@ title: Subscribe an email on a Mailchimp list
 description: Connect to Mailchimp's API to register an email in a list
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'not-leaking-credentials-when-connecting-to-services'
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-response-removal'
-- 'field-to-input'
-- 'http-client'
-- 'php-constants-and-environment-variables-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'not-leaking-credentials-when-connecting-to-services'
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'http-client'
+# - 'php-constants-and-environment-variables-via-schema'
 ---
 
 This query subscribes an email to a Mailchimp list.

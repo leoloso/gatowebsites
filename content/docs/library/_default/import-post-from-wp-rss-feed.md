@@ -3,15 +3,15 @@ title: Import post from WordPress RSS feed
 description: Create a new post using the data from some WordPress RSS feed
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-to-input'
-- 'helper-function-collection'
-- 'http-client'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Import post from WordPress RSS feed
+# referencedTutorialLessonSlugs:
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-to-input'
+# - 'helper-function-collection'
+# - 'http-client'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Import post from WordPress RSS feed
 ---
 
 This query imports a post from a WordPress RSS feed, using the title, content and excerpt of the post.

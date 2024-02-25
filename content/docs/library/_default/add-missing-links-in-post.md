@@ -3,13 +3,13 @@ title: 'Add missing links in post'
 description: Search for URLs which have no link in the post's HTML content and add a link around them
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'search-replace-and-store-again'
-referencedExtensionSlugs:
-- 'field-to-input'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Add missing links in post
+# referencedTutorialLessonSlugs:
+# - 'search-replace-and-store-again'
+# referencedExtensionSlugs:
+# - 'field-to-input'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Add missing links in post
 ---
 
 This query does a regex search and replace to add missing links in the post's HTML content.

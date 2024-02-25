@@ -3,14 +3,14 @@ title: Fetch repositories from GitHub
 description: Connect to GitHub's API to fetch repository data for some account
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'not-leaking-credentials-when-connecting-to-services'
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-response-removal'
-- 'field-to-input'
-- 'http-client'
-- 'php-constants-and-environment-variables-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'not-leaking-credentials-when-connecting-to-services'
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'http-client'
+# - 'php-constants-and-environment-variables-via-schema'
 ---
 
 This query connects to [GitHub's GraphQL API](https://docs.github.com/en/graphql) and retrieves the list of repos for the indicated owner.

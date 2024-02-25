@@ -3,12 +3,12 @@ title: Retrieve user data stored in a different WordPress site
 description: Fetch data corresponding to your users, stored in another WordPress site
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-to-input'
-- 'http-client'
-- 'multiple-query-execution'
+# referencedTutorialLessonSlugs:
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-to-input'
+# - 'http-client'
+# - 'multiple-query-execution'
 ---
 
 This query fetches the user data (from a WordPress site) stored on a different WordPress site, using the user's slug as the common identifier between the 2 sites.

@@ -3,12 +3,12 @@ title: 'Translate a post from the "Classic editor"'
 description: 'Query to translate a "Classic editor" post to the desired language'
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedExtensionSlugs:
-- 'field-value-iteration-and-manipulation'
-- 'google-translate'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Translate post (Classic editor)
+# referencedExtensionSlugs:
+# - 'field-value-iteration-and-manipulation'
+# - 'google-translate'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Translate post (Classic editor)
 ---
 
 This query translates a "Classic editor" post to the desired language.

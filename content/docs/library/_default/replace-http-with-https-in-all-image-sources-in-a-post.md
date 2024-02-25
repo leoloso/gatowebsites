@@ -3,13 +3,13 @@ title: 'Replace "http" with "https" in all image sources in a post'
 description: Switch to incorporating SSL when loading images in your site
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'search-replace-and-store-again'
-referencedExtensionSlugs:
-- 'field-to-input'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: 'Replace "http" with "https" in image sources in post'
+# referencedTutorialLessonSlugs:
+# - 'search-replace-and-store-again'
+# referencedExtensionSlugs:
+# - 'field-to-input'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: 'Replace "http" with "https" in image sources in post'
 ---
 
 This query replaces all `http` URLs with `https` in the image sources from the post's HTML.

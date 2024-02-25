@@ -3,13 +3,13 @@ title: Display different content to different users
 description: Retrieve a different GraphQL response depending on the role of the logged-in user
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'customizing-content-for-different-users'
-referencedExtensionSlugs:
-- 'field-response-removal'
-- 'field-to-input'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'customizing-content-for-different-users'
+# referencedExtensionSlugs:
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
 ---
 
 This query retrieves the post content, and only for users with the `admin` role, it appends an `"(Edit this post)"` link at the bottom of the content.

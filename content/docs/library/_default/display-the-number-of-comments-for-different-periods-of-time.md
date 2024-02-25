@@ -3,13 +3,13 @@ title: Display the number of comments for different periods of time
 description: Analyze the trend of users adding comments to your site, based on several periods of time
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'querying-dynamic-data'
-referencedExtensionSlugs:
-- 'field-to-input'
-- 'php-constants-and-environment-variables-via-schema'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Fetch comments by period
+# referencedTutorialLessonSlugs:
+# - 'querying-dynamic-data'
+# referencedExtensionSlugs:
+# - 'field-to-input'
+# - 'php-constants-and-environment-variables-via-schema'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Fetch comments by period
 ---
 
 This query retrieves the number of comments added to the site in several periods of time:

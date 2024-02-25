@@ -3,14 +3,14 @@ title: Remove a block from posts
 description: Remove a block of a given type from all posts
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'inserting-removing-a-gutenberg-block-in-bulk'
-referencedExtensionSlugs:
-- 'field-response-removal'
-- 'field-to-input'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Remove block from posts
+# referencedTutorialLessonSlugs:
+# - 'inserting-removing-a-gutenberg-block-in-bulk'
+# referencedExtensionSlugs:
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Remove block from posts
 ---
 
 This query removes a block of a given type (such as `mycompany:black-friday-campaign-video`) from all posts.

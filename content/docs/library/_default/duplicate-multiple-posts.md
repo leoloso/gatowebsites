@@ -3,16 +3,16 @@ title: Duplicate multiple posts
 description: Create duplicates for all the indicated posts
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'duplicating-multiple-blog-posts-at-once'
-referencedExtensionSlugs:
-- 'field-on-field'
-- 'field-response-removal'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Duplicate posts
+# referencedTutorialLessonSlugs:
+# - 'duplicating-multiple-blog-posts-at-once'
+# referencedExtensionSlugs:
+# - 'field-on-field'
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Duplicate posts
 ---
 
 This query duplicates the posts retrieved via the provided `$limit` and `$offset` variables (sorted by ascending ID).

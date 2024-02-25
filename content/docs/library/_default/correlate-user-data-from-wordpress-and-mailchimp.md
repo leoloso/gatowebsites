@@ -3,17 +3,17 @@ title: Correlate user data from WordPress and Mailchimp
 description: Augment the user data in your WordPress site, by appending extra fields from an external source such as Mailchimp
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'combining-user-data-from-different-sources'
-- 'interacting-with-external-services-via-webhooks'
-- 'not-leaking-credentials-when-connecting-to-services'
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-response-removal'
-- 'field-to-input'
-- 'http-client'
-- 'multiple-query-execution'
-- 'php-constants-and-environment-variables-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'combining-user-data-from-different-sources'
+# - 'interacting-with-external-services-via-webhooks'
+# - 'not-leaking-credentials-when-connecting-to-services'
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'http-client'
+# - 'multiple-query-execution'
+# - 'php-constants-and-environment-variables-via-schema'
 ---
 
 This query combines the user data from the local WordPress site, and data from those same users from Mailchimp, using the user's email as the common identificator between the two systems.

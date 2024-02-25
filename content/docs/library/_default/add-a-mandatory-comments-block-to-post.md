@@ -3,13 +3,13 @@ title: Add a mandatory comments block to a post
 description: "If missing, add the comments block at the bottom of the post"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'automatically-adding-a-mandatory-block'
-referencedExtensionSlugs:
-- 'field-to-input'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Add comments block to post
+# referencedTutorialLessonSlugs:
+# - 'automatically-adding-a-mandatory-block'
+# referencedExtensionSlugs:
+# - 'field-to-input'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Add comments block to post
 ---
 
 This query checks if block `wp:comments` has been added to the post indicated by variable `$postId`. If the block is missing, it then adds it at the bottom of the post.

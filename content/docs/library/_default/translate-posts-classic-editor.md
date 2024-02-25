@@ -3,15 +3,15 @@ title: 'Translate posts (in bulk) from the "Classic editor"'
 description: 'Query to translate multiple "Classic editor" posts to the desired language, executing a single call to the Google Translate API'
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedExtensionSlugs:
-- 'field-on-field'
-- 'field-response-removal'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'google-translate'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Translate posts (Classic editor)
+# referencedExtensionSlugs:
+# - 'field-on-field'
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'google-translate'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Translate posts (Classic editor)
 ---
 
 This query translates multiple "Classic editor" posts at once (in bulk), while executing a single call to the Google Translate API containing all text to translate from all the posts.

@@ -3,15 +3,15 @@ title: Replace the old domain with a new domain in all posts
 description: Convert all content to point to the new URL for the site
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'adapting-content-in-bulk'
-- 'search-replace-and-store-again'
-- 'site-migrations'
-referencedExtensionSlugs:
-- 'field-to-input'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Replace domain in posts
+# referencedTutorialLessonSlugs:
+# - 'adapting-content-in-bulk'
+# - 'search-replace-and-store-again'
+# - 'site-migrations'
+# referencedExtensionSlugs:
+# - 'field-to-input'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Replace domain in posts
 ---
 
 This query first filters all posts containing `"https://my-old-domain.com"` in its content, and replaces this string with `"https://my-new-domain.com"`.

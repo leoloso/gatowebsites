@@ -3,16 +3,16 @@ title: Augment data from an external API
 description: "Adapt the response from an external API to anything you need it to be"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'creating-an-api-gateway'
-- 'retrieving-data-from-an-external-api'
-- 'transforming-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-default-value'
-- 'field-on-field'
-- 'field-value-iteration-and-manipulation'
-- 'http-client'
-- 'php-functions-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'creating-an-api-gateway'
+# - 'retrieving-data-from-an-external-api'
+# - 'transforming-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-default-value'
+# - 'field-on-field'
+# - 'field-value-iteration-and-manipulation'
+# - 'http-client'
+# - 'php-functions-via-schema'
 ---
 
 If we need to fetch data from an external API, but we need to somehow modify the results (such as providing a default value when some field is empty), we can then use Gato GraphQL to implement an API gateway that transforms the entries as needed.

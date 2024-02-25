@@ -3,20 +3,20 @@ title: Distribute content from an upstream to multiple downstream WordPress site
 description: "Implement a distributed server architecture using Gato GraphQL extensions on the upstream WordPress site only"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'distributing-content-from-an-upstream-to-multiple-downstream-sites'
-- 'handling-errors-when-connecting-to-services'
-- 'not-leaking-credentials-when-connecting-to-services'
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-on-field'
-- 'field-response-removal'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'http-client'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-- 'response-error-trigger'
+# referencedTutorialLessonSlugs:
+# - 'distributing-content-from-an-upstream-to-multiple-downstream-sites'
+# - 'handling-errors-when-connecting-to-services'
+# - 'not-leaking-credentials-when-connecting-to-services'
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-on-field'
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'http-client'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# - 'response-error-trigger'
 ---
 
 Let's say that a media company has a network of WordPress sites for different regions, with every news article being published on a site or not only if it's suitable for that region.

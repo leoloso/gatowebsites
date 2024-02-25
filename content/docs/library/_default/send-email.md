@@ -3,10 +3,10 @@ title: Send an email
 description: "Using text and HTML content"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'sending-emails-with-pleasure'
-referencedExtensionSlugs:
-- 'email-sender'
+# referencedTutorialLessonSlugs:
+# - 'sending-emails-with-pleasure'
+# referencedExtensionSlugs:
+# - 'email-sender'
 ---
 
 This query sends an email as text content, and an email as HTML content.

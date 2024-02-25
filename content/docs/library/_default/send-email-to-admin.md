@@ -3,11 +3,11 @@ title: Send an email to the admin
 description: "Fetching the admin email from the DB"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'sending-emails-with-pleasure'
-referencedExtensionSlugs:
-- 'email-sender'
-- 'multiple-query-execution'
+# referencedTutorialLessonSlugs:
+# - 'sending-emails-with-pleasure'
+# referencedExtensionSlugs:
+# - 'email-sender'
+# - 'multiple-query-execution'
 ---
 
 This query retrieves the email of the admin user from the WordPress `wp_options` table, and injects this value into the `to` field.

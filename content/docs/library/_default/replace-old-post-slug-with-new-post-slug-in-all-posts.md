@@ -3,14 +3,14 @@ title: Replace an old post slug with a new post slug in all posts
 description: Convert all content to point to the new URL for some post
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'adapting-content-in-bulk'
-- 'search-replace-and-store-again'
-- 'site-migrations'
-referencedExtensionSlugs:
-- 'field-to-input'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Replace post slug in posts
+# referencedTutorialLessonSlugs:
+# - 'adapting-content-in-bulk'
+# - 'search-replace-and-store-again'
+# - 'site-migrations'
+# referencedExtensionSlugs:
+# - 'field-to-input'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Replace post slug in posts
 ---
 
 After changing the slug of a post, execute this query to convert all content to point to the new URL.

@@ -3,15 +3,15 @@ title: "Regex search and replace multiple strings in all posts"
 description: "Search and replace multiple strings in the posts' title, excerpt and content"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'adapting-content-in-bulk'
-- 'search-replace-and-store-again'
-referencedExtensionSlugs:
-- 'field-response-removal'
-- 'field-to-input'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Regex replace strings in posts
+# referencedTutorialLessonSlugs:
+# - 'adapting-content-in-bulk'
+# - 'search-replace-and-store-again'
+# referencedExtensionSlugs:
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Regex replace strings in posts
 ---
 
 Update multiple posts with a single operation, searching/replacing content using a list of regular expressions.

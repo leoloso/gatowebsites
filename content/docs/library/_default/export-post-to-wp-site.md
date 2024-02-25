@@ -3,20 +3,20 @@ title: Export post to WordPress site
 description: Fetch the data for a post from this WordPress site, and replicate it in some downstream WordPress site
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'handling-errors-when-connecting-to-services'
-- 'not-leaking-credentials-when-connecting-to-services'
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-on-field'
-- 'field-response-removal'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'http-client'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-- 'response-error-trigger'
-predefinedPersistedQueryTitleInPlugin: Export post to WordPress site
+# referencedTutorialLessonSlugs:
+# - 'handling-errors-when-connecting-to-services'
+# - 'not-leaking-credentials-when-connecting-to-services'
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-on-field'
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'http-client'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# - 'response-error-trigger'
+# predefinedPersistedQueryTitleInPlugin: Export post to WordPress site
 ---
 
 This query exports a post from this WordPress site into some downstream WordPress site.

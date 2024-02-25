@@ -3,15 +3,15 @@ title: Send an email with dynamic data
 description: "Fetch data from the DB and dynamically insert it into the email message"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'querying-dynamic-data'
-- 'sending-emails-with-pleasure'
-referencedExtensionSlugs:
-- 'email-sender'
-- 'field-to-input'
-- 'helper-function-collection'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'querying-dynamic-data'
+# - 'sending-emails-with-pleasure'
+# referencedExtensionSlugs:
+# - 'email-sender'
+# - 'field-to-input'
+# - 'helper-function-collection'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
 ---
 
 This query contains a message template with placeholders, and these are replaced with dynamic data before sending the email.

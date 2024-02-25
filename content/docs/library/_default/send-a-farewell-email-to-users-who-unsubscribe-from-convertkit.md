@@ -3,16 +3,16 @@ title: Send a farewell email to users who unsubscribe from ConvertKit (via a web
 description: "Receive, process, and execute an action using data submitted by ConvertKit (or any other service)"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'interacting-with-external-services-via-webhooks'
-- 'retrieving-data-from-an-external-api'
-- 'sending-emails-with-pleasure'
-referencedExtensionSlugs:
-- 'email-sender'
-- 'field-to-input'
-- 'http-request-via-schema'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'interacting-with-external-services-via-webhooks'
+# - 'retrieving-data-from-an-external-api'
+# - 'sending-emails-with-pleasure'
+# referencedExtensionSlugs:
+# - 'email-sender'
+# - 'field-to-input'
+# - 'http-request-via-schema'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
 ---
 
 When a user triggers an event on ConvertKit (such as subscribing or unsubscribing), the service will [call a webhook passing event data](https://developers.convertkit.com/#webhooks). We can set-up a Persisted Query as a webhook that processes this incoming data, and executes an action with it.

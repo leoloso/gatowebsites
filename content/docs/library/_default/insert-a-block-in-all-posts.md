@@ -3,14 +3,14 @@ title: Insert a block in all posts
 description: Identify the nth block of a given type in all posts, and place a custom block right after it
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'inserting-removing-a-gutenberg-block-in-bulk'
-referencedExtensionSlugs:
-- 'field-response-removal'
-- 'field-to-input'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Insert block in posts
+# referencedTutorialLessonSlugs:
+# - 'inserting-removing-a-gutenberg-block-in-bulk'
+# referencedExtensionSlugs:
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Insert block in posts
 ---
 
 This query identifies the nth block of a given type (`"wp:paragraph"` by default) in all posts, and places the provided custom block's HTML content right after it.

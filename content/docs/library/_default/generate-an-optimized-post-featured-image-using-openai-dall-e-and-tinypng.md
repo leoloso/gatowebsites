@@ -3,15 +3,15 @@ title: Generate an optimized post's featured image using OpenAI's DALL-E and Tin
 description: "Using generative AI to produce images for posts without a featured image, and compress it for the web"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedExtensionSlugs:
-- 'field-default-value'
-- 'field-response-removal'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'http-client'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Generate a post\'s featured image using AI and optimize it
+# referencedExtensionSlugs:
+# - 'field-default-value'
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'http-client'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Generate a post\'s featured image using AI and optimize it
 ---
 
 This Persisted GraphQL query uses [OpenAI's DALL-E](https://openai.com/dall-e-3) generative AI to produce images for posts without a featured image.

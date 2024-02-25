@@ -3,15 +3,15 @@ title: Replace the domain for all image blocks in a post (to use a CDN)
 description: "Update image URLs to route them via a CDN"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'modifying-and-storing-again-the-image-urls-from-all-image-blocks-in-a-post'
-referencedExtensionSlugs:
-- 'field-on-field'
-- 'field-response-removal'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'modifying-and-storing-again-the-image-urls-from-all-image-blocks-in-a-post'
+# referencedExtensionSlugs:
+# - 'field-on-field'
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
 ---
 
 This query modifies the URL of images in the `core/image` blocks in a post, replacing `mysite.com` (provided via variable `$domain`) to `cdn.mysite.com` (provided via variable `$cdnDomain`), as to start serving those assets from a CDN.

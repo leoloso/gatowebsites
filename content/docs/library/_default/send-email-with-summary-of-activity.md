@@ -3,17 +3,17 @@ title: Send an email with summary of activity
 description: "Integrate this query with automation to receive updates on your email account"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'querying-dynamic-data'
-- 'sending-a-daily-summary-of-activity'
-- 'sending-emails-with-pleasure'
-referencedExtensionSlugs:
-- 'email-sender'
-- 'field-response-removal'
-- 'field-to-input'
-- 'helper-function-collection'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'querying-dynamic-data'
+# - 'sending-a-daily-summary-of-activity'
+# - 'sending-emails-with-pleasure'
+# referencedExtensionSlugs:
+# - 'email-sender'
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'helper-function-collection'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
 ---
 
 This query sends an email indicating the number of new comments added to the site for several periods of time:

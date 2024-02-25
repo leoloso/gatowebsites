@@ -3,21 +3,21 @@ title: Import post from another WordPress site
 description: Create a new post using the data exposed by the GraphQL API on some other WordPress site
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'handling-errors-when-connecting-to-services'
-- 'importing-a-post-from-another-wordpress-site'
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'conditional-field-manipulation'
-- 'field-on-field'
-- 'field-response-removal'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'http-client'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-- 'response-error-trigger'
-predefinedPersistedQueryTitleInPlugin: Import post from WordPress site
+# referencedTutorialLessonSlugs:
+# - 'handling-errors-when-connecting-to-services'
+# - 'importing-a-post-from-another-wordpress-site'
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'conditional-field-manipulation'
+# - 'field-on-field'
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'http-client'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# - 'response-error-trigger'
+# predefinedPersistedQueryTitleInPlugin: Import post from WordPress site
 ---
 
 This query imports a post from some upstream WordPress site into our local WordPress site.

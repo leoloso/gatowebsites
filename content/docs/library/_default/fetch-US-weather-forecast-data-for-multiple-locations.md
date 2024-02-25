@@ -3,15 +3,15 @@ title: Fetch US weather forecast data for multiple locations
 description: Connect to the US National Weather Service's API to fetch weather forecast data
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-on-field'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'http-client'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-on-field'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'http-client'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
 ---
 
 This query connects to [US National Weather Service's API](https://www.weather.gov/documentation/services-web-api) and retrieves the weather forecast data for the multiple locations with given coordinates (via variable `$coordinatesList`, which is a list of JSON objects with entries `lat` and `long`).

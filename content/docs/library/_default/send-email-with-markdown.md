@@ -3,12 +3,12 @@ title: Send an email using Markdown
 description: "Converting Markdown into HTML content"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'sending-emails-with-pleasure'
-referencedExtensionSlugs:
-- 'email-sender'
-- 'helper-function-collection'
-- 'multiple-query-execution'
+# referencedTutorialLessonSlugs:
+# - 'sending-emails-with-pleasure'
+# referencedExtensionSlugs:
+# - 'email-sender'
+# - 'helper-function-collection'
+# - 'multiple-query-execution'
 ---
 
 This query uses Markdown (which is converted to HTML) to compose the email.

@@ -3,17 +3,17 @@ title: 'Translate a post from the WordPress editor (Gutenberg)'
 description: 'Query to translate a "Gutenberg" post to the desired language'
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'translating-block-content-in-a-post-to-a-different-language'
-referencedExtensionSlugs:
-- 'field-on-field'
-- 'field-response-removal'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'google-translate'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Translate post (Gutenberg)
+# referencedTutorialLessonSlugs:
+# - 'translating-block-content-in-a-post-to-a-different-language'
+# referencedExtensionSlugs:
+# - 'field-on-field'
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'google-translate'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Translate post (Gutenberg)
 ---
 
 This query translates a post to the desired language, with full support for Gutenberg, for the following block types:

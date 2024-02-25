@@ -3,13 +3,13 @@ title: Duplicate a post
 description: Create a duplicate of the indicated post
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'duplicating-a-blog-post'
-referencedExtensionSlugs:
-- 'field-response-removal'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Duplicate post
+# referencedTutorialLessonSlugs:
+# - 'duplicating-a-blog-post'
+# referencedExtensionSlugs:
+# - 'field-response-removal'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Duplicate post
 ---
 
 This query duplicates a post.

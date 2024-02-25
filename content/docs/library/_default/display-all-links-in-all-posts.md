@@ -3,14 +3,14 @@ title: Display all links in all posts
 description: Extract all links added in the HTML source for all posts
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedExtensionSlugs:
-- 'conditional-field-manipulation'
-- 'field-on-field'
-- 'field-response-removal'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Fetch post links
+# referencedExtensionSlugs:
+# - 'conditional-field-manipulation'
+# - 'field-on-field'
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Fetch post links
 ---
 
 This query displays all links added to all posts.

@@ -3,20 +3,20 @@ title: Register a newsletter subscriber from InstaWP to Mailchimp
 description: Using InstaWP + Gato GraphQL to forward webhook data into an API
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'automatically-sending-newsletter-subscribers-from-instawp-to-mailchimp'
-- 'interacting-with-external-services-via-webhooks'
-- 'not-leaking-credentials-when-connecting-to-services'
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-response-removal'
-- 'field-to-input'
-- 'http-client'
-- 'http-request-via-schema'
-- 'multiple-query-execution'
-- 'php-constants-and-environment-variables-via-schema'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Register a newsletter subscriber from InstaWP to Mailchimp
+# referencedTutorialLessonSlugs:
+# - 'automatically-sending-newsletter-subscribers-from-instawp-to-mailchimp'
+# - 'interacting-with-external-services-via-webhooks'
+# - 'not-leaking-credentials-when-connecting-to-services'
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'http-client'
+# - 'http-request-via-schema'
+# - 'multiple-query-execution'
+# - 'php-constants-and-environment-variables-via-schema'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Register a newsletter subscriber from InstaWP to Mailchimp
 ---
 
 [InstaWP](https://instawp.com) allows visitors to launch a sandbox site to test a plugin, while allowing them to subscribe to the newsletter:

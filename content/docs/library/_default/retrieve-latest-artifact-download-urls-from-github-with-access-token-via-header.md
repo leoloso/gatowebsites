@@ -3,20 +3,20 @@ title: Retrieve the latest artifact download URLs from GitHub, passing the acces
 description: "Access the latest version of your plugin on your GitHub repo, while passing the access token via a header (eg: for an API gateway)"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'creating-an-api-gateway'
-- 'handling-errors-when-connecting-to-services'
-- 'not-leaking-credentials-when-connecting-to-services'
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-on-field'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'http-client'
-- 'http-request-via-schema'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-- 'response-error-trigger'
+# referencedTutorialLessonSlugs:
+# - 'creating-an-api-gateway'
+# - 'handling-errors-when-connecting-to-services'
+# - 'not-leaking-credentials-when-connecting-to-services'
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-on-field'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'http-client'
+# - 'http-request-via-schema'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# - 'response-error-trigger'
 ---
 
 This query is similar to [Retrieve the latest artifact download URLs from GitHub](../retrieve-latest-artifact-download-urls-from-github/), with the difference that it receives the GitHub credentials via the header `X-Github-Access-Token` in the request.

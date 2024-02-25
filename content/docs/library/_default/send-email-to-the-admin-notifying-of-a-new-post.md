@@ -3,16 +3,16 @@ title: Send an email to the admin notifying of a new post
 description: "Integrate this query with automation to notify the admin when there's a new post on the site"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'sending-a-notification-when-there-is-a-new-post'
-- 'sending-emails-with-pleasure'
-referencedExtensionSlugs:
-- 'email-sender'
-- 'field-to-input'
-- 'helper-function-collection'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Send email to admin about post
+# referencedTutorialLessonSlugs:
+# - 'sending-a-notification-when-there-is-a-new-post'
+# - 'sending-emails-with-pleasure'
+# referencedExtensionSlugs:
+# - 'email-sender'
+# - 'field-to-input'
+# - 'helper-function-collection'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Send email to admin about post
 ---
 
 This query sends an email to the admin user, notifying of the creation of a new post on the site:

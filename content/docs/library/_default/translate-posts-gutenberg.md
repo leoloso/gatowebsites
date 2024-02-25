@@ -3,17 +3,17 @@ title: 'Translate posts (in bulk) from the WordPress editor (Gutenberg)'
 description: 'Query to translate multiple "Gutenberg" posts to the desired language, executing a single call to the Google Translate API'
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'bulk-translating-block-content-in-multiple-posts-to-a-different-language'
-referencedExtensionSlugs:
-- 'conditional-field-manipulation'
-- 'field-on-field'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'google-translate'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Translate posts (Gutenberg)
+# referencedTutorialLessonSlugs:
+# - 'bulk-translating-block-content-in-multiple-posts-to-a-different-language'
+# referencedExtensionSlugs:
+# - 'conditional-field-manipulation'
+# - 'field-on-field'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'google-translate'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Translate posts (Gutenberg)
 ---
 
 This query translates multiple posts at once (in bulk), while executing a single call to the Google Translate API containing all text to translate from all the posts.

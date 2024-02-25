@@ -3,18 +3,18 @@ title: Retrieve the latest artifact download URLs from GitHub
 description: "Access the latest version of your plugin on your GitHub repo (eg: to install it in your WordPress site using WP-CLI)"
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'creating-an-api-gateway'
-- 'not-leaking-credentials-when-connecting-to-services'
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-on-field'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'http-client'
-- 'multiple-query-execution'
-- 'php-constants-and-environment-variables-via-schema'
-- 'php-functions-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'creating-an-api-gateway'
+# - 'not-leaking-credentials-when-connecting-to-services'
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-on-field'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'http-client'
+# - 'multiple-query-execution'
+# - 'php-constants-and-environment-variables-via-schema'
+# - 'php-functions-via-schema'
 ---
 
 This query retrieves the latest artifacts from the GitHub Actions API, and extracts their URL to be downloaded, avoiding the need for the client to be signed in to GitHub (eg: using the `wp plugin install` WP-CLI command to install the latest version of your plugin under development).

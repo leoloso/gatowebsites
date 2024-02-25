@@ -3,14 +3,14 @@ title: Fetch user data from Mailchimp list
 description: Connect to Mailchimp's API to fetch user data from a list
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'not-leaking-credentials-when-connecting-to-services'
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-response-removal'
-- 'field-to-input'
-- 'http-client'
-- 'php-constants-and-environment-variables-via-schema'
+# referencedTutorialLessonSlugs:
+# - 'not-leaking-credentials-when-connecting-to-services'
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'http-client'
+# - 'php-constants-and-environment-variables-via-schema'
 ---
 
 This query retrieves the memebers' data from a Mailchimp list.

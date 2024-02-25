@@ -3,17 +3,17 @@ title: Import posts from CSV
 description: Create a new post using the data from some CSV source
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 0
-referencedTutorialLessonSlugs:
-- 'retrieving-data-from-an-external-api'
-referencedExtensionSlugs:
-- 'field-on-field'
-- 'field-to-input'
-- 'field-value-iteration-and-manipulation'
-- 'helper-function-collection'
-- 'http-client'
-- 'multiple-query-execution'
-- 'php-functions-via-schema'
-predefinedPersistedQueryTitleInPlugin: Import posts from CSV
+# referencedTutorialLessonSlugs:
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-on-field'
+# - 'field-to-input'
+# - 'field-value-iteration-and-manipulation'
+# - 'helper-function-collection'
+# - 'http-client'
+# - 'multiple-query-execution'
+# - 'php-functions-via-schema'
+# predefinedPersistedQueryTitleInPlugin: Import posts from CSV
 ---
 
 This query imports posts from a CSV.
