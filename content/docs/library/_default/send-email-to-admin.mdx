@@ -1,0 +1,34 @@
+---
+title: Send an email to the admin
+description: "Fetching the admin email from the DB"
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 0
+# referencedTutorialLessonSlugs:
+# - 'sending-emails-with-pleasure'
+# referencedExtensionSlugs:
+# - 'email-sender'
+# - 'multiple-query-execution'
+---
+
+This query retrieves the email of the admin user from the WordPress `wp_options` table, and injects this value into the `to` field.
+
+```graphql
+query ExportData {
+  adminEmail: optionValue(name: "admin_email")
+    @export(as: "adminEmail")
+}
+
+mutation SendEmailToAdmin @depends(on: "ExportData") {
+  _sendEmail(
+    input: {
+      to: $adminEmail
+      subject: "Admin notification"
+      messageAs: {
+        html: "There is a new post on the site, go check!"
+      }
+    }
+  ) {
+    status
+  }
+}
+```

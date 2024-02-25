@@ -1,0 +1,94 @@
+---
+title: Correlate user data from WordPress and Mailchimp
+description: Augment the user data in your WordPress site, by appending extra fields from an external source such as Mailchimp
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 0
+# referencedTutorialLessonSlugs:
+# - 'combining-user-data-from-different-sources'
+# - 'interacting-with-external-services-via-webhooks'
+# - 'not-leaking-credentials-when-connecting-to-services'
+# - 'retrieving-data-from-an-external-api'
+# referencedExtensionSlugs:
+# - 'field-response-removal'
+# - 'field-to-input'
+# - 'http-client'
+# - 'multiple-query-execution'
+# - 'php-constants-and-environment-variables-via-schema'
+---
+
+This query combines the user data from the local WordPress site, and data from those same users from Mailchimp, using the user's email as the common identificator between the two systems.
+
+The result will be the `email`, `name` and `lastname` user data coming from WordPress, augmented with field `location` from Mailchimp.
+
+```graphql
+query FetchUserDataFromMailchimpList(
+  # mailchimpDataCenterCode: Code for the data center of your account on Mailchimp (See: https://mailchimp.com/developer/marketing/docs/fundamentals/#api-structure)
+  $mailchimpDataCenterCode: String!
+  # Audience ID for the list on Mailchimp to which to subscribe the email
+  $mailchimpAudienceID: String!
+) {
+  mailchimpUsername: _env(name: "MAILCHIMP_API_CREDENTIALS_USERNAME")
+    @remove
+  mailchimpPassword: _env(name: "MAILCHIMP_API_CREDENTIALS_PASSWORD")
+    @remove
+
+  mailchimpAPIEndpoint: _sprintf(
+    string: "https://%s.api.mailchimp.com/3.0/lists/%s/members",
+    values: [$mailchimpDataCenterCode, $mailchimpAudienceID]
+  )
+    @remove
+  
+  mailchimpListMembersJSONObject: _sendJSONObjectItemHTTPRequest(input: {
+    url: $__mailchimpAPIEndpoint,
+    method: GET,
+    options: {
+      auth: {
+        username: $__mailchimpUsername,
+        password: $__mailchimpPassword
+      }
+    }
+  })
+    @remove
+  mailchimpUserData: _objectProperty(
+    object: $__mailchimpListMembersJSONObject,
+    by: { key: "members"}
+  )
+    @underEachArrayItem
+      @objectKeepProperties(keys: ["email_address", "location"])
+    @export(as: "mailchimpUserData")
+}
+
+query FetchUserDataFromWordPress {
+  users(pagination: { limit: -1 }) {
+    id
+    email_address: email
+    name
+    lastName
+      @export(
+        as: "wordpressUserData",
+        type: LIST,
+        affectAdditionalFieldsUnderPos: [1, 2, 3]
+      )
+  }
+}
+
+query CombineUserDataFromMailchimpAndWordPress
+  @depends(on: [
+    "FetchUserDataFromMailchimpList",
+    "FetchUserDataFromWordPress"
+  ])
+{
+  combinedWordPressAndMailchimpUserData: _arrayInnerJoinJSONObjectProperties(
+    source: $mailchimpUserData,
+    target: $wordpressUserData,
+    index: "email_address"
+  )
+}
+```
+
+And define in `wp-config.php`:
+
+```php
+define( 'MAILCHIMP_API_CREDENTIALS_USERNAME', '{ username }' );
+define( 'MAILCHIMP_API_CREDENTIALS_PASSWORD', '{ password }' );
+```
