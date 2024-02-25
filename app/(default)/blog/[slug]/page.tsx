@@ -124,7 +124,7 @@ export default async function SingleVideoPost({ params }: {
           </div>
         </div>
       </section>
-      <Newsletter label="Want more tutorials & guides?" />
+      <Newsletter label="Want more posts & tutorials?" />
     </>
   )
 }

@@ -51,7 +51,7 @@ export default function Blog() {
           </div>
         </div>
       </section>
-      <Newsletter label="Want more news & posts?" />
+      <Newsletter label="Want more posts & tutorials?" />
     </>
   )
 }
