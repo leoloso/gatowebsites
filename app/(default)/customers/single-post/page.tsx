@@ -5,7 +5,7 @@ export const metadata = {
 
 import Link from 'next/link'
 import Image from 'next/image'
-import CustomerBadge from '@/public/images/customer-badge.svg'
+import CustomerBadge from '@/public/assets/theme/customer-badge.svg'
 import RelatedPosts from './related-posts'
 import StunningBackground from '@/components/stunning-background'
 
@@ -33,7 +33,7 @@ export default function CustomerSingle() {
                   <header>
                     <h1 className="h2 inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">How Airbnb leverages Stellar X to onboard new hosts</h1>
                     <div className="text-sm flex items-center space-x-4 mb-8">
-                      <img className="rounded-full" src="../images/customer-avatar-03.jpg" width="32" height="32" alt="Customer Avatar 03" />
+                      <img className="rounded-full" src="../assets/theme/customer-avatar-03.jpg" width="32" height="32" alt="Customer Avatar 03" />
                       <div>
                         <div className="text-slate-300 font-medium">Becky Taylor</div>
                         <div className="text-slate-500">Product Marketing Manager</div>

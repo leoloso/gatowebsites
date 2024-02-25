@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Particles from '@/components/particles'
-import Illustration from '@/public/images/page-illustration.svg'
-import Illustration02 from '@/public/images/page-illustration-02.svg'
+import Illustration from '@/public/assets/theme/page-illustration.svg'
+import Illustration02 from '@/public/assets/theme/page-illustration-02.svg'
 
 export default function StunningBackground({
   addOpacityLayer = false,

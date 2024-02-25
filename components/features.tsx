@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { Transition } from '@headlessui/react'
 import Particles from './particles'
-import Illustration from '@/public/images/glow-top.svg'
+import Illustration from '@/public/assets/theme/glow-top.svg'
 
 export default function Features() {
 

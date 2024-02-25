@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Team from '@/public/images/team.jpg'
+import Team from '@/public/assets/theme/team.jpg'
 
 export default function Story() {
   return (

@@ -5,11 +5,11 @@ import Image from 'next/image'
 import Particles from './particles'
 import Highlighter, { HighlighterItem } from './highlighter'
 
-import CarouselImg01 from '@/public/images/carousel-icon-01.svg'
-import CarouselImg02 from '@/public/images/carousel-icon-02.svg'
-import CarouselImg03 from '@/public/images/carousel-icon-03.svg'
-import CarouselImg04 from '@/public/images/carousel-icon-04.svg'
-import CarouselImg05 from '@/public/images/carousel-icon-05.svg'
+import CarouselImg01 from '@/public/assets/theme/carousel-icon-01.svg'
+import CarouselImg02 from '@/public/assets/theme/carousel-icon-02.svg'
+import CarouselImg03 from '@/public/assets/theme/carousel-icon-03.svg'
+import CarouselImg04 from '@/public/assets/theme/carousel-icon-04.svg'
+import CarouselImg05 from '@/public/assets/theme/carousel-icon-05.svg'
 
 // Import Swiper
 import Swiper, { Navigation } from 'swiper'

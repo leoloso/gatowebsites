@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { StaticImageData } from 'next/image'
-import Testimonial01 from '@/public/images/testimonial-01.png'
-import Testimonial02 from '@/public/images/testimonial-02.png'
-import Testimonial03 from '@/public/images/testimonial-03.png'
+import Testimonial01 from '@/public/assets/theme/testimonial-01.png'
+import Testimonial02 from '@/public/assets/theme/testimonial-02.png'
+import Testimonial03 from '@/public/assets/theme/testimonial-03.png'
 
 interface Item {
   img: StaticImageData
