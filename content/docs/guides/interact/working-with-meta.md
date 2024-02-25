@@ -1,0 +1,46 @@
+---
+title: Working with Meta Values
+metaDesc: This is how to query meta data for custom posts, users, comments, and taxonomies (tags and categories) from the GraphQL schema.
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 190
+---
+
+📣 **Note:** To fetch and filter by meta values, their [meta keys must be added to the allowlist](../../config/querying-by-meta-values/).
+
+We can retrieve meta values for custom posts, users, comments, and taxonomies (tags and categories), by querying fields `metaValue` (for a single value) and `metaValues` (for an array of values) from the corresponding type:
+
+- `Post.metaValue`
+- `Post.metaValues`
+- `GenericCustomPost.metaValue`
+- `GenericCustomPost.metaValues`
+- `User.metaValue`
+- `User.metaValues`
+- `Comment.metaValue`
+- `Comment.metaValues`
+- `PostTag.metaValue`
+- `PostTag.metaValues`
+- `PostCategory.metaValue`
+- `PostCategory.metaValues`
+- `GenericTag.metaValue`
+- `GenericTag.metaValues`
+- `GenericCategory.metaValue`
+- `GenericCategory.metaValues`
+
+## Filtering by meta
+
+Custom posts, comments, users and taxonomies (tags and categories) can also be filtered by meta, using the `metaQuery` input.
+
+This input offers an enhancement over [how the `meta_query` args are provided](https://developer.wordpress.org/reference/classes/wp_meta_query/) (to functions `get_posts`, `get_users`, etc), in that type validations are strictly enforced in the GraphQL schema, and only the combinations that make sense are exposed.
+
+This is accomplished by using the "oneof" input field `compareBy`, which offers 4 possibilities. Depending on the chosen option, different operators can be used for the comparison:
+
+| `compareBy` input | Possible operators |
+| --- | --- |
+| 1. `key` | `EXISTS`<br/>`NOT EXISTS` |
+| 2. `numericValue` | `=`<br/>`!=`<br/>`>`<br/>`>=`<br/>`<`<br/>`<=` |
+| 3. `stringValue` | `=`<br/>`!=`<br/>`LIKE`<br/>`NOT LIKE`<br/>`REGEXP`<br/>`NOT REGEXP`<br/>`RLIKE` |
+| 4. `arrayValue` | `IN`<br/>`NOT IN`<br/>`BETWEEN`<br/>`NOT BETWEEN` |
+
+In addition, when comparing by `key`, there's no need to provide input `value`.
+
+We can pass several items under `metaQuery`, and decide if to do an `AND` or `OR` of their conditions by passing input `relation` on the first item in the list.

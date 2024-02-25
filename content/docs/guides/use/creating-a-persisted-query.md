@@ -1,0 +1,164 @@
+---
+title: Creating a persisted query
+metaDesc: "A persisted query is a combination of GraphQL and REST APIs: it is a normal GraphQL query, published on the site and accessed under its own URL, similar to a REST endpoint."
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 200
+---
+
+A persisted query is a combination of GraphQL and REST APIs: it is a normal GraphQL query, published on the site and accessed under its own URL, similar to a REST endpoint.
+
+For instance, we can expose data for a website through the following persisted queries:
+
+- `/graphql-query/homepage-posts`
+- `/graphql-query/user-widget`
+- `/graphql-query/post-content` and execute it passing the ID of the post: `?post=1`
+- `/graphql-query/post-content/es` to translate the content of the post to Spanish
+- Others
+
+<a href="/assets/guides/upstream/persisted-query.png" target="_blank">![Persisted query editor](/assets/guides/upstream/persisted-query.png "Persisted query editor")</a>
+
+## Executing the persisted query
+
+Once the persisted query is published, we can execute it via its permalink.
+
+The persisted query can be executed directly in the browser, since it is accessed via `GET`, and we will obtain the requested data, in JSON format:
+
+<a href="/assets/guides/upstream/persisted-query-execution.png" target="_blank">![Executing a persisted in the browser](/assets/guides/upstream/persisted-query-execution.png "Executing a persisted in the browser")</a>
+
+### Executing the persisted query in an application
+
+Please follow the instructions on guide [Connecting to the GraphQL server from a client](../../intro/connecting-to-the-graphql-server-from-a-client/).
+
+## Accessing all persisted queries
+
+<!-- **Note:** A persisted query is implemented as a Custom Post Type (with name `"graphql-query"`). So it is operated the same way as with posts in the WordPress admin. -->
+
+Clicking on "Persisted Queries" on the plugin's menu, it displays the list of all the created persisted queries:
+
+<div class="img-width-1024" markdown=1>
+
+<a href="/assets/guides/upstream/persisted-queries-page.png" target="_blank">![Persisted Queries in the admin](/assets/guides/upstream/persisted-queries-page.png "Persisted Queries in the admin")</a>
+
+</div>
+
+## Creating a new persisted query
+
+Click on button "Add New GraphQL persisted query" to open the WordPress editor:
+
+<a href="/assets/guides/upstream/new-persisted-query.png" target="_blank">![Creating a persisted query](/assets/guides/upstream/new-persisted-query.png "Creating a persisted query")</a>
+
+Give it a title and make sure the permalink is the expected one, input the GraphQL query, select the schema configuration, and adjust the options. When ready, click on the `Publish` button, and the permalink becomes the persisted query's endpoint.
+
+The link to the endpoint (and to the source) is shown on the "Persisted Query Endpoint Overview" sidebar panel:
+
+<a href="/assets/guides/upstream/persisted-query-endpoint-overview.png" target="_blank">![Persisted Query Endpoint Overview](/assets/guides/upstream/persisted-query-endpoint-overview.png "Persisted Query Endpoint Overview")</a>
+
+By default, the persisted query's endpoint has path `/graphql-query/`, and this value is configurable through the Settings:
+
+<div class="img-width-1024" markdown=1>
+
+<a href="/assets/guides/upstream/settings-persisted-queries.png" target="_blank">![Persisted query Settings](/assets/guides/upstream/settings-persisted-queries.png "Persisted query Settings")</a>
+
+</div>
+
+### Query editor
+
+The GraphiQL client in the editor is where to input the GraphQL persisted query:
+
+<a href="/assets/guides/upstream/persisted-query-graphiql.png" target="_blank">![The persisted query's GraphiQL client](/assets/guides/upstream/persisted-query-graphiql.png "The persisted query's GraphiQL client")</a>
+
+The editor comes with the Explorer add-on, which allows to compose the query by clicking on the fields on the left side panel. Clicking on the "Run" button executes the query, to preview the response:
+
+<a href="/assets/guides/upstream/graphiql-explorer.gif" target="_blank">![Composing a persisted query with the Explorer](/assets/guides/upstream/graphiql-explorer.gif "Composing a persisted query with the Explorer")</a>
+
+### Schema configuration
+
+Defining who can access the fields requested in the persisted query is defined in the schema configuration.
+
+So we must create a [create a schema configuration](../creating-a-schema-configuration/), and then select it from the dropdown (or use none, or the default one):
+
+<a href="/assets/guides/upstream/select-schema-configuration.png" target="_blank">![Selecting the schema configuration](/assets/guides/upstream/select-schema-configuration.png "Selecting the schema configuration")</a>
+
+### Private persisted queries
+
+By setting the status of the Persisted Query as `private`, the endpoint can only be accessed by the admin user. This prevents our data from being unintentionally shared with users who should not have access to the data.
+
+For instance, we can create private Persisted Queries that help manage the application, such as retrieving data to create reports with our metrics.
+
+![Private Persisted Query](/assets/guides/upstream/private-persisted-query.png "Private Persisted Query")
+
+### Password-protected persisted queries
+
+If we create a Persisted Query for a specific client, we can assign a password to it, to provide an additional level of security that only that client will access the endpoint.
+
+![Password-protected Persisted Query](/assets/guides/upstream/password-protected-persisted-query.png "Password-protected Persisted Query")
+
+When first accessing a password-protected persisted query, we encounter a screen requesting the password:
+
+![Password-protected Persisted Query: First access](/assets/guides/upstream/password-protected-persisted-query-unauthorized.png "Password-protected Persisted Query: First access")
+
+Once the password is provided and validated, only then the user will access the intended endpoint.
+
+### Making the persisted query dynamic via URL params
+
+The value for each variable can be set via a URL param (with the variable name) when executing the persisted query. If option "Do URL params override variables?" is enabled, then the URL param will take priority. Otherwise, the value defined in the variables dictionary will take priority (if any).
+
+For instance, in this query, the number of results is controlled via variable `$limit`, with a default value of 3:
+
+<a href="/assets/guides/upstream/new-persisted-query-variables.png" target="_blank">![Using variables in persisted query](/assets/guides/upstream/new-persisted-query-variables.png "Using variables in persisted query")</a>
+
+When executing this persisted query, passing `?limit=5` will execute the query returning 5 results instead:
+
+<a href="/assets/guides/upstream/executing-persisted-query-variables.png" target="_blank">![Overriding value for variables in persisted query](/assets/guides/upstream/executing-persisted-query-variables.png "Overriding value for variables in persisted query")</a>
+
+### Creating a persisted query hierarchy
+
+Please read the instructions on [creating an API hierarchy](../creating-an-api-hierarchy/).
+
+### Disabling the persisted query
+
+In the options, set "Enabled" to `false` to disable the persisted query.
+
+This feature can be useful when making the persisted query be part of an API hierarchy, to provide a common behavior to its child persisted queries, but without needing itself be executed.
+
+### Describing the persisted query
+
+Use the "Excerpt" field, from the Document settings panel, to give a description to the persisted query.
+
+Find more information in guide [Adding a description to the API](../../config/adding-a-description-to-the-api/).
+
+## Testing the persisted query before publishing online
+
+A persisted query with status `draft` or `pending` is available to the schema editor users only.
+
+Then, we can create a persisted query, assign a Schema Configuration, publish it as `draft` or `pending`, and test it (eg: checking that its Access Control rules are appropriate).
+
+Once approved, only then we set its status as `publish`, making the persisted query available to everyone.
+
+## Viewing the source
+
+Appending `?view=source` to the endpoint, it will show the persisted query's configuration (as long as the user is logged-in and the user role has access to it):
+
+<a href="/assets/guides/upstream/persisted-query-source.png" target="_blank">![Persisted query's source](/assets/guides/upstream/persisted-query-source.png "Persisted query's source")</a>
+
+---
+
+## Configuration in the WordPress editor
+
+These are the inputs in the body of the editor:
+
+| Input | Description |
+| --- | --- |
+| **Title** | Persisted query's title |
+| **GraphiQL client** | Editor to write and execute the GraphQL query:<ul><li>Write the query on the textarea</li><li>Declare variables inside the query, and declare their values on the variables input at the bottom</li><li>Click on the "Run" button to execute the query</li><li>Obtain the results on the input on the right side</li><li>Click on "Docs" to inspect the schema information</li></ul>The Explorer (shown only if module `GraphiQL Explorer` is enabled) allows to click on the fields, and these are automatically added to the query |
+| **Schema configuration** | From the dropdown, select the schema configuration that applies to the persisted query, or one of these options:<ul><li>`"Default"`: the schema configuration is the one selected on the plugin's Settings</li><li>`"None"`: the persisted query will be unconstrained</li><li>`"Inherit from parent"`: Use the same schema configuration as the parent persisted query.<br/>This option is available when module `API Hierarchy` is enabled, and the persisted query has a parent query (selected on the Document settings)</li></ul> |
+| **Options** | Customize the behavior of the persisted query: <ul><li>**Enabled?:** If the persisted query is enabled.<br/>It's useful to disable a persisted query it's a parent query in an API hierarchy</li><li>**Do URL params override variables?:** Allow URL params to override the values for variables defined in the GraphiQL client</li><li>**Inherit query from ancestor(s)?:** Use the same query as the parent persisted query.<br/>This option is available when module `API Hierarchy` is enabled, and the persisted query has a parent query (selected on the Document settings)</li></ul> |
+
+These are the inputs in the Document settings:
+
+| Input | Description |
+| --- | --- |
+| **Permalink** | The endpoint under which the persisted query will be available |
+| **Categories** | Can categorize the persisted query.<br/>Eg: `mobile`, `app`, etc |
+| **Excerpt** | Provide a description for the persisted query.<br/>This input is available when module `Excerpt as Description` is enabled |
+| **Page attributes** | Select a parent persisted query.<br/>This input is available when module `API Hierarchy` is enabled |

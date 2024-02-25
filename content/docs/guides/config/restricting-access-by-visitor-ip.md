@@ -1,0 +1,44 @@
+---
+title: Restricting access by visitor IP
+isPRO: true
+metaDesc: "Within Access Control, we can use rule 'Visitor IP' to grant access to the selected schema elements (operations, fields and directives) based on the visitor coming from a list of allowed IP addresses."
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 3270
+---
+
+Within [Access Control](../../use/defining-access-control), we can use rule "Visitor IP" to grant access to the selected schema elements (operations, fields and directives) based on the visitor coming from a list of allowed IP addresses.
+
+## Configuring the IP addresses
+
+We must define the list of IP addresses that can either access, or are denied access to, the schema elements.
+
+Each entry can either be:
+
+- A regex (regular expression), if it's surrounded by `/` or `#`, or
+- The full IP address, otherwise
+
+For instance, any of these entries match IP address `"203.23.88.100"`:
+
+- `203.23.88.100`
+- `#^203\.23\.[0-9]{1,3}\.[0-9]{1,3}$#`
+
+And under Behavior, select if to "Allow access" or "Deny access" to the schema for those entries.
+
+![Adding entries in the Visitor IP block](/assets/guides/upstream-pro/acl-rule-visitor-ip-block.png "Adding entries in the Visitor IP block")
+
+## Configuring the server
+
+The client's IP address is retrieved from under the `$_SERVER` global variable, normally from under property `'REMOTE_ADDR'`. However, different platforms may require to use a different property name to retrieve this information.
+
+For instance:
+
+- Cloudflare might use `'HTTP_CF_CONNECTING_IP'`
+- AWS might use `'HTTP_X_FORWARDED_FOR'`
+
+The property name to use can be configured in the "Plugin Configuration > Server IP Configuration" tab on the Settings page:
+
+<div class="img-width-1024" markdown=1>
+
+![Configuring the $_SERVER property name to retrieve the client IP](/assets/guides/upstream-pro/settings-general-client-ip-address-server-property-name.png "Configuring the $_SERVER property name to retrieve the client IP")
+
+</div>

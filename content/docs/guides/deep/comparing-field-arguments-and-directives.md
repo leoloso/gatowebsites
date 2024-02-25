@@ -1,0 +1,425 @@
+---
+title: Comparing field arguments and directives
+metaDesc: When should we use field arguments and when query-side directives? Is there any difference between the two methods, or any situation when one option is better than the other?
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 900
+---
+
+The same functionality to modify the output of a field in GraphQL can often be achieved via two different methods:
+
+1. Field arguments: `field(arg: value)`
+2. Query-type directives: `field @directive`
+
+(Query-type directives are those applied on the query in the client-side, as contrasted to schema-type directives, which are applied via SDL -Schema Definition Language- when building the schema on the server. As Gato GraphQL creates the schema from PHP code, not from SDL, its directives are all of the query type, and they are simply referenced as "directives".)
+
+For instance, converting the response of a `title` field to uppercase could be achieved by passing a field arg `format` with an enum value `UPPERCASE`, like this:
+
+```graphql
+{
+  posts {
+    title(format: UPPERCASE)
+  }
+}
+```
+
+or by applying a directive `@strUpperCase` on the field, like this:
+
+```graphql
+{
+  posts {
+    title @strUpperCase
+  }
+}
+```
+
+In both cases, the response from the GraphQL server will be the same:
+
+```json
+{
+  "data": {
+    "posts": [
+      {
+        "title": "HELLO WORLD!"
+      },
+      {
+        "title": "FIELD ARGUMENTS VS DIRECTIVES IN GRAPHQL"
+      }
+    ]
+  }
+}
+```
+
+When should we use field arguments and when query-side directives? Is there any difference between the two methods, or any situation when one option is better than the other?
+
+## What field arguments and directives are good for
+
+Resolving a field in GraphQL involves two different operations:
+
+1. fetching the requested data from the queried entity
+2. applying functionality (such as formatting) on the requested data
+
+We can label these two operations as "data resolution" and "applying functionality", or, for short, as "data" and "functionality" respectively.
+
+The main difference between field arguments and directives is that field arguments can be used for both "data" and "functionality", but directives can only be used for "functionality".
+
+Let's see a bit more in detail what this means.
+
+## Resolving data via field arguments
+
+Field arguments are processed when resolving the field, hence they can be used to retrieve the actual data, such as deciding what property from the object is accessed.
+
+For instance, this resolver code shows how argument `size` is used to fetch one or another image source from the `Media` object type:
+
+```php
+function resolveValue(
+  object $mediaObject,
+  FieldDataAccessorInterface $fieldDataAccessor,
+): mixed {
+  if ($fieldDataAccessor->getFieldName() === 'src') {
+    $size = $fieldDataAccessor->getValue('size');
+    return $this->getMediaTypeAPI()->getImageSrc($mediaObject, $size);
+  }
+  // ...
+}
+```
+
+Field args can also be used to help decide what row or column from the DB table must be queried.
+
+In this query, field argument `id` is used to query some specific entity of type `Post`, which the resolver will translate to some specific row from WordPress' `wp_posts` DB table:
+
+```graphql
+{
+  post(by: { id: 1 }) {
+    title
+  }
+}
+```
+
+The same table stores the post's date in two different columns, `post_modified` and `post_modified_gmt` (for backward-compatibility reasons). In this query, passing field argument `gmt` with `true` or `false` translates into fetching the value from one or the other column:
+
+```graphql
+{
+  post(by: { id: 1 }) {
+    title
+    date(gmt: true)
+  }
+}
+```
+
+These examples demonstrate that field args can modify the source of the data when resolving the field.
+
+Directives cannot be used to modify the source of the data, because their logic is provided via directive resolvers, which are invoked after the field resolver. Hence, by the time the directive is applied, the field's value must have been retrieved.
+
+For instance, this query will never work:
+
+```graphql
+{
+  post @selectEntity(id: 1) {
+    title
+  }
+}
+```
+
+In this example, field `post` requires to be provided the `id` of the entity, and since it is not provided as a field argument, the server will return an error:
+
+```json
+{
+  "errors": [
+    {
+      "message": "Argument 'id' cannot be empty",
+      "extensions": {
+        "type": "QueryRoot",
+        "field": "post @selectEntity(id:1)"
+      }
+    }
+  ]
+}
+```
+
+In conclusion, only field arguments can help retrieve the data that resolves the field.
+
+## Applying functionality via field arguments or directives
+
+Once we retrieve the data for the field, we may want to manipulate its value. For instance, we could:
+
+- Format a string, converting it to upper or lower case
+- Format a date represented with a string, from the default `YYYY-mm-dd` format to `dd/mm/YYYY`
+- Mask a string, replacing emails and telephone numbers with `***`
+- Provide a default value if it is `null` or empty
+- Round floats to 2 digits
+
+Any of these operations is a manipulation on the already-retrieved data. Hence, they can be coded both in the field resolver, right after fetching the data and before returning it, or in the directive resolver, which will get the field's value as its input. As such, any of these operations can be implemented via either field arguments or directives.
+
+For instance, the field resolver for `Post.excerpt` could provide a default value via a field arg `default`, and then we can customize the value for the `default` arg in the query:
+
+```graphql
+{
+  posts {
+    excerpt(default: "(No excerpt)")
+  }
+}
+```
+
+We can also create a `@default` directive, with a directive resolver like this:
+
+```php
+/**
+ * Replace all the empty results with the default value
+ */
+function resolveDirective(
+  array $directiveArgs,
+  array $objectIDFields,
+  array $objectsByID,
+  array &$responseByObjectIDAndField
+): void {
+  foreach ($objectIDFields as $id => $fields) {
+    $object = $objectsByID[$id];
+    $defaultValue = $directiveArgs['value'];
+    foreach ($fields as $field) {
+      if (empty($responseByObjectIDAndField[$id][$field])) {
+        $responseByObjectIDAndField[$id][$field] = $defaultValue;
+      }
+    }
+  }
+}
+```
+
+Are these two strategies equally suitable? Let's explore this question based on different areas of interest.
+
+## Field arguments are better covered by the GraphQL spec
+
+The extent to which directives are allowed to operate is not clearly defined in the GraphQL spec, which [reads](https://spec.graphql.org/draft/#sec-Language.Directives):
+
+> Directives provide a way to describe alternate runtime execution and type validation behavior in a GraphQL document.
+>
+> In some cases, you need to provide options to alter GraphQL’s execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.
+
+This definition consents to the use of directives such as `@include` and `@skip`, which conditionally include and skip a field respectively, and `@stream` and `@defer`, which provide a different runtime execution for retrieving data from the server.
+
+However, this definition is not unambiguous concerning directives which modify the value of a field, such as `@strUpperCase`, which transforms the output value `"Hello world!"` into `"HELLO WORLD!"`.
+
+Due to this ambiguity, different GraphQL servers, clients and tools may take directives into account to different extents, creating conflicts among them.
+
+And example of this is [Relay](https://relay.dev/), which [does not take directives into account for caching field values](https://discord.com/channels/625400653321076807/862834364718514196/882933871249862707). If first querying:
+
+```graphql
+{
+  post(by: { id: 1 }) {
+    title
+  }
+}
+```
+
+...Relay will query and cache value `"Hello world!"` for post with ID `1`. If then we run this query:
+
+```graphql
+{
+  post(by: { id: 1 }) {
+    title @strUpperCase
+  }
+}
+```
+
+...the response should be `"HELLO WORLD!`", however Relay will return `"Hello world!"`, which is the value stored in its cache for post with ID `1`, ignoring the directive applied on the field.
+
+If directives are allowed to modify the field's output value or not is in a gray area, since it is neither explicitly allowed or disallowed in the GraphQL spec, yet there are indicators for both opposite situations.
+
+On one side, the GraphQL spec seems to grant directives a [free hand to improve and customize GraphQL](https://spec.graphql.org/draft/#sec-Language.Directives):
+
+> As future versions of GraphQL adopt new configurable execution capabilities, they may be exposed via directives. GraphQL services and tools may also provide any additional custom directive beyond those described here.
+
+On the other hand, the spec does not take directives into account for the [`FieldsInSetCanMerge` validation](https://spec.graphql.org/draft/#sec-Field-Selection-Merging) or the [`CollectFields` algorithm](https://spec.graphql.org/draft/#CollectFields()). The following GraphQL query is valid, yet [it is uncertain what response the user will obtain](https://discord.com/channels/625400653321076807/862834364718514196/893149862185562262):
+
+```graphql
+{
+  user(by: { id: 1 }) {
+    name
+    name @strUpperCase
+    name @strLowerCase
+  }
+}
+```
+
+Depending on the behavior from the GraphQL server, the response for field `name` may be `"Leo"`, `"LEO"` or `"leo"`... we don't know in advance, and that's a problem.
+
+The same issue does not happen with field arguments. When the following query is executed:
+
+```graphql
+{
+  user(by: { id: 1 }) {
+    name
+    name(format: UPPERCASE)
+    name(format: LOWERCASE)
+  }
+}
+```
+
+...the spec dictates the GraphQL server to return an error, so the value for `name` will be `null`. We would then be forced to introduce aliases to execute the query:
+
+```graphql
+{
+  user(by: { id: 1 }) {
+    name
+    ucName: name(format: UPPERCASE)
+    lcName: name(format: LOWERCASE)
+  }
+}
+```
+
+## Directives are better for modularity and code re-usability
+
+Many of the operations offered by directives are agnostic of the entity and field where it is applied. For instance, `@strUpperCase` will work on any string, whether applied on a post's title, a user's name, a location's address or anything else.
+
+As a consequence, the code for this directive is implemented only once and in a single place, the directive resolver. Similar to [aspect-oriented programming](https://en.wikipedia.org/wiki/Aspect-oriented_programming) (which increases modularity by allowing the separation of cross-cutting concerns), directives are applied on the field without affecting the logic of the field.
+
+In contrast, implementing the same functionality via a field argument involves executing the same code across the field resolver (and across different field resolvers):
+
+```php
+function formatString(string $string, string $format): string
+{
+  if ($format === "UPPERCASE") {
+    return strtoupper($string);
+  }
+  if ($format === "LOWERCASE") {
+    return strtolower($string);;
+  }
+  return $string;
+};
+
+function resolveValue(
+  object $post,
+  FieldDataAccessorInterface $fieldDataAccessor,
+): mixed {
+  $format = $fieldDataAccessor->getValue('format');
+  if ($fieldDataAccessor->getFieldName() === 'title') {
+    return formatString($post->post_title, $format);
+  }
+  if ($fieldDataAccessor->getFieldName() === 'excerpt') {
+    return formatString($post->post_excerpt, $format);
+  }
+  if ($fieldDataAccessor->getFieldName() === 'content') {
+    return formatString($post->post_content, $format);
+  }
+  // ...
+}
+```
+
+To reduce the amount of code in the resolvers, then directives are more suitable than field arguments.
+
+## Directives are better for schema design
+
+Adding field arguments will add extra information to the schema, possibly bloating it and making it inconsistent.
+
+For instance, a field argument `format` will need to be added to all `String` fields and, if we are not careful, it may not be homogeneous across fields, such as using different names, different values, different default values, or even splitting the argument into several inputs:
+
+```graphql
+type Post {
+  # Input value is "uppercase" or "strLowerCase"
+  title(format: String): String
+  content(format: String): String
+  excerpt(format: String): String
+}
+
+type Category {
+  # Input name is "case" instead of "format"
+  # Input value is an enum StringCase with values UPPERCASE and LOWERCASE
+  name(case: StringCase): String
+}
+
+type Tag {
+  # Using a default value
+  name(format: String = "strLowerCase"): String
+}
+
+type User {
+  # Using multiple Boolean inputs
+  description(useUppercase: Boolean, useLowercase: Boolean): String
+}
+```
+
+Directives allow us to keep the schema as lean as possible:
+
+```graphql
+directive @strUpperCase on FIELD
+directive @strLowerCase on FIELD
+
+type Post {
+  title: String
+  content: String
+  excerpt: String
+}
+
+type Category {
+  name: String
+}
+
+type Tag {
+  name: String
+}
+
+type User {
+  description: String
+}
+```
+
+## Directives can be more efficient than field arguments
+
+On execution time, a field argument will be accessed when resolving the field, which happens on a field-by-field and object-by-object basis. For instance, when resolving fields `title` and `content` on a list of posts, the resolver will be invoked once per post and field:
+
+```php
+function resolveValue(
+  object $post,
+  FieldDataAccessorInterface $fieldDataAccessor,
+): mixed {
+  if ($fieldDataAccessor->getFieldName() === 'title') {
+    return $post->post_title;
+  }
+  if ($fieldDataAccessor->getFieldName() === 'content') {
+    return $post->post_content;
+  }
+  // ...
+}
+```
+
+Imagine that we want to translate these strings using the Google Translate API, for which we add argument `translateTo`:
+
+```php
+function executeGoogleTranslate(string $string, string $lang): string
+{
+  // Execute against https://translation.googleapis.com
+  // ...
+};
+
+function resolveValue(
+  object $post,
+  FieldDataAccessorInterface $fieldDataAccessor,
+): mixed {
+  $lang = $fieldDataAccessor->getValue('lang');
+  if ($fieldDataAccessor->getFieldName() === 'title') {
+    return executeGoogleTranslate($post->post_title, $lang);
+  }
+  if ($fieldDataAccessor->getFieldName() === 'content') {
+    return executeGoogleTranslate($post->post_content, $lang);
+  }
+  // ...
+}
+```
+
+Because the logic is naturally executed per combination of field and object, we may end up requesting a great number of connections to the external API, producing a slow response to resolve the query.
+
+In addition, executing the calls independently from each other will not allow to associate their data, so the quality of the translation will be inferior than if all data were submitted together in a single API call.
+
+For instance, a post title `"Power"` can be better translated if the post content, which makes it evident this word refers to "electrical power", is submitted together with it.
+
+Gato GraphQL invokes a directive only once, passing all fields and objects to be applied to as input. By receiving all data all together, the `@strTranslate` directive can execute a single call to Google Translate passing along all `title` and `content` fields for all objects, as in this query:
+
+```graphql
+{
+  posts(pagination: { limit: 6 }) {
+    title @strTranslate(from: "en", to: "fr")
+    excerpt @strTranslate(from: "en", to: "fr")
+  }
+}
+```
+
+Directives can provide a more performant way to modify the value of the fields, such as when interacting with external APIs.

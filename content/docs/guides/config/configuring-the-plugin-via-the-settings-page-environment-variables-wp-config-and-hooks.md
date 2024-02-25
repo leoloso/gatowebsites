@@ -1,0 +1,97 @@
+---
+title: Configuring the plugin via the Settings page, environment variables, wp-config, and hooks
+metaDesc: Explanation of the different ways to configure the options in Gato GraphQL.
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 150
+---
+
+There are several ways to configure the options in the plugin.
+
+## The Settings page
+
+The Settings page enables to configure the plugin in the WordPress admin.
+
+To open it, click on link "Settings" on the plugin's menu:
+
+<a href="/assets/guides/downstream/opening-settings-page.png" target="_blank">![Opening the Settings page](/assets/guides/downstream/opening-settings-page.png "Opening the Settings page")</a>
+
+The settings are organized by tabs, where every tab corresponds to a module:
+
+<a href="/assets/guides/downstream/settings-page.png" target="_blank">![Settings page](/assets/guides/downstream/settings-page.png "Settings page")</a>
+
+After updating an option, click on button `Save Changes` to store and apply the new value.
+
+## By environment variables and `wp-config` constants
+
+All the options from the Settings page can also be set via environment variables, and constants defined in the `wp-config.php` file.
+
+The priority to choose the option value from, is the following:
+
+1. If there is the corresponding environment variable, it is used
+2. If there is the corresponding constant defined in `wp-config.php`, it is used
+3. Otherwise, the value from the Settings page is used
+
+After adding or modifying an environment value or `wp-config` constant, the plugin configuration must be regenerated. For that, go to the Settings page, and click on `Save Changes`.
+
+### Environment variables
+
+<div style="word-wrap: anywhere;">
+
+| Module | Option | Environment value |
+| --- | --- | --- |
+| Schema Editing Access | Editing Access Scheme | `EDITING_ACCESS_SCHEME` |
+| Single Endpoint | Endpoint Path | `GRAPHQL_API_ENDPOINT` |
+| Custom Endpoints | Endpoint Path | `ENDPOINT_SLUG_BASE` |
+| Persisted Queries | Endpoint Path | `PERSISTED_QUERY_SLUG_BASE` |
+| Graphiql For Single Endpoint | Client Path | `GRAPHIQL_CLIENT_ENDPOINT` |
+| Interactive Schema For Single Endpoint | Client Path | `VOYAGER_CLIENT_ENDPOINT` |
+| Public Private Schema | Mode | `USE_PRIVATE_SCHEMA_MODE` |
+| Public Private Schema | Enable Granular | `ENABLE_INDIVIDUAL_CONTROL_FOR_PUBLIC_PRIVATE_SCHEMA_MODE` |
+| Schema Namespacing | Use Namespacing | `NAMESPACE_TYPES_AND_INTERFACES` |
+| Nested Mutations | Enable Nested Mutations | `ENABLE_NESTED_MUTATIONS` |
+| Nested Mutations | Disable redundant root type fields | `DISABLE_REDUNDANT_ROOT_TYPE_MUTATION_FIELDS` |
+| Cache Control | Default Max Age | `DEFAULT_CACHE_CONTROL_MAX_AGE` |
+| Schema Posts | List Default Limit | `POST_LIST_DEFAULT_LIMIT` |
+| Schema Posts | List Max Limit | `POST_LIST_MAX_LIMIT` |
+| Schema Posts | Add Type To Custom Post Union Type | `ADD_POST_TYPE_TO_CUSTOMPOST_UNION_TYPES` |
+| Schema Users | List Default Limit | `USER_LIST_DEFAULT_LIMIT` |
+| Schema Users | List Max Limit | `USER_LIST_MAX_LIMIT` |
+| Schema Tags | List Default Limit | `TAG_LIST_DEFAULT_LIMIT` |
+| Schema Tags | List Max Limit | `TAG_LIST_MAX_LIMIT` |
+| Schema Pages | List Default Limit | `PAGE_LIST_DEFAULT_LIMIT` |
+| Schema Pages | List Max Limit | `PAGE_LIST_MAX_LIMIT` |
+| Schema Pages | Add Type To Custom Post Union Type | `ADD_PAGE_TYPE_TO_CUSTOMPOST_UNION_TYPES` |
+| Schema Custom Posts | List Default Limit | `CUSTOMPOST_LIST_DEFAULT_LIMIT` |
+| Schema Custom Posts | List Max Limit | `CUSTOMPOST_LIST_MAX_LIMIT` |
+| Schema Custom Posts | Use Single Type Instead Of Union Type | `USE_SINGLE_TYPE_INSTEAD_OF_CUSTOMPOST_UNION_TYPE` |
+
+</div>
+
+### `wp-config` constants
+
+The name of the constant in the `wp-config.php` file is the same as the environment variable, prepending it with `GATOGRAPHQL_`.
+
+For instance, environment variable `EDITING_ACCESS_SCHEME` must be defined as `GATOGRAPHQL_EDITING_ACCESS_SCHEME` in `wp-config.php`.
+
+## Via hooks
+
+We can override the value of an option via a hook.
+
+Every option triggers its own hook:
+
+```php
+use PoP\ComponentModel\ComponentConfiguration\ComponentConfigurationHelpers;
+
+$hookName = ComponentConfigurationHelpers::getHookName(
+    $componentConfigurationClass,
+    $envVariable
+);
+add_filter($hookName, 'myFunctionToOverrideSettingsValue', PHP_INT_MAX);
+```
+
+To obtain the hook name, we need to provide:
+
+- `$componentConfigurationClass`: The `ComponentConfiguration` class from the package, where the option is defined
+- `$envVariable`: The name of the environment variable to set
+
+Please check [an example](https://github.com/GatoGraphQL/GatoGraphQL/blob/380f16c46a91bb3d40fff53c6770a31c30d6d457/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/src/Component.php#L99) on setting a hook.

@@ -1,0 +1,32 @@
+---
+title: Global Fields
+metaDesc: Global fields are fields that are accessible under every single type in the GraphQL schema (while being defined only once).
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 300
+templateEngineOverride: md
+---
+
+Global fields are fields that are accessible under every single type in the GraphQL schema (while being defined only once).
+
+The GraphQL schema exposes types, such as `Post`, `User` and `Comment`, and the fields available for every type, such as `Post.title`, `User.name` and `Comment.responses`. These fields deal with "data", as they retrieve some specific piece of data from an entity.
+
+Gato GraphQL, in addition, also offers a different kind of fields: those providing "functionality" instead of data.
+
+Some example global fields are:
+
+- `_not`
+- `_if`
+- `_equals`
+- `_isEmpty`
+- `_echo`
+- `_sprintf`
+- `_arrayItem`
+- `_arrayAddItem`
+- `_arrayUnique`
+- many more
+
+**Please notice:** By convention, all these fields start with `"_"`. This convention helps differentiate which are data (i.e. "normal") fields, and which are functionality fields, when visualizing the GraphQL schema.
+
+Functionality fields are useful for obtaining data that is stored outside of WordPress, and for manipulating the data once it has been retrieved, allowing us to transform a field value in whatever way it is required, and granting us powerful data import/export capabilities.
+
+Functionality fields belong not to a specific type, such as `Post` or `User`, but to all the types in the schema. That's why these are handled in a distinctive way in Gato GraphQL, under the name of "global fields".

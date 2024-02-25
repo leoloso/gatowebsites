@@ -1,0 +1,37 @@
+---
+title: Adding custom headers to the GraphQL response (CORS)
+metaDesc: "We can add custom headers to the GraphQL response. This is particularly useful to set the 'Access-Control-Allow-Origin' header to avoid issues with CORS."
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 150
+---
+
+We can add custom headers to the GraphQL response. This is particularly useful to set the `Access-Control-Allow-Origin` header to avoid issues with CORS.
+
+Response headers are set via the Schema Configuration, allowing us to send different headers for different endpoints. For instance, each endpoint can send the `Access-Control-Allow-Origin` header with the specific domain it is intended to be used with, thus increasing the security of our APIs.
+
+## Defining the Response Headers
+
+The response headers can be configured in 2 places.
+
+In the Schema Configuration applied to the endpoint under block "Response Headers", by selecting option `"Use custom configuration"` and then providing the desired headers (at one entry per line), with format `{header name}: {header value}`.
+
+For instance, provide value:
+
+```apacheconf
+Access-Control-Allow-Origin: https://mysite.com
+Access-Control-Allow-Headers: content-type,content-length,accept
+```
+
+<div class="img-width-610">
+
+<a href="/assets/guides/upstream/schema-configuration-response-headers.png" target="_blank">![Providing Response Headers in the Schema Configuration](/assets/guides/upstream/schema-configuration-response-headers.png "Providing Response Headers in the Schema Configuration")</a>
+
+</div>
+
+Otherwise, the value defined in the Settings page for `Response Headers` is used:
+
+<div class="img-width-1024">
+
+<a href="/assets/guides/upstream/settings-response-headers.png" target="_blank">![Providing Response Headers in the Settings](/assets/guides/upstream/settings-response-headers.png "Providing Response Headers in the Settings")</a>
+
+</div>

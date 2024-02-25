@@ -1,0 +1,61 @@
+---
+title: Use cases for versioning fields and directives
+metaDesc: We must know in advance that a field or directive has two or more versions to choose from, and we must know what those version numbers are. How should the GraphQL API inform the users?
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 605
+---
+
+_Please read first guide [Evolving the schema via field versioning](../evolving-the-schema-via-field-versioning/), which explains the "field versioning" feature in Gato GraphQL_.
+
+Gato GraphQL allows fields and directives to receive argument `versionConstraint`, to choose what specific version (i.e. implementation) of the field/directive to use:
+
+```graphql
+query GetPosts {
+  posts(versionConstraint: "^1.0") {
+    id
+    title(versionConstraint: ">=2.1")
+    excerpt @strUpperCase(versionConstraint: "~1.5.3")
+  }
+}
+```
+
+A field (or directive) can also have a default implementation, which is the one that has no version (and is the one that is used when `versionConstraint` is not provided in the query).
+
+When doing introspection, only data for the default fields and directives is retrieved. As a consequence, the `versionConstraint` argument will never appear when doing introspection, since the default field or directive does not support it.
+
+Because of this, we must always know in advance that a field or directive has two or more versions to choose from, and we must know what those version numbers are. This information is, by default, not public.
+
+Then, how is versioning useful? Here are several use cases.
+
+## Providing a quick bug fix for some specific user
+
+Let's say you have a GraphQL API deployed on your website, and a specific user complains that the field is not working as expected. But this happens only for this one user; nobody else seems to be experiencing problems.
+
+You identify and fix the issue, but you want to be sure it works before deploying the change to everyone. Then, you can deploy the change under a new field resolver with version `"1.0.1"`, and ask the user with the problem to change the GraphQL query to point to this version of the field:
+
+```graphql
+{
+  someBuggyField(versionConstraint: "1.0.1")
+}
+```
+
+If the bug was indeed fixed, only then copy the code to the default field resolver.
+
+## Asking selected users to test an upcoming release
+
+If a field or directive is versioned, and does not have a default (i.e. non-versioned) implementation, then it will not appear during introspection at all.
+
+```graphql
+{
+  someField
+    # This directive has no default implementation,
+    # so it won't appear during introspection,
+    # but it can still be added in the GraphQL query
+    # when providing a constraint that satisfies it
+    @someExperimentalDirective(versionConstraint: ">1.0")
+}
+```
+
+You can then deploy the field or directive and it will not be visible in the GraphQL API, and ask selected users to test it out, for which they must input the corresponding `versionConstraint` arg in their queries to use it.
+
+Once it is accepted, the versioning is removed, and the field or directive becomes visible via introspection, and so available to everyone.

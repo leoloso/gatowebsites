@@ -1,0 +1,114 @@
+---
+title: Meta Values
+metaDesc: Examples of queries to fetch meta data, and filter results by meta.
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 790
+---
+
+📣 **Note:** Read more in guide [Working with Meta Values](../../interact/working-with-meta).
+
+These are examples of queries to fetch meta data, and filter results by meta.
+
+## Querying meta
+
+Fetch single meta value `_thumbnail_id` from posts:
+
+```graphql
+{
+  posts {
+    id
+    title
+    metaValue(key: "_thumbnail_id")
+  }
+}
+```
+
+Fetch array meta value `upvotes` from comments:
+
+```graphql
+{
+  comments {
+    id
+    content
+    upvotes: metaValues(key: "upvotes")
+  }
+}
+```
+
+## Filtering by meta
+
+Filter posts where meta key `_thumbnail_id` exists:
+
+```graphql
+{
+  posts(filter: {
+    metaQuery: {
+      key: "_thumbnail_id",
+      compareBy:{
+        key: {
+          operator: EXISTS
+        }
+      }
+    }
+  }) {
+    id
+    title
+    metaValue(key: "_thumbnail_id")
+  }
+}
+```
+
+Filter users where meta entry `nickname` has a certain value:
+
+```graphql
+{
+  users(filter: {
+    metaQuery: {
+      key: "nickname",
+      compareBy:{
+        stringValue: {
+          value: "leo"
+          operator: EQUALS
+        }
+      }
+    }
+  }) {
+    id
+    name
+    metaValue(key: "nickname")
+  }
+}
+```
+
+Filter comments where meta entry `upvotes` (which is an array of integers) has either values `4` or `5`:
+
+```graphql
+{
+  comments(filter: {
+    metaQuery: [
+      {
+        relation: OR
+        key: "upvotes",
+        compareBy: {
+          arrayValue: {
+            value: 4
+            operator: IN
+          }
+        }
+      },
+      {
+        key: "upvotes",
+        compareBy: {
+          arrayValue: {
+            value: 5
+            operator: IN
+          }
+        }
+      }
+  ]}) {
+    id
+    content
+    upvotes: metaValues(key: "upvotes")
+  }
+}
+```

@@ -1,0 +1,78 @@
+---
+title: Creating Custom Internal Endpoints for Blocks
+metaDesc: Developers can create their own pre-defined internal endpoints (to feed data to their application or blocks), as to apply a specific configuration.
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 1300
+---
+
+Similar to the [`blockEditor` internal endpoint](../../special-features/internal-endpoint-for-blocks), developers can also create their own pre-defined internal endpoints (to feed data to their application or blocks), as to apply a specific configuration:
+
+- Using nested mutations or not
+- Using namespacing or not
+- Pre-defining CPTs that can be queried
+- Any other configuration available in the Schema Configuration
+
+The following PHP code defines a custom internal endpoint with name `accessMyPortfolioData`, that configures field `Root.customPosts` (from the "Custom Posts" module) to access the `MyPortfolio` CPT only:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use GatoGraphQL\GatoGraphQL\PluginSkeleton\ExtensionHooks\AbstractAddCustomAdminEndpointHook;
+use PoP\Root\Module\ModuleInterface;
+use PoPCMSSchema\CustomPosts\Environment as CustomPostsEnvironment;
+use PoPCMSSchema\CustomPosts\Module as CustomPostsModule;
+
+class MyPortfolioCustomAdminEndpointHook extends AbstractAddCustomAdminEndpointHook
+{
+  protected function getAdminEndpointGroup(): string
+  {
+    return 'accessMyPortfolioData';
+  }
+
+  /**
+   * Allow querying a specific CPT
+   *
+   * @param array<class-string<ModuleInterface>,array<string,mixed>> $moduleClassConfiguration [key]: Module class, [value]: Configuration
+   * @return array<class-string<ModuleInterface>,array<string,mixed>> [key]: Module class, [value]: Configuration
+   */
+  protected function doGetPredefinedAdminEndpointModuleClassConfiguration(
+    array $moduleClassConfiguration,
+  ): array {
+    $moduleClassConfiguration[CustomPostsModule::class][CustomPostsEnvironment::QUERYABLE_CUSTOMPOST_TYPES] = ['MyPortfolio'];
+    return $moduleClassConfiguration;
+  }
+
+  /**
+   * Do not disable any schema modules
+   *
+   * @param array<class-string<ModuleInterface>> $schemaModuleClassesToSkip List of `Module` class which must not initialize their Schema services
+   * @return array<class-string<ModuleInterface>> List of `Module` class which must not initialize their Schema services
+   */
+  protected function doGetSchemaModuleClassesToSkip(
+    array $schemaModuleClassesToSkip,
+  ): array {
+    return [];
+  }
+}
+```
+
+It must be initialized on the `plugins_loaded` hook:
+
+```php
+add_action('plugins_loaded', function () {
+  // Validate Gato GraphQL is installed, or exit
+  if (!class_exists(\GatoGraphQL\GatoGraphQL\Plugin::class)) {
+    return;
+  }
+
+  new MyPortfolioCustomAdminEndpointHook();
+});
+```
+
+Finally, the endpoint is accessed by replacing param `endpoint_group` with the chosen name:
+
+```apacheconf
+https://yoursite.com/wp-admin/edit.php?page=gatographql&action=execute_query&endpoint_group=accessMyPortfolioData
+```

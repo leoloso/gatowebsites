@@ -1,0 +1,27 @@
+---
+title: Returning a payload object or the mutated entity for mutations
+metaDesc: "We can configure mutation fields to return either a payload object type, or directly the mutated entity."
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 430
+---
+
+We can configure mutation fields to return [either of these 2 different entities](../../special-features/mutation-return-type/):
+
+- A payload object type
+- Directly the mutated entity
+
+Using payload object types for mutations in the schema can be configured as follows, in order of priority:
+
+✅ Specific mode for the custom endpoint or persisted query, defined in the schema configuration
+
+<a href="/assets/guides/upstream/schema-configuration-payload-object-types-for-mutations.png" target="_blank">![Defining if to use payload object types for mutations, set in the Schema configuration](/assets/guides/upstream/schema-configuration-payload-object-types-for-mutations.png "Defining if to use payload object types for mutations, set in the Schema configuration")</a>
+
+✅ Default mode, defined in the Settings
+
+If the schema configuration has value `"Default"`, it will use the mode defined in the Settings:
+
+<div class="img-width-1024" markdown=1>
+
+<a href="/assets/guides/upstream/settings-payload-object-types-for-mutations-default.png" target="_blank">![Defining if to use payload object types for mutations, in the Settings](/assets/guides/upstream/settings-payload-object-types-for-mutations-default.png "Defining if to use payload object types for mutations, in the Settings")</a>
+
+</div>

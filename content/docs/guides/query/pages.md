@@ -1,0 +1,61 @@
+---
+title: Pages
+metaDesc: Examples of queries to fetch page data.
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 300
+---
+
+These are examples of queries to fetch page data.
+
+## Fetching pages
+
+A single page:
+
+```graphql
+query {
+  page(by: { id: 2 }) {
+    id
+    title
+    content
+    url
+    date
+  }
+}
+```
+
+A list of pages:
+
+```graphql
+query {
+  pages(pagination: { limit: 5 }) {
+    id
+    title
+    excerpt
+    url
+    dateStr(format: "d/m/Y")
+  }
+}
+```
+
+Top-level pages with their children:
+
+```graphql
+query {
+  pages(filter: { parentID: 0 }) {
+    ...PageProps
+    children {
+      ...PageProps
+      children(pagination: { limit: 3 }) {
+        ...PageProps
+      }
+    }
+  }
+}
+
+fragment PageProps on Page {
+  id
+  title
+  date
+  urlAbsolutePath
+}
+```

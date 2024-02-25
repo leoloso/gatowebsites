@@ -1,0 +1,90 @@
+---
+title: Creating an API hierarchy
+metaDesc: "Custom endpoints and persisted queries can be organized into a hierarchy. This is achieved when they declare a parent, in which case their endpoint paths will extend the parent's endpoint path."
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 400
+---
+
+Custom endpoints and persisted queries can be organized into a hierarchy. This is achieved when they declare a parent, in which case their endpoint paths will extend the parent's endpoint path.
+
+For instance, we can create this hierarchy:
+
+- Parent persisted query: `/graphql-query/posts/`
+- Child persisted query: `/graphql-query/posts/english/`
+- Child persisted query: `/graphql-query/posts/french/`
+
+The number of levels is unlimited, so we can also create:
+
+- `/graphql-query/posts/`
+- `/graphql-query/posts/mobile-app/`
+- `/graphql-query/posts/mobile-app/english/`
+- `/graphql-query/posts/mobile-app/french/`
+- `/graphql-query/posts/website/`
+- `/graphql-query/posts/website/english/`
+- `/graphql-query/posts/website/french/`
+
+✳️ **Note:** Check out guide [Strategies for API hierarchies](../../deep/strategies-for-api-hierarchies/) to see possible configurations.
+
+## Property inheritance
+
+Child custom endpoints and persisted queries will inherit properties from the parent.
+
+### Custom endpoints and persisted queries
+
+Child custom endpoints and persisted queries will inherit the parent's schema configuration.
+
+### Persisted queries only
+
+Child persisted queries will also inherit the parent's GraphQL query and variables. Values for variables can be overriden by the child, on a variable-by-variable basis.
+
+For instance, if the parent declares these variables:
+
+```json
+{
+  "limit": 5,
+  "offset": 0
+}
+```
+
+And the child declares these variables:
+
+```json
+{
+  "limit": 10
+}
+```
+
+Then, the computed variables for the child will be:
+
+```json
+{
+  "limit": 10,
+  "offset": 0
+}
+```
+
+## Creating an API hierarchy
+
+In the custom endpoint or persisted query, in the Document settings, there is section `Page Attributes` with a dropdown of all other entities, to select as the parent:
+
+<a href="/assets/guides/upstream/api-inheritance.png" target="_blank">![API inheritance](/assets/guides/upstream/api-inheritance.png "API inheritance")</a>
+
+### Persisted queries
+
+When selecting a parent, in the persisted query will offer a new option, "Inherit query from ancestor(s)?"
+
+Set this option as `Yes`, to have the child persisted query inherit the parent's GraphQL query:
+
+<a href="/assets/guides/upstream/api-inheritance.gif" target="_blank">![API inheritance](/assets/guides/upstream/api-inheritance.gif "API inheritance")</a>
+
+### Example
+
+This persisted query defines its GraphQL query, and declares variable `$limit` with value `1`:
+
+<a href="/assets/guides/upstream/parent-persisted-query.png" target="_blank">![Parent persisted query](/assets/guides/upstream/parent-persisted-query.png "Parent persisted query")</a>
+
+A child persisted query extends it, inheriting the GraphQL query, and overriding the value for variable `$limit` to `2`:
+
+<a href="/assets/guides/upstream/child-persisted-query.png" target="_blank">![Child persisted query](/assets/guides/upstream/child-persisted-query.png "Child persisted query")</a>
+
+

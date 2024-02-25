@@ -1,0 +1,14 @@
+---
+title: Field and directive-based versioning
+metaDesc: Version fields and directives independently from the schema.
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 400
+---
+
+Version fields and directives independently from the schema.
+
+Instead of evolving the whole schema (which requires to modify the name of the modified field or directive), we can:
+
+- Keep different implementations under the same field or directive name
+- Expose the legacy implementation under a tag, using semantic versioning
+- Access a specific version through field/directive argument `versionConstraint`

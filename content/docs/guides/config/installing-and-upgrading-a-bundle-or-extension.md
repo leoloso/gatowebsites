@@ -1,0 +1,41 @@
+---
+title: Installing and upgrading a bundle or extension
+isPRO: true
+metaDesc: "After purchasing a bundle or extension, you will have access to the corresponding plugin file. Here is how to install and activate it."
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 30
+---
+
+Make sure that you have the Gato GraphQL plugin installed and active.
+
+After purchasing a [bundle or extension](/extensions), you will have access to the corresponding plugin file. Download it and install it in your WordPress site (under `Plugins > Add new > Upload`), and activate it.
+
+Upon activation, an admin notice will request to provide the license key:
+
+<div class="img-width-1024" markdown=1>
+
+![Admin notice requesting to provide the license key](/assets/shop/install-product-admin-notice.png "Admin notice requesting to provide the license key")
+
+</div>
+
+Click on the link to go to the Settings page. Then copy/paste the license key, and click on `Activate Licenses (or Deactivate/Validate)`.
+
+<div class="img-width-1024" markdown=1>
+
+![Entering the license key](/assets/shop/install-product-enter-license-key.png "Entering the license key")
+
+</div>
+
+The bundle or extension will now be activated:
+
+<div class="img-width-1024" markdown=1>
+
+![Plugin activated](/assets/shop/install-product-activated.png "Plugin activated")
+
+</div>
+
+## Upgrading a bundle or extension (when a new version is released)
+
+While your purchased product's license is active, the download file (available via [My Orders](/shop/my-orders)) will be the most up-to-date one.
+
+Whenever the Gato GraphQL plugin releases a new version, bundles and extensions may also release a new, corresponding upgrade, with the same version number. Check if there is such an update and, if so, download it and install it on your WordPress site.

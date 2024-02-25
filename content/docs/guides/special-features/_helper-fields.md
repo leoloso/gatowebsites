@@ -1,0 +1,47 @@
+---
+title: Helper Fields
+isPRO: true
+metaDesc: The GraphQL schema is added fields which provide commonly-used helper functionality.
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 920
+templateEngineOverride: md
+hidden: true
+---
+
+The GraphQL schema is added fields which provide commonly-used helper functionality.
+
+Helper fields are **Global Fields**, hence they are added to every single type in the GraphQL schema: in `QueryRoot`, but also in `Post`, `User`, etc.
+
+## Examples
+
+In combination with the **Inspect HTTP Request Fields** and **Field to Input** modules, we can retrieve the currently-requested URL when executing a GraphQL custom endpoint or persisted query, add extra parameters, and send another HTTP request to the new URL.
+
+For instance, in this query, we retrieve the IDs of the users in the website and execute a new GraphQL query passing their ID as parameter:
+
+```graphql
+query {
+  users {
+    userID: id
+    url: _urlAddParams(
+      url: "https://somewebsite/endpoint/user-data",
+      params: {
+        userID: $__userID
+      }
+    )
+    headers: _httpRequestHeaders
+    headerNameValueEntryList: _objectConvertToNameValueEntryList(
+      object: $__headers
+    )
+    _sendHTTPRequest(input: {
+      url: $__url
+      options: {
+        headers: $__headerNameValueEntryList
+      }
+    }) {
+      statusCode
+      contentType
+      body
+    }
+  }
+}
+```

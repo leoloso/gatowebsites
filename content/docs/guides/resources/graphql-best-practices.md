@@ -1,0 +1,152 @@
+---
+title: GraphQL best practices
+metaDesc: These are some of the most compelling guides out there on best practices in GraphQL.
+socialImage: /assets/GatoGraphQL-logo-suki.png
+order: 100
+---
+
+GraphQL is mature enough, and has been around us for long enough, that many articles sharing best practices have been published by the community. These guides involve pretty much all aspects of GraphQL, including schema design, naming conventions, security handling and providing meaningful errors, among others.
+
+These are some of the most compelling guides out there on best practices in GraphQL.
+
+## Best practices on graphql.org
+
+The official GraphQL site offers a general introduction to [best practices in GraphQL](https://graphql.org/learn/best-practices/).
+
+These items cover mostly top-level concerns, such as:
+
+- What's the best way to [paginate the results](https://graphql.org/learn/pagination/)
+- Where the [GraphQL layer stands within the architecture](https://graphql.org/learn/thinking-in-graphs/#business-logic-layer)
+- How to use the Node interface for [global object identification](https://graphql.org/learn/global-object-identification/)
+- How to [cache results](https://graphql.org/learn/caching/)
+- Many others
+
+![Where the GraphQL layer is placed within the architecture](/assets/guides/downstream/resources/business_layer.png "Where the GraphQL layer is placed within the architecture")
+
+## Lee Byron's recommendations
+
+Not long after releasing GraphQL to the world, GraphQL creator Lee Byron published article [Lessons From 4 Years of GraphQL](https://www.graphql.com/articles/4-years-of-graphql-lee-byron), describing how we should conceptually attempt to work with GraphQL:
+
+- Naming matters
+- Think in graphs, not endpoints
+- Describe the data, not the view
+- GraphQL is a thin interface
+- Hide implementation details
+
+He also details several valuable principles and lessons he learnt while using GraphQL in Facebook.
+
+## GraphQL Rules
+
+[GraphQL Rules](https://graphql-rules.onrender.com/) is a site specially devoted to presenting every-day best practices for working with GraphQL, mostly concerning the design of the GraphQL schema.
+
+This resource is very thorough. It compiles the information from a few exceptional resources out there (such as article [Designing GraphQL Mutations](https://www.apollographql.com/blog/graphql/basics/designing-graphql-mutations/) and Shopify's tutorial [Designing a GraphQL API](https://github.com/Shopify/graphql-design-tutorial/blob/master/TUTORIAL.md)) and presents them all together in a concise manner.
+
+The described rules include:
+
+1. Naming rules
+    - Use `camelCase` for GraphQL-fields and arguments.
+    - Use `UpperCamelCase` for GraphQL-types.
+    - Use `CAPITALIZED_WITH_UNDERSCORES` to name ENUM-types.
+2. Type rules
+    - Use custom scalar types if you want to declare fields or args with specific semantic value.
+    - Use Enum for fields which contain a specific set of values.
+3. Field Rules (Output)
+    - Use semantic names for fields and avoid leaking of implementation details in fields names.
+    - Use `Non-Null` field if field will always have a given field value.
+    - Group as many related fields into custom Object type as possible.
+4. Argument rules (Input)
+    - Group coupled arguments to the new input-type.
+    - Use strict scalar types for arguments, eg. `DateTime` instead of `String`.
+    - Mark arguments as `required`, is they are required for query execution.
+5. Rules of lists
+    - To filter the lists, use the `filter` argument, which contains all the available filters.
+    - Use argument `sort` of type `Enum` or `[Enum!]` for listings sorting.
+    - Use `limit` with default value and `skip` to limit number of returned items in list.
+    - Use `page`, `perPage` args for pagination and return output type with `items` (array of elements) and `pageInfo` (meta-data).
+    - For infinite lists (infinite scroll) use Relay Cursor Connections Specification.
+6. Mutation rules
+    - Use Namespace-types to group mutations within a single resource.
+    - Go beyond CRUD – create small mutations for different business operations on resources.
+    - Consider the ability to perform mutations on multiple items (same type batch changes).
+    - Mutations should clearly describe all the mandatory arguments, there should be no options either-either.
+    - In mutations, put all variables into one unique input argument.
+    - Every mutation should have a unique payload type.
+
+## Resolvers best practices
+
+Article [GraphQL Resolvers: Best Practices](https://medium.com/paypal-tech/graphql-resolvers-best-practices-cd36fdbcef55) describes how to best create field resolvers. Even though it is aimed at Node.js servers (PayPal's infrastructure is based on Express), several of his lessons can also be applied for other technologies, including PHP.
+
+The main takeaways are:
+
+- Fetching and passing data from parent-to-child should be used sparingly.
+- Use libraries like [dataloader](https://github.com/facebook/dataloader) to de-dupe downstream requests.
+- Be aware of any pressure you’re causing on your data sources.
+- Don’t mutate “context”. Ensures consistent, less buggy code.
+- Write resolvers that are readable, maintainable, testable. Not too clever.
+- Make your resolvers as thin as possible. Extract out data fetching logic to re-usable async functions.
+
+## OWASP - GraphQL Cheat Sheet
+
+OWASP (Open Web Application Security Project) is a nonprofit foundation that works to improve the security of software. It does research on how different technologies are vulnerable to exploits, and thoroughly describes solutions to the security issues, making it easier for developers to prevent attacks.
+
+OWASP has published the [GraphQL Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html), explaining which are the most common attacks and biggest security issues in GraphQL, and how to address them.
+
+Common attacks to GraphQL are:
+
+1. Injection - this usually includes but is not limited to:
+    - SQL and NoSQL injection
+    - OS Command injection
+    - SSRF and CRLF injection/Request Smuggling
+2. DoS (Denial of Service)
+3. Abuse of broken authorization: either improper or excessive access, including IDOR
+4. Batching Attacks, a GraphQL-specific method of brute force attack
+5. Abuse of insecure default configurations
+
+OWASP then provides recommendations on how to avoid each of these.
+
+## Best practices with GraphQL queries
+
+The Apollo team published the [GraphQL query best practices](https://www.apollographql.com/docs/react/data/operation-best-practices/), giving practical insights on practical ways to compose the GraphQL query.
+
+For instance, these two queries achieve the same goal, but because the first one has an operation name, it is more understandable and helpful when debugging:
+
+```graphql
+# Recommended ✅
+query GetBooks {
+  books {
+    title
+  }
+}
+
+# Not recommended ❌
+query {
+  books {
+    title
+  }
+}
+```
+
+Their suggestions include:
+
+- Name all operations
+- Use variables to provide GraphQL arguments
+- Query only the data you need, where you need it
+- Use fragments to encapsulate related sets of fields
+- Query global data and user-specific data separately
+
+## Leveraging the one graph
+
+Also from the Apollo team is site [Principled GraphQL](https://principledgraphql.com/) which explains that GraphQL is not only a specification but, possibly more importantly, an interface to interact with the data "graph" from our company.
+
+Through a list of 10 principles, this site describes how to make the most out of the single graph:
+
+1. One Graph: Your company should have one unified graph, instead of multiple graphs created by each team.
+2. Federated Implementation: Though there is only one graph, the implementation of that graph should be federated across multiple teams.
+3. Track the Schema in a Registry: There should be a single source of truth for registering and tracking the graph.
+4. Abstract, Demand-Oriented Schema: The schema should act as an abstraction layer that provides flexibility to consumers while hiding service implementation details.
+5. Use an Agile Approach to Schema Development: The schema should be built incrementally based on actual requirements and evolve smoothly over time.
+6. Iteratively Improve Performance: Performance management should be a continuous, data-driven process, adapting smoothly to changing query loads and service implementations.
+7. Use Graph Metadata to Empower Developers: Developers should be equipped with rich awareness of the graph throughout the entire development process.
+8. Access and Demand Control: Grant access to the graph on a per-client basis, and manage what and how clients can access it.
+9. Structured Logging: Capture structured logs of all graph operations and leverage them as the primary tool for understanding graph usage.
+10. Separate the GraphQL Layer from the Service Layer: Adopt a layered architecture with graph functionality broken into a separate tier rather than baked into every service.
