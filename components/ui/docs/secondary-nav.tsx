@@ -67,7 +67,7 @@ export default function SecondaryNav() {
                       className="relative block font-normal text-slate-600 pl-4 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5"
                       href={`#${link.id}`}
                     >
-                      {link.innerHTML}
+                      {link.innerText}
                     </a>
                   </li>
                 ))}
