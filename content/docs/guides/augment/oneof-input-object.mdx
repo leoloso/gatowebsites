@@ -122,7 +122,7 @@ Querying meta values in WordPress can be complex, with combinations of inputs th
 >   - key (string) – Custom field key.
 >   - value (string|array) – Custom field value. It can be an array only when compare is 'IN', 'NOT IN', 'BETWEEN', or 'NOT BETWEEN'. You don’t have to specify a value when using the 'EXISTS' or 'NOT EXISTS' comparisons in WordPress 3.9 and up.
 (Note: Due to bug #23268, value was required for NOT EXISTS comparisons to work correctly prior to 3.9. You had to supply some string for the value parameter. An empty string or NULL will NOT work. However, any other string will do the trick and will NOT show up in your SQL when using NOT EXISTS. Need inspiration? How about 'bug #23268'.)
->   - compare (string) – Operator to test. Possible values are ‘=’, ‘!=’, ‘>’, ‘>=’, ‘<‘, ‘<=’, ‘LIKE’, ‘NOT LIKE’, ‘IN’, ‘NOT IN’, ‘BETWEEN’, ‘NOT BETWEEN’, ‘EXISTS’ (only in WP >= 3.5), and ‘NOT EXISTS’ (also only in WP >= 3.5). Values ‘REGEXP’, ‘NOT REGEXP’ and ‘RLIKE’ were added in WordPress 3.7. Default value is ‘=’.
+>   - compare (string) – Operator to test. Possible values are ‘=’, ‘!=’, ‘>’, ‘>=’, ‘\<‘, ‘\<=’, ‘LIKE’, ‘NOT LIKE’, ‘IN’, ‘NOT IN’, ‘BETWEEN’, ‘NOT BETWEEN’, ‘EXISTS’ (only in WP >= 3.5), and ‘NOT EXISTS’ (also only in WP >= 3.5). Values ‘REGEXP’, ‘NOT REGEXP’ and ‘RLIKE’ were added in WordPress 3.7. Default value is ‘=’.
 
 The documentation explains that `value` can be a string or an array, and depending on this value, then `compare` can accept one set of values or another (such as `IN` only for arrays, `LIKE` only for strings). In addition, `value` is mandatory, but only if `compare` does not receive `EXISTS`, in which case `value` is not needed at all.
 

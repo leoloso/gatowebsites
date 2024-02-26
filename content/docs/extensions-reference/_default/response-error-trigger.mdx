@@ -33,7 +33,7 @@ query {
   
   posts {
     featuredImage @fail(
-      # condition: IS_NULL, <= This is the default value
+      # condition: IS_NULL, \<= This is the default value
       message: "The post does not have a featured image"
     ) {
       id
