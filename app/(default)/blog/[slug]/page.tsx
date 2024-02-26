@@ -66,7 +66,7 @@ export default async function SingleVideoPost({ params }: {
                   <PostNav />
 
                   {/* Main content */}
-                  <div>
+                  <div className='min-w-0'>
 
                     {/* Article meta */}
                     <div className="md:flex md:items-center md:justify-between mt-3">
@@ -93,9 +93,7 @@ export default async function SingleVideoPost({ params }: {
                     <hr className="w-16 h-px pt-px bg-gray-200 border-0 mb-6" />
 
                     {/* Article body */}
-                    <div>
-                      <PostMdx code={post.body.code} />
-                    </div>
+                    <PostMdx code={post.body.code} />
 
                     <div className="text-lg text-gray-600">
                       <hr className="w-full h-px pt-px mt-8 bg-gray-200 border-0" />
