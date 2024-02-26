@@ -203,14 +203,12 @@ All URLs which are not surrounded by an anchor tag, such as:
 <p>Visit my website: <a href="https://mysite.com" target="_blank">mysite.com</a>.</p>
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 - The `"\"` character must be escaped as `"\\"` inside the regex pattern. For instance, `"/^https?:\/\//"` is written as `"/^https?:\\/\\//"`
 - The documentation for [PHP function `preg_replace`](https://www.php.net/manual/en/function.preg-replace.php) explains how to use [replacement references](https://www.php.net/manual/en/function.preg-replace.php#refsect1-function.preg-replace-parameters) (eg: `$1`) and [PRCE modifiers](https://www.php.net/manual/en/reference.pcre.pattern.modifiers.php).
 
-</div>
+</Banner>
 
 ## Replacing HTTP with HTTPS
 
