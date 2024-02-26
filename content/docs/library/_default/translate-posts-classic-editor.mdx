@@ -16,7 +16,11 @@ order: 0
 
 This query translates multiple "Classic editor" posts at once (in bulk), while executing a single call to the Google Translate API containing all text to translate from all the posts.
 
-**_This query requires the endpoint to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled._**
+<Banner type='important'>
+
+This query requires the endpoint to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled.
+
+</Banner>
 
 ```graphql
 query FetchData($postIds: [ID!]!)

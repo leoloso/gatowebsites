@@ -36,7 +36,11 @@ Notice that the downstream domains are provided via meta property `"downstream_d
 
 It then logs the user into each of the downstream sites (using the same `$username` and `$userPassword`) and executes the mutation to update the post content. If any downstream site produces an error, the mutation is reverted on all downstream sites
 
-**_This query requires the endpoint to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled._**
+<Banner type='important'>
+
+This query requires the endpoint to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled.
+
+</Banner>
 
 ```graphql
 query InitializeDynamicVariables

@@ -14,7 +14,11 @@ order: 0
 
 This query checks if block `wp:comments` has been added to the post indicated by variable `$postId`. If the block is missing, it then adds it at the bottom of the post.
 
-**_This query requires the endpoint to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled._**
+<Banner type='important'>
+
+This query requires the endpoint to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled.
+
+</Banner>
 
 ```graphql
 query CheckIfCommentsBlockExists($postId: ID!) {

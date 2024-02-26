@@ -16,7 +16,11 @@ order: 0
 
 This query first filters all posts containing `"https://my-old-domain.com"` in its content, and replaces this string with `"https://my-new-domain.com"`.
 
-**_This query requires the endpoint to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled._**
+<Banner type='important'>
+
+This query requires the endpoint to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled.
+
+</Banner>
 
 ```graphql
 mutation ReplaceOldWithNewDomainInPosts(

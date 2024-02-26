@@ -14,7 +14,11 @@ order: 0
 
 This query retrieves a list of users, obtains their data (name, email and number of remaining credits, which is stored as meta), and sends a personalized email to each of them.
 
-**_This query requires the endpoint to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled._**
+<Banner type='important'>
+
+This query requires the endpoint to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled.
+
+</Banner>
 
 ```graphql
 mutation SendPersonalizedEmailToUsers {
