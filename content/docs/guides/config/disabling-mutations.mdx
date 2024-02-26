@@ -12,11 +12,11 @@ There are two ways to disable mutations in the GraphQL schema, depending if it m
 
 _(This can be done in the standard plugin, no need for extensions.)_
 
-Go to the Modules page, and disable the **Mutations** module (as shown in guide [Browsing, enabling and disabling modules](../browsing-enabling-and-disabling-modules/)). This will then prevent all mutations from all other modules from being registered in first place.
+Go to the Modules page, and disable the **Mutations** module (as shown in guide [Browsing, enabling and disabling modules](/guides/config/browsing-enabling-and-disabling-modules/)). This will then prevent all mutations from all other modules from being registered in first place.
 
 ## 2. Disabling mutations for some specific endpoint
 
-This is accomplished via [Access Control](../../use/defining-access-control), by removing access to the mutation operation. For that, create an Access Control entry containing:
+This is accomplished via [Access Control](/guides/use/defining-access-control), by removing access to the mutation operation. For that, create an Access Control entry containing:
 
 - The private visibility mode
 - The "Disable access" rule
