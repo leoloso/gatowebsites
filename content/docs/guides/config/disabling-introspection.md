@@ -1,6 +1,6 @@
 ---
 title: Disabling introspection
-isPRO: true
+# isPRO: true
 metaDesc: Disabling introspection for the single endpoint or custom endpoints via Access Control.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 3610

@@ -1,6 +1,6 @@
 ---
 title: Executing multiple queries concurrently
-isPRO: true
+# isPRO: true
 metaDesc: Multiple queries can be combined together, and executed as a single operation, reusing their state and their data.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 500

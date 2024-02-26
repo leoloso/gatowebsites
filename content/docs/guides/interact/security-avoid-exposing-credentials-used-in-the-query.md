@@ -1,6 +1,6 @@
 ---
 title: "Security: Avoid exposing credentials used in the query"
-isPRO: true
+# isPRO: true
 metaDesc: Unless our GraphQL API is not publicly exposed, we must be careful for the GraphQL query to not expose private data.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 400

@@ -1,6 +1,6 @@
 ---
 title: Making the API public or private
-isPRO: true
+# isPRO: true
 metaDesc: "When access to some a field or directive is denied through access control, there are two ways for the API to behave: public mode or private mode."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 400

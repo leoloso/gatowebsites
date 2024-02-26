@@ -1,6 +1,6 @@
 ---
 title: Setting the default cache control max-age
-isPRO: true
+# isPRO: true
 metaDesc: "In the settings for module 'Cache Control', there is option 'Default max-age', to define the default 'max-age' value for all fields and directives."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 3275

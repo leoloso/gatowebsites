@@ -1,6 +1,6 @@
 ---
 title: Defining access control
-isPRO: true
+# isPRO: true
 metaDesc: "We can manage who can access every field and directive in the schema through access control lists."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 500

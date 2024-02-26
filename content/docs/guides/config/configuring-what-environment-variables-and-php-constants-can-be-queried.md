@@ -1,6 +1,6 @@
 ---
 title: Configuring what environment variables and PHP constants can be queried
-isPRO: true
+# isPRO: true
 metaDesc: Configuring the list of allowed environment variables and PHP constants that can be queried via global field '_env' of the GraphQL schema.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 3400

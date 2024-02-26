@@ -1,6 +1,6 @@
 ---
 title: Field Deprecation via UI
-isPRO: true
+# isPRO: true
 metaDesc: Deprecation is standard GraphQL behavior, but is normally executed via code. Through Gato GraphQL's Field deprecation user interface, we can already deprecate fields, without the need to deploy any code.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 820

@@ -1,6 +1,6 @@
 ---
 title: Scripting capabilities via meta directives
-isPRO: true
+# isPRO: true
 metaDesc: Where can applying a directive to modify the behavior of another directive prove useful.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 3700

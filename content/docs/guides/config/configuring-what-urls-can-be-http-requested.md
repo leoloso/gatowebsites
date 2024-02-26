@@ -1,6 +1,6 @@
 ---
 title: Configuring what URLs can be HTTP-requested
-isPRO: true
+# isPRO: true
 metaDesc: Configuring the list of URLs that can be queried via the HTTP client fields added to the GraphQL schema.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 3410

@@ -1,6 +1,6 @@
 ---
 title: Disabling mutations
-isPRO: true
+# isPRO: true
 metaDesc: There are two ways to disable mutations in the GraphQL schema, depending if it must be done for all endpoints or just for some specific one(s).
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 3265

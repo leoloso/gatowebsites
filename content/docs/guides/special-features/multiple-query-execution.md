@@ -1,6 +1,6 @@
 ---
 title: Multiple Query Execution
-isPRO: true
+# isPRO: true
 metaDesc: Query batching enables the GraphQL server to execute multiple queries in a single request, but those queries are merely executed one after the other, independently from each other.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 820
