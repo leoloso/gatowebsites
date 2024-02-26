@@ -1,7 +1,7 @@
 ---
 title: Printing the Settings page with tabs or long format
 description: Organizing the Settings in a single long page, or via tabs.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 1250
 ---
 

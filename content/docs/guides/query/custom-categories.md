@@ -1,7 +1,7 @@
 ---
 title: Custom Categories
 description: Examples of queries to fetch custom category taxonomy data.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 670
 ---
 

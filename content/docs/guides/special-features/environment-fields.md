@@ -2,7 +2,7 @@
 title: Environment Fields
 # isPRO: true
 description: The GraphQL schema is provided with global field '_env', which allows to obtain a value from an environment variable, or from a PHP constant.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 950
 ---
 

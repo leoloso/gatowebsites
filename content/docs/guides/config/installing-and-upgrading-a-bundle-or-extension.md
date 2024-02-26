@@ -2,7 +2,7 @@
 title: Installing and upgrading a bundle or extension
 # isPRO: true
 description: "After purchasing a bundle or extension, you will have access to the corresponding plugin file. Here is how to install and activate it."
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 30
 ---
 

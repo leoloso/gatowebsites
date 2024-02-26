@@ -1,7 +1,7 @@
 ---
 title: GraphQL clients
 description: This is a compilation and overview of some of the most popular clients to interact with GraphQL.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 200
 ---
 

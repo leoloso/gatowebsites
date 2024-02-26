@@ -2,7 +2,7 @@
 title: Field to Input
 # isPRO: true
 description: With Field to Input, we can obtain the value of a field, manipulate it, and input it into another field, all within the same query.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 830
 templateEngineOverride: md
 ---

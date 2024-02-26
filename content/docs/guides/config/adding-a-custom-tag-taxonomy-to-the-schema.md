@@ -1,7 +1,7 @@
 ---
 title: Adding a custom tag taxonomy to the schema
 description: Custom Post Types defined by any theme or plugin can have their own tag taxonomy associated to them, and added to the GraphQL schema.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 410
 ---
 

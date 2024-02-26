@@ -1,7 +1,7 @@
 ---
 title: Proactive feedback
 description: Use the top-level entry 'extensions' to send data concerning deprecations and warnings in the response to the query.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 500
 ---
 

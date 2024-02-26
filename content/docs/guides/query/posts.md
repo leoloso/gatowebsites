@@ -1,7 +1,7 @@
 ---
 title: Posts
 description: Examples of queries to fetch and modify post data.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 100
 ---
 

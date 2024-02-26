@@ -1,7 +1,7 @@
 ---
 title: Modifying the default and max number of results
 description: The are several fields which return a list of results, and we can limit how many results to fetch by providing the 'limit' field argument in the query.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 300
 ---
 

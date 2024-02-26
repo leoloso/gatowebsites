@@ -1,7 +1,7 @@
 ---
 title: GraphQL best practices
 description: These are some of the most compelling guides out there on best practices in GraphQL.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 100
 ---
 

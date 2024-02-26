@@ -1,7 +1,7 @@
 ---
 title: Strategies for API hierarchies
 description: Applying different ideas to set-up a hierarchy for our API endpoints.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 700
 ---
 

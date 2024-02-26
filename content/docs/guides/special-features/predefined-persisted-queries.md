@@ -1,7 +1,7 @@
 ---
 title: Predefined Persisted Queries
 description: Gato GraphQL ships with predefined Persisted queries, which tackle several admin tasks that are common to many WordPress sites.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 56
 ---
 

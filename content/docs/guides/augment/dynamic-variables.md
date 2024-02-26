@@ -2,7 +2,7 @@
 title: Dynamic variables
 # isPRO: true
 description: Thanks to custom directives, the GraphQL server supports dynamic variables, where a dynamic variable has its value obtained when resolving the query in the server (whereas a static variable has its value provided by the client).
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 400
 ---
 

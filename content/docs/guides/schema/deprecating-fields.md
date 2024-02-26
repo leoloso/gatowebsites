@@ -2,7 +2,7 @@
 title: Deprecating fields
 # isPRO: true
 description: Versioning a GraphQL schema involves deprecating fields, i.e. telling the user that the field should not be used anymore, and what other field to replace it with.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 600
 ---
 

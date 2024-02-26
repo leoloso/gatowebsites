@@ -1,7 +1,7 @@
 ---
 title: Namespacing the schema to avoid conflicts
 description: Namespacing in GraphQL helps avoid naming collisions on the GraphQL schema, happening when two types, fields or directives have the same name.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 300
 ---
 

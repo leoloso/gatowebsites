@@ -1,7 +1,7 @@
 ---
 title: Comparing field arguments and directives
 description: When should we use field arguments and when query-side directives? Is there any difference between the two methods, or any situation when one option is better than the other?
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 900
 ---
 

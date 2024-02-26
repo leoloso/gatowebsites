@@ -1,7 +1,7 @@
 ---
 title: Strategies for versioning fields and directives
 description: Gato GraphQL allows fields and directives to receive argument 'versionConstraint', to choose what specific version of the field or directive to use.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 610
 ---
 

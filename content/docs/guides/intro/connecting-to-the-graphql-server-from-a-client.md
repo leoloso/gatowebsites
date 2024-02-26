@@ -1,7 +1,7 @@
 ---
 title: Connecting to the GraphQL server from a client
 description: The website can connect to the GraphQL server from any browser running JavaScript.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 300
 # useGraphQLEndpoints: true
 ---

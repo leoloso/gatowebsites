@@ -2,7 +2,7 @@
 title: Changing the path to where a field is printed in the response
 # isPRO: true
 description: Is it possible to tell the GraphQL server to flatten the shape of the response? And, if so, how to do it?
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 1600
 ---
 

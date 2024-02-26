@@ -1,7 +1,7 @@
 ---
 title: Adding a description to the API
 description: Using the excerpt field to provide a description for the different Custom Post Type entities in the Gato GraphQL plugin.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 1100
 ---
 

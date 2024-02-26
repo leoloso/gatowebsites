@@ -1,7 +1,7 @@
 ---
 title: Returning a payload object or the mutated entity for mutations
 description: "We can configure mutation fields to return either a payload object type, or directly the mutated entity."
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 430
 ---
 

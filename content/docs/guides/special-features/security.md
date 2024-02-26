@@ -1,7 +1,7 @@
 ---
 title: Security
 description: Multiple mechanisms provided by Gato GraphQL to help protect your data.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 40
 ---
 

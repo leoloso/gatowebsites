@@ -1,7 +1,7 @@
 ---
 title: Field and directive-based versioning
 description: Version fields and directives independently from the schema.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 400
 ---
 

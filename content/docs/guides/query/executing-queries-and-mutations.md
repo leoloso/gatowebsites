@@ -1,7 +1,7 @@
 ---
 title: Executing Queries and Mutations
 description: "Examples of the two supported operations in the GraphQL server: queries and mutations."
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 50
 ---
 

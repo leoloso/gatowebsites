@@ -1,7 +1,7 @@
 ---
 title: Exposing “sensitive” data
 description: The GraphQL schema must strike a balance between public and private data, as to avoid exposing private information in a public API.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 210
 ---
 

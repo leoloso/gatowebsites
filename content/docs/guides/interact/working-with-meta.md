@@ -1,7 +1,7 @@
 ---
 title: Working with Meta Values
 description: This is how to query meta data for custom posts, users, comments, and taxonomies (tags and categories) from the GraphQL schema.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 190
 ---
 

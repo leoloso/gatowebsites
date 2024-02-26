@@ -1,7 +1,7 @@
 ---
 title: Custom Tags
 description: Examples of queries to fetch custom tag taxonomy data.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 660
 ---
 

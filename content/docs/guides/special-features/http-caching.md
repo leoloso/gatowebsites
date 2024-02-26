@@ -2,7 +2,7 @@
 title: HTTP Caching
 # isPRO: true
 description: "Because persisted queries can be accessed via GET, their response can be cached through standard HTTP caching."
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 800
 ---
 

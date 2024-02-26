@@ -1,7 +1,7 @@
 ---
 title: Configuring the plugin via the Settings page, environment variables, wp-config, and hooks
 description: Explanation of the different ways to configure the options in Gato GraphQL.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 150
 ---
 

@@ -2,7 +2,7 @@
 title: Enabling granular public or private mode
 # isPRO: true
 description: When editing an Access Control List, we can select individually on fields and directives if they are public or private.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 3250
 ---
 

@@ -2,7 +2,7 @@
 title: Helper Fields
 # isPRO: true
 description: The GraphQL schema is added fields which provide commonly-used helper functionality.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 920
 ---
 

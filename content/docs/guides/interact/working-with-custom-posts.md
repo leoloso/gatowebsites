@@ -1,7 +1,7 @@
 ---
 title: Working with Custom Posts
 description: This is how to query custom post data from the GraphQL schema.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 100
 ---
 

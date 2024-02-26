@@ -2,7 +2,7 @@
 title: Hiding Global Fields
 # isPRO: true
 description: Gato GraphQL offers to not expose the global fields (when doing introspection).
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 3450
 ---
 

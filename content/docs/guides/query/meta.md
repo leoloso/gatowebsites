@@ -1,7 +1,7 @@
 ---
 title: Meta Values
 description: Examples of queries to fetch meta data, and filter results by meta.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 790
 ---
 

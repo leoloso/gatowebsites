@@ -1,7 +1,7 @@
 ---
 title: Fetching dynamically-structured data
 description: In WordPress, we can fetch nested levels of data (i.e. entities which contain children items of the same type). How do we deal with this situation in GraphQL?
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 200
 ---
 

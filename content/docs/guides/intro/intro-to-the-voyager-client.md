@@ -1,7 +1,7 @@
 ---
 title: Intro to the Voyager client
 description: Gato GraphQL provides the GraphQL Voyager client to visualize the GraphQL schema interactively.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 600
 ---
 

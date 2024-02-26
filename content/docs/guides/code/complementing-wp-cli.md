@@ -1,7 +1,7 @@
 ---
 title: Complementing WP-CLI
 description: How to use Gato GraphQL to find the data we need, and then inject it into WP-CLI.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 300
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Configuring custom endpoints
 description: Configuring the base URL for custom endpoints in Gato GraphQL.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 620
 ---
 

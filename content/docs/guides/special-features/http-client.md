@@ -2,7 +2,7 @@
 title: HTTP Client
 # isPRO: true
 description: The GraphQL schema is provided with global fields to execute HTTP requests against a webserver and fetch their response.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 1000
 templateEngineOverride: md
 ---

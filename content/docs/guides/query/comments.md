@@ -1,7 +1,7 @@
 ---
 title: Comments
 description: Examples of queries to fetch and add comments.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 500
 ---
 

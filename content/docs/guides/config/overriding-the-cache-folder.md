@@ -1,7 +1,7 @@
 ---
 title: Overriding the cache folder
 description:
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 1525
 ---
 

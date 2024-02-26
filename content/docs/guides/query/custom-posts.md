@@ -1,7 +1,7 @@
 ---
 title: Custom Posts
 description: Examples of queries to fetch custom post data.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 200
 ---
 

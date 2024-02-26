@@ -1,7 +1,7 @@
 ---
 title: Internal Endpoint for Blocks
 description: An internal GraphQL endpoint is accessible within the wp-admin only, to allow developers to fetch data for their Gutenberg blocks.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 58
 ---
 

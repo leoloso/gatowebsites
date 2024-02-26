@@ -2,7 +2,7 @@
 title: Enabling low-level editing of persisted queries
 # isPRO: true
 description: All directives to be applied to the schema become available in the GraphiQL editor when editing persisted queries.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 31000
 ---
 

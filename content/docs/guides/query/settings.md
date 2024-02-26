@@ -1,7 +1,7 @@
 ---
 title: Settings
 description: "Examples of queries to fetch settings from the 'wp_options' table."
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 900
 ---
 

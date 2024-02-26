@@ -1,7 +1,7 @@
 ---
 title: "'oneOf' Input Object"
 description: The oneOf input object is a particular type of input object, where exactly one of the input fields must be provided as input, or otherwise the server returns a validation error. This behavior introduces polymorphism for inputs in GraphQL, allowing us to design neater schemas.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 200
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Managing the plugin's setup data"
 description: Enable/disable installing predefined custom endpoints and persisted queries
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 1890
 ---
 

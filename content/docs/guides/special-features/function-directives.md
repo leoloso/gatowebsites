@@ -2,7 +2,7 @@
 title: Function Directives
 # isPRO: true
 description: The GraphQL schema is provided with directives which expose functionalities commonly found in programming languages (such as PHP).
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 915
 templateEngineOverride: md
 ---

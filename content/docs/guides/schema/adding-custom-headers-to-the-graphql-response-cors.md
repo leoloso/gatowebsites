@@ -1,7 +1,7 @@
 ---
 title: Adding custom headers to the GraphQL response (CORS)
 description: "We can add custom headers to the GraphQL response. This is particularly useful to set the 'Access-Control-Allow-Origin' header to avoid issues with CORS."
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 150
 ---
 

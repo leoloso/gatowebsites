@@ -2,7 +2,7 @@
 title: Authorization via access control
 # isPRO: true
 description: When accessing the application via GraphQL, we must validate if the user has access to the requested elements from the schema. Should the authorization logic be coded within the GraphQL layer?
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 3400
 ---
 

@@ -2,7 +2,7 @@
 title: Cache control via persisted queries
 # isPRO: true
 description: HTTP caching is a better solution than relying on client-side logic for caching the GraphQL response.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 3500
 ---
 

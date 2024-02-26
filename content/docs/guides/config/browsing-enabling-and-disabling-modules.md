@@ -1,7 +1,7 @@
 ---
 title: Browsing, enabling and disabling modules
 description: All functionality in Gato GraphQL is provided through modules, and these can be enabled and disabled.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 100
 ---
 

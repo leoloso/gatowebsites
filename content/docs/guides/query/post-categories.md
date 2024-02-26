@@ -1,7 +1,7 @@
 ---
 title: Post Categories
 description: Examples of queries to fetch post category data.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 650
 ---
 

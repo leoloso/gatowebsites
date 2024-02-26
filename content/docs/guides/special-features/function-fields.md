@@ -2,7 +2,7 @@
 title: Function Fields
 # isPRO: true
 description: The GraphQL schema is provided with fields which expose functionalities commonly found in programming languages (such as PHP).
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 910
 ---
 

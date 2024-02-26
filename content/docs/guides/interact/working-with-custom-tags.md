@@ -1,7 +1,7 @@
 ---
 title: Working with Custom Tags
 description: This is how to query tag data from the GraphQL schema.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 160
 ---
 

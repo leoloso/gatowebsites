@@ -1,7 +1,7 @@
 ---
 title: Post Tags
 description: Examples of queries to fetch post tag data.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 600
 ---
 

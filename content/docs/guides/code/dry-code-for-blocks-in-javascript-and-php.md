@@ -1,7 +1,7 @@
 ---
 title: Using DRY code to render blocks for server (PHP) and client (JS) sides 
 description: Have a single source of truth to fetch data for both the client and server-sides when rendering dynamic Gutenberg blocks.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 1000
 referencedExtensionSlugs:
 - 'internal-graphql-server'

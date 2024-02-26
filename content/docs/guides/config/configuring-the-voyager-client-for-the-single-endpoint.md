@@ -1,7 +1,7 @@
 ---
 title: Configuring the Voyager client for the single endpoint
 description: Configuring the URL to access the single endpoint's interactive schema client.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 800
 ---
 

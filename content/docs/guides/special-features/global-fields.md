@@ -1,7 +1,7 @@
 ---
 title: Global Fields
 description: Global fields are fields that are accessible under every single type in the GraphQL schema (while being defined only once).
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 300
 templateEngineOverride: md
 ---

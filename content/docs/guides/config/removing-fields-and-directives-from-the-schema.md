@@ -2,7 +2,7 @@
 title: Removing fields and directives from the schema
 # isPRO: true
 description: Using Access Control to remove elements from the GraphQL schema.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 3260
 ---
 

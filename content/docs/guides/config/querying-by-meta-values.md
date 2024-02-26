@@ -1,7 +1,7 @@
 ---
 title: Defining the allow/denylist for meta values
 description: We can retrieve meta values for custom posts, users, comments, and taxonomies (tags and categories), by querying fields 'metaValue' and 'metaValues' from the corresponding type.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 425
 ---
 

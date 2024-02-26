@@ -1,7 +1,7 @@
 ---
 title: Composable directives
 description: A composable directive can augment another directive to modify its behavior or fill a gap. This removes the need to duplicate fields or directives just to change their input or return types, avoiding bloat.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 330
 templateEngineOverride: md
 ---

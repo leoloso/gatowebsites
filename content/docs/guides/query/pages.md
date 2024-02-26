@@ -1,7 +1,7 @@
 ---
 title: Pages
 description: Examples of queries to fetch page data.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 300
 ---
 

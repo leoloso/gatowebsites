@@ -1,7 +1,7 @@
 ---
 title: Defining the Setting's allowed entries
 description: Configuring the list of entries that can be queried from the wp_options table in WordPress, via the optionValue fields added to the GraphQL schema.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 440
 ---
 

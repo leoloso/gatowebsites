@@ -1,7 +1,7 @@
 ---
 title: Similarities between WordPress hooks and GraphQL directives
 description: A GraphQL directive is similar to a WordPress hook, in that it is a function that modifies the value of a field, thus augmenting some other functionality.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 800
 ---
 

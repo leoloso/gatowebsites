@@ -1,7 +1,7 @@
 ---
 title: Multi-Field Directives
 description: Have directives applied to multiple fields (instead of only one), for performance and extended use cases.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 340
 templateEngineOverride: md
 ---

@@ -1,7 +1,7 @@
 ---
 title: What is schema introspection
 description: "Schema introspection is GraphQL's mechanism to provide information about the schema, which is retrieved using the same GraphQL language."
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 700
 ---
 

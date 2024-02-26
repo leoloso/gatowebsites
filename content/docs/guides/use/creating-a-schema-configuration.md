@@ -1,7 +1,7 @@
 ---
 title: Creating a schema configuration
 description: A schema configuration is used to customize the schema for Custom Endpoints and Persisted Queries.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 300
 ---
 

@@ -2,7 +2,7 @@
 title: Schema Editing Access
 # isPRO: true
 description: Grant non-admin users access to the GraphiQL and Interactive schema clients in the admin, and to access the different screens in Gato GraphQL.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 1300
 ---
 

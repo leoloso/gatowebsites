@@ -1,7 +1,7 @@
 ---
 title: Using nested mutations
 description: Nested mutations enable to perform mutations on a type other than the root type in GraphQL.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 200
 ---
 

@@ -2,7 +2,7 @@
 title: Automating tasks
 # isPRO: true
 description: Automatically execute a GraphQL Persisted Query when some event happens on the site, creating automations directly via the WordPress editor.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 100
 ---
 

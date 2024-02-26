@@ -2,7 +2,7 @@
 title: Access Control
 # isPRO: true
 description: The GraphQL endpoint, which can return any piece of data accessible through the schema, could potentially allow malicious actors to retrieve private information. Hence, we must implement security measures to protect the data.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 700
 ---
 

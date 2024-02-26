@@ -1,7 +1,7 @@
 ---
 title: Use cases for multiple custom endpoints
 description: When it makes sense to expose multiple custom endpoints (instead of the single endpoint) in GraphQL, with each of these endpoints presenting a customized schema.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 400
 ---
 

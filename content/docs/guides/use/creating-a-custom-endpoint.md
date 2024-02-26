@@ -1,7 +1,7 @@
 ---
 title: Creating a custom endpoint
 description: Gato GraphQL supports custom endpoints, to retrieve and post data for a custom schema (containing only a subset of the available types) and user validation rules, as to deal with the needs from different users and applications.
-socialImage: /assets/GatoGraphQL-logo-suki.png
+# image: /assets/GatoGraphQL-logo-suki.png
 order: 100
 ---
 
