@@ -77,7 +77,7 @@ export default function TopicTitle({
       {svgOption === topicTitleSVG3 && (
         getTopicTitleSVG3()
       )}
-      <span className="font-nycd text-xl text-blue-600 ml-4">{name}</span>
+      <span className="font-nycd text-xl text-slate-700 dark:text-slate-200 ml-4">{name}</span>
     </>
   )
 }
