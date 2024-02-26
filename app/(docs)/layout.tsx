@@ -42,7 +42,7 @@ export default function RootLayout({
                   <Image className="max-w-none" src={Illustration} priority alt="Page illustration" aria-hidden="true" />
                 </div> */}
 
-                <StunningBackground addOpacityLayer={true} />
+                <StunningBackground />
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
                   {/* Main content */}
