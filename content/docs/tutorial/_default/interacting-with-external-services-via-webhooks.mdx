@@ -53,13 +53,11 @@ Analysing [webhooks in ConvertKit](https://developers.convertkit.com/#webhooks),
 
 Because the request is sent via `POST`, we must extract the data from the body of the HTTP request (which is supported via the [**HTTP Request via Schema**](https://gatographql.com/extensions/http-request-via-schema/) extension).
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 If the HTTP request is executed via `GET`, then the Persisted Query can directly [obtain the data items from the URL parameters](https://gatographql.com/guides/use/creating-a-persisted-query/#heading-making-the-persisted-query-dynamic-via-url-params).
 
-</div>
+</Banner>
 
 This GraphQL query retrieves the body of the request and converts it to a JSON object. Then it extracts items `"subscriber.first_name"` and `"subscriber.email_address"` from the JSON object, and exports them as dynamic variables:
 
