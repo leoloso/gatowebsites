@@ -1,0 +1,15 @@
+---
+title: Setting the default cache control max-age
+# isPRO: true
+description: "In the settings for module 'Cache Control', there is option 'Default max-age', to define the default 'max-age' value for all fields and directives."
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 3275
+---
+
+In the settings for module "Cache Control", there is option "Default max-age", to define the default `max-age` value for all fields and directives.
+
+It is initially set to `86400` (seconds):
+
+<a href="/assets/guides/upstream-pro/settings-cache-control-default-max-age.png" target="_blank">![Default max-age](/assets/guides/upstream-pro/settings-cache-control-default-max-age.png "Default max-age")</a>
+
+To update it, modify this value, and click on `Save Changes`.

@@ -1,0 +1,40 @@
+---
+title: Hiding Global Fields
+# isPRO: true
+description: Gato GraphQL offers to not expose the global fields (when doing introspection).
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 3450
+---
+
+Global fields are added to all types in the GraphQL schema, which renders its visualization unwieldy:
+
+![Schema with global fields exposed under all types](/assets/guides/upstream-pro/schema-with-global-fields-under-all-types.png "Schema with global fields exposed under all types")
+
+That's why the configuration (see next section) offers to not expose the global fields (when doing introspection), by either:
+
+- Exposing them on the Root type only
+- Not exposing them at all
+
+**Please notice:** Global fields will still available under all types from the schema, even when not exposed; in other words, they are simply "hidden from view" when doing introspection. If you desire to actually remove (not just hide) some global field from the schema, this must be done via an Access Control List.
+
+By default, the schema exposes global fields under the Root type only, and it is easier to visualize and browse:
+
+![Schema with global fields exposed under the Root type only](/assets/guides/upstream-pro/schema-with-global-fields-under-root-type-only.png "Schema with global fields exposed under the Root type only")
+
+## Configuration
+
+To select the general level of exposure of global fields in the GraphQL schema, go to the "Global Fields" module on the Settings page, and select the desired option:
+
+- Do not expose
+- Expose under the Root type only _(this is the default value)_
+- Expose under all types
+
+<div class="img-width-1024" markdown=1>
+
+![Settings for Global Fields](/assets/guides/upstream/settings-global-fields.png "Settings for Global Fields")
+
+</div>
+
+To modify the exposure of global fields on different custom endpoints, select the desired option in block "Global Fields" when [editing the corresponding Schema Configuration](../../use/creating-a-schema-configuration/):
+
+![Editing Global Fields in the Schema Configuration](/assets/guides/upstream-pro/schema-config-global-fields.png "Editing Global Fields in the Schema Configuration")

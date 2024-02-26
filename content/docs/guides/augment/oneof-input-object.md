@@ -1,0 +1,298 @@
+---
+title: "'oneOf' Input Object"
+description: The oneOf input object is a particular type of input object, where exactly one of the input fields must be provided as input, or otherwise the server returns a validation error. This behavior introduces polymorphism for inputs in GraphQL, allowing us to design neater schemas.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 200
+---
+
+The oneOf input object is a particular type of input object, where exactly one of the input fields must be provided as input, or otherwise the server returns a validation error. This behavior introduces polymorphism for inputs in GraphQL, allowing us to design neater schemas.
+
+For instance, retrieving a user in our application could be done by different properties, such as the user ID or email. To do this, we'd normally need to create a separate field for each property:
+
+```graphql
+type Query {
+  userByID(id: ID!): User
+  userByEmail(email: String!): User
+}
+```
+
+Thanks to the oneOf input object, we can instead have a single field `user` that accepts all properties via a `UserByInput` oneOf input object, knowing that only one of the properties (either the ID or the email) can and must be provided:
+
+```graphql
+type Query {
+  user(by: UserByInput!): User
+}
+
+input UserByInput @oneOf {
+  id: ID
+  email: String
+}
+```
+
+(Please notice that the syntax `@oneOf` above is for documentation only within the context of Gato GraphQL, as we don't need to use SDL —Schema Definition Language— to generate the schema; the plugin already generates the schema via PHP code, using the inputs from the Schema Configuration.)
+
+In the query, we provide the input value for exactly one of the properties:
+
+```graphql
+{
+  tom: user(by: {
+    id: 1
+  }) {
+    name
+  }
+
+  jerry: user(by: {
+    email: "jerry@warnerbros.com"
+  }) {
+    name
+  }
+}
+```
+
+If we provide two (or more) values to the input:
+
+```graphql
+{
+  user(by: {
+    id: 1
+    email: "jerry@warnerbros.com"
+  }) {
+    name
+  }
+}
+```
+
+... then the server will return an error:
+
+```json
+{
+  "errors": [
+    {
+      "message": "The oneOf input object 'UserByInput' must be provided exactly one value, but 2 have been provided",
+      "extensions": {
+        "type": "Query",
+        "field": "user(by:{id:1,email:\"jerry@warnerbros.com\"})",
+        "argument": "by"
+      }
+    }
+  ],
+  "data": {
+    "user": null
+  }
+}
+```
+
+## How Gato GraphQL makes use of oneOf input objects
+
+Let's see a few situations in which the plugin makes use of this feature, and which we can also use to extend our GraphQL schemas.
+
+### Selecting a single entity by different properties
+
+This is the general case for the query demonstrated above, concerning input `UserByInput` in field `user`.
+
+Whenever we need to fetch a single entity (a single `User`, `Post`, `PostTag`, etc) that can be uniquely identified by more than one property (such as by ID or email, ID or slug, etc), then we can define all different properties into a oneOf input object, and converge all different fields to retrieve that entity into a single field.
+
+### Accepting different sets of data in mutations
+
+When doing a mutation, we may accept different sets of data as inputs. Instead of exposing different mutation fields for each different set of data, by using a oneOf input object, a single mutation field can tackle all possibilities.
+
+For instance, the mutation `loginUser` can support logging users in by a number of different methods: username/password, JWT token, application passwords, or others. That's why this mutation receives the oneOf Input Object `LoginUserByInput`, which currently accepts the standard username/password WordPress validation, but can also be expanded to other methods:
+
+```graphql
+type Mutation {
+  loginUser(by: LoginUserByInput!): RootLoginUserMutationPayload!
+}
+
+input LoginUserByInput @oneOf {
+  credentials: LoginCredentialsInput
+}
+
+input LoginCredentialsInput {
+  usernameOrEmail: String!
+  password: String!
+}
+```
+
+### Querying meta values
+
+Querying meta values in WordPress can be complex, with combinations of inputs that can conflict with each other, [as explained in its documentation](https://developer.wordpress.org/reference/classes/wp_meta_query/):
+
+> The following arguments can be passed in a key=>value paired array.
+> - meta_query (array) – Contains one or more arrays with the following keys: 
+>   - key (string) – Custom field key.
+>   - value (string|array) – Custom field value. It can be an array only when compare is 'IN', 'NOT IN', 'BETWEEN', or 'NOT BETWEEN'. You don’t have to specify a value when using the 'EXISTS' or 'NOT EXISTS' comparisons in WordPress 3.9 and up.
+(Note: Due to bug #23268, value was required for NOT EXISTS comparisons to work correctly prior to 3.9. You had to supply some string for the value parameter. An empty string or NULL will NOT work. However, any other string will do the trick and will NOT show up in your SQL when using NOT EXISTS. Need inspiration? How about 'bug #23268'.)
+>   - compare (string) – Operator to test. Possible values are ‘=’, ‘!=’, ‘>’, ‘>=’, ‘<‘, ‘<=’, ‘LIKE’, ‘NOT LIKE’, ‘IN’, ‘NOT IN’, ‘BETWEEN’, ‘NOT BETWEEN’, ‘EXISTS’ (only in WP >= 3.5), and ‘NOT EXISTS’ (also only in WP >= 3.5). Values ‘REGEXP’, ‘NOT REGEXP’ and ‘RLIKE’ were added in WordPress 3.7. Default value is ‘=’.
+
+The documentation explains that `value` can be a string or an array, and depending on this value, then `compare` can accept one set of values or another (such as `IN` only for arrays, `LIKE` only for strings). In addition, `value` is mandatory, but only if `compare` does not receive `EXISTS`, in which case `value` is not needed at all.
+
+Analyzing the different input sets we will discover that there are 4 possible combinations, depending on the comparison being applied on the key or the value, and the type of value:
+
+- `key`
+- `numericValue`
+- `stringValue`
+- `arrayValue`
+
+The oneOf input object `MetaQueryCompareByInput` deals with these 4 inputs, aided by different Enums that define the possible operators that each input can use. Then, filtering by `numericValue` we can use operator `GREATER_THAN`, by `arrayValue` we can use operator `IN`, and by `key` we can use operator `EXISTS` (and there's no need to provide a `value`).
+
+The resulting GraphQL schema (using SDL) is this one:
+
+```graphql
+type Query {
+  posts(filter: PostsFilterInput): [Post!]!
+}
+
+input PostsFilterInput {
+  metaQuery: [PostMetaQueryInput!] 
+}
+
+input PostMetaQueryInput {
+  compareBy: MetaQueryCompareByInput!
+  key: String!
+}
+
+type MetaQueryCompareByInput @oneOf {
+  """
+  Compare against the meta key
+  """
+  key: MetaQueryCompareByKeyInput
+
+  """
+  Compare against an array meta value
+  """
+  array: ValueMetaQueryCompareByArrayValueInput
+
+  """
+  Compare against a numeric meta value
+  """
+  numeric: ValueMetaQueryCompareByNumericValueInput
+
+  """
+  Compare against a string meta value
+  """
+  string: ValueMetaQueryCompareByStringValueInput
+}
+
+input MetaQueryCompareByKeyInput {
+  operator: MetaQueryCompareByKeyOperatorEnum!
+}
+
+enum MetaQueryCompareByKeyOperatorEnum {
+  EXISTS
+  NOT_EXISTS
+}
+
+input ValueMetaQueryCompareByArrayValueInput {
+  operator: MetaQueryCompareByArrayValueOperatorEnum!
+  value: [AnyBuiltInScalar!]!
+}
+
+# AnyBuiltInScalar: Int, Float, String or Bool
+scalar AnyBuiltInScalar
+
+enum MetaQueryCompareByArrayValueOperatorEnum {
+  BETWEEN
+  IN
+  NOT_BETWEEN
+  NOT_IN
+}
+
+input ValueMetaQueryCompareByNumericValueInput {
+  operator: MetaQueryCompareByNumericValueOperatorEnum!
+  value: Numeric!
+}
+
+enum MetaQueryCompareByNumericValueOperatorEnum {
+  EQUALS
+  GREATER_THAN
+  GREATER_THAN_OR_EQUAL
+  LESS_THAN
+  LESS_THAN_OR_EQUAL
+  NOT_EQUALS
+}
+
+# Numeric: Float or Int
+scalar Numeric
+
+input ValueMetaQueryCompareByStringValueInput {
+  operator: MetaQueryCompareByStringValueOperatorEnum!
+  value: String!
+}
+
+enum MetaQueryCompareByStringValueOperatorEnum {
+  EQUALS
+  LIKE
+  NOT_EQUALS
+  NOT_LIKE
+  NOT_REGEXP
+  REGEXP
+  RLIKE
+}
+```
+
+This way, by choosing what input to use under `compareBy`, the correctness of the overall input data set will be validated by GraphQL. Now, when filtering posts where some meta key exists we cannot provide a `value`:
+
+```graphql
+{
+  posts(filter: {
+    metaQuery: {
+      key: "_thumbnail_id",
+      compareBy:{
+        key: {
+          operator: EXISTS
+        }
+      }
+    }
+  }) {
+    id
+    title
+    metaValue(key: "_thumbnail_id")
+  }
+}
+```
+
+To filter posts "liked" by some user we use input `arrayValue`, and select the operator `IN`:
+
+```graphql
+query FilterPostsLikedByUser($userID: ID!) {
+  posts(filter: {
+    metaQuery: {
+      key: "liked_by_users",
+      compareBy:{
+        arrayValue: {
+          value: $userID
+          operator: IN
+        }
+      }
+    }
+  }) {
+    id
+    title
+  }
+}
+```
+
+## Introspection: finding out if a type is a "oneOf" Input Object
+
+We can find out if a type is a "oneOf" Input Object via introspection field `isOneOf`:
+
+```graphql
+query IsOneOfInputObject {
+  __schema {
+    types {
+      name
+      extensions {
+        isOneOf
+      }
+    }
+  }
+}
+```
+
+Please notice that field `isOneOf` is currently under `extensions`, as the new feature proposal has not been merged into the GraphQL spec yet.
+
+## GraphQL spec
+
+This functionality is currently not part of the GraphQL spec, but it has been requested in:
+
+- <a href="https://github.com/graphql/graphql-spec/pull/825" target="_blank">PR #825 - RFC: OneOf Input Objects</a>.

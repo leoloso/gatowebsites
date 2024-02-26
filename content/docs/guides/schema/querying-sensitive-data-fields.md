@@ -1,0 +1,121 @@
+---
+title: "Querying “sensitive” data fields"
+description: The GraphQL schema must strike a balance between public and private fields, as to avoid exposing private information in a public API.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 305
+---
+
+The GraphQL schema must strike a balance between public and private fields, as to avoid exposing private information in a public API.
+
+By default, all fields in the GraphQL schema can only access public data. For instance, `posts` can only retrieve posts with status `"publish"`.
+
+In addition, we can add “sensitive” data fields and input fields to the schema, expected to be used by the admin only, enabled for a specific custom endpoint or persisted query, which can also fetch private data.
+
+For instance, field argument `posts(filter:)` will contain an additional input field `status`, which allows us to retrieve non-published posts (eg: posts with status `"pending"`, `"draft"` or `"trash"`) for any user. Likewise, the schema will expose field `Post.status`, to visualize this piece of data.
+
+## List of “sensitive” data elements
+
+The elements below (among others) are, by default, treated as private data:
+
+**User:**
+
+- `email`
+- `roles`
+- `capabilities`
+
+**Custom Posts:**
+
+- `status`
+- `wpAdminEditURL`
+- `hasPassword`
+- `password`
+- `rawContent`
+- `rawTitle`
+- `rawExcerpt`
+
+**Comments:**
+
+- `status`
+- `rawContent`
+
+**Custom Post Mutations:**
+
+- `authorBy` input
+
+**Menu Items:**
+
+- `rawTitle`
+
+## Overriding the default configuration
+
+The elements listed above can be made public.
+
+In the Settings page, in the corresponding tab for each, there is a checkbox to configure if to treat them as “sensitive” or “normal”:
+
+<div class="img-width-1024" markdown=1>
+
+<a href="/assets/guides/upstream/settings-treat-user-email-as-sensitive-data.png" target="_blank">![Settings to treat user email as “sensitive” data](/assets/guides/upstream/settings-treat-user-email-as-sensitive-data.png "Settings to treat user email as “sensitive” data")</a>
+
+</div>
+
+## Inspecting the “sensitive” data elements via schema introspection
+
+The `isSensitiveDataElement` property is added to field `extensions` when doing schema introspection. To find out which are the “sensitive” data elements from the schema, execute this query:
+
+```graphql
+query ViewSensitiveDataElements {
+  __schema {
+    types {
+      name
+      fields {
+        name
+        extensions {
+          isSensitiveDataElement
+        }
+        args {
+          name
+          extensions {
+            isSensitiveDataElement
+          }
+        }
+      }
+      inputFields {
+        name
+        extensions {
+          isSensitiveDataElement
+        }
+      }
+      enumValues {
+        name
+        extensions {
+          isSensitiveDataElement
+        }
+      }
+    }
+  }
+}
+```
+
+And then search for entries with `"isSensitiveDataElement": true` in the results.
+
+## Adding “sensitive” data elements to the endpoints
+
+Adding “sensitive” data elements to the schema can be configured as follows, in order of priority:
+
+✅ Specific mode for the custom endpoint or persisted query, defined in the schema configuration
+
+<a href="/assets/guides/upstream/schema-configuration-adding-sensitive-fields-to-schema.png" target="_blank">![Adding “sensitive” data elements to the schema, set in the Schema configuration](/assets/guides/upstream/schema-configuration-adding-sensitive-fields-to-schema.png "Adding “sensitive” data elements to the schema, set in the Schema configuration")</a>
+
+✅ Default mode, defined in the Settings
+
+If the schema configuration has value `"Default"`, it will use the mode defined in the Settings:
+
+<div class="img-width-1024" markdown=1>
+
+<a href="/assets/guides/upstream/settings-schema-expose-sensitive-data-default.png" target="_blank">![Setting “sensitive” data elements for the schema configuration, in the Settings](/assets/guides/upstream/settings-schema-expose-sensitive-data-default.png "Setting “sensitive” data elements for the schema configuration, in the Settings")</a>
+
+</div>
+
+## When to use
+
+Use whenever exposing private information is allowed, such as when building a static website, fetching data from a local WordPress instance (i.e. not a public API).

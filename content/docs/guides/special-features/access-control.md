@@ -1,0 +1,21 @@
+---
+title: Access Control
+# isPRO: true
+description: The GraphQL endpoint, which can return any piece of data accessible through the schema, could potentially allow malicious actors to retrieve private information. Hence, we must implement security measures to protect the data.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 700
+---
+
+📣 **Note:** This feature is unlocked by the [Access Control](../../../extensions/access-control/) extension.
+
+The GraphQL endpoint, which can return any piece of data accessible through the schema, could potentially allow malicious actors to retrieve private information. Hence, we must implement security measures to protect the data.
+
+With **access control lists**, we can define who can access each operation, field and directive in the schema:
+
+- Disable access to everyone
+- Grant access if the user is logged-in, or logged-out
+- Grant access if the user has some role
+- Grant access if the user has some capability
+- Grant access if the visitor comes from some IP or IP range
+
+![Access Control List editor](/assets/extensions/upstream-pro/access-control-list.png "Access Control List editor")

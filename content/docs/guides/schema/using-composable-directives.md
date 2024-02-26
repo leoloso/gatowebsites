@@ -1,0 +1,91 @@
+---
+title: Using composable directives
+# isPRO: true
+description: "Composable directives modify the behavior of their nested directives, unlocking the possibility to iterate array values in fields and applying a directive to each value."
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 800
+templateEngineOverride: md
+---
+
+Have a directive modify the behavior of another directive.
+
+This functionality allows to be able to use a directive, when otherwise we could not use it due to a type mismatch (i.e. when a directive cannot be applied on the field, because it has an input which is different than the field's output).
+
+For instance, field `capabilities` returns `[String]` (an array of strings), and directive `@strUpperCase` receives `String`. Hence, executing the following query returns an error due to the type mismatch:
+
+```graphql
+query {
+  user(by: {id: 1}) {
+    capabilities @strUpperCase
+  }
+}
+```
+
+With composable directives, we can employ directive `@underEachArrayItem` (which iterates over an array of elements, and applies its nested directive on each of them) to set the stage before `@strUpperCase` is executed, making it receive a single element (of type `String`).
+
+The query from above can be satisfied like this:
+
+```graphql
+query {
+  user(by: {id: 1}) {
+    capabilities
+      @underEachArrayItem
+        @strUpperCase
+  }
+}
+```
+
+## Meta directives
+
+This module introduces two "meta directives":
+
+1. `@underEachArrayItem` iterates over a list of elements from the queried entity, and passes a reference to the iterated element to the next directive.
+2. `@advancePointersInArray` makes the next directive receive an element from under some path within the queried array/object.
+
+Every meta directive can affect (or "nest") multiple directives at once. Which directives are affected is indicated via argument `affectDirectivesUnderPos`, which receives an array of positive integers, each of them defining the affected directive's relative position.
+
+By default, argument `affectDirectivesUnderPos` has default value `[1]`, meaning that it will affect the directive right next to it.
+
+In the example below, we have:
+
+- `@underEachArrayItem` is the meta directive
+- `@strTranslate` is nested under `@underEachArrayItem` (implicit default value `affectDirectivesUnderPos: [1]`)
+
+```graphql
+{
+  someField
+    @underEachArrayItem
+      @strTranslate
+}
+```
+
+In the example below, we instead have:
+
+- `@strTranslate` and `@strUpperCase` are nested under `@underEachArrayItem` (as indicated by relative positions `[1, 2]` in argument `affectDirectivesUnderPos`)
+
+```graphql
+{
+  someField
+    @underEachArrayItem(affectDirectivesUnderPos: [1, 2])
+      @strTranslate
+      @strUpperCase
+}
+```
+
+Meta directives can also be nested within meta directives.
+
+In the example below, we have:
+
+- `@underEachArrayItem` is the topmost composing directive
+- `@strTranslate` and `@advancePointersInArray` are added under `@underEachArrayItem`
+- `@strUpperCase` is added under `@advancePointersInArray`:
+
+```graphql
+{
+  someField
+    @underEachArrayItem(affectDirectivesUnderPos: [1, 2])
+      @strTranslate
+      @advancePointersInArray(path: 0) # Only 1st element in list
+        @strUpperCase
+}
+```

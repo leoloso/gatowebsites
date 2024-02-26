@@ -1,0 +1,37 @@
+---
+title: Enabling low-level editing of persisted queries
+# isPRO: true
+description: All directives to be applied to the schema become available in the GraphiQL editor when editing persisted queries.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 31000
+---
+
+In GraphQL, directives are functions that enable to modify the result from a field. For instance, a directive `@strUpperCase` will transform the value of the field into uppercase format.
+
+There are 2 types of directives: those that are applied to the schema and are executed always, on every query; and those that are applied to the query, by the user or the application on the client-side.
+
+Gato GraphQL implements plenty of functionality through directives to be applied to the schema. The corresponding directives are added to the query via some user interface.
+
+That is the case, for instance, with providing Cache Control and Access Control. Cache Control works by applying directive `@cacheControl` on the schema, and carried out by the plugin through the Cache Control List user interface:
+
+<a href="/assets/guides/upstream-pro/cache-control.gif" target="_blank">![Defining a cache control policy](/assets/guides/upstream-pro/cache-control.gif "Defining a cache control policy")</a>
+
+Some examples of schema-type directives which regulate Access Control are:
+
+- `@disableAccess`
+- `@validateIsUserLoggedIn`
+- `@validateIsUserNotLoggedIn`
+- `@validateDoesLoggedInUserHaveAnyRole`.
+- `@validateDoesLoggedInUserHaveAnyCapability`
+
+## Enabling low-level editing
+
+Module "Low-Level Persisted Query Editing" is disabled by default. When enabled, all directives to be applied to the schema become available in the GraphiQL editor when editing persisted queries.
+
+<a href="/assets/guides/upstream-pro/schema-type-directives.gif" target="_blank">![Schema-type directives](/assets/guides/upstream-pro/schema-type-directives.gif "Schema-type directives")</a>
+
+This way, and add the schema-type directives already in the GraphQL query when editing the persisted query, and skip the user interface.
+
+For instance, defining Cache Control can be done directly in the persisted query, by setting directive `@cacheControl` with argument `maxAge` on the field:
+
+<a href="/assets/guides/upstream-pro/low-level-persisted-query-editing.png" target="_blank">![Schema-type directives available in the Persisted queries editor](/assets/guides/upstream-pro/low-level-persisted-query-editing.png "Schema-type directives available in the Persisted queries editor")</a>

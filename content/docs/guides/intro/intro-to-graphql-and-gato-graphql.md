@@ -1,0 +1,124 @@
+---
+title: Intro to GraphQL and Gato GraphQL
+description: Welcome to the Gato GraphQL guides. Here you will find plenty of information on installing, configuring and using the Gato GraphQL plugin on your WordPress site.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 100
+---
+
+Welcome to the Gato GraphQL guides. Here you will find plenty of information on installing, configuring and using the Gato GraphQL plugin on your WordPress site.
+
+## What is GraphQL
+
+GraphQL is an API specification, which enables clients (such as the website in the browser, or a mobile app) to specify exactly what data they need, and the server implementing the API will retrieve exactly that.
+
+A GraphQL query looks like this:
+
+```graphql
+query {
+  posts {
+    id
+    title
+    content
+    author {
+      id
+      name
+    }
+  }
+}
+```
+
+The response from the server is in JSON format, containing the data in the same shape as the query. It looks like this:
+
+```json
+{
+  "data": {
+    "posts": [
+      {
+        "id": 1,
+        "title": "Hello world",
+        "content": "<p>How are you doing?</p>",
+        "author": {
+          "id": 1,
+          "name": "Leo"
+        }
+      },
+      {
+        "id": 2,
+        "title": "Scheduled post",
+        "content": "<p>This post is scheduled to be published in the future.</p>",
+        "author": {
+          "id": 2,
+          "name": "Markus"
+        }
+      },
+      {
+        "id": 3,
+        "title": "Lorem ipsum",
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
+        "author": {
+          "id": 3,
+          "name": "Socrates"
+        }
+      }
+    ]
+  }
+}
+```
+
+GraphQL servers can also "mutate" (i.e. create and update) data. In this case, the operation keyword `query` must be replaced with `mutation`:
+
+```graphql
+mutation {
+  createPost(input: {
+    title: "New post",
+    contentAs: { html: "Lorem ipsum dolor sit amet" }
+  }) {
+    id
+    status
+  }
+}
+```
+
+Check out the official GraphQL site at [graphql.org](https://graphql.org/).
+
+## What is Gato GraphQL
+
+Gato GraphQL is a plugin for WordPress that converts the site into a GraphQL server, allowing to fetch and modify data from the WordPress site using the GraphQL language.
+
+<!-- ## Plugin goals
+
+**_Hey!_** Read the detailed explanation of these goals in CSS-Tricks article [Rendering the WordPress philosophy in GraphQL](https://css-tricks.com/rendering-the-wordpress-philosophy-in-graphql/). -->
+
+Gato GraphQL strives to be:
+
+## Easy to use
+
+The WordPress philosophy is that anyone, irrespective of having technical skills or not, must be able to use the software. The plugin attempts to satisfy this philosophy, by making it as easy as possible to create an API and interact with it.
+
+As an example, Gato GraphQL enables to publish persisted queries (which are endpoints exposing predefined data, similar to REST endpoints) using the user interface provided by the WordPress editor; similar to writing a post, it is accessible to everyone.
+
+## Fast
+
+Resolving a GraphQL query will normally require to iterate a graph containing the data for all the queried entities. The more nodes in the graph, and the more depth the graph has, the increasingly slower this process will take to complete (even exponentially slower).
+
+Gato GraphQL takes a different approach: It uses a component model structure to resolve the GraphQL query (instead of a graph), involving a process that grows linearly on the depth of the query (not exponentially).
+
+In addition, only the schema elements requested in the GraphQL query are compiled, validated and executed, and not the whole GraphQL schema. As a result, whether your WordPress site has 3 or 30 Custom Post Types installed, the resolution time for the query will be the same.
+
+## Powerful
+
+APIs act as the main gateway to have the client interact with the server; it is important for an API to not be limited on any respect, as to be able to satisfy any requirement.
+
+This plugin enables to modify the results of executing a query, through custom functionality, external APIs and cloud-based services. The queried data can be iterated and manipulated as needed, and the output of the query can likewise be altered in any desired way, so there is hardly anything that cannot be done.
+
+## Secure
+
+A GraphQL API could easily be mismanaged, exposing access to all data in the WordPress site to everyone, including malicious actors; the GraphQL server needs to provide appropriate security measures, to make sure that only the intended users are the ones accessing the data.
+
+This plugin takes security very seriously, and has implemented several security measures natively. The single endpoint is disabled by default; data can be exposed through persisted queries; granting access to data is done via configurable access control lists (based on the user being logged-in or not, having a certain role or capability, or a custom rule); and the API can be defined as public or private.
+
+## Forward-looking
+
+GraphQL is a standard that keeps evolving, and the community keeps suggesting ideas to provide new functionalities, to be added to the specification sometime in the future.
+
+This plugin doesn't like waiting; it already includes many of the novel functionalities that have been proposed (such as schema namespacing, multiple query execution, and others) as opt-in features, so they must be explicitly enabled by the admin.

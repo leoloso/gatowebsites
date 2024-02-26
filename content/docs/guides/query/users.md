@@ -1,0 +1,191 @@
+---
+title: Users
+description: Examples of queries to fetch user data and log the user in.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 400
+---
+
+These are examples of queries to fetch user data and log the user in.
+
+## Fetching users
+
+A single user with his/her posts:
+
+```graphql
+query {
+  user(by: { id: 1 }) {
+    name
+    email
+    url
+    posts {
+      id
+      title
+      excerpt
+    }
+  }
+}
+```
+
+A list of 5 users, ordered by name:
+
+```graphql
+query {
+  users(
+    pagination: { limit: 5 }
+    sort: { by: NAME, order: ASC }
+  ) {
+    id
+    displayName
+    websiteURL
+  }
+}
+```
+
+A list of predefined users, with their avatars:
+
+```graphql
+{
+  users(filter: { ids: [2, 3, 5] }) {
+    id
+    displayName
+    url
+    avatar(size: 150) {
+      size
+      src
+    }
+  }
+}
+```
+
+Filtering users by name:
+
+```graphql
+query {
+  users(filter: { searchBy: { name: "le" } }) {
+    id
+    name
+    email
+  }
+}
+```
+
+Counting user results:
+
+```graphql
+query {
+  userCount(
+    filter: { searchBy: { name: "le" } }
+  )
+}
+```
+
+Paginating users:
+
+```graphql
+query {
+  users(
+    pagination: {
+      limit: 5,
+      offset: 5
+    }
+  ) {
+    id
+    name
+  }
+}
+```
+
+Fetching meta values:
+
+```graphql
+query {
+  users {
+    id
+    name
+    metaValue(
+      key: "last_name",
+    )
+  }
+}
+```
+
+## Fetching roles and capabilities
+
+📣 **Note:** Read more in guide [Querying “sensitive” data fields](../../schema/querying-sensitive-data-fields/).
+
+Getting the `roles` and `capabilities` for the users:
+
+```graphql
+query {
+  users {
+    id
+    displayName
+    roles {
+      name
+      capabilities
+    }
+  }
+}
+```
+
+## Logging the user in and out
+
+Logging the user in is required to execute mutations (create a post, add a comment, etc).
+
+This query logs the user in:
+
+```graphql
+mutation {
+  loginUser(
+    by: {
+      credentials: {
+        usernameOrEmail: "test",
+        password: "pass"
+      }
+    }
+  ) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+      ...on GenericErrorPayload {
+        code
+      }
+    }
+    userID
+  }
+}
+```
+
+To retrieve the logged-in user:
+
+```graphql
+query {
+  me {
+    id
+    name
+  }
+}
+```
+
+Log the user out:
+
+```graphql
+mutation {
+  logoutUser {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+      ...on GenericErrorPayload {
+        code
+      }
+    }
+    userID
+  }
+}
+```

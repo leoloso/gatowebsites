@@ -1,0 +1,45 @@
+---
+title: Adding a custom category taxonomy to the schema
+description: Custom Post Types defined by any theme or plugin can have their own category taxonomy associated to them, and added to the GraphQL schema.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 420
+---
+
+We can add categories to posts in WordPress (i.e. using the taxonomy with name `"category"`). This is already mapped in the GraphQL schema via the `PostCategory`, associated to a `Post` entry.
+
+Custom Post Types defined by any theme or plugin (such as `"product"`) can likewise have their own category taxonomy associated to them (such as `"product-cat"`). As these category taxonomies don't ship their own specific type for the GraphQL schema (that would require an extension via PHP code), these are resolved via the `GenericCategory` type.
+
+We use fields `category` and `categories` to fetch category data, which must indicate which taxonomy they refer to via mandatory field argument `taxonomy`. The result is of the union type `CategoryUnion`, which includes entries from either `PostCategory` or `GenericCategory` (depending on the entry's taxonomy).
+
+![`CategoryUnion` type](/assets/guides/upstream/interactive-schema-category-union.png "`CategoryUnion` type")
+
+## Configuring the queryable category taxonomies
+
+The category taxonomies that can be queried must be explicitly configured. This can be done in 2 places.
+
+In the Schema Configuration applied to the endpoint, by selecting option `"Use custom configuration"` under "Customize configuration, or use default from Settings?" and then selecting the desired items:
+
+![Selecting the allowed category taxonomies in the Schema Configuration](/assets/guides/upstream/categories-schema-configuration-queryable-taxonomies.png "Selecting the allowed category taxonomies in the Schema Configuration")
+
+_This list contains all the "hierarchical" taxonomies which are associated to queryable custom posts, i.e. those selected in "Included custom post types" in the Settings for "Custom Posts". Each category taxonomy's associated custom post types is shown under `(CPT: ...)`. If your desired category taxonomy does not appear here, make sure that all of its associated custom post types are in that allowlist._
+
+Otherwise, if selecting option `"Use configuration from Settings"`, the value defined under section "Included category taxonomies" in the Settings page for `Schema Custom Posts` is used:
+
+<div class="img-width-1024" markdown=1>
+
+![Selecting the allowed category taxonomies in the Settings](/assets/guides/upstream/categories-settings-queryable-taxonomies.png "Selecting the allowed category taxonomies in the Settings")
+
+</div>
+
+## Additional configuration
+
+Through the Settings for `Schema Categories`, we can also define:
+
+- The default number of elements to retrieve (i.e. when field argument `limit` is not set) when querying for a list of any category taxonomy
+- The maximum number of elements that can be retrieved in a single query execution
+
+<div class="img-width-1024" markdown=1>
+
+![Settings for Category limits](/assets/guides/upstream/settings-categories-limits.png "Settings for Category limits")
+
+</div>

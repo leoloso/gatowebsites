@@ -1,0 +1,87 @@
+---
+title: Intro to the GraphiQL client
+description: Gato GraphQL provides the GraphiQL client to interact with the GraphQL service.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 500
+---
+
+Gato GraphQL provides the GraphiQL client to interact with the GraphQL service. Access it by clicking on "GraphiQL" on the plugin's menu:
+
+<figure><a href="/assets/guides/downstream/wp-admin-graphiql.png" target="_blank"><img src="/assets/guides/downstream/wp-admin-graphiql.png" alt="GraphiQL client" loading="lazy"></a><figcaption>GraphiQL client</figcaption></figure>
+
+GraphiQL enables to composer GraphQL queries, execute them, and visualize their response:
+
+<figure><a href="/assets/features/graphiql-with-explorer.gif" target="_blank"><img src="/assets/features/graphiql-with-explorer.gif" alt="Executing a query via GraphiQL" loading="lazy"></a><figcaption>Executing a query via GraphiQL</figcaption></figure>
+
+## GraphiQL client guide
+
+This is how to use the GraphiQL client to compose and execute a GraphQL query.
+
+We compose the GraphQL query on the panel on the left-side:
+
+![GraphiQL client](/assets/guides/downstream/clients/graphiql-compose-query.png "GraphiQL client")
+
+GraphiQL has a syntax highlighter for the [GraphQL syntax](https://graphql.org/learn/queries/). As we start composing the query, we can appreciate how the operation name, the opening and closing brackets, fields, arguments, directives and comments all have a distinct color, helping us to make sense of the query:
+
+![Syntax highlighting](/assets/guides/downstream/clients/graphiql-syntax.png "Syntax highlighting")
+
+When first loading, GraphiQL will retrieve the GraphQL schema's metadata, via [introspection](https://graphql.org/learn/introspection/). Thanks to the schema metadata, at every moment while composing the query, GraphiQL will suggest autocomplete options:
+
+![Autocomplete suggestions](/assets/guides/downstream/clients/graphiql-autocomplete.png "Autocomplete suggestions")
+
+We can also browse the schema metadata via the Documentation Explorer. To open it, we must click on the "Docs" button:
+
+![Docs button](/assets/guides/downstream/clients/graphiql-docs-btn.png "Docs button")
+
+The Documentation Explorer will appear on the right-hand side:
+
+![Documentation Explorer](/assets/guides/downstream/clients/graphiql-docs.png "Documentation Explorer")
+
+By clicking on the GraphQL type's name, the Documentation Explorer will display its information:
+
+- its description
+- what interfaces it implements
+- the list of all its fields, including:
+  - what arguments they receive
+  - their return type (on which we can also click)
+  - their description
+
+![Clicking on the type's name](/assets/guides/downstream/clients/graphiql-docs-type-name.png "Clicking on the type's name")
+
+![Displaying the type's info](/assets/guides/downstream/clients/graphiql-docs-type-info.png "Displaying the type's info")
+
+At any moment, we can also search for, and retrieve info for, any element from the schema:
+
+![Searching](/assets/guides/downstream/clients/graphiql-docs-search.png "Searching")
+
+Hovering on any element from the query will display its information, and `ctrl` (or `cmd`) + clicking on it will display it in the Documentation Explorer:
+
+![Clicking on schema elements](/assets/guides/downstream/clients/graphiql-docs-ctrlclick.png "Clicking on schema elements")
+
+Clicking on the "Query variables" panel at the bottom, we can compose variables to pass to the query, as a JSON map of `variable` => `value`:
+
+![Opening the Query variables panel](/assets/guides/downstream/clients/graphiql-queryvariables-panel.png "Opening the Query variables panel")
+
+![Completing query variables](/assets/guides/downstream/clients/graphiql-queryvariables.png "Completing query variables")
+
+To execute the GraphQL query, we press on the "Run" button, or press `ctrl` (or `cmd`) + `enter`:
+
+![Executing the GraphQL query](/assets/guides/downstream/clients/graphiql-docs-run-btn.png "Executing the GraphQL query")
+
+The GraphQL response will be displayed on the central panel:
+
+![GraphQL query response](/assets/guides/downstream/clients/graphiql-response.png "GraphQL query response")
+
+On the top panel, there are different add-ons for GraphiQL:
+
+![GraphiQL add-ons](/assets/guides/downstream/clients/graphiql-addons.png "GraphiQL add-ons")
+
+Clicking on each add-on button, will perform a certain action:
+
+- "Prettify" formats the GraphQL query
+- "History" displays the list of most-recent previous queries, and clicking on any of them will input it into the query editor
+- "Explorer" opens the GraphiQL Explorer panel
+
+The GraphiQL Explorer is a great add-on. It displays the list of all the fields, and clicking on them adds them to the query in the editor, enabling to compose the GraphQL query in a visual manner:
+
+![GraphiQL Explorer](/assets/guides/downstream/clients/graphiql-explorer.gif "GraphiQL Explorer")

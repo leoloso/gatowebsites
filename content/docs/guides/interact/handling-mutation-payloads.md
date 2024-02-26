@@ -1,0 +1,161 @@
+---
+title: Handling mutation payloads
+description: This guide explains how to handle returning the payload object type in mutations.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 320
+---
+
+We can configure mutation fields to return [either of these 2 different entities](../../special-features/mutation-return-type/):
+
+- A payload object type
+- Directly the mutated entity
+
+This guide explains how to handle the first option, the payload object type.
+
+## Handling the payload object type for mutations
+
+Mutations in the schema return some payload object, which provides any error(s) resulting from the mutation, or the modified object if successful (these 2 properties are most likely exclusive: either `errors` or `object` will have a value, and the other one will be `null`).
+
+Errors are provided via some "ErrorPayloadUnion" type, containing all possible errors for that mutation. Every possible error is some "ErrorPayload" type that implements the interface `ErrorPayload`.
+
+For instance, the operation `updatePost` returns a `PostUpdateMutationPayload`, which contains the following fields:
+
+- `status`: whether the operation was successful or not, with either value `SUCCESS` or `FAILURE`
+- `post` and `postID`: the updated post object and its ID, if the update was successful
+- `errors`: a list of `CustomPostUpdateMutationErrorPayloadUnion`, if the update failed.
+
+The union type `CustomPostUpdateMutationErrorPayloadUnion` contains the list of all possible errors that can happen when modifying a custom post:
+
+- `CustomPostDoesNotExistErrorPayload`
+- `GenericErrorPayload`
+- `LoggedInUserHasNoEditingCustomPostCapabilityErrorPayload`
+- `LoggedInUserHasNoPermissionToEditCustomPostErrorPayload`
+- `LoggedInUserHasNoPublishingCustomPostCapabilityErrorPayload`
+- `UserIsNotLoggedInErrorPayload`
+
+Error type `GenericErrorPayload` is contained by all "ErrorPayloadUnion" types. It is used whenever the specific reason for the error cannot be pointed out, such as when `wp_update_post` simply produces `WP_Error`. This type provides two additional fields: `code` and `data`.
+
+Then, to execute the `updatePost` mutation, we can execute:
+
+```graphql
+mutation UpdatePost(
+  $postId: ID!
+  $title: String!
+) {
+  updatePost(
+    input: {
+      id: $postId,
+      title: $title,
+    }
+  ) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+      ...on GenericErrorPayload {
+        code
+      }
+    }
+    post {
+      id
+      title
+    }
+  }
+}
+```
+
+If the operation was successful, we will receive:
+
+```json
+{
+  "data": {
+    "updatePost": {
+      "status": "SUCCESS",
+      "errors": null,
+      "post": {
+        "id": 1724,
+        "title": "This incredible title"
+      }
+    }
+  }
+}
+```
+
+If the user is not logged in, we will receive:
+
+```json
+{
+  "data": {
+    "updatePost": {
+      "status": "FAILURE",
+      "errors": [
+        {
+          "__typename": "UserIsNotLoggedInErrorPayload",
+          "message": "You must be logged in to create or update custom posts"
+        }
+      ],
+      "post": null
+    }
+  }
+}
+```
+
+If the user doesn't have the permission to edit posts, we will receive:
+
+```json
+{
+  "data": {
+    "updatePost": {
+      "status": "FAILURE",
+      "errors": [
+        {
+          "__typename": "LoggedInUserHasNoEditingCustomPostCapabilityErrorPayload",
+          "message": "Your user doesn't have permission for editing custom posts."
+        }
+      ],
+      "post": null
+    }
+  }
+}
+```
+
+<script type="application/javascript">
+window.addEventListener('DOMContentLoaded', () => {
+  const graphQLFetcher = graphQLParams =>
+    fetch(getGraphQLEndpointURL(graphQLParams), getGraphQLOptions(graphQLParams, 'include'))
+      .then(response => response.json())
+      .catch(() => response.text());
+
+  ReactDOM.render(
+    React.createElement(
+      GraphiQL,
+      {
+        fetcher: graphQLFetcher,
+        docExplorerOpen: false,
+        response: GRAPHQL_RESPONSE_TEXT,
+        query: 'query {\n  post(by: { id: 1 }) {\n    title\n    content\n    url\n    date\n    author {\n      id\n      name\n    }\n    tags {\n      id\n      name\n    }\n  }\n}',
+        variables: null,
+        defaultVariableEditorOpen: false
+      }
+    ),
+    document.getElementById('graphiql-1st'),
+  );
+
+  ReactDOM.render(
+    React.createElement(
+      GraphiQL,
+      {
+        fetcher: graphQLFetcher,
+        docExplorerOpen: false,
+        response: GRAPHQL_RESPONSE_TEXT,
+        query: 'mutation {\n  createPost(\n    input: {\n      title: "Hi there!"\n      contentAs: { html: "How do you like it?" }\n      status: draft\n      tags: ["demo", "plugin"]\n    }\n  ) {\n    status\n    errors {\n      __typename\n      ...on ErrorPayload {\n        message\n      }\n    }\n    postID\n    post {\n      status\n      title\n      content\n      url\n      date\n      author {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n    }\n  }\n}\n',
+        variables: null,
+        defaultVariableEditorOpen: false
+      }
+    ),
+    document.getElementById('graphiql-2nd'),
+  );
+});
+</script>
