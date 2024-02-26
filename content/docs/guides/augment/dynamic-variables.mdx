@@ -47,7 +47,7 @@ function double(int $number): int
 
 Thanks to custom directives, the GraphQL server can provide a similar behavior and support dynamic variables, where a dynamic variable has its value obtained when resolving the query in the server, instead of being provided by the client.
 
-The [**Multiple Query Execution**](../../../extensions/multiple-query-execution/) extension of Gato GraphQL ships with custom directive `@export`, which allows exporting the value of a field into a (dynamic) variable, and then we can read the value of this variable in a field argument from a different operation:
+The [**Multiple Query Execution**](/extensions/multiple-query-execution/) extension of Gato GraphQL ships with custom directive `@export`, which allows exporting the value of a field into a (dynamic) variable, and then we can read the value of this variable in a field argument from a different operation:
 
 ```graphql
 query ExportLoggedInUserName {
