@@ -1,0 +1,288 @@
+---
+title: Blocks
+description: Examples of queries to fetch block data.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 250
+---
+
+📣 **Note:** Read more in guide [Working with (Gutenberg) blocks](../../interact/working-with-gutenberg-blocks).
+
+These are examples of queries to fetch block data.
+
+## Fetching blocks in a custom post via a `Block` type
+
+Fetching data for all blocks in a post:
+
+```graphql
+{
+  post(by: { id: 19 }) {
+    blocks {
+      ...BlockData
+    }
+  }
+}
+
+fragment BlockData on Block {
+  name
+  attributes
+  # innerHTML
+  contentSource
+  innerBlocks {
+    name
+    attributes
+    # innerHTML
+    contentSource
+    innerBlocks {
+      name
+      attributes
+      # innerHTML
+      contentSource
+      innerBlocks {
+        name
+        attributes
+        # innerHTML
+        contentSource
+        innerBlocks {
+          name
+          attributes
+          # innerHTML
+          contentSource
+          innerBlocks {
+            name
+            attributes
+            # innerHTML
+            contentSource
+            innerBlocks {
+              name
+              attributes
+              # innerHTML
+              contentSource
+              innerBlocks {
+                name
+                attributes
+                # innerHTML
+                contentSource
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Retrieving only blocks of certain types:
+
+```graphql
+{
+  post(by: { id: 19 }) {
+    blocks(
+      filterBy: {
+        include: [
+          "core/heading",
+          "core/paragraph"
+        ]
+      }
+    ) {
+      ...BlockData
+    }
+  }
+}
+
+fragment BlockData on Block {
+  name
+  attributes
+  # innerHTML
+  contentSource
+  innerBlocks {
+    name
+    attributes
+    # innerHTML
+    contentSource
+    innerBlocks {
+      name
+      attributes
+      # innerHTML
+      contentSource
+      innerBlocks {
+        name
+        attributes
+        # innerHTML
+        contentSource
+        innerBlocks {
+          name
+          attributes
+          # innerHTML
+          contentSource
+          innerBlocks {
+            name
+            attributes
+            # innerHTML
+            contentSource
+            innerBlocks {
+              name
+              attributes
+              # innerHTML
+              contentSource
+              innerBlocks {
+                name
+                attributes
+                # innerHTML
+                contentSource
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Excluding blocks:
+
+```graphql
+{
+  post(by: { id: 19 }) {
+    blocks(
+      filterBy: {
+        exclude: [
+          "core/heading",
+          "core/paragraph"
+        ]
+      }
+    ) {
+      ...BlockData
+    }
+  }
+}
+
+fragment BlockData on Block {
+  name
+  attributes
+  # innerHTML
+  contentSource
+  innerBlocks {
+    name
+    attributes
+    # innerHTML
+    contentSource
+    innerBlocks {
+      name
+      attributes
+      # innerHTML
+      contentSource
+      innerBlocks {
+        name
+        attributes
+        # innerHTML
+        contentSource
+        innerBlocks {
+          name
+          attributes
+          # innerHTML
+          contentSource
+          innerBlocks {
+            name
+            attributes
+            # innerHTML
+            contentSource
+            innerBlocks {
+              name
+              attributes
+              # innerHTML
+              contentSource
+              innerBlocks {
+                name
+                attributes
+                # innerHTML
+                contentSource
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+## Fetching block data in a custom post via a `JSONObject` type
+
+Fetching data for all blocks in a post:
+
+```graphql
+{
+  posts(by: { id: 19 }) {
+    blockDataItems
+  }
+}
+```
+
+Retrieving only blocks of certain types:
+
+```graphql
+{
+  posts(by: { id: 19 }) {
+    blockDataItems(
+      filterBy: {
+        include: [
+          "core/heading",
+          "core/paragraph"
+        ]
+      }
+    )
+  }
+}
+```
+
+Excluding blocks:
+
+```graphql
+{
+  posts(by: { id: 19 }) {
+    blockDataItems(
+      filterBy: {
+        exclude: [
+          "core/heading",
+          "core/paragraph"
+        ]
+      }
+    )
+  }
+}
+```
+
+## Fetching flattened block data in a custom post
+
+Field `blockFlattenedDataItems` flattens the block hierarchy contained in the custom post to a single level. Then, filtering by block type will also include inner blocks who have a parent block that is excluded.
+
+Fetching data for all blocks in a post:
+
+```graphql
+{
+  posts(by: { id: 19 }) {
+    blockFlattenedDataItems
+  }
+}
+```
+
+Retrieving only blocks of certain types:
+
+```graphql
+{
+  posts(by: { id: 19 }) {
+    blockFlattenedDataItems(
+      filterBy: {
+        include: [
+          "core/heading",
+          "core/paragraph",
+          "core/columns",
+          "core/column"
+        ]
+      }
+    )
+  }
+}
+```

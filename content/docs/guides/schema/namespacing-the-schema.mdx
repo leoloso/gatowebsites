@@ -1,0 +1,90 @@
+---
+title: Namespacing the schema
+description: "Namespacing the schema avoids naming conflicts, which happens when different owners (eg: different teams in the company, or among 3rd party plugins) use the same name for a type or interface."
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 100
+---
+
+Have all types and interfaces added to the schema by plugins be automatically namespaced.
+
+Namespacing the schema avoids naming conflicts, which happens when different owners (eg: different teams in the company, or among 3rd party plugins) use the same name for a type or interface.
+
+For instance, let's say that company "AwesomeWP" has the Tutorials and the Sales team, and both of them create a `Product` type for the company's GraphQL schema, producing a conflict.
+
+By namespacing the schema, the two types would be automatically converted to `AwesomeWPTutorialsProduct` and `AwesomeWPSalesProduct`, avoiding the conflict without having to manually modify the schema, or have the teams interact with each other.
+
+## The entities from the WordPress data model are not namespaced
+
+The WordPress data model is considered canonical, and its GraphQL schema types (such as `Post` and `User`) and interfaces (such as `Commentable` and `WithMeta`) are not namespaced.
+
+## Namespacing the schema in the endpoints
+
+There are 2 levels in which we can define if the schema will be namespaced or not. In order of priority:
+
+### 1. On the schema configuration
+
+Namespacing the schema for a custom endpoint or persisted query, can be defined through the corresponding schema configuration:
+
+![Namespacing, set in the Schema configuration](/assets/guides/upstream/schema-configuration-namespacing.png "Namespacing, set in the Schema configuration")
+
+### 2. Default mode, defined in the Settings
+
+If the schema configuration has value `"Default"`, it will use the mode defined in the Settings:
+
+<div class="img-width-1024" markdown="1">
+
+![Namespacing in Settings](/assets/guides/upstream/settings-namespacing-default.png "Namespacing in Settings")
+
+</div>
+
+## Visualizing the namespaced schema
+
+Use the [Voyager client](../../intro/intro-to-the-voyager-client/) to visualize the namespaced schema.
+
+When namespacing is disabled, the WordPress schema looks like this:
+
+![Interactive schema](/assets/guides/upstream/normal-interactive-schema.png "Interactive schema")
+
+When it is enabled, the types and interfaces added by plugins are namespaced, looking like this:
+
+![Namespaced interactive schema](/assets/guides/upstream/namespaced-interactive-schema.png "Namespaced interactive schema")
+
+## Querying (non-)namespaced type names
+
+Once namespaced is enabled, types can be queried using both their namespaced and non-namespaced type names. Hence, only queries involving conflicting types need be edited, and not all of them.
+
+For instance, if AwesomeWP's Sales team also has a `Discount` type, a query asking for this type name still works:
+
+```graphql
+query {
+  discounts {
+    ...DiscountProps
+  }
+}
+
+fragment DiscountProps on Discount {
+  price
+  dateRange
+}
+```
+
+Only the conflicting type `Product` should be updated to `AwesomeWPSalesProduct` in the query, as to remove any ambiguity:
+
+```graphql
+query {
+  products {
+    ...ProductProps
+  }
+}
+
+fragment ProductProps on AwesomeWPSalesProduct {
+  price
+  dateRange
+}
+```
+
+## GraphQL spec
+
+This functionality is currently not part of the GraphQL spec, but it has been requested in:
+
+- <a href="https://github.com/graphql/graphql-spec/issues/163" target="_blank">issue #163 - Namespaces</a>.

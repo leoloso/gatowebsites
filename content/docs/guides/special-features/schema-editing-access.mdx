@@ -1,0 +1,44 @@
+---
+title: Schema Editing Access
+# isPRO: true
+description: Grant non-admin users access to the GraphiQL and Interactive schema clients in the admin, and to access the different screens in Gato GraphQL.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 1300
+---
+
+📣 **Note:** This feature is unlocked by the [Schema Editing Access](../../../extensions/schema-editing-access/) extension.
+
+By default, only admin users (those with the `manage_options` capability) have access to the different screens of plugin Gato GraphQL in the admin.
+
+We can enable to grant non-admin users access to the GraphiQL and Interactive schema clients in the admin, and to read and/or write the different Custom Post Types from this plugin:
+
+- Persisted Queries
+- Custom Endpoints
+- Schema Configurations
+- Access Control Lists
+- Cache Control Lists
+- Others
+
+This is achieved via two different methods:
+
+1. By assigning the custom capability `manage_graphql_schema` to the user
+2. By selecting the user roles that can edit the schema (down to the "Author" level)
+
+<div class="img-width-1024" markdown="1">
+
+![Configuring the schema editing access in the Settings](/assets/extensions/upstream-pro/settings-schema-editing-access.png "Configuring the schema editing access in the Settings")
+
+</div>
+
+{/* <!-- What permissions are given to non-admin users follows the same <a href="https://wordpress.org/support/article/roles-and-capabilities/#summary-of-roles" target="_blank">scheme as when editing posts in WordPress</a>, where users with different roles (`subscriber`, `contributor`, `author` and `editor`) have access to different capabilities:
+
+| Role | Capabilities |
+| --- | --- |
+| Editor | Can publish and manage posts including the posts of other users |
+| Author | Can publish and manage their own posts |
+| Contributor | Can write and manage their own posts but cannot publish them |
+| Subscriber | Can only read posts |
+
+For instance, a contributor can create, but not publish, a persisted query:
+
+![Persisted query by contributor](/assets/guides/upstream-pro/new-persisted-query-by-contributor.png "Persisted query by contributor") --> */}

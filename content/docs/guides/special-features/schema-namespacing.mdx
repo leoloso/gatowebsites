@@ -1,0 +1,14 @@
+---
+title: Schema namespacing
+description: Schema namespacing enables to avoid conflicts in the schema, by having all type names namespaced.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 100
+---
+
+If plugins WooCommerce and Easy Digital Downloads both implemented a `Product` type for the GraphQL API, then we could not install both plugins at the same time, since their types would conflict.
+
+**Schema namespacing** enables to avoid conflicts in the schema, by having all type names namespaced. Hence, type `Product` would become `Woo_Product` and `EDD_Product` respectively, and these types could be added to the same schema.
+
+This images shows a namespaced schema, in which types `Event` and `Location` were added the prefix `EM_` to avoid name collision:
+
+![Namespaced schema](/assets/guides/upstream/namespaced-interactive-schema.png "Namespaced schema")

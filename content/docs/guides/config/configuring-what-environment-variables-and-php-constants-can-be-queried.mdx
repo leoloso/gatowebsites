@@ -1,0 +1,52 @@
+---
+title: Configuring what environment variables and PHP constants can be queried
+# isPRO: true
+description: Configuring the list of allowed environment variables and PHP constants that can be queried via global field '_env' of the GraphQL schema.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 3400
+---
+
+With the [PHP Constants and Environment Variables via Schema](../../../extensions/php-constants-and-environment-variables-via-schema/) extension, the GraphQL schema is provided with global field `_env`, which allows to obtain a value from an environment variable, or from a PHP constant.
+
+We must configure the list of allowed environment variables and constants that can be queried.
+
+{/* <!-- By default, this list is initially empty. (Unless the unsafe default settings to [build static sites](../building-static-sites) are enabled, in which case any name is allowed by default.) --> */}
+
+Each entry can either be:
+
+- A regex (regular expression), if it's surrounded by `/` or `#`, or
+- The full variable or constant name, otherwise
+
+For instance, any of these entries match environment variable `"GITHUB_ACCESS_TOKEN"`:
+
+- `GITHUB_ACCESS_TOKEN`
+- `#^([A-Z]*)_ACCESS_TOKEN$#`
+- `/GITHUB_(\S+)/`
+
+There are 2 places where this configuration can take place, in order of priority:
+
+1. Custom: In the corresponding Schema Configuration
+2. General: In the Settings page
+
+In the Schema Configuration applied to the endpoint, select option `"Use custom configuration"` and then input the desired entries:
+
+![Defining the entries on the Schema Configuration](/assets/guides/upstream-pro/environment-fields-schema-configuration-entries.png "Defining the entries on the Schema Configuration")
+
+Otherwise, the entries defined in the "Environment Fields" tab from the Settings will be used:
+
+<div class="img-width-1024" markdown="1">
+
+![Defining the entries on the Settings](/assets/guides/upstream-pro/environment-fields-settings-entries.png "Defining the entries on the Settings")
+
+</div>
+
+There are 2 behaviors, "Allow access" and "Deny access":
+
+- **Allow access:** only the configured entries can be accessed, and no other can<br/>
+- **Deny access:** the configured entries cannot be accessed, all other entries can
+
+<div class="img-width-1024" markdown="1">
+
+![Defining the access behavior](/assets/guides/upstream-pro/environment-fields-settings-behavior.png "Defining the access behavior")
+
+</div>

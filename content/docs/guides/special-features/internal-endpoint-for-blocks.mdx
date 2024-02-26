@@ -1,0 +1,18 @@
+---
+title: Internal Endpoint for Blocks
+description: An internal GraphQL endpoint is accessible within the wp-admin only, to allow developers to fetch data for their Gutenberg blocks.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 58
+---
+
+An internal GraphQL endpoint, called `blockEditor`, is accessible within the wp-admin only, to allow developers to fetch data for their Gutenberg blocks.
+
+This endpoint has a pre-defined configuration (i.e. it does not have the user preferences from the plugin applied to it), so its behavior is consistent.
+
+It is accessible under URL:
+
+```apacheconf
+https://yoursite.com/wp-admin/edit.php?page=gatographql&action=execute_query&endpoint_group=blockEditor
+```
+
+The global JS variable `GATOGRAPHQL_BLOCK_EDITOR_ADMIN_ENDPOINT` prints the URL for the `blockEditor` endpoint in the wp-admin editor, for all users who can access the GraphQL schema. This makes it easier to point to this endpoint within the block's JavaScript code.

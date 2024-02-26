@@ -1,0 +1,111 @@
+---
+title: Changing the path to where a field is printed in the response
+# isPRO: true
+description: Is it possible to tell the GraphQL server to flatten the shape of the response? And, if so, how to do it?
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 1600
+---
+
+[This question](https://www.reddit.com/r/graphql/comments/rt9md0/aliasing_a_nested_field_as_a_parent_field/) appeared on Reddit:
+
+> I have:
+>
+> ```graphql
+> allMdx {
+>   edges {
+>     node {
+>       frontmatter {
+>         date(formatString: "MMMM DD, YYYY")
+>       }
+>     }
+>   }
+> }
+> ```
+>
+> I need `frontmatter.date` to be `publishedAt`:
+>
+> ```graphql
+> allMdx {
+>   edges {
+>     node {
+>       publishedAt: frontmatter{date(formatString: "MMMM DD, YYYY")}
+>     }
+>   }
+> }
+> ```
+>
+> Problem is, when I do this, I end up with:
+>
+> ```json
+> {
+>   "publishedAt": {
+>     "date": "February 06, 2021"
+>   }
+> }
+> ```
+>
+> Instead of (which is what I need):
+>
+> ```json
+> {
+>   "publishedAt": "February 06, 2021"
+> }
+> ```
+>
+> Is it even possible to alias nested fields like this?
+
+In other words, is it possible to tell the GraphQL server to flatten the shape of the response? And, if so, how to do it?
+
+Here is a solution with Gato GraphQL, making use of the following extensions:
+
+- [Multiple Query Execution](../../../extensions/multiple-query-execution), to `@export` the value of a variable across GraphQL operations
+- [PHP Functions via Schema](../../../extensions/php-functions-via-schema), to print this value again on the desired location via the `_echo` field
+
+With `@export`, we can have a first query operation export some result to a variable, and then declare a second query operation that will read this variable and print it on the expected location in the response:
+
+```graphql
+query ExportDate
+{
+  allMdx {
+    edges {
+      node {
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+            @export(as: "date")
+        }
+      }
+    }
+  }
+}
+
+query PrintRelocatedDate($date: String)
+  @depends(on: "ExportDate")
+{
+  allMdx {
+    edges {
+      node {
+        publishedAt: _echo(value: $date)
+      }
+    }
+  }
+}
+```
+
+...and then executing the query (passing `?operationName=PrintRelocatedDate`) will produce this response:
+
+```json
+{
+  "data": {
+    "allMdx": {
+      "edges": [
+        {
+          "frontmatter": {
+            "publishedAt": "February 06, 2021"
+          },
+          "publishedAt": "February 06, 2021"
+        }
+      ]
+    }
+  }
+}
+```

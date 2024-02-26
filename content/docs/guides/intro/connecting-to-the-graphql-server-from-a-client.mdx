@@ -1,0 +1,208 @@
+---
+title: Connecting to the GraphQL server from a client
+description: The website can connect to the GraphQL server from any browser running JavaScript.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 300
+# useGraphQLEndpoints: true
+---
+
+The website can connect to the GraphQL server from any browser running JavaScript. This includes:
+
+- Vanilla JS in the client-side application
+- Using a framework (such as Vue or React)
+- From within a WordPress editor block
+
+We can use any GraphQL client library to connect to the server, including:
+
+- [GraphQL Request](https://github.com/jasonkuhrt/graphql-request)
+- [urql](https://github.com/urql-graphql/urql)
+- [Apollo client](https://github.com/apollographql/apollo-client)
+- [Relay](https://github.com/facebook/relay)
+
+However, there is no need for an external JavaScript library to connect to the GraphQL endpoint: simple JavaScript code will already do, as demonstrated below.
+
+## Executing queries against a GraphQL endpoint
+
+This JavaScript code submits a query with variables to the GraphQL server, and prints the response to console.
+
+```js
+/**
+ * Replace here using either:
+ * - The single endpoint's URL
+ * - A custom endpoint's permalink
+ */
+const GRAPHQL_ENDPOINT = '{ YOUR_ENDPOINT_URL }';
+
+(async function () {
+  const limit = 3;
+  const data = {
+    query: `
+query GetPostsWithAuthor($limit: Int) {
+  posts(pagination: { limit: $limit }) {
+    id
+    title
+    author {
+      id
+      name
+    }
+  }
+}
+    `,
+    variables: {
+      limit: `${ limit }`
+    },
+  };
+
+  const response = await fetch(
+    GRAPHQL_ENDPOINT,
+    {
+      method: 'post',
+      body: JSON.stringify(data),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Content-Length': data.length,
+      },
+      credentials: 'include',
+    }
+  );
+
+  /**
+   * Execute the query, and await the response
+   */
+  const json = await response.json();
+
+  /**
+   * Check if the query produced errors, otherwise use the results
+   */
+  if (json.errors) {
+    console.log(JSON.stringify(json.errors));
+  } else {
+    console.log(JSON.stringify(json.data));
+  }
+})();
+```
+
+## Executing persisted queries
+
+Executing a persisted query has a few differences:
+
+- There is no need to submit a GraphQL query
+- The operation is `GET`, not `POST`
+- Variables and operation name must be added to the URL
+
+```js
+/**
+ * Replace here using:
+ * - A persisted query's permalink
+ */
+const GRAPHQL_PERSISTED_QUERY_PERMALINK = '{ YOUR_PERSISTED_QUERY_PERMALINK }';
+
+(async function () {
+  const limit = 3;
+
+  /**
+   * If needed, add variables in the URL
+   */
+  const GRAPHQL_PERSISTED_QUERY = `${ GRAPHQL_PERSISTED_QUERY_PERMALINK }?limit=${ limit }`;
+
+  const response = await fetch(
+    GRAPHQL_PERSISTED_QUERY,
+    {
+      method: 'get',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Content-Length': data.length,
+      },
+      credentials: 'include',
+    }
+  );
+
+  const json = await response.json();
+  if (json.errors) {
+    console.log(JSON.stringify(json.errors));
+  } else {
+    console.log(JSON.stringify(json.data));
+  }
+})();
+```
+
+## Sending nonce header
+
+If you need to execute an operation including a nonce, add the `X-WP-Nonce` header.
+
+Print your nonce:
+
+```html
+<script>
+const NONCE = '{ Print nonce value }' ;
+</script>
+```
+
+Include it in the headers to `fetch`:
+
+```js
+{
+  headers: {
+    'X-WP-Nonce': `${ NONCE }`
+  }
+}
+```
+
+{/* <!-- ## Demonstration
+
+This same page is connecting to the GraphQL server, to fetch a list of posts, using the JavaScript code shown at the top.
+
+You can inspect this page's source code, and use the DevTools Network tab to see how it is executing the query against the GraphQL server.
+
+Results from executing the query:
+
+<pre><code class="language-json" id="graphql-response"></code></pre>
+
+<script src="/js/vendors/beautify.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const GRAPHQL_ENDPOINT = GRAPHQL_ENDPOINT_SOURCE_URL;
+
+  (async function () {
+    const limit = 3;
+    const data = {
+    query: `
+query GetPostsWithAuthor($limit: Int) {
+  posts(pagination: { limit: $limit }) {
+    id
+    title
+    author {
+      id
+      name
+    }
+  }
+}
+    `,
+    variables: {
+      limit: `${ limit }`
+    },
+  };
+
+    const response = await fetch(
+      GRAPHQL_ENDPOINT,
+      {
+        method: 'post',
+        body: JSON.stringify(data),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Content-Length': data.length,
+        },
+        credentials: 'include',
+      }
+    );
+
+    const json = await response.json();
+    document.getElementById('graphql-response').innerHTML = js_beautify(
+      JSON.stringify(json.data)
+    );
+  })();
+});
+</script> --> */}
