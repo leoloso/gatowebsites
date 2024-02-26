@@ -20,11 +20,13 @@ There are admin tasks which are common to many WordPress sites, including:
 
 Gato GraphQL ships with a number of predefined Persisted Queries, to tackle all these tasks and many more.
 
-<div class="img-width-1024" markdown="1">
-
-![Predefined Persisted Queries](/assets/guides/downstream/predefined-persisted-queries.png "Predefined Persisted Queries")
-
-</div>
+<Image
+  src="/assets/guides/downstream/predefined-persisted-queries.png"
+  width="1024"
+  height="940"
+  alt="Predefined Persisted Queries"
+  caption="Predefined Persisted Queries"
+/>
 
 The predefined Persisted Queries are published as `private`, so they are not publicly exposed. These can be executed from within the wp-admin, by a logged-in user with the corresponding capability.
 
@@ -32,11 +34,13 @@ The predefined Persisted Queries are published as `private`, so they are not pub
 
 Every predefined Persisted Query contains the GraphQL query to execute for that task, documentation on what inputs must be provided, and a notice of which extensions are required (if any):
 
-<div class="img-width-1024" markdown="1">
-
-![Persisted Query in the Editor](/assets/guides/downstream/predefined-persisted-query-editor.png "Persisted Query in the Editor")
-
-</div>
+<Image
+  src="/assets/guides/downstream/predefined-persisted-query-editor.png"
+  width="1024"
+  height="940"
+  alt="Persisted Query in the Editor"
+  caption="Persisted Query in the Editor"
+/>
 
 If the Persisted Query requires some specific configuration (such as "nested mutations"), a corresponding Schema Configuration is also created and defined accordingly.
 
