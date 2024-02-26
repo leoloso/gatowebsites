@@ -16,16 +16,14 @@ We can extend the previous tutorial lesson, to duplicate multiple posts with a s
 
 ## GraphQL query to duplicate multiple posts at once
 
-<div class="doc-config-highlight" markdown="1">
-
-⚙️ **Configuration alert:**
+<Banner type="important">
 
 For this GraphQL query to work, the [Schema Configuration](https://gatographql.com/guides/use/creating-a-schema-configuration/) applied to the endpoint needs to have the following configuration:
 
 - In block [Payload Types for Mutations](https://gatographql.com/guides/config/returning-a-payload-object-or-the-mutated-entity-for-mutations/), select "Do not use Payload Types for Mutations (i.e. return the mutated entity)" (so that dynamic variable `$createdPostIDs` will contain the IDs of the created posts)
 - In block [Mutation Scheme](https://gatographql.com/guides/schema/using-nested-mutations/), select any of the two "Enable Nested Mutations" options (as to use field `_echo` inside a `mutation`)
 
-</div>
+</Banner>
 
 This GraphQL query duplicates the posts retrieved via the provided `$limit` and `$offset` variables:
 

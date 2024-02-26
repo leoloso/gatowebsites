@@ -25,13 +25,11 @@ This tutorial lesson will demonstrate how to implement this architecture, with t
 
 ## GraphQL query to synchronize content from upstream to downstream sites
 
-<div class="doc-config-highlight" markdown="1">
-
-⚙️ **Configuration alert:**
+<Banner type="important">
 
 _(For the downstream sites only)_ For this GraphQL query to work, the [Schema Configuration](https://gatographql.com/guides/use/creating-a-schema-configuration/) applied to the endpoint needs to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled
 
-</div>
+</Banner>
 
 The GraphQL query below is executed on the upstream WordPress site, to synchronize the content of the updated post to the relevant downstream sites, using the post slug as the common identifier across sites.
 

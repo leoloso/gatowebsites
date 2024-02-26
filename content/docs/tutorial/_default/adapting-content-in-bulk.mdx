@@ -12,13 +12,11 @@ order: 1320
 
 This tutorial lesson adapts content in bulk, updating the title, content and excerpt for multiple posts with a single GraphQL request.
 
-<div class="doc-config-highlight" markdown="1">
-
-⚙️ **Configuration alert:**
+<Banner type="important">
 
 For this GraphQL query to work, the [Schema Configuration](https://gatographql.com/guides/use/creating-a-schema-configuration/) applied to the endpoint needs to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled
 
-</div>
+</Banner>
 
 The GraphQL query below retrieves the data for the multiple posts, executes a search and replace on the `title`, `content` and `excerpt` fields for each of them, adapts these as inputs to the mutation, and exports a single dynamic variable `$postInputs` with all the results as a dictionary, with format:
 
