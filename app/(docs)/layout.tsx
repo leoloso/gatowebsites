@@ -3,10 +3,11 @@ import './css/style.css'
 import { Nothing_You_Could_Do } from 'next/font/google'
 import Theme from './theme-provider'
 import AppProvider from './app-provider'
-import Image from 'next/image'
-import Illustration from '@/public/assets/theme/hero-illustration.svg'
+// import Image from 'next/image'
+// import Illustration from '@/public/assets/theme/hero-illustration.svg'
 import Sidebar from '@/components/ui/docs/sidebar'
 import Header from '@/components/ui/header'
+import StunningBackground from '@/components/stunning-background'
 
 const nycd = Nothing_You_Could_Do({
   subsets: ['latin'],
@@ -36,9 +37,12 @@ export default function RootLayout({
             {/*  Page content */}
             <main className="grow">
               <section className="relative">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none -z-10">
+                
+                {/* <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none -z-10">
                   <Image className="max-w-none" src={Illustration} priority alt="Page illustration" aria-hidden="true" />
-                </div>
+                </div> */}
+
+                <StunningBackground addOpacityLayer={true} />
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
                   {/* Main content */}
