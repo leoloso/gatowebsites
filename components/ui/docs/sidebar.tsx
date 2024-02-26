@@ -81,7 +81,7 @@ export default function SupportSidebar() {
           unmount={false}
           as="aside"
           id="sidebar"
-          className="fixed left-0 top-0 bottom-0 w-64 h-screen border-r border-slate-200 md:left-auto md:shrink-0 z-10 md:!opacity-100 md:!block dark:border-slate-800 dark:bg-slate-900/10"
+          className="fixed left-0 top-0 bottom-0 w-64 h-screen border-r border-slate-200 md:left-auto md:shrink-0 z-10 md:!opacity-100 md:!block dark:border-slate-800 dark:bg-slate-900 md:dark:bg-slate-900/10"
           enter="transition ease-out duration-200 transform"
           enterFrom="opacity-0 -translate-x-full"
           enterTo="opacity-100 translate-x-0"
