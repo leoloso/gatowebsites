@@ -63,11 +63,13 @@ The feature above also provides the foundation for upgrading the [Automation](ht
 
 The **Automation** extension now provides an "automator" user interface (directly via the WordPress editor) called [Automation Configurator](https://gatographql.com/extensions/automation/#heading-automation-configurator). The automation trigger is any WordPress action hook, and the action is the execution of a GraphQL persisted query.
 
-<div class="img-width-1024" markdown="1">
-
-![Automation Rule editor](/assets/extensions/upstream-pro/automation-rule-editor.png "Automation Rule editor")
-
-</div>
+<Image
+  src="/assets/extensions/upstream-pro/automation-rule-editor.png"
+  width="1024"
+  height="940"
+  alt="Automation Rule editor"
+  caption="Automation Rule editor"
+/>
 
 For instance, when creating a new post, automation rule **Add comments block to new post** (executing the [persisted query with the same name](/library/add-a-mandatory-comments-block-to-post/)) checks if the `core/comments` block is present and, if not, it adds it at the bottom of the post:
 
@@ -100,11 +102,13 @@ Several automation rules are already created by the plugin (with status `draft`,
 - Send notification email to admin when there is a new post
 - Generate a post's featured image using AI (and optimize it) if a new post has none
 
-<div class="img-width-1024" markdown="1">
-
-![Automation Rules](/assets/extensions/upstream-pro/automation-rules.png "Automation Rules")
-
-</div>
+<Image
+  src="/assets/extensions/upstream-pro/automation-rules.png"
+  width="1024"
+  height="940"
+  alt="Automation Rules"
+  caption="Automation Rules"
+/>
 
 <p class="[ p-name text-center ]">
     <a class="[ button bigger rounded alternate ]" href="https://app.instawp.io/launch?t=gatographql-demo&d=v2" target="_blank">Try it out in a <strong>testing site</strong>↗</a>
