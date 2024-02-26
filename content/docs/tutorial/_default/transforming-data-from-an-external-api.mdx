@@ -139,9 +139,7 @@ The response is:
 }
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 [Composable directives](https://gatographql.com/guides/schema/using-composable-directives/) can nest one or more directives within them. When nesting more than one, we indicate this via argument `affectDirectivesUnderPos`, which contains the relative positions from that directive to its nested directives.
 
@@ -220,7 +218,7 @@ Directive `@applyField` (provided by the [**Field on Field**](https://gatographq
       )
 ```
 
-</div>
+</Banner>
 
 ## Extracting a specific property from the JSON objects
 
@@ -386,9 +384,7 @@ The response is:
 }
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 Executing conditional logic in Gato GraphQL can be made dynamic: By passing a dynamic variable to `@if(condition:)` (and also to `@unless(condition:)`) that was evaluated on the queried object, logic will be executed or not depending on conditions from that entity.
 
@@ -400,4 +396,4 @@ This way, we can dynamically modify the response for some entities (and not othe
 - Is the tag/category applied to some post?
 - Etc
 
-</div>
+</Banner>

@@ -190,9 +190,7 @@ The body is now accessible as a JSON object:
 - `_sendJSONObjectItemHTTPRequest`: When the content pertains a single JSON object
 - `_sendJSONObjectCollectionHTTPRequest`: When the content pertains a collection of JSON objects
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 These fields expect the status code of the response to be successful (i.e. in the `200-299` range, such as `200`, `201` or `202`), as it enables them to already return a `JSONObject` containing the decoded-as-JSON body of the response.
 
@@ -231,7 +229,7 @@ For instance, when fetching a non-existing post from the WP REST API's endpoint 
 
 If we do not want to treat any non-`200s` status code (such as `302`, `404` or `500`) as an error, we must use the `_sendHTTPRequest` field.
 
-</div>
+</Banner>
 
 {/* <!-- These fields already convert the response to `JSONObject` or `[JSONObject]`. --> */}
 
@@ -536,9 +534,7 @@ Passing these `variables`:
 }
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 If we must execute the same HTTP request repeatedly, we can use the `@cache` directive (provided by the [**Field Resolution Caching**](https://gatographql.com/extensions/field-resolution-caching/)) to store the result in disk for a requested amount of time, thus speeding up the query resolution.
 
@@ -591,7 +587,7 @@ The `@cache` directive:
 }
 ``` --> */}
 
-</div>
+</Banner>
 
 ## Fetching data from multiple URLs
 
@@ -604,16 +600,14 @@ Every one of the HTTP request fields explored above has a corresponding "multipl
 - `_sendJSONObjectCollectionHTTPRequests`
 - `_sendGraphQLHTTPRequests`
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 All these fields have argument `async`, to indicate if to execute the multiple HTTP requests asynchronously or synchronously:
 
 - Asynchronously: The HTTP requests are executed all together, in parallel
 - Synchronously: Each HTTP request is sent out only after the previous one is completed
 
-</div>
+</Banner>
 
 This GraphQL query retrieves weather forecast data for multiple regions:
 
@@ -938,15 +932,13 @@ query PrintMailchimpSubscriberEmails
 }
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 Notice that, even though dynamic variable `$mailchimpListMemberEmails` is a list, `@export` does not have argument `type: LIST`.
 
 This is because whenever `@export` is nested below `@underEachArrayItem` (or `@underEachJSONObjectProperty`), the [exported value will already be an array](https://gatographql.com/guides/schema/executing-multiple-queries-concurrently/#heading-exporting-values-when-iterating-an-array-or-json-object).
 
-</div>
+</Banner>
 
 ## Combining data from Mailchimp subscribers and website users
 

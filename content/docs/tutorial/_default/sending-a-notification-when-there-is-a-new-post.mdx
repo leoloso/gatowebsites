@@ -70,16 +70,14 @@ mutation SendEmail @depends(on: "GetEmailData") {
 }
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 To send the email in plain text:
 
 - Use input `messageAs: { text: ... }` in the `_sendEmail` mutation
 - Remove the HTML tags from the post's content using global field `_htmlStripTags` (provided by the [**PHP Functions via Schema**](https://gatographql.com/extensions/php-functions-via-schema/) extension)
 
-</div>
+</Banner>
 
 Let's see next how to trigger the execution of the GraphQL query.
 
@@ -106,9 +104,7 @@ add_action(
 );
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 Class `GatoGraphQL\InternalGraphQLServer\GraphQLServer` is not accessible as an external API. Instead, it is to be used by the application via PHP code, for executing/automating admin tasks via GraphQL queries.
 
@@ -118,7 +114,7 @@ This class provides 3 static methods to execute queries:
 - `executeQueryInFile`: Execute a GraphQL query contained in a (`.gql`) file
 - `executePersistedQuery`: Execute a persisted GraphQL query (providing its ID as an int, or slug as a string)
 
-</div>
+</Banner>
 
 This GraphQL query will be executed whenever a new post is created or, to be more precise, whenever WordPress function `wp_insert_post` is invoked (as this function triggers hook `new_to_publish`):
 
@@ -141,9 +137,7 @@ mutation CreatePost {
 }
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 The GraphQL Server (which is "external", accessed as an API via HTTP) and the Internal GraphQL Server will execute their queries applying their own Schema Configuration, even when their execution is intertwined.
 
@@ -162,7 +156,7 @@ For instance, let' say we are executing a GraphQL query against the single endpo
 
 <br/>
 
-</div>
+</Banner>
 
 ## Option 2: Trigger by chaining GraphQL queries
 
@@ -197,9 +191,7 @@ add_action(
 );
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 Chaining GraphQL queries allows us to execute a single query only, even when many resources were mutated.
 
@@ -234,4 +226,4 @@ Depending on our strategy, we can trigger the execution of one or multiple addit
 
 <br/>
 
-</div>
+</Banner>

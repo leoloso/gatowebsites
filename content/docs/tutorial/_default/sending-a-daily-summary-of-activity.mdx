@@ -146,9 +146,7 @@ Or via the [WP-Crontrol](https://wordpress.org/plugins/wp-crontrol/) plugin:
   caption="New entry in WP-Crontrol"
 />
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 The 4th argument passed to the WP-Cron event is the ID (as an int) or username (as a string) of the user that must be logged-in when executing the GraphQL query.
 
@@ -156,4 +154,4 @@ The 4th argument passed to the WP-Cron event is the ID (as an int) or username (
 
 Passing this argument is typically needed when executing mutations, as most of these require a user (with the proper capabilities) to be logged-in.
 
-</div>
+</Banner>

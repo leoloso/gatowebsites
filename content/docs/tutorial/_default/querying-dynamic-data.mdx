@@ -13,9 +13,7 @@ Gato GraphQL can further augment WordPress' capabilities to search data via the 
 
 ## Examples
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 Gato GraphQL provides function fields under the concept of [Global fields](https://gatographql.com/guides/special-features/global-fields/): Fields that are accessible under all the types from the GraphQL schema. (Normal fields in GraphQL, in contrast, are accessible only under some specific type, such as `Post` or `User`).
 
@@ -40,7 +38,7 @@ The [**PHP Functions Via Schema**](https://gatographql.com/extensions/php-functi
 - `_time`,
 - And many more...
 
-</div>
+</Banner>
 
 We can create dynamically-generated data, and input it into a filter to fetch posts, comments, etc.
 
@@ -67,9 +65,7 @@ query {
 }
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 `$__timeNow` is a variable dynamically created by the [**Field to Input**](https://gatographql.com/extensions/field-to-input/) extension, which allows us to obtain the value of a field and [input it into another field](https://gatographql.com/guides/schema/using-field-to-input/) in that same operation.
 
@@ -89,7 +85,7 @@ The field to obtain the value from is referenced using the "Variable" syntax `$`
 }
 ```
 
-</div>
+</Banner>
 
 This query retrieves the number of comments added to the site starting from "24 hours ago", "1 year ago", "beginning of the month", and "beginning of the year":
 
@@ -130,9 +126,7 @@ query {
 }
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="important">
 
 Field `_env` is provided via the [**PHP Constants and Environment Variables via Schema**](https://gatographql.com/extensions/php-constants-and-environment-variables-via-schema/) extension.
 
@@ -140,4 +134,4 @@ Via the applied Schema Configuration and plugin Settings, we can configure [whic
 
 {/* <!-- ![Defining the entries on the Schema Configuration](../../../extensions/php-constants-and-environment-variables-via-schema/docs/images/environment-fields-schema-configuration-entries.png "Defining the entries on the Schema Configuration") --> */}
 
-</div>
+</Banner>
