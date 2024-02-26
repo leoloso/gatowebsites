@@ -20,9 +20,7 @@ An API gateway is a component on our application that provides a centralized han
 
 The API gateway can be implemented via GraphQL Persisted Queries stored in the server and invoked by the client, which interact with one or more backend services, gathering the results and delivering them back to the client in a single response.
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="info">
 
 These are some benefits of using GraphQL Persisted Queries to provide an API gateway:
 
@@ -33,7 +31,7 @@ These are some benefits of using GraphQL Persisted Queries to provide an API gat
 - If some backend service is upgraded, the Persisted Query could be adapted without producing breaking changes in the client
 - The server can store logs of access to the backend services, and extract metrics to enhance analytics
 
-</div>
+</Banner>
 
 This tutorial lesson demonstrates an API gateway that retrieves the latest artifacts from the GitHub Actions API, and extracts their URL to be downloaded, avoiding the need for the client to be signed in to GitHub.
 
@@ -282,9 +280,7 @@ When it is not provided, the response will be:
 }
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="info">
 
 We can retrieve from headers the credentials for multiple services used in the API gateway, while validating that they have all been provided:
 
@@ -325,7 +321,7 @@ query RetrieveProxyArtifactDownloadURLs
 # ...
 ```
 
-</div>
+</Banner>
 
 ## Step by step: creating the GraphQL query
 

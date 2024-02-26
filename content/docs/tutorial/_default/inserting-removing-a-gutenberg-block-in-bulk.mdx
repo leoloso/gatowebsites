@@ -17,13 +17,11 @@ Among other use cases, this is useful for promoting campaigns (such as when offe
 - Before the campaign, we create a custom block `mycompany:black-friday-campaign-video` with our Call To Action, and execute a bulk operation to add it to all posts in the website
 - After the campaign, we execute a bulk operation to remove the block from all posts
 
-<div class="doc-config-highlight" markdown="1">
-
-⚙️ **Configuration alert:**
+<Banner type="important">
 
 For the GraphQL queries in this tutorial lesson to work, the [Schema Configuration](https://gatographql.com/guides/use/creating-a-schema-configuration/) applied to the endpoint needs to have [Nested Mutations](https://gatographql.com/guides/schema/using-nested-mutations/) enabled
 
-</div>
+</Banner>
 
 ## Inserting a block in bulk
 
@@ -152,9 +150,7 @@ We provide the `variables` dictionary like this:
 }
 ```
 
-<div class="doc-highlight" markdown="1">
-
-🔥 **Tips:**
+<Banner type="info">
 
 - During development/testing of the GraphQL query, print the regex patterns in the response by placing `#` before the `@remove` directives (as to comment them out):
 
@@ -165,7 +161,7 @@ We provide the `variables` dictionary like this:
 }
 ```
 
-</div>
+</Banner>
 
 ## Removing a block in bulk
 
