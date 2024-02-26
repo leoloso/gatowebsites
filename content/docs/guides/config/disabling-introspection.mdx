@@ -20,6 +20,6 @@ This allows us to disable introspection for the [single endpoint](../../config/e
 
 For instance, opening the GraphiQL client on a custom endpoint after disabling access to `__schema` we get an error:
 
-> Uncaught (in promise) Error: Invalid or incomplete introspection result. Ensure that you are passing "data" property of introspection response and no "errors" was returned alongside: { __schema: null }
+> Uncaught (in promise) Error: Invalid or incomplete introspection result. Ensure that you are passing "data" property of introspection response and no "errors" was returned alongside: \{ __schema: null \}
 
 ![GraphiQL error from disabled introspection](/assets/guides/downstream-pro/introspection-disabled-graphiql-error.png "GraphiQL error from disabled introspection")
