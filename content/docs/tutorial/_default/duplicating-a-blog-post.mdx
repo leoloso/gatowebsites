@@ -208,7 +208,7 @@ Notice that some fields are meant to be duplicated (including the author, title,
 
 With the [**Multiple Query Execution**](https://gatographql.com/extensions/multiple-query-execution/) extension, we are able to export the post's data items, and inject them again into another `query` or `mutation` in the same GraphQL document.
 
-<Banner type="important">
+<Banner type="info">
 
 [**Multiple Query Execution**](https://gatographql.com/extensions/multiple-query-execution/) allows us to [execute complex functionality within a single request](https://gatographql.com/guides/schema/executing-multiple-queries-concurrently/), and better organize the logic by splitting the GraphQL document into a series a logical/atomic units:
 
@@ -724,7 +724,7 @@ query ExportData
 }
 ```
 
-<Banner type="important">
+<Banner type="info">
 
 - Global field `_echo` returns anything that is provided, whatever its type:
 

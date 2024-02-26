@@ -190,7 +190,7 @@ The body is now accessible as a JSON object:
 - `_sendJSONObjectItemHTTPRequest`: When the content pertains a single JSON object
 - `_sendJSONObjectCollectionHTTPRequest`: When the content pertains a collection of JSON objects
 
-<Banner type="important">
+<Banner type="info">
 
 These fields expect the status code of the response to be successful (i.e. in the `200-299` range, such as `200`, `201` or `202`), as it enables them to already return a `JSONObject` containing the decoded-as-JSON body of the response.
 
@@ -331,7 +331,7 @@ query {
 }
 ```
 
-<Banner type="important">
+<Banner type="info">
 
 Connecting to the WP REST API, whether from an external server or from this same site, follows the same procedure.
 
@@ -532,7 +532,7 @@ Passing these `variables`:
 }
 ```
 
-<Banner type="important">
+<Banner type="info">
 
 If we must execute the same HTTP request repeatedly, we can use the `@cache` directive (provided by the [**Field Resolution Caching**](https://gatographql.com/extensions/field-resolution-caching/)) to store the result in disk for a requested amount of time, thus speeding up the query resolution.
 
@@ -598,7 +598,7 @@ Every one of the HTTP request fields explored above has a corresponding "multipl
 - `_sendJSONObjectCollectionHTTPRequests`
 - `_sendGraphQLHTTPRequests`
 
-<Banner type="important">
+<Banner type="info">
 
 All these fields have argument `async`, to indicate if to execute the multiple HTTP requests asynchronously or synchronously:
 
@@ -930,7 +930,7 @@ query PrintMailchimpSubscriberEmails
 }
 ```
 
-<Banner type="important">
+<Banner type="info">
 
 Notice that, even though dynamic variable `$mailchimpListMemberEmails` is a list, `@export` does not have argument `type: LIST`.
 

@@ -11,7 +11,7 @@ order: 1300
 
 This tutorial lesson provides examples of content adaptations involving search and replace, and then storing the resource back to the DB. It requires the [**PHP Functions via Schema**](https://gatographql.com/extensions/php-functions-via-schema/) extension.
 
-<Banner type="important">
+<Banner type="info">
 
 The [**PHP Functions via Schema**](https://gatographql.com/extensions/php-functions-via-schema/) extension provides the following "search and replace" fields:
 
@@ -201,7 +201,7 @@ All URLs which are not surrounded by an anchor tag, such as:
 <p>Visit my website: <a href="https://mysite.com" target="_blank">mysite.com</a>.</p>
 ```
 
-<Banner type="important">
+<Banner type="info">
 
 - The `"\"` character must be escaped as `"\\"` inside the regex pattern. For instance, `"/^https?:\/\//"` is written as `"/^https?:\\/\\//"`
 - The documentation for [PHP function `preg_replace`](https://www.php.net/manual/en/function.preg-replace.php) explains how to use [replacement references](https://www.php.net/manual/en/function.preg-replace.php#refsect1-function.preg-replace-parameters) (eg: `$1`) and [PRCE modifiers](https://www.php.net/manual/en/reference.pcre.pattern.modifiers.php).

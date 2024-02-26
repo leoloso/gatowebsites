@@ -70,7 +70,7 @@ mutation SendEmail @depends(on: "GetEmailData") {
 }
 ```
 
-<Banner type="important">
+<Banner type="info">
 
 To send the email in plain text:
 
@@ -104,7 +104,7 @@ add_action(
 );
 ```
 
-<Banner type="important">
+<Banner type="info">
 
 Class `GatoGraphQL\InternalGraphQLServer\GraphQLServer` is not accessible as an external API. Instead, it is to be used by the application via PHP code, for executing/automating admin tasks via GraphQL queries.
 
@@ -137,7 +137,7 @@ mutation CreatePost {
 }
 ```
 
-<Banner type="important">
+<Banner type="info">
 
 The GraphQL Server (which is "external", accessed as an API via HTTP) and the Internal GraphQL Server will execute their queries applying their own Schema Configuration, even when their execution is intertwined.
 
@@ -191,7 +191,7 @@ add_action(
 );
 ```
 
-<Banner type="important">
+<Banner type="info">
 
 Chaining GraphQL queries allows us to execute a single query only, even when many resources were mutated.
 
