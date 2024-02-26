@@ -66,7 +66,7 @@ export default async function SingleVideoPost({ params }: {
                   <PostNav />
 
                   {/* Main content */}
-                  <div>
+                  <div className='min-w-0'>
 
                     {/* Article meta */}
                     <div className="md:flex md:items-center md:justify-between mt-3">
