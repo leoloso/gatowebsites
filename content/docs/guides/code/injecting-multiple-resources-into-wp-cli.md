@@ -1,6 +1,6 @@
 ---
 title: Injecting multiple resources into WP-CLI
-metaDesc: Retrieving multiple user IDs while executing a single GraphQL query, and injecting these into WP-CLI.
+description: Retrieving multiple user IDs while executing a single GraphQL query, and injecting these into WP-CLI.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 350
 referencedExtensionSlugs:

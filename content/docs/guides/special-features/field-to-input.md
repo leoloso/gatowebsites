@@ -1,7 +1,7 @@
 ---
 title: Field to Input
 # isPRO: true
-metaDesc: With Field to Input, we can obtain the value of a field, manipulate it, and input it into another field, all within the same query.
+description: With Field to Input, we can obtain the value of a field, manipulate it, and input it into another field, all within the same query.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 830
 templateEngineOverride: md

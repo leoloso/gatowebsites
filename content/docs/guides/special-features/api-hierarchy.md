@@ -1,6 +1,6 @@
 ---
 title: API Hierarchy
-metaDesc: An API may expose several endpoints which are somehow related to each other, and which may execute a similar query. Through the API Hierarchy we can define a structure for endpoints.
+description: An API may expose several endpoints which are somehow related to each other, and which may execute a similar query. Through the API Hierarchy we can define a structure for endpoints.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 60
 ---

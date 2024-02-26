@@ -1,6 +1,6 @@
 ---
 title: "Schema extensions via introspection"
-metaDesc: "Custom metadata attached to schema elements can be queried via field 'extensions' when doing introspection."
+description: "Custom metadata attached to schema elements can be queried via field 'extensions' when doing introspection."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 100
 ---

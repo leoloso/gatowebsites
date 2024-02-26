@@ -1,7 +1,7 @@
 ---
 title: Adding HTTP caching
 # isPRO: true
-metaDesc: When queries are executed against the GraphQL server using GET, the GraphQL response can be cached on the client-side, or on intermediate stages between the client and the server, by relying on standard HTTP caching.
+description: When queries are executed against the GraphQL server using GET, the GraphQL response can be cached on the client-side, or on intermediate stages between the client and the server, by relying on standard HTTP caching.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 600
 ---

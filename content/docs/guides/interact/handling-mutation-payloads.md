@@ -1,6 +1,6 @@
 ---
 title: Handling mutation payloads
-metaDesc: This guide explains how to handle returning the payload object type in mutations.
+description: This guide explains how to handle returning the payload object type in mutations.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 320
 ---

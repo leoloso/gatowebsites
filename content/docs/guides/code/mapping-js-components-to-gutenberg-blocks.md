@@ -1,6 +1,6 @@
 ---
 title: Mapping JS components to (Gutenberg) blocks
-metaDesc: An example Preact app that queries for block data and maps it into customized JavaScript components.
+description: An example Preact app that queries for block data and maps it into customized JavaScript components.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 1050
 ---

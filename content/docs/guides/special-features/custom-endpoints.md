@@ -1,6 +1,6 @@
 ---
 title: Custom Endpoints
-metaDesc: Create and expose multiple custom GraphQL schemas under their own URL, and grant access to each of these endpoints to some specific target.
+description: Create and expose multiple custom GraphQL schemas under their own URL, and grant access to each of these endpoints to some specific target.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 50
 ---

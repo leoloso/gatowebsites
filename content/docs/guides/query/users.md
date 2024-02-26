@@ -1,6 +1,6 @@
 ---
 title: Users
-metaDesc: Examples of queries to fetch user data and log the user in.
+description: Examples of queries to fetch user data and log the user in.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 400
 ---

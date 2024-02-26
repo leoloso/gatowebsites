@@ -1,7 +1,7 @@
 ---
 title: Managing who can edit the schema
 # isPRO: true
-metaDesc: With Schema Editing Access, we can enable to grant non-admin users access to create and manage endpoints.
+description: With Schema Editing Access, we can enable to grant non-admin users access to create and manage endpoints.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 1900
 ---

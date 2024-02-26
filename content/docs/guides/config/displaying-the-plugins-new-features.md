@@ -1,6 +1,6 @@
 ---
 title: Displaying the plugin's new features
-metaDesc: Immediately after updating the plugin, an admin notice will display a link to read the release notes for the new version.
+description: Immediately after updating the plugin, an admin notice will display a link to read the release notes for the new version.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 1200
 ---

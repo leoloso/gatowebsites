@@ -1,6 +1,6 @@
 ---
 title: Configuring the GraphiQL client for the single endpoint
-metaDesc: Configuring the URL to access the single endpoint's GraphiQL client.
+description: Configuring the URL to access the single endpoint's GraphiQL client.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 700
 ---

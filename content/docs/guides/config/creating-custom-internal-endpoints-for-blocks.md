@@ -1,6 +1,6 @@
 ---
 title: Creating Custom Internal Endpoints for Blocks
-metaDesc: Developers can create their own pre-defined internal endpoints (to feed data to their application or blocks), as to apply a specific configuration.
+description: Developers can create their own pre-defined internal endpoints (to feed data to their application or blocks), as to apply a specific configuration.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 1300
 ---

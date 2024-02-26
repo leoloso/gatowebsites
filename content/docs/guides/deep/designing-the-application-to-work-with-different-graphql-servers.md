@@ -1,6 +1,6 @@
 ---
 title: Designing the application to work with different GraphQL servers
-metaDesc: A GraphQL query acts an interface between the client and the server, allowing us to seamlessly swap one GraphQL server with another one.
+description: A GraphQL query acts an interface between the client and the server, allowing us to seamlessly swap one GraphQL server with another one.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 300
 ---

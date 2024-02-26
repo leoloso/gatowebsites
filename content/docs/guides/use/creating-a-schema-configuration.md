@@ -1,6 +1,6 @@
 ---
 title: Creating a schema configuration
-metaDesc: A schema configuration is used to customize the schema for Custom Endpoints and Persisted Queries.
+description: A schema configuration is used to customize the schema for Custom Endpoints and Persisted Queries.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 300
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Querying 'self' fields"
-metaDesc: We can modify the shape of the response (to emulate the same response from another GraphQL server, or from the REST API) via the 'self' field.
+description: We can modify the shape of the response (to emulate the same response from another GraphQL server, or from the REST API) via the 'self' field.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 310
 ---

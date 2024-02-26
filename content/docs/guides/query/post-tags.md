@@ -1,6 +1,6 @@
 ---
 title: Post Tags
-metaDesc: Examples of queries to fetch post tag data.
+description: Examples of queries to fetch post tag data.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 600
 ---

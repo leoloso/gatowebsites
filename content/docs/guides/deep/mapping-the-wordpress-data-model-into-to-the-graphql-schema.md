@@ -1,6 +1,6 @@
 ---
 title: How the plugin maps the WordPress data model into the GraphQL schema
-metaDesc: This is how Gato GraphQL has mapped the WordPress data model into a corresponding GraphQL schema.
+description: This is how Gato GraphQL has mapped the WordPress data model into a corresponding GraphQL schema.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 790
 ---

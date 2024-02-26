@@ -1,6 +1,6 @@
 ---
 title: "Hiding the Tutorial page"
-metaDesc: Hide the Tutorial page from the menu navigation
+description: Hide the Tutorial page from the menu navigation
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 1888
 ---

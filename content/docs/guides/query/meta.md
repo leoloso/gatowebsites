@@ -1,6 +1,6 @@
 ---
 title: Meta Values
-metaDesc: Examples of queries to fetch meta data, and filter results by meta.
+description: Examples of queries to fetch meta data, and filter results by meta.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 790
 ---

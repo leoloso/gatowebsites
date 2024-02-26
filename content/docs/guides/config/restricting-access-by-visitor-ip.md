@@ -1,7 +1,7 @@
 ---
 title: Restricting access by visitor IP
 # isPRO: true
-metaDesc: "Within Access Control, we can use rule 'Visitor IP' to grant access to the selected schema elements (operations, fields and directives) based on the visitor coming from a list of allowed IP addresses."
+description: "Within Access Control, we can use rule 'Visitor IP' to grant access to the selected schema elements (operations, fields and directives) based on the visitor coming from a list of allowed IP addresses."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 3270
 ---

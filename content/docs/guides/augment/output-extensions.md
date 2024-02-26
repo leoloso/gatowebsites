@@ -1,6 +1,6 @@
 ---
 title: Output extensions
-metaDesc: "Gato GraphQL's 'Proactive Feedback' feature extends the response of the GraphQL API to offer additional information: Deprecations and Warnings."
+description: "Gato GraphQL's 'Proactive Feedback' feature extends the response of the GraphQL API to offer additional information: Deprecations and Warnings."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 500
 ---

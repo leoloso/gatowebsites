@@ -1,6 +1,6 @@
 ---
 title: Namespacing the schema
-metaDesc: "Namespacing the schema avoids naming conflicts, which happens when different owners (eg: different teams in the company, or among 3rd party plugins) use the same name for a type or interface."
+description: "Namespacing the schema avoids naming conflicts, which happens when different owners (eg: different teams in the company, or among 3rd party plugins) use the same name for a type or interface."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 100
 ---

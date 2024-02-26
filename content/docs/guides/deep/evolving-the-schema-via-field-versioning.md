@@ -1,6 +1,6 @@
 ---
 title: Evolving the schema via field versioning
-metaDesc: When a change introduced to the GraphQL schema is a breaking one, we need to make sure we are not introducing bugs or unexpected behavior in the application.
+description: When a change introduced to the GraphQL schema is a breaking one, we need to make sure we are not introducing bugs or unexpected behavior in the application.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 600
 ---

@@ -1,6 +1,6 @@
 ---
 title: Multi-Field Directives
-metaDesc: Have directives applied to multiple fields (instead of only one), for performance and extended use cases.
+description: Have directives applied to multiple fields (instead of only one), for performance and extended use cases.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 340
 templateEngineOverride: md

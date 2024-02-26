@@ -1,7 +1,7 @@
 ---
 title: Using composable directives
 # isPRO: true
-metaDesc: "Composable directives modify the behavior of their nested directives, unlocking the possibility to iterate array values in fields and applying a directive to each value."
+description: "Composable directives modify the behavior of their nested directives, unlocking the possibility to iterate array values in fields and applying a directive to each value."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 800
 templateEngineOverride: md

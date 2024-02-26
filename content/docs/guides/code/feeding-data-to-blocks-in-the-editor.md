@@ -1,6 +1,6 @@
 ---
 title: Feeding data to blocks in the editor
-metaDesc: Content in the the WordPress editor is created via (Gutenberg) blocks, which fetch their data from the server via an API. WordPress core uses the WP REST API, but we can also use Gato GraphQL to power our own blocks.
+description: Content in the the WordPress editor is created via (Gutenberg) blocks, which fetch their data from the server via an API. WordPress core uses the WP REST API, but we can also use Gato GraphQL to power our own blocks.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 900
 ---

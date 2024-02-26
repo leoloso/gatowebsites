@@ -1,6 +1,6 @@
 ---
 title: Allowing access to Custom Post Types
-metaDesc: Configuring an endpoint in Gato GraphQL to indicate what Custom Post Types can be accessed.
+description: Configuring an endpoint in Gato GraphQL to indicate what Custom Post Types can be accessed.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 400
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Managing the plugin's setup data"
-metaDesc: Enable/disable installing predefined custom endpoints and persisted queries
+description: Enable/disable installing predefined custom endpoints and persisted queries
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 1890
 ---

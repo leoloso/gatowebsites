@@ -1,6 +1,6 @@
 ---
 title: Public, Private & Password-Protected Endpoints
-metaDesc: In addition to creating and exposing public endpoints, we can also create private endpoints, and protect a public endpoint with a password.
+description: In addition to creating and exposing public endpoints, we can also create private endpoints, and protect a public endpoint with a password.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 57
 ---

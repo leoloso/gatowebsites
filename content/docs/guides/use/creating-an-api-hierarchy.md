@@ -1,6 +1,6 @@
 ---
 title: Creating an API hierarchy
-metaDesc: "Custom endpoints and persisted queries can be organized into a hierarchy. This is achieved when they declare a parent, in which case their endpoint paths will extend the parent's endpoint path."
+description: "Custom endpoints and persisted queries can be organized into a hierarchy. This is achieved when they declare a parent, in which case their endpoint paths will extend the parent's endpoint path."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 400
 ---

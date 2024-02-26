@@ -1,6 +1,6 @@
 ---
 title: Creating a persisted query
-metaDesc: "A persisted query is a combination of GraphQL and REST APIs: it is a normal GraphQL query, published on the site and accessed under its own URL, similar to a REST endpoint."
+description: "A persisted query is a combination of GraphQL and REST APIs: it is a normal GraphQL query, published on the site and accessed under its own URL, similar to a REST endpoint."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 200
 ---

@@ -1,6 +1,6 @@
 ---
 title: "'Enum String' types"
-metaDesc: "Gato GraphQL implements a custom 'Enum String' type, which is a String type that can only receive a value from a pre-defined set, similar to an Enum."
+description: "Gato GraphQL implements a custom 'Enum String' type, which is a String type that can only receive a value from a pre-defined set, similar to an Enum."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 300
 ---

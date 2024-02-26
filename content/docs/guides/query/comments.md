@@ -1,6 +1,6 @@
 ---
 title: Comments
-metaDesc: Examples of queries to fetch and add comments.
+description: Examples of queries to fetch and add comments.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 500
 ---

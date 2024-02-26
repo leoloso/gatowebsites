@@ -1,6 +1,6 @@
 ---
 title: Resolving CustomPostUnion to a single type
-metaDesc: "If there is only one type added to 'CustomPostUnion' (eg: only 'Post'), we can then have the fields that resolve to 'CustomPostUnion' be resolved to that unique type instead."
+description: "If there is only one type added to 'CustomPostUnion' (eg: only 'Post'), we can then have the fields that resolve to 'CustomPostUnion' be resolved to that unique type instead."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 405
 ---

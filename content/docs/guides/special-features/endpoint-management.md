@@ -1,6 +1,6 @@
 ---
 title: Endpoint Management
-metaDesc: "When creating a Custom Endpoint or Persisted Query, we can add a 'GraphQL endpoint category' to it, to organize all of our endpoints."
+description: "When creating a Custom Endpoint or Persisted Query, we can add a 'GraphQL endpoint category' to it, to organize all of our endpoints."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 70
 ---

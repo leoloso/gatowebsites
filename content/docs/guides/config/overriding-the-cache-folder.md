@@ -1,6 +1,6 @@
 ---
 title: Overriding the cache folder
-metaDesc:
+description:
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 1525
 ---

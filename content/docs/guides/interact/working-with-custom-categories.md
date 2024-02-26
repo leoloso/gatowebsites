@@ -1,6 +1,6 @@
 ---
 title: Working with Custom Categories
-metaDesc: This is how to query category data from the GraphQL schema.
+description: This is how to query category data from the GraphQL schema.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 170
 ---

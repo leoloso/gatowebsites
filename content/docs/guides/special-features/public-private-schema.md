@@ -1,7 +1,7 @@
 ---
 title: Public/Private Schema
 # isPRO: true
-metaDesc: "Control the desired behavior when a user without access to some field or directive in the schema attempts to access it."
+description: "Control the desired behavior when a user without access to some field or directive in the schema attempts to access it."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 750
 templateEngineOverride: md

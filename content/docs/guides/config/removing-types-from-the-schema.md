@@ -1,7 +1,7 @@
 ---
 title: Removing types from the schema
 # isPRO: true
-metaDesc: "Two ways to remove types from the schema, whether for all endpoints, or for specific endpoints."
+description: "Two ways to remove types from the schema, whether for all endpoints, or for specific endpoints."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 3260
 ---

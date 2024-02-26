@@ -1,6 +1,6 @@
 ---
 title: Nested mutations
-metaDesc: Nested mutations make the schema more logical and browsable, by enabling to perform mutations on any type, and not only on the root type.
+description: Nested mutations make the schema more logical and browsable, by enabling to perform mutations on any type, and not only on the root type.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 200
 ---

@@ -1,7 +1,7 @@
 ---
 title: Restricting access by user login state, role or capability
 # isPRO: true
-metaDesc: Within Access Control, we can validate that the user has access to the selected schema elements (operations, fields and directives) using the standard WordPress access control functionality.
+description: Within Access Control, we can validate that the user has access to the selected schema elements (operations, fields and directives) using the standard WordPress access control functionality.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 3268
 ---

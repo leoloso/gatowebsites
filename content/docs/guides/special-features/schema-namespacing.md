@@ -1,6 +1,6 @@
 ---
 title: Schema namespacing
-metaDesc: Schema namespacing enables to avoid conflicts in the schema, by having all type names namespaced.
+description: Schema namespacing enables to avoid conflicts in the schema, by having all type names namespaced.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 100
 ---

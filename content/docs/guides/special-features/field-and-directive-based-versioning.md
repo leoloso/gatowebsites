@@ -1,6 +1,6 @@
 ---
 title: Field and directive-based versioning
-metaDesc: Version fields and directives independently from the schema.
+description: Version fields and directives independently from the schema.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 400
 ---

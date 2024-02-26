@@ -1,6 +1,6 @@
 ---
 title: Intro to the GraphiQL client
-metaDesc: Gato GraphQL provides the GraphiQL client to interact with the GraphQL service.
+description: Gato GraphQL provides the GraphiQL client to interact with the GraphQL service.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 500
 ---

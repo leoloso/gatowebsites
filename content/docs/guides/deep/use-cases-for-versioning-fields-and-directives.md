@@ -1,6 +1,6 @@
 ---
 title: Use cases for versioning fields and directives
-metaDesc: We must know in advance that a field or directive has two or more versions to choose from, and we must know what those version numbers are. How should the GraphQL API inform the users?
+description: We must know in advance that a field or directive has two or more versions to choose from, and we must know what those version numbers are. How should the GraphQL API inform the users?
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 605
 ---

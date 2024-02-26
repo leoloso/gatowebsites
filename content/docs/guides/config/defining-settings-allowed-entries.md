@@ -1,6 +1,6 @@
 ---
 title: Defining the Setting's allowed entries
-metaDesc: Configuring the list of entries that can be queried from the wp_options table in WordPress, via the optionValue fields added to the GraphQL schema.
+description: Configuring the list of entries that can be queried from the wp_options table in WordPress, via the optionValue fields added to the GraphQL schema.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 440
 ---

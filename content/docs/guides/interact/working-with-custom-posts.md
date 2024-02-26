@@ -1,6 +1,6 @@
 ---
 title: Working with Custom Posts
-metaDesc: This is how to query custom post data from the GraphQL schema.
+description: This is how to query custom post data from the GraphQL schema.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 100
 ---

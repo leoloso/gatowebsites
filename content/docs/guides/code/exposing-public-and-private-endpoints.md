@@ -1,6 +1,6 @@
 ---
 title: Exposing public and private endpoints
-metaDesc: Gato GraphQL expands enables exposing multiple custom endpoints, each of them tailored to some specific need, and these can be made private and public. When should we use each?
+description: Gato GraphQL expands enables exposing multiple custom endpoints, each of them tailored to some specific need, and these can be made private and public. When should we use each?
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 270
 referencedExtensionSlugs:

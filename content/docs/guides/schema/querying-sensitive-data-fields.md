@@ -1,6 +1,6 @@
 ---
 title: "Querying “sensitive” data fields"
-metaDesc: The GraphQL schema must strike a balance between public and private fields, as to avoid exposing private information in a public API.
+description: The GraphQL schema must strike a balance between public and private fields, as to avoid exposing private information in a public API.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 305
 ---

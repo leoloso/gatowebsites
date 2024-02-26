@@ -1,6 +1,6 @@
 ---
 title: Explaining nested mutations
-metaDesc: "Nested mutations enable applying a mutation to the result of another operation, whether a query or mutation."
+description: "Nested mutations enable applying a mutation to the result of another operation, whether a query or mutation."
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 200
 ---

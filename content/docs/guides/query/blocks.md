@@ -1,6 +1,6 @@
 ---
 title: Blocks
-metaDesc: Examples of queries to fetch block data.
+description: Examples of queries to fetch block data.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 250
 ---

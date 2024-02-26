@@ -1,6 +1,6 @@
 ---
 title: Adding a custom category taxonomy to the schema
-metaDesc: Custom Post Types defined by any theme or plugin can have their own category taxonomy associated to them, and added to the GraphQL schema.
+description: Custom Post Types defined by any theme or plugin can have their own category taxonomy associated to them, and added to the GraphQL schema.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 420
 ---

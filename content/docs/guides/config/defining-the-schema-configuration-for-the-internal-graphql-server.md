@@ -1,7 +1,7 @@
 ---
 title: Defining the schema configuration for the Internal GraphQL Server
 # isPRO: true
-metaDesc: The Internal GraphQL Server always applies the Schema Configuration defined in its own Settings.
+description: The Internal GraphQL Server always applies the Schema Configuration defined in its own Settings.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 210
 ---

@@ -1,6 +1,6 @@
 ---
 title: Media
-metaDesc: Examples of queries to fetch and mutate media data.
+description: Examples of queries to fetch and mutate media data.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 700
 ---

@@ -1,6 +1,6 @@
 ---
 title: Enabling and configuring the single endpoint
-metaDesc: The GraphQL single endpoint allows to execute queries against the GraphQL server with unrestrained access.
+description: The GraphQL single endpoint allows to execute queries against the GraphQL server with unrestrained access.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 600
 ---

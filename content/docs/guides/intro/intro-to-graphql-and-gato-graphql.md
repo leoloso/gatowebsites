@@ -1,6 +1,6 @@
 ---
 title: Intro to GraphQL and Gato GraphQL
-metaDesc: Welcome to the Gato GraphQL guides. Here you will find plenty of information on installing, configuring and using the Gato GraphQL plugin on your WordPress site.
+description: Welcome to the Gato GraphQL guides. Here you will find plenty of information on installing, configuring and using the Gato GraphQL plugin on your WordPress site.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 100
 ---

@@ -1,6 +1,6 @@
 ---
 title: Directives
-metaDesc: Examples of directives provided via Gato GraphQL extensions.
+description: Examples of directives provided via Gato GraphQL extensions.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 2000
 ---

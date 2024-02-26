@@ -1,6 +1,6 @@
 ---
 title: Defining the default schema configuration
-metaDesc: The default schema configuration is applied to Custom Endpoints and Persisted Queries, and selected via the Settings.
+description: The default schema configuration is applied to Custom Endpoints and Persisted Queries, and selected via the Settings.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 200
 ---

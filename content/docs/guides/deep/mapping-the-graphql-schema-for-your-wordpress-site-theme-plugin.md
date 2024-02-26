@@ -1,6 +1,6 @@
 ---
 title: Mapping the GraphQL Schema for your WordPress site, theme or plugin
-metaDesc: Strategies for producing the GraphQL schema from an existing WordPress application's data model.
+description: Strategies for producing the GraphQL schema from an existing WordPress application's data model.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 800
 ---
