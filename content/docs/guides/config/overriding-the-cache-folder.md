@@ -2,8 +2,7 @@
 title: Overriding the cache folder
 metaDesc:
 socialImage: /assets/GatoGraphQL-logo-suki.png
-order: 525
-draft: true
+order: 1525
 ---
 
 Gato GraphQL will cache its internal configuration, and the [calculated GraphQL schema](../caching-the-graphql-schema), to improve performance.
