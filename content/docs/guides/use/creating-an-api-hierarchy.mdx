@@ -67,7 +67,7 @@ Then, the computed variables for the child will be:
 
 In the custom endpoint or persisted query, in the Document settings, there is section `Page Attributes` with a dropdown of all other entities, to select as the parent:
 
-<a href="/assets/guides/upstream/api-inheritance.png" target="_blank">![API inheritance](/assets/guides/upstream/api-inheritance.png "API inheritance")</a>
+![API inheritance](/assets/guides/upstream/api-inheritance.png "API inheritance")
 
 ### Persisted queries
 
@@ -75,16 +75,16 @@ When selecting a parent, in the persisted query will offer a new option, "Inheri
 
 Set this option as `Yes`, to have the child persisted query inherit the parent's GraphQL query:
 
-<a href="/assets/guides/upstream/api-inheritance.gif" target="_blank">![API inheritance](/assets/guides/upstream/api-inheritance.gif "API inheritance")</a>
+![API inheritance](/assets/guides/upstream/api-inheritance.gif "API inheritance")
 
 ### Example
 
 This persisted query defines its GraphQL query, and declares variable `$limit` with value `1`:
 
-<a href="/assets/guides/upstream/parent-persisted-query.png" target="_blank">![Parent persisted query](/assets/guides/upstream/parent-persisted-query.png "Parent persisted query")</a>
+![Parent persisted query](/assets/guides/upstream/parent-persisted-query.png "Parent persisted query")
 
 A child persisted query extends it, inheriting the GraphQL query, and overriding the value for variable `$limit` to `2`:
 
-<a href="/assets/guides/upstream/child-persisted-query.png" target="_blank">![Child persisted query](/assets/guides/upstream/child-persisted-query.png "Child persisted query")</a>
+![Child persisted query](/assets/guides/upstream/child-persisted-query.png "Child persisted query")
 
 
