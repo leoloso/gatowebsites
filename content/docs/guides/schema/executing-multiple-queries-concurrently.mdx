@@ -60,9 +60,7 @@ Multiple Query Execution is attained with the use of these special directives:
 
 - **`@depends`** (operation directive): have an operation (whether a `query` or `mutation`) indicate what other operations must be executed before
 - **`@export`** (field directive): export some field value from one operation, to inject it as an input to some field in another operation
-{/* <!-- - `@deferredExport` (field directive): Similar to `@export` but to be used with **Multi-Field Directives**
-
-In addition, directives `@include` and `@skip` are also made available as operation directives (they are normally only field directives), and these can be used to conditionally execute an operation if it satisfies some condition. --> */}
+{/* <!-- - `@deferredExport` (field directive): Similar to `@export` but to be used with **Multi-Field Directives**. In addition, directives `@include` and `@skip` are also made available as operation directives (they are normally only field directives), and these can be used to conditionally execute an operation if it satisfies some condition. --> */}
 
 The GraphQL server will create the list of operations to load and execute, retrieving them from each `@depends(on: ...)`, and will export the values from any field containing `@export` as a dynamic variable (with name defined under argument `as`) to be input in any subsequent operation.
 
