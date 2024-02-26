@@ -1,4 +1,0 @@
-{
-  "layout": "layouts/guide.njk",
-  "templateEngineOverride": "md"
-}
