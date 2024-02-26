@@ -24,11 +24,13 @@ The configuration is created through an access control list (ACL), and delivered
 
 Clicking on "Access Control Lists" on the plugin's menu, it displays the list of all the created access control lists:
 
-<div class="img-width-1024" markdown="1">
-
-![Access Control Lists in the admin](/assets/guides/upstream-pro/access-control-lists.png "Access Control Lists in the admin")
-
-</div>
+<Image
+  src="/assets/guides/upstream-pro/access-control-lists.png"
+  width="1024"
+  height="940"
+  alt="Access Control Lists in the admin"
+  caption="Access Control Lists in the admin"
+/>
 
 ## Creating a new access control list
 
@@ -57,11 +59,13 @@ Every Access Control List contains one or many entries, each of them with the fo
 
 In addition to fields from types, we can also select fields from interfaces. In this case, the access control validation is carried out on all types implementing the interface.
 
-<div class="img-width-430" markdown="1">
-
-![Selecting a field from an interface](/assets/guides/upstream/selecting-field-from-interface.png "Selecting a field from an interface")
-
-</div>
+<Image
+  src="/assets/guides/upstream/selecting-field-from-interface.png"
+  width="430"
+  height="779"
+  alt="Selecting a field from an interface"
+  caption="Selecting a field from an interface"
+/>
 
 ### Public/private mode
 
@@ -78,11 +82,13 @@ If the [option for "Enable granular control?"](../../config/enabling-granular-pu
 
 - Public/Private Schema: behavior when access is denied
 
-<div class="img-width-400" markdown="1">
-
-![Individual Public/Private schema mode](/assets/guides/upstream-pro/public-private-individual-control.png "Individual Public/Private schema mode")
-
-</div>
+<Image
+  src="/assets/guides/upstream-pro/public-private-individual-control.png"
+  width="400"
+  height="220"
+  alt="Individual Public/Private schema mode"
+  caption="Individual Public/Private schema mode"
+/>
 
 ### Describing the access control list
 
@@ -94,11 +100,13 @@ Find more information in guide [Adding a description to the API](../../config/ad
 
 After creating the ACL, we can have the Custom Endpoint or Persisted Query use it by [editing the corresponding Schema Configuration](../creating-a-schema-configuration/), and selecting the ACL from the list under block "Access Control Lists".
 
-<div class="img-width-610" markdown="1">
-
-![Selecting an Access Control List in the Schema Configuration](/assets/guides/upstream-pro/schema-config-access-control-lists.png "Selecting an Access Control List in the Schema Configuration")
-
-</div>
+<Image
+  src="/assets/guides/upstream-pro/schema-config-access-control-lists.png"
+  width="610"
+  height="674"
+  alt="Selecting an Access Control List in the Schema Configuration"
+  caption="Selecting an Access Control List in the Schema Configuration"
+/>
 
 If not customizing the configuration, the default Access Control Lists defined on the Settings page, under tab "Access Control", will be used:
 

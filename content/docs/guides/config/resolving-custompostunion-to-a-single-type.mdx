@@ -9,11 +9,13 @@ If there is only one type added to `CustomPostUnion` (eg: only `Post`), we can t
 
 For that, head over to the Settings page for `Schema Custom Posts`, and click on option `"Use single type instead of union type?"`:
 
-<div class="img-width-1024" markdown="1">
-
-![Settings for Custom Posts](/assets/guides/upstream/settings-customposts-single-type.png "Settings for Custom Posts")
-
-</div>
+<Image
+  src="/assets/guides/upstream/settings-customposts-single-type.png"
+  width="1024"
+  height="940"
+  alt="Settings for Custom Posts"
+  caption="Settings for Custom Posts"
+/>
 
 For instance, if `Post` is the only type, field `customPosts` from type `Root` resolves to it directly:
 

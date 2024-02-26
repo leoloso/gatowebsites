@@ -21,19 +21,23 @@ order: 0
 
 [InstaWP](https://instawp.com) allows visitors to launch a sandbox site to test a plugin, while allowing them to subscribe to the newsletter:
 
-<div class="img-width-610" markdown="1">
-
-![Launching a testing site in InstaWP to test Gato GraphQL](/images/instawp-test-drive-gatographql.png "Launching a testing site in InstaWP to test Gato GraphQL")
-
-</div>
+<Image
+  src="/images/instawp-test-drive-gatographql.png"
+  width="562"
+  height="531"
+  alt="Launching a testing site in InstaWP to test Gato GraphQL"
+  caption="Launching a testing site in InstaWP to test Gato GraphQL"
+/>
 
 We can capture these emails by providing a webhook to InstaWP, under the template's "Advanced Options" tab:
 
-<div class="img-width-1024" markdown="1">
-
-![Advanced options for InstaWP templates](/images/instawp-template-advanced-options.png "Advanced options for InstaWP templates")
-
-</div>
+<Image
+  src="/images/instawp-template-advanced-options.png"
+  width="1024"
+  height="940"
+  alt="Advanced options for InstaWP templates"
+  caption="Advanced options for InstaWP templates"
+/>
 
 The webhook will be a persisted query with the query below. This query captures the email from the visitors, and subscribes this email to a Mailchimp list.
 
@@ -93,8 +97,10 @@ define( 'MAILCHIMP_API_CREDENTIALS_PASSWORD', '{ password }' );
 
 Using this webhook, when creating a new testing site on InstaWP, and the user signs up to the newsletter, the visitor's email is automatically added to the Mailchimp list:
 
-<div class="img-width-1024" markdown="1">
-
-![Email automatically added to Mailchimp list](/images/instawp-mailchimp.png "Email automatically added to Mailchimp list")
-
-</div>
+<Image
+  src="/images/instawp-mailchimp.png"
+  width="1024"
+  height="940"
+  alt="Email automatically added to Mailchimp list"
+  caption="Email automatically added to Mailchimp list"
+/>
