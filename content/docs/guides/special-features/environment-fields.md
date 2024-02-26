@@ -4,8 +4,6 @@ isPRO: true
 metaDesc: The GraphQL schema is provided with global field '_env', which allows to obtain a value from an environment variable, or from a PHP constant.
 socialImage: /assets/GatoGraphQL-logo-suki.png
 order: 950
-templateEngineOverride: md
-hidden: true
 ---
 
 The GraphQL schema is provided with global field `_env`, which allows to obtain a value from an environment variable, or from a PHP constant (most commonly defined in `wp-config.php`, but can also be defined elsewhere).
