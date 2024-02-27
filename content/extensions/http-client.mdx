@@ -2,7 +2,7 @@
 name: HTTP Client
 description: "Addition of fields to execute HTTP requests against a webserver and fetch their response."
 # image: /assets/product-logos/GatoGraphQL-suki-extension.png
-order: 1800
+# order: 1800
 featured: true
 category: 'Schema extension'
 # shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/72a4a1fc-2a3b-4985-bf95-97cbe498b070
@@ -525,7 +525,7 @@ In this query, we generate the API endpoint using the **Field to Input** feature
 {
   users(
     pagination: { limit: 2 },
-    sort: { order: ASC, by: ID }
+    sort: { # order: ASC, by: ID }
   ) {
     id
     endpoint: _arrayJoin(values: [
