@@ -6,6 +6,31 @@ export default function PostNav() {
 
   const [targets, setTargets] = useState<HTMLElement[]>([])
   const [links, setLinks] = useState<HTMLElement[]>([])
+
+  const scrollSpy = () => {
+    const links = document.querySelectorAll('[data-scrollspy-link]') as NodeListOf<HTMLElement>
+    if (links.length < 1) return
+    const addActive = (i: number) => {
+      const link = links[i] ? links[i] : links[0]
+      link.classList.add('scrollspy-active')
+    }
+    const removeActive = (i: number) => {
+      links[i].classList.remove('scrollspy-active')
+    }
+    const removeAllActive = () => [...Array(targets.length).keys()].forEach((link) => removeActive(link))
+    const targetMargin = 100
+    let currentActive = 0
+    addActive(0)
+    // listen for scroll events
+    window.addEventListener('scroll', () => {
+      const current = targets.length - [...targets].reverse().findIndex((target) => window.scrollY >= target.offsetTop - targetMargin) - 1
+      if (current !== currentActive) {
+        removeAllActive()
+        currentActive = current
+        addActive(current)
+      }
+    })
+  }
   
   // select targets
   useEffect(() => {
@@ -21,6 +46,11 @@ export default function PostNav() {
     })
     setLinks(linksArray)
   }, [targets])
+
+  // init scrollspy
+  useEffect(() => {
+    scrollSpy()
+  }, [links])
 
   return (
     <aside className="relative hidden lg:block w-64 mr-20 shrink-0">
