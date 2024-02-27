@@ -22,21 +22,15 @@ category: 'Schema extension'
 
 Collection of fields added to the GraphQL schema, providing useful functionality concerning URLs, date formatting, text manipulation, and others.
 
-Field `_objectConvertToNameValueEntryList` retrieves the properties from a JSON object to create a list of JSON entries. It is used to transform a `JSONObject` output from some field, into a `[JSONObject]` that is input into another field.
-
-Field `_strConvertMarkdownToHTML` converts Markdown to HTML. It helps produce HTML content that is provided as input to some field or mutation, such as the `_sendEmail` mutation to send an email in HTML format.
-
-Field `_strDecodeXMLAsJSON` decodes an XML string as JSON. It helps process an XML string, such as an RSS feed, by converting it into a JSON object which can be manipulated by several fields in Gato GraphQL.
-
-Field `_strParseCSV` parses a CSV string into a list of JSON objects. It takes a CSV as input, and converts it into a format that can be extracted, iterated and manipulated using other function fields.
-
-Field `_dataMatrixOutputAsCSV` outputs data as a CSV. It takes a matrix of data, and produces a CSV string. This string can then be uploaded to the Media Library, or uploaded to an S3 bucket or FileStack, or other.
-
-Field `_urlAddParams` adds params to a URL.
-
-Field `_urlRemoveParams` removes params from a URL.
-
-Field `_arrayGenerateAllCombinationsOfItems` combines the elements in the arrays, extracting one item from each array and merging it with all others, under the corresponding label.
-
-Field `_arrayOfJSONObjectsExtractProperty`, given an array of JSON objects, with all of them having a common property, extracts the value of this property and replaces it as elements on the array.
+| Field | Description |
+| --- | --- |
+| `_objectConvertToNameValueEntryList` | Retrieves the properties from a JSON object to create a list of JSON entries. It is used to transform a `JSONObject` output from some field, into a `[JSONObject]` that is input into another field. |
+| `_strConvertMarkdownToHTML` | Converts Markdown to HTML. It helps produce HTML content that is provided as input to some field or mutation, such as the `_sendEmail` mutation to send an email in HTML format. |
+| `_strDecodeXMLAsJSON` | Decodes an XML string as JSON. It helps process an XML string, such as an RSS feed, by converting it into a JSON object which can be manipulated by several fields in Gato GraphQL. |
+| `_strParseCSV` | Parses a CSV string into a list of JSON objects. It takes a CSV as input, and converts it into a format that can be extracted, iterated and manipulated using other function fields. |
+| `_dataMatrixOutputAsCSV` | Outputs data as a CSV. It takes a matrix of data, and produces a CSV string. This string can then be uploaded to the Media Library, or uploaded to an S3 bucket or FileStack, or other. |
+| `_urlAddParams` | Adds params to a URL. |
+| `_urlRemoveParams` | Removes params from a URL. |
+| `_arrayGenerateAllCombinationsOfItems` | Combines the elements in the arrays, extracting one item from each array and merging it with all others, under the corresponding label. |
+| `_arrayOfJSONObjectsExtractProperty` | Given an array of JSON objects, with all of them having a common property, extracts the value of this property and replaces it as elements on the array. |
 
