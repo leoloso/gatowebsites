@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { allPosts } from 'contentlayer/generated'
+import { Post, allPosts } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,6 +10,9 @@ import PostTags from '@/components/post-tags'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
+import DocNavigation from '@/components/ui/doc-navigation'
+import { sortByPublishedAt } from '@/utils/sort'
+import { getPrevNextArticles } from '@/utils/document'
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
@@ -37,9 +40,17 @@ export default async function SingleVideoPost({ params }: {
   params: { slug: string }
 }) {
 
-  const post = allPosts.find((post) => post.slug === params.slug)
+  // Sort posts. Needed to find the prev/next items below
+  const posts = allPosts.sort(sortByPublishedAt)
+  const postIndex = posts.findIndex((post) => post.slug === params.slug)
 
-  if (!post) notFound()
+  if (postIndex === -1) notFound()
+
+  const post = posts[postIndex]
+  const paginationArticles = getPrevNextArticles(posts, postIndex)
+
+  const prevPost = paginationArticles.prev as Post
+  const nextPost = paginationArticles.next as Post
 
   return (
     <>
@@ -108,7 +119,10 @@ export default async function SingleVideoPost({ params }: {
                           <span>Back to all posts</span>
                         </Link>
                       </div>
-                    </div>                  
+                    </div>
+
+                    {/* Page navigation */}
+                    <DocNavigation prevArticle={prevPost} nextArticle={nextPost} />                  
 
                   </div>
 
