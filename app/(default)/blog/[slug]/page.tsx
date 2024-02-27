@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { allPosts } from 'contentlayer/generated'
+import { Post, allPosts } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,6 +10,9 @@ import PostTags from '@/components/post-tags'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
+// import ArticleNavigation from '@/components/ui/article-navigation'
+import { sortByPublishedAt } from '@/utils/sort'
+import { getPrevNextArticles } from '@/utils/document'
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
@@ -37,9 +40,17 @@ export default async function SingleVideoPost({ params }: {
   params: { slug: string }
 }) {
 
-  const post = allPosts.find((post) => post.slug === params.slug)
+  // Sort posts. Needed to find the prev/next items below
+  const posts = allPosts.sort(sortByPublishedAt)
+  const postIndex = posts.findIndex((post) => post.slug === params.slug)
 
-  if (!post) notFound()
+  if (postIndex === -1) notFound()
+
+  const post = posts[postIndex]
+  const paginationArticles = getPrevNextArticles(posts, postIndex)
+
+  const prevPost = paginationArticles.prev as Post
+  const nextPost = paginationArticles.next as Post
 
   return (
     <>
@@ -95,12 +106,15 @@ export default async function SingleVideoPost({ params }: {
                     {/* Article body */}
                     <PostMdx code={post.body.code} />
 
+                    <hr className="w-full h-px pt-px mt-16 bg-gray-200 border-0" />
+
+                    {/* Page navigation */}
+                    {/* <div>
+                      <ArticleNavigation prevArticle={prevPost} nextArticle={nextPost} />
+                    </div> */}
+
                     <div className="text-lg text-gray-600">
-                      <hr className="w-full h-px pt-px mt-8 bg-gray-200 border-0" />
                       <div className="mt-8">
-                        Interested in more tips like this? Check out <a className="text-gray-500 underline" href="#0">Introducing the Testing Field VideoPost</a>.
-                      </div>
-                      <div className="mt-6">
                         <Link href={`/${AppConfig.paths.blog}`} className="inline-flex items-center text-base text-blue-600 font-medium hover:underline">
                           <svg className="w-3 h-3 fill-current text-blue-400 shrink-0 mr-2" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                             <path d="M.293 5.282L5 .5l1.414 1.436-3 3.048H12v2.032H3.414l3 3.048L5 11.5.293 6.718a1.027 1.027 0 010-1.436z" />
@@ -108,7 +122,7 @@ export default async function SingleVideoPost({ params }: {
                           <span>Back to all posts</span>
                         </Link>
                       </div>
-                    </div>                  
+                    </div>
 
                   </div>
 

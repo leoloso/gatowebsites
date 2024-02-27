@@ -1,4 +1,4 @@
-import { Doc, DocTopic } from "@/.contentlayer/generated";
+import { Doc, DocTopic, Post } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from 'contentlayer/generated'
 import AppConfig from '@/app/app.config'
 import { sortByOrder, sortByOrderAndTitle } from "./sort";
@@ -49,13 +49,13 @@ export function getTutorialDocuments() {
   return getGroupDocuments(AppConfig.paths.docs.tutorial)
 }
 
-export function getPrevNextDocs(docs: Array<Doc>, docIndex: number) {
+export function getPrevNextArticles(articles: Array<Doc | Post>, articleIndex: number) {
   // Calculate the prev/next items
-  const prevDoc = docIndex === 0 ? undefined : docs[docIndex - 1]
-  const nextDoc = docIndex === (docs.length - 1) ? undefined : docs[docIndex + 1]
+  const prevArticle = articleIndex === 0 ? undefined : articles[articleIndex - 1]
+  const nextArticle = articleIndex === (articles.length - 1) ? undefined : articles[articleIndex + 1]
   return {
-    prev: prevDoc,
-    next: nextDoc
+    prev: prevArticle,
+    next: nextArticle
   }
 }
 

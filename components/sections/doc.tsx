@@ -2,7 +2,7 @@ import { DocMdx } from '@/components/mdx/doc-mdx'
 import TopicTitle from '@/components/ui/docs/topic-title'
 import Hamburger from '@/components/ui/docs/hamburger'
 import Feedback from '@/components/ui/feedback'
-import DocNavigation from '@/components/ui/doc-navigation'
+import ArticleNavigation from '@/components/ui/article-navigation'
 import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
 import { Doc } from '@/.contentlayer/generated'
@@ -64,7 +64,7 @@ export default function DocSection({
           <Feedback />
 
           {/* Page navigation */}
-          <DocNavigation prevArticle={prevDoc} nextArticle={nextDoc} />
+          <ArticleNavigation prevArticle={prevDoc} nextArticle={nextDoc} />
 
           {/* Content footer */}
           <Footer />

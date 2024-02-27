@@ -3,10 +3,11 @@ import { notFound } from 'next/navigation'
 import {
   sortDocuments,
   getGuideDocuments,
-  getPrevNextDocs,
+  getPrevNextArticles,
 } from '@/utils/document'
 import DocSection from '@/components/sections/doc'
 import { topicTitleSVG1 } from '@/components/ui/docs/topic-title'
+import { Doc } from '@/.contentlayer/generated'
 
 export async function generateStaticParams() {
   return getGuideDocuments().map((doc) => ({
@@ -43,13 +44,16 @@ export default async function SingleDoc({ params }: {
   if (docIndex === -1) notFound()
 
   const doc = docs[docIndex]
-  const paginationDocs = getPrevNextDocs(docs, docIndex)
+  const paginationArticles = getPrevNextArticles(docs, docIndex)
+
+  const prevDoc = paginationArticles.prev as Doc
+  const nextDoc = paginationArticles.next as Doc
 
   return (
     <DocSection
       doc={doc}
-      prevDoc={paginationDocs.prev}
-      nextDoc={paginationDocs.next}
+      prevDoc={prevDoc}
+      nextDoc={nextDoc}
       svgOption={topicTitleSVG1}
     />
   )
