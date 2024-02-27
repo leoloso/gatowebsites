@@ -49,26 +49,3 @@
     transform: rotate(135deg);
     transition: y 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.1s ease-out;
 }
-
-/* Scrollspy links */
-[data-scrollspy-link] {
-    @apply font-normal text-slate-600 dark:text-slate-400;
-}
-
-[data-scrollspy-link].scrollspy-active {
-    @apply font-medium text-blue-600 before:bg-blue-400;
-}
-
-[data-rehype-pretty-code-fragment] code {
-    @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-slate-900;
-    counter-reset: line;
-    box-decoration-break: clone;
-}
-
-[data-rehype-pretty-code-title] {
-    @apply px-4 py-3 font-mono text-xs border rounded-t-lg text-neutral-200 border-slate-700 bg-slate-800;
-}
-
-[data-rehype-pretty-code-title]+pre {
-    @apply mt-0 rounded-t-none border-t-0;
-}
