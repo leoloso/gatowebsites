@@ -43,10 +43,10 @@ export default async function SingleDoc({ params }: {
   if (docIndex === -1) notFound()
 
   const doc = docs[docIndex]
-  const paginationDocs = getPrevNextArticles(docs, docIndex)
+  const paginationArticles = getPrevNextArticles(docs, docIndex)
 
-  const prevDoc = paginationDocs.prev as Doc
-  const nextDoc = paginationDocs.next as Doc
+  const prevDoc = paginationArticles.prev as Doc
+  const nextDoc = paginationArticles.next as Doc
 
   return (
     <DocSection
