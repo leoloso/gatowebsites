@@ -54,7 +54,7 @@ export default function ExtensionsList({ extensions }: {
           <div>
             {extensionCategories.map((extensionCategory, index) => 
               <div key={index} className="mt-12 md:mt-16">
-                <h3 id={slugify(extensionCategory)} className="scroll-mt-8 text-2xl font-bold inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8 scroll-mt-24">{extensionCategory}</h3>
+                <h3 id={slugify(extensionCategory)} className="scroll-mt-24 text-2xl font-bold inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8 scroll-mt-24">{extensionCategory}</h3>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {extensions.map((extension, index) => (
                     extension.category === extensionCategory && (

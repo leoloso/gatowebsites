@@ -1,49 +1,106 @@
 ---
-name: 'Access Control'
-description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-category: 'Security'
+name: Access Control
+description: "Grant granular access to the schema, based on the user being logged-in (or not), having a certain role or capability, and more."
+# image: /assets/product-logos/GatoGraphQL-suki-extension.png
+# order: 100
 featured: true
+category: 'Security'
+# shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/63163f50-318a-4a43-9038-48bdf3a51eec
+# shopProductURL: https://shop.gatographql.com/checkout/buy/720a8b11-f8f7-4629-883c-6a0454b27931
+# productPrices:
+# - 24.99
+# - 49.99
+# - 99.99
+# bundles:
+# - better-wordpress-webhooks
+# - responsible-wordpress-public-api
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis enim lobortis scelerisque fermentum. Neque sodales ut etiam sit amet. [Ligula ullamcorper](https://cruip.com/) malesuada proin libero nunc consequat interdum varius. Quam pellentesque nec nam aliquam sem **et tortor consequat**. Pellentesque adipiscing commodo elit at imperdiet. Semper auctor neque vitae tempus quam pellentesque nec. Amet dictum sit amet justo donec enim diam. **Varius sit amet mattis vulputate enim** nulla aliquet porttitor. Odio pellentesque diam volutpat commodo sed. Elit sed vulputate mi sit amet mauris commodo quis imperdiet.
+Grant granular access to the schema, based on the user being logged-in (or not), having a certain role or capability, and more.
 
-> Greg Korshak, a journalist for the New York Times, reported that e-commerce audience will reach 380 million worldwide this year, comprising 250 dedicated fans and 215 occasional viewers. New York Times projected that the e-commerce industry would generate $905 million in revenue in 2020.
+## Description
 
-Pretium lectus quam id leo. Urna et pharetra pharetra massa massa. Eget sit amet tellus cras adipiscing enim eu. Neque aliquam vestibulum morbi blandit cursus risus.
+This extension allows us to create Access Control Lists, to manage who can access the different elements (operations, fields and directives) from the GraphQL schema.
+
+A new "Access Control List" Custom Post Type is added to the site. We can browse its entries on the "Access Control Lists" page in the menu, and click on "Add New Access Control List" to add a new entry in the editor.
 
 <Image
-  alt="News inner"
-  src={`/temporary/images/news-inner-image.jpg`}
-  width={768}
-  height={432}
-  caption="Photo by Helena Lopes on Unsplash"
+  src="/assets/extensions/upstream-pro/access-control-lists.png"
+  width="1024"
+  height="940"
+  alt="Access Control Lists"
+  caption="Access Control Lists"
 />
 
-## Challenges of designing for masses
+![Access Control List editor](/assets/extensions/upstream-pro/access-control-list.png "Access Control List editor")
 
-Aenean sed adipiscing diam donec adipiscing tristique risus nec feugiat. Auctor urna nunc id cursus metus aliquam eleifend. Arcu dictum varius duis at consectetur lorem donec massa sapien. Sed risus ultricies tristique nulla aliquet. Morbi tristique senectus et netus et, nibh nisl condimentum id venenatis a condimentum vitae sapien.
+In the editor, we indicate what rules must be satisfied to access what schema elements, from among operations (`query` or `mutation`), fields, global fields, and directives.
 
-### Here's what we discovered:
+![Creating an Access Control List](/assets/extensions/upstream-pro/access-control.gif "Creating an Access Control List")
 
-*   Aenean sed adipiscing diam donec adipiscing tristique.
-*   Urna nunc id cursus metus aliquam eleifend.
-*   Arcu dictum varius duis at consectetur lorem donec massa sapien.
-*   Sed risus ultricies tristique nulla aliquet.
+We assign the Access Control List to the desired endpoint (private endpoint, single endpoint, custom endpoints or persisted queries) via the Schema Configuration.
 
-Non nisi est sit amet facilisis magna etiam, aliquet porttitor lacus luctus accumsan tortor posuere. Habitasse platea dictumst quisque sagittis purus sit amet volutpat consequat. Id velit ut tortor pretium viverra.
+<Image
+  src="/assets/extensions/upstream-pro/schema-config-access-control-lists.png"
+  width="608"
+  height="679"
+  alt="Selecting an Access Control List in the Schema Configuration"
+  caption="Selecting an Access Control List in the Schema Configuration"
+/>
 
-Tempor commodo ullamcorper a lacus vestibulum sed arcu non odio tristique senectus et netus et. Nibh nisl condimentum id venenatis:
+When executing a GraphQL query, if it contains any of the selected schema elements in the Access Control List, the chosen rules are evaluated.
 
-### 1\. The quick brown fox jumped over the lazy dog.
+If any rule is not satisfied, access to that operation, field or directive is denied, and we can configure how the API must provide the response:
 
-Sed risus ultricies tristique nulla aliquet morbi tristique senectus et netus et. Nibh nisl condimentum, id venenatis a condimentum vitae sapien.
+- Public mode: Provide an error message to the user, indicating why access is denied
+- Private mode: The error message indicates that the operation, field or directive does not exist
 
-### 2\. The quick brown fox jumped over the lazy dog.
+For instance, in the _public mode_, we may get this response:
 
-Sed risus ultricies tristique nulla aliquet morbi tristique senectus et netus et. Nibh nisl condimentum, id venenatis a condimentum vitae sapien.
+```json
+{
+  "errors": [
+    {
+      "message": "You must have role 'author' to access field 'title' for type 'Post'",
+      "locations": [
+        {
+          "line": 86,
+          "column": 3
+        }
+      ]
+    }
+  ]
+}
+```
 
-Bibendum enim facilisis gravida neque convallis. Convallis posuere morbi leo urna molestie turpis in eu mi bibendum neque egestas. Est ante in [nibh mauris cursus mattis molestie](#0) aliquam purus sit amet luctus vulputate sapien nec sagittis aliquam enim nec dui nunc mattis enim, sit amet nulla facilisi morbi tempus iaculis urna id. Blandit cursus risus at ultrices mi tempus imperdiet nulla.
+While in the _private mode_ we may get this response:
 
-## Conclusions
+```json
+{
+  "errors": [
+    {
+      "message": "There is no field 'title' on type 'Post'",
+      "locations": [
+        {
+          "line": 86,
+          "column": 3
+        }
+      ]
+    }
+  ]
+}
+```
 
-Sapien nec sagittis aliquam malesuada orci sagittis eu volutpat odio facilisis mauris sit amet massa, consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo, purus viverra accumsan in nisl nisi scelerisque. Vel pharetra vel turpis nunc eget lorem malesuada bibendum arcu vitae elementum curabitur vitae nunc sed velit. Tempus quam pellentesque nec nam aliquam sem et tortor consequat.
+## List of Access Control rules
+
+The extension provides the following Access Control rules:
+
+- Disable access
+- Grant access only if the user is logged-in or out
+- Grant access only if the user has some role
+- Grant access only if the user has some capability
+
+{/* <!-- ## Bundles including extension
+
+- [“All in One Toolbox for WordPress” Bundle](/bundles/all-in-one-toolbox-for-wordpress)
+- [“Responsible WordPress Public API” Bundle](/bundles/responsible-wordpress-public-api) --> */}

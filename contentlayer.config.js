@@ -219,12 +219,12 @@ const Extension = defineDocumentType(() => ({
     category: {
       type: 'enum',
       options: [
-        'Clients',
-        'Endpoints',
         'Performance',
+        'Plugin integration',
         'Productivity',
         'Schema evolution',
         'Schema extension',
+        'Schema functionality',
         'Security',
       ],
       required: true,
