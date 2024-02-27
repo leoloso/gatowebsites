@@ -3,7 +3,6 @@ import remarkGfm from 'remark-gfm'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import AppConfig from './app/app.config'
-import AppSettings from './app/app.settings'
 
 const Update = defineDocumentType(() => ({
   name: 'Update',
