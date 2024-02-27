@@ -22,7 +22,7 @@ category: 'Schema functionality'
 
 Addition of the `@remove` directive to the GraphQL schema, which removes the output of a field from the response.
 
-In the query below, we generate the URL to send an HTTP request to, using fields to calculate intermediate values, which are not needed in the response, and we can `@remove` them:
+In the query below, we generate the URL to send an HTTP request to, using fields to calculate intermediate values (which are not needed in the response) so these are `@remove`d:
 
 ```graphql
 query {
@@ -43,7 +43,7 @@ query {
 }
 ```
 
-...producing (notice that fields `siteURL` and `requestURL` are not in the response):
+The response will not contain the `@remove`d fields `siteURL` and `requestURL`:
 
 ```json
 {
