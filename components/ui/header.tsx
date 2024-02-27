@@ -51,7 +51,7 @@ export default function Header({
                   <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out py-0.5" href={`/${AppConfig.paths.docs.queryLibrary}`}>Queries Library</Link>
                 </li>
                 <li>
-                  <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out py-0.5" href={`/${AppConfig.paths.docs.tutorial}`}>Tutorial</Link>
+                  <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out py-0.5" href={`/${AppConfig.paths.docs.tutorial}`}>Schema tutorial</Link>
                 </li>
               </Dropdown>
             </ul>
