@@ -10,7 +10,7 @@ import PostTags from '@/components/post-tags'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
-import ArticleNavigation from '@/components/ui/doc-navigation'
+import ArticleNavigation from '@/components/ui/article-navigation'
 import { sortByPublishedAt } from '@/utils/sort'
 import { getPrevNextArticles } from '@/utils/document'
 
