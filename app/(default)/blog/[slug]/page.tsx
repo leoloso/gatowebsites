@@ -106,12 +106,15 @@ export default async function SingleVideoPost({ params }: {
                     {/* Article body */}
                     <PostMdx code={post.body.code} />
 
+                    <hr className="w-full h-px pt-px mt-12 bg-gray-200 border-0" />
+
+                    {/* Page navigation */}
+                    <div>
+                      <ArticleNavigation prevArticle={prevPost} nextArticle={nextPost} />
+                    </div>
+
                     <div className="text-lg text-gray-600">
-                      <hr className="w-full h-px pt-px mt-8 bg-gray-200 border-0" />
-                      <div className="mt-8">
-                        Interested in more tips like this? Check out <a className="text-gray-500 underline" href="#0">Introducing the Testing Field VideoPost</a>.
-                      </div>
-                      <div className="mt-6">
+                      <div className="mt-4">
                         <Link href={`/${AppConfig.paths.blog}`} className="inline-flex items-center text-base text-blue-600 font-medium hover:underline">
                           <svg className="w-3 h-3 fill-current text-blue-400 shrink-0 mr-2" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                             <path d="M.293 5.282L5 .5l1.414 1.436-3 3.048H12v2.032H3.414l3 3.048L5 11.5.293 6.718a1.027 1.027 0 010-1.436z" />
@@ -120,9 +123,6 @@ export default async function SingleVideoPost({ params }: {
                         </Link>
                       </div>
                     </div>
-
-                    {/* Page navigation */}
-                    <ArticleNavigation prevArticle={prevPost} nextArticle={nextPost} />                  
 
                   </div>
 
