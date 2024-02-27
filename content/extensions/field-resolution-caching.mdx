@@ -23,7 +23,7 @@ This directive can boost performance when executing expensive operations (such a
 
 ```graphql
 query {
-  posts(pagination:{ limit: 3 }) {
+  posts {
     id
     title
       @strTranslate(from: "en", to: "es")
