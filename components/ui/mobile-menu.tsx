@@ -94,7 +94,7 @@ export default function MobileMenu({
                 <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.docs.extensionsReference}`}>Extensions reference</Link>
               </li>
               <li>
-                <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.docs.queryLibrary}`}>Queries Library</Link>
+                <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.docs.queryLibrary}`}>Queries library</Link>
               </li>
               <li>
                 <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.docs.tutorial}`}>Schema tutorial</Link>
