@@ -20,16 +20,7 @@ category: 'Schema functionality'
 # - versatile-wordpress-request-api
 ---
 
-`@default` directive, to set a value to null or empty fields.
-
-## Description
-
-Directive `@default` accepts two arguments:
-
-1. `value`: the default value, from any scalar type (string, boolean, integer, float or ID).
-2. `condition`: if the field must be null or empty, via enum values `IS_NULL` or `IS_EMPTY`. By default it is null.
-
-In the example below, when a post does not have a featured image, field `featuredImage` returns `null`:
+Addition of the `@default` directive to the GraphQL schema, to set a value to null or empty fields.
 
 ```graphql
 {
@@ -38,26 +29,7 @@ In the example below, when a post does not have a featured image, field `feature
       id
       src
     }
-  }
-}
-```
-
-```json
-{
-  "data": {
-    "post": {
-      "featuredImage": null
-    }
-  }
-}
-```
-
-By using `@default`, we can then retrieve some default image:
-
-```graphql
-{
-  post(by: { id: 1 }) {
-    featuredImage @default(value: 55) {
+    featuredImageOrDefault: featuredImage @default(value: 55) {
       id
       src
     }
@@ -69,7 +41,8 @@ By using `@default`, we can then retrieve some default image:
 {
   "data": {
     "post": {
-      "featuredImage": {
+      "featuredImage": null,
+      "featuredImageOrDefault": {
         "id": 55,
         "src": "http://mysite.com/wp-content/uploads/my-default-image.png"
       }
@@ -77,13 +50,3 @@ By using `@default`, we can then retrieve some default image:
   }
 }
 ```
-
-{/* <!-- ## Bundles including extension
-
-- [“All in One Toolbox for WordPress” Bundle](/bundles/all-in-one-toolbox-for-wordpress)
-- [“Tailored WordPress Automator” Bundle](/bundles/tailored-wordpress-automator)
-- [“Responsible WordPress Public API” Bundle](/bundles/responsible-wordpress-public-api) --> */}
-
-{/* <!-- ## Tutorial lessons referencing extension
-
-- [Transforming data from an external API](/tutorial/transforming-data-from-an-external-api) --> */}

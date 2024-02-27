@@ -22,15 +22,13 @@ category: 'Schema functionality'
 # - versatile-wordpress-request-api
 ---
 
-`@applyField` directive, to execute a certain field on the resolved field's value.
+Addition of the `@applyField` directive to the GraphQL schema, to execute a certain field on the resolved field's value.
 
-## Description
+The `@applyField` directive allows to execute another field, and either pass that resulting value along to another directive, or override the value of the field.
 
-Applied to some field, the `@applyField` directive allows to execute another field (which is available on the same type and is applied on the same object), and either pass that resulting value along to another directive, or override the value of the field.
+This allows us to manipulate the field's value in multiple ways, applying some functionality, and storing the new result in the response.
 
-This allows us to manipulate the field's value in multiple ways, applying some functionality as provided via the **PHP Functions via Schema** extension, and storing the new result in the response.
-
-In the query below, the `Post.title` field for the object has value `"Hello world!"`. By adding `@applyField` to execute the field `_strUpperCase` (and preceding it with `@passOnwards`, which exports the field value under dynamic `$input`):
+In the query below, the `Post.title` field for the object has value `"Hello world!"`. By adding `@applyField` to execute field `_strUpperCase`:
 
 ```graphql
 {
@@ -59,126 +57,3 @@ In the query below, the `Post.title` field for the object has value `"Hello worl
   }
 }
 ```
-
-We can concatenate multiple `@applyFunction`, using the response from one as input into another, thus performing multiple operations on the same field value.
-
-In the query below, there are 2 `@applyFunction` operations applied:
-
-1. Transform to upper case, and pass the value onwards under `$ucTitle`
-2. Replace `" "` with `"-"` and override the field value
-
-```graphql
-{
-  post(by: { id: 1 }) {
-    title
-      @passOnwards(as: "input")
-      @applyField(
-        name: "_strUpperCase"
-        arguments: {
-          text: $input
-        },
-        passOnwardsAs: "ucTitle"
-      )
-      @applyField(
-        name: "_strReplace"
-        arguments: {
-          search: " ",
-          replaceWith: "-",
-          in: $ucTitle
-        },
-        setResultInResponse: true
-      )
-  }
-}
-```
-
-...producing:
-
-```json
-{
-  "data": {
-    "post": {
-      "title": "HELLO-WORLD!"
-    }
-  }
-}
-```
-
-## Further examples
-
-Retrieve the opposite value than the field provides:
-
-```graphql
-{
-  posts {
-    id
-    notHasComments: hasComments
-      @passOnwards(as: "hasComments")
-      @applyField(
-        name: "_not",
-        arguments: {
-          value: $hasComments
-        },
-        setResultInResponse: true
-      )
-  }
-}
-```
-
-Together with the **Data Iteration Meta Directives** extension, manipulate all items in an array, shortening each to no more than 20 chars long:
-
-```graphql
-{
-  posts {
-    categoryNames
-      @underEachArrayItem(passValueOnwardsAs: "categoryName")
-        @applyField(
-          name: "_strSubstr"
-          arguments: {
-            string: $categoryName,
-            offset: 0,
-            length: 20
-          },
-          setResultInResponse: true
-        )
-  }
-}
-```
-
-Together with the **Data Iteration Meta Directives** extension, convert the first item of an array to upper case:
-
-```graphql
-{
-  posts {
-    categoryNames
-      @underArrayItem(passOnwardsAs: "value", index: 0)
-        @applyField(
-          name: "_strUpperCase"
-          arguments: {
-            text: $value
-          },
-          setResultInResponse: true
-        )
-  }
-}
-```
-
-{/* <!-- ## Bundles including extension
-
-- [“All in One Toolbox for WordPress” Bundle](/bundles/all-in-one-toolbox-for-wordpress)
-- [“Tailored WordPress Automator” Bundle](/bundles/tailored-wordpress-automator)
-- [“Simplest WordPress Content Translation” Bundle](/bundles/simplest-wordpress-content-translation) --> */}
-
-{/* <!-- ## Tutorial lessons referencing extension
-
-- [Duplicating multiple blog posts at once](/tutorial/duplicating-multiple-blog-posts-at-once)
-- [Retrieving structured data from blocks](/tutorial/retrieving-structured-data-from-blocks)
-- [Modifying (and storing again) the image URLs from all Image blocks in a post](/tutorial/modifying-and-storing-again-the-image-urls-from-all-image-blocks-in-a-post)
-- [Translating block content in a post to a different language](/tutorial/translating-block-content-in-a-post-to-a-different-language)
-- [Bulk translating block content in multiple posts to a different language](/tutorial/bulk-translating-block-content-in-multiple-posts-to-a-different-language)
-- [Creating an API gateway](/tutorial/creating-an-api-gateway)
-- [Transforming data from an external API](/tutorial/transforming-data-from-an-external-api)
-- [Filtering data from an external API](/tutorial/filtering-data-from-an-external-api)
-- [Updating large sets of data](/tutorial/updating-large-sets-of-data)
-- [Importing a post from another WordPress site](/tutorial/importing-a-post-from-another-wordpress-site)
-- [Distributing content from an upstream to multiple downstream sites](/tutorial/distributing-content-from-an-upstream-to-multiple-downstream-sites) --> */}
