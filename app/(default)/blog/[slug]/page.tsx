@@ -10,7 +10,7 @@ import PostTags from '@/components/post-tags'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
-import DocNavigation from '@/components/ui/doc-navigation'
+import ArticleNavigation from '@/components/ui/doc-navigation'
 import { sortByPublishedAt } from '@/utils/sort'
 import { getPrevNextArticles } from '@/utils/document'
 
@@ -122,7 +122,7 @@ export default async function SingleVideoPost({ params }: {
                     </div>
 
                     {/* Page navigation */}
-                    <DocNavigation prevArticle={prevPost} nextArticle={nextPost} />                  
+                    <ArticleNavigation prevArticle={prevPost} nextArticle={nextPost} />                  
 
                   </div>
 
