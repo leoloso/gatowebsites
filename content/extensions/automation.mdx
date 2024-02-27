@@ -28,6 +28,16 @@ The automation trigger is any WordPress action hook, and the action is the execu
   caption="Automation Rule editor"
 />
 
+For instance, when creating a new post, automation rule **Add comments block to new post** checks if the `core/comments` block is present and, if not, it adds it at the bottom of the post:
+
+<Image
+  src="/assets/extensions/upstream-pro/automation-rule-insert-mandatory-comments-block.gif"
+  width="640"
+  height="740"
+  alt="Automatically inserting the comments block to new 'draft' posts"
+  caption="Automatically inserting the comments block to new 'draft' posts"
+/>
+
 This extension also provides action hooks to be invoked from within <a href="https://developer.wordpress.org/plugins/cron/" target="_blank">WP-Cron</a>:
 
 - `gatographql__execute_query`
