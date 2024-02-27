@@ -18,40 +18,40 @@ export default function FooterMenu({
         <h6 className="text-sm text-slate-50 font-medium mb-2">Product</h6>
         <ul className="text-sm space-y-2">
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/pricing">Pricing</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/pricing">Pricing</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.extensions}`}>Extensions</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.extensions}`}>Extensions</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.videoPosts}`}>Videos</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.videoPosts}`}>Videos</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.guides}`}>Guides</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.guides}`}>Guides</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.extensionsReference}`}>Extensions reference</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.extensionsReference}`}>Extensions reference</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.queryLibrary}`}>Queries Library</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.queryLibrary}`}>Queries Library</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.tutorial}`}>Tutorial</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.tutorial}`}>Tutorial</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/changelog">Changelog</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/changelog">Changelog</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDownload}>Download</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDownload}>Download</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Test drive</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Test drive</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.shopPurchase}>Purchase</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.shopPurchase}>Purchase</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/refund-policy">Refund policy</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/refund-policy">Refund policy</a>
           </li>
         </ul>
       </div>
@@ -61,26 +61,26 @@ export default function FooterMenu({
         <h6 className="text-sm text-slate-50 font-medium mb-2">Company</h6>
         <ul className="text-sm space-y-2">
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.blog}`}>Blog</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.blog}`}>Blog</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/newsletter">Newsletter</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/newsletter">Newsletter</a>
           </li>
           {/* @todo Re-enable when adding Customers to the site */}
           {/* <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/customers">Customers</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/customers">Customers</a>
           </li> */}
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.shopAffiliateProgram} target="_blank">Affiliate Program</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.shopAffiliateProgram} target="_blank">Affiliate Program</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/developers">Developer Partnership Program</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/developers">Developer Partnership Program</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/about">About us</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/about">About us</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/contact">Contact us</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/contact">Contact us</a>
           </li>
         </ul>
       </div>
@@ -90,16 +90,16 @@ export default function FooterMenu({
         <h6 className="text-sm text-slate-50 font-medium mb-2">Resources</h6>
         <ul className="text-sm space-y-2">
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDirectory} target="_blank">WordPress.org</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDirectory} target="_blank">WordPress.org</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.githubRepo} target="_blank">GitHub</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.githubRepo} target="_blank">GitHub</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.githubExtensionStarter} target="_blank">Extension starter</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.githubExtensionStarter} target="_blank">Extension starter</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/specials/wpbuilds">WPBuilds series</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/specials/wpbuilds">WPBuilds series</a>
           </li>
         </ul>
       </div>
@@ -109,10 +109,10 @@ export default function FooterMenu({
         <h6 className="text-sm text-slate-50 font-medium mb-2">Support</h6>
         <ul className="text-sm space-y-2">
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/shop/my-orders">My orders</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/shop/my-orders">My orders</a>
           </li>
           <li>
-            <a className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out" href="/support">Premium support</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/support">Premium support</a>
           </li>
         </ul>
       </div>
