@@ -24,3 +24,8 @@ export function getDocURL(doc: Doc) {
 export function getPostURL(post: Post) {
   return `/${AppConfig.paths.blog}/${post.slug}`
 }
+
+export function getArticleURL(article: Doc | Post) {
+  return (article.type === 'Post') ? getPostURL(article) : getDocURL(article)
+}
+
