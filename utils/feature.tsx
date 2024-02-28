@@ -1,9 +1,5 @@
 import { allFeatures } from 'contentlayer/generated'
 
-export function getFeaturedFeatures() {
-  return allFeatures.filter((feature) => feature.featured)
-}
-
 export function getFeatureCategories() {
   return allFeatures
     .map((feature) => feature.category)
