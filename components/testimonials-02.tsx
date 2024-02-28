@@ -4,6 +4,7 @@ import Testimonial01 from '@/public/assets/theme/testimonial-01.png'
 import Testimonial02 from '@/public/assets/theme/testimonial-02.png'
 import Testimonial03 from '@/public/assets/theme/testimonial-03.png'
 import RadiantGradient from './radial-gradient'
+import SectionHeader from './section-header'
 
 interface Item {
   img: StaticImageData
@@ -46,10 +47,10 @@ export default function Testimonials02() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12 md:py-20">
           {/* Content */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">Hear from our people</h2>
-            <p className="text-lg text-slate-400">Our company is comprised of people who make bold choices for our clients and the security sector. It's in our DNA to push our limits and make bold changes.</p>
-          </div>
+          <SectionHeader
+            title='Hear from our people'
+            description="Our company is comprised of people who make bold choices for our clients and the security sector. It's in our DNA to push our limits and make bold changes."
+          />
           {/* Grid */}
           <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 max-w-xs mx-auto lg:max-w-none">
             {items.map((item, index) => ( 
