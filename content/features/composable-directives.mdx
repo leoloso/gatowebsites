@@ -1,0 +1,23 @@
+---
+title: Composable directives
+description: A composable directive can augment another directive to modify its behavior or fill a gap. This removes the need to duplicate fields or directives just to change their input or return types, avoiding bloat.
+category: Free plugin
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 330
+---
+
+Oftentimes, a directive cannot be applied on a field, because it has an input which is different than the field's output. For instance, directive `@strUpperCase` receives a string as input, so it can't be applied on field `User.capabilities`, which returns an array of strings.
+
+With **composable directives**, a directive can augment another directive to modify its behavior or fill a gap. This removes the need to duplicate fields or directives just to change their input or return types, avoiding bloat.
+
+In this query, directive `@underEachArrayItem` iterates over an array of strings, and applies its nested directive `@strUpperCase` on each of them, fixing the type mismatch:
+
+```graphql
+query {
+  users {
+    capabilities
+      @underEachArrayItem
+        @strUpperCase
+  }
+}
+```
