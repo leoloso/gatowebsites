@@ -105,10 +105,10 @@ export default function MobileMenu({
               </li>
             </ul>
           </li>
-          <li>
+          <li className="py-1">
             <DownloadFreePluginButton />
           </li>
-          <li>
+          <li className="py-1">
             <PurchasePROPluginButton />
           </li>
         </ul>
