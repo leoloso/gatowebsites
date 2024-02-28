@@ -7,7 +7,7 @@ import DefaultExtensionImg from '@/public/assets/theme/default/extension-image.p
 import DefaultExtensionIcon from '@/public/assets/theme/default/extension-icon.svg'
 import Star from '@/public/assets/theme/star.svg'
 import Avatar from '@/public/assets/theme/default/extension-author-avatar.jpg'
-import { ExtensionMdx } from '@/components/mdx/extension-mdx'
+import { ArtifactMdx } from '@/components/mdx/extension-mdx'
 import AppConfig from '@/app/app.config'
 import { getExtensionDocumentationURL } from '@/utils/application-urls'
 import StunningBackground from '@/components/stunning-background'
@@ -81,7 +81,7 @@ export default async function SingleExtension({ params }: {
                       <h1 className="sr-only">{extension.title}</h1>
 
                       {/* Extension content */}
-                      <ExtensionMdx code={extension.body.code} />
+                      <ArtifactMdx code={extension.body.code} />
                     </article>
 
                     <aside className="pl-6 border-l-2 border-purple-500">

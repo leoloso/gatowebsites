@@ -7,7 +7,7 @@ import DefaultFeatureImg from '@/public/assets/theme/default/feature-image.png'
 import DefaultFeatureIcon from '@/public/assets/theme/default/feature-icon.svg'
 import Star from '@/public/assets/theme/star.svg'
 import Avatar from '@/public/assets/theme/default/feature-author-avatar.jpg'
-import { ExtensionMdx } from '@/components/mdx/extension-mdx'
+import { ArtifactMdx } from '@/components/mdx/extension-mdx'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
 
@@ -80,7 +80,7 @@ export default async function SingleFeature({ params }: {
                       <h1 className="sr-only">{feature.title}</h1>
 
                       {/* Feature content */}
-                      <ExtensionMdx code={feature.body.code} />
+                      <ArtifactMdx code={feature.body.code} />
                     </article>
 
                     <aside className="pl-6 border-l-2 border-purple-500">
