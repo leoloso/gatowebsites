@@ -1,6 +1,6 @@
-import ExtensionsCarousel from '@/components/extensions-carousel'
 import { Extension } from '@/.contentlayer/generated'
 import StunningBackground from './stunning-background'
+import ArtifactsCarousel from './artifacts-carousel'
 
 export default function ExtensionsSection({ extensions }: {
   extensions: Array<Extension>
@@ -22,8 +22,8 @@ export default function ExtensionsSection({ extensions }: {
             </div>
           </div>
 
-          <ExtensionsCarousel
-            extensions={ extensions }
+          <ArtifactsCarousel
+            artifacts={ extensions }
           />
 
         </div>
