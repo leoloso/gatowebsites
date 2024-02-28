@@ -32,7 +32,7 @@ Addition of fields to the GraphQL schema to execute HTTP requests against a webs
 - `_sendGraphQLHTTPRequest`
 - `_sendGraphQLHTTPRequests`
 
-This query:
+It supports fetching any piece of data from the HTTP response:
 
 ```graphql
 {
@@ -48,36 +48,10 @@ This query:
     contentLengthHeader: header(name: "Content-Length")
     cacheControlHeader: header(name: "Cache-Control")
   }
-  
-  _sendJSONObjectItemHTTPRequest(
-    input: {
-      url: "https://mysite.com/wp-json/wp/v2/posts/?per_page=3&_fields=id,type,title,date"
-    }
-  )
-
-  graphQLRequest: _sendGraphQLHTTPRequest(
-    input: {
-      endpoint: "https://mysite.com/api/graphql/"
-      query: """
-        query GetPosts($postIDs: [ID]!) {
-          posts(filter: { ids: $postIDs }) {
-            id
-            title
-          }
-        }
-      """
-      variables: [
-        {
-          name: "postIDs",
-          value: [1, 1499]
-        }
-      ]
-    }
-  )
 }
 ```
 
-...produces:
+...producing:
 
 ```json
 {
@@ -95,7 +69,28 @@ This query:
       "body": "{\"id\":11,\"date\":\"2020-12-12T04:09:36\",\"content\":{\"rendered\":\"<p>Wow, this sounds awesome!<\\\/p>\\n\"},\"_links\":{\"self\":[{\"href\":\"https:\\\/\\\/mysite.com\\\/wp-json\\\/wp\\\/v2\\\/comments\\\/11\"}],\"collection\":[{\"href\":\"https:\\\/\\\/mysite.com\\\/wp-json\\\/wp\\\/v2\\\/comments\"}],\"author\":[{\"embeddable\":true,\"href\":\"https:\\\/\\\/mysite.com\\\/wp-json\\\/wp\\\/v2\\\/users\\\/3\"}],\"up\":[{\"embeddable\":true,\"post_type\":\"post\",\"href\":\"https:\\\/\\\/mysite.com\\\/wp-json\\\/wp\\\/v2\\\/posts\\\/28\"}]}}",
       "contentLengthHeader": "508",
       "cacheControlHeader": "max-age=300,no-store"
-    },
+    }
+  }
+}
+```
+
+It supports connecting to a REST endpoint, converting the response to JSON:
+
+```graphql
+{  
+  _sendJSONObjectItemHTTPRequest(
+    input: {
+      url: "https://mysite.com/wp-json/wp/v2/posts/?per_page=3&_fields=id,type,title,date"
+    }
+  )
+}
+```
+
+...producing:
+
+```json
+{
+  "data": {
     "_sendJSONObjectItemHTTPRequest": [
       {
         "id": 1692,
@@ -121,8 +116,43 @@ This query:
           "rendered": "COPE with WordPress: Post demo containing plenty of blocks"
         }
       }
-    ],
-    "graphQLRequest": {
+    ]
+  }
+}
+```
+
+It supports connecting to a GraphQL endpoint, converting the response to JSON:
+
+```graphql
+{
+  _sendGraphQLHTTPRequest(
+    input: {
+      endpoint: "https://mysite.com/api/graphql/"
+      query: """
+        query GetPosts($postIDs: [ID]!) {
+          posts(filter: { ids: $postIDs }) {
+            id
+            title
+          }
+        }
+      """
+      variables: [
+        {
+          name: "postIDs",
+          value: [1, 1499]
+        }
+      ]
+    }
+  )
+}
+```
+
+...producing:
+
+```json
+{
+  "data": {
+    "_sendGraphQLHTTPRequest": {
       "data": {
         "posts": [
           {
