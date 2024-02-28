@@ -9,6 +9,7 @@ import CustomerImg07 from '@/public/assets/theme/customer-07.jpg'
 import CustomerImg08 from '@/public/assets/theme/customer-08.jpg'
 import CustomerImg09 from '@/public/assets/theme/customer-09.jpg'
 import RadiantGradient from './radial-gradient'
+import SectionHeader from './section-header'
 
 export default function Customers() {
 
@@ -103,10 +104,11 @@ export default function Customers() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12 md:py-20">
           {/* Content */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">Meet our customers</h2>
-            <p className="text-lg text-slate-400">There are many variations available, but the majority have suffered, by injected humour, or randomised words which don't look even slightly believable.</p>
-          </div>
+          <SectionHeader
+            title='Meet our customers'
+            description="There are many variations available, but the majority have suffered, by injected humour, or randomised words which don't look even slightly believable."
+          />
+          
           {/* Customers */}
           <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 max-w-xs mx-auto lg:max-w-none">
 

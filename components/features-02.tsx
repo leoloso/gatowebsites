@@ -5,6 +5,7 @@ import Highlighter, { HighlighterItem } from './highlighter'
 import FeatureImg01 from '@/public/assets/theme/feature-image-01.png'
 import FeatureImg02 from '@/public/assets/theme/feature-image-02.png'
 import FeatureImg03 from '@/public/assets/theme/feature-image-03.png'
+import SectionHeader from './section-header'
 
 export default function Features02() {
   return (
@@ -19,10 +20,10 @@ export default function Features02() {
         <div className="pt-16 md:pt-32">
 
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">Faster. Smarter.</h2>
-            <p className="text-lg text-slate-400">There are many variations available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-          </div>
+          <SectionHeader
+            title='Faster. Smarter.'
+            description="There are many variations available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+          />
 
           {/* Highlighted boxes */}
           <div className="relative pb-12 md:pb-20">

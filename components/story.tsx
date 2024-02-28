@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Team from '@/public/assets/theme/team.jpg'
+import SectionHeader from './section-header'
 
 export default function Story() {
   return (
@@ -23,9 +24,9 @@ export default function Story() {
           <div className="pb-12 md:pb-20">
 
             {/* Section header */}
-            <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-              <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60">Our story (so far)</h2>
-            </div>
+            <SectionHeader
+              title='Our story (so far)'
+            />
 
             <div className="md:flex justify-between space-x-6 md:space-x-8 lg:space-x-14">
               <figure className="min-w-[240px]">
