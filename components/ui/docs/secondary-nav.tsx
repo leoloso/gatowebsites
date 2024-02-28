@@ -64,7 +64,7 @@ export default function SecondaryNav() {
                   <li key={linkIndex}>
                     <a
                       data-scrollspy-link
-                      className="relative block font-normal text-slate-600 pl-4 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5"
+                      className="relative block font-normal text-slate-600 hover:text-slate-800 dark:hover:text-slate-300 pl-4 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5"
                       href={`#${link.id}`}
                     >
                       {link.innerText}

@@ -62,7 +62,7 @@ export default function PostNav() {
             <li key={linkIndex} className="py-1">
               <a
                 data-scrollspy-link
-                className="flex items-center hover:underline"
+                className="flex items-center hover:text-slate-600 dark:hover:text-white"
                 href={`#${link.id}`}
               >
                 <svg className="w-4 h-4 fill-current text-gray-400 mr-3 shrink-0" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
