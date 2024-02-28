@@ -11,7 +11,7 @@ export default function ExtensionsList({
   extensions: Array<Extension>,
   showSearch?: boolean
 }) {
-  const extensionCategories = getExtensionCategories().sort(sortAlphabetically)
+  const extensionCategories = getExtensionCategories(extensions).sort(sortAlphabetically)
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
