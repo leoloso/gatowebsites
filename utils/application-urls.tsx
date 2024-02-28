@@ -1,10 +1,18 @@
-import { Doc, Extension, VideoPost, Post } from "@/.contentlayer/generated";
+import { Doc, Extension, VideoPost, Post, Feature } from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
 import AppSettings from "@/app/app.settings";
-import { Article, isPost } from "./types";
+import { Article, Artifact, isExtension, isPost } from "./types";
 
 export function getExtensionURL(extension: Extension) {
   return `/${AppConfig.paths.extensions}/${extension.slug}`
+}
+
+export function getFeatureURL(feature: Feature) {
+  return `/${AppConfig.paths.features}/${feature.slug}`
+}
+
+export function getArtifactURL(artifact: Artifact) {
+  return isExtension(artifact) ? getExtensionURL(artifact) : getFeatureURL(artifact)
 }
 
 export function getExtensionDocumentationURL(extension: Extension) {
