@@ -1,7 +1,7 @@
 ---
 title: Multiple Query Execution
 # isPRO: true
-description: Query batching enables the GraphQL server to execute multiple queries in a single request, but those queries are merely executed one after the other, independently from each other.
+description: Combining multiple queries into one, and execute it in a single request
 category: PRO plugin
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 820
@@ -16,13 +16,16 @@ Query batching enables the GraphQL server to execute multiple queries in a singl
 This feature improves performance, for whenever we need to execute an operation against the GraphQL server, then wait for its response, and then use that result to perform another operation. By combining them together, we are avoiding the latency from the extra request(s).
 
 ```graphql
-query SomeQuery {
-  id @export(as: $rootID)
+query GetLoggedInUserName {
+  loggedInUser {
+    name @export(as: $loggedInUserName)
+  }
 }
 
-query AnotherQuery
-  @depends(on: "SomeQuery")
-{
-  _echo(value: $rootID )
+query FindPosts @depends(on: "GetLoggedInUserName") {
+  posts(filter: { search: $loggedInUserName }) {
+    id
+    title
+  }
 }
 ```
