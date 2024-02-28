@@ -3,6 +3,7 @@ import { getArtifactCategories } from '@/utils/artifact'
 import slugify from '@sindresorhus/slugify';
 import { sortAlphabetically } from '@/utils/sort';
 import { Artifact } from '@/utils/types';
+import RadiantGradient from './radial-gradient';
 
 export default function ArtifactsList({
   artifacts,
@@ -24,11 +25,7 @@ export default function ArtifactsList({
     <section className="relative">
       {/* Radial gradient */}
       { addRadialGradient && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10" aria-hidden="true">
-          <div className="absolute flex items-center justify-center top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 w-1/3 aspect-square">
-            <div className="absolute inset-0 translate-z-0 bg-purple-500 rounded-full blur-[120px] opacity-50"></div>
-          </div>
-        </div>
+        <RadiantGradient />
       )}
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pb-12 md:pb-20">

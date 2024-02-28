@@ -20,6 +20,7 @@ import Member17 from '@/public/assets/theme/team-17.png'
 import Member18 from '@/public/assets/theme/team-18.png'
 import Member19 from '@/public/assets/theme/team-19.png'
 import Member20 from '@/public/assets/theme/team-20.png'
+import RadiantGradient from './radial-gradient'
 
 interface Item {
   img: StaticImageData
@@ -156,11 +157,7 @@ export default function Team() {
   return (
     <section className="relative">
       {/* Radial gradient */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10" aria-hidden="true">
-        <div className="absolute flex items-center justify-center top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 w-1/3 aspect-square">
-          <div className="absolute inset-0 translate-z-0 bg-purple-500 rounded-full blur-[120px] opacity-50"></div>
-        </div>
-      </div>
+      <RadiantGradient />
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12 md:py-20">
           {/* Content */}
