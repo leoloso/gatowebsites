@@ -9,6 +9,7 @@ module.exports = {
       queryLibrary: "library",
     },
     extensions: "extensions",
+    features: "features",
     videoPosts: "videos"
   },
   urls: {

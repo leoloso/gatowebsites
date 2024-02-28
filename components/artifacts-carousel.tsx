@@ -5,15 +5,15 @@ import { useEffect, useState } from 'react'
 // Import Swiper
 import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
-import { Extension } from '@/.contentlayer/generated'
-import ExtensionCard from './extension-card'
+import ArtifactCard from './artifact-card'
+import { Artifact } from '@/utils/types'
 Swiper.use([Navigation])
 
-type ExtensionsSectionProps = {
-  extensions: Array<Extension>
+type ArtifactsSectionProps = {
+  artifacts: Array<Artifact>
 }
 
-export default function ExtensionsCarousel({ extensions }: ExtensionsSectionProps) {
+export default function ArtifactsCarousel({ artifacts }: ArtifactsSectionProps) {
 
   const [swiperInitialized, setSwiperInitialized] = useState<boolean>(false)
 
@@ -48,9 +48,9 @@ export default function ExtensionsCarousel({ extensions }: ExtensionsSectionProp
       <div className="stellar-carousel swiper-container group">
         <div className="swiper-wrapper w-fit">
           {/* Carousel items */}
-          {extensions.map((extension, extensionIndex) => (
+          {artifacts.map((extension, extensionIndex) => (
             <div key={extensionIndex} className="swiper-slide h-auto">
-              <ExtensionCard extension={extension} />
+              <ArtifactCard artifact={extension} />
             </div>
           ))}
         </div>
