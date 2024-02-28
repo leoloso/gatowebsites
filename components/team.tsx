@@ -21,6 +21,7 @@ import Member18 from '@/public/assets/theme/team-18.png'
 import Member19 from '@/public/assets/theme/team-19.png'
 import Member20 from '@/public/assets/theme/team-20.png'
 import RadiantGradient from './radial-gradient'
+import SectionHeader from './section-header'
 
 interface Item {
   img: StaticImageData
@@ -161,10 +162,10 @@ export default function Team() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12 md:py-20">
           {/* Content */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">We are a happy, small team</h2>
-            <p className="text-lg text-slate-400">Various versions of Lorem Ipsum have evolved over the years, sometimes by accident, sometimes on purpose, and by injecting humour and the like.</p>
-          </div>
+          <SectionHeader
+            title='We are a happy, small team'
+            description='Various versions of Lorem Ipsum have evolved over the years, sometimes by accident, sometimes on purpose, and by injecting humour and the like.'
+          />
           {/* Team members */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-6">
             {items.map((item, index) => ( 
