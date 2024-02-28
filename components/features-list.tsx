@@ -15,11 +15,13 @@ export default function FeaturesList() {
         artifacts={freePluginFeatures}
         showTopbar={false}
         showSearch={false}
+        showHeading={false}
       />
       <ArtifactsList
         artifacts={proPluginFeatures}
         showTopbar={false}
         showSearch={false}
+        showHeading={false}
         addRadialGradient={true}
       >
         <div className="py-12 md:py-20">

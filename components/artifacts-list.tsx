@@ -8,12 +8,14 @@ export default function ArtifactsList({
   artifacts,
   showTopbar = true,
   showSearch = false,
+  showHeading = true,
   addRadialGradient = false,
   children,
 }: {
   artifacts: Array<Artifact>,
   showTopbar?: boolean
   showSearch?: boolean
+  showHeading?: boolean
   addRadialGradient?: boolean
   children?: React.ReactNode
 }) {
@@ -79,7 +81,9 @@ export default function ArtifactsList({
           <div>
             {artifactCategories.map((artifactCategory, index) => 
               <div key={index} className="mt-12 md:mt-16">
-                <h3 id={slugify(artifactCategory)} className="scroll-mt-20 text-2xl font-bold inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8 scroll-mt-20">{artifactCategory}</h3>
+                { showHeading && (
+                  <h3 id={slugify(artifactCategory)} className="scroll-mt-20 text-2xl font-bold inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8 scroll-mt-20">{artifactCategory}</h3>
+                )}
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {artifacts.map((artifact, index) => (
                     artifact.category === artifactCategory && (
