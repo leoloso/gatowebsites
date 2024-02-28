@@ -9,7 +9,7 @@ export default function ExtensionsList({
   showSearch = false,
 }: {
   extensions: Array<Extension>,
-  showSearch: boolean
+  showSearch?: boolean
 }) {
   const extensionCategories = getExtensionCategories().sort(sortAlphabetically)
   return (
