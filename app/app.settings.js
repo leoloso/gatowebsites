@@ -1,3 +1,3 @@
 module.exports = {
-  enableLightDarkThemeMode: true
+  enableLightDarkThemeMode: false
 }
