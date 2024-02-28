@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import GoPROButton from '../go-pro-button'
+import GoPROButton from '../purchase-pro-plugin-button'
 import AppConfig from '@/app/app.config'
 import Search from './search'
 import ThemeToggle from './theme-toggle'

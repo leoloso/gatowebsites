@@ -1,6 +1,6 @@
 import Logo from './logo'
 import MobileMenu from './mobile-menu'
-import GoPROButton from '../go-pro-button'
+import GoPROButton from '../purchase-pro-plugin-button'
 import Search from './search'
 import ThemeToggle from '@/components/ui/theme-toggle'
 import Link from 'next/link'
