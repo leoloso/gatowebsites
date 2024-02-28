@@ -3,14 +3,16 @@ export default function SectionHeader({
   title,
   description,
   children,
+  paddingClassname = "pb-12 md:pb-20",
 }: {
   leading?: string,
   title: string,
   description?: string,
-  children?: React.ReactNode
+  children?: React.ReactNode,
+  paddingClassname?: string,
 }) {
   return (
-    <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+    <div className={`max-w-3xl mx-auto text-center ${paddingClassname}`}>
       {leading && (
         <div>
           <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">{leading}</div>
