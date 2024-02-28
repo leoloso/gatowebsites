@@ -1,5 +1,6 @@
 import { allFeatures } from 'contentlayer/generated'
 
+import FeaturesSection from '@/components/features-section'
 import FeaturesList from '@/components/features-list'
 import { sortByTitle } from '@/utils/sort'
 
@@ -12,8 +13,11 @@ export default function Features() {
   // Sort features
   const features = allFeatures.sort(sortByTitle)  
   return (
-    <FeaturesList
-      features={ features }
-    />
+    <>
+      <FeaturesSection />
+      <FeaturesList
+        features={ features }
+      />
+    </>
   )
 }
