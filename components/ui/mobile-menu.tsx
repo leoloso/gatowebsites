@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import GoPROButton from '../purchase-pro-plugin-button'
+import PurchasePROPluginButton from '../purchase-pro-plugin-button'
 import AppConfig from '@/app/app.config'
 import Search from './search'
 import ThemeToggle from './theme-toggle'
@@ -105,7 +105,7 @@ export default function MobileMenu({
             </ul>
           </li>
           <li>
-            <GoPROButton />
+            <PurchasePROPluginButton />
           </li>
         </ul>
       </nav>

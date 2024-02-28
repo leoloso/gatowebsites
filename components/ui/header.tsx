@@ -1,6 +1,6 @@
 import Logo from './logo'
 import MobileMenu from './mobile-menu'
-import GoPROButton from '../purchase-pro-plugin-button'
+import PurchasePROPluginButton from '../purchase-pro-plugin-button'
 import Search from './search'
 import ThemeToggle from '@/components/ui/theme-toggle'
 import Link from 'next/link'
@@ -74,7 +74,7 @@ export default function Header({
               />
             </li>
             <li className="ml-2">
-              <GoPROButton />
+              <PurchasePROPluginButton />
             </li>
           </ul>
 
