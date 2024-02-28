@@ -8,17 +8,31 @@ export default function ArtifactsList({
   artifacts,
   showTopbar = true,
   showSearch = false,
+  addRadialGradient = false,
+  children,
 }: {
   artifacts: Array<Artifact>,
   showTopbar?: boolean
   showSearch?: boolean
+  addRadialGradient?: boolean
+  children?: React.ReactNode
 }) {
   const artifactCategories = getArtifactCategories(artifacts).sort(sortAlphabetically)
   return (
-    <section>
+    <section className="relative">
+      {/* Radial gradient */}
+      { addRadialGradient && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10" aria-hidden="true">
+          <div className="absolute flex items-center justify-center top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 w-1/3 aspect-square">
+            <div className="absolute inset-0 translate-z-0 bg-purple-500 rounded-full blur-[120px] opacity-50"></div>
+          </div>
+        </div>
+      )}
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-
         <div className="pb-12 md:pb-20">
+          {/* Header */}
+          {children}
+
           {/* Topbar */}
           { showTopbar && (
             <div className="flex justify-between items-center py-6 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1] space-x-8 overflow-x-scroll no-scrollbar">
