@@ -188,7 +188,7 @@ But despair not, that the GraphQL API has your back covered. It provides not one
 
 ![The GraphQL API cares about you](/images/count-on-you-meme.jpg "The GraphQL API cares about you")
 
-The first one is to use the [multiple-query execution](https://gatographql.com/guides/special-features/multiple-query-execution/) feature.
+The first one is to use the [multiple-query execution](https://gatographql.com/features/multiple-query-execution/) feature.
 
 In this query, we execute the first operation, export its result via directive `@export`, and then inject this value as input to the second query:
 
@@ -219,7 +219,7 @@ mutation AddResponseToComment @depends(on: "AddComment") {
 }
 ```
 
-More elegant still, we can use [nested mutations](https://gatographql.com/guides/special-features/nested-mutations/).
+More elegant still, we can use [nested mutations](https://gatographql.com/features/nested-mutations/).
 
 In this query, we execute the first operation, and nest the second operation within, so it will be applied on the object created during the first operation (and then repeat, nesting a 3rd operation, and so on):
 

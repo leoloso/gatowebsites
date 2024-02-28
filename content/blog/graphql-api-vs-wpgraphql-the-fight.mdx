@@ -412,9 +412,9 @@ I wonder what he has in mind, since there are the 2 extensions already. How will
 
 Or maybe he saw the implementation from the GraphQL API for WordPress, and wants to provide a similar experience, operating it via a visual editor instead of pure code? 
 
-Which brings us to the GraphQL API for WordPress. It not only [offers persisted queries](https://gatographql.com/guides/special-features/persisted-queries), but has strived to make it a central part of the offering:
+Which brings us to the GraphQL API for WordPress. It not only [offers persisted queries](https://gatographql.com/features/persisted-queries), but has strived to make it a central part of the offering:
 
-✅ The plugin comes with the single endpoint [disabled by default](https://gatographql.com/guides/special-features/security), and users are encouraged to expose data via persisted queries only.
+✅ The plugin comes with the single endpoint [disabled by default](https://gatographql.com/features/security), and users are encouraged to expose data via persisted queries only.
 
 (In contrast, WPGraphQL only [disables introspection by default](https://www.wpgraphql.com/docs/security/#introspection-disabled-by-default), not the actual endpoint. In other words, attackers may still be able to access private data; they are just made their task harder, since they won't know in advance what private data there is.)
 
@@ -452,7 +452,7 @@ For instance, Apollo client runs, well, on the client. If accessing the website 
 
 Likewise, developers working with WordPress may be proficient with PHP, but not so much with JavaScript. Now, caching their APIs will mean they need to worry about the JavaScript layer also.
 
-The GraphQL API for WordPress has been smarter about this topic. Since it provides persisted queries, meaning that queries are executed on their own endpoint, it allows to [cache these endpoint URLs via HTTP caching](https://gatographql.com/guides/special-features/http-caching).
+The GraphQL API for WordPress has been smarter about this topic. Since it provides persisted queries, meaning that queries are executed on their own endpoint, it allows to [cache these endpoint URLs via HTTP caching](https://gatographql.com/features/http-caching).
 
 The HTTP caching header has the `max-age` value automatically calculated from all the `max-age` values for all fields in the query, and this information is [configured using the WordPress editor](https://gatographql.com/guides/use/adding-http-caching/), on a field-by-field basis.
 
@@ -622,12 +622,12 @@ For the GraphQL API for WordPress, though, I regularly scan the list of issues i
 
 These are the "forward-looking" features I have implemented to publishedAt:
 
-✅ [Multiple query execution](https://gatographql.com/guides/special-features/multiple-query-execution/)<br/>
-✅ [Schema namespacing](https://gatographql.com/guides/special-features/schema-namespacing/)<br/>
-✅ [Nested mutations](https://gatographql.com/guides/special-features/nested-mutations/)<br/>
-✅ [Composable directives](https://gatographql.com/guides/special-features/composable-directives/)<br/>
-✅ [Proactive feedback](https://gatographql.com/guides/special-features/proactive-feedback/)<br/>
-✅ [Field and directive-based versioning](https://gatographql.com/guides/special-features/field-and-directive-based-versioning/)
+✅ [Multiple query execution](https://gatographql.com/features/multiple-query-execution/)<br/>
+✅ [Schema namespacing](https://gatographql.com/features/schema-namespacing/)<br/>
+✅ [Nested mutations](https://gatographql.com/features/nested-mutations/)<br/>
+✅ [Composable directives](https://gatographql.com/features/composable-directives/)<br/>
+✅ [Proactive feedback](https://gatographql.com/features/proactive-feedback/)<br/>
+✅ [Field and directive-based versioning](https://gatographql.com/features/field-and-directive-based-versioning/)
 
 And I'm already planning to add:
 
