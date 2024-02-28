@@ -7,7 +7,7 @@ import DefaultFeatureImg from '@/public/assets/theme/default/feature-image.png'
 import DefaultFeatureIcon from '@/public/assets/theme/default/feature-icon.svg'
 import Star from '@/public/assets/theme/star.svg'
 import Avatar from '@/public/assets/theme/default/feature-author-avatar.jpg'
-import { ArtifactMdx } from '@/components/mdx/extension-mdx'
+import { ArtifactMdx } from '@/components/mdx/artifact-mdx'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
 

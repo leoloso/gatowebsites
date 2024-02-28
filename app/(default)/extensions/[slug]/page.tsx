@@ -7,7 +7,7 @@ import DefaultExtensionImg from '@/public/assets/theme/default/extension-image.p
 import DefaultExtensionIcon from '@/public/assets/theme/default/extension-icon.svg'
 import Star from '@/public/assets/theme/star.svg'
 import Avatar from '@/public/assets/theme/default/extension-author-avatar.jpg'
-import { ArtifactMdx } from '@/components/mdx/extension-mdx'
+import { ArtifactMdx } from '@/components/mdx/artifact-mdx'
 import AppConfig from '@/app/app.config'
 import { getExtensionDocumentationURL } from '@/utils/application-urls'
 import StunningBackground from '@/components/stunning-background'
