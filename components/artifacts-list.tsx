@@ -80,7 +80,7 @@ export default function ArtifactsList({
           {/* Cards */}
           <div>
             {artifactCategories.map((artifactCategory, index) => 
-              <div key={index} className="mt-12 md:mt-16">
+              <div key={index} className={`${showHeading} ? 'mt-12 md:mt-16' : ''`}>
                 { showHeading && (
                   <h3 id={slugify(artifactCategory)} className="scroll-mt-20 text-2xl font-bold inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8 scroll-mt-20">{artifactCategory}</h3>
                 )}
