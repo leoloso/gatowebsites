@@ -14,7 +14,7 @@ tags:
   - engineering
 ---
 
-Last week I published article [💁🏻‍♀️ Why the GraphQL API needs a Monorepo, and How it's optimized](https://gatographql.com/blog/extending-the-monorepo-builder/), explaining how and why the `GatoGraphQL/GatoGraphQL` monorepo, which hosts the code for the GraphQL API for WordPress, can manage the plugin's codebase efficiently.
+Last week I published article [💁🏻‍♀️ Why the GraphQL API needs a Monorepo, and How it's optimized](/blog/extending-the-monorepo-builder/), explaining how and why the `GatoGraphQL/GatoGraphQL` monorepo, which hosts the code for the GraphQL API for WordPress, can manage the plugin's codebase efficiently.
 
 I shared my article on Reddit, and I got the [following comment](https://www.reddit.com/r/programming/comments/mh5ds3/i_wrote_about_why_my_project_with_php_packages/gswsrw2?utm_source=share&utm_medium=web2x&context=3):
 
@@ -162,7 +162,7 @@ Similarly, we can execute `getCustomPost` to retrieve a custom post, instead of 
 
 Using [PHP-Scoper](https://github.com/humbug/php-scoper) to scope a WordPress plugin [is not easy](https://github.com/humbug/php-scoper#wordpress), and even when doable, it is prone to bugs.
 
-Keeping the CMS-specific code and the application's business logic thoroughly decoupled, enables to apply PHP-Scoper on one set of packages only (the ones with the business logic), and avoid it on the others (the ones containing WordPress code). I have described this strategy in detail, [here](https://gatographql.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/).
+Keeping the CMS-specific code and the application's business logic thoroughly decoupled, enables to apply PHP-Scoper on one set of packages only (the ones with the business logic), and avoid it on the others (the ones containing WordPress code). I have described this strategy in detail, [here](/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/).
 
 In addition, similar to PHP-Scoper, there may be other tools which fail when applied on some CMS-specific code (such as WordPress). In those cases, splitting the packages granularly can save the day.
 

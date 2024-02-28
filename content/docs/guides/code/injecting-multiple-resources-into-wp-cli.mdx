@@ -13,7 +13,7 @@ In guide [Complementing WP-CLI](/guides/code/complementing-wp-cli/), we only ret
 In this GraphQL query:
 
 - We remove the `pagination` argument from the query, as to retrieve the list of all the users with Spanish locale
-- We use [**Multiple Query Execution**](https://gatographql.com/extensions/multiple-query-execution/) to export a list of the user IDs, under dynamic variable `$userIDs`
+- We use [**Multiple Query Execution**](/extensions/multiple-query-execution/) to export a list of the user IDs, under dynamic variable `$userIDs`
 - We print the elements of this array with `_arrayJoin`, joining the items with a space in between, under alias `spanishLocaleUserIDs`
 - We execute the operation `FormatAndPrintData`
 

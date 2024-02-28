@@ -290,7 +290,7 @@ Will it work for all blocks, from both core and plugins, already existing or yet
 Does this query look a bit strange to you? If it does, it's because it uses non-standard GraphQL features, supported only by the GraphQL API plugin:
 
 - `{{ translatablePaths }}` is an embeddable field, to input the value of a field as argument to another field or directive (in this case, the `Block` type will have a field `translatableFields`, whose value is injected to directive `@advancePointersInArray`)
-- directives can [be composed by other directives](https://gatographql.com/features/composable-directives/)
+- directives can [be composed by other directives](/features/composable-directives/)
 
 Now, if a feature satisfies exactly what the CMS needs, but the feature is non-standard, should we still use it? I think we should.
 
@@ -311,9 +311,9 @@ The `Block` type will have a field `translatablePaths`, returning an array of th
 - `core/heading` returns `["header"]`
 - `core/list` returns `["items.0", "items.1", "items.2", ...]`
 
-[`@advancePointersInArray`](https://gatographql.com/guides/schema/using-composable-directives/#heading-@advancepointerinarray) is a meta-directive: it modifies the context for a subsequent directive. It makes the subsequent directive receive a sub-element from within the queried `JSONObject`, such as the `content` property from the paragraph block. The list of paths is obtained via field `translatablePaths`, evaluated on the same queried entity.
+[`@advancePointersInArray`](/guides/schema/using-composable-directives/#heading-@advancepointerinarray) is a meta-directive: it modifies the context for a subsequent directive. It makes the subsequent directive receive a sub-element from within the queried `JSONObject`, such as the `content` property from the paragraph block. The list of paths is obtained via field `translatablePaths`, evaluated on the same queried entity.
 
-Then, [`@underEachArrayItem`](https://gatographql.com/guides/schema/using-composable-directives/#heading-@foreach) is another meta-directive, which iterates over a list of elements from the queried entity, and passes a reference to the iterated element to the next directive. In this case, it gets all the list of the properties to translate for all entities, each of them of type `String`, and passes individual `String` elements down the line.
+Then, [`@underEachArrayItem`](/guides/schema/using-composable-directives/#heading-@foreach) is another meta-directive, which iterates over a list of elements from the queried entity, and passes a reference to the iterated element to the next directive. In this case, it gets all the list of the properties to translate for all entities, each of them of type `String`, and passes individual `String` elements down the line.
 
 Finally, directive `@strTranslate` receives an element of type `String` contained within the `JSONObject`, and it translates it right there, within the `JSONObject` itself.
 

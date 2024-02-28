@@ -27,7 +27,7 @@ This guide presents suggestions on how and when to use each endpoint.
 
 <Banner type="info">
 
-Endpoints are configured via a [Schema Configuration](https://gatographql.com/guides/use/creating-a-schema-configuration/), where we define:
+Endpoints are configured via a [Schema Configuration](/guides/use/creating-a-schema-configuration/), where we define:
 
 - Setting the schema as public or private
 - Enabling “sensitive” data elements
@@ -38,17 +38,17 @@ Endpoints are configured via a [Schema Configuration](https://gatographql.com/gu
 - Setting-up HTTP caching
 - Many others
 
-If we have a configuration that we want to apply to all or most endpoints, we can define a [default Schema Configuration](https://gatographql.com/guides/config/defining-the-default-schema-configuration/).
+If we have a configuration that we want to apply to all or most endpoints, we can define a [default Schema Configuration](/guides/config/defining-the-default-schema-configuration/).
 
 </Banner>
 
 ## When to use the single endpoint
 
-The [single endpoint](https://gatographql.com/guides/config/enabling-and-configuring-the-single-endpoint/) is always public, exposed by default under `/graphql`, and disabled by default (so the "Single Endpoint" module must be enabled).
+The [single endpoint](/guides/config/enabling-and-configuring-the-single-endpoint/) is always public, exposed by default under `/graphql`, and disabled by default (so the "Single Endpoint" module must be enabled).
 
 <Banner type="info">
 
-Gato GraphQL is managed via "modules", each of them offering some functionality or extension of the GraphQL schema, and which [can be enabled and disabled](https://gatographql.com/guides/config/browsing-enabling-and-disabling-modules/) as needed.
+Gato GraphQL is managed via "modules", each of them offering some functionality or extension of the GraphQL schema, and which [can be enabled and disabled](/guides/config/browsing-enabling-and-disabling-modules/) as needed.
 
 To harden up the security of our API, it is a good practice to disable modules that extend the GraphQL schema (such as modules "Posts", "Users", "Comments", "Blocks", etc) when they are not needed, as to make sure that that data will never be exposed in first place.
 
@@ -65,18 +65,18 @@ This is the case, for instance, for building a headless site (using [Next.js](ht
 
 ## When to use public custom endpoints
 
-[Custom endpoints](https://gatographql.com/guides/use/creating-a-custom-endpoint/) are similar to the single endpoint, but we can have many of them, each exposed under its own URL `graphql/{custom-endpoint-slug}/`, with each of them having a different configuration.
+[Custom endpoints](/guides/use/creating-a-custom-endpoint/) are similar to the single endpoint, but we can have many of them, each exposed under its own URL `graphql/{custom-endpoint-slug}/`, with each of them having a different configuration.
 
 Custom endpoints offer security through obscurity, as only the intended target should know about the existence of the custom endpoint and its URL.
 
 <Banner type="info">
 
-To tighten up the security of the API, we can use the [**Access Control**](https://gatographql.com/extensions/access-control/) extension to [grant access to the endpoint](https://gatographql.com/guides/use/defining-access-control/) only when:
+To tighten up the security of the API, we can use the [**Access Control**](/extensions/access-control/) extension to [grant access to the endpoint](/guides/use/defining-access-control/) only when:
 
 - The user is logged-in (or not)
 - The user has some role
 - The user has some capability
-- The visitor comes from an allowed IP (via the [**Access Control: Visitor IP**](https://gatographql.com/extensions/access-control-visitor-ip/) extension)
+- The visitor comes from an allowed IP (via the [**Access Control: Visitor IP**](/extensions/access-control-visitor-ip/) extension)
 
 Every custom endpoint can have its own Access Control List, thus being accessible only by its specific intended user.
 
@@ -86,13 +86,13 @@ Custom endpoints are recommended when we need to manage and customize accesses t
 
 ## When to use private custom endpoints
 
-Gato GraphQL implements custom endpoints via Custom Post Types (CPTs). This allows us to [publish the custom endpoint as `private`](https://gatographql.com/features/public-private-and-password-protected-endpoints/#heading-private-endpoints) (and also as `password-protected`), thus making the custom endpoint accessible only to logged-in users who have the right to access that custom post, and nobody else.
+Gato GraphQL implements custom endpoints via Custom Post Types (CPTs). This allows us to [publish the custom endpoint as `private`](/features/public-private-and-password-protected-endpoints/#heading-private-endpoints) (and also as `password-protected`), thus making the custom endpoint accessible only to logged-in users who have the right to access that custom post, and nobody else.
 
 This method is recommended when the GraphQL endpoint is inteded to be used by the admin of the site only (such as when using GraphQL to execute admin tasks). By completely blocking outside visitors from accessing the endpoint, we will be tightening up the security of the site.
 
 ## When to use public Persisted Queries
 
-[Persisted queries](https://gatographql.com/guides/use/creating-a-persisted-query/) are endpoints, each having its own URL, but the GraphQL query is already defined on the server-side, hence the response is also predefined (it can be made dynamic by defining variables, to be satisfied by URL params).
+[Persisted queries](/guides/use/creating-a-persisted-query/) are endpoints, each having its own URL, but the GraphQL query is already defined on the server-side, hence the response is also predefined (it can be made dynamic by defining variables, to be satisfied by URL params).
 
 Persisted queries are similar to REST endpoints, but we use the GraphQL language to compose the query, and we can publish it straight from the wp-admin. There is no need to deploy any PHP code to publish a persisted query.
 
@@ -102,9 +102,9 @@ Because persisted queries do not require passing the GraphQL query in the body o
 
 (The single endpoint and custom endpoints can also be accessed via `GET` by appending param `?query={ GraphQL query }` to the endpoint.)
 
-We can benefit from this and make the API faster via standard [HTTP Caching](https://gatographql.com/guides/use/adding-http-caching/), caching the GraphQL response on the client-side or intermediate stages between the client and the server (such as a CDN).
+We can benefit from this and make the API faster via standard [HTTP Caching](/guides/use/adding-http-caching/), caching the GraphQL response on the client-side or intermediate stages between the client and the server (such as a CDN).
 
-This is accomplished through the [**Cache Control**](https://gatographql.com/extensions/cache-control/) extension, which automatically calculates and outputs the response's `max-age` value based on the fields and directives present in the query.
+This is accomplished through the [**Cache Control**](/extensions/cache-control/) extension, which automatically calculates and outputs the response's `max-age` value based on the fields and directives present in the query.
 
 </Banner>
 
