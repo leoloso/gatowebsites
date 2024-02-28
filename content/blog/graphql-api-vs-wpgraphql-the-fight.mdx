@@ -28,7 +28,7 @@ To our right, we have the current champion. Even though only 4 years old, he's a
 
 To our left, we have the challenger. He's been barely out into the world for 1 month, but he's highly energetic and ambitious, displaying his strength from the very first day. He has been the one seeking for today's encounter. Tonight is his chance, and the world is paying attention.
 
-🥁 Give 🥁 the 🥁 welcome 🥁 tooooo 🥁 ...... [GraphQL API for WordPress](https://gatographql.com/)!
+🥁 Give 🥁 the 🥁 welcome 🥁 tooooo 🥁 ...... [GraphQL API for WordPress](/)!
 
 ![The challenger, GraphQL API for WordPress](/images/box/graphql-api-boxer.jpg "The challenger, GraphQL API for WordPress")
 
@@ -104,7 +104,7 @@ In other words, WPGraphQL is popular.
 
 Development for the GraphQL API for WordPress started in earnest around 1.5 years ago (as part of a wider project), and it reached a ["good enough" status 6 months ago](https://leoloso.com/posts/introducing-the-graphql-api-for-wordpress/), receiving [150 stars on the repo](https://github.com/GatoGraphQL/GatoGraphQL) since then. The plugin is currently [on version 0.7](https://github.com/GatoGraphQL/GatoGraphQL/releases/download/0.7.9/graphql-api.zip), and it's still several months away from reaching 1.0 (for instance, it doesn't have categories on the schema yet).
 
-Last month I launched this current site gatographql.com, and since then I have been promoting the plugin via [the blog](https://gatographql.com/blog/) (like the article you are reading now), and also published an [intro article on CSS-Tricks](https://css-tricks.com/rendering-the-wordpress-philosophy-in-graphql/). These attempts have brought in several hundred people to the site, and over 100 visitors have downloaded the plugin.
+Last month I launched this current site gatographql.com, and since then I have been promoting the plugin via [the blog](/blog/) (like the article you are reading now), and also published an [intro article on CSS-Tricks](https://css-tricks.com/rendering-the-wordpress-philosophy-in-graphql/). These attempts have brought in several hundred people to the site, and over 100 visitors have downloaded the plugin.
 
 In other words, the GraphQL API for WordPress is slowly but steadily getting popular, and it is a work in progress.
 
@@ -220,7 +220,7 @@ The WordPress-specific code is only around 10% of the overall code. Replicating 
 
 ✅ As a consequence of being CMS-agnostic, coding a resolver implies coding its generic business logic, powered by reusable services. We never think in terms of WordPress code, and we rarely need to deal with its technical debt.
 
-✅ Likewise, [the GraphQL schema is not a 1:1 replica of the WordPress data model](https://gatographql.com/blog/rejuvenating-wordpress-through-graphql/), bypassing the technical debt accumulated by WordPress at the data layer, and providing a clean interface.
+✅ Likewise, [the GraphQL schema is not a 1:1 replica of the WordPress data model](/blog/rejuvenating-wordpress-through-graphql/), bypassing the technical debt accumulated by WordPress at the data layer, and providing a clean interface.
 
 ✅ GraphQL's N+1 problem cannot happen, [by architectural design](https://graphql-by-pop.com/docs/architecture/suppressing-n-plus-one-problem.html), and without troubling the developer at all.
 
@@ -228,7 +228,7 @@ The WordPress-specific code is only around 10% of the overall code. Replicating 
 
 ✅ No `vendor` directory is committed. Instead, the source code is transformed to distribution code (i.e. the final plugin to install on the WordPress site) [via GitHub actions](https://github.com/GatoGraphQL/GatoGraphQL/blob/6e5c89088cc94c1f9b77b0e4e0a1d1876cb159d4/.github/workflows/generate_graphql_api_for_wp_plugin.yml), and deployed to [a `dist` repo](https://github.com/GraphQLAPI/graphql-api-for-wp-dist), where it does contain the `vendor` folder.
 
-✅ When generating the code for distribution, it [is scoped with PHP-Scoper](https://gatographql.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/), and the source code, which contains PHP 7.4 code, which [is transpiled to PHP 7.1](https://blog.logrocket.com/coding-in-php-7-4-and-deploying-to-7-1-via-rector-and-github-actions/).
+✅ When generating the code for distribution, it [is scoped with PHP-Scoper](/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/), and the source code, which contains PHP 7.4 code, which [is transpiled to PHP 7.1](https://blog.logrocket.com/coding-in-php-7-4-and-deploying-to-7-1-via-rector-and-github-actions/).
 
 ✅ Because it has solved scoping, the plugin can rely on any 3rd-party dependency. Currently, it makes use of Symfony's DependencyInjection, [Cache](https://symfony.com/doc/current/components/cache.html) and [Dotenv](https://symfony.com/components/Dotenv), [Guzzle](https://docs.guzzlephp.org/en/stable/) (to interact with external APIs), the League's [Pipeline](https://github.com/thephpleague/pipeline), and several others.
 
@@ -355,7 +355,7 @@ What a night we have, ladies and gentlemen.
 
 We have reached the middle of the fight, so this is good time for a toilet break, and to do some commentary on what we have experienced so far.
 
-(In the meantime, I should display an ad from [my sponsors](https://github.com/sponsors/leoloso/). Unfortunately, I don't have any yet. If you'd like your company to fund development of the GraphQL API for WordPress, and get exposure in prime media like this event, [send me a message](https://gatographql.com/contact/).)
+(In the meantime, I should display an ad from [my sponsors](https://github.com/sponsors/leoloso/). Unfortunately, I don't have any yet. If you'd like your company to fund development of the GraphQL API for WordPress, and get exposure in prime media like this event, [send me a message](/contact/).)
 
 ![Sponsor me, to get access to prime advertising for your brand](/images/box/box-arena-screen.jpg "Sponsor me, to get access to prime advertising for your brand")
 
@@ -412,9 +412,9 @@ I wonder what he has in mind, since there are the 2 extensions already. How will
 
 Or maybe he saw the implementation from the GraphQL API for WordPress, and wants to provide a similar experience, operating it via a visual editor instead of pure code? 
 
-Which brings us to the GraphQL API for WordPress. It not only [offers persisted queries](https://gatographql.com/features/persisted-queries), but has strived to make it a central part of the offering:
+Which brings us to the GraphQL API for WordPress. It not only [offers persisted queries](/features/persisted-queries), but has strived to make it a central part of the offering:
 
-✅ The plugin comes with the single endpoint [disabled by default](https://gatographql.com/features/security), and users are encouraged to expose data via persisted queries only.
+✅ The plugin comes with the single endpoint [disabled by default](/features/security), and users are encouraged to expose data via persisted queries only.
 
 (In contrast, WPGraphQL only [disables introspection by default](https://www.wpgraphql.com/docs/security/#introspection-disabled-by-default), not the actual endpoint. In other words, attackers may still be able to access private data; they are just made their task harder, since they won't know in advance what private data there is.)
 
@@ -422,7 +422,7 @@ Which brings us to the GraphQL API for WordPress. It not only [offers persisted 
 
 ✅ Persisted queries are not static: they can use GraphQL variables, whose value can be provided through URL params when executing the endpoint.
 
-Check out the experience of [creating](https://gatographql.com/guides/use/creating-a-persisted-query/) and executing a persisted query in my plugin:
+Check out the experience of [creating](/guides/use/creating-a-persisted-query/) and executing a persisted query in my plugin:
 
 <div className="aspect-video">
   <iframe
@@ -452,9 +452,9 @@ For instance, Apollo client runs, well, on the client. If accessing the website 
 
 Likewise, developers working with WordPress may be proficient with PHP, but not so much with JavaScript. Now, caching their APIs will mean they need to worry about the JavaScript layer also.
 
-The GraphQL API for WordPress has been smarter about this topic. Since it provides persisted queries, meaning that queries are executed on their own endpoint, it allows to [cache these endpoint URLs via HTTP caching](https://gatographql.com/features/http-caching).
+The GraphQL API for WordPress has been smarter about this topic. Since it provides persisted queries, meaning that queries are executed on their own endpoint, it allows to [cache these endpoint URLs via HTTP caching](/features/http-caching).
 
-The HTTP caching header has the `max-age` value automatically calculated from all the `max-age` values for all fields in the query, and this information is [configured using the WordPress editor](https://gatographql.com/guides/use/adding-http-caching/), on a field-by-field basis.
+The HTTP caching header has the `max-age` value automatically calculated from all the `max-age` values for all fields in the query, and this information is [configured using the WordPress editor](/guides/use/adding-http-caching/), on a field-by-field basis.
 
 As a consequence, the API can be cached across several layers (in the client, CDN, and server), and it's handled natively within the plugin, without the need to add another layer.
 
@@ -622,12 +622,12 @@ For the GraphQL API for WordPress, though, I regularly scan the list of issues i
 
 These are the "forward-looking" features I have implemented to publishedAt:
 
-✅ [Multiple query execution](https://gatographql.com/features/multiple-query-execution/)<br/>
-✅ [Schema namespacing](https://gatographql.com/features/schema-namespacing/)<br/>
-✅ [Nested mutations](https://gatographql.com/features/nested-mutations/)<br/>
-✅ [Composable directives](https://gatographql.com/features/composable-directives/)<br/>
-✅ [Proactive feedback](https://gatographql.com/features/proactive-feedback/)<br/>
-✅ [Field and directive-based versioning](https://gatographql.com/features/field-and-directive-based-versioning/)
+✅ [Multiple query execution](/features/multiple-query-execution/)<br/>
+✅ [Schema namespacing](/features/schema-namespacing/)<br/>
+✅ [Nested mutations](/features/nested-mutations/)<br/>
+✅ [Composable directives](/features/composable-directives/)<br/>
+✅ [Proactive feedback](/features/proactive-feedback/)<br/>
+✅ [Field and directive-based versioning](/features/field-and-directive-based-versioning/)
 
 And I'm already planning to add:
 
@@ -687,7 +687,7 @@ But what is **your** verdict?
 
 Will you keep unconditionally using WPGraphQL for your headless needs?
 
-Or will you give the GraphQL API for WordPress the opportunity it is claiming for, [download the plugin](https://gatographql.com/download), and give it a try?
+Or will you give the GraphQL API for WordPress the opportunity it is claiming for, [download the plugin](/download), and give it a try?
 
 ---
 

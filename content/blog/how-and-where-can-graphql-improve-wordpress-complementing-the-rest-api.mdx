@@ -11,7 +11,7 @@ tags:
   - rest
 ---
 
-Last weekend I published blog post [🦸🏿‍♂️ The GraphQL API for WordPress is now transpiled from PHP 8.0 to 7.1](https://gatographql.com/blog/the-plugin-is-now-transpiled-from-php-80-to-71/).
+Last weekend I published blog post [🦸🏿‍♂️ The GraphQL API for WordPress is now transpiled from PHP 8.0 to 7.1](/blog/the-plugin-is-now-transpiled-from-php-80-to-71/).
 
 After [sharing the post on Reddit's /r/php](https://www.reddit.com/r/PHP/comments/mo7gwm/the_graphql_api_for_wordpress_is_now_transpiled/), the community started a lively discussion on how worth it is using GraphQL in WordPress, how different it is from the WP REST API, and how justified it is bringing yet another API to WordPress.
 
@@ -111,7 +111,7 @@ What is needed is for the GraphQL server to tap on the existing security mechani
 - does the user have some role or capability?
 - is the user the author of the post?
 
-To satisfy this proposition, the GraphQL API for WP offers [Access Control Lists](https://gatographql.com/features/access-control), so we can define who can access each field and directive, and by configuration.
+To satisfy this proposition, the GraphQL API for WP offers [Access Control Lists](/features/access-control), so we can define who can access each field and directive, and by configuration.
 
 Now, sometimes using an ACL alone does not cut it, and the GraphQL server needs to provide extra security measures. I'll describe what I'm working on right now for the upcoming v0.8 of the GraphQL API for WP.
 
@@ -316,4 +316,4 @@ fragment PostFields on Post {
 
 As it can be appreciated, the query doesn't even need be nested to create trouble. So analyzing the complexity of a query is a tricky business, which will require fine-tuning to be useful.
 
-I hope to support query analysis too, but it's not on my list of high priorities, because with a combination of the other features (such as [persisted queries](https://gatographql.com/features/persisted-queries) or [custom endpoints](https://gatographql.com/features/custom-endpoints), coupled with Access Control Lists) we can already keep out the bad actors, and we ourselves will not (should not!) abuse our own GraphQL service.
+I hope to support query analysis too, but it's not on my list of high priorities, because with a combination of the other features (such as [persisted queries](/features/persisted-queries) or [custom endpoints](/features/custom-endpoints), coupled with Access Control Lists) we can already keep out the bad actors, and we ourselves will not (should not!) abuse our own GraphQL service.

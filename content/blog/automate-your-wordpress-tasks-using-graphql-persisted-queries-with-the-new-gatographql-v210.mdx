@@ -20,7 +20,7 @@ Below are all the changes added to `v2.1` (a shorter version is available in the
 
 We can now specify what Schema Configuration to apply when executing a query via an internal GraphQL Server (i.e. directly within the PHP application, not via an endpoint).
 
-This new feature enhances the [Internal GraphQL Server](https://gatographql.com/extensions/) extension: It now accepts a `$schemaConfigurationIDOrSlug` parameter on methods `executeQuery` and `executeQueryInFile` from the `GraphQLServer` class, and already extracts the schema configuration used by the persisted query on `executePersistedQuery`:
+This new feature enhances the [Internal GraphQL Server](/extensions/) extension: It now accepts a `$schemaConfigurationIDOrSlug` parameter on methods `executeQuery` and `executeQueryInFile` from the `GraphQLServer` class, and already extracts the schema configuration used by the persisted query on `executePersistedQuery`:
 
 ```diff
 class GraphQLServer {
@@ -57,9 +57,9 @@ class GraphQLServer {
 
 ## GraphQL as Automator [PRO]
 
-The feature above also provides the foundation for upgrading the [Automation](https://gatographql.com/extensions/automation/) extension.
+The feature above also provides the foundation for upgrading the [Automation](/extensions/automation/) extension.
 
-The **Automation** extension now provides an "automator" user interface (directly via the WordPress editor) called [Automation Configurator](https://gatographql.com/extensions/automation/#heading-automation-configurator). The automation trigger is any WordPress action hook, and the action is the execution of a GraphQL persisted query.
+The **Automation** extension now provides an "automator" user interface (directly via the WordPress editor) called [Automation Configurator](/extensions/automation/#heading-automation-configurator). The automation trigger is any WordPress action hook, and the action is the execution of a GraphQL persisted query.
 
 <Image
   src="/assets/extensions/upstream-pro/automation-rule-editor.png"
@@ -116,7 +116,7 @@ Several automation rules are already created by the plugin (with status `draft`,
 
 The newly-added persisted GraphQL query "Insert block in post" allows to inject a block in a post. It identifies the nth block of a given type (`wp:paragraph` by default) in a post, and places the provided custom block's HTML content right after it.
 
-Used with the [Automation](https://gatographql.com/extensions/automation/) extension, this persisted query can be used to automatically inject mandatory blocks to a newly-published post (eg: a CTA block to promote an ongoing campaign).
+Used with the [Automation](/extensions/automation/) extension, this persisted query can be used to automatically inject mandatory blocks to a newly-published post (eg: a CTA block to promote an ongoing campaign).
 
 ## Improvements
 
