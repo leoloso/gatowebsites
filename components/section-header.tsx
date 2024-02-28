@@ -6,7 +6,7 @@ export default function SectionHeader({
 }: {
   leading?: string,
   title: string,
-  description: string,
+  description?: string,
   children?: React.ReactNode
 }) {
   return (
@@ -17,7 +17,9 @@ export default function SectionHeader({
         </div>
       )}
       <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">{title}</h2>
-      <p className="text-lg text-slate-400">{description}</p>
+      {description && (
+        <p className="text-lg text-slate-400">{description}</p>
+      )}
       {children}
     </div>
   )
