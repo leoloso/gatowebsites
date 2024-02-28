@@ -18,13 +18,13 @@
   status = 301
 
 [[redirects]]
-  from = "/guides/intro"
-  to = "/guides/intro/intro-to-graphql-and-gato-graphql"
+  from = "/guides/special-features/*"
+  to = "/features/:splat"
   status = 301
 
 [[redirects]]
-  from = "/guides/special-features"
-  to = "/guides/special-features/security"
+  from = "/guides/intro"
+  to = "/guides/intro/intro-to-graphql-and-gato-graphql"
   status = 301
 
 [[redirects]]
