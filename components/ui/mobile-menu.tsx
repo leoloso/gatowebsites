@@ -6,6 +6,7 @@ import PurchasePROPluginButton from '../purchase-pro-plugin-button'
 import AppConfig from '@/app/app.config'
 import Search from './search'
 import ThemeToggle from './theme-toggle'
+import DownloadFreePluginButton from '../download-free-button'
 
 export default function MobileMenu({
   enableLightDarkVersionToggleMode = false,
@@ -103,6 +104,9 @@ export default function MobileMenu({
                 <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.docs.tutorial}`}>Schema tutorial</Link>
               </li>
             </ul>
+          </li>
+          <li>
+            <DownloadFreePluginButton />
           </li>
           <li>
             <PurchasePROPluginButton />

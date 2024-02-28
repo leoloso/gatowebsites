@@ -6,6 +6,7 @@ import ThemeToggle from '@/components/ui/theme-toggle'
 import Link from 'next/link'
 import Dropdown from '@/components/utils/dropdown'
 import AppConfig from '@/app/app.config'
+import DownloadFreePluginButton from '../download-free-button'
 
 export default function Header({
   enableLightDarkVersionToggleMode = false,
@@ -72,6 +73,9 @@ export default function Header({
                 showSearchInput={false}
                 enableLightDarkVersionToggleMode={enableLightDarkVersionToggleMode}
               />
+            </li>
+            <li className="ml-2">
+              <DownloadFreePluginButton />
             </li>
             <li className="ml-2">
               <PurchasePROPluginButton />
