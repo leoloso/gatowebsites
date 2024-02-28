@@ -29,6 +29,7 @@ export default function Cta02() {
             leading='The security first platform'
             title='Supercharge your security'
             description='All the lorem ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.'
+            paddingClassname=''
           >
             <div className="mt-8">
               <a className="btn text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group" href="#0">
