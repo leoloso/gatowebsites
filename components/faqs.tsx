@@ -1,3 +1,5 @@
+import SectionHeader from "./section-header";
+
 export default function Faqs() {
   return (
   <section className="relative">
@@ -19,12 +21,10 @@ export default function Faqs() {
       <div className="py-12 md:py-20 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
         {/* Section header */}
-        <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-          <div>
-            <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">Getting started with Stellar</div>
-          </div>
-          <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">Everything you need to know</h2>
-        </div>
+        <SectionHeader
+          leading='Getting started with Stellar'
+          title='Everything you need to know'
+        />
 
         {/* Columns */}
         <div className="md:flex md:space-x-12 space-y-8 md:space-y-0">
