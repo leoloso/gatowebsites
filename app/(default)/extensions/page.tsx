@@ -5,7 +5,7 @@ import ExtensionsList from '@/components/extensions-list'
 import {
   getFeaturedExtensions,
 } from '@/utils/extension'
-import { sortByTitle } from '@/utils/sort'
+import { sortByOrderAndTitle } from '@/utils/sort'
 
 export const metadata = {
   title: 'Extensions - Stellar',
@@ -14,8 +14,8 @@ export const metadata = {
 
 export default function Extensions() {
   // Sort extensions
-  const extensions = allExtensions.sort(sortByTitle)  
-  const featuredExtensions = getFeaturedExtensions(extensions).sort(sortByTitle)
+  const extensions = allExtensions.sort(sortByOrderAndTitle)  
+  const featuredExtensions = getFeaturedExtensions(extensions).sort(sortByOrderAndTitle)
   return (
     <>
       <ExtensionsSection
