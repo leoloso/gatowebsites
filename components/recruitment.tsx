@@ -3,6 +3,7 @@ import Recruitment01 from '@/public/assets/theme/recruitment-01.jpg'
 import Recruitment02 from '@/public/assets/theme/recruitment-02.jpg'
 import Recruitment03 from '@/public/assets/theme/recruitment-03.jpg'
 import Recruitment04 from '@/public/assets/theme/recruitment-04.jpg'
+import SectionHeader from './section-header'
 
 interface Item {
   area: string
@@ -98,10 +99,10 @@ export default function Recruitment() {
         <div className="py-12 md:py-20 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">Join a team of makers</h2>
-            <p className="text-lg text-slate-400">We are makers at heart. Problem solvers and storytellers. We are a diverse team of individuals who build things to make our customers happy.</p>
-          </div>
+          <SectionHeader
+            title='Join a team of makers'
+            description="We are makers at heart. Problem solvers and storytellers. We are a diverse team of individuals who build things to make our customers happy."
+          />
 
           {/* Icons with text */}
           <div className="grid md:grid-cols-3 gap-6 lg:gap-10 max-w-xs mx-auto md:max-w-none -m-5">
