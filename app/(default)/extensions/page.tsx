@@ -15,7 +15,7 @@ export const metadata = {
 export default function Extensions() {
   // Sort extensions
   const extensions = allExtensions.sort(sortByName)  
-  const featuredExtensions = getFeaturedExtensions().sort(sortByName)
+  const featuredExtensions = getFeaturedExtensions(extensions).sort(sortByName)
   return (
     <>
       <ExtensionsSection
