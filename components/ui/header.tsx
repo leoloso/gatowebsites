@@ -1,11 +1,12 @@
 import Logo from './logo'
 import MobileMenu from './mobile-menu'
-import PurchaseButton from '../purchase-button'
+import PurchasePROPluginButton from '../purchase-pro-plugin-button'
 import Search from './search'
 import ThemeToggle from '@/components/ui/theme-toggle'
 import Link from 'next/link'
 import Dropdown from '@/components/utils/dropdown'
 import AppConfig from '@/app/app.config'
+import DownloadFreePluginButton from '../download-free-button'
 
 export default function Header({
   enableLightDarkVersionToggleMode = false,
@@ -73,8 +74,11 @@ export default function Header({
                 enableLightDarkVersionToggleMode={enableLightDarkVersionToggleMode}
               />
             </li>
-            <li className="ml-2">
-              <PurchaseButton />
+            <li className="ml-2 hidden lg:block">
+              <DownloadFreePluginButton />
+            </li>
+            <li className="ml-2 hidden lg:block">
+              <PurchasePROPluginButton />
             </li>
           </ul>
 

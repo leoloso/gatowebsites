@@ -2,10 +2,11 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import PurchaseButton from '../purchase-button'
+import PurchasePROPluginButton from '../purchase-pro-plugin-button'
 import AppConfig from '@/app/app.config'
 import Search from './search'
 import ThemeToggle from './theme-toggle'
+import DownloadFreePluginButton from '../download-free-button'
 
 export default function MobileMenu({
   enableLightDarkVersionToggleMode = false,
@@ -104,8 +105,11 @@ export default function MobileMenu({
               </li>
             </ul>
           </li>
-          <li>
-            <PurchaseButton />
+          <li className="py-1">
+            <DownloadFreePluginButton />
+          </li>
+          <li className="py-1">
+            <PurchasePROPluginButton />
           </li>
         </ul>
       </nav>
