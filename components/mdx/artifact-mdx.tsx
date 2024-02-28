@@ -23,11 +23,11 @@ const mdxComponents = {
   Td: TableTd,
 }
 
-interface ExtensionMdxProps {
+interface ArtifactMdxProps {
   code: string
 }
 
-export function ExtensionMdx({ code }: ExtensionMdxProps) {
+export function ArtifactMdx({ code }: ArtifactMdxProps) {
   const Component = useMDXComponent(code)
 
   return (
