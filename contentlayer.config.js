@@ -229,6 +229,10 @@ const Extension = defineDocumentType(() => ({
       ],
       required: true,
     },
+    order: {
+      type: 'number',
+      required: true,
+    },
     integration: {
       type: 'nested',
       of: NameURLPair,
@@ -270,6 +274,10 @@ const Feature = defineDocumentType(() => ({
         'Free plugin',
         'PRO plugin',
       ],
+      required: true,
+    },
+    order: {
+      type: 'number',
       required: true,
     },
     image: {

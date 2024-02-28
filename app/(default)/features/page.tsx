@@ -2,7 +2,7 @@ import { allFeatures } from 'contentlayer/generated'
 
 import FeaturesSection from '@/components/features-section'
 import FeaturesList from '@/components/features-list'
-import { sortByTitle } from '@/utils/sort'
+import { sortByOrderAndTitle } from '@/utils/sort'
 
 export const metadata = {
   title: 'Features - Stellar',
@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function Features() {
   // Sort features
-  const features = allFeatures.sort(sortByTitle)  
+  const features = allFeatures.sort(sortByOrderAndTitle)  
   return (
     <>
       <FeaturesSection />
