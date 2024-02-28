@@ -248,6 +248,45 @@ const Extension = defineDocumentType(() => ({
   },
 }))
 
+const Feature = defineDocumentType(() => ({
+  name: 'Feature',
+  filePathPattern: `${AppConfig.paths.features}/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    description: {
+      type: 'string',
+      required: true,
+    },
+    featured: {
+      type: 'boolean',
+    },
+    category: {
+      type: 'enum',
+      options: [
+        'Free plugin',
+        'PRO plugin',
+      ],
+      required: true,
+    },
+    image: {
+      type: 'string',
+    },
+    icon: {
+      type: 'string',
+    },
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.features + '/?'), ''),
+    },    
+  },
+}))
+
 const NameURLPair = defineNestedType(() => ({
   name: 'NameURLPair',
   fields: {
@@ -264,7 +303,7 @@ const NameURLPair = defineNestedType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Update, Post, Page, VideoPost, Doc, DocTopic, Extension],
+  documentTypes: [Update, Post, Page, VideoPost, Doc, DocTopic, Extension, Feature],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
