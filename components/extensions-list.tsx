@@ -38,7 +38,8 @@ export default function ExtensionsList({ extensions }: {
                 </li>
               )}
             </ul>
-            <div>
+            {/* Search */}
+            {/* <div>
               <form className="relative flex items-center">
                 <input className="form-input pl-10 bg-transparent rounded-none focus:border-transparent focus:border-b-slate-700 lg:w-9 lg:focus:w-[200px] transition-[width]" type="text" id="extensions-search" aria-label="Search…" placeholder="Search…" autoComplete="off" />
                 <div className="absolute inset-0 w-9 flex items-center justify-center pointer-events-none">
@@ -47,7 +48,7 @@ export default function ExtensionsList({ extensions }: {
                   </svg>
                 </div>
               </form>
-            </div>
+            </div> */}
           </div>
 
           {/* Cards */}
