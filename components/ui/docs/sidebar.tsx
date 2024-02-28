@@ -13,7 +13,7 @@ import {
   getDocumentTopicsBySection,
 } from '@/utils/document'
 import { getDocURL } from '@/utils/application-urls'
-import AppSettings from '@/app/app.settings'
+import AppConstants from '@/app/app.constants'
 
 export default function SupportSidebar() {
   const sidebar = useRef<HTMLDivElement>(null)
@@ -54,7 +54,7 @@ export default function SupportSidebar() {
   // - segments[1] is the slug
   // In this latter case, the topic is implicit as "_default"
   const requestedDocSection = segments.length >= 2 ? segments[0] : ''
-  const requestedDocTopicSlug = segments.length >= 3 ? segments[1] : AppSettings.implicitDocTopicSlug
+  const requestedDocTopicSlug = segments.length >= 3 ? segments[1] : AppConstants.implicitDocTopicSlug
 
   // Filter by section, sort docs and doc topics by order
   const docTopics = getDocumentTopicsBySection(requestedDocSection).sort(sortDocumentTopics)
