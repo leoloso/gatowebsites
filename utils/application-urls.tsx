@@ -1,6 +1,7 @@
 import { Doc, Extension, VideoPost, Post } from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
 import AppSettings from "@/app/app.settings";
+import { Article, isPost } from "./types";
 
 export function getExtensionURL(extension: Extension) {
   return `/${AppConfig.paths.extensions}/${extension.slug}`
@@ -25,7 +26,7 @@ export function getPostURL(post: Post) {
   return `/${AppConfig.paths.blog}/${post.slug}`
 }
 
-export function getArticleURL(article: Doc | Post) {
-  return (article.type === 'Post') ? getPostURL(article) : getDocURL(article)
+export function getArticleURL(article: Article) {
+  return isPost(article) ? getPostURL(article) : getDocURL(article)
 }
 
