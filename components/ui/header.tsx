@@ -6,17 +6,18 @@ import ThemeToggle from '@/components/ui/theme-toggle'
 import Link from 'next/link'
 import Dropdown from '@/components/utils/dropdown'
 import AppConfig from '@/app/app.config'
+import AppSettings from '@/app/app.settings'
 import DownloadFreePluginButton from '../download-free-button'
 
 export default function Header({
-  enableLightDarkVersionToggleMode = false,
+  enableLightDarkThemeModeToggle = false,
 }: {
-  enableLightDarkVersionToggleMode?: boolean
+  enableLightDarkThemeModeToggle?: boolean
 }) {
   return (
     <header className="fixed w-full z-30">
       <div
-        className={`absolute inset-0 bg-opacity-70 backdrop-blur -z-10 ${enableLightDarkVersionToggleMode ? 'bg-white border-slate-200 border-b dark:bg-transparent dark:border-slate-800' : 'bg-transparent border-slate-800'}`}
+        className={`absolute inset-0 bg-opacity-70 backdrop-blur -z-10 ${AppSettings.enableLightDarkThemeMode && enableLightDarkThemeModeToggle ? 'bg-white border-slate-200 border-b dark:bg-transparent dark:border-slate-800' : 'bg-transparent border-slate-800'}`}
         aria-hidden="true"
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -63,7 +64,7 @@ export default function Header({
 
           <ul className="hidden md:flex md:grow flex-1 flex justify-end items-center">
             {/* Lights switch */}
-            {enableLightDarkVersionToggleMode && (
+            {AppSettings.enableLightDarkThemeMode && enableLightDarkThemeModeToggle && (
               <li className="ml-2">
                 <ThemeToggle />
               </li>
@@ -71,7 +72,7 @@ export default function Header({
             <li className="ml-1">
               <Search
                 showSearchInput={false}
-                enableLightDarkVersionToggleMode={enableLightDarkVersionToggleMode}
+                enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
               />
             </li>
             <li className="ml-2 hidden lg:block">
@@ -83,7 +84,7 @@ export default function Header({
           </ul>
 
           <MobileMenu
-            enableLightDarkVersionToggleMode={enableLightDarkVersionToggleMode}
+            enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
           />
 
         </div>

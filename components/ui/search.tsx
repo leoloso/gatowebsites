@@ -5,10 +5,10 @@ import SearchModal from './search-modal'
 
 export default function Search({
   showSearchInput = true,
-  enableLightDarkVersionToggleMode = false,
+  enableLightDarkThemeModeToggle = false,
 }: {
   showSearchInput?: boolean,
-  enableLightDarkVersionToggleMode?: boolean
+  enableLightDarkThemeModeToggle?: boolean
 }) {
 
   const [searchModalOpen, setSearchModalOpen] = useState<boolean>(false)
@@ -59,7 +59,7 @@ export default function Search({
         <SearchModal
           isOpen={searchModalOpen}
           setIsOpen={setSearchModalOpen}
-          enableLightDarkVersionToggleMode={enableLightDarkVersionToggleMode}
+          enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
         />
       </div>
     </div>

@@ -4,14 +4,15 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import PurchasePROPluginButton from '../purchase-pro-plugin-button'
 import AppConfig from '@/app/app.config'
+import AppSettings from '@/app/app.settings'
 import Search from './search'
 import ThemeToggle from './theme-toggle'
 import DownloadFreePluginButton from '../download-free-button'
 
 export default function MobileMenu({
-  enableLightDarkVersionToggleMode = false,
+  enableLightDarkThemeModeToggle = false,
 }: {
-  enableLightDarkVersionToggleMode?: boolean
+  enableLightDarkThemeModeToggle?: boolean
 }) {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
 
@@ -42,14 +43,14 @@ export default function MobileMenu({
   return (
     <div className="md:hidden flex items-center ml-4">
       {/* Lights switch */}
-      {enableLightDarkVersionToggleMode && (
+      {AppSettings.enableLightDarkThemeMode && enableLightDarkThemeModeToggle && (
         <ThemeToggle />
       )}
 
       {/* Search button */}
       <Search
         showSearchInput={false}
-        enableLightDarkVersionToggleMode={enableLightDarkVersionToggleMode}
+        enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
       />
 
       {/* Hamburger button */}

@@ -7,6 +7,7 @@ import 'aos/dist/aos.css'
 
 import Footer from '@/components/ui/footer'
 import Header from '@/components/ui/header'
+import AppSettings from '@/app/app.settings'
 
 export default function DefaultLayout({
   children,
@@ -24,7 +25,7 @@ export default function DefaultLayout({
   })
 
   return (
-    <div className="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip dark">
+    <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip ${AppSettings.enableLightDarkThemeMode ? 'dark' : '' }`}>
       <Header />
       
       <main className="grow">

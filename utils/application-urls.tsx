@@ -1,6 +1,6 @@
 import { Doc, Extension, VideoPost, Post, Feature } from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
-import AppSettings from "@/app/app.settings";
+import AppConstants from "@/app/app.constants";
 import { Article, Artifact, isExtension, isPost } from "./types";
 
 export function getExtensionURL(extension: Extension) {
@@ -24,7 +24,7 @@ export function getVideoPostURL(videoPost: VideoPost) {
 }
 
 export function getDocURL(doc: Doc) {
-  if (doc.topicSlug === AppSettings.implicitDocTopicSlug) {
+  if (doc.topicSlug === AppConstants.implicitDocTopicSlug) {
     return `/${doc.section}/${doc.slug}`
   }
   return `/${doc.section}/${doc.topicSlug}/${doc.slug}`

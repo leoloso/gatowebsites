@@ -1,3 +1,3 @@
 module.exports = {
-  implicitDocTopicSlug: "_default"
+  enableLightDarkThemeMode: false
 }
