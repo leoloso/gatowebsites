@@ -1,3 +1,4 @@
 module.exports = {
-  enableLightDarkThemeMode: false
+  enableLightDarkThemeMode: false,
+  useLemonSqueezyOverlay: false
 }
