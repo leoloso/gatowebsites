@@ -2,6 +2,7 @@ import AppConfig from "@/app/app.config"
 import PricingTier from "./pricing-tier"
 import PricingGroup from "./pricing-group"
 import PricingItem from "./pricing-item"
+import { getShopURL } from "@/utils/shop/shop"
 
 export default function Pricing() {
   return (
@@ -38,7 +39,7 @@ export default function Pricing() {
           price={AppConfig.shop.prices.tier1}
           description='Everything at your fingertips.'
           buttonLabel="Purchase"
-          buttonURL={AppConfig.urls.shopPurchaseTier1}
+          buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier1)}
         />
         {/* Professional price */}
         <PricingTier
@@ -46,7 +47,7 @@ export default function Pricing() {
           price={AppConfig.shop.prices.tier2}
           description='Everything at your fingertips.'
           buttonLabel="Purchase"
-          buttonURL={AppConfig.urls.shopPurchaseTier2}
+          buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier2)}
           highlight={true}
         />
         {/* Agency price */}
@@ -55,7 +56,7 @@ export default function Pricing() {
           price={AppConfig.shop.prices.tier3}
           description='Everything at your fingertips.'
           buttonLabel="Purchase"
-          buttonURL={AppConfig.urls.shopPurchaseTier3}
+          buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier3)}
         />
         {/* # Usage */}
         <PricingGroup columns={4} name="Usage" />
