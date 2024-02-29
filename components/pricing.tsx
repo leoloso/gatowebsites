@@ -29,14 +29,14 @@ export default function Pricing() {
           name='Pro'
           price={24}
           description='Everything at your fingertips.'
-          purchaseURL={AppConfig.urls.shopPurchaseVariation1}
+          buttonURL={AppConfig.urls.shopPurchaseVariation1}
         />
         {/* Team price */}
         <PricingTier
           name='Team'
           price={49}
           description='Everything at your fingertips.'
-          purchaseURL={AppConfig.urls.shopPurchaseVariation2}
+          buttonURL={AppConfig.urls.shopPurchaseVariation2}
           highlight={true}
         />
         {/* Enterprise price */}
@@ -44,7 +44,7 @@ export default function Pricing() {
           name='Enterprise'
           price={79}
           description='Everything at your fingertips.'
-          purchaseURL={AppConfig.urls.shopPurchaseVariation3}
+          buttonURL={AppConfig.urls.shopPurchaseVariation3}
         />
         {/* # Usage */}
         <PricingGroup columns={3} name="Usage" />
