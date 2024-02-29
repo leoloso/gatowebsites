@@ -1,15 +1,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import NotFoundImage from '@/public/assets/theme/404.jpg'
-import PageIllustration from '@/components/page-illustration'
 
 export default function NotFound() {
   return (
     <>
       {/*  Page illustration */}
-      <div className="relative max-w-6xl mx-auto h-0 pointer-events-none" aria-hidden="true">
+      {/* <div className="relative max-w-6xl mx-auto h-0 pointer-events-none" aria-hidden="true">
         <PageIllustration />
-      </div>
+      </div> */}
 
       <section className="relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
