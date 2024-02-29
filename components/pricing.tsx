@@ -1,3 +1,4 @@
+import AppConfig from "@/app/app.config"
 import PricingTier from "./pricing-tier"
 
 export default function Pricing() {
@@ -26,12 +27,14 @@ export default function Pricing() {
           name='Pro'
           price={24}
           description='Everything at your fingertips.'
+          purchaseURL={AppConfig.urls.shopPurchaseVariation1}
         />
         {/* Team price */}
         <PricingTier
           name='Team'
           price={49}
           description='Everything at your fingertips.'
+          purchaseURL={AppConfig.urls.shopPurchaseVariation2}
           highlight={true}
         />
         {/* Enterprise price */}
@@ -39,6 +42,7 @@ export default function Pricing() {
           name='Enterprise'
           price={79}
           description='Everything at your fingertips.'
+          purchaseURL={AppConfig.urls.shopPurchaseVariation3}
         />
         {/* # Usage */}
         <div className="px-6 flex flex-col justify-end">
