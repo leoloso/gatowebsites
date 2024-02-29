@@ -38,7 +38,7 @@ export default function Pricing() {
           price={129}
           description='Everything at your fingertips.'
           buttonLabel="Purchase"
-          buttonURL={AppConfig.urls.shopPurchaseVariation1}
+          buttonURL={AppConfig.urls.shopPurchaseTier1}
         />
         {/* Professional price */}
         <PricingTier
@@ -46,7 +46,7 @@ export default function Pricing() {
           price={249}
           description='Everything at your fingertips.'
           buttonLabel="Purchase"
-          buttonURL={AppConfig.urls.shopPurchaseVariation2}
+          buttonURL={AppConfig.urls.shopPurchaseTier2}
           highlight={true}
         />
         {/* Agency price */}
@@ -55,7 +55,7 @@ export default function Pricing() {
           price={499}
           description='Everything at your fingertips.'
           buttonLabel="Purchase"
-          buttonURL={AppConfig.urls.shopPurchaseVariation3}
+          buttonURL={AppConfig.urls.shopPurchaseTier3}
         />
         {/* # Usage */}
         <PricingGroup columns={4} name="Usage" />
