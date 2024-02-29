@@ -3,8 +3,13 @@ import PricingTier from "./pricing-tier"
 import PricingGroup from "./pricing-group"
 import PricingItem from "./pricing-item"
 import { getShopURL } from "@/utils/shop/shop"
+import { allFeatures } from "@/.contentlayer/generated"
+import { sortByOrderAndTitle } from "@/utils/sort"
 
 export default function Pricing() {
+  const features = allFeatures.sort(sortByOrderAndTitle)
+  const freePluginFeatures = features.filter((feature) => feature.category === 'Free plugin')
+  const proPluginFeatures = features.filter((feature) => feature.category === 'PRO plugin')
   return (
     <div className="relative">
       {/* Blurred shape */}
@@ -72,20 +77,7 @@ export default function Pricing() {
             <span>50 <span className="md:hidden">Domains</span></span>,
           ]}
         />
-        {/* # Features */}
-        <PricingGroup columns={4} name="Features" />
-        {/* Custom Connection */}
-        <PricingItem
-          columns={4}
-          name="Custom Connection"
-          ticks={[false, true, true, true]}
-          contents={[
-            <span><span className="md:hidden">Custom Connection</span></span>,
-            <span><span className="md:hidden">Custom Connection</span></span>,
-            <span><span className="md:hidden">Custom Connection</span></span>,
-            <span><span className="md:hidden">Custom Connection</span></span>,
-          ]}
-        />
+        
         {/* # Support */}
         <PricingGroup columns={4} name="Support" />
         {/* Premium Support */}
@@ -100,6 +92,39 @@ export default function Pricing() {
             <span><span className="md:hidden">Premium Support</span></span>,
           ]}
         />
+        
+        {/* # Features */}
+        <PricingGroup columns={4} name="Features" />
+        {/* Free features (collection) */}
+        {freePluginFeatures.map((feature, index) => (
+          <PricingItem
+            columns={4}
+            name={feature.title}
+            ticks={[true, true, true, true]}
+            contents={[
+              <span><span className="md:hidden">{feature.title}</span></span>,
+              <span><span className="md:hidden">{feature.title}</span></span>,
+              <span><span className="md:hidden">{feature.title}</span></span>,
+              <span><span className="md:hidden">{feature.title}</span></span>,
+            ]}
+            key={index}
+          />
+        ))}
+        {/* PRO features (collection) */}
+        {proPluginFeatures.map((feature, index) => (
+          <PricingItem
+            columns={4}
+            name={feature.title}
+            ticks={[false, true, true, true]}
+            contents={[
+              <span><span className="md:hidden">{feature.title}</span></span>,
+              <span><span className="md:hidden">{feature.title}</span></span>,
+              <span><span className="md:hidden">{feature.title}</span></span>,
+              <span><span className="md:hidden">{feature.title}</span></span>,
+            ]}
+            key={index}
+          />
+        ))}
       </div>
     </div>
   )

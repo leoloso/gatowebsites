@@ -4,9 +4,7 @@ import { allFeatures } from 'contentlayer/generated'
 import SectionHeader from './section-header';
 
 export default function FeaturesList() {
-  // Sort features
-  const features = allFeatures.sort(sortByOrderAndTitle)  
-
+  const features = allFeatures.sort(sortByOrderAndTitle)
   const freePluginFeatures = features.filter((feature) => feature.category === 'Free plugin')
   const proPluginFeatures = features.filter((feature) => feature.category === 'PRO plugin')
   
