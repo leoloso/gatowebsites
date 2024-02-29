@@ -46,7 +46,7 @@ export default function Pricing() {
           purchaseURL={AppConfig.urls.shopPurchaseVariation3}
         />
         {/* # Usage */}
-        <PricingGroup name="Usage" />
+        <PricingGroup columns={3} name="Usage" />
         {/* Domains */}
         <div className="px-6 flex flex-col justify-end">
           <div className="py-2 text-slate-400 border-b border-slate-800">Domains</div>
@@ -76,7 +76,7 @@ export default function Pricing() {
           </div>
         </div>
         {/* # Features */}
-        <PricingGroup name="Features" />
+        <PricingGroup columns={3} name="Features" />
         {/* Custom Connection */}
         <div className="px-6 flex flex-col justify-end">
           <div className="py-2 text-slate-400 border-b border-slate-800">Custom Connection</div>
@@ -106,7 +106,7 @@ export default function Pricing() {
           </div>
         </div>
         {/* # Support */}
-        <PricingGroup name="Support" />
+        <PricingGroup columns={3} name="Support" />
         {/* Premium Support */}
         <div className="px-6 flex flex-col justify-end">
           <div className="py-2 text-slate-400 border-b border-slate-800">Premium Support</div>
