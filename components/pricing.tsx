@@ -26,7 +26,6 @@ export default function Pricing() {
           name='Pro'
           price={24}
           description='Everything at your fingertips.'
-          highlight={false}
         />
         {/* Team price */}
         <PricingTier
@@ -40,7 +39,6 @@ export default function Pricing() {
           name='Enterprise'
           price={79}
           description='Everything at your fingertips.'
-          highlight={true}
         />
         {/* # Usage */}
         <div className="px-6 flex flex-col justify-end">
