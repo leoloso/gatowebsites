@@ -1,3 +1,5 @@
+import PricingTier from "./pricing-tier"
+
 export default function Pricing() {
   return (
     <div className="relative">
@@ -20,50 +22,26 @@ export default function Pricing() {
           &nbsp;
         </div>
         {/* Pro price */}
-        <div className="px-6 flex flex-col justify-end">
-          <div className="grow pb-4 mb-4 border-b border-slate-800">
-            <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">Pro</div>
-            <div className="mb-1">
-              <span className="text-lg font-medium text-slate-500">$</span><span className="text-3xl font-bold text-slate-50">24</span><span className="text-sm text-slate-600 font-medium">/mo</span>
-            </div>
-            <div className="text-slate-500">Everything at your fingertips.</div>
-          </div>
-          <div className="pb-4 border-b border-slate-800">
-            <a className="btn-sm text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white w-full transition duration-150 ease-in-out group" href="#0">
-              Get Started <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
-            </a>
-          </div>
-        </div>
+        <PricingTier
+          name='Pro'
+          price={24}
+          description='Everything at your fingertips.'
+          highlight={false}
+        />
         {/* Team price */}
-        <div className="px-6 flex flex-col justify-end">
-          <div className="grow pb-4 mb-4 border-b border-slate-800">
-            <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">Team</div>
-            <div className="mb-1">
-              <span className="text-lg font-medium text-slate-500">$</span><span className="text-3xl font-bold text-slate-50">49</span><span className="text-sm text-slate-600 font-medium">/mo</span>
-            </div>
-            <div className="text-slate-500">Everything at your fingertips.</div>
-          </div>
-          <div className="pb-4 border-b border-slate-800">
-            <a className="btn-sm text-white bg-purple-500 hover:bg-purple-600 w-full transition duration-150 ease-in-out group" href="#0">
-              Get Started <span className="tracking-normal text-purple-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
-            </a>
-          </div>
-        </div>
+        <PricingTier
+          name='Team'
+          price={49}
+          description='Everything at your fingertips.'
+          highlight={true}
+        />
         {/* Enterprise price */}
-        <div className="px-6 flex flex-col justify-end">
-          <div className="grow pb-4 mb-4 border-b border-slate-800">
-            <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">Enterprise</div>
-            <div className="mb-1">
-              <span className="text-lg font-medium text-slate-500">$</span><span className="text-3xl font-bold text-slate-50">79</span><span className="text-sm text-slate-600 font-medium">/mo</span>
-            </div>
-            <div className="text-slate-500">Everything at your fingertips.</div>
-          </div>
-          <div className="pb-4 border-b border-slate-800">
-            <a className="btn-sm text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white w-full transition duration-150 ease-in-out group" href="#0">
-              Get Started <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
-            </a>
-          </div>
-        </div>
+        <PricingTier
+          name='Enterprise'
+          price={79}
+          description='Everything at your fingertips.'
+          highlight={true}
+        />
         {/* # Usage */}
         <div className="px-6 flex flex-col justify-end">
           <div className="py-2 text-slate-50 font-medium mt-4">Usage</div>
