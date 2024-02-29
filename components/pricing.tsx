@@ -35,7 +35,7 @@ export default function Pricing() {
         {/* Personal price */}
         <PricingTier
           name='Personal'
-          price={24}
+          price={129}
           description='Everything at your fingertips.'
           buttonLabel="Purchase"
           buttonURL={AppConfig.urls.shopPurchaseVariation1}
@@ -43,7 +43,7 @@ export default function Pricing() {
         {/* Professional price */}
         <PricingTier
           name='Professional'
-          price={49}
+          price={249}
           description='Everything at your fingertips.'
           buttonLabel="Purchase"
           buttonURL={AppConfig.urls.shopPurchaseVariation2}
@@ -52,7 +52,7 @@ export default function Pricing() {
         {/* Agency price */}
         <PricingTier
           name='Agency'
-          price={79}
+          price={499}
           description='Everything at your fingertips.'
           buttonLabel="Purchase"
           buttonURL={AppConfig.urls.shopPurchaseVariation3}
