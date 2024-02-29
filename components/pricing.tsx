@@ -1,5 +1,6 @@
 import AppConfig from "@/app/app.config"
 import PricingTier from "./pricing-tier"
+import PricingGroup from "./pricing-group"
 
 export default function Pricing() {
   return (
@@ -45,18 +46,7 @@ export default function Pricing() {
           purchaseURL={AppConfig.urls.shopPurchaseVariation3}
         />
         {/* # Usage */}
-        <div className="px-6 flex flex-col justify-end">
-          <div className="py-2 text-slate-50 font-medium mt-4">Usage</div>
-        </div>
-        <div className="px-6 flex flex-col justify-end">
-          <div className="py-2 text-slate-50 font-medium mt-4 md:hidden">Usage</div>
-        </div>
-        <div className="px-6 flex flex-col justify-end">
-          <div className="py-2 text-slate-50 font-medium mt-4 md:hidden">Usage</div>
-        </div>
-        <div className="px-6 flex flex-col justify-end">
-          <div className="py-2 text-slate-50 font-medium mt-4 md:hidden">Usage</div>
-        </div>
+        <PricingGroup name="Usage" />
         {/* Domains */}
         <div className="px-6 flex flex-col justify-end">
           <div className="py-2 text-slate-400 border-b border-slate-800">Domains</div>
@@ -86,18 +76,7 @@ export default function Pricing() {
           </div>
         </div>
         {/* # Features */}
-        <div className="px-6 flex flex-col justify-end">
-          <div className="py-2 text-slate-50 font-medium mt-4">Features</div>
-        </div>
-        <div className="px-6 flex flex-col justify-end">
-          <div className="py-2 text-slate-50 font-medium mt-4 md:hidden">Features</div>
-        </div>
-        <div className="px-6 flex flex-col justify-end">
-          <div className="py-2 text-slate-50 font-medium mt-4 md:hidden">Features</div>
-        </div>
-        <div className="px-6 flex flex-col justify-end">
-          <div className="py-2 text-slate-50 font-medium mt-4 md:hidden">Features</div>
-        </div>
+        <PricingGroup name="Features" />
         {/* Custom Connection */}
         <div className="px-6 flex flex-col justify-end">
           <div className="py-2 text-slate-400 border-b border-slate-800">Custom Connection</div>
@@ -127,18 +106,7 @@ export default function Pricing() {
           </div>
         </div>
         {/* # Support */}
-        <div className="px-6 flex flex-col justify-end">
-          <div className="py-2 text-slate-50 font-medium mt-4">Support</div>
-        </div>
-        <div className="px-6 flex flex-col justify-end">
-          <div className="py-2 text-slate-50 font-medium mt-4 hidden">Support</div>
-        </div>
-        <div className="px-6 flex flex-col justify-end">
-          <div className="py-2 text-slate-50 font-medium mt-4 md:hidden">Support</div>
-        </div>
-        <div className="px-6 flex flex-col justify-end">
-          <div className="py-2 text-slate-50 font-medium mt-4 md:hidden">Support</div>
-        </div>
+        <PricingGroup name="Support" />
         {/* Premium Support */}
         <div className="px-6 flex flex-col justify-end">
           <div className="py-2 text-slate-400 border-b border-slate-800">Premium Support</div>
