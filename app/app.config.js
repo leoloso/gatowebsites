@@ -24,5 +24,12 @@ module.exports = {
     shopPurchaseVariation3: "https://shop.gatographql.com/checkout/buy/017ca707-0114-4a9a-bf41-7afd278fec03?embed=1&logo=0&desc=1&dark=1",
     wpDirectory: "https://wordpress.org/plugins/gatographql/",
     wpDownload: "https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip",
+  },
+  shop: {
+    prices: {
+      tier1: 129,
+      tier2: 249,
+      tier3: 499,
+    }
   }
 }
