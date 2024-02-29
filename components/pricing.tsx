@@ -32,26 +32,26 @@ export default function Pricing() {
           buttonLabel="Download"
           buttonURL={AppConfig.urls.wpDownload}
         />
-        {/* Pro price */}
+        {/* Personal price */}
         <PricingTier
-          name='Pro'
+          name='Personal'
           price={24}
           description='Everything at your fingertips.'
           buttonLabel="Purchase"
           buttonURL={AppConfig.urls.shopPurchaseVariation1}
         />
-        {/* Team price */}
+        {/* Professional price */}
         <PricingTier
-          name='Team'
+          name='Professional'
           price={49}
           description='Everything at your fingertips.'
           buttonLabel="Purchase"
           buttonURL={AppConfig.urls.shopPurchaseVariation2}
           highlight={true}
         />
-        {/* Enterprise price */}
+        {/* Agency price */}
         <PricingTier
-          name='Enterprise'
+          name='Agency'
           price={79}
           description='Everything at your fingertips.'
           buttonLabel="Purchase"
