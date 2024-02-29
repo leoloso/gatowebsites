@@ -112,11 +112,11 @@ export default function CustomerSingle() {
                         </div>
                       </div>
                       <ul className="text-sm">
-                        <li className="flex items-center justify-between space-x-2 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
+                        <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
                           <span className="text-slate-400">Location</span>
                           <span className="text-slate-300 font-medium">San Francisco</span>
                         </li>
-                        <li className="flex items-center justify-between space-x-2 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
+                        <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
                           <span className="text-slate-400">Website</span>
                           <a className="text-purple-500 font-medium flex items-center space-x-1" href="#0">
                             <span>airbnb.com</span>
@@ -125,15 +125,15 @@ export default function CustomerSingle() {
                             </svg>
                           </a>
                         </li>
-                        <li className="flex items-center justify-between space-x-2 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
+                        <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
                           <span className="text-slate-400">Industry</span>
                           <span className="text-slate-300 font-medium">Hospitality</span>
                         </li>
-                        <li className="flex items-center justify-between space-x-2 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
+                        <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
                           <span className="text-slate-400">Product</span>
                           <span className="text-slate-300 font-medium">Stellar X</span>
                         </li>
-                        <li className="flex items-center justify-between space-x-2 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
+                        <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
                           <span className="text-slate-400">Impact</span>
                           <span className="text-slate-300 font-medium">+7% new hosts</span>
                         </li>
