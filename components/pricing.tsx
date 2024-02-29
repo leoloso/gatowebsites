@@ -63,7 +63,7 @@ export default function Pricing() {
         <PricingItem
           columns={4}
           name="Domains"
-          ticks={[false, true, true, true]}
+          ticks={[true, true, true, true]}
           contents={[
             <span>Unlimited <span className="md:hidden">Domains</span></span>,
             <span>1 <span className="md:hidden">Domain</span></span>,
