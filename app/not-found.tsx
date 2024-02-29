@@ -1,16 +1,15 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import NotFoundImage from '@/public/assets/theme/404.jpg'
+import StunningBackground from '@/components/stunning-background';
 
 export default function NotFound() {
   return (
     <>
-      {/*  Page illustration */}
-      {/* <div className="relative max-w-6xl mx-auto h-0 pointer-events-none" aria-hidden="true">
-        <PageIllustration />
-      </div> */}
+        <section className="relative">
 
-      <section className="relative">
+        <StunningBackground />
+
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
             <div className="max-w-3xl mx-auto text-center">
