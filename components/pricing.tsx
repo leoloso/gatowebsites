@@ -24,6 +24,14 @@ export default function Pricing() {
         <div className="px-6 flex flex-col justify-end">
           &nbsp;
         </div>
+        {/* Free plugin */}
+        <PricingTier
+          name='Free'
+          price={0}
+          description='Everything at your fingertips.'
+          buttonLabel="Download"
+          buttonURL={AppConfig.urls.wpDownload}
+        />
         {/* Pro price */}
         <PricingTier
           name='Pro'
@@ -50,39 +58,42 @@ export default function Pricing() {
           buttonURL={AppConfig.urls.shopPurchaseVariation3}
         />
         {/* # Usage */}
-        <PricingGroup columns={3} name="Usage" />
+        <PricingGroup columns={4} name="Usage" />
         {/* Domains */}
         <PricingItem
-          columns={3}
+          columns={4}
           name="Domains"
-          ticks={[true, true, true]}
+          ticks={[false, true, true, true]}
           contents={[
-            <span>4 <span className="md:hidden">Domains</span></span>,
             <span>Unlimited <span className="md:hidden">Domains</span></span>,
-            <span>Unlimited <span className="md:hidden">Domains</span></span>,
+            <span>1 <span className="md:hidden">Domain</span></span>,
+            <span>10 <span className="md:hidden">Domains</span></span>,
+            <span>50 <span className="md:hidden">Domains</span></span>,
           ]}
         />
         {/* # Features */}
-        <PricingGroup columns={3} name="Features" />
+        <PricingGroup columns={4} name="Features" />
         {/* Custom Connection */}
         <PricingItem
-          columns={3}
+          columns={4}
           name="Custom Connection"
-          ticks={[true, true, true]}
+          ticks={[false, true, true, true]}
           contents={[
+            <span><span className="md:hidden">Custom Connection</span></span>,
             <span><span className="md:hidden">Custom Connection</span></span>,
             <span><span className="md:hidden">Custom Connection</span></span>,
             <span><span className="md:hidden">Custom Connection</span></span>,
           ]}
         />
         {/* # Support */}
-        <PricingGroup columns={3} name="Support" />
+        <PricingGroup columns={4} name="Support" />
         {/* Premium Support */}
         <PricingItem
-          columns={3}
+          columns={4}
           name="Premium Support"
-          ticks={[false, true, true]}
+          ticks={[false, true, true, true]}
           contents={[
+            <span><span className="md:hidden">Premium Support</span></span>,
             <span><span className="md:hidden">Premium Support</span></span>,
             <span><span className="md:hidden">Premium Support</span></span>,
             <span><span className="md:hidden">Premium Support</span></span>,
