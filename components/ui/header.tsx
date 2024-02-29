@@ -15,7 +15,7 @@ export default function Header({
   enableLightDarkThemeModeToggle?: boolean
 }) {
   return (
-    <header className="fixed w-full z-30">
+    <header className="fixed w-full z-50">
       <div
         className={`absolute inset-0 bg-opacity-70 backdrop-blur -z-10 ${AppSettings.enableLightDarkThemeMode && enableLightDarkThemeModeToggle ? 'bg-white border-slate-200 border-b dark:bg-transparent dark:border-slate-800' : 'bg-transparent border-slate-800'}`}
         aria-hidden="true"

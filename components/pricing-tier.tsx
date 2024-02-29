@@ -15,7 +15,7 @@ export default function PricingTier({
 }) {
   const isPRO = price !== 0
   return (
-    <div className="px-6 flex flex-col justify-end md:sticky md:top-16">
+    <div className="px-6 flex flex-col justify-end sticky top-16">
       <div className="grow pb-4 mb-4 border-b border-slate-800">
         <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">{name}</div>
         <div className="mb-1">
