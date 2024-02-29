@@ -3,8 +3,6 @@
 import { useState } from 'react'
 
 export default function Pricing() {
-  const [annual, setAnnual] = useState<boolean>(true)
-
   return (
     <div className="relative">
       {/* Blurred shape */}
@@ -23,28 +21,14 @@ export default function Pricing() {
       <div className="grid md:grid-cols-4 xl:-mx-6 text-sm [&>div:nth-of-type(-n+4)]:py-6 [&>div:nth-last-of-type(-n+4)]:pb-6 max-md:[&>div:nth-last-of-type(-n+4)]:mb-8 max-md:[&>div:nth-of-type(-n+4):nth-of-type(n+1)]:rounded-t-3xl max-md:[&>div:nth-last-of-type(-n+4)]:rounded-b-3xl md:[&>div:nth-of-type(2)]:rounded-tl-3xl md:[&>div:nth-of-type(4)]:rounded-tr-3xl md:[&>div:nth-last-of-type(3)]:rounded-bl-3xl md:[&>div:nth-last-of-type(1)]:rounded-br-3xl [&>div]:bg-slate-700/20 [&>div:nth-of-type(4n+1)]:bg-transparent max-md:[&>div:nth-of-type(4n+5)]:hidden max-md:[&>div:nth-of-type(4n+2)]:order-1 max-md:[&>div:nth-of-type(4n+3)]:order-2 max-md:[&>div:nth-of-type(4n+4)]:order-3 max-md:md:[&>div:nth-of-type(n)]:mb-0 [&>div:nth-of-type(4n+3)]:relative before:[&>div:nth-of-type(4n+3)]:absolute before:[&>div:nth-of-type(4n+3)]:-inset-px before:[&>div:nth-of-type(4n+3)]:rounded-[inherit] before:[&>div:nth-of-type(4n+3)]:border-x-2 before:[&>div:nth-of-type(3)]:border-t-2 before:[&>div:nth-last-of-type(2)]:border-b-2 before:[&>div:nth-of-type(4n+3)]:border-purple-500 before:[&>div:nth-of-type(4n+3)]:-z-10 before:[&>div:nth-of-type(4n+3)]:pointer-events-none">
         {/* Pricing toggle */}
         <div className="px-6 flex flex-col justify-end">
-          <div className="pb-5 md:border-b border-slate-800">
-            {/* Toggle switch */}
-            <div className="max-md:text-center">
-              <div className="inline-flex items-center whitespace-nowrap">
-                <div className="text-sm text-slate-500 font-medium mr-2 md:max-lg:hidden">Monthly</div>
-                <div className="relative">
-                  <input type="checkbox" id="toggle" className="peer sr-only" checked={annual} onChange={() => setAnnual(!annual)} />
-                  <label htmlFor="toggle" className="relative flex h-6 w-11 cursor-pointer items-center rounded-full bg-slate-400 px-0.5 outline-slate-400 transition-colors before:h-5 before:w-5 before:rounded-full before:bg-white before:shadow-sm before:transition-transform before:duration-150 peer-checked:bg-purple-500 peer-checked:before:translate-x-full peer-focus-visible:outline peer-focus-visible:outline-offset-2 peer-focus-visible:outline-gray-400 peer-checked:peer-focus-visible:outline-purple-500">
-                    <span className="sr-only">Pay Yearly</span>
-                  </label>
-                </div>
-                <div className="text-sm text-slate-500 font-medium ml-2">Yearly <span className="text-teal-500">(-20%)</span></div>
-              </div>
-            </div>
-          </div>
+          &nbsp;
         </div>
         {/* Pro price */}
         <div className="px-6 flex flex-col justify-end">
           <div className="grow pb-4 mb-4 border-b border-slate-800">
             <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">Pro</div>
             <div className="mb-1">
-              <span className="text-lg font-medium text-slate-500">$</span><span className="text-3xl font-bold text-slate-50">{annual ? '24' : '29'}</span><span className="text-sm text-slate-600 font-medium">/mo</span>
+              <span className="text-lg font-medium text-slate-500">$</span><span className="text-3xl font-bold text-slate-50">24</span><span className="text-sm text-slate-600 font-medium">/mo</span>
             </div>
             <div className="text-slate-500">Everything at your fingertips.</div>
           </div>
@@ -59,7 +43,7 @@ export default function Pricing() {
           <div className="grow pb-4 mb-4 border-b border-slate-800">
             <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">Team</div>
             <div className="mb-1">
-              <span className="text-lg font-medium text-slate-500">$</span><span className="text-3xl font-bold text-slate-50">{annual ? '49' : '54'}</span><span className="text-sm text-slate-600 font-medium">/mo</span>
+              <span className="text-lg font-medium text-slate-500">$</span><span className="text-3xl font-bold text-slate-50">49</span><span className="text-sm text-slate-600 font-medium">/mo</span>
             </div>
             <div className="text-slate-500">Everything at your fingertips.</div>
           </div>
@@ -74,7 +58,7 @@ export default function Pricing() {
           <div className="grow pb-4 mb-4 border-b border-slate-800">
             <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">Enterprise</div>
             <div className="mb-1">
-              <span className="text-lg font-medium text-slate-500">$</span><span className="text-3xl font-bold text-slate-50">{annual ? '79' : '85'}</span><span className="text-sm text-slate-600 font-medium">/mo</span>
+              <span className="text-lg font-medium text-slate-500">$</span><span className="text-3xl font-bold text-slate-50">79</span><span className="text-sm text-slate-600 font-medium">/mo</span>
             </div>
             <div className="text-slate-500">Everything at your fingertips.</div>
           </div>
