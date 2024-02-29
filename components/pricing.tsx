@@ -29,6 +29,7 @@ export default function Pricing() {
           name='Pro'
           price={24}
           description='Everything at your fingertips.'
+          buttonLabel="Purchase"
           buttonURL={AppConfig.urls.shopPurchaseVariation1}
         />
         {/* Team price */}
@@ -36,6 +37,7 @@ export default function Pricing() {
           name='Team'
           price={49}
           description='Everything at your fingertips.'
+          buttonLabel="Purchase"
           buttonURL={AppConfig.urls.shopPurchaseVariation2}
           highlight={true}
         />
@@ -44,6 +46,7 @@ export default function Pricing() {
           name='Enterprise'
           price={79}
           description='Everything at your fingertips.'
+          buttonLabel="Purchase"
           buttonURL={AppConfig.urls.shopPurchaseVariation3}
         />
         {/* # Usage */}
