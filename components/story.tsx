@@ -30,7 +30,7 @@ export default function Story() {
 
             <div className="md:flex justify-between space-x-6 md:space-x-8 lg:space-x-14">
               <figure className="min-w-[240px]">
-                <Image className="sticky top-8 mx-auto mb-12 md:mb-0 rounded-lg -rotate-[4deg]" src={Team} width={420} height={280} alt="Team" />
+                <Image className="sticky top-24 mx-auto mb-12 md:mb-0 rounded-lg -rotate-[4deg]" src={Team} width={420} height={280} alt="Team" />
               </figure>
               <div className="max-w-[548px] mx-auto">
                 <div className="text-slate-400 space-y-6">
