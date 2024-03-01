@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import Team from '@/public/assets/theme/team.jpg'
-import SectionHeader from './section-header'
 
-export default function Howdy() {
+export default function HowdyMain() {
   return (
     <section className="relative">
 
@@ -22,11 +21,6 @@ export default function Howdy() {
       <div className="px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <div className="pb-12 md:pb-20">
-
-            {/* Section header */}
-            {/* <SectionHeader
-              title='Our story (so far)'
-            /> */}
 
             <div className="md:flex justify-between space-x-6 md:space-x-8 lg:space-x-14">
               <figure className="min-w-[240px]">

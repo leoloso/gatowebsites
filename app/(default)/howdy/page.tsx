@@ -1,24 +1,18 @@
 export const metadata = {
-  title: 'About - Stellar',
+  title: 'Howdy - Stellar',
   description: 'Page description',
 }
 
-import Hero from '@/components/hero-howdy'
-import HowdyBody from '@/components/howdy'
-import Team from '@/components/team'
-import Recruitment from '@/components/recruitment'
-import Testimonials from '@/components/testimonials-02'
-import Cta from '@/components/cta-02'
+import Hero from '@/components/howdy-hero'
+import HowdyMain from '@/components/howdy-main'
+import HowdyFooter from '@/components/howdy-footer'
 
 export default function Howdy() {
   return (
     <>
       <Hero />
-      <HowdyBody />
-      <Team />
-      <Recruitment />
-      <Testimonials />
-      <Cta />
+      <HowdyMain />
+      <HowdyFooter />
     </>
   )
 }
