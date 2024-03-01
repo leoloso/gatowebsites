@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import AppSettings from '@/app/app.settings'
 import PlausibleProvider from 'next-plausible'
 import Script from 'next/script'
+import AppConfig from './app.config'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,6 +34,20 @@ export default function RootLayout({
           src="https://assets.lemonsqueezy.com/lemon.js"
           strategy="afterInteractive"
         ></Script> */}
+
+        {/* LemonSqueezy affiliate tracking script */}
+        {/* @see: https://docs.lemonsqueezy.com/guides/tutorials/affiliate-landing-pages */}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <script>{`
+              window.lemonSqueezyAffiliateConfig = {
+                store: "${AppConfig.services.shop.affiliateTrackingShopSlug}",
+                trackOnLoad: false
+              };
+            `}</script>
+            <script src="https://lmsqueezy.com/affiliate.js" defer></script>
+          </>
+        )}
       </head>
       <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
         {children}
