@@ -37,11 +37,6 @@ export default function ContactForm() {
           <textarea id="message" name="message" rows={4} className="form-textarea w-full text-gray-300" placeholder="Write your message" required></textarea>
         </div>
       </div>
-      <div className="hidden flex flex-wrap -mx-3 mb-4">
-        <div className="w-full px-3">
-          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-        </div>
-      </div>
       {/* <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="flex items-center">
@@ -61,6 +56,11 @@ export default function ContactForm() {
             By clicking "send" you consent to allow Gato GraphQL to store and process the personal information submitted above.
             {/* By clicking "send" you consent to allow Simple to store and process the personal information submitted above and agree to our <a className="underline" href="#0">terms and conditions</a> as well as our <a className="underline" href="#0">Privacy Policy</a>. */}
           </div>
+        </div>
+      </div>
+      <div className="hidden flex flex-wrap -mx-3 mb-4">
+        <div className="w-full px-3">
+          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
         </div>
       </div>
     </form>
