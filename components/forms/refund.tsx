@@ -1,4 +1,4 @@
-export default function RefundPolicyForm() {
+export default function RefundForm() {
   return (
     <form className="max-w-xl mx-auto mt-10">
       <div className="flex flex-wrap -mx-3 mb-4">

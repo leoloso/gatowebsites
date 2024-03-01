@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import PageSection from '@/components/sections/page'
 import { getPage, getPageMetadata } from '@/utils/page'
 import { getPageSlugFromPageScriptFile } from '@/utils/path'
-import RefundPolicyForm from '@/components/forms/refund-policy'
+import RefundForm from '@/components/forms/refund'
 
 // Get the page slug from the folder name
 const pageSlug = getPageSlugFromPageScriptFile(__filename)
@@ -27,7 +27,7 @@ export default async function SinglePage() {
     <PageSection
       page={page}
     >
-      <RefundPolicyForm />
+      <RefundForm />
     </PageSection>
   )
 }
