@@ -40,5 +40,11 @@ module.exports = {
       tier2: 249,
       tier3: 499,
     }
+  },
+  services: {
+    newsletter: {
+      formActionURL: "https://shop.gatographql.com/email-subscribe/external",
+      emailFieldName: "email",
+    }
   }
 }
