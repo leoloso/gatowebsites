@@ -35,7 +35,7 @@ export default function Howdy() {
               <div className="max-w-[548px] mx-auto">
                 <div className="text-slate-400 space-y-6">
                   <p>
-                    If you are here, it's because we have recently met at **WordCamp Asia 2024**, and I enjoyed meeting you.
+                    If you are here, it's because we have recently met at <strong>WordCamp Asia 2024</strong>, and I enjoyed meeting you.
                   </p>
                   <p>
                     I am sure I told you about Gato GraphQL (I always do!), and you got my namecard saying "Scan me for a surprise!"
