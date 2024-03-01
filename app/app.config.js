@@ -43,7 +43,8 @@ module.exports = {
   },
   services: {
     newsletter: {
-      formActionURL: "https://shop.gatographql.com/email-subscribe/external"
+      formActionURL: "https://shop.gatographql.com/email-subscribe/external",
+      emailFieldName: "email",
     }
   }
 }
