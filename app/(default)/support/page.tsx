@@ -1,8 +1,8 @@
-import ContactForm from "@/components/forms/contact"
+import SupportForm from "@/components/forms/contact"
 import StunningBackground from "@/components/stunning-background"
 
 export const metadata = {
-  title: 'Contact us - Open PRO',
+  title: 'Support - Open PRO',
   description: 'Page description',
 }
 
@@ -17,11 +17,11 @@ export default function Contact() {
 
           {/* Page header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h1 mb-4" data-aos="fade-up">How can we help you?</h1>
-            <p className="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="200">Tell us your needs, and we'll contact you shortly.</p>
+            <h1 className="h1 mb-4" data-aos="fade-up">Support</h1>
+            <p className="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="200">Send us your request, and we'll work on it.</p>
           </div>
 
-          <ContactForm />
+          <SupportForm />
 
         </div>
       </div>
