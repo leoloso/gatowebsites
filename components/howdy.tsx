@@ -35,19 +35,28 @@ export default function Howdy() {
               <div className="max-w-[548px] mx-auto">
                 <div className="text-slate-400 space-y-6">
                   <p>
-                    If you are here, it's because we have recently met at <strong>WordCamp Asia 2024</strong>, and I enjoyed meeting you.
+                    If you are here, that means that we have met at <strong className="text-slate-50 font-medium">WordCamp Asia 2024</strong>, and I enjoyed meeting you.
                   </p>
                   <p>
-                    I am sure I told you about Gato GraphQL (I always do!), and you got my namecard saying "Scan me for a surprise!"
+                    I surely told you about my plugin Gato GraphQL, and you got my namecard saying <strong className="text-slate-50 font-medium">Scan me for a surprise!</strong>
                   </p>
                   <p>
                     Well, here we are!
                   </p>
                   <p>
-                    Gato GraphQL is a GraphQL server for WordPress, that can do a lot of things. Unexpected things, that can help managing the WordPress site. And I want you to check it out.
+                    Gato GraphQL is a GraphQL server for WordPress, that can do a lot of things. Unexpected things too, that can help managing the WordPress site. And <strong className="text-slate-50 font-medium">I would love you to check it out</strong>.
                   </p>
                   <p>
-                    So I'll give you a nice discount, but please shhh, don't share it with anyone, it's just for you! 😀
+                    So I'll offer you a nice discount 😀
+                  </p>
+                  <p>
+                    (But please shhh, don't share it with anyone, it's just for you!)
+                  </p>
+                  <p>
+                    And btw, if the conference is still ongoing, please come talk to me again. If not, you can always find me via the <a className="text-purple-500 font-medium hover:underline" href="/contact">contact</a> page.
+                  </p>
+                  <p>
+                    Let's stay in touch!
                   </p>
                 </div>
               </div>
