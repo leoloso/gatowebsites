@@ -34,7 +34,7 @@ export default function Pricing() {
         <PricingTier
           name='Free'
           price={0}
-          description='Everything at your fingertips.'
+          description='Gato GraphQL plugin'
           buttonLabel="Download"
           buttonURL={AppConfig.urls.wpDownload}
         />
@@ -42,7 +42,7 @@ export default function Pricing() {
         <PricingTier
           name='Personal'
           price={AppConfig.shop.prices.tier1}
-          description='Everything at your fingertips.'
+          description='1 domain'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier1)}
         />
@@ -50,7 +50,7 @@ export default function Pricing() {
         <PricingTier
           name='Professional'
           price={AppConfig.shop.prices.tier2}
-          description='Everything at your fingertips.'
+          description='10 domains'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier2)}
           highlight={true}
@@ -59,7 +59,7 @@ export default function Pricing() {
         <PricingTier
           name='Agency'
           price={AppConfig.shop.prices.tier3}
-          description='Everything at your fingertips.'
+          description='50 domains'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier3)}
         />

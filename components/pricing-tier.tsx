@@ -21,7 +21,12 @@ export default function PricingTier({
         <div className="mb-1">
           <span className="text-lg font-medium text-slate-500">$</span><span className="text-3xl font-bold text-slate-50">{price}</span><span className="text-sm text-slate-600 font-medium">/y</span>
         </div>
-        <div className="text-slate-500">{description}</div>
+        {isPRO && (
+          <div className="text-slate-400">License for <span className="text-slate-200">{description}</span></div>
+        )}
+        {!isPRO && (
+          <div className="text-slate-400">{description}</div>
+        )}
       </div>
       <div className="border-b border-slate-800">
         <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-purple-700 hover:bg-purple-800' : (isPRO ? 'text-white bg-purple-500 hover:bg-purple-600' : 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white')}`} href={buttonURL}>
