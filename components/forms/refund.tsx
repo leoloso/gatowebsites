@@ -1,42 +1,28 @@
 export default function RefundForm() {
   return (
-    <form className="max-w-xl mx-auto mt-10">
+    <form className="max-w-xl mx-auto mt-10" name="refund" method="POST" data-netlify="true" action="/refund-policy/success" netlify-honeypot="bot-field">
       <div className="flex flex-wrap -mx-3 mb-4">
-        <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-          <label className="block text-gray-300 font-medium mb-1" htmlFor="first-name">First Name <span className="text-red-600">*</span></label>
-          <input id="first-name" type="text" className="form-input w-full text-gray-300" placeholder="Enter your first name" required />
-        </div>
-        <div className="w-full md:w-1/2 px-3">
-          <label className="block text-gray-300 font-medium mb-1" htmlFor="last-name">Last Name</label>
-          <input id="last-name" type="text" className="form-input w-full text-gray-300" placeholder="Enter your last name" />
+        <div className="w-full px-3">
+          <label className="block text-gray-300 font-medium mb-1" htmlFor="name">Name <span className="text-red-600">*</span></label>
+          <input id="name" name="name" type="text" className="form-input w-full text-gray-300" placeholder="Enter your name" required />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
-          <input id="email" type="email" className="form-input w-full text-gray-300" placeholder="Enter your email address" required />
+          <input id="email" name="email" type="email" className="form-input w-full text-gray-300" placeholder="Enter your email address" required />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
-          <label className="block text-gray-300 font-medium mb-1" htmlFor="subject">Subject <span className="text-red-600">*</span></label>
-          <input id="subject" type="text" className="form-input w-full text-gray-300" placeholder="How can we help you?" required />
+          <label className="block text-gray-300 font-medium mb-1" htmlFor="order">Order number <span className="text-red-600">*</span></label>
+          <input id="order" name="order" type="text" className="form-input w-full text-gray-300" placeholder="Enter the purchase order number" required />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
-          <label className="block text-gray-300 font-medium mb-1" htmlFor="topic">Topic</label>
-          <select id="topic" className="form-select w-full text-gray-300">
-            <option>General inquiry</option>
-            <option>Affiliate program</option>
-            <option>Developer partnership program</option>
-          </select>
-        </div>
-      </div>
-      <div className="flex flex-wrap -mx-3 mb-4">
-        <div className="w-full px-3">
-          <label className="block text-gray-300 font-medium mb-1" htmlFor="message">Message <span className="text-red-600">*</span></label>
-          <textarea id="message" rows={4} className="form-textarea w-full text-gray-300" placeholder="Write your message" required></textarea>
+          <label className="block text-gray-300 font-medium mb-1" htmlFor="message">Reasons for refund <span className="text-red-600">*</span></label>
+          <textarea id="message" name="message" rows={4} className="form-textarea w-full text-gray-300" placeholder="Write detailed reasons for the refund" required></textarea>
         </div>
       </div>
       {/* <div className="flex flex-wrap -mx-3 mb-4">
@@ -58,6 +44,11 @@ export default function RefundForm() {
             By clicking "send" you consent to allow Gato GraphQL to store and process the personal information submitted above.
             {/* By clicking "send" you consent to allow Simple to store and process the personal information submitted above and agree to our <a className="underline" href="#0">terms and conditions</a> as well as our <a className="underline" href="#0">Privacy Policy</a>. */}
           </div>
+        </div>
+      </div>
+      <div className="hidden flex flex-wrap -mx-3 mb-4">
+        <div className="w-full px-3">
+          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
         </div>
       </div>
     </form>
