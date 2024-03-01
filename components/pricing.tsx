@@ -78,21 +78,6 @@ export default function Pricing() {
           ]}
         />
         
-        {/* # Support */}
-        <PricingGroup columns={4} name="Support" />
-        {/* Premium Support */}
-        <PricingItem
-          columns={4}
-          name="Premium Support"
-          ticks={[false, true, true, true]}
-          contents={[
-            <span><span className="md:hidden">Premium Support</span></span>,
-            <span><span className="md:hidden">Premium Support</span></span>,
-            <span><span className="md:hidden">Premium Support</span></span>,
-            <span><span className="md:hidden">Premium Support</span></span>,
-          ]}
-        />
-        
         {/* # Features */}
         <PricingGroup columns={4} name="Features" />
         {/* Free features (collection) */}
@@ -125,6 +110,21 @@ export default function Pricing() {
             key={index}
           />
         ))}
+        
+        {/* # Support */}
+        <PricingGroup columns={4} name="Support" />
+        {/* Premium Support */}
+        <PricingItem
+          columns={4}
+          name="Premium Support"
+          ticks={[false, true, true, true]}
+          contents={[
+            <span><span className="md:hidden">Premium Support</span></span>,
+            <span><span className="md:hidden">Premium Support</span></span>,
+            <span><span className="md:hidden">Premium Support</span></span>,
+            <span><span className="md:hidden">Premium Support</span></span>,
+          ]}
+        />
       </div>
     </div>
   )
