@@ -55,6 +55,9 @@ export default function HowdyMain() {
 
                   </Banner>
                   <p>
+                    This promo code will be available until two weeks after the end of the conference.
+                  </p>
+                  <p>
                     Btw, if the conference is still ongoing, please come talk to me again. If not, you can always find me via the <a className="text-purple-500 font-medium hover:underline" href="/contact">contact</a> page.
                   </p>
                   <p>
