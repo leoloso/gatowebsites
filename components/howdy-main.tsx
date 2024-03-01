@@ -45,7 +45,7 @@ export default function HowdyMain() {
                     I would love you to check it out. So <strong className="text-slate-50 font-medium">I'll offer you a nice discount</strong> 😀
                   </p>
                   <p>
-                    (But please shhh, don't share it with anyone, it's just for you!)
+                    (But please shhh, don't share it around, this is for you!)
                   </p>
                   <Banner type='success'>
 
