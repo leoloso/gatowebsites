@@ -8,5 +8,8 @@ export function getLemonSqueezyShopURL(url: string) {
 }
 
 export function getLemonSqueezyShopAnchorClassname() {
-  return 'lemonsqueezy-button'
+  if (AppSettings.useLemonSqueezyOverlay) {
+    return 'lemonsqueezy-button'
+  }
+  return ''
 }
