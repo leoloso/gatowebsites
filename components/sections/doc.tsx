@@ -54,7 +54,7 @@ export default function DocSection({
             <header className="mb-6">
               <h1 className="h2 text-slate-800 mb-4 dark:text-slate-200">{doc.title}</h1>
               <p className="text-lg text-slate-600 dark:text-slate-400">
-                {doc.summary}
+                {doc.description}
               </p>
             </header>
             <DocMdx code={doc.body.code} />
