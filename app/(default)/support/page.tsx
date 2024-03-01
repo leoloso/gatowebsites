@@ -7,7 +7,7 @@ export const metadata = {
   description: 'Page description',
 }
 
-export default function Contact() {
+export default function Support() {
   return (
     <section className="relative">
 
