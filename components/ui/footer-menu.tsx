@@ -1,5 +1,5 @@
 import AppConfig from '@/app/app.config'
-import { getShopURL } from '@/utils/shop/shop'
+import { getShopAnchorClassname, getShopURL } from '@/utils/shop/shop'
 
 export default function FooterMenu({
   children,
@@ -52,7 +52,7 @@ export default function FooterMenu({
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Test drive</a>
           </li>
           <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={getShopURL(AppConfig.urls.shopPurchase)}>Purchase</a>
+            <a className={`text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out ${getShopAnchorClassname()}`} href={getShopURL(AppConfig.urls.shopPurchase)}>Purchase</a>
           </li>
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/refund-policy">Refund policy</a>
