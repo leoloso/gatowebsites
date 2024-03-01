@@ -44,16 +44,16 @@ export default function Howdy() {
                     Well, here we are!
                   </p>
                   <p>
-                    Gato GraphQL is a GraphQL server for WordPress, that can do a lot of things. Unexpected things too, that can help managing the WordPress site. And <strong className="text-slate-50 font-medium">I would love you to check it out</strong>.
+                    Gato GraphQL is a GraphQL server for WordPress, that can do a lot of things. Unexpected things too, to help manage the WordPress site.
                   </p>
                   <p>
-                    So I'll offer you a nice discount 😀
+                    I would love you to check it out. So <strong className="text-slate-50 font-medium">I'll offer you a nice discount</strong> 😀
                   </p>
                   <p>
                     (But please shhh, don't share it with anyone, it's just for you!)
                   </p>
                   <p>
-                    And btw, if the conference is still ongoing, please come talk to me again. If not, you can always find me via the <a className="text-purple-500 font-medium hover:underline" href="/contact">contact</a> page.
+                    Btw, if the conference is still ongoing, please come talk to me again. If not, you can always find me via the <a className="text-purple-500 font-medium hover:underline" href="/contact">contact</a> page.
                   </p>
                   <p>
                     Let's stay in touch!
