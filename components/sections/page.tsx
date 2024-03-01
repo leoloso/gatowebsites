@@ -25,16 +25,12 @@ export default function PageSection({
 
               <header className="mb-8">
 
+                {/* Title and excerpt */}
                 <PageHeader
                   leading={page.leading}
                   title={page.title}
                   description={page.description}
                 />
-                {/* Title and excerpt */}
-                {/* <div className="text-center md:text-left">
-                  <h1 className="h1 mb-4" data-aos="fade-up">{page.title}</h1>
-                  <p className="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="200">{page.description}</p>
-                </div> */}
                 {/* Article meta */}
                 {!! page.lastModifiedAt && (
                   <div className="md:flex md:items-center md:justify-between mt-3">
