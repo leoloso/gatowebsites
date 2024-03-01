@@ -3,6 +3,11 @@
   publish = ".next"
 
 [[redirects]]
+  from = "/bundles/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
   from = "/recipes/*"
   to = "/tutorial/:splat"
   status = 301
