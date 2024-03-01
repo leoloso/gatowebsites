@@ -49,7 +49,7 @@ export default function HowdyMain() {
                   </p>
                   <Banner type='success'>
 
-                  <p><strong className="text-slate-50 font-medium">40% off any bundle or extension, using code <code>HOWDYFRIEND40</code></strong></p>
+                  <p><strong className="text-slate-50 font-medium">40% off any bundle or extension, using code <code className="text-blue-400">HOWDYFRIEND40</code></strong></p>
 
                   <p>This is a Lifetime Deal! Purchase now, and obtain the discount forever.</p>
 
