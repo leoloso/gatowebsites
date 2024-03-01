@@ -28,6 +28,7 @@ export default function RootLayout({
         <PlausibleProvider domain="gatographql.com" />
 
         {/* @see https://docs.lemonsqueezy.com/help/lemonjs/what-is-lemonjs#loading-lemon-js-in-next-js */}
+        {/* <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script> */}
         <Script
           src="https://assets.lemonsqueezy.com/lemon.js"
           strategy="afterInteractive"
