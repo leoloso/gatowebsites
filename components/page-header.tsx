@@ -12,7 +12,7 @@ export default function PageHeader({
   paddingClassname?: string,
 }) {
   return (
-    <div className={`text-center ${paddingClassname}`}>
+    <div className={`max-w-3xl mx-auto text-center ${paddingClassname}`}>
       {leading && (
         <div>
           <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">{leading}</div>

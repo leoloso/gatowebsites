@@ -84,6 +84,9 @@ const Page = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    leading: {
+      type: 'string',
+    },
     lastModifiedAt: {
       type: 'date',
     },
