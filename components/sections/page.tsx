@@ -26,7 +26,7 @@ export default function PageSection({
               <header className="mb-8">
 
                 <PageHeader
-                  // leading='Receive news on your email inbox'
+                  leading={page.leading}
                   title={page.title}
                   description={page.description}
                 />
