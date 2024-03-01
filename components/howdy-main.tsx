@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Team from '@/public/assets/theme/team.jpg'
+import Banner from './mdx/banner'
 
 export default function HowdyMain() {
   return (
@@ -46,6 +47,13 @@ export default function HowdyMain() {
                   <p>
                     (But please shhh, don't share it with anyone, it's just for you!)
                   </p>
+                  <Banner type='success'>
+
+                  <p><strong className="text-slate-50 font-medium">40% off any bundle or extension, using code <code>HOWDYFRIEND</code></strong></p>
+
+                  <p>This is a Lifetime Deal! Purchase now, and obtain the discount forever.</p>
+
+                  </Banner>
                   <p>
                     Btw, if the conference is still ongoing, please come talk to me again. If not, you can always find me via the <a className="text-purple-500 font-medium hover:underline" href="/contact">contact</a> page.
                   </p>
