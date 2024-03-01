@@ -5,6 +5,7 @@ import AppSettings from '@/app/app.settings'
 import PlausibleProvider from 'next-plausible'
 import Script from 'next/script'
 import AppConfig from './app.config'
+import LemonSqueezyScriptProvider from '@/components/scripts/lemonsqueezy'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -28,26 +29,7 @@ export default function RootLayout({
         {/* @see https://github.com/4lejandrito/next-plausible?tab=readme-ov-file#usage */}
         <PlausibleProvider domain="gatographql.com" />
 
-        {/* @see https://docs.lemonsqueezy.com/help/lemonjs/what-is-lemonjs#loading-lemon-js-in-next-js */}
-        <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
-        {/* <Script
-          src="https://assets.lemonsqueezy.com/lemon.js"
-          strategy="afterInteractive"
-        ></Script> */}
-
-        {/* LemonSqueezy affiliate tracking script */}
-        {/* @see: https://docs.lemonsqueezy.com/guides/tutorials/affiliate-landing-pages */}
-        {process.env.NODE_ENV === 'production' && (
-          <>
-            <script dangerouslySetInnerHTML={{__html: `
-              window.lemonSqueezyAffiliateConfig = {
-                store: "${AppConfig.services.shop.affiliateTrackingShopSlug}",
-                trackOnLoad: false
-              };
-            `}} />
-            <script src="https://lmsqueezy.com/affiliate.js" defer></script>
-          </>
-        )}
+        <LemonSqueezyScriptProvider />
       </head>
       <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
         {children}
