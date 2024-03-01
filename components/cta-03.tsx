@@ -1,3 +1,4 @@
+import NewsletterForm from "./forms/newsletter-02";
 import SectionHeader from "./section-header";
 
 export default function Cta03() {
@@ -29,12 +30,7 @@ export default function Cta03() {
             description='Find out about our latest product changes as we continue improving Stellar to enable your team to collaborate better.'
             paddingClassname=''
           >
-            <form className="inline-flex max-w-sm w-full mt-8">
-              <div className="w-full flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-none">
-                <input type="email" className="form-input py-1.5 w-full mb-3 sm:mb-0 sm:mr-2 rounded-full bg-slate-800/30 border-slate-700" placeholder="Your email" aria-label="Your email" />
-                  <button className="btn text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group" type="submit">Subscribe <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></button>
-              </div>
-            </form>
+            <NewsletterForm />
           </SectionHeader>
         </div>
       </div>
