@@ -1,6 +1,6 @@
-export default function SupportForm() {
+export default function RefundForm() {
   return (
-    <form className="max-w-xl mx-auto" name="support" method="POST" data-netlify="true" action="/support/success" netlify-honeypot="bot-field">
+    <form className="max-w-xl mx-auto mt-10" name="refund" method="POST" data-netlify="true" action="/refund-policy/success" netlify-honeypot="bot-field">
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="name">Name <span className="text-red-600">*</span></label>
@@ -15,20 +15,14 @@ export default function SupportForm() {
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
-          <label className="block text-gray-300 font-medium mb-1" htmlFor="subject">Subject <span className="text-red-600">*</span></label>
-          <input id="subject" name="subject" type="text" className="form-input w-full text-gray-300" placeholder="How can we help you?" required />
+          <label className="block text-gray-300 font-medium mb-1" htmlFor="order">Order number <span className="text-red-600">*</span></label>
+          <input id="order" name="order" type="text" className="form-input w-full text-gray-300" placeholder="Enter the purchase order number" required />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
-          <label className="block text-gray-300 font-medium mb-1" htmlFor="message">Message <span className="text-red-600">*</span></label>
-          <textarea id="message" name="message" rows={4} className="form-textarea w-full text-gray-300" placeholder="Write your message" required></textarea>
-        </div>
-      </div>
-      <div className="flex flex-wrap -mx-3 mb-4">
-        <div className="w-full px-3">
-          <label className="block text-gray-300 font-medium mb-1" htmlFor="extensions-license-data">License data <span className="text-red-600">*</span></label>
-          <textarea id="extensions-license-data" name="extensions-license-data" rows={4} className="form-textarea w-full text-gray-300" placeholder="Copy/paste the license data, available in the plugin on the 'About > Support' form" required></textarea>
+          <label className="block text-gray-300 font-medium mb-1" htmlFor="message">Reasons for refund <span className="text-red-600">*</span></label>
+          <textarea id="message" name="message" rows={4} className="form-textarea w-full text-gray-300" placeholder="Write detailed reasons for the refund" required></textarea>
         </div>
       </div>
       {/* <div className="flex flex-wrap -mx-3 mb-4">

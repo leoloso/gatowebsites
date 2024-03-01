@@ -1,4 +1,4 @@
-import SupportForm from "@/components/forms/contact"
+import SupportForm from "@/components/forms/support"
 import PageHeader from "@/components/page-header"
 import StunningBackground from "@/components/stunning-background"
 
@@ -7,7 +7,7 @@ export const metadata = {
   description: 'Page description',
 }
 
-export default function Contact() {
+export default function Support() {
   return (
     <section className="relative">
 
