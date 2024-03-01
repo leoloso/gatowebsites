@@ -5,14 +5,14 @@ export const metadata = {
 
 import Hero from '@/components/howdy-hero'
 import HowdyMain from '@/components/howdy-main'
-import HowdyFooter from '@/components/howdy-footer'
+import Cta from '@/components/cta-02'
 
 export default function Howdy() {
   return (
     <>
       <Hero />
       <HowdyMain />
-      <HowdyFooter />
+      <Cta />
     </>
   )
 }
