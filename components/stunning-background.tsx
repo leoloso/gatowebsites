@@ -14,7 +14,7 @@ export default function StunningBackground({
         <>
           {/* Illustration 02 */}
           <div className="md:block absolute left-1/2 -translate-x-1/2 bottom-0 -mb-16 blur-2xl opacity-90 pointer-events-none -z-10" aria-hidden="true">
-            <Image src={Illustration02} className="max-w-none" width={1440} height={427} alt="Page Illustration 02" />
+            <Image src={Illustration02} className="max-w-none" width={1440} height={427} alt="Page Illustration 02" priority />
           </div>
 
           {/* Opacity layer */}
@@ -33,7 +33,7 @@ export default function StunningBackground({
 
       {/* Illustration */}
       <div className="md:block absolute left-1/2 -translate-x-1/2 -mt-16 blur-2xl opacity-90 pointer-events-none -z-10" aria-hidden="true">
-        <Image src={Illustration} className="max-w-none" width={1440} height={427} alt="Page Illustration" />
+        <Image src={Illustration} className="max-w-none" width={1440} height={427} alt="Page Illustration" priority />
       </div>
     </>
   )
