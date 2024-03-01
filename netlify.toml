@@ -125,7 +125,12 @@
 # Campaigns
 [[redirects]]
   from = "/raffle"
-  to = "/black-friday"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/black-friday"
+  to = "/"
   status = 302
 
 [[redirects]]
