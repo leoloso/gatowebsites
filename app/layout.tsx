@@ -3,8 +3,6 @@ import './css/style.css'
 import { Inter } from 'next/font/google'
 import AppSettings from '@/app/app.settings'
 import PlausibleProvider from 'next-plausible'
-import Script from 'next/script'
-import AppConfig from './app.config'
 import LemonSqueezyScriptProvider from '@/components/scripts/lemonsqueezy'
 
 const inter = Inter({
