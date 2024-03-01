@@ -24,10 +24,11 @@ export default async function SinglePage() {
   if (!page) notFound()
 
   return (
-    <PageSection
-      page={page}
-    >
+    <>
+      <PageSection
+        page={page}
+      />
       <Cta />
-    </PageSection>
+    </>
   )
 }
