@@ -3,7 +3,7 @@ import './css/style.css'
 import { Inter } from 'next/font/google'
 import AppSettings from '@/app/app.settings'
 import PlausibleProvider from 'next-plausible'
-import Script from 'next/script'
+import LemonSqueezyScriptProvider from '@/components/scripts/lemonsqueezy'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -27,11 +27,7 @@ export default function RootLayout({
         {/* @see https://github.com/4lejandrito/next-plausible?tab=readme-ov-file#usage */}
         <PlausibleProvider domain="gatographql.com" />
 
-        {/* @see https://docs.lemonsqueezy.com/help/lemonjs/what-is-lemonjs#loading-lemon-js-in-next-js */}
-        <Script
-          src="https://assets.lemonsqueezy.com/lemon.js"
-          strategy="afterInteractive"
-        ></Script>
+        <LemonSqueezyScriptProvider />
       </head>
       <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
         {children}

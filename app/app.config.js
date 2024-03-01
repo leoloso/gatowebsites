@@ -45,6 +45,9 @@ module.exports = {
     newsletter: {
       formActionURL: "https://shop.gatographql.com/email-subscribe/external",
       emailFieldName: "email",
+    },
+    shop: {
+      affiliateTrackingShopSlug: "gatographql"
     }
   }
 }
