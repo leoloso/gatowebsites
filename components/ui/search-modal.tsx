@@ -55,7 +55,7 @@ export default function SearchModal({
                 </label>
                 <input
                   id="search-modal"
-                  className="text-sm text-slate-700 dark:text-slate-200 w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500"
+                  className="text-sm text-slate-700 bg-white dark:text-slate-200 dark:bg-slate-800 dark:placeholder:text-slate-500 w-full border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4"
                   type="search"
                   placeholder={placeholder}
                 />
