@@ -39,12 +39,12 @@ export default function RootLayout({
         {/* @see: https://docs.lemonsqueezy.com/guides/tutorials/affiliate-landing-pages */}
         {process.env.NODE_ENV === 'production' && (
           <>
-            <script>{`
+            <script dangerouslySetInnerHTML={{__html: `
               window.lemonSqueezyAffiliateConfig = {
                 store: "${AppConfig.services.shop.affiliateTrackingShopSlug}",
                 trackOnLoad: false
               };
-            `}</script>
+            `}} />
             <script src="https://lmsqueezy.com/affiliate.js" defer></script>
           </>
         )}
