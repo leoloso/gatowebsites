@@ -2,6 +2,7 @@ import './css/style.css'
 
 import { Inter } from 'next/font/google'
 import AppSettings from '@/app/app.settings'
+import PlausibleProvider from 'next-plausible'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -21,6 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>{/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}{/* Comment: Added for the Docs template */}
+      <head>
+        <PlausibleProvider domain="gatographql.com" />
+      </head>
       <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
         {children}
       </body>
