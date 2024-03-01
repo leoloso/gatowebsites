@@ -59,6 +59,12 @@ export default function SearchModal({
                   type="search"
                   placeholder={placeholder}
                 />
+                <button
+                  id="search-button"
+                  className="btn text-sm text-white bg-purple-500 hover:bg-purple-600 shadow-sm group"
+                >
+                  Search <span className="tracking-normal text-purple-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+                </button>
               </div>
             </form>
             <div className="py-4 px-2 space-y-4">
