@@ -28,10 +28,11 @@ export default function RootLayout({
         <PlausibleProvider domain="gatographql.com" />
 
         {/* @see https://docs.lemonsqueezy.com/help/lemonjs/what-is-lemonjs#loading-lemon-js-in-next-js */}
-        <Script
+        <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+        {/* <Script
           src="https://assets.lemonsqueezy.com/lemon.js"
           strategy="afterInteractive"
-        ></Script>
+        ></Script> */}
       </head>
       <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
         {children}
