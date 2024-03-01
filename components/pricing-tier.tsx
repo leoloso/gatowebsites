@@ -5,6 +5,7 @@ export default function PricingTier({
   highlight,
   buttonLabel,
   buttonURL,
+  buttonClassname = '',
 }: {
   name: string,
   price: number,
@@ -12,6 +13,7 @@ export default function PricingTier({
   highlight?: boolean,
   buttonLabel: string,
   buttonURL: string,
+  buttonClassname?: string,
 }) {
   const isPRO = price !== 0
   return (
@@ -29,7 +31,7 @@ export default function PricingTier({
         )}
       </div>
       <div className="border-b border-slate-800">
-        <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-purple-700 hover:bg-purple-800' : (isPRO ? 'text-white bg-purple-500 hover:bg-purple-600' : 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white')}`} href={buttonURL}>
+        <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-purple-700 hover:bg-purple-800' : (isPRO ? 'text-white bg-purple-500 hover:bg-purple-600' : 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white')} ${buttonClassname}`} href={buttonURL}>
           {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-purple-500' : (isPRO ? 'text-purple-300' : 'text-purple-500')}`}>-&gt;</span>
         </a>
       </div>

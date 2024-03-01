@@ -6,3 +6,7 @@ export function getLemonSqueezyShopURL(url: string) {
   }
   return url
 }
+
+export function getLemonSqueezyShopAnchorClassname() {
+  return 'lemonsqueezy-button'
+}
