@@ -29,24 +29,29 @@ export default function RootLayout({
         <PlausibleProvider domain="gatographql.com" />
 
         {/* @see https://docs.lemonsqueezy.com/help/lemonjs/what-is-lemonjs#loading-lemon-js-in-next-js */}
-        <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
-        {/* <Script
+        {/* <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script> */}
+        <Script
+          id="lemonsqueezy-lemon"
           src="https://assets.lemonsqueezy.com/lemon.js"
           strategy="afterInteractive"
-        ></Script> */}
+        ></Script>
 
         {/* LemonSqueezy affiliate tracking script */}
         {/* @see: https://docs.lemonsqueezy.com/guides/tutorials/affiliate-landing-pages */}
         {process.env.NODE_ENV === 'production' && (
-          <>
-            <script>{`
+          <Script
+            id="lemonsqueezy-affiliate-tracking"
+            src="https://lmsqueezy.com/affiliate.js"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
               window.lemonSqueezyAffiliateConfig = {
                 store: "${AppConfig.services.shop.affiliateTrackingShopSlug}",
                 trackOnLoad: false
               };
-            `}</script>
-            <script src="https://lmsqueezy.com/affiliate.js" defer></script>
-          </>
+            `,
+            }}
+          ></Script>
         )}
       </head>
       <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
