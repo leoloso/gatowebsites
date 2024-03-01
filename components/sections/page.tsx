@@ -48,9 +48,14 @@ export default function PageSection({
 
               {/* Article image */}
               {page.image &&
-                <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="600">
-                  <Image className="w-full" src={page.image} width={1024} height={576} alt={page.title} priority />
-                </figure>
+                <>
+                  <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="600">
+                    <Image className="w-full" src={page.image} width={1024} height={576} alt={page.title} priority />
+                  </figure>
+                  {/* <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[56.25%] overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
+                    <Image className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out" src={page.image} width={1024} height={576} alt={page.title} priority />
+                  </figure> */}
+                </>
               }
 
               {/* Article content */}
