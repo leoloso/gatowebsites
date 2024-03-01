@@ -1,4 +1,5 @@
 import ContactForm from "@/components/forms/contact"
+import PageHeader from "@/components/page-header"
 import StunningBackground from "@/components/stunning-background"
 
 export const metadata = {
@@ -16,10 +17,11 @@ export default function Contact() {
         <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
           {/* Page header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h1 mb-4" data-aos="fade-up">How can we help you?</h1>
-            <p className="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="200">Tell us your needs, and we'll contact you shortly.</p>
-          </div>
+          <PageHeader
+            leading='Contact us'
+            title="How can we help you?"
+            description="Tell us your needs, and we'll contact you shortly."
+          />
 
           <ContactForm />
 
