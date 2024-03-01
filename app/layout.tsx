@@ -26,11 +26,11 @@ export default function RootLayout({
       <head>
         {/* @see https://github.com/4lejandrito/next-plausible?tab=readme-ov-file#usage */}
         <PlausibleProvider domain="gatographql.com" />
-        
+
         {/* @see https://docs.lemonsqueezy.com/help/lemonjs/what-is-lemonjs#loading-lemon-js-in-next-js */}
         <Script
           src="https://assets.lemonsqueezy.com/lemon.js"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         ></Script>
       </head>
       <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
