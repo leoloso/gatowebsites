@@ -61,9 +61,9 @@ export default function SearchModal({
                 />
                 <button
                   id="search-button"
-                  className="btn text-sm text-white bg-purple-500 hover:bg-purple-600 shadow-sm group"
+                  className="btn text-sm text-slate-700 bg-white dark:text-slate-200 dark:bg-slate-900 hover:bg-slate-600 dark:hover:bg-slate-700 shadow-sm group"
                 >
-                  Search <span className="tracking-normal text-purple-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+                  Search <span className="tracking-normal text-slate-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                 </button>
               </div>
             </form>
