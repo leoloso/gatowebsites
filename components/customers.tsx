@@ -14,7 +14,7 @@ export default function Customers() {
     {
       img: CustomerImg01,
       quote: "You have built an incredibly well-thought out and powerful tool—plus the support material is stellar.",
-      name: 'Quint',
+      name: 'Quint R.',
       // twitter: {
       //   handle: '@MikeSmets',
       //   link: '#0'
@@ -23,7 +23,7 @@ export default function Customers() {
     {
       img: CustomerImg08,
       quote: "We loved this plugin and are annoyed that it’s better than a similar thing we are working on 😂 (we have a network of news sites and Gato GraphQL will save us a lot of time!)",
-      name: 'Joebe',
+      name: 'Joebe W.',
       // twitter: {
       //   handle: '@mike0point7',
       //   link: '#0'
@@ -32,7 +32,7 @@ export default function Customers() {
     {
       img: CustomerImg04,
       quote: "Amazing! I have translated most of my posts and pages, this was brilliant. Gato GraphQL saved me a fortune and hours of time and effort.",
-      name: 'Patrick',
+      name: 'Patrick T.',
       // twitter: {
       //   handle: '@liz-park82',
       //   link: '#0'
@@ -41,7 +41,7 @@ export default function Customers() {
     {
       img: CustomerImg06,
       quote: "This plugin is extraordinary, it unlocks a new world of possibilities within WordPress.",
-      name: 'Nathan',
+      name: 'Nathan W.',
       // twitter: {
       //   handle: '@jessiem9',
       //   link: '#0'
@@ -50,7 +50,7 @@ export default function Customers() {
     {
       img: CustomerImg09,
       quote: "A very good developer toolkit with many features and tons of guides on the website.",
-      name: 'Louis',
+      name: 'Louis G.',
       // twitter: {
       //   handle: '@deva07p',
       //   link: '#0'
@@ -59,7 +59,7 @@ export default function Customers() {
     {
       img: CustomerImg02,
       quote: "This plugin brings all of the power of GraphQL to WordPress, but adding easier entry points for non-developers",
-      name: 'David',
+      name: 'David W.',
       // twitter: {
       //   handle: '@mark-gerk',
       //   link: '#0'
