@@ -7,9 +7,6 @@ import { SnippetMdx } from './mdx/snippet-mdx'
 export default function Story() {
   const snippetSlug = 'story'
   const snippet = getSnippet(snippetSlug)
-  if (!snippet) {
-    throw new Error(`There is no Snippet with slug ${snippetSlug}`)
-  }
   return (
     <section className="relative">
 
