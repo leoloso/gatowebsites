@@ -8,7 +8,7 @@ export default function PostItem({ post }: {
   post: Post
 }) {
   return (
-    <article className="flex items-center py-4 border-b border-gray-200">
+    <article className="flex items-center pt-4 pb-8 mb-4 border-b border-gray-200">
       <div>
         <header>
           <h2 className="h4 mb-2">
