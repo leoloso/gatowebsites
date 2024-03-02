@@ -1,17 +1,19 @@
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import PostLink from './link'
 import PostImage from './image'
+import PostBanner from './banner'
 
 const mdxComponents = {
   Link: PostLink,
   Image: PostImage,
+  Banner: PostBanner,
 }
 
 interface StoryMdxProps {
   code: string
 }
 
-export function StoryMdx({ code }: StoryMdxProps) {
+export function SnippetMdx({ code }: StoryMdxProps) {
   const Component = useMDXComponent(code)
 
   return (
