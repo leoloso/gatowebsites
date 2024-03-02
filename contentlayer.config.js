@@ -102,6 +102,18 @@ const Page = defineDocumentType(() => ({
   },
 }))
 
+const Snippet = defineDocumentType(() => ({
+  name: 'Snippet',
+  filePathPattern: `snippets/**/*.mdx`,
+  contentType: 'mdx',
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/snippets\/?/, ''),
+    },    
+  },
+}))
+
 const VideoPost = defineDocumentType(() => ({
   name: 'VideoPost',
   filePathPattern: `${AppConfig.paths.videoPosts}/**/*.mdx`,
@@ -314,7 +326,7 @@ const NameURLPair = defineNestedType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Update, Post, Page, VideoPost, Doc, DocTopic, Extension, Feature],
+  documentTypes: [Update, Post, Page, Snippet, VideoPost, Doc, DocTopic, Extension, Feature],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

@@ -1,8 +1,15 @@
 import Image from 'next/image'
-import Team from '@/public/assets/theme/team.jpg'
+import FounderPic from '@/public/assets/team/Leo.jpg'
 import SectionHeader from './section-header'
+import { getSnippet } from '@/utils/snippet'
+import { StoryMdx } from './mdx/story-mdx'
 
 export default function Story() {
+  const snippetSlug = 'story'
+  const snippet = getSnippet(snippetSlug)
+  if (!snippet) {
+    throw new Error(`There is no Snippet with slug ${snippetSlug}`)
+  }
   return (
     <section className="relative">
 
@@ -30,27 +37,10 @@ export default function Story() {
 
             <div className="md:flex justify-between space-x-6 md:space-x-8 lg:space-x-14">
               <figure className="min-w-[240px]">
-                <Image className="sticky top-24 mx-auto mb-12 md:mb-0 rounded-lg -rotate-[4deg]" src={Team} width={420} height={280} alt="Team" />
+                <Image className="sticky top-24 mx-auto mb-12 md:mb-0 rounded-lg -rotate-[2deg]" src={FounderPic} width={400} height={533} alt="FounderPic" />
               </figure>
               <div className="max-w-[548px] mx-auto">
-                <div className="text-slate-400 space-y-6">
-                  <p>
-                    We came together over a shared excitement about building a product that could solve our own problem of where our next favourite hack is coming from. But also a product that helps everyone thrive in this market: from founders and engineers to companies and investors.
-                  </p>
-                  <p>
-                    Stellar is a product that connects people around the topics and ideas that fascinate them. <strong className="text-slate-50 font-medium">The idea that we can use technology to take our experience</strong>, as security lovers, to a new dimension and leave the computer industry in better shape while we're at it.
-                  </p>
-                  <p>
-                    You can dive into the atoms that make up a product, share the moments that move you and discuss the ideas you find compelling. We want to create a ground for <strong className="text-slate-50 font-medium">discussion and bring knowledge together</strong>, while making it more accessible and easier to grasp.
-                  </p>
-                  <p>
-                    Contrary to popular belief, this product is not random security. It has roots in a piece of classical literature, making it over 5 years old. Richard McClintock, a professor at <a className="text-purple-500 font-medium hover:underline" href="#0">Hampden-Sydney College</a> in Virginia, looked up one of the more obscure words, consectetur from a passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-                  </p>
-                  <p>
-                    We all thrive on learning something new every day and everyone is constantly trying on different hats. We are working with new technologies while rethinking an old industry and are excited about all the possibilities and opportunities to innovate.
-                    It's a problem deeply ingrained in traditional sectors like startups and the wider service industry but which has been compounded in the past five to ten years by the emergence of the mostly tech-powered gig economy which has created a new generation of shift workers and indeed
-                  </p>
-                </div>
+                <StoryMdx code={snippet.body.code} />
               </div>
             </div>
 

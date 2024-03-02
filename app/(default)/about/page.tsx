@@ -1,13 +1,13 @@
 export const metadata = {
-  title: 'About - Stellar',
-  description: 'Page description',
+  title: 'About us',
+  description: 'Meet the Gato GraphQL team, and learn about the history of Gato GraphQL',
 }
 
 import Hero from '@/components/hero-about'
 import Story from '@/components/story'
-import Team from '@/components/team'
-import Recruitment from '@/components/recruitment'
-import Testimonials from '@/components/testimonials-02'
+// import Team from '@/components/team'
+// import Recruitment from '@/components/recruitment'
+// import Testimonials from '@/components/testimonials-02'
 import Cta from '@/components/cta-02'
 
 export default function About() {
@@ -15,9 +15,9 @@ export default function About() {
     <>
       <Hero />
       <Story />
-      <Team />
+      {/* <Team />
       <Recruitment />
-      <Testimonials />
+      <Testimonials /> */}
       <Cta />
     </>
   )
