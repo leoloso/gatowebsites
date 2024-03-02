@@ -11,7 +11,7 @@ interface StoryMdxProps {
   code: string
 }
 
-export function StoryMdx({ code }: StoryMdxProps) {
+export function SnippetMdx({ code }: StoryMdxProps) {
   const Component = useMDXComponent(code)
 
   return (

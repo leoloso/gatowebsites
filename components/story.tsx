@@ -2,7 +2,7 @@ import Image from 'next/image'
 import FounderPic from '@/public/assets/team/Leo.jpg'
 import SectionHeader from './section-header'
 import { getSnippet } from '@/utils/snippet'
-import { StoryMdx } from './mdx/story-mdx'
+import { SnippetMdx } from './mdx/snippet-mdx'
 
 export default function Story() {
   const snippetSlug = 'story'
@@ -40,7 +40,7 @@ export default function Story() {
                 <Image className="sticky top-24 mx-auto mb-12 md:mb-0 rounded-lg -rotate-[2deg]" src={FounderPic} width={400} height={533} alt="Founder pic" />
               </figure>
               <div className="max-w-[548px] mx-auto">
-                <StoryMdx code={snippet.body.code} />
+                <SnippetMdx code={snippet.body.code} />
               </div>
             </div>
 
