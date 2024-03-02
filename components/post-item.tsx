@@ -19,14 +19,16 @@ export default function PostItem({ post }: {
         <footer className="text-sm">
           <div className="flex items-center">
             <div className="flex shrink-0 mr-3">
-              <a className="relative" href="#0">
+              <span className="relative">
                 <span className="absolute inset-0 -m-px" aria-hidden="true"><span className="absolute inset-0 -m-px bg-white rounded-full"></span></span>
                 <Image className="relative rounded-full" src={post.authorImg} width={32} height={32} alt={post.author} />
-              </a>
+              </span>
             </div>
             <div>
               <span className="text-gray-400">By </span>
-              <a className="font-medium hover:underline" href="#0">{post.author}</a>
+              <span className="font-medium">
+                {post.author}
+              </span>
               <span className="text-gray-400"> · <PostDate dateString={post.publishedAt} /></span>
             </div>
           </div>
