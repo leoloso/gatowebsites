@@ -13,7 +13,7 @@ order: 2600
 # - 'php-functions-via-schema'
 ---
 
-The [**HTTP Client**](/extensions/http-client/) extension allows us to execute HTTP requests against a webserver.
+The **[HTTP Client](/extensions/http-client/)** extension allows us to execute HTTP requests against a webserver.
 
 This tutorial lesson demonstrates how to fetch data from an external API, by:
 
@@ -32,7 +32,7 @@ curl --request GET \
 
 Let's replicate this in Gato GraphQL.
 
-We execute an HTTP request via global field `_sendHTTPRequest` (provided via the [**HTTP Client**](/extensions/http-client/) extension):
+We execute an HTTP request via global field `_sendHTTPRequest` (provided via the **[HTTP Client](/extensions/http-client/)** extension):
 
 ```graphql
 query {
@@ -80,7 +80,7 @@ Field `_sendHTTPRequest` returns an object of type `HTTPResponse`. After executi
 }
 ```
 
-As the content-type of the response is `application/json`, we can trasform the raw body content from `String` to `JSONObject` via field `_strDecodeJSONObject` (from the [**PHP Functions Via Schema**](/extensions/php-functions-via-schema/) extension):
+As the content-type of the response is `application/json`, we can trasform the raw body content from `String` to `JSONObject` via field `_strDecodeJSONObject` (from the **[PHP Functions Via Schema](/extensions/php-functions-via-schema/)** extension):
 
 ```graphql
 query {
@@ -185,7 +185,7 @@ The body is now accessible as a JSON object:
 
 ## Connecting to a REST API
 
-[**HTTP Client**](/extensions/http-client/) also provides function fields that already handle responses of content-type `application/json`, making these suitable for connecting to REST APIs:
+**[HTTP Client](/extensions/http-client/)** also provides function fields that already handle responses of content-type `application/json`, making these suitable for connecting to REST APIs:
 
 - `_sendJSONObjectItemHTTPRequest`: When the content pertains a single JSON object
 - `_sendJSONObjectCollectionHTTPRequest`: When the content pertains a collection of JSON objects
@@ -441,7 +441,7 @@ Passing these variables:
 
 {/* <!-- (As the Mailchimp API doesn't support GraphQL, we switch to a different API for this example.) --> */}
 
-[**HTTP Client**](/extensions/http-client/) also provides a function field to conveniently connect to GraphQL APIs.
+**[HTTP Client](/extensions/http-client/)** also provides a function field to conveniently connect to GraphQL APIs.
 
 Field `_sendGraphQLHTTPRequest` accepts those inputs expected by GraphQL (the query, variables and operation name), executes the GraphQL query against the provided endpoint, and converts the response to `JSONObject`.
 
@@ -534,7 +534,7 @@ Passing these `variables`:
 
 <Banner type="info">
 
-If we must execute the same HTTP request repeatedly, we can use the `@cache` directive (provided by the [**Field Resolution Caching**](/extensions/field-resolution-caching/)) to store the result in disk for a requested amount of time, thus speeding up the query resolution.
+If we must execute the same HTTP request repeatedly, we can use the `@cache` directive (provided by the **[Field Resolution Caching](/extensions/field-resolution-caching/)**) to store the result in disk for a requested amount of time, thus speeding up the query resolution.
 
 When executing this query twice within a span of 10 seconds (as indicated via argument `@cache(time:)`), the second time will retrieve the cached result; this will make it faster, as it will not connect to the external host:
 
@@ -875,7 +875,7 @@ Back to Mailchimp's API, let's extract the list of all the email addresses from 
 }
 ```
 
-The [**Field Value Iteration and Manipulation**](/extensions/field-value-iteration-and-manipulation/) extension provides [composable directives](/guides/schema/using-composable-directives/) that iterate over the inner elements of arrays or objects, and apply their nested directive(s) under those elements:
+The **[Field Value Iteration and Manipulation](/extensions/field-value-iteration-and-manipulation/)** extension provides [composable directives](/guides/schema/using-composable-directives/) that iterate over the inner elements of arrays or objects, and apply their nested directive(s) under those elements:
 
 - `@underArrayItem`: Operate on a specific item from the array
 - `@underJSONObjectProperty`: Operate on a specific entry from the JSON object

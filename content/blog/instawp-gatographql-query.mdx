@@ -211,7 +211,7 @@ Let's explore the features used in this query.
 
 We need to provide our credentials when connecting to the Mailchimp API. However, we do not want to directly input these in the GraphQL query, as they [may leak somewhere](/tutorial/not-leaking-credentials-when-connecting-to-services/) (eg: they could be printed in some log).
 
-That's why we use global field `_env` (provided by the [PHP Constants and Environment via Schema](/extensions/php-constants-and-environment-variables-via-schema/) extension) to read an environment variable or PHP constant, together with the `@remove` directive (provided by the [**Field Response Removal**](/extensions/field-response-removal/) extension) to skip printing the credentials in the response.
+That's why we use global field `_env` (provided by the [PHP Constants and Environment via Schema](/extensions/php-constants-and-environment-variables-via-schema/) extension) to read an environment variable or PHP constant, together with the `@remove` directive (provided by the **[Field Response Removal](/extensions/field-response-removal/)** extension) to skip printing the credentials in the response.
 
 Now, we can declare our credentials in `wp-config.php`:
 
