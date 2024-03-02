@@ -1,8 +1,15 @@
 import Image from 'next/image'
 import FounderPic from '@/public/assets/team/Leo.jpg'
 import SectionHeader from './section-header'
+import { getSnippet } from '@/utils/snippet'
+import { PostMdx } from './mdx/post-mdx'
 
 export default function Story() {
+  const snippetSlug = 'story'
+  const snippet = getSnippet(snippetSlug)
+  if (!snippet) {
+    throw new Error(`There is no Snippet with slug ${snippetSlug}`)
+  }
   return (
     <section className="relative">
 
@@ -34,17 +41,7 @@ export default function Story() {
               </figure>
               <div className="max-w-[548px] mx-auto">
                 <div className="text-slate-400 space-y-6">
-                  <p>Gato GraphQL is the creation of <a className="text-purple-500 font-medium hover:underline" href="https://leoloso.com" target="_blank">Leonardo Losoviz</a>, a developer who started coding for WordPress in 2012, and using GraphQL since 2019.</p>
-                  <p>Leo has been working on making WordPress the single source of truth for all our content, as expressed in his article <a className="text-purple-500 font-medium hover:underline" href="https://www.smashingmagazine.com/2019/10/create-once-publish-everywhere-wordpress/" target="_blank">“Create Once, Publish Everywhere” with WordPress</a>, from 2019.</p>
-                  <p>With the advent of GraphQL and the WordPress block editor (aka Gutenberg) around that same time, Leo understood that these could provide the foundation to achieve the sought-after goal:</p>
-                  <ul>
-                  <li>Use the block editor to store structured data in WordPress</li>
-                  <li>Use GraphQL to retrieve that data, for any client and application</li>
-                  </ul>
-                  <p>And hence, work on what would end-up being Gato GraphQL commenced.</p>
-                  <p>During this process, it was discovered that GraphQL is more powerful than commonly known, and that it could be used for more use cases than just retrieving data for a client.</p>
-                  <p>With this realization, Leo designed Gato GraphQL as a tool to retrieve any piece of data in WordPress, transform the data in any desired way, and store the data again to the DB, or execute some operation with it.</p>
-                  <p>This was a formidable proposition, and it took 5 years of development to come to completion: In January 2024, <a className="text-purple-500 font-medium hover:underline" href="https://wordpress.org/plugins/gatographql/">Gato GraphQL was released in the WordPress plugin directory</a>.</p>
+                  <PostMdx code={snippet.body.code} />
                 </div>
               </div>
             </div>
