@@ -1,5 +1,5 @@
 ---
-title: "🥳 GraphQL API v0.9 has been released!"
+title: "🥳 Gato GraphQL v0.9 has been released!"
 summary: TL;DR of the most important changes
 image: /images/graphql-logo-with-name-square.jpg
 publishedAt: '2023-01-12'
@@ -11,7 +11,7 @@ tags:
   - plugin
 ---
 
-After almost 1.5 years of development, and over 16000 commits, a new version of the GraphQL API for WordPress has been finally released! 🥳
+After almost 1.5 years of development, and over 16000 commits, a new version of Gato GraphQL has been finally released! 🥳
 
 <div className="flex justify-center"><Link className="not-prose btn text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group mb-4" href="https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip">Download the latest Gato GraphQL release</Link></div>
 
@@ -165,7 +165,7 @@ The response is the following:
 
 ## Enable unsafe default settings
 
-The GraphQL API for WordPress provides safe default settings:
+Gato GraphQL provides safe default settings:
 
 - The single endpoint is disabled
 - The “sensitive” data elements in the GraphQL schema (such as `User.roles`, or filtering posts by `status`) are not exposed
@@ -286,7 +286,7 @@ extend type __EnumValue {
 
 The underlying GraphQL server powering the plugin can now be installed and executed as a standalone PHP component, i.e. independently of WordPress.
 
-This opens the doors to using the GraphQL API with other frameworks (eg: Laravel), and on any PHP environment, whether WordPress is available or not (such as when executing a Continous Integration task).
+This opens the doors to using Gato GraphQL with other frameworks (eg: Laravel), and on any PHP environment, whether WordPress is available or not (such as when executing a Continous Integration task).
 
 ## Browse documentation when editing a Schema Configuration, Custom Endpoint and Persisted Query
 

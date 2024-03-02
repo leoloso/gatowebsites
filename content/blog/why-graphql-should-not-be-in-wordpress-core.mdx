@@ -46,15 +46,15 @@ Because GraphQL will not provide a previously-unavailable functionality, then it
 
 ## 3. WordPress themes and plugins can use `webonyx/graphql-php`
 
-Public plugins cannot require a website to install either WPGraphQL or the GraphQL API for WP in order to use the plugin, since that will diminish their potential reach. As such, [public plugins cannot rely on GraphQL](https://www.smashingmagazine.com/2021/04/making-graphql-work-in-wordpress/#use-graphql-api-if-distributing-blocks-via-a-plugin), and that's a real pity.
+Public plugins cannot require a website to install either WPGraphQL or Gato GraphQL in order to use the plugin, since that will diminish their potential reach. As such, [public plugins cannot rely on GraphQL](https://www.smashingmagazine.com/2021/04/making-graphql-work-in-wordpress/#use-graphql-api-if-distributing-blocks-via-a-plugin), and that's a real pity.
 
 I thought hard about this issue, and I came up with a potential solution: the [GraphQL API Private](https://github.com/GatoGraphQL/GatoGraphQL/issues/519), a self-contained GraphQL engine that plugins can embed for their own use, distributed as a Composer package. (I haven't started working on this project yet.)
 
-But then, a few weeks ago, a GraphQL-powered WordPress plugin [was released](https://twitter.com/swashata/status/1418387987511996418). I wondered how the author did it: would it be using WPGraphQL or the GraphQL API for WP under the hood? So I checked [its source code](https://plugins.trac.wordpress.org/browser/wpeform-lite/trunk/inc/GraphQL/Schema.php?rev=2570462) and, as it turns out, it's directly using [`webonyx/graphql-php`](https://github.com/webonyx/graphql-php)!
+But then, a few weeks ago, a GraphQL-powered WordPress plugin [was released](https://twitter.com/swashata/status/1418387987511996418). I wondered how the author did it: would it be using WPGraphQL or Gato GraphQL under the hood? So I checked [its source code](https://plugins.trac.wordpress.org/browser/wpeform-lite/trunk/inc/GraphQL/Schema.php?rev=2570462) and, as it turns out, it's directly using [`webonyx/graphql-php`](https://github.com/webonyx/graphql-php)!
 
 This is an interesting solution, which demonstrates that, with a bit of effort, developers currently do have access to GraphQL for their themes and plugins.
 
-This plugin uses GraphQL to fetch its own data entities, and not those of WordPress (posts, users, comments, etc). Then, it doesn't need to recreate the GraphQL schema containing the WordPress data model, as done by WPGraphQL and the GraphQL API for WP (and eventually the GraphQL API Private). As such, relying on `webonyx/graphql-php` makes sense.
+This plugin uses GraphQL to fetch its own data entities, and not those of WordPress (posts, users, comments, etc). Then, it doesn't need to recreate the GraphQL schema containing the WordPress data model, as done by WPGraphQL and Gato GraphQL (and eventually the GraphQL API Private). As such, relying on `webonyx/graphql-php` makes sense.
 
 ![webonyx/graphql-php is a 'PHP port of GraphQL reference implementation'](/images/webonyx-graphql-php.png "webonyx/graphql-php is a 'PHP port of GraphQL reference implementation'")
 
@@ -72,7 +72,7 @@ GraphQL is susceptible to the following attack vectors (among others):
 
 These attacks can be really damaging. In his presentation [Damn GraphQL - Defending and Attacking APIs](https://www.youtube.com/watch?v=EVRf708-zq4), the cybersecurity researcher Dolev Farhi managed to bring down a WordPress site in less than 30 seconds, by attacking the WPGraphQL endpoint with a batch of complex queries.
 
-The WPGraphQL team [fixed the issue immediately](https://github.com/wp-graphql/wp-graphql/releases/tag/v1.3.6). But how can we be sure that no other exploit can take place? (I mean not only WPGraphQL, but [the GraphQL API for WP too](https://github.com/GatoGraphQL/GatoGraphQL/issues/865).)
+The WPGraphQL team [fixed the issue immediately](https://github.com/wp-graphql/wp-graphql/releases/tag/v1.3.6). But how can we be sure that no other exploit can take place? (I mean not only WPGraphQL, but [Gato GraphQL too](https://github.com/GatoGraphQL/GatoGraphQL/issues/865).)
 
 These attacks can happen with GraphQL, and not with REST, because GraphQL is more powerful than REST. While in REST the query is defined in advance and stored in the server, in GraphQL it is provided on runtime by the client (unless using [persisted queries](/features/persisted-queries)).
 

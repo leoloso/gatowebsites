@@ -1,5 +1,5 @@
 ---
-title: "🤔 Why did the new GraphQL API take 1.5 years to be released?"
+title: "🤔 Why did the new Gato GraphQL take 1.5 years to be released?"
 summary: A story that took a long time to be written
 image: /images/waiting-meme.jpg
 publishedAt: '2023-01-26'
@@ -11,7 +11,7 @@ tags:
   - plugin
 ---
 
-Version `0.9` of the GraphQL API for WordPress was [just released](/blog/released-graphql-api-v09). It took almost 1.5 years of development, and over 16000 commits, to be ready. That's a long time indeed!
+Version `0.9` of Gato GraphQL was [just released](/blog/released-graphql-api-v09). It took almost 1.5 years of development, and over 16000 commits, to be ready. That's a long time indeed!
 
 Upon sharing the announcement on Hacker News, I [got the following question](https://news.ycombinator.com/item?id=34354179#34355592):
 
@@ -37,11 +37,11 @@ First, I'll share a bit of the history of the engine, and technical details of h
 
 (This is mostly relevant to developers; if you're not interested in technical stuff, be welcome to skip to the next section.)
 
-The GraphQL API for WordPress is based on top of PoP, an engine that renders components in PHP (similar to React or Vue on JavaScript). Its dependency on this engine is absolute, which is why the plugin is hosted under the [`GatoGraphQL/GatoGraphQL` monorepo in GitHub](https://github.com/GatoGraphQL/GatoGraphQL).
+Gato GraphQL is based on top of PoP, an engine that renders components in PHP (similar to React or Vue on JavaScript). Its dependency on this engine is absolute, which is why the plugin is hosted under the [`GatoGraphQL/GatoGraphQL` monorepo in GitHub](https://github.com/GatoGraphQL/GatoGraphQL).
 
 Under the hood, this dependency looks like this:
 
-The GraphQL API for WordPress resolves a GraphQL query by first [transforming it into an equivalent component model](https://graphql-by-pop.com/docs/architecture/using-components-instead-of-graphs.html), which PoP then resolves by fetching all required data, and then [this data is given the shape of the GraphQL query](https://graphql-by-pop.com/docs/architecture/dataloading-engine.html#analyzing-the-time-complexity-of-the-solution).
+Gato GraphQL resolves a GraphQL query by first [transforming it into an equivalent component model](https://graphql-by-pop.com/docs/architecture/using-components-instead-of-graphs.html), which PoP then resolves by fetching all required data, and then [this data is given the shape of the GraphQL query](https://graphql-by-pop.com/docs/architecture/dataloading-engine.html#analyzing-the-time-complexity-of-the-solution).
 
 When I started working on PoP sometime around 2013/2014, there was no GraphQL, and the methodology for resolving a component model into data was designed and implemented from scratch. The lack of having a model to follow (such as GraphQL for concepts, and the [`graphql-js` reference project](https://github.com/graphql/graphql-js) for an implementation) has been both a hindrance and a blessing, as I'll explain later on.
 
@@ -75,7 +75,7 @@ This meant that the PoP project had to be repurposed, from being a PHP library t
 
 The codebase then underwent a massive transformation, introducing the GraphQL AST as the foundation to communicate state across all PHP services in the engine. GraphQL AST objects are now the inputs to PoP (instead of query strings).
 
-Other GraphQL servers in PHP rely on [`graphql-php`](https://github.com/webonyx/graphql-php), but plugin GraphQL API for WordPress does not. This is bad news concerning maintenance effort (as I can't reuse what someone else has coded), but good news concerning independence: I can decide to add custom features to my plugin at my own speed, and under my own criterion (which is why the plugin already provides the ["oneof" input object](/guides/augment/oneof-input-object/)).
+Other GraphQL servers in PHP rely on [`graphql-php`](https://github.com/webonyx/graphql-php), but plugin Gato GraphQL does not. This is bad news concerning maintenance effort (as I can't reuse what someone else has coded), but good news concerning independence: I can decide to add custom features to my plugin at my own speed, and under my own criterion (which is why the plugin already provides the ["oneof" input object](/guides/augment/oneof-input-object/)).
 
 And as will be shown in the section below, this is a great advantage.
 
@@ -83,7 +83,7 @@ And as will be shown in the section below, this is a great advantage.
 
 ## Incorporating original features to GraphQL
 
-GraphQL is normally associated with data fetching. Natually, you can retrieve any piece of data (posts, users, comments, etc) from the GraphQL API for WordPress:
+GraphQL is normally associated with data fetching. Natually, you can retrieve any piece of data (posts, users, comments, etc) from Gato GraphQL:
 
 ```graphql
 query {
@@ -307,7 +307,7 @@ query ExtractEmailsFromAPIAndUpperCaseSpecialOnes {
 
 I had mentioned that not being guided by GraphQL was a hindrance, but (in retrospect) also a blessing. This is because I didn't have the constraints of the GraphQL spec, so I could afford to dream of these novel capabilities.
 
-And now that these features have been migrated to the GraphQL API for WordPress, it can be an incredibly useful ally for anything related to content retrieval, manipulation, and transformation for your WordPress site. (Even though they will be accessible only with the upcoming `v1.0`).
+And now that these features have been migrated to Gato GraphQL, it can be an incredibly useful ally for anything related to content retrieval, manipulation, and transformation for your WordPress site. (Even though they will be accessible only with the upcoming `v1.0`).
 
 It took a while, but the effort was certainly worth it.
 

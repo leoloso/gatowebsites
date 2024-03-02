@@ -14,7 +14,7 @@ tags:
 
 A few days ago, WPGraphQL's creator Jason Bahl published [Gutenberg and Decoupled Applications](https://www.wpgraphql.com/2021/03/09/gutenberg-and-decoupled-applications/), analyzing the benefits and shortcomings of 3 approaches to integrating GraphQL with Gutenberg.
 
-A week earlier, he had also [said on Twitter](https://twitter.com/jasonbahl/status/1365713792412184576) that the GraphQL API for WordPress's approach to modeling Gutenberg is inappropriate:
+A week earlier, he had also [said on Twitter](https://twitter.com/jasonbahl/status/1365713792412184576) that Gato GraphQL's approach to modeling Gutenberg is inappropriate:
 
 > This isn’t something to brag about, in my opinion. One thing GraphQL tries to solve with a Typed Schema is providing predictability and consistency for clients, and giving clients control to ask for what they want, down to the field.
 >
@@ -42,15 +42,15 @@ COPE can't solve this issue because, solely from the stored content, we can't re
 - The stored content does not indicate what restrictions the field has (is it nullable? is it a positive integer? is the string for an email or an URL?)
 - Nullable fields can have a default value, which won't be present on the stored content
 
-However, using the COPE strategy, and a single `Block` type to represent all blocks, the GraphQL API plugin can build a very decent integration with Gutenberg, that overcomes the existing limitations.
+However, using the COPE strategy, and a single `Block` type to represent all blocks, Gato GraphQL can build a very decent integration with Gutenberg, that overcomes the existing limitations.
 
 I'll explain throughout this article.
 
-## GraphQL API's integration with Gutenberg
+## Gato GraphQL's integration with Gutenberg
 
 This solution is a work in progress, but I can already explain how it will behave.
 
-Instead of depending on a different type per block (as WPGraphQL does when relying on the [WPGraphQL for Gutenberg](https://github.com/pristas-peter/wp-graphql-gutenberg) plugin), the GraphQL API plugin will provide a single `Block` type to represent all blocks.
+Instead of depending on a different type per block (as WPGraphQL does when relying on the [WPGraphQL for Gutenberg](https://github.com/pristas-peter/wp-graphql-gutenberg) plugin), Gato GraphQL will provide a single `Block` type to represent all blocks.
 
 In this query, the field `Post.blockDataItems` retrieves a list of `Block` elements from the post (for different Gutenberg blocks, including paragraphs, images, lists, and others):
 
@@ -287,7 +287,7 @@ That's it? The whole query? To translate all blocks? Yes.
 
 Will it work for all blocks, from both core and plugins, already existing or yet-to-be-created? Yes.
 
-Does this query look a bit strange to you? If it does, it's because it uses non-standard GraphQL features, supported only by the GraphQL API plugin:
+Does this query look a bit strange to you? If it does, it's because it uses non-standard GraphQL features, supported only by Gato GraphQL:
 
 - `{{ translatablePaths }}` is an embeddable field, to input the value of a field as argument to another field or directive (in this case, the `Block` type will have a field `translatableFields`, whose value is injected to directive `@advancePointersInArray`)
 - directives can [be composed by other directives](/features/composable-directives/)

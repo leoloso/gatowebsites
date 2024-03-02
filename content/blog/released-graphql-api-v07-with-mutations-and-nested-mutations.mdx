@@ -1,5 +1,5 @@
 ---
-title: 🎉 Released GraphQL API v0.7, with support for mutations, and nested mutations!
+title: 🎉 Released Gato GraphQL v0.7, with support for mutations, and nested mutations!
 summary: A new standard feature, and a novel one
 image: /images/mutant-ninja-turtles.jpg
 publishedAt: '2020-12-01'
@@ -13,7 +13,7 @@ tags:
   - release
 ---
 
-Version 0.7 of the [GraphQL API for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp), supporting mutations, and nested mutations, has been released! 🎉
+Version 0.7 of [Gato GraphQL](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp), supporting mutations, and nested mutations, has been released! 🎉
 
 ![Mutations are awesome!](/images/finally-got-mutations.jpg)
 
@@ -23,7 +23,7 @@ Here is a tour showing the new additions.
 
 [GraphQL mutations](https://graphql.org/learn/queries/#mutations) enable to modify data (i.e. perform side-effect) through the query.
 
-Mutations was the big item still missing from the GraphQL API. Now that it's been added, I can claim that this GraphQL server is pretty much feature-complete (only subscriptions are missing, and I'm already [thinking on how to add them](https://github.com/GraphQLAPI/graphql-api-for-wp/issues/61)).
+Mutations was the big item still missing from Gato GraphQL. Now that it's been added, I can claim that this GraphQL server is pretty much feature-complete (only subscriptions are missing, and I'm already [thinking on how to add them](https://github.com/GraphQLAPI/graphql-api-for-wp/issues/61)).
 
 ![Mutation root in the interactive schema](/images/graphql-schema-mutation-root.jpg "Mutation root in the interactive schema")
 
@@ -71,7 +71,7 @@ In this first release, the plugin ships with the following mutations:
 
 Nested mutations is the ability to perform mutations on a type other than the root type in GraphQL.
 
-They have been [requested for the GraphQL spec](https://github.com/graphql/graphql-spec/issues/252) but not yet approved (and may never will), hence GraphQL API adds support for them as an opt-in feature, via the [Nested Mutations](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/docs/en/modules/nested-mutations.md) module.
+They have been [requested for the GraphQL spec](https://github.com/graphql/graphql-spec/issues/252) but not yet approved (and may never will), hence Gato GraphQL adds support for them as an opt-in feature, via the [Nested Mutations](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/docs/en/modules/nested-mutations.md) module.
 
 Then, the plugin supports the 2 behaviors:
 
@@ -153,7 +153,7 @@ For instance, these fields can be considered a "duplicate" of each other:
 - `Root.updatePost`
 - `Post.update`
 
-The GraphQL API enables to keep both of them, or remove the ones from the root type, which are redundant.
+Gato GraphQL enables to keep both of them, or remove the ones from the root type, which are redundant.
 
 Check-out the following 3 schemas:
 

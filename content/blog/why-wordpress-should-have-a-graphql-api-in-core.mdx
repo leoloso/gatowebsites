@@ -92,7 +92,7 @@ As seen earlier on, passing data to the endpoint now looks much more elegant:
 The WP REST API is not the only API for WordPress. There are (at least) two alternatives:
 
 - GraphQL, via [WPGraphQL](https://www.wpgraphql.com/)
-- GraphQL + persisted queries, via the [GraphQL API for WordPress](https://gatographql.com)<br/>(☝🏽 This is me, your host for this blog post ☝🏽)
+- GraphQL + persisted queries, via [Gato GraphQL](https://gatographql.com)<br/>(☝🏽 This is me, your host for this blog post ☝🏽)
 
 [GraphQL](https://graphql.org) is a newish type of API, which excels at batching operations. If using GraphQL, there is no need to spend time and energy developing a custom solution for them, as is the case for REST.
 
@@ -108,7 +108,7 @@ Wouldn't WordPress be better off, and be developed much faster, if it could use 
 
 ## Batch operations in GraphQL
 
-I'll show not one, but several ways in which the GraphQL API for WordPress supports batch operations.
+I'll show not one, but several ways in which Gato GraphQL supports batch operations.
 
 The first one is the simplest one: adding several fields to the root of the query. For instance, this query logs the user in, and then adds a comment:
 
@@ -184,7 +184,7 @@ mutation CreatePostAndAddTwoCommentsToPost {
 }
 ```
 
-But despair not, that the GraphQL API has your back covered. It provides not one, but two solutions!
+But despair not, that Gato GraphQL has your back covered. It provides not one, but two solutions!
 
 ![The GraphQL API cares about you](/images/count-on-you-meme.jpg "The GraphQL API cares about you")
 
