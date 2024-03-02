@@ -1,5 +1,5 @@
 ---
-title: 💁🏻‍♀️ Why the GraphQL API needs a Monorepo, and How it's optimized
+title: 💁🏻‍♀️ Why Gato GraphQL needs a Monorepo, and How it's optimized
 summary: Managing the codebase requires some effort
 image: /images/spaghetti-the-other-end.jpg
 publishedAt: '2021-03-27'
@@ -19,9 +19,9 @@ A few days ago I published article [Hosting all your PHP packages together in a 
 
 Here I'd like to complement that article, explaining a bit more in detail why the [`GatoGraphQL/GatoGraphQL` codebase](https://github.com/GatoGraphQL/GatoGraphQL) (which hosts Gato GraphQL, its underlying engine [GraphQL by PoP](https://graphql-by-pop.com/), and the component-model architecture over which it is based) needs to be hosted on a monorepo, and the optimizations I've made for it.
 
-## Why the GraphQL API needs a monorepo
+## Why Gato GraphQL needs a monorepo
 
-In order to [support CMS-agnosticism](https://graphql-by-pop.com/docs/architecture/cms-agnosticism.html), the codebase for the GraphQL API and associated projects was split into a multitude of packages, managed via Composer. In total, over 100 packages were created! (Currently, the number is over 200.)
+In order to [support CMS-agnosticism](https://graphql-by-pop.com/docs/architecture/cms-agnosticism.html), the codebase for Gato GraphQL and associated projects was split into a multitude of packages, managed via Composer. In total, over 100 packages were created! (Currently, the number is over 200.)
 
 The big number of packages adds no extra complexity for assembling them all together via Composer: we just run `composer install`, and everything works. However, it does become problematic for development when each single package lives on its own repository, because of versioning.
 
@@ -205,7 +205,7 @@ Hence, I have not optimized this scenario yet. I've so far [created the issue](h
 
 ## Wrapping up
 
-I must say I'm extremely happy from discovering the Monorepo Builder. I don't think I could be able to manage the codebase for the GraphQL API otherwise.
+I must say I'm extremely happy from discovering the Monorepo Builder. I don't think I could be able to manage the codebase for Gato GraphQL otherwise.
 
 I'm not saying that every project should use it. But when you have over 200 packages, like in my case, or possibly even over 20, then it absolutely simplifies your life. 
 

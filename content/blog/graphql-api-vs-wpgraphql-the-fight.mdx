@@ -111,11 +111,11 @@ In other words, Gato GraphQL is slowly but steadily getting popular, and it is a
 
 Winner of the round: WPGraphQL.
 
-![It's a hit! WPGraphQL's punch reaches the GraphQL API](/images/box/wpgraphql-hits.jpg "It's a hit! WPGraphQL's punch reaches the GraphQL API")
+![It's a hit! WPGraphQL's punch reaches Gato GraphQL](/images/box/wpgraphql-hits.jpg "It's a hit! WPGraphQL's punch reaches Gato GraphQL")
 
 ### Round 2: Availability of extensions
 
-Extensions enable to interact with other plugins via the GraphQL API.
+Extensions enable to interact with other plugins via Gato GraphQL.
 
 WPGraphQL has extensions for [ACF](https://github.com/wp-graphql/wp-graphql-acf), [WooCommerce](https://github.com/wp-graphql/wp-graphql-woocommerce), [Yoast](https://github.com/ashhitch/wp-graphql-yoast-seo) and a few others.
 
@@ -125,7 +125,7 @@ However, Gato GraphQL has a big emphasis on extensions in its architecture, allo
 
 ![Modules page in Gato GraphQL](/assets/guides/downstream/modules.png "Modules page in Gato GraphQL")
 
-In other words, while WPGraphQL already has extensions, the GraphQL API is preparing the field for them.
+In other words, while WPGraphQL already has extensions, Gato GraphQL is preparing the field for them.
 
 Winner of the round: WPGraphQL.
 
@@ -161,7 +161,7 @@ Both WPGraphQL and Gato GraphQL require PHP 7.1+.
 
 However, there is a difference: Gato GraphQL is actually [coded using PHP 7.4](https://github.com/GatoGraphQL/GatoGraphQL#php-versions), and is then [transpiled to PHP 7.1 for production](https://blog.logrocket.com/transpiling-php-code-from-8-0-to-7-x-via-rector/).
 
-Hence, coding the GraphQL API is much more pleasurable: you can use newer PHP features, including the [`object` type](https://www.php.net/manual/en/migration72.new-features.php#migration72.new-features.object-type), [typed properties](https://www.php.net/manual/en/migration74.new-features.php#migration74.new-features.core.typed-properties) and [arrow functions](https://www.php.net/manual/en/functions.arrow.php). And once support for PHP 8.0 is added (which will happen when the new version of [Lando](https://docs.lando.dev/) is released), you will also be able to use [union types](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.union), the [match expression](https://www.php.net/manual/en/control-structures.match.php), and others.
+Hence, coding Gato GraphQL is much more pleasurable: you can use newer PHP features, including the [`object` type](https://www.php.net/manual/en/migration72.new-features.php#migration72.new-features.object-type), [typed properties](https://www.php.net/manual/en/migration74.new-features.php#migration74.new-features.core.typed-properties) and [arrow functions](https://www.php.net/manual/en/functions.arrow.php). And once support for PHP 8.0 is added (which will happen when the new version of [Lando](https://docs.lando.dev/) is released), you will also be able to use [union types](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.union), the [match expression](https://www.php.net/manual/en/control-structures.match.php), and others.
 
 Winner of the round: Gato GraphQL.
 
@@ -279,7 +279,7 @@ I call this style "ADD": Array-Driven Development. I can't say I'm a fan of it.
 
 ---
 
-In the GraphQL API, all code [is SOLID](https://graphql-by-pop.com/docs/architecture/solid.html). To register a field in the GraphQL schema, we create a class implementing interface [`FieldResolverInterface`](https://github.com/GatoGraphQL/GatoGraphQL/blob//d2d835c8f1c1a8e0f743228fa57ac981d5a4c5ea/layers/Engine/packages/component-model/src/FieldResolvers/FieldResolverInterface.php) (actually, extending from [`AbstractSchemaFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/f805ccafd6240a3467582ff73286b02c0722c25b/layers/Engine/packages/component-model/src/FieldResolvers/AbstractSchemaFieldResolver.php), which has many methods already implemented), and we [register it in the container](https://github.com/GatoGraphQL/GatoGraphQL/blob/992202c713c9857a2537c70d051173bd8bbd2e81/layers/Schema/packages/users/config/schema-services.yaml#L6).
+In Gato GraphQL, all code [is SOLID](https://graphql-by-pop.com/docs/architecture/solid.html). To register a field in the GraphQL schema, we create a class implementing interface [`FieldResolverInterface`](https://github.com/GatoGraphQL/GatoGraphQL/blob//d2d835c8f1c1a8e0f743228fa57ac981d5a4c5ea/layers/Engine/packages/component-model/src/FieldResolvers/FieldResolverInterface.php) (actually, extending from [`AbstractSchemaFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/f805ccafd6240a3467582ff73286b02c0722c25b/layers/Engine/packages/component-model/src/FieldResolvers/AbstractSchemaFieldResolver.php), which has many methods already implemented), and we [register it in the container](https://github.com/GatoGraphQL/GatoGraphQL/blob/992202c713c9857a2537c70d051173bd8bbd2e81/layers/Schema/packages/users/config/schema-services.yaml#L6).
 
 For instance, [this code](https://github.com/getpop/users/blob/4ea244c419ad21bf9297d476180acf9435d9d104/src/FieldResolvers/UserFieldResolver.php) provides fields `username`, `email` and `url` to the `User` type:
 
@@ -360,11 +360,11 @@ We have reached the middle of the fight, so this is good time for a toilet break
 
 ![Sponsor me, to get access to prime advertising for your brand](/images/box/box-arena-screen.jpg "Sponsor me, to get access to prime advertising for your brand")
 
-What a match we have! WPGraphQL was initially all fire and fury! He started the match in great shape, dealing terribly mighty blows to the GraphQL API, who was barely able to stand on his two feet. Blow after blow after blow. I didn't want to be in the GraphQL API's shoes.
+What a match we have! WPGraphQL was initially all fire and fury! He started the match in great shape, dealing terribly mighty blows to Gato GraphQL, who was barely able to stand on his two feet. Blow after blow after blow. I didn't want to be in Gato GraphQL's shoes.
 
-I must admit, I thought after the first 2 rounds, the match would soon be over. I was expecting the knock-down to come at any moment. To see a wavering towel asking for mercy. But the GraphQL API resisted. We have to give it to him. What an unshakable determination, it is truly remarkable!
+I must admit, I thought after the first 2 rounds, the match would soon be over. I was expecting the knock-down to come at any moment. To see a wavering towel asking for mercy. But Gato GraphQL resisted. We have to give it to him. What an unshakable determination, it is truly remarkable!
 
-And then, the transformation happened. Somewhere starting on the 3rd round, the GraphQL API seemed to get some energies out of nowhere, and started not just defending himself, but throwing punches back, many of which landed on WPGraphQL's face. I saw WPGraphQL quiver and shake! We had never seen anything like that, from our current world champion. What a truly remarkable transformation we have just experienced!
+And then, the transformation happened. Somewhere starting on the 3rd round, Gato GraphQL seemed to get some energies out of nowhere, and started not just defending himself, but throwing punches back, many of which landed on WPGraphQL's face. I saw WPGraphQL quiver and shake! We had never seen anything like that, from our current world champion. What a truly remarkable transformation we have just experienced!
 
 And then, having his opponent's confidence shaken, starting on the 4th round GraphQL API took it upon himself to deal a series of lethal blows. That was startling! Luckily facing him is our world champion, the WPGraphQL, and he could withstand the blows, uplifted by the cheers and compassion from the crowds. What a hero he is! Anyone else would've succumbed right on the spot, but not him, he endured the blows as the champion he is.
 
