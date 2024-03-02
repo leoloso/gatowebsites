@@ -8,7 +8,11 @@ order: 500
 
 Multiple queries can be combined together, and executed as a single operation, reusing their state and their data.
 
-✳️ **Note:** This is different from query batching, in which the GraphQL server also executes multiple queries in a single request, but those queries are merely executed one after the other, independently from each other.
+<Banner type='info'>
+
+This is different from query batching, in which the GraphQL server also executes multiple queries in a single request, but those queries are merely executed one after the other, independently from each other.
+
+</Banner>
 
 This feature improves performance. Instead of executing queries independenty in different requests (so that we first execute an operation against the GraphQL server, then wait for its response, and then use that result to perform another operation), we can execute them together, thus avoiding the latency from the several requests.
 
