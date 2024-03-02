@@ -5,6 +5,7 @@ import Topics from './topics'
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
 import { sortByPublishedAt } from '@/utils/sort'
+import PageHeader from '@/components/page-header'
 
 export const metadata = {
   title: 'Blog - Simple',
@@ -25,10 +26,11 @@ export default function Blog() {
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
             {/* Page header */}
-            <div className="max-w-3xl pb-12 md:pb-20 text-center md:text-left">
-              <h1 className="h1 mb-4">Type the way you talk</h1>
-              <p className="text-xl text-gray-600">Stay up to date on the latest from Simple and best news from the Dev world.</p>
-            </div>
+            <PageHeader
+              leading='Our blog'
+              title="Type the way you talk"
+              description='Stay up to date on the latest from Simple and best news from the Dev world.'
+            />
 
             {/* Main content */}
             <div className="md:flex md:justify-between">
