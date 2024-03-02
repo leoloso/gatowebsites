@@ -135,7 +135,7 @@ Winner of the round: WPGraphQL.
 
 WPGraphQL targets developers: if you want to extract data from your WordPress site, you need to store your GraphQL query somewhere in your code (most likely, in some JavaScript function). Then, to be able to use it, you need to be good enough at programming.
 
-The GraphQL API for WordPress, instead, [follows the WordPress philosophy that anyone should be able to use it](https://css-tricks.com/rendering-the-wordpress-philosophy-in-graphql/#reconciling-the-wordpress-philosophy-within-the-graphql-service), including non-techies. To achieve this goal, it enables to create and manage a GraphQL query via the WordPress editor, so that making the WordPress site's data accessible via an API becomes as easy as creating a blog post.
+Gato GraphQL, instead, [follows the WordPress philosophy that anyone should be able to use it](https://css-tricks.com/rendering-the-wordpress-philosophy-in-graphql/#reconciling-the-wordpress-philosophy-within-the-graphql-service), including non-techies. To achieve this goal, it enables to create and manage a GraphQL query via the WordPress editor, so that making the WordPress site's data accessible via an API becomes as easy as creating a blog post.
 
 In addition, the GraphQL API for WordPress puts more emphasis on offering clients to interact with the GraphQL service in a visual manner. While both plugins provide the [GraphiQL client](https://github.com/graphql/graphiql), to execute the query, only the GraphQL API for WordPress also provides the [Voyager client](https://github.com/APIs-guru/graphql-voyager), to interactively explore the schema:
 
@@ -215,7 +215,7 @@ These are some of the characteristics of the code:
 
 ✅ Every class is a service, and Symfony Dependency Injection takes care of autowiring the whole application together.
 
-✅ The underlying GraphQL server (called [GraphQL by PoP](https://graphql-by-pop.com/)) [is CMS-agnostic](https://graphql-by-pop.com/docs/architecture/cms-agnosticism.html). The GraphQL API for WordPress implements the contracts for WordPress, and adds a bit of custom logic (for instance, to provide the clients).
+✅ The underlying GraphQL server (called [GraphQL by PoP](https://graphql-by-pop.com/)) [is CMS-agnostic](https://graphql-by-pop.com/docs/architecture/cms-agnosticism.html). Gato GraphQL implements the contracts for WordPress, and adds a bit of custom logic (for instance, to provide the clients).
 
 The WordPress-specific code is only around 10% of the overall code. Replicating this 10% for another framework or CMS (Laravel/Drupal/etc) can provide an implementation of a GraphQL server for them too.
 
@@ -453,7 +453,7 @@ For instance, Apollo client runs, well, on the client. If accessing the website 
 
 Likewise, developers working with WordPress may be proficient with PHP, but not so much with JavaScript. Now, caching their APIs will mean they need to worry about the JavaScript layer also.
 
-The GraphQL API for WordPress has been smarter about this topic. Since it provides persisted queries, meaning that queries are executed on their own endpoint, it allows to [cache these endpoint URLs via HTTP caching](/features/http-caching).
+Gato GraphQL has been smarter about this topic. Since it provides persisted queries, meaning that queries are executed on their own endpoint, it allows to [cache these endpoint URLs via HTTP caching](/features/http-caching).
 
 The HTTP caching header has the `max-age` value automatically calculated from all the `max-age` values for all fields in the query, and this information is [configured using the WordPress editor](/guides/use/adding-http-caching/), on a field-by-field basis.
 
@@ -538,7 +538,7 @@ This is a matter of opinion, and there's no right or wrong. But let me tell you 
 
 Directives are [unregulated by the spec](https://blog.logrocket.com/graphql-directives-are-underrated/#whyaredirectivesimportant), so GraphQL servers can implement them any way they like, make them as powerful as they need to. That is why plenty of new functionality in GraphQL is first introduced via directives, such as [`@stream` and `@defer`](https://foundation.graphql.org/news/2020/12/08/improving-latency-with-defer-and-stream-directives/).
 
-The GraphQL API for WordPress treats directives with reverence. They are [executed only once](https://graphql-by-pop.com/docs/architecture/directive-design.html) with the data from all entities, for all the fields they are applied to (which explains why the `@strTranslate` directive can fetch results from the Google Translate API so quickly), and the GraphQL engine itself is based on a [directive pipeline](https://graphql-by-pop.com/docs/architecture/directive-pipeline.html).
+Gato GraphQL treats directives with reverence. They are [executed only once](https://graphql-by-pop.com/docs/architecture/directive-design.html) with the data from all entities, for all the fields they are applied to (which explains why the `@strTranslate` directive can fetch results from the Google Translate API so quickly), and the GraphQL engine itself is based on a [directive pipeline](https://graphql-by-pop.com/docs/architecture/directive-pipeline.html).
 
 Ahhhh, but you're scared of making all this power available to the users, right? That's a valid concern. But then, you can just remove access to the single endpoint, and provide access to data only through persisted queries, where you (the admin of the site) are the only person with access to the directives.
 

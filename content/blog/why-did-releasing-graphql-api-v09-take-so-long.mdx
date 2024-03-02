@@ -37,11 +37,11 @@ First, I'll share a bit of the history of the engine, and technical details of h
 
 (This is mostly relevant to developers; if you're not interested in technical stuff, be welcome to skip to the next section.)
 
-The GraphQL API for WordPress is based on top of PoP, an engine that renders components in PHP (similar to React or Vue on JavaScript). Its dependency on this engine is absolute, which is why the plugin is hosted under the [`GatoGraphQL/GatoGraphQL` monorepo in GitHub](https://github.com/GatoGraphQL/GatoGraphQL).
+Gato GraphQL is based on top of PoP, an engine that renders components in PHP (similar to React or Vue on JavaScript). Its dependency on this engine is absolute, which is why the plugin is hosted under the [`GatoGraphQL/GatoGraphQL` monorepo in GitHub](https://github.com/GatoGraphQL/GatoGraphQL).
 
 Under the hood, this dependency looks like this:
 
-The GraphQL API for WordPress resolves a GraphQL query by first [transforming it into an equivalent component model](https://graphql-by-pop.com/docs/architecture/using-components-instead-of-graphs.html), which PoP then resolves by fetching all required data, and then [this data is given the shape of the GraphQL query](https://graphql-by-pop.com/docs/architecture/dataloading-engine.html#analyzing-the-time-complexity-of-the-solution).
+Gato GraphQL resolves a GraphQL query by first [transforming it into an equivalent component model](https://graphql-by-pop.com/docs/architecture/using-components-instead-of-graphs.html), which PoP then resolves by fetching all required data, and then [this data is given the shape of the GraphQL query](https://graphql-by-pop.com/docs/architecture/dataloading-engine.html#analyzing-the-time-complexity-of-the-solution).
 
 When I started working on PoP sometime around 2013/2014, there was no GraphQL, and the methodology for resolving a component model into data was designed and implemented from scratch. The lack of having a model to follow (such as GraphQL for concepts, and the [`graphql-js` reference project](https://github.com/graphql/graphql-js) for an implementation) has been both a hindrance and a blessing, as I'll explain later on.
 

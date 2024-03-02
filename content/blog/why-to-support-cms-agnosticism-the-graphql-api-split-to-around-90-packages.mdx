@@ -47,7 +47,7 @@ Hosting these projects in a monorepo simplifies working with them, because of th
 
 It is concerning the code for all 5 projects that `GatoGraphQL/GatoGraphQL` contains over 200 PHP packages. Concerning the GraphQL API for WordPress, it is "only" 91 packages. And GraphQL by PoP, the underlying GraphQL server, contains "only" 98 packages.
 
-(The GraphQL API for WordPress plugin requires fewer packages than its underlying GraphQL server, because some packages, such as the [Google Translate `@strTranslate` directive](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/Schema/packages/google-translate-directive), haven't been added to the plugin yet.)
+(Gato GraphQL plugin requires fewer packages than its underlying GraphQL server, because some packages, such as the [Google Translate `@strTranslate` directive](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/Schema/packages/google-translate-directive), haven't been added to the plugin yet.)
 
 ## How is GraphQL by PoP CMS-agnostic? How is it different than webonyx?
 
@@ -201,7 +201,7 @@ I love this approach, I believe it greatly simplifies the application. However, 
 
 ### It (most likely) requires a monorepo
 
-The GraphQL API for WordPress ended up containing 91 packages. In the past, I hosted each of them on its own repository, making it very difficult to create PRs. So I have been "forced" to switch to the monorepo approach.
+Gato GraphQL ended up containing 91 packages. In the past, I hosted each of them on its own repository, making it very difficult to create PRs. So I have been "forced" to switch to the monorepo approach.
 
 To be clear: I really like the monorepo. But I understand that not everyone likes it, and it also requires its own effort to maintain.
 
@@ -214,7 +214,7 @@ I have previously written about my motivations and strategy for abstracting my W
 
 ## Addendum: List of the 91 packages making up the plugin
 
-The GraphQL API for WordPress contains the following 91 packages.
+Gato GraphQL contains the following 91 packages.
 
 Engine functionality:
 
