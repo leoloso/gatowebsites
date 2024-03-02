@@ -49,7 +49,7 @@ Make your bets. And enjoy the match!
 
 ---
 
-I've been recently asked to explain the differences between my plugin, the GraphQL API for WordPress, and WPGraphQL.
+I've been recently asked to explain the differences between my plugin, Gato GraphQL, and WPGraphQL.
 
 Both plugins are GraphQL servers for WordPress, so they serve the same purpose. However, under they hood they have different characteristics, which can make one better than the other one to satisfy some required behavior.
 
@@ -103,11 +103,11 @@ It reached version 1.0 and was [uploaded to the plugin directory in wp.org](http
 
 In other words, WPGraphQL is popular.
 
-Development for the GraphQL API for WordPress started in earnest around 1.5 years ago (as part of a wider project), and it reached a ["good enough" status 6 months ago](https://leoloso.com/posts/introducing-the-graphql-api-for-wordpress/), receiving [150 stars on the repo](https://github.com/GatoGraphQL/GatoGraphQL) since then. The plugin is currently [on version 0.7](https://github.com/GatoGraphQL/GatoGraphQL/releases/download/0.7.9/graphql-api.zip), and it's still several months away from reaching 1.0 (for instance, it doesn't have categories on the schema yet).
+Development for Gato GraphQL started in earnest around 1.5 years ago (as part of a wider project), and it reached a ["good enough" status 6 months ago](https://leoloso.com/posts/introducing-the-graphql-api-for-wordpress/), receiving [150 stars on the repo](https://github.com/GatoGraphQL/GatoGraphQL) since then. The plugin is currently [on version 0.7](https://github.com/GatoGraphQL/GatoGraphQL/releases/download/0.7.9/graphql-api.zip), and it's still several months away from reaching 1.0 (for instance, it doesn't have categories on the schema yet).
 
 Last month I launched this current site gatographql.com, and since then I have been promoting the plugin via [the blog](/blog/) (like the article you are reading now), and also published an [intro article on CSS-Tricks](https://css-tricks.com/rendering-the-wordpress-philosophy-in-graphql/). These attempts have brought in several hundred people to the site, and over 100 visitors have downloaded the plugin.
 
-In other words, the GraphQL API for WordPress is slowly but steadily getting popular, and it is a work in progress.
+In other words, Gato GraphQL is slowly but steadily getting popular, and it is a work in progress.
 
 Winner of the round: WPGraphQL.
 
@@ -123,7 +123,7 @@ GraphQL API for WP has no extensions yet, and I don't expect there will be many 
 
 However, the GraphQL API for WP has a big emphasis on extensions in its architecture, allowing the user to manage them (enable, disable, configure, and read their documentation) from a central place, the "Modules" page:
 
-![Modules page in the GraphQL API for WordPress](/assets/guides/downstream/modules.png "Modules page in the GraphQL API for WordPress")
+![Modules page in Gato GraphQL](/assets/guides/downstream/modules.png "Modules page in Gato GraphQL")
 
 In other words, while WPGraphQL already has extensions, the GraphQL API is preparing the field for them.
 
@@ -137,7 +137,7 @@ WPGraphQL targets developers: if you want to extract data from your WordPress si
 
 Gato GraphQL, instead, [follows the WordPress philosophy that anyone should be able to use it](https://css-tricks.com/rendering-the-wordpress-philosophy-in-graphql/#reconciling-the-wordpress-philosophy-within-the-graphql-service), including non-techies. To achieve this goal, it enables to create and manage a GraphQL query via the WordPress editor, so that making the WordPress site's data accessible via an API becomes as easy as creating a blog post.
 
-In addition, the GraphQL API for WordPress puts more emphasis on offering clients to interact with the GraphQL service in a visual manner. While both plugins provide the [GraphiQL client](https://github.com/graphql/graphiql), to execute the query, only the GraphQL API for WordPress also provides the [Voyager client](https://github.com/APIs-guru/graphql-voyager), to interactively explore the schema:
+In addition, Gato GraphQL puts more emphasis on offering clients to interact with the GraphQL service in a visual manner. While both plugins provide the [GraphiQL client](https://github.com/graphql/graphiql), to execute the query, only Gato GraphQL also provides the [Voyager client](https://github.com/APIs-guru/graphql-voyager), to interactively explore the schema:
 
 ![Visualizing the GraphQL schema](/assets/features/interactive-schema.gif "Visualizing the GraphQL schema")
 
@@ -157,9 +157,9 @@ How elegant is the code (from their own codebase, and expected from our custom i
 
 ### Round 4: PHP requirements
 
-Both WPGraphQL and the GraphQL API for WordPress require PHP 7.1+.
+Both WPGraphQL and Gato GraphQL require PHP 7.1+.
 
-However, there is a difference: the GraphQL API for WordPress is actually [coded using PHP 7.4](https://github.com/GatoGraphQL/GatoGraphQL#php-versions), and is then [transpiled to PHP 7.1 for production](https://blog.logrocket.com/transpiling-php-code-from-8-0-to-7-x-via-rector/).
+However, there is a difference: Gato GraphQL is actually [coded using PHP 7.4](https://github.com/GatoGraphQL/GatoGraphQL#php-versions), and is then [transpiled to PHP 7.1 for production](https://blog.logrocket.com/transpiling-php-code-from-8-0-to-7-x-via-rector/).
 
 Hence, coding the GraphQL API is much more pleasurable: you can use newer PHP features, including the [`object` type](https://www.php.net/manual/en/migration72.new-features.php#migration72.new-features.object-type), [typed properties](https://www.php.net/manual/en/migration74.new-features.php#migration74.new-features.core.typed-properties) and [arrow functions](https://www.php.net/manual/en/functions.arrow.php). And once support for PHP 8.0 is added (which will happen when the new version of [Lando](https://docs.lando.dev/) is released), you will also be able to use [union types](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.union), the [match expression](https://www.php.net/manual/en/control-structures.match.php), and others.
 
@@ -201,7 +201,7 @@ For the [list of filters](https://www.wpgraphql.com/filters/), I zoomed out to 3
 
 ---
 
-Let's switch over to the [`GatoGraphQL/GatoGraphQL` repo](https://github.com/GatoGraphQL/GatoGraphQL), which is the monorepo containing the GraphQL API for WordPress (among other projects).
+Let's switch over to the [`GatoGraphQL/GatoGraphQL` repo](https://github.com/GatoGraphQL/GatoGraphQL), which is the monorepo containing Gato GraphQL (among other projects).
 
 These are some of the characteristics of the code:
 
@@ -356,7 +356,7 @@ What a night we have, ladies and gentlemen.
 
 We have reached the middle of the fight, so this is good time for a toilet break, and to do some commentary on what we have experienced so far.
 
-(In the meantime, I should display an ad from [my sponsors](https://github.com/sponsors/leoloso/). Unfortunately, I don't have any yet. If you'd like your company to fund development of the GraphQL API for WordPress, and get exposure in prime media like this event, [send me a message](/contact/).)
+(In the meantime, I should display an ad from [my sponsors](https://github.com/sponsors/leoloso/). Unfortunately, I don't have any yet. If you'd like your company to fund development of Gato GraphQL, and get exposure in prime media like this event, [send me a message](/contact/).)
 
 ![Sponsor me, to get access to prime advertising for your brand](/images/box/box-arena-screen.jpg "Sponsor me, to get access to prime advertising for your brand")
 
@@ -411,9 +411,9 @@ In addition, Jason Bahl (creator of WPGraphQL) recently announced that in the ne
 
 I wonder what he has in mind, since there are the 2 extensions already. How will it be different from those? Maybe he wants to make it part of the plugin's core, as to beef up the overall plugin's security measures without depending on a 3rd party?
 
-Or maybe he saw the implementation from the GraphQL API for WordPress, and wants to provide a similar experience, operating it via a visual editor instead of pure code? 
+Or maybe he saw the implementation from Gato GraphQL, and wants to provide a similar experience, operating it via a visual editor instead of pure code? 
 
-Which brings us to the GraphQL API for WordPress. It not only [offers persisted queries](/features/persisted-queries), but has strived to make it a central part of the offering:
+Which brings us to Gato GraphQL. It not only [offers persisted queries](/features/persisted-queries), but has strived to make it a central part of the offering:
 
 ✅ The plugin comes with the single endpoint [disabled by default](/features/security), and users are encouraged to expose data via persisted queries only.
 
@@ -544,11 +544,11 @@ Ahhhh, but you're scared of making all this power available to the users, right?
 
 So either you benefit, or nothing happens.
 
-If you love directives, great, you will love the GraphQL API for WordPress! ❤️
+If you love directives, great, you will love Gato GraphQL! ❤️
 
 But, on the other hand, if you don't like it, nothing happens.
 
-Winner of the round: the GraphQL API for WordPress.
+Winner of the round: Gato GraphQL.
 
 (If you believe that "we don't need stinky directives", please don't be angry at me... I'm just doing my job.)
 
@@ -562,15 +562,15 @@ Yeah, at first sight this topic seems out of place. But I've added it in this co
 
 Which leads to the obvious question: can the GraphQL server also handle REST?
 
-The answer is "partially yes" for WPGraphQL, and "completely yes" for the GraphQL API for WordPress.
+The answer is "partially yes" for WPGraphQL, and "completely yes" for Gato GraphQL.
 
 Concerning WPGraphQL. It is possible to define a REST endpoint which, when being resolved, simply executes a GraphQL query containing the required fields, either as a internal call to the GraphQL engine, or as an external `POST` operation executed against the same webserver.
 
 But that is not enough to satisfy the WP REST API, because it also [has a JSON schema](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/), and we can't do without it.
 
-Concerning the GraphQL API for WordPress. I must admit I've been lucky, because work on its underlying engine (the server-side component model called [PoP](https://github.com/GatoGraphQL/GatoGraphQL)) started circa 2013, that is several years before I knew of something called GraphQL, and this project evolved with some ideas of its own (which I documented in [this vintage article of mine](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/)).
+Concerning Gato GraphQL. I must admit I've been lucky, because work on its underlying engine (the server-side component model called [PoP](https://github.com/GatoGraphQL/GatoGraphQL)) started circa 2013, that is several years before I knew of something called GraphQL, and this project evolved with some ideas of its own (which I documented in [this vintage article of mine](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/)).
 
-Then, when I started coding the CMS-agnostic [GraphQL by PoP](https://graphql-by-pop.com/) (on which the GraphQL API for WordPress stands) around 1.5 years ago, I merged the ideas developed for PoP, with the foundations established by GraphQL, creating a system that supports the GraphQL spec in its entirety, while being able to add a different set of features to it.
+Then, when I started coding the CMS-agnostic [GraphQL by PoP](https://graphql-by-pop.com/) (on which Gato GraphQL stands) around 1.5 years ago, I merged the ideas developed for PoP, with the foundations established by GraphQL, creating a system that supports the GraphQL spec in its entirety, while being able to add a different set of features to it.
 
 In this regard, the schema that PoP uses is API-agnostic, and it's a superset of the one by GraphQL. Wanna see the PoP schema? Sure? Ok, here it is: [/api/graphql/?query=fullSchema](https://nextapi.getpop.org/api/graphql/?query=fullSchema).
 
@@ -599,7 +599,7 @@ And we don't need to stop there. Do you need to produce the results using yet a 
 
 (This could help implement the [proposal for a new import/export tool for WordPress, based on a schema](https://pento.net/2021/01/20/wordpress-importers-defining-a-schema/). This also makes a bit more evident what I said earlier on: a single interface can power all data interactions, both within the CMS, and also from the CMS with external APIs.)
 
-Winner of the round: the GraphQL API for WordPress.
+Winner of the round: Gato GraphQL.
 
 ### Round 12: Support for novel features
 
@@ -619,7 +619,7 @@ Once again, that's my way of thinking. This is a matter of opinion though, so if
 
 I believe this is how WPGraphQL operates. At least, I haven't seen a single feature that goes beyond what has been approved in the spec.
 
-For the GraphQL API for WordPress, though, I regularly scan the list of issues in the spec and, if I find some cool feature, which can be satisfied by my server without much effort, then I implement it. (Indeed, this is one of my hobbies.)
+For Gato GraphQL, though, I regularly scan the list of issues in the spec and, if I find some cool feature, which can be satisfied by my server without much effort, then I implement it. (Indeed, this is one of my hobbies.)
 
 These are the "forward-looking" features I have implemented to publishedAt:
 
@@ -636,7 +636,7 @@ And I'm already planning to add:
 ✳️ [`@stream` and `@defer` directives](https://github.com/GatoGraphQL/GatoGraphQL/issues/190)<br/>
 ✳️ [Flat chain syntax](https://github.com/GatoGraphQL/GatoGraphQL/issues/213)
 
-Winner of the round: the GraphQL API for WordPress.
+Winner of the round: Gato GraphQL.
 
 ---
 
@@ -656,7 +656,7 @@ Who will the "GraphQL in WordPress" world champion be?
 
 Is it going to be the widely-acclaimed, loved-by-the-masses, featured-in-big-publications current champion, WPGraphQL?
 
-Or it it going to be the irreverent, step-on-your-toes-without-asking-for-forgiveness, comes-uninvited-to-the-party contender, the GraphQL API for WordPress?
+Or it it going to be the irreverent, step-on-your-toes-without-asking-for-forgiveness, comes-uninvited-to-the-party contender, Gato GraphQL?
 
 ![The contenders wait for the verdict](/images/box/wpgraphql-vs-graphql-api-verdict.jpg "The contenders wait for the verdict")
 
@@ -688,7 +688,7 @@ But what is **your** verdict?
 
 Will you keep unconditionally using WPGraphQL for your headless needs?
 
-Or will you give the GraphQL API for WordPress the opportunity it is claiming for, [download the plugin](/download), and give it a try?
+Or will you give Gato GraphQL the opportunity it is claiming for, [download the plugin](/download), and give it a try?
 
 ---
 

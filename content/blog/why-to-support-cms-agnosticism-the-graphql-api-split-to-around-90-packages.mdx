@@ -14,7 +14,7 @@ tags:
   - engineering
 ---
 
-Last week I published article [💁🏻‍♀️ Why the GraphQL API needs a Monorepo, and How it's optimized](/blog/extending-the-monorepo-builder/), explaining how and why the `GatoGraphQL/GatoGraphQL` monorepo, which hosts the code for the GraphQL API for WordPress, can manage the plugin's codebase efficiently.
+Last week I published article [💁🏻‍♀️ Why the GraphQL API needs a Monorepo, and How it's optimized](/blog/extending-the-monorepo-builder/), explaining how and why the `GatoGraphQL/GatoGraphQL` monorepo, which hosts the code for Gato GraphQL, can manage the plugin's codebase efficiently.
 
 I shared my article on Reddit, and I got the [following comment](https://www.reddit.com/r/programming/comments/mh5ds3/i_wrote_about_why_my_project_with_php_packages/gswsrw2?utm_source=share&utm_medium=web2x&context=3):
 
@@ -45,7 +45,7 @@ Hosting these projects in a monorepo simplifies working with them, because of th
 - The site builder uses the component model library as its engine (similar to Gatsby using GraphQL)
 - Wassup is based on the site builder
 
-It is concerning the code for all 5 projects that `GatoGraphQL/GatoGraphQL` contains over 200 PHP packages. Concerning the GraphQL API for WordPress, it is "only" 91 packages. And GraphQL by PoP, the underlying GraphQL server, contains "only" 98 packages.
+It is concerning the code for all 5 projects that `GatoGraphQL/GatoGraphQL` contains over 200 PHP packages. Concerning Gato GraphQL, it is "only" 91 packages. And GraphQL by PoP, the underlying GraphQL server, contains "only" 98 packages.
 
 (Gato GraphQL plugin requires fewer packages than its underlying GraphQL server, because some packages, such as the [Google Translate `@strTranslate` directive](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/Schema/packages/google-translate-directive), haven't been added to the plugin yet.)
 
@@ -174,7 +174,7 @@ For instance, a personal blog may need only `posts`, `tags` and `categories`, so
 
 Indeed, I plan to benefit from this feature soon: I'm currently [working on the "Private GraphQL API"](https://github.com/GatoGraphQL/GatoGraphQL/issues/519), a self-contained GraphQL engine, to be made available to WordPress plugin developers to bundle it within their plugins, granting a GraphQL API for their Gutenberg blocks.
 
-I can effortlessly create the "Private GraphQL API" simply by removing those packages from the GraphQL API for WordPress plugin which are not needed (those dealing with UI, clients, custom endpoints, HTTP caching, persisted queries, and a few others).
+I can effortlessly create the "Private GraphQL API" simply by removing those packages from Gato GraphQL plugin which are not needed (those dealing with UI, clients, custom endpoints, HTTP caching, persisted queries, and a few others).
 
 Finally, since it's easy to scope (as seen above), I can prefix all the required packages, so the Private GraphQL API will work without conflict (which could happen when 2 different plugins bundle different versions of the Private GraphQL API).
 
@@ -207,7 +207,7 @@ To be clear: I really like the monorepo. But I understand that not everyone like
 
 ## Useful links
 
-I have previously written about my motivations and strategy for abstracting my WordPress website, rendering it CMS-agnostic. It is this same strategy that I applied to split up the codebase for the GraphQL API for WordPress:
+I have previously written about my motivations and strategy for abstracting my WordPress website, rendering it CMS-agnostic. It is this same strategy that I applied to split up the codebase for Gato GraphQL:
 
 - [Abstracting WordPress Code To Reuse With Other CMSs: Concepts (Part 1)](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-cms-concepts/)
 - [Abstracting WordPress Code To Reuse With Other CMSs: Implementation (Part 2)](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-reuse-with-other-cms-implementation/)

@@ -63,7 +63,7 @@ Gato GraphQL can also work with the Jamstack. But its main objectives are, I bel
 
 Once the plugin is available on the repository, I hope more people will try it out and say "Hey, this is so friking awesome! How comes I didn't know about this stuff before?".
 
-And then, the choice of "the GraphQL plugin" is not pre-determined, and the WordPress community can consider both WPGraphQL and the GraphQL API for WordPress based on their own merits.
+And then, the choice of "the GraphQL plugin" is not pre-determined, and the WordPress community can consider both WPGraphQL and Gato GraphQL based on their own merits.
 
 Now that my motivations are out of the way, let's talk technical stuff 🤓.
 
@@ -219,7 +219,7 @@ This way, instead of having a single codebase, we have multiple codebases (or pa
 
 Then, we do not scope the package containing WordPress code, avoiding the conflict. This works because it doesn't reference any code belonging to any external dependency. All references are internal, such as `MyNamespace\MyPlugin\MyClass`. But these need not be scoped, because we can safely assume that there will be only 1 version of the plugin installed in the WordPress site, and we can whitelist our namespace `MyNamespace\*`.
 
-Moreover, if our plugin can be extended, then whitelisting our own namespace is mandatory. For instance, a field resolver for the GraphQL API for WordPress is implemented by extending from class `PoP\ComponentModel\FieldResolvers\AbstractFieldResolver`. If I scoped it, developers would be forced to reference `PoP\ComponentModel\FieldResolvers\AbstractFieldResolver` for development, and `PrefixedByPoP\PoP\ComponentModel\FieldResolvers\AbstractFieldResolver` for production. That's a no go.
+Moreover, if our plugin can be extended, then whitelisting our own namespace is mandatory. For instance, a field resolver for Gato GraphQL is implemented by extending from class `PoP\ComponentModel\FieldResolvers\AbstractFieldResolver`. If I scoped it, developers would be forced to reference `PoP\ComponentModel\FieldResolvers\AbstractFieldResolver` for development, and `PrefixedByPoP\PoP\ComponentModel\FieldResolvers\AbstractFieldResolver` for production. That's a no go.
 
 Then, we only scope the business-logic packages, which contain references to all external libraries but no WordPress code.
 

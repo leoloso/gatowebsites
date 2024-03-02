@@ -62,7 +62,7 @@ And...
 > What you and almost everyone else on the web is leaving out is that in order for this API format to work, you have to write the parser (resolvers + types) which brings in a slew of issues that aren't present with REST.
 > [[Source]](https://www.reddit.com/r/PHP/comments/mo7gwm/the_graphql_api_for_wordpress_is_now_transpiled/gu3fbfi?utm_source=share&utm_medium=web2x&context=3)
 
-These comments are not completely accurate, because both WPGraphQL and the GraphQL API for WordPress have already mapped the WordPress data model into the GraphQL schema (WPGraphQL fully, my plugin most of it).
+These comments are not completely accurate, because both WPGraphQL and Gato GraphQL have already mapped the WordPress data model into the GraphQL schema (WPGraphQL fully, my plugin most of it).
 
 Then, after you install any of these plugins, you can immediately start fetching data for your application, without the need to create any resolver, or having to set up associations among entities.
 
@@ -265,7 +265,7 @@ Then, even if the query has multiple levels, each retrieving many entities, the 
 
 The exception to this efficiency is when retrieving meta values, through `Post.metaValue`, `User.metaValue`, `Comment.metaValue`, `PostTag.metaValue` and `PostCategory.metaValue` (and also their `metaValues` field). That's because the WordPress functions (`get_post_meta`, `get_user_meta`, etc) fetch data for 1 ID at a time, meaning that each entity will require a database call to fetch its meta value. As a result, resolving meta values scales up based on the number of nodes, not the number of types (the OP's comment hits the nail on the head, in this regard).
 
-To avoid bad actors using and abusing the meta fields, the GraphQL API for WordPress (in v0.8) will ship with these fields disabled by default. Then, the admin has to explicitly enable them and, while doing so, can place these fields under some Access Control List, so at no time should the DB be at risk of attack.
+To avoid bad actors using and abusing the meta fields, Gato GraphQL (in v0.8) will ship with these fields disabled by default. Then, the admin has to explicitly enable them and, while doing so, can place these fields under some Access Control List, so at no time should the DB be at risk of attack.
 
 Rate limiting is a great idea too, I plan to [support it for some upcoming release](https://github.com/GatoGraphQL/GatoGraphQL/issues/220).
 
