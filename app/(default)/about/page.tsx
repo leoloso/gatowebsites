@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'About - Stellar',
-  description: 'Page description',
+  title: 'About us',
+  description: 'Meet the Gato GraphQL team, and learn about the history of Gato GraphQL',
 }
 
 import Hero from '@/components/hero-about'
