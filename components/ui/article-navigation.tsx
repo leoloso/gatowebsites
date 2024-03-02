@@ -10,7 +10,7 @@ export default function ArticleNavigation({
     nextArticle?: Doc | Post,
 }) {
   return (
-    <div className="sm:flex items-center justify-between py-8 space-y-6 sm:space-y-0 sm:space-x-4">
+    <div className="sm:flex items-center justify-between">
       {/* Prev link */}
       {prevArticle &&
         <div className="sm:w-1/2 sm:flex flex-col items-start">

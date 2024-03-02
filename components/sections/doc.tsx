@@ -66,7 +66,9 @@ export default function DocSection({
           </div>
 
           {/* Page navigation */}
-          <ArticleNavigation prevArticle={prevDoc} nextArticle={nextDoc} />
+          <div className="py-8 space-y-6 sm:space-y-0 sm:space-x-4">
+            <ArticleNavigation prevArticle={prevDoc} nextArticle={nextDoc} />
+          </div>
 
           {/* Content footer */}
           <Footer />
