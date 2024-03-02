@@ -3,6 +3,7 @@ import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import { Post } from '@/.contentlayer/generated'
 import { getPostURL } from '@/utils/application-urls'
+import PostTags from './post-tags'
 
 export default function PostItem({ post }: {
   post: Post
@@ -16,7 +17,7 @@ export default function PostItem({ post }: {
           </h2>
         </header>
         <div className="text-lg text-gray-400 mb-4">{post.summary}</div>
-        <footer className="text-sm">
+        <footer className="text-sm md:flex md:items-center md:justify-between">
           <div className="flex items-center">
             <div className="flex shrink-0 mr-3">
               <span className="relative">
@@ -31,6 +32,12 @@ export default function PostItem({ post }: {
               </span>
               <span className="text-gray-400"> · <PostDate dateString={post.publishedAt} /></span>
             </div>
+          </div>
+          <div className="flex md:justify-center mt-4 md:mt-0 items-center mb-6 md:mb-0 md:ml-4">
+            {/* Article tags */}
+            {post.tags &&
+              <PostTags tags={post.tags} />
+            }
           </div>
         </footer>
       </div>
