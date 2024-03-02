@@ -21,7 +21,7 @@ export default function Customers() {
       // }
     },
     {
-      img: CustomerImg09,
+      img: CustomerImg08,
       quote: "We loved this plugin and are annoyed that it’s better than a similar thing we are working on 😂 (we have a network of news sites and Gato GraphQL will save us a lot of time!)",
       name: 'Joebe',
       // twitter: {
@@ -48,7 +48,7 @@ export default function Customers() {
       // }
     },
     {
-      img: CustomerImg08,
+      img: CustomerImg09,
       quote: "A very good developer toolkit with many features and tons of guides on the website.",
       name: 'Louis',
       // twitter: {
