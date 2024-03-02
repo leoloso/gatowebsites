@@ -18,7 +18,7 @@ After [sharing the post on Reddit's /r/php](https://www.reddit.com/r/PHP/comment
 
 I think most comments are spot on, and others are missing some key information. GraphQL is not just an interface, but also an implementation. This means that different GraphQL servers, from different providers, may have been designed to prioritize different characteristics. As such, we can't always have a unified expectation of what GraphQL offers, or a complete understanding of how a GraphQL engine works.
 
-For instance, the GraphQL experience in WordPress and in Laravel will be different, as well as the experience provided by the different servers, WPGraphQL or the GraphQL API for WP.
+For instance, the GraphQL experience in WordPress and in Laravel will be different, as well as the experience provided by the different servers, WPGraphQL or Gato GraphQL.
 
 This article is my take on the matter, addressing several of the comments from the Reddit post.
 
@@ -81,7 +81,7 @@ When browsing documentation for GraphQL, such as the official site [graphql.org]
 
 This is useful when you are building an application from scratch, such as if using Laravel and [Lighthouse](https://lighthouse-php.com/). In that case, you do need to code your resolvers (but so you'd also need to create your REST endpoints).
 
-However, WordPress is already the application, and WPGraphQL and GraphQL API for WP are solutions. These two plugins have already created the resolvers for us, so we don't need to worry about them (similarly to the WP REST API also providing an initial set of endpoints, so we don't need to worry about them).
+However, WordPress is already the application, and WPGraphQL and Gato GraphQL are solutions. These two plugins have already created the resolvers for us, so we don't need to worry about them (similarly to the WP REST API also providing an initial set of endpoints, so we don't need to worry about them).
 
 In addition, GraphQL is more developer-centric, and its documentation seems to talk straight to developers. Developers create the resolvers in the server-side, and developers consume those resolvers with custom queries in the client-side. Since building resolvers is a task for developers, it just shows up naturally and often.
 
@@ -112,9 +112,9 @@ What is needed is for the GraphQL server to tap on the existing security mechani
 - does the user have some role or capability?
 - is the user the author of the post?
 
-To satisfy this proposition, the GraphQL API for WP offers [Access Control Lists](/features/access-control), so we can define who can access each field and directive, and by configuration.
+To satisfy this proposition, Gato GraphQL offers [Access Control Lists](/features/access-control), so we can define who can access each field and directive, and by configuration.
 
-Now, sometimes using an ACL alone does not cut it, and the GraphQL server needs to provide extra security measures. I'll describe what I'm working on right now for the upcoming v0.8 of the GraphQL API for WP.
+Now, sometimes using an ACL alone does not cut it, and the GraphQL server needs to provide extra security measures. I'll describe what I'm working on right now for the upcoming v0.8 of Gato GraphQL.
 
 Field `posts` (to retrieve post data) does not require authorization, any user can access it, either logged-in or not. Hence, for security reasons, it only fetches published posts.
 
@@ -157,7 +157,7 @@ With proper security measures provided by the GraphQL server, and common sense b
 > GraphQL is a rich syntax allowing for deep relational queries to be expressed, so for an ecosystem like WordPress, where the extensibility of the data model comes from the [entity-attribute-value pattern](https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model), this translates to unbelievable amounts of wear and tear on a database, which may cause your site to become unresponsive if the GraphQL query is deep, complicated, or recursive. WordPress is already famous for being able to bring a MySQL/MariaDB instance to its knees, so adding GraphQL could make this so much worse if the queries aren't properly written, authenticated and rate limited.
 > [[Source]](https://www.reddit.com/r/PHP/comments/mo7gwm/the_graphql_api_for_wordpress_is_now_transpiled/gu3efu0?utm_source=share&utm_medium=web2x&context=3)
 
-Bringing the DB down is a serious concern for GraphQL servers. I will describe how GraphQL by PoP (the CMS-agnostic GraphQL server in PHP over which the GraphQL API for WP is based) attempts to avoid this scenario.
+Bringing the DB down is a serious concern for GraphQL servers. I will describe how GraphQL by PoP (the CMS-agnostic GraphQL server in PHP over which Gato GraphQL is based) attempts to avoid this scenario.
 
 GraphQL by PoP [avoids the N+1 problem from ever taking place](https://graphql-by-pop.com/docs/architecture/suppressing-n-plus-one-problem.html), already by architectural design. It accomplishes it by having the engine be responsible for loading the entities from the database, **not the developer**.
 
