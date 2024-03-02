@@ -213,7 +213,7 @@ mutation DuplicatePost
 }
 ```
 
-Thanks to the **[Field to Input](/extensions/field-to-input/)** extension, we can create the input object already on the first operation, and export all the required post data under a single dynamic variable:
+Thanks to the **[Field to Input](/extensions-reference/field-to-input/)** extension, we can create the input object already on the first operation, and export all the required post data under a single dynamic variable:
 
 ```graphql
 query GetPostAndExportData {
@@ -364,8 +364,8 @@ In the Gato GraphQL schema, there is no mutation to create multiple posts:
 
 The solution is to use extensions:
 
-- **[Field Value Iteration and Manipulation](/extensions/field-value-iteration-and-manipulation/)** provides directive `@underEachArrayItem` to iterate over all the items in `$postInput`
-- **[Field on Field](/extensions/field-on-field/)** provides directive `@applyField`, to apply the `createPost` mutation on each iterated-upon item from the array
+- **[Field Value Iteration and Manipulation](/extensions-reference/field-value-iteration-and-manipulation/)** provides directive `@underEachArrayItem` to iterate over all the items in `$postInput`
+- **[Field on Field](/extensions-reference/field-on-field/)** provides directive `@applyField`, to apply the `createPost` mutation on each iterated-upon item from the array
 
 <Banner type="info">
 
