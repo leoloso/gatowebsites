@@ -9,14 +9,14 @@ export default function PostItem({ post }: {
   post: Post
 }) {
   return (
-    <article className="flex items-center pt-4 pb-8 mb-4 border-b border-gray-200">
+    <article className="flex items-center pt-4 pb-8 mb-4 border-b border-slate-200">
       <div className='w-full'>
         <header>
           <h2 className="h4 mb-2">
             <Link href={getPostURL(post)} className="text-slate-100 hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
           </h2>
         </header>
-        <div className="text-lg text-gray-400 mb-4">{post.summary}</div>
+        <div className="text-lg text-slate-400 mb-4">{post.summary}</div>
         <footer className="text-sm md:flex md:items-center md:justify-between">
           <div className="flex items-center">
             <div className="flex shrink-0 mr-3">
@@ -26,11 +26,11 @@ export default function PostItem({ post }: {
               </span>
             </div>
             <div>
-              <span className="text-gray-400">By </span>
+              <span className="text-slate-400">By </span>
               <span className="font-medium">
                 {post.author}
               </span>
-              <span className="text-gray-400"> · <PostDate dateString={post.publishedAt} /></span>
+              <span className="text-slate-400"> · <PostDate dateString={post.publishedAt} /></span>
             </div>
           </div>
           <div className="flex md:justify-center mt-4 md:mt-0 items-center mb-6 md:mb-0 md:ml-4">
