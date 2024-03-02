@@ -1,14 +1,10 @@
 import Image from 'next/image'
 import FounderPic from '@/public/assets/team/Leo.jpg'
-import Banner from './mdx/banner'
 import { getSnippet } from '@/utils/snippet'
+import { SnippetMdx } from './mdx/snippet-mdx'
 
 export default function HowdyMain() {
-  const snippetSlug = 'howdy'
-  const snippet = getSnippet(snippetSlug)
-  if (!snippet) {
-    throw new Error(`There is no Snippet with slug ${snippetSlug}`)
-  }
+  const snippet = getSnippet('howdy')
   return (
     <section className="relative">
 
@@ -35,42 +31,6 @@ export default function HowdyMain() {
               </figure>
               <div className="max-w-[548px] mx-auto">
                 <SnippetMdx code={snippet.body.code} />
-                <div className="text-slate-400 space-y-6">
-                  <p>
-                    If you are here, that means that we have met at <strong className="text-slate-50 font-medium">WordCamp Asia 2024</strong>, and I enjoyed meeting you.
-                  </p>
-                  <p>
-                    I surely told you about my plugin Gato GraphQL, and you got my namecard saying <strong className="text-slate-50 font-medium">Scan me for a surprise!</strong>
-                  </p>
-                  <p>
-                    Well, here we are!
-                  </p>
-                  <p>
-                    Gato GraphQL is a GraphQL server for WordPress, that can do a lot of things. Unexpected things too, to help manage the WordPress site.
-                  </p>
-                  <p>
-                    I would love you to check it out. So <strong className="text-slate-50 font-medium">I'll offer you a nice discount</strong> 😀
-                  </p>
-                  <p>
-                    (But please shhh, don't share it around, this is for you!)
-                  </p>
-                  <Banner type='success'>
-
-                  <p><strong className="text-slate-50 font-medium">40% off Gato GraphQL PRO, using code <code className="text-blue-400">HOWDYFRIEND40</code></strong></p>
-
-                  <p>This is a <strong>Lifetime Deal</strong>. Purchase now, and obtain the discount forever.</p>
-
-                  </Banner>
-                  <p>
-                    This promo code will be available until two weeks after the end of the conference.
-                  </p>
-                  <p>
-                    Btw, if the conference is still ongoing, please come talk to me again. If not, you can always find me via the <a className="text-purple-500 font-medium hover:underline" href="/contact">contact</a> page.
-                  </p>
-                  <p>
-                    Let's stay in touch!
-                  </p>
-                </div>
               </div>
             </div>
 
