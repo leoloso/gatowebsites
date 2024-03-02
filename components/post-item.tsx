@@ -27,9 +27,7 @@ export default function PostItem({ post }: {
             </div>
             <div>
               <span className="text-slate-400">By </span>
-              <span className="font-medium">
-                {post.author}
-              </span>
+              <span className="font-medium">{post.author}</span>
               <span className="text-slate-400"> · <PostDate dateString={post.publishedAt} /></span>
             </div>
           </div>

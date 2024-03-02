@@ -47,6 +47,9 @@ const Post = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    featured: {
+      type: 'boolean',
+    },
     author: {
       type: 'string',
       required: true,
