@@ -15,7 +15,7 @@ export default function PostItem({ post }: {
             <Link href={getPostURL(post)} className="hover:underline">{post.title}</Link>
           </h2>
         </header>
-        <div className="text-lg text-gray-600 mb-4">{post.summary}</div>
+        <div className="text-lg text-gray-400 mb-4">{post.summary}</div>
         <footer className="text-sm">
           <div className="flex items-center">
             <div className="flex shrink-0 mr-3">
@@ -25,9 +25,9 @@ export default function PostItem({ post }: {
               </a>
             </div>
             <div>
-              <span className="text-gray-600">By </span>
+              <span className="text-gray-400">By </span>
               <a className="font-medium hover:underline" href="#0">{post.author}</a>
-              <span className="text-gray-600"> · <PostDate dateString={post.publishedAt} /></span>
+              <span className="text-gray-400"> · <PostDate dateString={post.publishedAt} /></span>
             </div>
           </div>
         </footer>
