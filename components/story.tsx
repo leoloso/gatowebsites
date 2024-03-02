@@ -5,8 +5,7 @@ import { getSnippet } from '@/utils/snippet'
 import { SnippetMdx } from './mdx/snippet-mdx'
 
 export default function Story() {
-  const snippetSlug = 'story'
-  const snippet = getSnippet(snippetSlug)
+  const snippet = getSnippet('story')
   return (
     <section className="relative">
 
