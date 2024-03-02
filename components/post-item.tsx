@@ -9,7 +9,7 @@ export default function PostItem({ post }: {
 }) {
   return (
     <article className="flex items-center pt-4 pb-8 mb-4 border-b border-gray-200">
-      <div>
+      <div className='w-full'>
         <header>
           <h2 className="h4 mb-2">
             <Link href={getPostURL(post)} className="text-slate-100 hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
