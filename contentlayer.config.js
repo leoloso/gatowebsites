@@ -106,6 +106,12 @@ const Snippet = defineDocumentType(() => ({
   name: 'Snippet',
   filePathPattern: `snippets/**/*.mdx`,
   contentType: 'mdx',
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/snippets\/?/, ''),
+    },    
+  },
 }))
 
 const VideoPost = defineDocumentType(() => ({
