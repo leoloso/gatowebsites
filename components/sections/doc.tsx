@@ -1,7 +1,7 @@
 import { DocMdx } from '@/components/mdx/doc-mdx'
 import TopicTitle from '@/components/ui/docs/topic-title'
 import Hamburger from '@/components/ui/docs/hamburger'
-import Feedback from '@/components/ui/feedback'
+// import Feedback from '@/components/ui/feedback'
 import ArticleNavigation from '@/components/ui/article-navigation'
 import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
@@ -61,10 +61,14 @@ export default function DocSection({
           </div>
 
           {/* Feedback */}
-          <Feedback />
+          <div className="py-8 border-b border-slate-200 space-x-6 dark:border-slate-800">
+            {/* <Feedback /> */}
+          </div>
 
           {/* Page navigation */}
-          <ArticleNavigation prevArticle={prevDoc} nextArticle={nextDoc} />
+          <div className="py-8 space-y-6 sm:space-y-0 sm:space-x-4">
+            <ArticleNavigation prevArticle={prevDoc} nextArticle={nextDoc} />
+          </div>
 
           {/* Content footer */}
           <Footer />
