@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Team from '@/public/assets/theme/team.jpg'
+import FounderPic from '@/public/assets/team/Leo.jpg'
 import Banner from './mdx/banner'
 
 export default function HowdyMain() {
@@ -25,7 +25,7 @@ export default function HowdyMain() {
 
             <div className="md:flex justify-between space-x-6 md:space-x-8 lg:space-x-14">
               <figure className="min-w-[240px]">
-                <Image className="sticky top-24 mx-auto mb-12 md:mb-0 rounded-lg -rotate-[4deg]" src={Team} width={420} height={280} alt="Team" />
+                <Image className="sticky top-24 mx-auto mb-12 md:mb-0 rounded-lg -rotate-[2deg]" src={FounderPic} width={400} height={533} alt="Founder pic" />
               </figure>
               <div className="max-w-[548px] mx-auto">
                 <div className="text-slate-400 space-y-6">
@@ -51,7 +51,7 @@ export default function HowdyMain() {
 
                   <p><strong className="text-slate-50 font-medium">40% off Gato GraphQL PRO, using code <code className="text-blue-400">HOWDYFRIEND40</code></strong></p>
 
-                  <p>This is a Lifetime Deal! Purchase now, and obtain the discount forever.</p>
+                  <p>This is a <strong>Lifetime Deal</strong>. Purchase now, and obtain the discount forever.</p>
 
                   </Banner>
                   <p>
