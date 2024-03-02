@@ -25,8 +25,8 @@ export default function ContactForm() {
           <select id="topic" name="topic" className="form-select w-full text-gray-300">
             <option>General</option>
             <option>Sales</option>
-            <option>Affiliate program</option>
-            <option>Developer partnership program</option>
+            <option>Affiliate Program</option>
+            <option>Developer Partnership Program</option>
             <option>Say hi 👋</option>
           </select>
         </div>
