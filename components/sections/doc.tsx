@@ -61,7 +61,7 @@ export default function DocSection({
           </div>
 
           {/* Feedback */}
-          <div className="flex items-center justify-between py-8 border-b border-slate-200 space-x-6 dark:border-slate-800">
+          <div className="py-8 border-b border-slate-200 space-x-6 dark:border-slate-800">
             {/* <Feedback /> */}
           </div>
 

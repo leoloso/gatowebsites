@@ -6,7 +6,7 @@ import Feedback04 from '@/public/assets/theme/feedback-04.svg'
 
 export default function Feedback() {
   return (
-    <>
+    <div className="flex items-center justify-between">
       <div className="text-lg font-bold text-slate-800 dark:text-slate-200">Was this helpful?</div>
       <div className="flex items-center space-x-4">
         <button className="opacity-30">
@@ -26,6 +26,6 @@ export default function Feedback() {
           <Image src={Feedback04} width={21} height={21} alt="Excellent article" />
         </button>
       </div>
-    </>
+    </div>
   )
 }
