@@ -1,8 +1,14 @@
 import Image from 'next/image'
 import FounderPic from '@/public/assets/team/Leo.jpg'
 import Banner from './mdx/banner'
+import { getSnippet } from '@/utils/snippet'
 
 export default function HowdyMain() {
+  const snippetSlug = 'howdy'
+  const snippet = getSnippet(snippetSlug)
+  if (!snippet) {
+    throw new Error(`There is no Snippet with slug ${snippetSlug}`)
+  }
   return (
     <section className="relative">
 
@@ -28,6 +34,7 @@ export default function HowdyMain() {
                 <Image className="sticky top-24 mx-auto mb-12 md:mb-0 rounded-lg -rotate-[2deg]" src={FounderPic} width={400} height={533} alt="Founder pic" />
               </figure>
               <div className="max-w-[548px] mx-auto">
+                <SnippetMdx code={snippet.body.code} />
                 <div className="text-slate-400 space-y-6">
                   <p>
                     If you are here, that means that we have met at <strong className="text-slate-50 font-medium">WordCamp Asia 2024</strong>, and I enjoyed meeting you.
