@@ -75,7 +75,7 @@ This meant that the PoP project had to be repurposed, from being a PHP library t
 
 The codebase then underwent a massive transformation, introducing the GraphQL AST as the foundation to communicate state across all PHP services in the engine. GraphQL AST objects are now the inputs to PoP (instead of query strings).
 
-Other GraphQL servers in PHP rely on [`graphql-php`](https://github.com/webonyx/graphql-php), but plugin GraphQL API for WordPress does not. This is bad news concerning maintenance effort (as I can't reuse what someone else has coded), but good news concerning independence: I can decide to add custom features to my plugin at my own speed, and under my own criterion (which is why the plugin already provides the ["oneof" input object](/guides/augment/oneof-input-object/)).
+Other GraphQL servers in PHP rely on [`graphql-php`](https://github.com/webonyx/graphql-php), but plugin Gato GraphQL does not. This is bad news concerning maintenance effort (as I can't reuse what someone else has coded), but good news concerning independence: I can decide to add custom features to my plugin at my own speed, and under my own criterion (which is why the plugin already provides the ["oneof" input object](/guides/augment/oneof-input-object/)).
 
 And as will be shown in the section below, this is a great advantage.
 
