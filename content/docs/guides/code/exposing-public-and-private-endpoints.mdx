@@ -71,12 +71,12 @@ Custom endpoints offer security through obscurity, as only the intended target s
 
 <Banner type="info">
 
-To tighten up the security of the API, we can use the **[Access Control](/extensions/access-control/)** extension to [grant access to the endpoint](/guides/use/defining-access-control/) only when:
+To tighten up the security of the API, we can use the **[Access Control](/extensions-reference/access-control/)** extension to [grant access to the endpoint](/guides/use/defining-access-control/) only when:
 
 - The user is logged-in (or not)
 - The user has some role
 - The user has some capability
-- The visitor comes from an allowed IP (via the **[Access Control: Visitor IP](/extensions/access-control-visitor-ip/)** extension)
+- The visitor comes from an allowed IP (via the **[Access Control: Visitor IP](/extensions-reference/access-control-visitor-ip/)** extension)
 
 Every custom endpoint can have its own Access Control List, thus being accessible only by its specific intended user.
 
@@ -104,7 +104,7 @@ Because persisted queries do not require passing the GraphQL query in the body o
 
 We can benefit from this and make the API faster via standard [HTTP Caching](/guides/use/adding-http-caching/), caching the GraphQL response on the client-side or intermediate stages between the client and the server (such as a CDN).
 
-This is accomplished through the **[Cache Control](/extensions/cache-control/)** extension, which automatically calculates and outputs the response's `max-age` value based on the fields and directives present in the query.
+This is accomplished through the **[Cache Control](/extensions-reference/cache-control/)** extension, which automatically calculates and outputs the response's `max-age` value based on the fields and directives present in the query.
 
 </Banner>
 
