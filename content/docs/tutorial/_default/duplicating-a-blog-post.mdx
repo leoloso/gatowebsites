@@ -206,11 +206,11 @@ Notice that some fields are meant to be duplicated (including the author, title,
 
 ### Duplicating the post: First approach
 
-With the [**Multiple Query Execution**](/extensions/multiple-query-execution/) extension, we are able to export the post's data items, and inject them again into another `query` or `mutation` in the same GraphQL document.
+With the **[Multiple Query Execution](/extensions/multiple-query-execution/)** extension, we are able to export the post's data items, and inject them again into another `query` or `mutation` in the same GraphQL document.
 
 <Banner type="info">
 
-[**Multiple Query Execution**](/extensions/multiple-query-execution/) allows us to [execute complex functionality within a single request](/guides/schema/executing-multiple-queries-concurrently/), and better organize the logic by splitting the GraphQL document into a series a logical/atomic units:
+**[Multiple Query Execution](/extensions/multiple-query-execution/)** allows us to [execute complex functionality within a single request](/guides/schema/executing-multiple-queries-concurrently/), and better organize the logic by splitting the GraphQL document into a series a logical/atomic units:
 
 - There is no limit in how many operations can be added to the pipeline
 - Any operation can declare more than one dependency:
@@ -702,7 +702,7 @@ The following approach deals with this problem.
 
 ### Duplicating the post: Third approach
 
-We can execute an additional operation at the beginning to initialize each of the dynamic variables with a `null` or empty value (via global field `_echo` from the [**PHP Functions Via Schema**](/extensions/php-functions-via-schema/) extension).
+We can execute an additional operation at the beginning to initialize each of the dynamic variables with a `null` or empty value (via global field `_echo` from the **[PHP Functions Via Schema](/extensions/php-functions-via-schema/)** extension).
 
 Then, each dynamic variable will always be exported, at least once. When the field value is not empty, then it will be exported again, and this second value will override the first one.
 
@@ -882,7 +882,7 @@ We use the GraphQL query from the previous approach, and optimize it by:
 We deal with these elements by (respectively):
 
 - Adding directive `@configureWarningsOnExportingDuplicateVariable(enabled: false)` to the operation, which disables raising the warning
-- Adding the `@remove` directive (from the [**Field Response Removal**](/extensions/field-response-removal/) extension) to each of the fields to remove
+- Adding the `@remove` directive (from the **[Field Response Removal](/extensions/field-response-removal/)** extension) to each of the fields to remove
 
 This is the consolidated GraphQL query to duplicate a post:
 
