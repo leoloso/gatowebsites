@@ -22,7 +22,7 @@ export default function Faqs() {
 
         {/* Section header */}
         <SectionHeader
-          leading='Getting started with Stellar'
+          leading='Getting started with Gato GraphQL'
           title='Everything you need to know'
         />
 
@@ -34,20 +34,21 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">What is Stellar?</h4>
-              <p className="text-slate-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis enim lobortis scelerisque fermentum.</p>
+              <h4 className="font-semibold">What is Gato GraphQL?</h4>
+              <p className="text-slate-400">Gato GraphQL is a plugin for WordPress that converts the site into a GraphQL server, allowing to fetch and modify data from the WordPress site using the GraphQL language.</p>
             </div>
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">What's an affordable alternative to Stellar?</h4>
-              <p className="text-slate-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis enim lobortis scelerisque fermentum.</p>
+              <h4 className="font-semibold">Is Gato GraphQL free?</h4>
+              <p className="text-slate-400">The Gato GraphQL plugin for WordPress is free, while Gato GraphQL PRO is its commercial extension.</p>
             </div>
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Can I remove the 'Powered by Stellar' branding?</h4>
-              <p className="text-slate-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis enim lobortis scelerisque fermentum.</p>
+              <h4 className="font-semibold">When do I need to buy the PRO version?</h4>
+              <p className="text-slate-400">The Gato GraphQL plugin completely maps the WordPress schema, and is enough to build headless sites.</p>
+              <p className="text-slate-400">Gato GraphQL PRO is needed for enhanced security for public APIs, improving speed, automating tasks, and connecting to external services (among others).</p>
             </div>
 
           </div>
