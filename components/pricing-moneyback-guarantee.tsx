@@ -14,7 +14,12 @@ export default function PricingMoneyBackGuarantee() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pb-12 md:pb-20">
+        <div className="relative px-8 py-12 md:py-20 rounded-[3rem] overflow-hidden">
+          {/* Radial gradient */}
+          <div className="absolute flex items-center justify-center top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/3 aspect-square" aria-hidden="true">
+            <div className="absolute inset-0 translate-z-0 bg-purple-500 rounded-full blur-[120px] opacity-70" />
+            <div className="absolute w-1/4 h-1/4 translate-z-0 bg-purple-400 rounded-full blur-[40px]" />
+          </div>
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12">
