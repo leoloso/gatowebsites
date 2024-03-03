@@ -1,4 +1,3 @@
-import AppConfig from '@/app/app.config'
 import FooterLogo from '@/components/ui/docs/logo'
 import FooterMenu from '../footer-menu'
 
