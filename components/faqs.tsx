@@ -74,8 +74,9 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Is Stellar affordable for small businesses?</h4>
-              <p className="text-slate-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis enim lobortis scelerisque fermentum.</p>
+              <h4 className="font-semibold">What use cases does Gato GraphQL PRO handle?</h4>
+              <p className="text-slate-400">As a single product, Gato GraphQL PRO handles the functionality from multiple plugins.</p>
+              <p className="text-slate-400">These include: APIs, Automators, Bulk editing, Code snippets, Content distribution, Email notifications, HTTP client, Import/export, Search & replace, Translation, and Webhooks.</p>
             </div>
 
           </div>
