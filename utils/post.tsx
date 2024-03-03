@@ -1,5 +1,6 @@
 import { Post, allPosts } from 'contentlayer/generated'
 import { COLORS } from './colors'
+import { sortAlphabetically } from './sort'
 
 export function getFeaturedPosts(posts: Array<Post> | undefined = allPosts) {
   return posts.filter((post) => post.featured)
@@ -14,7 +15,7 @@ export function getPostTags(posts: Array<Post> | undefined = allPosts) {
 }
 
 export function getPostTagColors(posts: Array<Post> | undefined = allPosts) {
-  const postTags = getPostTags(posts)
+  const postTags = getPostTags(posts).sort(sortAlphabetically)
   let postTagColors : { [key: string]: string } = {}
   postTags.forEach(function (postTag: string | undefined, index: number) {
     if (!postTag) {
