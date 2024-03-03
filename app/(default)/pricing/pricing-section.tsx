@@ -13,9 +13,9 @@ export default function PricingSection() {
 
           {/* Section header */}
           <PageHeader
-            leading='Get the most powerful GraphQL server for WordPress'
+            leading='Pricing plans'
             title='Simple plans for everyone'
-            description='Unleash your capabilities with Gato GraphQL PRO. Execute updates in bulk, interact with external services, automate tasks, translate content, and much more.'
+            description='Unleash your capabilities with Gato GraphQL PRO.'
           />
           <Pricing />
         </div>
