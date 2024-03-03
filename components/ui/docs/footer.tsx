@@ -1,5 +1,5 @@
 import AppConfig from '@/app/app.config'
-import Logo from '@/components/ui/docs/logo'
+import FooterLogo from '@/components/ui/docs/logo'
 import FooterMenu from '../footer-menu'
 
 export default function Footer() {
@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="mb-4 md:mb-0">
           <div className="shrink-0 flex flex-col md:flex-row items-center">
             {/* Logo */}
-            <Logo />
+            <FooterLogo />
             <div className="text-sm text-slate-500 ml-4">
               Copyright © Gato GraphQL<span className="md:hidden lg:inline">. All rights reserved.</span>
             </div>
