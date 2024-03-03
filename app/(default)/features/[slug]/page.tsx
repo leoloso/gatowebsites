@@ -38,6 +38,7 @@ export default async function SingleFeature({ params }: {
     <ArtifactSection
       artifact={feature}
       sectionURL={`/${AppConfig.paths.features}`}
+      testimonialIndex={feature.category === 'Free plugin' ? 1 : 4}
     >
       <ul className="text-sm">
         <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">

@@ -38,6 +38,7 @@ export default async function SingleExtension({ params }: {
     <ArtifactSection
       artifact={extension}
       sectionURL={`/${AppConfig.paths.extensions}`}
+      testimonialIndex={0}
     >
       <ul className="text-sm">
         <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
