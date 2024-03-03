@@ -7,16 +7,20 @@ import Avatar from '@/public/assets/theme/default/artifact-author-avatar.jpg'
 import { ArtifactMdx } from '@/components/mdx/artifact-mdx'
 import StunningBackground from '@/components/stunning-background'
 import { Artifact } from '@/utils/types'
+import { getTestimonials } from '../data/testimonials'
 
 export default function ArtifactSection({
   artifact,
   sectionURL,
   children,
+  testimonialIndex = 0,
 }: {
   artifact: Artifact,
   sectionURL: string,
   children: React.ReactNode,
+  testimonialIndex?: number,
 }) {
+  const testimonial = getTestimonials()[testimonialIndex]
   return (
     <section className="relative">
 
@@ -60,11 +64,12 @@ export default function ArtifactSection({
                     </article>
 
                     <aside className="pl-6 border-l-2 border-purple-500">
-                      <p className="inline-flex font-medium italic text-lg bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">“ This integration is so perfect it tickles my brain. It ensures that your work is in sync across your entire team. ”</p>
+                      <p className="inline-flex font-medium italic text-lg bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">“ {testimonial.quote} ”</p>
                       <footer className="flex items-center space-x-4">
-                        <Image className="shrink-0 rounded-full" src={Avatar} width={32} height={32} alt="Author" />
+                        <Image className="shrink-0 rounded-full" src={testimonial.img} width={32} height={32} alt="Testimonial author picture" />
                         <div className="text-sm font-medium text-slate-300">
-                          Mike Hunt <span className="text-slate-700">-</span> <a className="text-purple-500 hover:underline" href="#0">Thunderbolt</a>
+                          {testimonial.name} <span className="text-slate-700">-</span> <span className="text-slate-400">{testimonial.role}</span>
+                          {/* <span className="text-slate-700">-</span> <a className="text-purple-500 hover:underline" href="#0">Thunderbolt</a> */}
                         </div>
                       </footer>
                     </aside>
