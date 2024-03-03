@@ -1,4 +1,3 @@
-import AppConfig from '@/app/app.config'
 import FooterMenu from './footer-menu'
 import Logo from './logo'
 
