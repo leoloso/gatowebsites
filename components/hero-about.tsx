@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import AboutIllustration from '@/public/assets/theme/about-illustration.svg'
-import Icon from '@/public/assets/theme/about-icon.svg'
+import Icon from '@/public/assets/theme/about-icon.png'
 import StunningBackground from './stunning-background'
 
 export default function HeroAbout() {
