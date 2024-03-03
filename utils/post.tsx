@@ -1,4 +1,5 @@
 import { Post, allPosts } from 'contentlayer/generated'
+import { COLORS } from './colors'
 
 export function getFeaturedPosts(posts: Array<Post> | undefined = allPosts) {
   return posts.filter((post) => post.featured)
@@ -19,7 +20,7 @@ export function getPostTagColors(posts: Array<Post> | undefined = allPosts) {
     if (!postTag) {
       return;
     }
-    postTagColors[postTag] = colors[index]
+    postTagColors[postTag] = COLORS[index]
   })
   return postTagColors
 }
