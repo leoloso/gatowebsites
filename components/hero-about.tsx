@@ -3,7 +3,11 @@ import AboutIllustration from '@/public/assets/theme/about-illustration.svg'
 import Icon from '@/public/assets/theme/about-icon.png'
 import StunningBackground from './stunning-background'
 
-export default function HeroAbout() {
+export default function HeroAbout({
+  includeAnimation = true
+}: {
+  includeAnimation?: boolean
+}) {
   return (
     <section className="relative">
 
@@ -14,19 +18,21 @@ export default function HeroAbout() {
 
           {/* Hero content */}
           <div className="text-center">
-            <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">The folks behind the product</div>
-            <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-6">Turning security into innovation</h1>
+            <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">About us</div>
+            <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-6">Our story (so far)</h1>
             {/* Rings illustration */}
-            <div className="inline-flex items-center justify-center relative">
-              {/* Particles animation */}
-              <div className="absolute inset-0 -z-10" aria-hidden="true">
-                <canvas data-particle-animation data-particle-quantity="10"></canvas>
+            {includeAnimation && (
+              <div className="inline-flex items-center justify-center relative">
+                {/* Particles animation */}
+                <div className="absolute inset-0 -z-10" aria-hidden="true">
+                  <canvas data-particle-animation data-particle-quantity="10"></canvas>
+                </div>
+                <div className="inline-flex [mask-image:_radial-gradient(circle_at_bottom,transparent_15%,black_70%)]">
+                  <Image src={AboutIllustration} width={446} height={446} alt="About illustration" />
+                </div>
+                <Image className="absolute mt-[30%] drop-shadow-lg animate-float" src={Icon} width={72} height={72} alt="About icon" />
               </div>
-              <div className="inline-flex [mask-image:_radial-gradient(circle_at_bottom,transparent_15%,black_70%)]">
-                <Image src={AboutIllustration} width={446} height={446} alt="About illustration" />
-              </div>
-              <Image className="absolute mt-[30%] drop-shadow-lg animate-float" src={Icon} width={72} height={72} alt="About icon" />
-            </div>
+            )}
           </div>
 
         </div>

@@ -13,8 +13,8 @@ import Cta from '@/components/cta-02'
 export default function About() {
   return (
     <>
-      <Hero />
-      <Story />
+      <Hero includeAnimation={false}/>
+      <Story includeHeader={false} />
       {/* <Team />
       <Recruitment />
       <Testimonials /> */}

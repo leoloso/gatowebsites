@@ -4,7 +4,11 @@ import SectionHeader from './section-header'
 import { getSnippet } from '@/utils/snippet'
 import { SnippetMdx } from './mdx/snippet-mdx'
 
-export default function Story() {
+export default function Story({
+  includeHeader = true
+}: {
+  includeHeader?: boolean
+}) {
   const snippet = getSnippet('story')
   return (
     <section className="relative">
@@ -27,9 +31,11 @@ export default function Story() {
           <div className="pb-12 md:pb-20">
 
             {/* Section header */}
-            <SectionHeader
-              title='Our story (so far)'
-            />
+            {includeHeader && (
+              <SectionHeader
+                title='Our story (so far)'
+              />
+            )}
 
             <div className="md:flex justify-between space-x-6 md:space-x-8 lg:space-x-14">
               <figure className="min-w-[240px]">
