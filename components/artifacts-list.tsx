@@ -4,6 +4,7 @@ import slugify from '@sindresorhus/slugify';
 import { sortAlphabetically } from '@/utils/sort';
 import { Artifact } from '@/utils/types';
 import RadiantGradient from './radial-gradient';
+import { StaticImageData } from 'next/image';
 
 export default function ArtifactsList({
   artifacts,
@@ -12,6 +13,7 @@ export default function ArtifactsList({
   showHeading = true,
   addRadialGradient = false,
   children,
+  defaultArtifactIcon,
 }: {
   artifacts: Array<Artifact>,
   showTopbar?: boolean
@@ -19,6 +21,7 @@ export default function ArtifactsList({
   showHeading?: boolean
   addRadialGradient?: boolean
   children?: React.ReactNode
+  defaultArtifactIcon?: StaticImageData,
 }) {
   const artifactCategories = getArtifactCategories(artifacts).sort(sortAlphabetically)
   return (
@@ -85,7 +88,10 @@ export default function ArtifactsList({
                   {artifacts.map((artifact, index) => (
                     artifact.category === artifactCategory && (
                       <div key={index}>
-                        <ArtifactCard artifact={artifact} />
+                        <ArtifactCard
+                          artifact={artifact}
+                          defaultArtifactIcon={defaultArtifactIcon}
+                        />
                       </div>
                     )
                   ))}

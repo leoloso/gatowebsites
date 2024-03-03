@@ -2,6 +2,7 @@ import { sortByOrderAndTitle } from '@/utils/sort';
 import ArtifactsList from './artifacts-list';
 import { allFeatures } from 'contentlayer/generated'
 import SectionHeader from './section-header';
+import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon-02.png'
 
 export default function FeaturesList() {
   const features = allFeatures.sort(sortByOrderAndTitle)
@@ -15,6 +16,7 @@ export default function FeaturesList() {
         showTopbar={false}
         showSearch={false}
         showHeading={false}
+        defaultArtifactIcon={DefaultArtifactIcon}
       />
       <ArtifactsList
         artifacts={proPluginFeatures}
@@ -22,6 +24,7 @@ export default function FeaturesList() {
         showSearch={false}
         showHeading={false}
         addRadialGradient={true}
+        defaultArtifactIcon={DefaultArtifactIcon}
       >
         <div className="pt-12 md:pt-20">
           <SectionHeader

@@ -2,6 +2,7 @@ import { Extension } from '@/.contentlayer/generated'
 import StunningBackground from './stunning-background'
 import ArtifactsCarousel from './artifacts-carousel'
 import PageHeader from './page-header'
+import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon-01.png'
 
 export default function ExtensionsSection({ extensions }: {
   extensions: Array<Extension>
@@ -23,6 +24,7 @@ export default function ExtensionsSection({ extensions }: {
 
           <ArtifactsCarousel
             artifacts={ extensions }
+            defaultArtifactIcon={DefaultArtifactIcon}
           />
 
         </div>
