@@ -25,3 +25,7 @@ export function getPostTagColors(posts: Array<Post> | undefined = allPosts) {
   })
   return postTagColors
 }
+
+export function getPostTagColor(tag: string) {
+  return getPostTagColors()[tag]
+}
