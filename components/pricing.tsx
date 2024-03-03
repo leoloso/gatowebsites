@@ -129,6 +129,9 @@ export default function Pricing() {
           ]}
         />
       </div>
+      <p className="text-sm text-slate-500 pt-4 pb-4">
+        The PRO license is for 1 year (renewable every year), that includes support and access to all product updates. Prices are in USD.
+      </p>
     </div>
   )
 }
