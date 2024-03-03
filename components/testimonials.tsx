@@ -12,7 +12,7 @@ export default function Testimonials() {
   const [autorotate, setAutorotate] = useState<boolean>(true)
   const [autorotateTiming] = useState<number>(7000)
 
-  const items = getTestimonials()
+  const items = getTestimonials().slice(0, 3)
 
   const testimonials = useRef<HTMLDivElement>(null)
 
