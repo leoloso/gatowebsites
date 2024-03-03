@@ -41,14 +41,14 @@ export default function Faqs() {
             {/* Item */}
             <div className="space-y-2">
               <h4 className="font-semibold">Is Gato GraphQL free?</h4>
-              <p className="text-slate-400">The Gato GraphQL plugin for WordPress is free, while Gato GraphQL PRO is its commercial extension.</p>
+              <p className="text-slate-400">The Gato GraphQL plugin for WordPress is free, while Gato GraphQL PRO is the commercial extension, that supports additional use cases.</p>
             </div>
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">When do I need to buy the PRO version?</h4>
-              <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API to fetch data, such as for building headless sites.</p>
-              <p className="text-slate-400">Gato GraphQL PRO is needed for enhanced security for public APIs, supporting HTTP caching, sending emails, executing updates in bulk, connecting to external services, and automating tasks (among others).</p>
+              <h4 className="font-semibold">What's the difference between free and PRO?</h4>
+              <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API, such as for building headless sites.</p>
+              <p className="text-slate-400">Gato GraphQL PRO is needed for enhanced security for public APIs, adding HTTP caching, sending emails, executing updates in bulk, connecting to external services, and automating tasks (among others).</p>
             </div>
 
           </div>
