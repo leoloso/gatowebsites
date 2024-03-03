@@ -15,7 +15,7 @@ export default function PricingSection() {
             <SectionHeader
               leading='Pricing plans'
               title='Simple plans for everyone'
-              description='Unleash your capabilities with Gato GraphQL PRO. Execute updates in bulk, interact with external services, automate tasks, translate content, and much more.'
+              description='Unleash your capabilities with Gato GraphQL PRO.'
             />
             <Pricing />
           </div>
