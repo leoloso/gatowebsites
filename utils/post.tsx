@@ -6,10 +6,10 @@ export function getFeaturedPosts(posts: Array<Post> | undefined = allPosts) {
   return posts.filter((post) => post.featured)
 }
 
-export function getPostTags(posts: Array<Post> | undefined = allPosts) {
+export function getPostTags(posts: Array<Post> | undefined = allPosts): Array<string> {
   return posts
-    .map((post) => post.tags)
-    .flat()
+    .map((post) => post.tags || [])
+    .flat(1)
     // filter distinct values
     .filter((value, index, array) => array.indexOf(value) === index)
 }
