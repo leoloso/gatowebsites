@@ -32,7 +32,7 @@ export default function PricingMoneyBackGuarantee() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12">
             <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">30-day money back guarantee</h2>
-            <p className="text-lg text-slate-400">Purchase Gato GraphQL PRO with the confidence that, if it does not satisfy you needs, you can request a refund.</p>
+            <p className="text-lg text-slate-400">Purchase Gato GraphQL PRO with the confidence that, if it does not satisfy your needs, you can request a refund.</p>
           </div>
 
           {/* Rings illustration */}
