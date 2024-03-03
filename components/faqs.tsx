@@ -58,8 +58,8 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">What kind of data can I collect from my customers?</h4>
-              <p className="text-slate-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis enim lobortis scelerisque fermentum.</p>
+              <h4 className="font-semibold">How is Gato GraphQL different than the WP REST API?</h4>
+              <p className="text-slate-400">Gato GraphQL supports “Persisted Queries”, which are similar to REST endpoints as they expose pre-defined data, however these are created and published directly within the wp-admin, using GraphQL.</p>
             </div>
 
             {/* Item */}
