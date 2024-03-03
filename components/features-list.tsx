@@ -33,7 +33,7 @@ export default function FeaturesList() {
           <SectionHeader
             leading='Truly unleash your capabilities with Gato GraphQL PRO'
             title='Manage your WordPress site using advanced GraphQL'
-            description='The Gato GraphQL PRO plugin provides features to retrieve, manipulate and store again any piece of data, from your WordPress site and the wider web, in any desired way.'
+            description='The Gato GraphQL PRO plugin provides features to retrieve, manipulate and store any piece of data, from WordPress and the wider web. Automate your tasks and content workflows.'
           />
         </div>
       </ArtifactsList>
