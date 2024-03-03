@@ -24,7 +24,7 @@ export default function PricingTier({
           <span className="text-lg font-medium text-slate-500">$</span><span className="text-3xl font-bold text-slate-50">{price}</span><span className="text-sm text-slate-600 font-medium">/y</span>
         </div>
         {isPRO && (
-          <div className="text-slate-400">License for <span className="text-slate-200">{description}</span></div>
+          <div className="text-slate-400">Gato GraphQL PRO - License for <span className="text-slate-200">{description}</span></div>
         )}
         {!isPRO && (
           <div className="text-slate-400">{description}</div>
