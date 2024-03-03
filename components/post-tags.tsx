@@ -1,3 +1,4 @@
+import { getPostTagColors } from '@/utils/post-tags'
 import Link from 'next/link'
 
 export default function PostTags({ tags }: {
@@ -5,18 +6,27 @@ export default function PostTags({ tags }: {
 }) {
 
   const tagColor = (tag: string) => {
-    switch (tag) {
-      case 'Engineering':
-        return 'text-gray-100 bg-blue-500 hover:bg-blue-600'
-      case 'Design':
-        return 'text-gray-100 bg-pink-500 hover:bg-pink-600'
-      case 'Tutorials and articles':
-        return 'text-gray-100 bg-teal-500 hover:bg-teal-600'
-      case 'Culture':
-        return 'text-gray-100 bg-green-500 hover:bg-green-600'
-      default:
-        return 'text-gray-100 bg-purple-600 hover:bg-purple-700'
-    }
+    const bgcolors = [
+      'bg-red-700',
+      'bg-orange-700',
+      'bg-amber-700',
+      'bg-yellow-700',
+      'bg-lime-700',
+      'bg-green-700',
+      'bg-emerald-700',
+      'bg-teal-700',
+      'bg-cyan-700',
+      'bg-sky-700',
+      'bg-blue-700',
+      'bg-indigo-700',
+      'bg-violet-700',
+      'bg-purple-700',
+      'bg-fuchsia-700',
+      'bg-pink-700',
+      'bg-rose-700',
+    ]
+    const postTagColors = getPostTagColors(bgcolors)
+    return `text-gray-100 ${postTagColors[tag]}`
   }
 
   return (
