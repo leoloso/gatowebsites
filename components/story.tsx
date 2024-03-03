@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import FounderPic from '@/public/assets/team/Leo.jpg'
+import FounderPic from '@/public/assets/team/Leo-square.jpg'
 import SectionHeader from './section-header'
 import { getSnippet } from '@/utils/snippet'
 import { SnippetMdx } from './mdx/snippet-mdx'
