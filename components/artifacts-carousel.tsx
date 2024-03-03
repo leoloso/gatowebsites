@@ -7,13 +7,18 @@ import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
 import ArtifactCard from './artifact-card'
 import { Artifact } from '@/utils/types'
+import { StaticImageData } from 'next/image'
 Swiper.use([Navigation])
 
 type ArtifactsSectionProps = {
   artifacts: Array<Artifact>
+  defaultArtifactIcon?: StaticImageData,
 }
 
-export default function ArtifactsCarousel({ artifacts }: ArtifactsSectionProps) {
+export default function ArtifactsCarousel({
+  artifacts,
+  defaultArtifactIcon,
+}: ArtifactsSectionProps) {
 
   const [swiperInitialized, setSwiperInitialized] = useState<boolean>(false)
 
@@ -50,7 +55,10 @@ export default function ArtifactsCarousel({ artifacts }: ArtifactsSectionProps) 
           {/* Carousel items */}
           {artifacts.map((extension, extensionIndex) => (
             <div key={extensionIndex} className="swiper-slide h-auto">
-              <ArtifactCard artifact={extension} />
+              <ArtifactCard
+                artifact={extension}
+                defaultArtifactIcon={defaultArtifactIcon}
+              />
             </div>
           ))}
         </div>

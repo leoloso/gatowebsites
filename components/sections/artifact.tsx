@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import DefaultArtifactImg from '@/public/assets/theme/default/artifact-image.png'
-import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.svg'
+import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png'
 import Star from '@/public/assets/theme/star.svg'
 import { ArtifactMdx } from '@/components/mdx/artifact-mdx'
 import StunningBackground from '@/components/stunning-background'
@@ -13,11 +13,13 @@ export default function ArtifactSection({
   sectionURL,
   children,
   testimonialIndex = 0,
+  defaultArtifactIcon,
 }: {
   artifact: Artifact,
   sectionURL: string,
   children: React.ReactNode,
   testimonialIndex?: number,
+  defaultArtifactIcon?: StaticImageData,
 }) {
   const testimonial = getTestimonials()[testimonialIndex]
   return (
@@ -92,7 +94,7 @@ export default function ArtifactSection({
                       <div className="text-center mb-5">
                         <div className="mb-4">
                           <div className="relative inline-flex">
-                            <Image src={artifact.icon || DefaultArtifactIcon} width={80} height={80} alt="Artifact icon" />
+                            <Image src={artifact.icon || defaultArtifactIcon || DefaultArtifactIcon} width={80} height={80} alt="Artifact icon" />
                             {!! artifact.featured && (
                               <Image className="absolute top-0 -right-1" src={Star} width={24} height={24} alt="Star" aria-hidden="true" />
                             )}
