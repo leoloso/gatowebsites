@@ -1,6 +1,7 @@
 import SupportForm from "@/components/forms/support"
 import PageHeader from "@/components/page-header"
 import StunningBackground from "@/components/stunning-background"
+import Cta from '@/components/cta-03'
 
 export const metadata = {
   title: 'Support - Open PRO',
@@ -9,24 +10,27 @@ export const metadata = {
 
 export default function Support() {
   return (
-    <section className="relative">
+    <>
+      <section className="relative">
 
-      <StunningBackground />
+        <StunningBackground />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
-        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
+          <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
-          {/* Page header */}
-          <PageHeader
-            leading='Premium Support for PRO users'
-            title="Request for Support"
-            description="Send us your request, and we'll work on it."
-          />
+            {/* Page header */}
+            <PageHeader
+              leading='Premium Support for PRO users'
+              title="Request for Support"
+              description="Send us your request, and we'll work on it."
+            />
 
-          <SupportForm />
+            <SupportForm />
 
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <Cta />
+    </>
   )
 }
