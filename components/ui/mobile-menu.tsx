@@ -5,7 +5,7 @@ import Link from 'next/link'
 import PurchasePROPluginButton from '../purchase-pro-plugin-button'
 import AppConfig from '@/app/app.config'
 import AppSettings from '@/app/app.settings'
-import Search from './search'
+// import Search from './search'
 import ThemeToggle from './theme-toggle'
 import DownloadFreePluginButton from '../download-free-button'
 
@@ -48,10 +48,11 @@ export default function MobileMenu({
       )}
 
       {/* Search button */}
-      <Search
+      {/* @todo Re-enable when adding Search to the site */}
+      {/* <Search
         showSearchInput={false}
         enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
-      />
+      /> */}
 
       {/* Hamburger button */}
       <button
