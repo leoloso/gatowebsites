@@ -76,10 +76,10 @@ export default function Header({
                 enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
               />
             </li> */}
-            <li className="ml-2 hidden lg:block">
+            <li className="ml-2 hidden sm:block">
               <DownloadFreePluginButton />
             </li>
-            <li className="ml-2 hidden lg:block">
+            <li className="ml-2 hidden sm:block">
               <PurchasePROPluginButton />
             </li>
           </ul>
