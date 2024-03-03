@@ -47,7 +47,7 @@ However, we may only want to limit access to the "Schema modules" to visitors (i
 The private endpoints are:
 
 - Endpoint `wp-admin/edit.php?page=graphql_api&action=execute_query` (which powers the admin's GraphiQL and Interactive Schema clients, and can be invoked in the WordPress editor to feed data to blocks)
-- Custom private endpoints (also used to feed data to blocks, but allowing to lock its configuration via PHP hooks)
+- Custom private endpoints (also used to feed data to blocks, but allowing you to lock its configuration via PHP hooks)
 - GraphQL queries executed internally (via class `GraphQLServer` in PHP)
 
 To have the "Schema modules" also be disabled on the private endpoints, we must configure it on "Plugin Configuration > Private Endpoints" tab on the Settings page, by checking item "Disable "Schema modules" in the private endpoints?"

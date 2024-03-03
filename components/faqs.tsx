@@ -35,7 +35,7 @@ export default function Faqs() {
             {/* Item */}
             <div className="space-y-2">
               <h4 className="font-semibold">What is Gato GraphQL?</h4>
-              <p className="text-slate-400">Gato GraphQL is a plugin for WordPress that converts the site into a GraphQL server, allowing to fetch and modify data from the WordPress site using the GraphQL language.</p>
+              <p className="text-slate-400">Gato GraphQL is a plugin for WordPress that converts the site into a GraphQL server, allowing you to fetch and modify data from the WordPress site using the GraphQL language.</p>
             </div>
 
             {/* Item */}
