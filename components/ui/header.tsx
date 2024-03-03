@@ -1,7 +1,7 @@
 import Logo from './logo'
 import MobileMenu from './mobile-menu'
 import PurchasePROPluginButton from '../purchase-pro-plugin-button'
-import Search from './search'
+// import Search from './search'
 import ThemeToggle from '@/components/ui/theme-toggle'
 import Link from 'next/link'
 import Dropdown from '@/components/utils/dropdown'
@@ -69,12 +69,13 @@ export default function Header({
                 <ThemeToggle />
               </li>
             )}
-            <li className="ml-1">
+            {/* @todo Re-enable when adding Search to the site */}
+            {/* <li className="ml-1">
               <Search
                 showSearchInput={false}
                 enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
               />
-            </li>
+            </li> */}
             <li className="ml-2 hidden lg:block">
               <DownloadFreePluginButton />
             </li>
