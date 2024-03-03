@@ -64,8 +64,8 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Can I use Stellar for free?</h4>
-              <p className="text-slate-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis enim lobortis scelerisque fermentum.</p>
+              <h4 className="font-semibold">Does Gato GraphQL replace the WP REST API?</h4>
+              <p className="text-slate-400">There is no need for that. Both GraphQL and REST accomplish the objective of exposing data. GraphQL, however, can be used for more advanced use cases.</p>
             </div>
 
             {/* Item */}
