@@ -12,6 +12,7 @@ export default function FeaturesList() {
   
   return (
     <>
+      {/* Free plugin features */}
       <ArtifactsList
         artifacts={freePluginFeatures}
         showTopbar={false}
@@ -19,6 +20,7 @@ export default function FeaturesList() {
         showHeading={false}
         defaultArtifactIcon={DefaultArtifactIcon02}
       />
+      {/* PRO plugin features */}
       <ArtifactsList
         artifacts={proPluginFeatures}
         showTopbar={false}

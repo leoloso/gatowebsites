@@ -3,6 +3,8 @@ import { allFeatures } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import AppConfig from '@/app/app.config'
 import ArtifactSection from '@/components/sections/artifact'
+import DefaultArtifactIcon02 from '@/public/assets/theme/default/artifact-icon-02.png'
+import DefaultArtifactIcon04 from '@/public/assets/theme/default/artifact-icon-04.png'
 
 export async function generateStaticParams() {
   return allFeatures.map((feature) => ({
@@ -39,6 +41,7 @@ export default async function SingleFeature({ params }: {
       artifact={feature}
       sectionURL={`/${AppConfig.paths.features}`}
       testimonialIndex={feature.category === 'Free plugin' ? 1 : 4}
+      defaultArtifactIcon={feature.category === 'Free plugin' ? DefaultArtifactIcon02 : DefaultArtifactIcon04}
     >
       <ul className="text-sm">
         <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
