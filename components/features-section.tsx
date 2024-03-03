@@ -12,9 +12,9 @@ export default function FeaturesSection() {
 
           {/* Section header */}
           <PageHeader
-            leading='Gato GraphQL plugin'
+            leading='Empower your site with Gato GraphQL'
             title='Interact with all your data in WordPress'
-            description='Superpower your WordPress site using standard and custom GraphQL features, included in the free Gato GraphQL plugin.'
+            description='The free Gato GraphQL plugin provides all the standard GraphQL features, plus many custom ones for speed, performance and functionality.'
           />
 
         </div>
