@@ -6,27 +6,27 @@ export default function PostTags({ tags }: {
 }) {
 
   const tagColor = (tag: string) => {
-    const bgcolors = [
-      'bg-red-700',
-      'bg-orange-700',
-      'bg-amber-700',
-      'bg-yellow-700',
-      'bg-lime-700',
-      'bg-green-700',
-      'bg-emerald-700',
-      'bg-teal-700',
-      'bg-cyan-700',
-      'bg-sky-700',
-      'bg-blue-700',
-      'bg-indigo-700',
-      'bg-violet-700',
-      'bg-purple-700',
-      'bg-fuchsia-700',
-      'bg-pink-700',
-      'bg-rose-700',
+    const colors = [
+      'red',
+      'orange',
+      'amber',
+      'yellow',
+      'lime',
+      'green',
+      'emerald',
+      'teal',
+      'cyan',
+      'sky',
+      'blue',
+      'indigo',
+      'violet',
+      'purple',
+      'fuchsia',
+      'pink',
+      'rose',
     ]
-    const postTagColors = getPostTagColors(bgcolors)
-    return `text-gray-100 ${postTagColors[tag]}`
+    const postTagColors = getPostTagColors(colors)
+    return `text-gray-100 bg-${postTagColors[tag]}-700 hover:bg-${postTagColors[tag]}-600`
   }
 
   return (
