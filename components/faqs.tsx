@@ -47,8 +47,8 @@ export default function Faqs() {
             {/* Item */}
             <div className="space-y-2">
               <h4 className="font-semibold">When do I need to buy the PRO version?</h4>
-              <p className="text-slate-400">The Gato GraphQL plugin completely maps the WordPress schema, and is enough to build headless sites.</p>
-              <p className="text-slate-400">Gato GraphQL PRO is needed for enhanced security for public APIs, improving speed, automating tasks, and connecting to external services (among others).</p>
+              <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API to fetch data, such as for building headless sites.</p>
+              <p className="text-slate-400">Gato GraphQL PRO is needed for enhanced security for public APIs, supporting HTTP caching, sending emails, executing updates in bulk, connecting to external services, and automating tasks (among others).</p>
             </div>
 
           </div>
