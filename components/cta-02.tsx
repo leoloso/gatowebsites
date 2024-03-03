@@ -1,3 +1,4 @@
+import AppConfig from '@/app/app.config'
 import Particles from './particles'
 import SectionHeader from './section-header'
 
@@ -26,14 +27,14 @@ export default function Cta02() {
           </div>
           {/* Content */}
           <SectionHeader
-            leading='The security first platform'
-            title='Supercharge your security'
-            description='All the lorem ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.'
+            leading='Try out Gato GraphQL PRO for free'
+            title="Discover the power"
+            description="Play with Gato GraphQL PRO in your own sandbox site, available during 7 days."
             paddingClassname=''
           >
             <div className="mt-8">
-              <a className="btn text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group" href="#0">
-                Start Building <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+              <a className="btn text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group" href={AppConfig.urls.instawpSandboxDemo} target='_blank'>
+                Try out Gato GraphQL PRO <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
               </a>
             </div>
           </SectionHeader>
