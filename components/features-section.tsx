@@ -12,9 +12,9 @@ export default function FeaturesSection() {
 
           {/* Section header */}
           <PageHeader
-            leading='Integrations & Add-ons'
-            title='Make Stellar uniquely yours'
-            description='Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.'
+            leading='Gato GraphQL plugin'
+            title='Interact with all your data in WordPress'
+            description='Superpower your WordPress site using standard and custom GraphQL features, included in the free Gato GraphQL plugin.'
           />
 
         </div>
