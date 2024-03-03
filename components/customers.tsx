@@ -16,7 +16,7 @@ export default function Customers() {
           {/* Content */}
           <SectionHeader
             title='Meet our customers'
-            description="There are many variations available, but the majority have suffered, by injected humour, or randomised words which don't look even slightly believable."
+            description="Developers, plugin business owners, and agency owners say this about our product..."
           />
           
           {/* Customers */}
