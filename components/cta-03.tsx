@@ -26,8 +26,8 @@ export default function Cta03() {
           {/* Content */}
           <SectionHeader
             leading='Never miss an update'
-            title='Take control of your business'
-            description='Find out about our latest product changes as we continue improving Stellar to enable your team to collaborate better.'
+            title='Stay in the loop'
+            description='Find out about our latest product changes as we continue improving Gato GraphQL to empower your WordPress site.'
             paddingClassname=''
           >
             <NewsletterForm />
