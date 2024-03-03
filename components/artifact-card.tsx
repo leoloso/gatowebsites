@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Star from '@/public/assets/theme/star.svg'
-import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.svg'
+import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png'
 import { getArtifactURL } from '@/utils/application-urls'
 import { Artifact } from '@/utils/types'
 

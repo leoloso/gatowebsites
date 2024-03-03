@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import DefaultArtifactImg from '@/public/assets/theme/default/artifact-image.png'
-import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.svg'
+import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png'
 import Star from '@/public/assets/theme/star.svg'
 import { ArtifactMdx } from '@/components/mdx/artifact-mdx'
 import StunningBackground from '@/components/stunning-background'
