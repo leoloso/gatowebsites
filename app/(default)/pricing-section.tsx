@@ -14,8 +14,8 @@ export default function PricingSection() {
             {/* Content */}
             <SectionHeader
               leading='Pricing plans'
-              title='Flexible plans and features'
-              description='All the lorem ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.'
+              title='Simple plans for everyone'
+              description='Unleash your capabilities with Gato GraphQL PRO. Execute updates in bulk, interact with external services, automate tasks, translate content, and much more.'
             />
             <Pricing />
           </div>
