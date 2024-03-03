@@ -13,7 +13,7 @@ export default function PricingSection() {
 
           {/* Section header */}
           <PageHeader
-            leading='The most powerful GraphQL server for WordPress'
+            leading='Get the most powerful GraphQL server for WordPress'
             title='Simple plans for everyone'
             description='Unleash your capabilities with Gato GraphQL PRO. Execute bulk updates, interact with external services, automate tasks, and much more.'
           />
