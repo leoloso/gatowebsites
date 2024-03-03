@@ -16,7 +16,7 @@ export default function PopularPosts() {
             </svg>
             <article>
               <h3 className="font-medium mb-1">
-                <Link href={getPostURL(post)} className="text-slate-100 hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
+                <Link href={getPostURL(post)} className="text-slate-300 hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
               </h3>
               <div className="text-sm text-slate-500">
                 <span className="text-slate-400">By </span>
