@@ -6,6 +6,7 @@ import {
   getFeaturedExtensions,
 } from '@/utils/extension'
 import { sortByOrderAndTitle } from '@/utils/sort'
+import Cta from '@/components/cta-02'
 
 export const metadata = {
   title: 'Extensions - Stellar',
@@ -24,6 +25,7 @@ export default function Extensions() {
       <ExtensionsList
         extensions={ extensions }
       />
+      <Cta />
     </>
   )
 }
