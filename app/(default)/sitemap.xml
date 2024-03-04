@@ -1134,169 +1134,169 @@
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/access-control/</loc>
+      <loc>https://gatographql.com/features/access-control/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/api-hierarchy/</loc>
+      <loc>https://gatographql.com/features/api-hierarchy/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/automation/</loc>
+      <loc>https://gatographql.com/features/automation/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/composable-directives/</loc>
+      <loc>https://gatographql.com/features/composable-directives/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/custom-endpoints/</loc>
+      <loc>https://gatographql.com/features/custom-endpoints/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/endpoint-management/</loc>
+      <loc>https://gatographql.com/features/endpoint-management/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/exposing-sensitive-data/</loc>
+      <loc>https://gatographql.com/features/exposing-sensitive-data/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/field-and-directive-based-versioning/</loc>
+      <loc>https://gatographql.com/features/field-and-directive-based-versioning/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/field-deprecation-via-ui/</loc>
+      <loc>https://gatographql.com/features/field-deprecation-via-ui/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/field-to-input/</loc>
+      <loc>https://gatographql.com/features/field-to-input/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/function-directives/</loc>
+      <loc>https://gatographql.com/features/function-directives/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/function-fields/</loc>
+      <loc>https://gatographql.com/features/function-fields/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/global-fields/</loc>
+      <loc>https://gatographql.com/features/global-fields/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/http-caching/</loc>
+      <loc>https://gatographql.com/features/http-caching/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/http-client/</loc>
+      <loc>https://gatographql.com/features/http-client/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/internal-endpoint-for-blocks/</loc>
+      <loc>https://gatographql.com/features/internal-endpoint-for-blocks/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/multifield-directives/</loc>
+      <loc>https://gatographql.com/features/multifield-directives/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/multiple-query-execution/</loc>
+      <loc>https://gatographql.com/features/multiple-query-execution/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/mutation-return-type/</loc>
+      <loc>https://gatographql.com/features/mutation-return-type/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/nested-mutations/</loc>
+      <loc>https://gatographql.com/features/nested-mutations/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/persisted-queries/</loc>
+      <loc>https://gatographql.com/features/persisted-queries/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/predefined-persisted-queries/</loc>
+      <loc>https://gatographql.com/features/predefined-persisted-queries/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/proactive-feedback/</loc>
+      <loc>https://gatographql.com/features/proactive-feedback/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/public-private-and-password-protected-endpoints/</loc>
+      <loc>https://gatographql.com/features/public-private-and-password-protected-endpoints/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/public-private-schema/</loc>
+      <loc>https://gatographql.com/features/public-private-schema/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/schema-editing-access/</loc>
+      <loc>https://gatographql.com/features/schema-editing-access/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/schema-namespacing/</loc>
+      <loc>https://gatographql.com/features/schema-namespacing/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
     
     <url>
-      <loc>https://gatographql.com/guides/special-features/security/</loc>
+      <loc>https://gatographql.com/features/security/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
