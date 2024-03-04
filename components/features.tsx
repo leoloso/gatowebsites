@@ -61,7 +61,7 @@ export default function Features() {
 
               {/* Image */}
               <div className="md:w-5/12 lg:w-1/2" data-aos="fade-up" data-aos-delay="100">
-                <div className="relative py-24 -mt-12">
+                <div className="relative py-24 -mt-12 md:mt-0">
 
                   {/* Particles animation */}
                   <Particles className="absolute inset-0 -z-10" quantity={8} staticity={30} />
