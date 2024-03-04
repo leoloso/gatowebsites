@@ -62,7 +62,7 @@ export default function Clients() {
                   <Image src={Client04} alt="SDG-SSE logo" width={120} height={80} />
                 </div>
                 <div className="swiper-slide !w-auto">
-                  <Image className="mt-2" src={Client05} alt="TPPDebate logo" width={120} height={38} />
+                  <Image src={Client05} alt="TPPDebate logo" width={120} height={38} />
                 </div>
               </div>
             </div>
