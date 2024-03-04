@@ -3,6 +3,11 @@ import Image from 'next/image'
 import NotFoundImage from '@/public/assets/theme/404.jpg'
 import StunningBackground from '@/components/stunning-background';
 
+export const metadata = {
+  title: '404 - Gato GraphQL',
+  description: "Oops, this page doesn't exist",
+}
+
 export default function NotFound() {
   return (
     <>
