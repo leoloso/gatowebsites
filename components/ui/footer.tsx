@@ -13,9 +13,9 @@ export default function Footer() {
             <div className="sm:col-span-12 lg:col-span-4 order-1 lg:order-none">
               <div className="h-full flex flex-col sm:flex-row lg:flex-col justify-between">
                 <div className="mb-4 sm:mb-0">
-                  <div className="mb-4">
+                  {/* <div className="mb-4"> */}
                     <FooterLogo />
-                  </div>
+                  {/* </div> */}
                   <div className="text-sm text-slate-500">© Gato GraphQL <span className="text-slate-600">-</span> All rights reserved.</div>
                 </div>
                 {/* Social links */}
