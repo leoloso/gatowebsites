@@ -21,7 +21,7 @@ export default function NewsletterPage() {
             <PageHeader
               leading='Receive news on your email inbox'
               title='Subscribe to our newsletter'
-              description='Stellar powers thousands of high-impact product teams. From next-gen startups who reach for the stars to established greats who change the world.'
+              description='Stay in the loop on all new things concerning Gato GraphQL.'
             />
 
             <Newsletter
