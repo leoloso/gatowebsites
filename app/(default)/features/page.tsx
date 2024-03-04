@@ -3,7 +3,7 @@ import FeaturesList from '@/components/features-list'
 import Cta from '@/components/cta-02'
 
 export const metadata = {
-  title: 'Features - Stellar',
+  title: 'Features - Gato GraphQL',
   description: 'Page description',
 }
 

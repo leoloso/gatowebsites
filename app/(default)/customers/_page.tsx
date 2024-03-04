@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Customers - Stellar',
+  title: 'Customers - Gato GraphQL',
   description: 'Page description',
 }
 
@@ -19,9 +19,9 @@ export default function Customers() {
 
             {/* Section header */}
             <PageHeader
-              leading='Leaders love Stellar'
+              leading='Leaders love Gato GraphQL'
               title='Trusted by leading companies'
-              description='Stellar powers thousands of high-impact product teams. From next-gen startups who reach for the stars to established greats who change the world.'
+              description='Gato GraphQL powers thousands of high-impact product teams. From next-gen startups who reach for the stars to established greats who change the world.'
             />
 
             <CustomersList />

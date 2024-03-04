@@ -9,7 +9,7 @@ import { sortByOrderAndTitle } from '@/utils/sort'
 import Cta from '@/components/cta-02'
 
 export const metadata = {
-  title: 'Extensions - Stellar',
+  title: 'Extensions - Gato GraphQL',
   description: 'Page description',
 }
 

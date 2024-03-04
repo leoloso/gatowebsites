@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Home - Stellar',
+  title: 'Home - Gato GraphQL',
   description: 'Page description',
 }
 
