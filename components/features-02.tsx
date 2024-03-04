@@ -100,7 +100,7 @@ export default function Features02() {
                       <div className="md:max-w-[480px] shrink-0 order-1 md:order-none p-6 pt-0 md:p-8">
                         <div>
                           <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">Extensibility</h3>
-                          <p className="text-slate-400">Your login box must find the right balance between user convenience, privacy and security.</p>
+                          <p className="text-slate-400">Extend the GraphQL schema to fetch data from your CPTs and custom models.</p>
                         </div>
                       </div>
                       {/* Image */}
@@ -123,7 +123,7 @@ export default function Features02() {
                       {/* Text */}
                       <div className="md:max-w-[480px] shrink-0 order-1 md:order-none p-6 pt-0 md:p-8">
                         <div>
-                          <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">Infinite options</h3>
+                          <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">Limitless options</h3>
                           <p className="text-slate-400">Quickly apply filters to refine your issues lists and create custom views.</p>
                         </div>
                       </div>
