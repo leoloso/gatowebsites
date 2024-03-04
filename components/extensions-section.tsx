@@ -17,9 +17,9 @@ export default function ExtensionsSection({ extensions }: {
 
           {/* Section header */}
           <PageHeader
-            leading='Integrations & Add-ons'
-            title='Make Stellar uniquely yours'
-            description='Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.'
+            leading='PRO extensions'
+            title='Superpower your WordPress site'
+            description='PRO extensions provide additional functionality to Gato GraphQL, and expand the GraphQL schema. As new extensions are created, they will be included in Gato GraphQL PRO.'
           />
 
           <ArtifactsCarousel
