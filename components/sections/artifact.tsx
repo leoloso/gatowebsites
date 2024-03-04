@@ -12,12 +12,14 @@ export default function ArtifactSection({
   artifact,
   sectionURL,
   children,
+  widgetChildren,
   testimonialIndex = 0,
   defaultArtifactIcon,
 }: {
   artifact: Artifact,
   sectionURL: string,
   children: React.ReactNode,
+  widgetChildren: React.ReactNode,
   testimonialIndex?: number,
   defaultArtifactIcon?: StaticImageData,
 }) {
@@ -100,6 +102,7 @@ export default function ArtifactSection({
                             )}
                           </div>
                         </div>
+                        {widgetChildren}
                       </div>
                       {children}
                     </div>
