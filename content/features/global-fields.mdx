@@ -25,8 +25,6 @@ Some example global fields are:
 - `_arrayUnique`
 - many more
 
-**Please notice:** By convention, all these fields start with `"_"`. This convention helps differentiate which are data (i.e. "normal") fields, and which are functionality fields, when visualizing the GraphQL schema.
-
 Functionality fields are useful for obtaining data that is stored outside of WordPress, and for manipulating the data once it has been retrieved, allowing us to transform a field value in whatever way it is required, and granting us powerful data import/export capabilities.
 
 Functionality fields belong not to a specific type, such as `Post` or `User`, but to all the types in the schema. That's why these are handled in a distinctive way in Gato GraphQL, under the name of "global fields".
