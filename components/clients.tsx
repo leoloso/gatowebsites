@@ -50,19 +50,19 @@ export default function Clients() {
               <div className="swiper-wrapper !ease-linear select-none items-center">
                 {/* Carousel items */}
                 <div className="swiper-slide !w-auto">
-                  <Image src={Client01} alt="Agenda Urbana logo" width={110} height={21} />
+                  <Image src={Client01} alt="Agenda Urbana logo" width={60} height={60} />
                 </div>
                 <div className="swiper-slide !w-auto">
-                  <Image src={Client02} alt="MESYM logo" width={70} height={25} />
+                  <Image src={Client02} alt="MESYM logo" width={60} height={31} />
                 </div>
                 <div className="swiper-slide !w-auto">
-                  <Image className="mt-1" src={Client03} alt="PoP logo" width={107} height={33} />
+                  <Image className="mt-1" src={Client03} alt="PoP logo" width={64} height={25} />
                 </div>
                 <div className="swiper-slide !w-auto">
-                  <Image src={Client04} alt="SDG-SSE logo" width={85} height={36} />
+                  <Image src={Client04} alt="SDG-SSE logo" width={60} height={40} />
                 </div>
                 <div className="swiper-slide !w-auto">
-                  <Image className="mt-2" src={Client05} alt="TPPDebate logo" width={86} height={18} />
+                  <Image className="mt-2" src={Client05} alt="TPPDebate logo" width={60} height={19} />
                 </div>
               </div>
             </div>
