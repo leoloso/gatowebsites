@@ -28,7 +28,7 @@ export default function Clients() {
       noSwipingClass: 'swiper-slide',
       autoplay: {
         delay: 0,
-        disableOnInteraction: true,
+        disableOnInteraction: false,
       },
     })
   }, [])
