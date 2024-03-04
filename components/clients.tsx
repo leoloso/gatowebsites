@@ -56,7 +56,7 @@ export default function Clients() {
                   <Image src={Client02} alt="MESYM logo" width={120} height={62} />
                 </div>
                 <div className="swiper-slide !w-auto">
-                  <Image className="mt-1" src={Client03} alt="PoP logo" width={64} height={50} />
+                  <Image className="mt-1" src={Client03} alt="PoP logo" width={128} height={50} />
                 </div>
                 <div className="swiper-slide !w-auto">
                   <Image src={Client04} alt="SDG-SSE logo" width={120} height={80} />
