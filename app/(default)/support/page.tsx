@@ -5,7 +5,7 @@ import Cta from '@/components/cta-03'
 
 export const metadata = {
   title: 'Support - Gato GraphQL',
-  description: 'Page description',
+  description: "Send us your request, and we'll work on it",
 }
 
 export default function Support() {

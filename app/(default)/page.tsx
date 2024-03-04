@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Home - Gato GraphQL',
-  description: 'Page description',
+  description: 'The most powerful GraphQL server for WordPress',
 }
 
 import Hero from '@/components/hero'

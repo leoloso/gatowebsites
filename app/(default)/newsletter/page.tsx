@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Newsletter - Gato GraphQL',
-  description: 'Page description',
+  description: 'Stay in the loop on all new things concerning Gato GraphQL',
 }
 
 import StunningBackground from '@/components/stunning-background'

@@ -2,7 +2,7 @@ import { redirect } from "next/navigation"
 
 export const metadata = {
   title: 'Shop - Gato GraphQL',
-  description: 'Page description',
+  description: 'Purchase Gato GraphQL PRO, and access all your orders from our shop',
 }
 
 export default function Shop() {

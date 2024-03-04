@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Changelog - Gato GraphQL',
-  description: 'Page description',
+  description: 'New updates and improvements to Gato GraphQL',
 }
 
 import { allUpdates } from 'contentlayer/generated'

@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Pricing - Gato GraphQL',
-  description: 'Page description',
+  description: 'Pricing plans to unleash your capabilities with Gato GraphQL PRO',
 }
 
 import PricingSection from './pricing-section'

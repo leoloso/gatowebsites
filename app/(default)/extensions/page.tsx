@@ -10,7 +10,7 @@ import Cta from '@/components/cta-02'
 
 export const metadata = {
   title: 'Extensions - Gato GraphQL',
-  description: 'Page description',
+  description: 'Provide additional functionality to Gato GraphQL, and expand the GraphQL schema',
 }
 
 export default function Extensions() {

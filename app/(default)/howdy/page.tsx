@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Howdy - Gato GraphQL',
-  description: 'Page description',
+  description: "Let's stay in touch",
 }
 
 import HowdyHero from '@/components/howdy-hero'

@@ -6,8 +6,8 @@ import PostTags from '@/components/post-tags'
 import VideoPostPostItem from '@/components/video-post-item'
 
 export const metadata = {
-  title: 'Blog - Gato GraphQL',
-  description: 'Page description',
+  title: 'Videos - Gato GraphQL',
+  description: 'Tutorials to learn what you can accomplish with Gato GraphQL',
 }
 
 import Newsletter from '@/components/newsletter'
@@ -34,7 +34,7 @@ export default function Blog() {
 
             {/*  Page header */}
             <div className="max-w-3xl pb-12 md:pb-20 text-center md:text-left">
-              <h1 className="h1" data-aos="fade-up">Refreshing news for developers and designers</h1>
+              <h1 className="h1" data-aos="fade-up">Video tutorials for developers</h1>
             </div>
 
             {/*  Featured article */}
