@@ -4,7 +4,7 @@ import StunningBackground from "@/components/stunning-background"
 import Cta from '@/components/cta-03'
 
 export const metadata = {
-  title: 'Contact us - Open PRO',
+  title: 'Contact us - Gato GraphQL',
   description: 'Page description',
 }
 

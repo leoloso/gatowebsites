@@ -6,7 +6,7 @@ import PostTags from '@/components/post-tags'
 import VideoPostPostItem from '@/components/video-post-item'
 
 export const metadata = {
-  title: 'Blog - Open PRO',
+  title: 'Blog - Gato GraphQL',
   description: 'Page description',
 }
 

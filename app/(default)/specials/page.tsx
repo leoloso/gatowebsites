@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 
 export const metadata = {
-  title: 'Specials - Open PRO',
+  title: 'Specials - Gato GraphQL',
   description: 'Page description',
 }
 
