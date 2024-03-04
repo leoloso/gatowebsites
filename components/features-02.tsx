@@ -88,7 +88,7 @@ export default function Features02() {
                 </HighlighterItem>
               </div>
               {/* Box #2 */}
-              <div className="md:col-span-7" data-aos="fade-down">
+              <div className="md:col-span-5" data-aos="fade-down">
                 <HighlighterItem>
                   <div className="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
                     <div className="flex flex-col">
@@ -105,14 +105,14 @@ export default function Features02() {
                       </div>
                       {/* Image */}
                       <div className="relative w-full h-64 md:h-auto overflow-hidden md:pb-8">
-                        <Image className="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:max-w-full md:relative md:left-0 md:translate-x-0" src={FeatureImg02} width={536} height={230} alt="Feature 02" />
+                        <Image className="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:max-w-full md:relative md:left-0 md:translate-x-0" src={FeatureImg03} width={230} height={230} alt="Feature 03" />
                       </div>
                     </div>
                   </div>
                 </HighlighterItem>
               </div>
               {/* Box #3 */}
-              <div className="md:col-span-5" data-aos="fade-down">
+              <div className="md:col-span-7" data-aos="fade-down">
                 <HighlighterItem>
                   <div className="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
                     <div className="flex flex-col">
@@ -129,7 +129,7 @@ export default function Features02() {
                       </div>
                       {/* Image */}
                       <div className="relative w-full h-64 md:h-auto overflow-hidden md:pb-8">
-                        <Image className="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:max-w-full md:relative md:left-0 md:translate-x-0" src={FeatureImg03} width={230} height={230} alt="Feature 03" />
+                        <Image className="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:max-w-full md:relative md:left-0 md:translate-x-0" src={FeatureImg02} width={536} height={230} alt="Feature 02" />
                       </div>
                     </div>
                   </div>
