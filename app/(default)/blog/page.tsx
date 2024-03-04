@@ -8,7 +8,7 @@ import { sortByPublishedAt } from '@/utils/sort'
 import PageHeader from '@/components/page-header'
 
 export const metadata = {
-  title: 'Blog - Simple',
+  title: 'Blog - Gato GraphQL',
   description: 'Page description',
 }
 
@@ -29,7 +29,7 @@ export default function Blog() {
             <PageHeader
               leading='Our blog'
               title="Type the way you talk"
-              description='Stay up to date on the latest from Simple and best news from the Dev world.'
+              description='Stay up to date on the latest from Gato GraphQL and our engineering practices.'
             />
 
             {/* Main content */}
