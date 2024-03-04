@@ -67,8 +67,8 @@ export default function Features02() {
                       <div className="md:max-w-[480px] shrink-0 order-1 md:order-none p-6 pt-0 md:p-8 md:pr-0">
                         <div className="mb-5">
                           <div>
-                            <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">Optimized for security</h3>
-                            <p className="text-slate-400">Optimize for user experience and privacy. Use social login integrations, lower user friction, incorporate rich user profiling, and facilitate more transactions.</p>
+                            <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">Optimized for speed</h3>
+                            <p className="text-slate-400">The query is resolved on linear time complexity, and does not suffer the "n+1" problem, by design. The schema is generated only the first time, and cached. The response can be cached using standard HTTP Caching.</p>
                           </div>
                         </div>
                         <div>
