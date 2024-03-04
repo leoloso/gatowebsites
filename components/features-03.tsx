@@ -26,8 +26,8 @@ export default function Features03() {
 
           {/* Section header */}
           <SectionHeader
-            title='More than a login box'
-            description="There are many variations available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+            title='Interact with the wider web'
+            description="Send requests to external services with ease and no restrictions, and accept incoming requests via webhooks. Your WordPress site will be at the center of the web."
           />
 
           <div className="max-w-3xl mx-auto">
