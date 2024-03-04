@@ -71,13 +71,13 @@ export default function Features02() {
                             <p className="text-slate-400">The query is resolved on linear time complexity, and does not suffer the "n+1" problem, by design. The schema is generated only the first time, and cached. The response can be cached using standard HTTP Caching.</p>
                           </div>
                         </div>
-                        <div>
+                        {/* <div>
                           <a className="btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/30 before:rounded-full before:pointer-events-none" href="#0">
                             <span className="relative inline-flex items-center">
                               Learn more <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                             </span>
                           </a>
-                        </div>
+                        </div> */}
                       </div>
                       {/* Image */}
                       <div className="relative w-full h-64 md:h-auto overflow-hidden">
