@@ -98,7 +98,7 @@ export default function Features04() {
                     </svg>
                     <h4 className="font-medium text-slate-50">Import/export</h4>
                   </div>
-                  <p className="text-sm text-slate-400">Import content from Google Sheets, a WordPress site, an RSS feed, a REST or GraphQL API, or a CSV source.</p>
+                  <p className="text-sm text-slate-400">Import content from Google Sheets, a WordPress site or RSS feed, a REST or GraphQL API, or a CSV.</p>
                 </div>
               </div>
             </div>
