@@ -27,7 +27,7 @@ export default function Cta03() {
           <SectionHeader
             leading='Never miss an update'
             title='Stay connected with us'
-            description='Find out about our latest new and product releases as we continue improving Gato GraphQL.'
+            description='Find out about our latest product updates as we continue improving Gato GraphQL.'
             paddingClassname=''
           >
             <NewsletterForm />
