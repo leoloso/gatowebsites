@@ -4,15 +4,11 @@ import { useEffect } from 'react'
 import Image from 'next/image'
 import Particles from './particles'
 
-import Client01 from '@/public/assets/theme/client-01.svg'
-import Client02 from '@/public/assets/theme/client-02.svg'
-import Client03 from '@/public/assets/theme/client-03.svg'
-import Client04 from '@/public/assets/theme/client-04.svg'
-import Client05 from '@/public/assets/theme/client-05.svg'
-import Client06 from '@/public/assets/theme/client-06.svg'
-import Client07 from '@/public/assets/theme/client-07.svg'
-import Client08 from '@/public/assets/theme/client-08.svg'
-import Client09 from '@/public/assets/theme/client-09.svg'
+import Client01 from '@/public/assets/client-logos/grayscale/agendaurbana-logo.png'
+import Client02 from '@/public/assets/client-logos/grayscale/mesym-logo-inverse.png'
+import Client03 from '@/public/assets/client-logos/grayscale/pop-logo-horizontal.png'
+import Client04 from '@/public/assets/client-logos/grayscale/sdg-sse-logo.png'
+import Client05 from '@/public/assets/client-logos/grayscale/tppdebate-logo-inverse.png'
 
 // Import Swiper
 import Swiper, { Autoplay } from 'swiper'
@@ -24,7 +20,7 @@ export default function Clients() {
   useEffect(() => {
     const carousel = new Swiper('.clients-carousel', {
       slidesPerView: 'auto',
-      spaceBetween: 64,
+      spaceBetween: 100,
       centeredSlides: true,
       loop: true,
       speed: 5000,
@@ -54,31 +50,19 @@ export default function Clients() {
               <div className="swiper-wrapper !ease-linear select-none items-center">
                 {/* Carousel items */}
                 <div className="swiper-slide !w-auto">
-                  <Image src={Client01} alt="Client 01" width={110} height={21} />
+                  <Image src={Client01} alt="Agenda Urbana logo" width={120} height={120} />
                 </div>
                 <div className="swiper-slide !w-auto">
-                  <Image src={Client02} alt="Client 02" width={70} height={25} />
+                  <Image src={Client02} alt="MESYM logo" width={120} height={62} />
                 </div>
                 <div className="swiper-slide !w-auto">
-                  <Image className="mt-1" src={Client03} alt="Client 03" width={107} height={33} />
+                  <Image className="mt-1" src={Client03} alt="PoP logo" width={128} height={50} />
                 </div>
                 <div className="swiper-slide !w-auto">
-                  <Image src={Client04} alt="Client 04" width={85} height={36} />
+                  <Image src={Client04} alt="SDG-SSE logo" width={120} height={80} />
                 </div>
                 <div className="swiper-slide !w-auto">
-                  <Image src={Client05} alt="Client 05" width={86} height={18} />
-                </div>
-                <div className="swiper-slide !w-auto">
-                  <Image src={Client06} alt="Client 06" width={78} height={34} />
-                </div>
-                <div className="swiper-slide !w-auto">
-                  <Image src={Client07} alt="Client 07" width={83} height={23} />
-                </div>
-                <div className="swiper-slide !w-auto">
-                  <Image src={Client08} alt="Client 08" width={98} height={26} />
-                </div>
-                <div className="swiper-slide !w-auto">
-                  <Image className="mt-2" src={Client09} alt="Client 09" width={92} height={28} />
+                  <Image src={Client05} alt="TPPDebate logo" width={120} height={38} />
                 </div>
               </div>
             </div>
