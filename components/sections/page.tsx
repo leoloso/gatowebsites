@@ -35,7 +35,7 @@ export default function PageSection({
                 {!! page.lastModifiedAt && (
                   <div className="md:flex md:items-center md:justify-between mt-3">
                     {/* Author meta */}
-                    <div className="flex items-center justify-center" data-aos="fade-up" data-aos-delay="400">
+                    <div className="flex items-center justify-center">
                       {/* <Link href="#">
                         <Image className="rounded-full shrink-0 mr-4" src={post.authorImg} width={40} height={40} alt={post.author} />
                       </Link> */}
