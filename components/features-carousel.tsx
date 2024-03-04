@@ -54,9 +54,9 @@ export default function FeaturesCarousel() {
 
           {/* Section header */}
           <SectionHeader
-            leading='The security first platform'
-            title='Spot issues faster'
-            description='All the lorem ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.'
+            leading='Forward-looking server'
+            title='Advanced GraphQL features'
+            description='Gato GraphQL includes novel custom features that build on top of the GraphQL spec, delivering more versatility and power.'
           />
 
           {/* Carousel built with Swiper.js [https://swiperjs.com/] */}
