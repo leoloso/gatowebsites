@@ -335,12 +335,6 @@
   
     
     <url>
-      <loc>https://gatographql.com/extensions/</loc>
-      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
-    </url>
-  
-    
-    <url>
       <loc>https://gatographql.com/extensions/access-control-visitor-ip/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
@@ -492,6 +486,162 @@
     
     <url>
       <loc>https://gatographql.com/extensions/schema-editing-access/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/access-control-visitor-ip/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/access-control/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/automation/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/cache-control/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/conditional-field-manipulation/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/deprecation-notifier/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/email-sender/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/events-manager/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/field-default-value/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/field-deprecation/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/field-on-field/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/field-resolution-caching/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/field-response-removal/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/field-to-input/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/field-value-iteration-and-manipulation/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/google-translate/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/helper-function-collection/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/http-client/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/http-request-via-schema/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/internal-graphql-server/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/low-level-persisted-query-editing/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/multiple-query-execution/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/php-constants-and-environment-variables-via-schema/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/php-functions-via-schema/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/response-error-trigger/</loc>
+      <lastmod>2024-02-28T06:34:12+00:00</lastmod>
+    </url>
+  
+    
+    <url>
+      <loc>https://gatographql.com/extensions-reference/schema-editing-access/</loc>
       <lastmod>2024-02-28T06:34:12+00:00</lastmod>
     </url>
   
