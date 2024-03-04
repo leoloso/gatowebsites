@@ -88,7 +88,7 @@ export default function Features04() {
                     </svg>
                     <h4 className="font-medium text-slate-50">HTTP client</h4>
                   </div>
-                  <p className="text-sm text-slate-400">Interact with external services, and fetch data from any API.</p>
+                  <p className="text-sm text-slate-400">Send requests to services, fetch data from any REST or GraphQL API, access external resources.</p>
                 </div>
                 {/* Feature */}
                 <div>
@@ -116,7 +116,7 @@ export default function Features04() {
                     </svg>
                     <h4 className="font-medium text-slate-50">Search & replace</h4>
                   </div>
-                  <p className="text-sm text-slate-400">Modify content using regex expressions.</p>
+                  <p className="text-sm text-slate-400">Modify content in all your posts using regex expressions.</p>
                 </div>
                 {/* Feature */}
                 <div>
