@@ -21,8 +21,8 @@ export default function Features02() {
 
           {/* Section header */}
           <SectionHeader
-            title='Faster. Smarter.'
-            description="There are many variations available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+            title='Fast. Extensible. Configurable.'
+            description="The GraphQL server has been engineered from the ground up to be super fast, infinitely extensible and wildly configurable."
           />
 
           {/* Highlighted boxes */}
