@@ -20,8 +20,8 @@ export default function Features04() {
 
           {/* Section header */}
           <div className="max-w-3xl pb-12 md:pb-20">
-            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">Why trust us?</h2>
-            <p className="text-lg text-slate-400">Many desktop publishing packages and web page editors now use lorem ipsum as their default model text, and a search will uncover many web sites still in their infancy.</p>
+            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">Simplify your tech stack</h2>
+            <p className="text-lg text-slate-400">Gato GraphQL PRO can handle the functionality from multiple plugins. Save money by purchasing less plugins, and remove bloat from your WordPress site.</p>
           </div>
 
           {/* Rows */}
