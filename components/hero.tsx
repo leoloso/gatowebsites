@@ -21,16 +21,15 @@ export default function Hero() {
 
           {/* Hero content */}
           <div className="max-w-3xl mx-auto text-center">
-            <div className="mb-6" data-aos="fade-down">
+            {/* <div className="mb-6" data-aos="fade-down">
               <div className="inline-flex relative before:absolute before:inset-0 before:bg-purple-500 before:blur-md">
-                <span className="btn-sm py-0.5 text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.purple.500),_theme(colors.purple.500))_padding-box,_linear-gradient(theme(colors.purple.500),_theme(colors.purple.200)_75%,_theme(colors.transparent)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/50 before:rounded-full before:pointer-events-none shadow pointer-events-none">
+                <a className="btn-sm py-0.5 text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.purple.500),_theme(colors.purple.500))_padding-box,_linear-gradient(theme(colors.purple.500),_theme(colors.purple.200)_75%,_theme(colors.transparent)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/50 before:rounded-full before:pointer-events-none shadow" href="#0">
                   <span className="relative inline-flex items-center">
-                    Manage your WordPress site using Gato GraphQL
-                    {/* <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span> */}
+                    Manage your WordPress site using Gato GraphQL <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                   </span>
-                </span>
+                </a>
               </div>
-            </div>
+            </div> */}
             <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4" data-aos="fade-down">The most powerful GraphQL server for WordPress</h1>
             <p className="text-lg text-slate-300 mb-8" data-aos="fade-down" data-aos-delay="200">Use <strong>Gato GraphQL</strong> to interact with all your data, and manage your <strong>WordPress</strong> site.</p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-down" data-aos-delay="400">
