@@ -9,6 +9,7 @@ export default function VideoPostPostItem({ videoPost }: {
   videoPost: VideoPost,
 }) {
   return (
+    // @todo Remove AOS!?
     <article className="flex flex-col h-full" data-aos="fade-up">
       <header>
         {videoPost.image &&
