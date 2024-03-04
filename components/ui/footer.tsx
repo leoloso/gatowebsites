@@ -1,5 +1,5 @@
 import FooterMenu from './footer-menu'
-import Logo from './logo'
+import FooterLogo from './footer-logo'
 
 export default function Footer() {
   return (
@@ -14,7 +14,7 @@ export default function Footer() {
               <div className="h-full flex flex-col sm:flex-row lg:flex-col justify-between">
                 <div className="mb-4 sm:mb-0">
                   <div className="mb-4">
-                    <Logo />
+                    <FooterLogo />
                   </div>
                   <div className="text-sm text-slate-500">© Gato GraphQL <span className="text-slate-600">-</span> All rights reserved.</div>
                 </div>

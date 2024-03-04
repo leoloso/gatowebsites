@@ -1,4 +1,4 @@
-import FooterLogo from '@/components/ui/docs/logo'
+import FooterLogo from '@/components/ui/docs/footer-logo'
 import FooterMenu from '../footer-menu'
 
 export default function Footer() {
