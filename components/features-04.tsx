@@ -40,7 +40,7 @@ export default function Features04() {
                     </svg>
                     <h4 className="font-medium text-slate-50">Automators</h4>
                   </div>
-                  <p className="text-sm text-slate-400">Login box must find the right balance for the user convenience, privacy and security.</p>
+                  <p className="text-sm text-slate-400">Trigger the execution of a GraphQL query whenever an event happens, or via WP-Cron.</p>
                 </div>
                 {/* Feature */}
                 <div>
@@ -50,7 +50,7 @@ export default function Features04() {
                     </svg>
                     <h4 className="font-medium text-slate-50">Bulk editing</h4>
                   </div>
-                  <p className="text-sm text-slate-400">Login box must find the right balance for the user convenience, privacy and security.</p>
+                  <p className="text-sm text-slate-400">Create or update hundreds of resources in bulk, executing a single query.</p>
                 </div>
                 {/* Feature */}
                 <div>
@@ -60,7 +60,7 @@ export default function Features04() {
                     </svg>
                     <h4 className="font-medium text-slate-50">Content distribution</h4>
                   </div>
-                  <p className="text-sm text-slate-400">Login box must find the right balance for the user convenience, privacy and security.</p>
+                  <p className="text-sm text-slate-400">Synchronize content across a WordPress multisite, or a network of independent sites.</p>
                 </div>
               </div>
             </div>
@@ -78,7 +78,7 @@ export default function Features04() {
                     </svg>
                     <h4 className="font-medium text-slate-50">Email notifications</h4>
                   </div>
-                  <p className="text-sm text-slate-400">Login box must find the right balance for the user convenience, privacy and security.</p>
+                  <p className="text-sm text-slate-400">Communicate with your users, and send notifications to the admin.</p>
                 </div>
                 {/* Feature */}
                 <div>
@@ -88,7 +88,7 @@ export default function Features04() {
                     </svg>
                     <h4 className="font-medium text-slate-50">HTTP client</h4>
                   </div>
-                  <p className="text-sm text-slate-400">Login box must find the right balance for the user convenience, privacy and security.</p>
+                  <p className="text-sm text-slate-400">Interact with external services, and fetch data from any API.</p>
                 </div>
                 {/* Feature */}
                 <div>
@@ -98,7 +98,7 @@ export default function Features04() {
                     </svg>
                     <h4 className="font-medium text-slate-50">Import/export</h4>
                   </div>
-                  <p className="text-sm text-slate-400">Login box must find the right balance for the user convenience, privacy and security.</p>
+                  <p className="text-sm text-slate-400">Import content from Google Sheets, a WordPress site, an RSS feed, a REST or GraphQL API, or a CSV source.</p>
                 </div>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function Features04() {
                     </svg>
                     <h4 className="font-medium text-slate-50">Search & replace</h4>
                   </div>
-                  <p className="text-sm text-slate-400">Login box must find the right balance for the user convenience, privacy and security.</p>
+                  <p className="text-sm text-slate-400">Modify content using regex expressions.</p>
                 </div>
                 {/* Feature */}
                 <div>
@@ -126,7 +126,7 @@ export default function Features04() {
                     </svg>
                     <h4 className="font-medium text-slate-50">Translation</h4>
                   </div>
-                  <p className="text-sm text-slate-400">Login box must find the right balance for the user convenience, privacy and security.</p>
+                  <p className="text-sm text-slate-400">Translate the content in the site to over 130 languages via Google Translate.</p>
                 </div>
                 {/* Feature */}
                 <div>
@@ -136,7 +136,7 @@ export default function Features04() {
                     </svg>
                     <h4 className="font-medium text-slate-50">Webhooks</h4>
                   </div>
-                  <p className="text-sm text-slate-400">Login box must find the right balance for the user convenience, privacy and security.</p>
+                  <p className="text-sm text-slate-400">Process incoming data from any source or service, directly within the wp-admin.</p>
                 </div>
               </div>
             </div>
