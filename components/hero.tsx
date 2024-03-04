@@ -43,7 +43,7 @@ export default function Hero() {
             <p className="text-lg text-slate-300 mb-8" data-aos="fade-down" data-aos-delay="200">Use <strong>Gato GraphQL</strong> to interact with all your data, and manage your <strong>WordPress</strong> site.</p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-down" data-aos-delay="400">
               <div>
-                <DownloadFreePluginButton btnClassName='btn' variation={2}/>
+                <DownloadFreePluginButton styleClassname='btn text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white'/>
               </div>
               <div>
                 <PurchasePROPluginButton btnClassName='btn' />
