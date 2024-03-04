@@ -1,7 +1,7 @@
 import NewsletterForm from "./forms/newsletter"
 
 export default function Newsletter({
-  label = "Want to receive news from us?"
+  label = "Tutorials, updates, & more"
 }: {
   label?: string
 }) {

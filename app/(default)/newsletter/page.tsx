@@ -24,9 +24,7 @@ export default function NewsletterPage() {
               description='Stay in the loop on all new things concerning Gato GraphQL.'
             />
 
-            <Newsletter
-              label='Tutorials, updates, & more'
-            />
+            <Newsletter />
 
           </div>
         </div>
