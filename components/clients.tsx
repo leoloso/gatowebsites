@@ -20,7 +20,7 @@ export default function Clients() {
   useEffect(() => {
     const carousel = new Swiper('.clients-carousel', {
       slidesPerView: 'auto',
-      spaceBetween: 64,
+      spaceBetween: 100,
       centeredSlides: true,
       loop: true,
       speed: 5000,
