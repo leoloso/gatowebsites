@@ -4,11 +4,11 @@ import { useEffect } from 'react'
 import Image from 'next/image'
 import Particles from './particles'
 
-import Client01 from '@/public/assets/client-logos/agendaurbana-logo.png'
-import Client02 from '@/public/assets/client-logos/mesym-logo-inverse.png'
-import Client03 from '@/public/assets/client-logos/pop-logo-horizontal.png'
-import Client04 from '@/public/assets/client-logos/sdg-sse-logo.png'
-import Client05 from '@/public/assets/client-logos/tppdebate-logo-inverse.png'
+import Client01 from '@/public/assets/client-logos/grayscale/agendaurbana-logo.png'
+import Client02 from '@/public/assets/client-logos/grayscale/mesym-logo-inverse.png'
+import Client03 from '@/public/assets/client-logos/grayscale/pop-logo-horizontal.png'
+import Client04 from '@/public/assets/client-logos/grayscale/sdg-sse-logo.png'
+import Client05 from '@/public/assets/client-logos/grayscale/tppdebate-logo-inverse.png'
 
 // Import Swiper
 import Swiper, { Autoplay } from 'swiper'
