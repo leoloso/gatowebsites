@@ -20,7 +20,7 @@ export default function Clients() {
   useEffect(() => {
     const carousel = new Swiper('.clients-carousel', {
       slidesPerView: 'auto',
-      spaceBetween: 100,
+      spaceBetween: 64,
       centeredSlides: true,
       loop: true,
       speed: 5000,
@@ -35,7 +35,7 @@ export default function Clients() {
 
   return (
     <section>
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
 
         {/* Particles animation */}
         <div className="absolute inset-0 max-w-6xl mx-auto px-4 sm:px-6">
