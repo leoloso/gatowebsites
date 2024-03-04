@@ -17,7 +17,7 @@ import 'swiper/swiper.min.css'
 import SectionHeader from './section-header'
 Swiper.use([Navigation])
 
-export default function TestimonialsCarousel() {
+export default function FeaturesCarousel() {
 
   const [swiperInitialized, setSwiperInitialized] = useState<boolean>(false)
 
