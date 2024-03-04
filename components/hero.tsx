@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Particles from './particles'
 import Illustration from '@/public/assets/theme/glow-bottom.svg'
+import LogoPic from '@/public/assets/GatoGraphQL-logo-suki.png'
 
 export default function Hero() {
   return (
@@ -30,6 +31,11 @@ export default function Hero() {
                 </a>
               </div>
             </div> */}
+            <div className="-mb-16">
+              <div className="flex w-full items-center justify-center">
+                <Image src={LogoPic} width={175} height={175} alt="Gato GraphQL logo" />
+              </div>
+            </div>
             <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4" data-aos="fade-down">The most powerful GraphQL server for WordPress</h1>
             <p className="text-lg text-slate-300 mb-8" data-aos="fade-down" data-aos-delay="200">Use <strong>Gato GraphQL</strong> to interact with all your data, and manage your <strong>WordPress</strong> site.</p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-down" data-aos-delay="400">
