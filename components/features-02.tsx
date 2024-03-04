@@ -22,7 +22,7 @@ export default function Features02() {
           {/* Section header */}
           <SectionHeader
             title='Fast. Extensible. Configurable.'
-            description="The GraphQL server has been engineered from the ground up to be super fast, infinitely extensible and wildly configurable."
+            description="The GraphQL server has been engineered from the ground up to be super fast, easily extensible, and greatly configurable."
           />
 
           {/* Highlighted boxes */}
