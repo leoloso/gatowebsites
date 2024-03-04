@@ -75,7 +75,7 @@ export default function Faqs() {
             {/* Item */}
             <div className="space-y-2">
               <h4 className="font-semibold">What use cases does Gato GraphQL PRO handle?</h4>
-              <p className="text-slate-400">As a single product, Gato GraphQL PRO handles the functionality from multiple plugins.</p>
+              <p className="text-slate-400">As a single product, Gato GraphQL PRO can handle the functionality from multiple plugins.</p>
               <p className="text-slate-400">These include: APIs, automators, bulk editing, code snippets, content distribution, email notifications, HTTP client, import/export, search & replace, translation, and webhooks.</p>
             </div>
 
