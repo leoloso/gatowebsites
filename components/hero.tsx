@@ -18,7 +18,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="pt-32 pb-16 md:pt-52 md:pb-32">
+        <div className="pt-32 pb-16 md:pt-32 md:pb-32">
 
           {/* Hero content */}
           <div className="max-w-3xl mx-auto text-center">
@@ -31,8 +31,8 @@ export default function Hero() {
                 </a>
               </div>
             </div> */}
-            <div className="-mb-16">
-              <div className="flex w-full items-center justify-center">
+            <div className="-mb-12">
+              <div className="flex w-full items-center justify-center pb-1">
                 <Image src={LogoPic} width={250} height={175} alt="Gato GraphQL logo" />
               </div>
             </div>
