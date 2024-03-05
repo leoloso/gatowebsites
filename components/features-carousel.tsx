@@ -56,12 +56,14 @@ export default function FeaturesCarousel() {
     CarouselImg03,
     CarouselImg04,
     CarouselImg05,
+    CarouselImg01,
   ]
 
   const featureSlugs = [
     'global-fields',
     'composable-directives',
     'multifield-directives',
+    'oneof-input-object',
     'multiple-query-execution',
     'field-to-input',
   ]
