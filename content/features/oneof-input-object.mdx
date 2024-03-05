@@ -1,0 +1,49 @@
+---
+title: "'oneOf' Input Object"
+description: Input object where exactly one of the input fields must be provided as input, or otherwise the server returns a validation error.
+category: Free plugin
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 345
+---
+
+The oneOf input object is a particular type of input object, where exactly one of the input fields must be provided as input, or otherwise the server returns a validation error. This behavior introduces polymorphism for inputs in GraphQL, allowing us to design neater schemas.
+
+For instance, retrieving a user in our application could be done by different properties, such as the user ID or email. To do this, we'd normally need to create a separate field for each property:
+
+```graphql
+type Query {
+  userByID(id: ID!): User
+  userByEmail(email: String!): User
+}
+```
+
+Thanks to the oneOf input object, we can instead have a single field `user` that accepts all properties via a `UserByInput` oneOf input object, knowing that only one of the properties (either the ID or the email) can and must be provided:
+
+```graphql
+type Query {
+  user(by: UserByInput!): User
+}
+
+input UserByInput @oneOf {
+  id: ID
+  email: String
+}
+```
+
+In the query, we provide the input value for exactly one of the properties:
+
+```graphql
+{
+  tom: user(by: {
+    id: 1
+  }) {
+    name
+  }
+
+  jerry: user(by: {
+    email: "jerry@warnerbros.com"
+  }) {
+    name
+  }
+}
+```
