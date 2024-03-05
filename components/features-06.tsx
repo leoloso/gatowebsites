@@ -18,7 +18,7 @@ export default function Features06() {
           <SectionHeader
             leading='Versatility to satisfy your needs'
             title='Accomplish your goals'
-            description="Whether you are building a website, a theme, plugin or Gutenberg block, GraphQL can help you."
+            description="Whether building an API, a website, theme, plugin or Gutenberg block, GraphQL can help you."
           />
 
           {/* Features list */}
