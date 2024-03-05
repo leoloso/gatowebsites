@@ -12,12 +12,13 @@ export default function Features06() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pt-16 md:pt-32">
+        <div className="pt-16 pb-12 md:pt-32 md:pb-20 border-b border-slate-800">
 
           {/* Section header */}
           <SectionHeader
-            title='Accomplish what you need, and then some more'
-            description="Power your public APIs and private applications. Whether you are building a website, a theme, plugin or Gutenberg block, GraphQL can help you."
+            leading='Versatility to satisfy your needs'
+            title='Accomplish your goals'
+            description="Whether you are building a website, a theme, plugin or Gutenberg block, GraphQL can help you."
           />
 
           {/* Features list */}
