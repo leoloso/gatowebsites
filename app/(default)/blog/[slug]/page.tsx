@@ -38,6 +38,9 @@ export async function generateMetadata({ params }: {
     ...post.image ? {
       openGraph: {
         images: [post.image],
+      },
+      twitter: {
+        images: [post.image],
       }
     } : {},
   }
