@@ -18,10 +18,10 @@ We can extend the previous tutorial lesson, to duplicate multiple posts with a s
 
 <Banner type="important">
 
-For this GraphQL query to work, the [Schema Configuration](/guides/use/creating-a-schema-configuration/) applied to the endpoint needs to have the following configuration:
+For this GraphQL query to work, the [Schema Configuration](/guides/use/creating-a-schema-configuration) applied to the endpoint needs to have the following configuration:
 
-- In block [Payload Types for Mutations](/guides/config/returning-a-payload-object-or-the-mutated-entity-for-mutations/), select "Do not use Payload Types for Mutations (i.e. return the mutated entity)" (so that dynamic variable `$createdPostIDs` will contain the IDs of the created posts)
-- In block [Mutation Scheme](/guides/schema/using-nested-mutations/), select any of the two "Enable Nested Mutations" options (as to use field `_echo` inside a `mutation`)
+- In block [Payload Types for Mutations](/guides/config/returning-a-payload-object-or-the-mutated-entity-for-mutations), select "Do not use Payload Types for Mutations (i.e. return the mutated entity)" (so that dynamic variable `$createdPostIDs` will contain the IDs of the created posts)
+- In block [Mutation Scheme](/guides/schema/using-nested-mutations), select any of the two "Enable Nested Mutations" options (as to use field `_echo` inside a `mutation`)
 
 </Banner>
 
@@ -213,7 +213,7 @@ mutation DuplicatePost
 }
 ```
 
-Thanks to the **[Field to Input](/extensions-reference/field-to-input/)** extension, we can create the input object already on the first operation, and export all the required post data under a single dynamic variable:
+Thanks to the **[Field to Input](/extensions-reference/field-to-input)** extension, we can create the input object already on the first operation, and export all the required post data under a single dynamic variable:
 
 ```graphql
 query GetPostAndExportData {
@@ -364,12 +364,12 @@ In the Gato GraphQL schema, there is no mutation to create multiple posts:
 
 The solution is to use extensions:
 
-- **[Field Value Iteration and Manipulation](/extensions-reference/field-value-iteration-and-manipulation/)** provides directive `@underEachArrayItem` to iterate over all the items in `$postInput`
-- **[Field on Field](/extensions-reference/field-on-field/)** provides directive `@applyField`, to apply the `createPost` mutation on each iterated-upon item from the array
+- **[Field Value Iteration and Manipulation](/extensions-reference/field-value-iteration-and-manipulation)** provides directive `@underEachArrayItem` to iterate over all the items in `$postInput`
+- **[Field on Field](/extensions-reference/field-on-field)** provides directive `@applyField`, to apply the `createPost` mutation on each iterated-upon item from the array
 
 <Banner type="info">
 
-`@underEachArrayItem` is a [composable directive](/guides/schema/using-composable-directives/) (or "meta directive", it is a directive which can contain nested directives) that iterates over an array of elements, and applies its nested directive on each of them.
+`@underEachArrayItem` is a [composable directive](/guides/schema/using-composable-directives) (or "meta directive", it is a directive which can contain nested directives) that iterates over an array of elements, and applies its nested directive on each of them.
 
 `@underEachArrayItem` helps bridge GraphQL types, as it can make a field that returns a `[String]` value, be applied a directive that receives a `String` value as input (or other combinations).
 

@@ -19,7 +19,7 @@ Similar to functionality, GraphQL schema types are provided via modules. When br
 
 ![Schema type modules](/assets/guides/downstream/schema-type-modules.png "Schema type modules")
 
-To remove a type from the schema, we then disable the corresponding module, as explained in guide [Browsing, enabling and disabling modules](/guides/config/browsing-enabling-and-disabling-modules/).
+To remove a type from the schema, we then disable the corresponding module, as explained in guide [Browsing, enabling and disabling modules](/guides/config/browsing-enabling-and-disabling-modules).
 
 This will remove the type in all schemas.
 
@@ -27,7 +27,7 @@ For instance, if we don't need comments on the site, we can remove the `Comment`
 
 ## 2. Disabling types for some specific endpoint
 
-We can also remove a schema type by [disabling access to all fields which return that type](/guides/config/removing-fields-and-directives-from-the-schema/). To do this, we must add the access control rule "Disable access" for the field in some access control list (ACL), make it private, and assign the ACL to the corresponding schema configuration.
+We can also remove a schema type by [disabling access to all fields which return that type](/guides/config/removing-fields-and-directives-from-the-schema). To do this, we must add the access control rule "Disable access" for the field in some access control list (ACL), make it private, and assign the ACL to the corresponding schema configuration.
 
 This will remove the type only for the selected schemas.
 

@@ -14,6 +14,17 @@ const inter = Inter({
 export const metadata = {
   title: 'Gato GraphQL',
   description: 'The most powerful GraphQL server for WordPress',
+  
+  // metadataBase: first check if env var from Netlify is defined. If not, from Vercel.
+  // If not, fallback to default (explicit so that there's no warning in console)
+  metadataBase:
+    // @see https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata
+    process.env.URL ? new URL(process.env.URL) :
+    (
+      // @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+      process.env.VERCEL_URL ? new URL(process.env.VERCEL_URL) :
+      `http://localhost:${process.env.PORT || 3000}`
+    )
 }
 
 export default function RootLayout({

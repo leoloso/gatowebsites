@@ -27,8 +27,8 @@ export default function Blog() {
 
             {/* Page header */}
             <PageHeader
-              leading='Our blog'
-              title="Type the way you talk"
+              leading="Our blog"
+              title="query { posts { content } }"
               description='Stay up to date on the latest from Gato GraphQL and our engineering practices.'
             />
 

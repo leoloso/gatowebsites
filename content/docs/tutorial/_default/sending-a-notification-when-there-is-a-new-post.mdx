@@ -75,7 +75,7 @@ mutation SendEmail @depends(on: "GetEmailData") {
 To send the email in plain text:
 
 - Use input `messageAs: { text: ... }` in the `_sendEmail` mutation
-- Remove the HTML tags from the post's content using global field `_htmlStripTags` (provided by the **[PHP Functions via Schema](/extensions-reference/php-functions-via-schema/)** extension)
+- Remove the HTML tags from the post's content using global field `_htmlStripTags` (provided by the **[PHP Functions via Schema](/extensions-reference/php-functions-via-schema)** extension)
 
 </Banner>
 
@@ -83,7 +83,7 @@ Let's see next how to trigger the execution of the GraphQL query.
 
 ## Option 1: Trigger always by reacting to WordPress hooks
 
-We hook into the WordPress core action `new_to_publish`, retrieve the data from the newly-created post, and execute the GraphQL query defined above against the internal GraphQL server (provided via the **[Internal GraphQL Server](/extensions-reference/internal-graphql-server/)** extension):
+We hook into the WordPress core action `new_to_publish`, retrieve the data from the newly-created post, and execute the GraphQL query defined above against the internal GraphQL server (provided via the **[Internal GraphQL Server](/extensions-reference/internal-graphql-server)** extension):
 
 ```php
 use GatoGraphQL\InternalGraphQLServer\GraphQLServer;
@@ -160,7 +160,7 @@ For instance, let' say we are executing a GraphQL query against the single endpo
 
 ## Option 2: Trigger by chaining GraphQL queries
 
-The **[Automation](/extensions-reference/automation/)** extension makes the GraphQL Server trigger a hook after completing the execution of a GraphQL query. This allows us to chain GraphQL queries.
+The **[Automation](/extensions-reference/automation)** extension makes the GraphQL Server trigger a hook after completing the execution of a GraphQL query. This allows us to chain GraphQL queries.
 
 This PHP code executes the `SendEmail` operation (GraphQL query defined above), after the GraphQL server has executed some other query with operation `CreatePost` (GraphQL query defined above):
 
@@ -222,7 +222,7 @@ Depending on our strategy, we can trigger the execution of one or multiple addit
 | **Hooking into...** | **Triggers number of GraphQL queries...** |
 | --- | --- |
 | `post_updated` (by WordPress core) | One for every updated post |
-| `gatographql__executed_query:ReplaceDomains` (by **[Automation](/extensions-reference/automation/)** extension) | One in total (it will receive the data for all updated posts) |
+| `gatographql__executed_query:ReplaceDomains` (by **[Automation](/extensions-reference/automation)** extension) | One in total (it will receive the data for all updated posts) |
 
 <br/>
 
