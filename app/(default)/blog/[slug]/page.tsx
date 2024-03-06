@@ -31,10 +31,8 @@ export async function generateMetadata({ params }: {
   const { title, summary: description } = post
 
   return {
-    ...{
-      title,
-      description,
-    },
+    title,
+    description,
     ...post.image ? {
       openGraph: {
         images: [post.image],
