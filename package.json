@@ -22,7 +22,7 @@
     "aos": "^3.0.0-beta.6",
     "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
-    "next": "^14.0.3",
+    "next": "^14.1.2",
     "next-contentlayer": "^0.3.4",
     "next-plausible": "^3.12.0",
     "next-themes": "^0.2.1",
