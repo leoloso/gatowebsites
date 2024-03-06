@@ -43,8 +43,10 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## Building and deploying your Next.js app
+---
 
 (Taken from: https://cruip.com/docs/next-js-templates-tailwind-css/)
+
+## Building and deploying your Next.js app
 
 Once you have made the necessary changes, you can compile and minify your code for production by running `npm run build`. To test the production-ready version of your app locally, you can run `npm run start`, this will launch a local server that allows you to preview your app in a production environment.
