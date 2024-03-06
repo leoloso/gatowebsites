@@ -3,11 +3,6 @@
   publish = ".next"
 
 [[redirects]]
-  from = "/bundles/*"
-  to = "/"
-  status = 301
-
-[[redirects]]
   from = "/recipes/*"
   to = "/tutorial/:splat"
   status = 301
@@ -103,23 +98,82 @@
   status = 301
 
 [[redirects]]
+  from = "/bundles/all-in-one-toolbox-for-wordpress"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/automated-content-translation-and-sync-for-wordpress-multisite"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/better-wordpress-webhooks"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/easy-wordpress-bulk-transform-and-update"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/private-graphql-server-for-wordpress"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/responsible-wordpress-public-api"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/selective-content-import-export-and-sync-for-wordpress"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/simplest-wordpress-content-translation"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/tailored-wordpress-automator"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/unhindered-wordpress-email-notifications"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/versatile-wordpress-request-api"
+  to = "/"
+  status = 301
+
+[[redirects]]
   from = "/bundles/content-translation"
-  to = "/bundles/simplest-wordpress-content-translation"
+  # to = "/bundles/simplest-wordpress-content-translation"
+  to = "/"
   status = 301
 
 [[redirects]]
   from = "/bundles/public-api"
-  to = "/bundles/responsible-wordpress-public-api"
+  # to = "/bundles/responsible-wordpress-public-api"
+  to = "/"
   status = 301
 
 [[redirects]]
   from = "/bundles/application-glue-and-automator"
-  to = "/bundles/tailored-wordpress-automator"
+  # to = "/bundles/tailored-wordpress-automator"
+  to = "/"
   status = 301
 
 [[redirects]]
   from = "/bundles/all-extensions"
-  to = "/bundles/all-in-one-toolbox-for-wordpress"
+  # to = "/bundles/all-in-one-toolbox-for-wordpress"
+  to = "/"
   status = 301
 
 # Campaigns
