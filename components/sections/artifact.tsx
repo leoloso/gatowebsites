@@ -19,7 +19,7 @@ export default function ArtifactSection({
   artifact: Artifact,
   sectionURL: string,
   children: React.ReactNode,
-  widgetChildren: React.ReactNode,
+  widgetChildren?: React.ReactNode,
   testimonialIndex?: number,
   defaultArtifactIcon?: StaticImageData,
 }) {
