@@ -129,7 +129,7 @@ function printTime()
 }
 ```
 
-Notice that function `time` does not belong to any type, hence field `_time` does not either. As such, it is a [global field](/features/global-fields/), and it can be accessed under every type from the GraphQL schema:
+Notice that function `time` does not belong to any type, hence field `_time` does not either. As such, it is a [global field](/features/global-fields), and it can be accessed under every type from the GraphQL schema:
 
 ```graphql
 {
@@ -139,7 +139,7 @@ Notice that function `time` does not belong to any type, hence field `_time` doe
 }
 ```
 
-Other examples of [functionality fields](/features/function-fields/) are:
+Other examples of [functionality fields](/features/function-fields) are:
 
 - `_arrayItem`
 - `_arrayJoin`
@@ -208,7 +208,7 @@ query PrintPostProperties
 
 In this query, executing the GraphQL query passing `?operationName=PrintPostProperties` to the endpoint will first execute queries `PrintPostTitle` and `PrintPostContent`, and only then `PrintPostProperties`.
 
-This is possible via [Multiple Query Execution](/features/multiple-query-execution/).
+This is possible via [Multiple Query Execution](/features/multiple-query-execution).
 
 ## Dynamic Variables
 
@@ -246,7 +246,7 @@ query PrintPostProperties($postID: ID!)
 }
 ```
 
-Notice that variable `$addContent`, which holds a value that was computed on runtime, is read by but not declared on operation `PrintPostProperties`, as it is a [dynamic variable](/guides/augment/dynamic-variables/).
+Notice that variable `$addContent`, which holds a value that was computed on runtime, is read by but not declared on operation `PrintPostProperties`, as it is a [dynamic variable](/guides/augment/dynamic-variables).
 
 ## Conditionally executing functions
 
@@ -376,7 +376,7 @@ query PrintPostProperties($postID: ID!)
 
 In operation `ExportAddContent`, the value for every queried field is immediately available to the fields below, under dynamic variable `$__fieldName`. This way the output of a field can be immediately be used as input to another field, already within the same operation.
 
-This is possible thanks to [Field to Input](/features/field-to-input/).
+This is possible thanks to [Field to Input](/features/field-to-input).
 
 ## Dynamically modifying a value
 
@@ -496,7 +496,7 @@ query PrintUserRolesAsUppercase($userID: ID!)
 }
 ```
 
-This is possible thanks to [composable directives](/features/composable-directives/).
+This is possible thanks to [composable directives](/features/composable-directives).
 
 ## Bulk CRUD operations
 
@@ -545,7 +545,7 @@ I do not like this approach, as it effectively duplicates the number of mutation
 - `createPost` + `createPosts`
 - etc
 
-In my opinion, a more elegant approach is to use [nested mutations](/features/nested-mutations/), where the mutation `Post.update` is applied to each of the queried resources:
+In my opinion, a more elegant approach is to use [nested mutations](/features/nested-mutations), where the mutation `Post.update` is applied to each of the queried resources:
 
 ```graphql
 mutation UpdatePostTitlesAsUppercase
@@ -702,7 +702,7 @@ With all the programming language features we've just covered, we are now able t
 
 - Create a webhook to be invoked by a service whenever a new user signs up to that service; the user may have subscribed to the newsletter (indicated by field `marketing_optin` in the webhook's payload); in that case, the webook must register the user's email (in field `email` in the webhook's payload) in a Mailchimp list.
 
-The solution is to use a [GraphQL persisted query](/features/persisted-queries/) as a webhook, with this query:
+The solution is to use a [GraphQL persisted query](/features/persisted-queries) as a webhook, with this query:
 
 ```graphql
 query HasSubscribedToNewsletter {
@@ -743,7 +743,7 @@ query MaybeCreateContactOnMailchimp
 
 In this solution, operation `MaybeCreateContactOnMailchimp`, which executes the HTTP request against Mailchimp's API, will be conditionally executed, depending on the value of the `marketing_optin` field.
 
-_(Read blog post [👨🏻‍🏫 GraphQL query to automatically send the newsletter subscribers from InstaWP to Mailchimp](/blog/instawp-gatographql-query/) to see how this query works.)_
+_(Read blog post [👨🏻‍🏫 GraphQL query to automatically send the newsletter subscribers from InstaWP to Mailchimp](/blog/instawp-gatographql-query) to see how this query works.)_
 
 ## GraphQL is more powerful than you thought!
 

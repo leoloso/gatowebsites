@@ -14,7 +14,7 @@ This tutorial lesson adapts content in bulk, updating the title, content and exc
 
 <Banner type="important">
 
-For this GraphQL query to work, the [Schema Configuration](/guides/use/creating-a-schema-configuration/) applied to the endpoint needs to have [Nested Mutations](/guides/schema/using-nested-mutations/) enabled
+For this GraphQL query to work, the [Schema Configuration](/guides/use/creating-a-schema-configuration) applied to the endpoint needs to have [Nested Mutations](/guides/schema/using-nested-mutations) enabled
 
 </Banner>
 
@@ -148,8 +148,8 @@ mutation UpdatePost(
 
 <Banner type="info">
 
-- In addition to function fields, the **[PHP Functions via Schema](/extensions-reference/php-functions-via-schema/)** extension also provides functionality via their corresponding "function directives", such as `@strReplaceMultiple`
-- When [Multi-Field Directives](/features/multifield-directives/) is enabled, we can apply a directive to more than one field, indicating the relative position(s) of the additional field(s) via argument `affectAdditionalFieldsUnderPos`
+- In addition to function fields, the **[PHP Functions via Schema](/extensions-reference/php-functions-via-schema)** extension also provides functionality via their corresponding "function directives", such as `@strReplaceMultiple`
+- When [Multi-Field Directives](/features/multifield-directives) is enabled, we can apply a directive to more than one field, indicating the relative position(s) of the additional field(s) via argument `affectAdditionalFieldsUnderPos`
 - When applying a directive to some field and then exporting its value, we [must use `@deferredExport` instead of `@export`](/guides/schema/executing-multiple-queries-concurrently/#heading-multi-field-directives)
 - When using Multi-Field Directives together with `@export`( or `@deferredExport`), the [exported value is a JSON object containing all the fields](/guides/schema/executing-multiple-queries-concurrently/#heading-dictionary-type-/-multi-field)
 - Mutation `Post.update` is available in the schema only when the Nested Mutations feature is enabled

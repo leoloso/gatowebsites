@@ -131,7 +131,7 @@ mutation LogUserInAndAddCommentToPost {
 }
 ```
 
-(Btw, this is the GraphiQL client. [Here is a tutorial](/guides/intro/intro-to-the-graphiql-client/) on using it.)
+(Btw, this is the GraphiQL client. [Here is a tutorial](/guides/intro/intro-to-the-graphiql-client) on using it.)
 
 Now, these two operations were applied on different objects, but we want to apply several operations to the same object.
 
@@ -186,7 +186,7 @@ But despair not, that Gato GraphQL has your back covered. It provides not one, b
 
 ![The GraphQL API cares about you](/images/count-on-you-meme.jpg "The GraphQL API cares about you")
 
-The first one is to use the [multiple-query execution](/features/multiple-query-execution/) feature.
+The first one is to use the [multiple-query execution](/features/multiple-query-execution) feature.
 
 In this query, we execute the first operation, export its result via directive `@export`, and then inject this value as input to the second query:
 
@@ -217,7 +217,7 @@ mutation AddResponseToComment @depends(on: "AddComment") {
 }
 ```
 
-More elegant still, we can use [nested mutations](/features/nested-mutations/).
+More elegant still, we can use [nested mutations](/features/nested-mutations).
 
 In this query, we execute the first operation, and nest the second operation within, so it will be applied on the object created during the first operation (and then repeat, nesting a 3rd operation, and so on):
 

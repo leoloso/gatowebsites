@@ -288,7 +288,7 @@ Will it work for all blocks, from both core and plugins, already existing or yet
 Does this query look a bit strange to you? If it does, it's because it uses non-standard GraphQL features, supported only by Gato GraphQL:
 
 - `{{ translatablePaths }}` is an embeddable field, to input the value of a field as argument to another field or directive (in this case, the `Block` type will have a field `translatableFields`, whose value is injected to directive `@advancePointersInArray`)
-- directives can [be composed by other directives](/features/composable-directives/)
+- directives can [be composed by other directives](/features/composable-directives)
 
 Now, if a feature satisfies exactly what the CMS needs, but the feature is non-standard, should we still use it? I think we should.
 

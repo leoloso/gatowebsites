@@ -11,7 +11,7 @@ tags:
   - instawp
 ---
 
-_(Read blog post [🚀 Automatically sending the newsletter subscribers from InstaWP to Mailchimp](/blog/instawp-gatographql/) to see the context for this query.)_
+_(Read blog post [🚀 Automatically sending the newsletter subscribers from InstaWP to Mailchimp](/blog/instawp-gatographql) to see the context for this query.)_
 
 This GraphQL query captures the email from the visitors who ticked the "Subscribe to mailing list" checkbox from InstaWP (when creating a new sandbox site), and subscribes this email to a Mailchimp list:
 
@@ -65,7 +65,7 @@ Notice that there are 2 `query` operations in the document above:
 
 The webhook URL contains `?operationName=MaybeCreateContactOnMailchimp`, so that's the operation that will be executed.
 
-Thanks to the [Multiple Query Execution](/extensions/multiple-query-execution/) extension, `MaybeCreateContactOnMailchimp` will first execute `HasSubscribedToNewsletter`, as indicated via the `@depends` directive:
+Thanks to the [Multiple Query Execution](/extensions/multiple-query-execution) extension, `MaybeCreateContactOnMailchimp` will first execute `HasSubscribedToNewsletter`, as indicated via the `@depends` directive:
 
 ```graphql
 query MaybeCreateContactOnMailchimp
@@ -87,7 +87,7 @@ query MaybeCreateContactOnMailchimp
 }
 ```
 
-`$subscribedToNewsletter` is a [dynamic variable](/guides/augment/dynamic-variables/), exported within the `HasSubscribedToNewsletter` operation:
+`$subscribedToNewsletter` is a [dynamic variable](/guides/augment/dynamic-variables), exported within the `HasSubscribedToNewsletter` operation:
 
 ```graphql
 query HasSubscribedToNewsletter {
@@ -146,7 +146,7 @@ Have you noticed the fields starting with `_`? Namely:
 - `_notEquals`
 - `_and`
 
-These are [global fields](/features/global-fields/), which are fields that are available under all types in the GraphQL schema. Global fields offer functionality instead of data, and by convention they start with `_`.
+These are [global fields](/features/global-fields), which are fields that are available under all types in the GraphQL schema. Global fields offer functionality instead of data, and by convention they start with `_`.
 
 ### Field to Input
 
@@ -158,7 +158,7 @@ Have you noticed those variables starting with `$__`? Namely:
 
 These are dynamic variables that contain the value of a field defined before them within the same operation. For instance, variable `$__subscriberOptin` contains the value of field `subscriberOptin` declared above it.
 
-This is a feature provided by the [Field to Input](/extensions/field-to-input/) extension, which allows to use the output of a field as input into another field. This is how we can create functionality within the GraphQL query.
+This is a feature provided by the [Field to Input](/extensions/field-to-input) extension, which allows to use the output of a field as input into another field. This is how we can create functionality within the GraphQL query.
 
 In the query, field `isNotSubscriberOptinNAValue` checks that the value of the previously queried field `subscriberOptin` does not equal `"NA"`, and `subscribedToNewsletter` computes an `AND` operation involving the values of fields `hasSubscriberOptin` and `isNotSubscriberOptinNAValue`.
 
@@ -207,9 +207,9 @@ Let's explore the features used in this query.
 
 ### Environment Variables
 
-We need to provide our credentials when connecting to the Mailchimp API. However, we do not want to directly input these in the GraphQL query, as they [may leak somewhere](/tutorial/not-leaking-credentials-when-connecting-to-services/) (eg: they could be printed in some log).
+We need to provide our credentials when connecting to the Mailchimp API. However, we do not want to directly input these in the GraphQL query, as they [may leak somewhere](/tutorial/not-leaking-credentials-when-connecting-to-services) (eg: they could be printed in some log).
 
-That's why we use global field `_env` (provided by the [PHP Constants and Environment via Schema](/extensions/php-constants-and-environment-variables-via-schema/) extension) to read an environment variable or PHP constant, together with the `@remove` directive (provided by the **[Field Response Removal](/extensions/field-response-removal/)** extension) to skip printing the credentials in the response.
+That's why we use global field `_env` (provided by the [PHP Constants and Environment via Schema](/extensions/php-constants-and-environment-variables-via-schema) extension) to read an environment variable or PHP constant, together with the `@remove` directive (provided by the **[Field Response Removal](/extensions/field-response-removal)** extension) to skip printing the credentials in the response.
 
 Now, we can declare our credentials in `wp-config.php`:
 

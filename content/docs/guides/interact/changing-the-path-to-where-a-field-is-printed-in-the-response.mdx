@@ -58,8 +58,8 @@ In other words, is it possible to tell the GraphQL server to flatten the shape o
 
 Here is a solution with Gato GraphQL, making use of the following extensions:
 
-- **[Multiple Query Execution](/extensions-reference/multiple-query-execution/)**, to `@export` the value of a variable across GraphQL operations
-- **[PHP Functions via Schema](/extensions-reference/php-functions-via-schema/)**, to print this value again on the desired location via the `_echo` field
+- **[Multiple Query Execution](/extensions-reference/multiple-query-execution)**, to `@export` the value of a variable across GraphQL operations
+- **[PHP Functions via Schema](/extensions-reference/php-functions-via-schema)**, to print this value again on the desired location via the `_echo` field
 
 With `@export`, we can have a first query operation export some result to a variable, and then declare a second query operation that will read this variable and print it on the expected location in the response:
 

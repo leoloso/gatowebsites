@@ -18,7 +18,7 @@ The query in this tutorial lesson checks if a certain mandatory block is present
 
 <Banner type="important">
 
-For this GraphQL query to work, the [Schema Configuration](/guides/use/creating-a-schema-configuration/) applied to the endpoint needs to have [Nested Mutations](/guides/schema/using-nested-mutations/) enabled
+For this GraphQL query to work, the [Schema Configuration](/guides/use/creating-a-schema-configuration) applied to the endpoint needs to have [Nested Mutations](/guides/schema/using-nested-mutations) enabled
 
 </Banner>
 
@@ -112,13 +112,13 @@ mutation MaybeInsertCommentsBlock($postId: ID!)
 
 <Banner type="important">
 
-The **[Internal GraphQL Server](/extensions-reference/internal-graphql-server/)** by default applies the Schema Configuration defined in its own Settings.
+The **[Internal GraphQL Server](/extensions-reference/internal-graphql-server)** by default applies the Schema Configuration defined in its own Settings.
 
-Then, for this GraphQL query to work, the [Schema Configuration](/guides/use/creating-a-schema-configuration/) applied to the **Internal GraphQL Server** needs to have [Nested Mutations](/guides/schema/using-nested-mutations/) enabled.
+Then, for this GraphQL query to work, the [Schema Configuration](/guides/use/creating-a-schema-configuration) applied to the **Internal GraphQL Server** needs to have [Nested Mutations](/guides/schema/using-nested-mutations) enabled.
 
 </Banner>
 
-This PHP code hooks into WordPress action `draft_post` to execute the Persisted Query (via the **[Internal GraphQL Server](/extensions-reference/internal-graphql-server/)** extension):
+This PHP code hooks into WordPress action `draft_post` to execute the Persisted Query (via the **[Internal GraphQL Server](/extensions-reference/internal-graphql-server)** extension):
 
 ```php
 use GatoGraphQL\InternalGraphQLServer\GraphQLServer;
