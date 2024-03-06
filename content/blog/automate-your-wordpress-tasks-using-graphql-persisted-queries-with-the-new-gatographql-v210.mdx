@@ -20,7 +20,7 @@ Below are all the changes added to `v2.1` (a shorter version is available in the
 
 We can now specify what Schema Configuration to apply when executing a query via an internal GraphQL Server (i.e. directly within the PHP application, not via an endpoint).
 
-This new feature enhances the [Internal GraphQL Server](/extensions) extension: It now accepts a `$schemaConfigurationIDOrSlug` parameter on methods `executeQuery` and `executeQueryInFile` from the `GraphQLServer` class, and already extracts the schema configuration used by the persisted query on `executePersistedQuery`:
+This new feature enhances the [Internal GraphQL Server](/extensions/internal-graphql-server) extension: It now accepts a `$schemaConfigurationIDOrSlug` parameter on methods `executeQuery` and `executeQueryInFile` from the `GraphQLServer` class, and already extracts the schema configuration used by the persisted query on `executePersistedQuery`:
 
 ```diff
 class GraphQLServer {
