@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Home - Gato GraphQL',
+  title: 'Gato GraphQL',
   description: 'The most powerful GraphQL server for WordPress',
 }
 
