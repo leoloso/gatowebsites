@@ -19,7 +19,7 @@ export default function ExtensionsSection({ extensions }: {
           <PageHeader
             leading='PRO extensions'
             title='Superpower your WordPress site'
-            description='PRO extensions provide additional functionality to Gato GraphQL, and expand the GraphQL schema. As new extensions are created, they will be included in Gato GraphQL PRO.'
+            description='Gato GraphQL PRO extensions enhance the GraphQL server, and expand the GraphQL schema. As new extensions are created, they will be included in Gato GraphQL PRO.'
           />
 
           <ArtifactsCarousel
