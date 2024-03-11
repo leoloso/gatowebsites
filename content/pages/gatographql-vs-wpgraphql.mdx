@@ -18,6 +18,10 @@ You can use [persisted queries](/features/persisted-queries) to expose predefine
 
 You can validate that only logged-in users, or users with a certain role or capability, or visitors from a certain IP range, [can access data](/features/access-control), on a field-by-field basis (PRO).
 
+### Speed
+
+You can cache the GraphQL response using standard [HTTP caching](/features/http-caching) (PRO).
+
 ### Endpoint customization and management
 
 You can provide multiple [custom endpoints](/features/custom-endpoints), each of them customized for your customers or applications, [protecting them via a password](/features/public-private-and-password-protected-endpoints).
@@ -36,16 +40,30 @@ You will have access to novel GraphQL features, proposed for the spec but not ye
 
 And also [dynamic variables and Multiple Query Execution](/features/multiple-query-execution) (PRO).
 
+### GraphQL server availability
+
 You can expose private endpoints to power your Gutenberg blocks. And you can [access a private GraphQL server](/extensions/internal-graphql-server), to fetch data for your application using PHP code, without exposing any public-facing endpoint (PRO).
 
-You can cache the GraphQL response using standard [HTTP caching](/features/http-caching) (PRO).
+### Versatility on mutating data
 
-You can use GraphQL to retrieve, modify and finally store again the content in your site, all within a single GraphQL document (PRO). For instance, you can fetch all the Gutenberg blocks in a post, extract their properties, [translate those strings via Google Translate API](/library/translate-post-gutenberg), insert those strings back into the block, and store the post again.
+You can use GraphQL to retrieve, modify and finally store again the content in your site, all within a single GraphQL document (PRO).
 
-You can use GraphQL to [import posts from another WordPress site](/library/import-post-from-wp-site), [from an RSS feed](/library/import-post-from-wp-rss-feed), [from a CSV](/library/import-posts-from-csv), or from any REST or GraphQL API. And you can [export content to another WordPress site](/library/export-post-to-wp-site), and store it as JSON and CSV(PRO).
+For instance, you can fetch all the Gutenberg blocks in a post, extract their properties, [translate those strings via Google Translate API](/library/translate-post-gutenberg), insert those strings back into the block, and store the post again.
+
+### Extended functionality
+
+You can use GraphQL to [import posts from another WordPress site](/library/import-post-from-wp-site), [from an RSS feed](/library/import-post-from-wp-rss-feed), [from a CSV](/library/import-posts-from-csv), or from any REST or GraphQL API.
+
+And you can [export content to another WordPress site](/library/export-post-to-wp-site), and store it as JSON and CSV(PRO).
 
 You can invoke the API of any external service via an [HTTP client](/features/http-client) (PRO). For instance, you can [subscribe your WordPress users to your Mailchimp email list](/library/subscribe-email-on-mailchimp-list).
 
-You can use GraphQL to [automate tasks and content workflows](/features/automation) (PRO). For instance, when a new post is created (event `wp_insert_post`) you can execute a persisted query that checks if the post does not have a thumbnail and, in that case, [generates an image by calling the Stable Diffusion API](/library/generate-an-optimized-post-featured-image-using-stable-diffusion-and-tinypng), compresses it via TinyPng, and finally inserts the image as the post's featured image.
+### Automation
 
-And all of these additional uses cases can be achieved directly within the wp-admin, providing the GraphQL query via a user interface, without having to deploy any PHP code.
+You can use GraphQL to [automate tasks and content workflows](/features/automation) (PRO).
+
+For instance, when a new post is created (event `wp_insert_post`) you can execute a persisted query that checks if the post does not have a thumbnail and, in that case, [generates an image by calling the Stable Diffusion API](/library/generate-an-optimized-post-featured-image-using-stable-diffusion-and-tinypng), compresses it via TinyPng, and finally inserts the image as the post's featured image.
+
+### Ease of access to functionality
+
+All of these additional uses cases can be achieved directly within the wp-admin, providing the GraphQL query via a user interface, without having to deploy any PHP code.
