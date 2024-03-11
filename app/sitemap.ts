@@ -75,21 +75,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Download
     {
-      url: `${DOMAIN}/${AppConfig.urls.wpDownload}`,
+      url: AppConfig.urls.wpDownload,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
     },
     // Try out
     {
-      url: `${DOMAIN}/${AppConfig.urls.instawpSandboxDemo}`,
+      url: AppConfig.urls.instawpSandboxDemo,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
     },
     // Purchase
     {
-      url: `${DOMAIN}/${AppConfig.urls.shopPurchase}`,
+      url: AppConfig.urls.shopPurchase,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
@@ -124,7 +124,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Affiliate Program
     {
-      url: `${DOMAIN}/${AppConfig.urls.shopAffiliateProgram}`,
+      url: AppConfig.urls.shopAffiliateProgram,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
@@ -152,21 +152,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // WordPress.org
     {
-      url: `${DOMAIN}/${AppConfig.urls.wpDirectory}`,
+      url: AppConfig.urls.wpDirectory,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
     },
     // GitHub
     {
-      url: `${DOMAIN}/${AppConfig.urls.githubRepo}`,
+      url: AppConfig.urls.githubRepo,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
     },
     // Extension starter
     {
-      url: `${DOMAIN}/${AppConfig.urls.githubExtensionStarter}`,
+      url: AppConfig.urls.githubExtensionStarter,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
