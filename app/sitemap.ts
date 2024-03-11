@@ -117,34 +117,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     //   changeFrequency: 'weekly',
     //   priority: 0.7,
     // },
-    // Guides
-    {
-      url: `${DOMAIN}/${AppConfig.paths.docs.guides}`,
-      lastModified: releaseDateV22,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    // Extensions reference
-    {
-      url: `${DOMAIN}/${AppConfig.paths.docs.extensionsReference}`,
-      lastModified: releaseDateV22,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    // Queries library
-    {
-      url: `${DOMAIN}/${AppConfig.paths.docs.queryLibrary}`,
-      lastModified: releaseDateV22,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    // Schema tutorial
-    {
-      url: `${DOMAIN}/${AppConfig.paths.docs.tutorial}`,
-      lastModified: releaseDateV22,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
+    // // Guides
+    // {
+    //   url: `${DOMAIN}/${AppConfig.paths.docs.guides}`,
+    //   lastModified: releaseDateV22,
+    //   changeFrequency: 'weekly',
+    //   priority: 0.7,
+    // },
+    // // Extensions reference
+    // {
+    //   url: `${DOMAIN}/${AppConfig.paths.docs.extensionsReference}`,
+    //   lastModified: releaseDateV22,
+    //   changeFrequency: 'weekly',
+    //   priority: 0.7,
+    // },
+    // // Queries library
+    // {
+    //   url: `${DOMAIN}/${AppConfig.paths.docs.queryLibrary}`,
+    //   lastModified: releaseDateV22,
+    //   changeFrequency: 'weekly',
+    //   priority: 0.7,
+    // },
+    // // Schema tutorial
+    // {
+    //   url: `${DOMAIN}/${AppConfig.paths.docs.tutorial}`,
+    //   lastModified: releaseDateV22,
+    //   changeFrequency: 'weekly',
+    //   priority: 0.7,
+    // },
     // Changelog
     // {
     //   url: `${DOMAIN}/changelog`,
