@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     }
   ))
+  // TS error: "Type 'string' is not assignable to type '"weekly" | "monthly" | "yearly" | "always" | "hourly" | "daily" | "never" | undefined'"
   // @ts-ignore
   return [
     {
