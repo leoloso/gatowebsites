@@ -2,7 +2,7 @@ import { Doc, Extension, VideoPost, Post, Feature } from "@/.contentlayer/genera
 import AppConfig from '@/app/app.config'
 import AppConstants from "@/app/app.constants";
 import { Article, Artifact, isExtension, isPost } from "./types";
-import { DOMAIN } from "./env/domain";
+import { DOMAIN } from '@/data/env/domain'
 
 export function getExtensionURLPath(extension: Extension) {
   return `/${AppConfig.paths.extensions}/${extension.slug}`
