@@ -1,5 +1,7 @@
+export const RELEASE_VERSION_2_2 = '2.2'
+
 const releaseDates : { [key: string]: string } = {
-  "2.2": "2024-03-08",
+  RELEASE_VERSION_2_2: "2024-03-08",
 }
 
 export function getReleaseData(version: string): string {
