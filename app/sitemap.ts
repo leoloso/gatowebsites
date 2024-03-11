@@ -160,8 +160,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${DOMAIN}/${AppConfig.paths.blog}`,
       lastModified: releaseDateV22,
-      changeFrequency: 'weekly',
-      priority: 0.5,
+      changeFrequency: 'daily',
+      priority: 0.6,
     },
     // Newsletter
     {
