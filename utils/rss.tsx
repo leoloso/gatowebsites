@@ -36,5 +36,7 @@ export default async function generateRssFeed() {
   });
  });
 
- fs.writeFileSync('./public/feed.xml', feed.rss2());
+ const rss = feed.rss2()
+ fs.writeFileSync('./public/rss.xml', rss);
+ fs.writeFileSync('./public/feed.xml', rss);
 }
