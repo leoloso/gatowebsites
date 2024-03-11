@@ -10,15 +10,31 @@ Otherwise, switching to Gato GraphQL provides many additional benefits.
 
 ## How is Gato GraphQL better than WPGraphQL?
 
+Let's see what benefits Gato GraphQL + Gato GraphQL PRO provide you, that WPGraphQL does not.
+
+### Security
+
 You can use [persisted queries](/features/persisted-queries) to expose predefined data, and completely disable the GraphQL single endpoint, for better security.
 
-You can provide multiple [custom endpoints](/features/custom-endpoints), each of them customized for your customers or applications, [protecting them via a password](/features/public-private-and-password-protected-endpoints). And you can [add custom categories](/features/endpoint-management) to them, and [give them a hierarchy](/features/api-hierarchy) (such as `/graphql/customers/some-customer` and `/graphql/customers/another-customer`).
-
-You can execute updates in bulk. For instance, you can delete all comments on the site, or assign a tag or category to all your posts. And you can [search and replace a string](/library/replace-the-old-domain-with-a-new-domain-in-all-posts), even [using a regex](/library/regex-search-and-replace-multiple-strings-in-all-posts), on hundreds of posts (PRO).
-
-You will have access to novel GraphQL features, proposed for the spec but not yet released, including [nested mutations](/features/nested-mutations), [schema namespacing](/features/schema-namespacing) and the ['oneOf' Input Object](/features/oneof-input-object). And also [dynamic variables and Multiple Query Execution](/features/multiple-query-execution) (PRO).
-
 You can validate that only logged-in users, or users with a certain role or capability, or visitors from a certain IP range, [can access data](/features/access-control), on a field-by-field basis (PRO).
+
+### Endpoint customization and management
+
+You can provide multiple [custom endpoints](/features/custom-endpoints), each of them customized for your customers or applications, [protecting them via a password](/features/public-private-and-password-protected-endpoints).
+
+And you can [add custom categories](/features/endpoint-management) to them, and [give them a hierarchy](/features/api-hierarchy) (such as `/graphql/customers/some-customer` and `/graphql/customers/another-customer`).
+
+### Bulk updates
+
+You can execute updates in bulk. For instance, you can delete all comments on the site, or assign a tag or category to all your posts.
+
+And you can search and replace a string on hundreds of posts, for instance to [replace an old with the new domain](/library/replace-the-old-domain-with-a-new-domain-in-all-posts), and even [using a regex](/library/regex-search-and-replace-multiple-strings-in-all-posts) (PRO).
+
+### Custom GraphQL features
+
+You will have access to novel GraphQL features, proposed for the spec but not yet released, including [nested mutations](/features/nested-mutations), [schema namespacing](/features/schema-namespacing) and the ['oneOf' Input Object](/features/oneof-input-object).
+
+And also [dynamic variables and Multiple Query Execution](/features/multiple-query-execution) (PRO).
 
 You can expose private endpoints to power your Gutenberg blocks. And you can [access a private GraphQL server](/extensions/internal-graphql-server), to fetch data for your application using PHP code, without exposing any public-facing endpoint (PRO).
 
