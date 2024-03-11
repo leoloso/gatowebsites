@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import AppSettings from '@/app/app.settings'
 import PlausibleProvider from 'next-plausible'
 import LemonSqueezyScriptProvider from '@/components/scripts/lemonsqueezy'
+import { DOMAIN } from '@/utils/domain'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,14 +18,7 @@ export const metadata = {
   
   // metadataBase: first check if env var from Netlify is defined. If not, from Vercel.
   // If not, fallback to default (explicit so that there's no warning in console)
-  metadataBase:
-    // @see https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata
-    process.env.URL ? new URL(process.env.URL) :
-    (
-      // @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-      process.env.VERCEL_URL ? new URL(process.env.VERCEL_URL) :
-      `http://localhost:${process.env.PORT || 3000}`
-    )
+  metadataBase: DOMAIN
 }
 
 export default function RootLayout({
