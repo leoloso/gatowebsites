@@ -17,7 +17,10 @@ import {
   // getVideoPostURL,
   getDocURL,
 } from '@/utils/application-urls'
-import { RELEASE_VERSION_2_2, getReleaseData } from '@/data/release'
+import {
+  RELEASE_VERSION_2_2,
+  getReleaseData,
+} from '@/data/release'
  
 export default function sitemap(): MetadataRoute.Sitemap {
   const postSitemapEntries = allPosts.map((post) => (
