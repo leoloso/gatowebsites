@@ -1,4 +1,4 @@
-import { sortByOrderAndTitle } from '@/utils/sort';
+import { sortByOrderAndTitle } from '@/utils/content/sort';
 import ArtifactsList from './artifacts-list';
 import { allFeatures } from 'contentlayer/generated'
 import SectionHeader from './section-header';

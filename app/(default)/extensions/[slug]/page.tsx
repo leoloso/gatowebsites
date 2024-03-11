@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import AppConfig from '@/app/app.config'
 import ArtifactSection from '@/components/sections/artifact'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon-01.png'
-import { getExtensionDocumentationURLPath } from '@/utils/application-urls'
+import { getExtensionDocumentationURLPath } from '@/utils/content/application-urls'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({

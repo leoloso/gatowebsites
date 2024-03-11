@@ -11,8 +11,8 @@ import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
 // import ArticleNavigation from '@/components/ui/article-navigation'
-import { sortByPublishedAt } from '@/utils/sort'
-import { getPrevNextArticles } from '@/utils/document'
+import { sortByPublishedAt } from '@/utils/content/sort'
+import { getPrevNextArticles } from '@/utils/content/document'
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({

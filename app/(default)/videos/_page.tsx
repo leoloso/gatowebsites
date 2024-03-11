@@ -11,9 +11,9 @@ export const metadata = {
 }
 
 import Newsletter from '@/components/newsletter'
-import { getVideoPostURLPath } from '@/utils/application-urls'
+import { getVideoPostURLPath } from '@/utils/content/application-urls'
 import StunningBackground from '@/components/stunning-background'
-import { sortByPublishedAt } from '@/utils/sort'
+import { sortByPublishedAt } from '@/utils/content/sort'
 
 export default function Blog() {
 

@@ -4,7 +4,7 @@ import {
   sortDocuments,
   getTutorialDocuments,
   getPrevNextArticles,
-} from '@/utils/document'
+} from '@/utils/content/document'
 import DocSection from '@/components/sections/doc'
 import { topicTitleSVG2 } from '@/components/ui/docs/topic-title'
 import { Doc } from '@/.contentlayer/generated'

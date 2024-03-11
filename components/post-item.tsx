@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import { Post } from '@/.contentlayer/generated'
-import { getPostURLPath } from '@/utils/application-urls'
+import { getPostURLPath } from '@/utils/content/application-urls'
 import PostTags from './post-tags'
 
 export default function PostItem({ post }: {

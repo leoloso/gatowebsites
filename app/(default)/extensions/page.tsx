@@ -4,8 +4,8 @@ import ExtensionsSection from '@/components/extensions-section'
 import ExtensionsList from '@/components/extensions-list'
 import {
   getFeaturedExtensions,
-} from '@/utils/extension'
-import { sortByOrderAndTitle } from '@/utils/sort'
+} from '@/utils/content/extension'
+import { sortByOrderAndTitle } from '@/utils/content/sort'
 import Cta from '@/components/cta-02'
 
 export const metadata = {

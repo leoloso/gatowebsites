@@ -5,7 +5,7 @@ import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png
 import Star from '@/public/assets/theme/star.svg'
 import { ArtifactMdx } from '@/components/mdx/artifact-mdx'
 import StunningBackground from '@/components/stunning-background'
-import { Artifact } from '@/utils/types'
+import { Artifact } from '@/utils/content/types'
 import { getTestimonials } from '../data/testimonials'
 
 export default function ArtifactSection({
