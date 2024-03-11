@@ -18,7 +18,7 @@ export const metadata = {
   
   // metadataBase: first check if env var from Netlify is defined. If not, from Vercel.
   // If not, fallback to default (explicit so that there's no warning in console)
-  metadataBase: DOMAIN
+  metadataBase: new URL(DOMAIN)
 }
 
 export default function RootLayout({
