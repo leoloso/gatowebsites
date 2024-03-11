@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 import AppConfig from '@/app/app.config'
 import { allPosts } from '@/.contentlayer/generated'
 import { sortByPublishedAt } from '@/utils/sort'
-import { getPostURLPath } from '@/utils/application-urls'
+import { getPostURLPath } from '@/utils/application-url-paths'
  
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = allPosts.sort(sortByPublishedAt) 

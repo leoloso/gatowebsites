@@ -3,7 +3,7 @@ import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from './post-tags'
 import { VideoPost } from '@/.contentlayer/generated'
-import { getVideoPostURLPath } from '@/utils/application-urls'
+import { getVideoPostURLPath } from '@/utils/application-url-paths'
 
 export default function VideoPostPostItem({ videoPost }: {
   videoPost: VideoPost,

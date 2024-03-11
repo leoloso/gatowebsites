@@ -1,4 +1,4 @@
-import { getPostURLPath } from "@/utils/application-urls";
+import { getPostURLPath } from "@/utils/application-url-paths";
 import { getFeaturedPosts } from "@/utils/post";
 import { sortByPublishedAt } from "@/utils/sort";
 import Link from "next/link";

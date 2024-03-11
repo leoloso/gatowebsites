@@ -16,7 +16,7 @@ import CarouselImg05 from '@/public/assets/theme/carousel-icon-05.svg'
 import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
 import SectionHeader from './section-header'
-import { getFeatureURLPath } from '@/utils/application-urls'
+import { getFeatureURLPath } from '@/utils/application-url-paths'
 import { sortByOrder, sortByOrderAndTitle } from '@/utils/sort'
 Swiper.use([Navigation])
 

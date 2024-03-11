@@ -12,7 +12,7 @@ import {
   sortDocuments,
   getDocumentTopicsBySection,
 } from '@/utils/document'
-import { getDocURLPath } from '@/utils/application-urls'
+import { getDocURLPath } from '@/utils/application-url-paths'
 import AppConstants from '@/app/app.constants'
 
 export default function SupportSidebar() {
