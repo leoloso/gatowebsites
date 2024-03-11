@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import AppSettings from '@/app/app.settings'
 import PlausibleProvider from 'next-plausible'
 import LemonSqueezyScriptProvider from '@/components/scripts/lemonsqueezy'
-import { DOMAIN } from '@/utils/domain'
+import { DOMAIN } from '@/utils/env/domain'
 
 const inter = Inter({
   subsets: ['latin'],
