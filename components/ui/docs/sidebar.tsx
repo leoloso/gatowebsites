@@ -12,7 +12,7 @@ import {
   sortDocuments,
   getDocumentTopicsBySection,
 } from '@/utils/document'
-import { getDocURL } from '@/utils/application-urls'
+import { getDocURLPath } from '@/utils/application-urls'
 import AppConstants from '@/app/app.constants'
 
 export default function SupportSidebar() {
@@ -138,7 +138,7 @@ export default function SupportSidebar() {
                                 <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
                                   {docsByTopic.map((doc, docIndex) => (
                                     <li className="mt-3" key={docIndex}>
-                                      <SidebarLink href={getDocURL(doc)}>
+                                      <SidebarLink href={getDocURLPath(doc)}>
                                         {doc.title}
                                       </SidebarLink>
                                     </li>
