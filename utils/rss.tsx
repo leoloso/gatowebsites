@@ -5,6 +5,7 @@ import { sortByPublishedAt } from './content/sort';
 import { DOMAIN } from '@/data/env/domain';
 import { getPostURL } from './content/application-urls';
 import slugify from '@sindresorhus/slugify';
+import Logo from '@/public/assets/GatoGraphQL-logo-face.png'
 
 export default async function generateRssFeed() {
  const posts = allPosts.sort(sortByPublishedAt) 
@@ -14,7 +15,7 @@ export default async function generateRssFeed() {
   description: 'Stay up to date on the latest from Gato GraphQL and our engineering practices.',
   id: DOMAIN,
   link: DOMAIN,
-  image: `${DOMAIN}/assets/GatoGraphQL-logo.png`,
+  image: Logo.src,
   favicon: `${DOMAIN}/favicon.png`,
   copyright: `All rights reserved ${new Date().getFullYear()}, Gato GraphQL`,
   generator: 'Feed for Node.js',
@@ -35,5 +36,5 @@ export default async function generateRssFeed() {
   });
  });
 
- fs.writeFileSync('./public/rss.xml', feed.rss2());
+ fs.writeFileSync('./public/feed.xml', feed.rss2());
 }
