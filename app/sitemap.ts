@@ -91,7 +91,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${DOMAIN}/newsletter`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'yearly',
       priority: 1,
     },
     // Customers
@@ -119,28 +119,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${DOMAIN}/contact`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'yearly',
       priority: 1,
     },
     // WPBuilds series
     {
       url: `${DOMAIN}/specials/wpbuilds`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'yearly',
       priority: 1,
     },
     // My orders
     {
       url: `${DOMAIN}/shop/my-orders`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'yearly',
       priority: 1,
     },
     // Support request
     {
       url: `${DOMAIN}/support`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'yearly',
       priority: 1,
     },
   ]
