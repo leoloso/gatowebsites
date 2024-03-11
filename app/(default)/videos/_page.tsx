@@ -11,7 +11,7 @@ export const metadata = {
 }
 
 import Newsletter from '@/components/newsletter'
-import { getVideoPostURLPath } from '@/utils/application-url-paths'
+import { getVideoPostURLPath } from '@/utils/application-urls'
 import StunningBackground from '@/components/stunning-background'
 import { sortByPublishedAt } from '@/utils/sort'
 

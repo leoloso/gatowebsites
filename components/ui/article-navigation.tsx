@@ -1,6 +1,6 @@
 import { Doc, Post } from '@/.contentlayer/generated'
 import Link from 'next/link'
-import { getArticleURLPath } from '@/utils/application-url-paths'
+import { getArticleURLPath } from '@/utils/application-urls'
 
 export default function ArticleNavigation({
   prevArticle,
