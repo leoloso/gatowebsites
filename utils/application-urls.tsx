@@ -2,39 +2,71 @@ import { Doc, Extension, VideoPost, Post, Feature } from "@/.contentlayer/genera
 import AppConfig from '@/app/app.config'
 import AppConstants from "@/app/app.constants";
 import { Article, Artifact, isExtension, isPost } from "./types";
+import { DOMAIN } from '@/data/env/domain'
 
-export function getExtensionURL(extension: Extension) {
+export function getExtensionURLPath(extension: Extension) {
   return `/${AppConfig.paths.extensions}/${extension.slug}`
 }
 
-export function getFeatureURL(feature: Feature) {
+export function getExtensionURL(extension: Extension) {
+  return `${DOMAIN}${getExtensionURLPath(extension)}`
+}
+
+export function getFeatureURLPath(feature: Feature) {
   return `/${AppConfig.paths.features}/${feature.slug}`
 }
 
-export function getArtifactURL(artifact: Artifact) {
-  return isExtension(artifact) ? getExtensionURL(artifact) : getFeatureURL(artifact)
+export function getFeatureURL(feature: Feature) {
+  return `${DOMAIN}${getFeatureURLPath(feature)}`
 }
 
-export function getExtensionDocumentationURL(extension: Extension) {
+export function getArtifactURLPath(artifact: Artifact) {
+  return isExtension(artifact) ? getExtensionURLPath(artifact) : getFeatureURLPath(artifact)
+}
+
+export function getArtifactURL(artifact: Artifact) {
+  return `${DOMAIN}${getArtifactURLPath(artifact)}`
+}
+
+export function getExtensionDocumentationURLPath(extension: Extension) {
   return `/${AppConfig.paths.docs.extensionsReference}/${extension.slug}`
 }
 
-export function getVideoPostURL(videoPost: VideoPost) {
+export function getExtensionDocumentationURL(extension: Extension) {
+  return `${DOMAIN}${getExtensionDocumentationURLPath(extension)}`
+}
+
+export function getVideoPostURLPath(videoPost: VideoPost) {
   return `/${AppConfig.paths.videoPosts}/${videoPost.slug}`
 }
 
-export function getDocURL(doc: Doc) {
+export function getVideoPostURL(videoPost: VideoPost) {
+  return `${DOMAIN}${getVideoPostURLPath(videoPost)}`
+}
+
+export function getDocURLPath(doc: Doc) {
   if (doc.topicSlug === AppConstants.implicitDocTopicSlug) {
     return `/${doc.section}/${doc.slug}`
   }
   return `/${doc.section}/${doc.topicSlug}/${doc.slug}`
 }
 
-export function getPostURL(post: Post) {
+export function getDocURL(doc: Doc) {
+  return `${DOMAIN}${getDocURLPath(doc)}`
+}
+
+export function getPostURLPath(post: Post) {
   return `/${AppConfig.paths.blog}/${post.slug}`
 }
 
-export function getArticleURL(article: Article) {
-  return isPost(article) ? getPostURL(article) : getDocURL(article)
+export function getPostURL(post: Post) {
+  return `${DOMAIN}${getPostURLPath(post)}`
 }
 
+export function getArticleURLPath(article: Article) {
+  return isPost(article) ? getPostURLPath(article) : getDocURLPath(article)
+}
+
+export function getArticleURL(article: Article) {
+  return `${DOMAIN}${getArticleURLPath(article)}`
+}

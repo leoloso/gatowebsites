@@ -16,7 +16,7 @@ import CarouselImg05 from '@/public/assets/theme/carousel-icon-05.svg'
 import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
 import SectionHeader from './section-header'
-import { getFeatureURL } from '@/utils/application-urls'
+import { getFeatureURLPath } from '@/utils/application-urls'
 import { sortByOrder, sortByOrderAndTitle } from '@/utils/sort'
 Swiper.use([Navigation])
 
@@ -105,7 +105,7 @@ export default function FeaturesCarousel() {
                           <div className="text-slate-400 mb-3">{feature.description}</div>
                         </div>
                         <div className="text-right">
-                          <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={getFeatureURL(feature)}>Learn More <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
+                          <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={getFeatureURLPath(feature)}>Learn More <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
                         </div>
                       </div>
                     </div>

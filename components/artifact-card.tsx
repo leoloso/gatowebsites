@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
 import Star from '@/public/assets/theme/star.svg'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png'
-import { getArtifactURL } from '@/utils/application-urls'
+import { getArtifactURLPath } from '@/utils/application-urls'
 import { Artifact } from '@/utils/types'
 
 type ArtifactCardProps = {
@@ -25,7 +25,7 @@ export default function ArtifactCard({
               <Image className="absolute top-0 -right-1" src={Star} width={16} height={16} alt="Star" aria-hidden="true" />
             )}
           </div>
-          <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href={getArtifactURL(artifact)}>{artifact.title}</Link>
+          <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href={getArtifactURLPath(artifact)}>{artifact.title}</Link>
         </div>
         <div className="grow">
           <div className="text-sm text-slate-400">{artifact.description}</div>
