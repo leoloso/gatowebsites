@@ -1,16 +1,77 @@
-import { DOMAIN } from '@/utils/domain'
+import { DOMAIN } from '@/data/env/domain'
 import { MetadataRoute } from 'next'
 import AppConfig from '@/app/app.config'
-import { allPosts } from '@/.contentlayer/generated'
-import { sortByPublishedAt } from '@/utils/sort'
-import { getPostURL } from '@/utils/application-urls'
+import {
+  allPosts,
+  // allUpdates,
+  // allVideoPosts,
+  allDocs,
+  allExtensions,
+  allFeatures,
+} from '@/.contentlayer/generated'
+import {
+  getPostURL,
+  getExtensionURL,
+  getFeatureURL,
+  getExtensionDocumentationURL,
+  // getVideoPostURL,
+  getDocURL,
+} from '@/utils/application-urls'
+import { RELEASE_VERSION_2_2, getReleaseData } from '@/data/release'
  
 export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = allPosts.sort(sortByPublishedAt) 
-  const postsSitemapEntries = posts.map((post) => (
+  const postSitemapEntries = allPosts.map((post) => (
     {
       url: getPostURL(post),
       lastModified: new Date(post.publishedAt),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    }
+  ))
+  // const updatesSitemapEntries = allUpdates.map((update) => (
+  //   {
+  //     url: getUpdateURL(update),
+  //     lastModified: new Date(update.publishedAt),
+  //     changeFrequency: 'weekly',
+  //     priority: 0.5,
+  //   }
+  // ))
+  const extensionSitemapEntries = allExtensions.map((extension) => (
+    {
+      url: getExtensionURL(extension),
+      lastModified: new Date(getReleaseData(RELEASE_VERSION_2_2)),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    }
+  ))
+  const extensionDocumentationSitemapEntries = allExtensions.map((extension) => (
+    {
+      url: getExtensionDocumentationURL(extension),
+      lastModified: new Date(getReleaseData(RELEASE_VERSION_2_2)),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    }
+  ))
+  const featureSitemapEntries = allFeatures.map((feature) => (
+    {
+      url: getFeatureURL(feature),
+      lastModified: new Date(getReleaseData(RELEASE_VERSION_2_2)),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    }
+  ))
+  // const videoPostSitemapEntries = allVideoPosts.map((videoPost) => (
+  //   {
+  //     url: getVideoPostURL(videoPost),
+  //     lastModified: new Date(videoPost.publishedAt),
+  //     changeFrequency: 'weekly',
+  //     priority: 0.5,
+  //   }
+  // ))
+  const docSitemapEntries = allDocs.map((doc) => (
+    {
+      url: getDocURL(doc),
+      lastModified: new Date(getReleaseData(RELEASE_VERSION_2_2)),
       changeFrequency: 'weekly',
       priority: 0.5,
     }
@@ -158,5 +219,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
   ]
-    .concat(postsSitemapEntries)
+    .concat(
+      postSitemapEntries,
+      // updatesSitemapEntries,
+      extensionSitemapEntries,
+      extensionDocumentationSitemapEntries,
+      featureSitemapEntries,
+      // videoPostSitemapEntries,
+      docSitemapEntries,
+    )
 }
