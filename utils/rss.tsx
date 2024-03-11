@@ -3,13 +3,15 @@ import { Feed } from 'feed';
 import { allPosts } from 'contentlayer/generated'
 import { sortByPublishedAt } from './content/sort';
 import { DOMAIN } from '@/data/env/domain';
+import { getPostURL } from './content/application-urls';
+import slugify from '@sindresorhus/slugify';
 
 export default async function generateRssFeed() {
  const posts = allPosts.sort(sortByPublishedAt) 
 
  const feedOptions = {
-  title: 'Blog posts | RSS Feed',
-  description: 'Welcome to this blog posts!',
+  title: 'Gato GraphQL Blog | RSS Feed',
+  description: 'Stay up to date on the latest from Gato GraphQL and our engineering practices.',
   id: DOMAIN,
   link: DOMAIN,
   image: `${DOMAIN}/logo.png`,
@@ -26,8 +28,8 @@ export default async function generateRssFeed() {
  posts.forEach((post) => {
   feed.addItem({
    title: post.title,
-   id: `${DOMAIN}/blog/${post.slug}`,
-   link: `${DOMAIN}/blog/${post.slug}`,
+   id: slugify(getPostURL(post)),
+   link: getPostURL(post),
    description: post.summary,
    date: new Date(post.publishedAt),
   });
