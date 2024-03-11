@@ -28,8 +28,8 @@ export default async function generateRssFeed() {
    title: post.title,
    id: `${DOMAIN}/blog/${post.slug}`,
    link: `${DOMAIN}/blog/${post.slug}`,
-   description: post.description,
-   date: new Date(post.date),
+   description: post.summary,
+   date: new Date(post.publishedAt),
   });
  });
 
