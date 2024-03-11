@@ -7,14 +7,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: DOMAIN,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'monthly',
       priority: 1,
     },
     // Pricing
     {
       url: `${DOMAIN}/pricing`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'monthly',
       priority: 1,
     },
     // Features
@@ -77,7 +77,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${DOMAIN}/refund-policy`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'monthly',
       priority: 1,
     },
     // Blog
@@ -105,7 +105,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${DOMAIN}/developers`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'monthly',
       priority: 1,
     },
     // About us
