@@ -1,8 +1,20 @@
 import { DOMAIN } from '@/utils/domain'
 import { MetadataRoute } from 'next'
 import AppConfig from '@/app/app.config'
+import { allPosts } from '@/.contentlayer/generated'
+import { sortByPublishedAt } from '@/utils/sort'
+import { getPostURL } from '@/utils/application-urls'
  
 export default function sitemap(): MetadataRoute.Sitemap {
+  const posts = allPosts.sort(sortByPublishedAt) 
+  const postsSitemapEntries = posts.map((post) => (
+    {
+      url: getPostURL(post),
+      lastModified: new Date(post.publishedAt),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    }
+  ))
   return [
     {
       url: DOMAIN,
@@ -144,4 +156,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
   ]
+    .concat(postsSitemapEntries)
 }
