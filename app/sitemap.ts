@@ -23,6 +23,7 @@ import {
 } from '@/data/release'
  
 export default function sitemap(): MetadataRoute.Sitemap {
+  const releaseDateV22 = new Date(getReleaseData(RELEASE_VERSION_2_2))
   const postSitemapEntries = allPosts.map((post) => (
     {
       url: getPostURL(post),
@@ -42,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const extensionSitemapEntries = allExtensions.map((extension) => (
     {
       url: getExtensionURL(extension),
-      lastModified: new Date(getReleaseData(RELEASE_VERSION_2_2)),
+      lastModified: releaseDateV22,
       changeFrequency: 'monthly',
       priority: 0.5,
     }
@@ -50,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const extensionDocumentationSitemapEntries = allExtensions.map((extension) => (
     {
       url: getExtensionDocumentationURL(extension),
-      lastModified: new Date(getReleaseData(RELEASE_VERSION_2_2)),
+      lastModified: releaseDateV22,
       changeFrequency: 'monthly',
       priority: 0.5,
     }
@@ -58,7 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const featureSitemapEntries = allFeatures.map((feature) => (
     {
       url: getFeatureURL(feature),
-      lastModified: new Date(getReleaseData(RELEASE_VERSION_2_2)),
+      lastModified: releaseDateV22,
       changeFrequency: 'monthly',
       priority: 0.5,
     }
@@ -74,7 +75,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const docSitemapEntries = allDocs.map((doc) => (
     {
       url: getDocURL(doc),
-      lastModified: new Date(getReleaseData(RELEASE_VERSION_2_2)),
+      lastModified: releaseDateV22,
       changeFrequency: 'weekly',
       priority: 0.5,
     }
