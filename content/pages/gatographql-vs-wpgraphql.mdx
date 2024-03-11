@@ -6,15 +6,17 @@ description: 'How is Gato GraphQL different than WPGraphQL?'
 
 If you just need to build a headless WordPress site and deploy it as static, and you're currently using [WPGraphQL](https://www.wpgraphql.com), switching to Gato GraphQL will not make any difference.
 
-Otherwise, switching to Gato GraphQL provides many additional benefits:
+Otherwise, switching to Gato GraphQL provides many additional benefits.
 
-You can use persisted queries to expose predefined data, and completely disable the GraphQL single endpoint, for better security.
+## How is Gato GraphQL better than WPGraphQL?
 
-You can provide multiple custom endpoints, each of them customized for your customers or applications, protecting them via a password. And you can add custom categories to them, and give them a hierarchy (such as /graphql/customers/some-customer and /graphql/customers/another-customer).
+You can use [persisted queries](/features/persisted-queries) to expose predefined data, and completely disable the GraphQL single endpoint, for better security.
 
-You can execute updates in bulk. For instance, you can delete all comments on the site, or assign a tag or category to all your posts. And you can search and replace a string, even using a regex, on hundreds of posts (PRO).
+You can provide multiple [custom endpoints](/features/custom-endpoints), each of them customized for your customers or applications, [protecting them via a password](/features/public-private-and-password-protected-endpoints). And you can [add custom categories](/features/endpoint-management) to them, and [give them a hierarchy](/features/api-hierarchy) (such as `/graphql/customers/some-customer` and `/graphql/customers/another-customer`).
 
-You will have access to novel GraphQL features, proposed for the spec but not yet released, including nested mutations, schema namespacing and the 'oneOf' Input Object. And also dynamic variables and Multiple Query Execution (PRO).
+You can execute updates in bulk. For instance, you can delete all comments on the site, or assign a tag or category to all your posts. And you can [search and replace a string](/library/replace-the-old-domain-with-a-new-domain-in-all-posts), even [using a regex](/library/regex-search-and-replace-multiple-strings-in-all-posts), on hundreds of posts (PRO).
+
+You will have access to novel GraphQL features, proposed for the spec but not yet released, including [nested mutations](/features/nested-mutations), [schema namespacing](/features/schema-namespacing) and the ['oneOf' Input Object](/features/oneof-input-object). And also [dynamic variables and Multiple Query Execution](/features/multiple-query-execution) (PRO).
 
 You can validate that only logged-in users, or users with a certain role or capability, or visitors from a certain IP range, can access data, on a field-by-field basis (PRO).
 
