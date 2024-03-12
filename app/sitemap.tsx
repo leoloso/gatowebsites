@@ -205,6 +205,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
+    // Gato GraphQL vs WPGraphQL
+    {
+      url: `${DOMAIN}/gatographql-vs-wpgraphql`,
+      lastModified: releaseDateV22,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
     // My orders
     {
       url: `${DOMAIN}/shop/my-orders`,
