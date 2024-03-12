@@ -4,7 +4,7 @@ title: 'Comparison: Gato GraphQL vs WP REST API'
 description: 'How is Gato GraphQL different than the WP REST API?'
 ---
 
-Let's analyze how Gato GraphQL compares against the <a href="https://developer.wordpress.org/rest-api/" rel="nofollow">WP REST API</a>.
+Let's analyze how Gato GraphQL + Gato GraphQL PRO compares against the <a href="https://developer.wordpress.org/rest-api/" rel="nofollow">WP REST API</a>.
 
 ## Accessing predefined data
 
@@ -29,6 +29,8 @@ The difference between them is that while REST API endpoints are created via PHP
   alt="Persisted query editor"
   caption="Persisted query editor"
 />
+
+Because the persisted query is accessed under its own endpoint, it can then be cached using standard [HTTP caching](/features/http-caching) (PRO).
 
 ## Accessing non-predefined data
 
