@@ -112,7 +112,7 @@ You can invoke the API of any external service via an [HTTP client](/features/ht
 
 You can use GraphQL to [automate tasks and content workflows](/features/automation) (PRO).
 
-For instance, when a new post is created (event `wp_insert_post`) you can execute a persisted query that checks if the post does not have a thumbnail and, in that case, [generates an image by calling the Stable Diffusion API](/library/generate-an-optimized-post-featured-image-using-stable-diffusion-and-tinypng), compresses it via TinyPng, and finally inserts the image as the post's featured image.
+For instance, when a new post is created (event via hook `draft_post`) you can execute a persisted query that checks if the post does not have a thumbnail and, in that case, [generates an image by calling the Stable Diffusion API](/library/generate-an-optimized-post-featured-image-using-stable-diffusion-and-tinypng), compresses it via TinyPng, and finally inserts the image as the post's featured image.
 
 <Image
   src="/assets/extensions/upstream-pro/automation-rule-editor.png"
