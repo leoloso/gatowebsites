@@ -76,3 +76,13 @@ Gato GraphQL provides much more flexibility, with every single field being eithe
   alt="Access Control List editor"
   caption="Access Control List editor"
 />
+
+## Bulk operations
+
+The WP REST API allows to execute [batch requests](https://developer.wordpress.org/rest-api/requests/#internal-requests), where multiple requests are satisfied internally within a single HTTP request.
+
+Gato GraphQL provides [Multiple Query Execution](/features/multiple-query-execution), where a single GraphQL operation can execute multiple operations.
+
+Multiple Query Execution is an improvement over batch requests, as the operations can share state with one another, whereas in the batch request they cannot.
+
+For instance, to [duplicate a post](/library/duplicate-post), we have a `query` operation fetch the post data, and pass this data to a `mutation` operation that creates a new post with it.
