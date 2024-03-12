@@ -62,3 +62,17 @@ query {
 ```
 
 In contrast, a REST API might need to execute a first request to fetch the post data, and a subsequent request for each of its relationships to fetch their data.
+
+## Access control
+
+Restricting data in the WP REST API depends on the `context` parameter. Passing `?context=view` produces data for unauthenticated users, and `?context=edit` includes additional data for authenticated users (with the right permissions), such as the post's `content.raw` field.
+
+Gato GraphQL provides much more flexibility, with every single field being either accessible or not based on [Access Control](/features/access-control) rules. You can validate that only logged-in users, or users with a certain role or capability, or visitors from a certain IP range, can access a specific field (PRO).
+
+<Image
+  src="/assets/extensions/upstream-pro/access-control-list.png"
+  width="1026"
+  height="940"
+  alt="Access Control List editor"
+  caption="Access Control List editor"
+/>
