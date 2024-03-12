@@ -60,8 +60,6 @@ And you can search and replace a string on hundreds of posts, for instance to [r
 
 You will have access to novel GraphQL features, proposed for the spec but not yet released, including [nested mutations](/features/nested-mutations), [schema namespacing](/features/schema-namespacing) and the ['oneOf' Input Object](/features/oneof-input-object).
 
-And also [Multiple Query Execution](/features/multiple-query-execution) (PRO).
-
 <div className="lg:-ml-32 lg:-mr-32">
 
 <Image
@@ -73,6 +71,62 @@ And also [Multiple Query Execution](/features/multiple-query-execution) (PRO).
 />
 
 </div>
+
+## Multiple Query Execution
+
+You will have access to [Multiple Query Execution](/features/multiple-query-execution), where a single GraphQL document can execute multiple operations, which share state with one another via the `@export` directive.
+
+For instance, to [duplicate a post](/library/duplicate-post), we have a `query` operation fetch the post data, and pass this data to a `mutation` operation that creates a new post with it:
+
+```graphql
+query GetPostAndExportData($postId: ID!)
+{
+  post(by: { id: $postId }, status: any) {
+    author {
+      id @export(as: "authorID")
+    }
+    categories {
+      id @export(as: "categoryIDs", type: LIST)
+    }
+    rawContent @export(as: "rawContent")
+    rawExcerpt @export(as: "excerpt")
+    featuredImage {
+      id @export(as: "featuredImageID")
+    }
+    tags {
+      id @export(as: "tagIDs", type: LIST)
+    }
+    rawTitle @export(as: "title")
+  }
+}
+ 
+mutation DuplicatePost
+  @depends(on: "GetPostAndExportData")
+{
+  createPost(input: {
+    status: draft,
+    authorBy: {
+      id: $authorID
+    },
+    categoriesBy: {
+      ids: $categoryIDs
+    },
+    contentAs: {
+      html: $rawContent
+    },
+    excerpt: $excerpt
+    featuredImageBy: {
+      id: $featuredImageID
+    },
+    tagsBy: {
+      ids: $tagIDs
+    },
+    title: $title
+  }) {
+    postID
+  }
+}
+```
 
 ## Composability
 
