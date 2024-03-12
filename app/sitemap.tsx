@@ -21,6 +21,7 @@ import { getReleaseData } from '@/data/release'
  
 export default function sitemap(): MetadataRoute.Sitemap {
   const releaseDateV22 = new Date(getReleaseData('2.2'))
+  const releaseDateV221 = new Date(getReleaseData('2.2.1'))
   const postSitemapEntries = allPosts.map((post) => (
     {
       url: getPostURL(post),
@@ -208,7 +209,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Gato GraphQL vs WPGraphQL
     {
       url: `${DOMAIN}/gatographql-vs-wpgraphql`,
-      lastModified: releaseDateV22,
+      lastModified: releaseDateV221,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
