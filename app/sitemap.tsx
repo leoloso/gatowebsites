@@ -211,7 +211,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${DOMAIN}/gatographql-vs-wpgraphql`,
       lastModified: releaseDateV2_2_1,
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.95,
     },
     // My orders
     {
