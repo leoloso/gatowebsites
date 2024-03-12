@@ -74,7 +74,11 @@ You will have access to novel GraphQL features, proposed for the spec but not ye
 
 ## Multiple Query Execution
 
-You will have access to [Multiple Query Execution](/features/multiple-query-execution), where a single GraphQL document can execute multiple operations, which share state with one another via the `@export` directive.
+WPGraphQL allows to execute <a href="https://www.wpgraphql.com/docs/wpgraphql-vs-wp-rest-api#batch-queries" rel="nofollow">queries in batch</a>, where multiple GraphQL queries are resolved within a single HTTP request.
+
+Gato GraphQL provides [Multiple Query Execution](/features/multiple-query-execution), where a single GraphQL document can execute multiple operations.
+
+**Multiple Query Execution** is an improvement over **query batching**, as the operations can share state with one another via the `@export` directive.
 
 For instance, to [duplicate a post](/library/duplicate-post), we have a `query` operation fetch the post data, and pass this data to a `mutation` operation that creates a new post with it:
 
