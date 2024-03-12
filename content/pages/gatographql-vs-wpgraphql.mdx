@@ -91,7 +91,24 @@ query {
 }
 ```
 
-Similarly, you can compose directives.
+Similarly, you can [compose directives](/features/composable-directives), so that a directive can be applied on an inner property from the field's value.
+
+For instance, the following query converts translates the category names to French:
+
+```graphql
+query {
+  post(by: { id: 1 }) {
+    title
+    categoryNames
+    frenchCategoryNames: categoryNames
+      @underEachArrayItem
+        @strTranslate(
+          from: "en",
+          to: "fr"
+        )
+  }
+}
+```
 
 ## GraphQL server availability
 
