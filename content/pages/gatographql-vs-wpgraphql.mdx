@@ -78,7 +78,9 @@ And also [Multiple Query Execution](/features/multiple-query-execution) (PRO).
 
 Gato GraphQL provides the ability to compose fields, so that a foundational set of field resolvers can cover an unlimited number of use cases.
 
-With [Field to Input](/features/field-to-input), you can retrieve the value of a field, and provide it as input to another field. For instance, instead of creating field `Post.hasExcerpt`, we can apply field `_notEmpty` on `Post.excerpt` to produce the same value:
+With [Field to Input](/features/field-to-input), you can retrieve the value of a field, and provide it as input to another field (PRO).
+
+For instance, instead of creating field `Post.hasExcerpt`, we can apply field `_notEmpty` on `Post.excerpt` to produce the same value:
 
 ```graphql
 query {
@@ -88,6 +90,8 @@ query {
   }
 }
 ```
+
+Similarly, you can compose directives.
 
 ## GraphQL server availability
 
