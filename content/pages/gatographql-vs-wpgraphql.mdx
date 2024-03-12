@@ -74,6 +74,21 @@ And also [Multiple Query Execution](/features/multiple-query-execution) (PRO).
 
 </div>
 
+## Composability
+
+Gato GraphQL provides the ability to compose fields, so that a foundational set of field resolvers can cover an unlimited number of use cases.
+
+With [Field to Input](/features/field-to-input), you can retrieve the value of a field, and provide it as input to another field. For instance, instead of creating field `Post.hasExcerpt`, we can apply field `_notEmpty` on `Post.excerpt` to produce the same value:
+
+```graphql
+query {
+  post(by: { id: 1 }) {
+    excerpt 
+    hasExcerpt: _notEmpty(value: $__excerpt)
+  }
+}
+```
+
 ## GraphQL server availability
 
 You can expose private endpoints to power your Gutenberg blocks. And you can [access a private GraphQL server](/extensions/internal-graphql-server), to fetch data for your application using PHP code, without exposing any public-facing endpoint (PRO).
