@@ -32,6 +32,33 @@ Requesting a persisted query via `GET` will execute the stored GraphQL query, an
 
 The difference between them is that while REST API endpoints are created via PHP code, and must be deployed within a theme or plugin, Gato GraphQL persisted queries are created using the [GraphQL language](https://graphql.org), and are published via a WordPress editor-powered user interface within the wp-admin, without the need to deploy any code.
 
-## Accessing only the needed data
+## Accessing non-predefined data
 
-With Gato GraphQL you can also execute tailored GraphQL queries against an endpoint, indicating what specific data you need, and fetching only that within a single request.
+With GraphQL you can execute a tailored GraphQL query against an endpoint, indicating what specific data you need, and fetching only that within a single request.
+
+For instance, the following GraphQL query will fetch the required data for a specific post, including data from its relationships (the author, categories and tags), all within a single request:
+
+```graphql
+query {
+  post(by: { id: 1 }) {
+    title
+    content
+    url
+    date
+    author {
+      id
+      name
+    }
+    categories {
+      id
+      name
+    }
+    tags {
+      id
+      name
+    }
+  }
+}
+```
+
+In contrast, a REST API might need to execute a first request to fetch the post data, and a subsequent request for each of its relationships to fetch their data.
