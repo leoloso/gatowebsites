@@ -203,7 +203,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${DOMAIN}/specials/wpbuilds`,
       lastModified: releaseDateV2_2,
-      changeFrequency: 'yearly',
+      changeFrequency: 'monthly',
       priority: 0.5,
     },
     // Gato GraphQL vs WPGraphQL
