@@ -4,9 +4,9 @@ title: 'Comparison: Gato GraphQL vs WP REST API'
 description: 'How is Gato GraphQL different than the WP REST API?'
 ---
 
-With the <a href="https://developer.wordpress.org/rest-api/" rel="nofollow">WP REST API</a>, you expose data via REST endpoints, created via PHP code. Each endpoint has its own URL, and its data is pre-defined (for the corresponding resources, such as posts, users, etc).
+With the <a href="https://developer.wordpress.org/rest-api/" rel="nofollow">WP REST API</a>, you expose data via REST endpoints. Each endpoint has its own URL, and its data is pre-defined (for the corresponding resources, such as posts, users, etc).
 
-Gato GraphQL supports [Persisted Queries](/features/persisted-queries), which are also endpoints with pre-defined data, however these can be created and published directly within the wp-admin, using GraphQL language (and without any PHP code).
+Similar to REST endpoints, Gato GraphQL supports [Persisted Queries](/features/persisted-queries), which are also endpoints with pre-defined data.
 
 <Image
   src="/assets/guides/upstream/persisted-query.png"
@@ -16,6 +16,8 @@ Gato GraphQL supports [Persisted Queries](/features/persisted-queries), which ar
   caption="Persisted query editor"
 />
 
+Requesting a persisted query via `GET` will execute the stored GraphQL query, and produce the expected `JSON` response:
+
 <Image
   src="/assets/guides/upstream/persisted-query-execution.png"
   width="1024"
@@ -23,5 +25,12 @@ Gato GraphQL supports [Persisted Queries](/features/persisted-queries), which ar
   alt="Executing a persisted in the browser"
   caption="Executing a persisted in the browser"
 />
+
+The difference between REST API endpoints and GraphQL persisted queries is that:
+
+- REST API endpoints are created via PHP code, and they must be deployed (within a theme or plugin)
+- Gato GraphQL persisted queries are created using the [GraphQL language](https://graphql.org), and they are published directly within the wp-admin, without the need to deploy any code.
+
+
 
 With Gato GraphQL you can also execute tailored GraphQL queries against an endpoint, indicating what specific data you need, and fetching only that within a single request.
