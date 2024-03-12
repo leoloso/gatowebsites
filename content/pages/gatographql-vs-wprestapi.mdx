@@ -81,8 +81,58 @@ Gato GraphQL provides much more flexibility, with every single field being eithe
 
 The WP REST API allows to execute [batch requests](https://developer.wordpress.org/rest-api/requests/#internal-requests), where multiple requests are satisfied internally within a single HTTP request.
 
-Gato GraphQL provides [Multiple Query Execution](/features/multiple-query-execution), where a single GraphQL operation can execute multiple operations.
+Gato GraphQL provides [Multiple Query Execution](/features/multiple-query-execution), where a single GraphQL document can execute multiple operations.
 
-Multiple Query Execution is an improvement over batch requests, as the operations can share state with one another, whereas in the batch request they cannot.
+**Multiple Query Execution** is an improvement over **batch requests**, as the operations can share state with one another via the `@export` directive.
 
-For instance, to [duplicate a post](/library/duplicate-post), we have a `query` operation fetch the post data, and pass this data to a `mutation` operation that creates a new post with it.
+For instance, to [duplicate a post](/library/duplicate-post), we have a `query` operation fetch the post data, and pass this data to a `mutation` operation that creates a new post with it:
+
+```graphql
+query GetPostAndExportData($postId: ID!)
+{
+  post(by: { id: $postId }, status: any) {
+    author {
+      id @export(as: "authorID")
+    }
+    categories {
+      id @export(as: "categoryIDs", type: LIST)
+    }
+    rawContent @export(as: "rawContent")
+    rawExcerpt @export(as: "excerpt")
+    featuredImage {
+      id @export(as: "featuredImageID")
+    }
+    tags {
+      id @export(as: "tagIDs", type: LIST)
+    }
+    rawTitle @export(as: "title")
+  }
+}
+ 
+mutation DuplicatePost
+  @depends(on: "GetPostAndExportData")
+{
+  createPost(input: {
+    status: draft,
+    authorBy: {
+      id: $authorID
+    },
+    categoriesBy: {
+      ids: $categoryIDs
+    },
+    contentAs: {
+      html: $rawContent
+    },
+    excerpt: $excerpt
+    featuredImageBy: {
+      id: $featuredImageID
+    },
+    tagsBy: {
+      ids: $tagIDs
+    },
+    title: $title
+  }) {
+    postID
+  }
+}
+```
