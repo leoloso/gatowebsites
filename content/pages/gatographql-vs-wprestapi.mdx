@@ -4,3 +4,24 @@ title: 'Comparison: Gato GraphQL vs WP REST API'
 description: 'How is Gato GraphQL different than the WP REST API?'
 ---
 
+With the <a href="https://developer.wordpress.org/rest-api/" rel="nofollow">WP REST API</a>, you expose data via REST endpoints, created via PHP code. Each endpoint has its own URL, and its data is pre-defined (for the corresponding resources, such as posts, users, etc).
+
+Gato GraphQL supports [Persisted Queries](/features/persisted-queries), which are also endpoints with pre-defined data, however these can be created and published directly within the wp-admin, using GraphQL language (and without any PHP code).
+
+<Image
+  src="/assets/guides/upstream/persisted-query.png"
+  width="1026"
+  height="1850"
+  alt="Persisted query editor"
+  caption="Persisted query editor"
+/>
+
+<Image
+  src="/assets/guides/upstream/persisted-query-execution.png"
+  width="1024"
+  height="940"
+  alt="Executing a persisted in the browser"
+  caption="Executing a persisted in the browser"
+/>
+
+With Gato GraphQL you can also execute tailored GraphQL queries against an endpoint, indicating what specific data you need, and fetching only that within a single request.
