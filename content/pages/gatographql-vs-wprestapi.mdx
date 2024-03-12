@@ -10,17 +10,7 @@ Let's analyze how Gato GraphQL compares against the <a href="https://developer.w
 
 With the WP REST API, you expose data via REST endpoints. Each endpoint has its own URL, and its data is pre-defined (for the corresponding resources, such as posts, users, etc).
 
-Similar to REST endpoints, Gato GraphQL supports [Persisted Queries](/features/persisted-queries), which are also endpoints with pre-defined data.
-
-<Image
-  src="/assets/guides/upstream/persisted-query.png"
-  width="1026"
-  height="1850"
-  alt="Persisted query editor"
-  caption="Persisted query editor"
-/>
-
-Requesting a persisted query via `GET` will execute the stored GraphQL query, and produce the expected `JSON` response:
+Similar to REST endpoints, Gato GraphQL supports [Persisted Queries](/features/persisted-queries), which are also endpoints with pre-defined data. Requesting a persisted query via `GET` will execute the stored GraphQL query, and produce the expected `JSON` response:
 
 <Image
   src="/assets/guides/upstream/persisted-query-execution.png"
@@ -31,6 +21,14 @@ Requesting a persisted query via `GET` will execute the stored GraphQL query, an
 />
 
 The difference between them is that while REST API endpoints are created via PHP code, and must be deployed within a theme or plugin, Gato GraphQL persisted queries are created using the [GraphQL language](https://graphql.org), and are published via a WordPress editor-powered user interface within the wp-admin, without the need to deploy any code.
+
+<Image
+  src="/assets/guides/upstream/persisted-query.png"
+  width="1026"
+  height="1850"
+  alt="Persisted query editor"
+  caption="Persisted query editor"
+/>
 
 ## Accessing non-predefined data
 
