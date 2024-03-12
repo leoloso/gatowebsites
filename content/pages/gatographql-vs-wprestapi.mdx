@@ -141,9 +141,13 @@ mutation DuplicatePost
 
 ## Managing the WordPress site
 
-GraphQL can be used for much more than just as an API.
+Gato GraphQL allows us to fetch data from the database, modify it as required, and store it back, all of it within a single GraphQL document. This is achieved via user interfaces, to compose and publish the GraphQL queries, configure the endpoints as needed, and automate the execution of a query when some event happens.
 
-We can use GraphQL to fetch data from the database, modify it as required, and store it back, all of it within a single GraphQL document. This means that GraphQL can also be used as a tool to manage our WordPress sites, satisfying the use cases of many WordPress plugins.
+This all means that Gato GraphQL is a generic tool to manage our WordPress sites, satisfying those use cases where data (whether from the WordPress site, or provided by 3rd party services) must be mutated, as this can be accomplished by executing some GraphQL query.
+
+For instance, Gato GraphQL is not a duplicator plugin, however you can [duplicate posts](/library/duplicate-multiple-posts) with it. It is not a translation plugin, but you can [translate any content, including the properties inside Gutenberg blocks](https://gatographql.com/library/translate-post-gutenberg). It is not an automator plugin, but you can [automate your tasks](/features/automation), without any restriction. It is not a backup plugin, but you can [import](/library/import-posts-from-csv) and [export posts](/library/export-post-to-wp-site). It is not a search and replace plugin, but you can [modify your posts in bulk](/library/regex-search-and-replace-multiple-strings-in-all-posts), with a single query. And it is not webhook plugin or HTTP client, but you can both [send a request to any API](/features/http-client), and [receive incoming requests from any service](/library/register-a-newsletter-subscriber-from-instawp-to-mailchimp).
+
+What you can use Gato GraphQL for, literally depends on your imagination.
 
 For instance, the query above demonstrates how to use GraphQL to duplicate a post. Even though Gato GraphQL is not a post duplicator, it can be used for this purpose.
 
