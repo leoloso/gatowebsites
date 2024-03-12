@@ -1,7 +1,8 @@
 [build]
   command = "npm run build"
   publish = ".next"
-
+  environment = { NODE_OPTIONS="--max-old-space-size=4096" }
+  
 [[redirects]]
   from = "/recipes/*"
   to = "/tutorial/:splat"
