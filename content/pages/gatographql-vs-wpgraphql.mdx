@@ -6,17 +6,13 @@ description: 'How is Gato GraphQL different than WPGraphQL?'
 
 If you just need to build a headless WordPress site and deploy it as static, and you're currently using <a href="https://www.wpgraphql.com" rel="nofollow">WPGraphQL</a>, switching to Gato GraphQL will not make any difference.
 
-Otherwise, switching to Gato GraphQL provides many benefits.
+Otherwise, switching to Gato GraphQL provides many advantages. The following are benefits provided by Gato GraphQL + Gato GraphQL PRO, that WPGraphQL does not.
 
-## How is Gato GraphQL better than WPGraphQL?
-
-The following are benefits provided by Gato GraphQL + Gato GraphQL PRO, that WPGraphQL does not.
-
-### Ease of development
+## Ease of development
 
 The "n+1" query problem just doesn't happen, by design.
 
-### Security
+## Security
 
 When using [persisted queries](/features/persisted-queries) to expose predefined data, you can completely disable the GraphQL single endpoint, so that it is not accessible even to authenticated users.
 
@@ -28,7 +24,7 @@ When using [persisted queries](/features/persisted-queries) to expose predefined
   caption="Persisted query editor"
 />
 
-### Access control
+## Access control
 
 You can validate that only logged-in users, or users with a certain role or capability, or visitors from a certain IP range, [can access data](/features/access-control), on a field-by-field basis (PRO).
 
@@ -40,7 +36,7 @@ You can validate that only logged-in users, or users with a certain role or capa
   caption="Access Control List editor"
 />
 
-### Endpoint customization and management
+## Endpoint customization and management
 
 You can provide multiple [custom endpoints](/features/custom-endpoints), each of them customized to a specific customer or application, [protecting them via a password](/features/public-private-and-password-protected-endpoints).
 
@@ -54,13 +50,13 @@ And you can [add custom categories](/features/endpoint-management) to them, and 
   caption="Password-protected Custom Endpoint"
 />
 
-### Bulk updates
+## Bulk updates
 
 You can execute updates in bulk. For instance, you can delete all comments on the site, or assign a tag or category to all your posts.
 
 And you can search and replace a string on hundreds of posts, for instance to [replace an old with the new domain](/library/replace-the-old-domain-with-a-new-domain-in-all-posts), and even [using a regex](/library/regex-search-and-replace-multiple-strings-in-all-posts) (PRO).
 
-### Custom GraphQL features
+## Custom GraphQL features
 
 You will have access to novel GraphQL features, proposed for the spec but not yet released, including [nested mutations](/features/nested-mutations), [schema namespacing](/features/schema-namespacing) and the ['oneOf' Input Object](/features/oneof-input-object).
 
@@ -78,11 +74,11 @@ And also [Multiple Query Execution](/features/multiple-query-execution) (PRO).
 
 </div>
 
-### GraphQL server availability
+## GraphQL server availability
 
 You can expose private endpoints to power your Gutenberg blocks. And you can [access a private GraphQL server](/extensions/internal-graphql-server), to fetch data for your application using PHP code, without exposing any public-facing endpoint (PRO).
 
-### Versatility on mutating data
+## Versatility on mutating data
 
 You can use GraphQL to retrieve, modify and finally store again the content in your site, all within a single GraphQL document (PRO).
 
@@ -100,19 +96,19 @@ For instance, you can fetch all the Gutenberg blocks in a post, extract their pr
   </iframe>
 </div>
 
-### Content sync and distribution
+## Content sync and distribution
 
 You can use GraphQL to [import posts from another WordPress site](/library/import-post-from-wp-site), [from an RSS feed](/library/import-post-from-wp-rss-feed), [from a CSV](/library/import-posts-from-csv), or from any REST or GraphQL API (PRO).
 
 You can [export content to another WordPress site](/library/export-post-to-wp-site), and store it as JSON and CSV (PRO).
 
-### Web service interaction
+## Web service interaction
 
 You can invoke the API of any external service via an [HTTP client](/features/http-client) (PRO). For instance, you can [subscribe your WordPress users to your Mailchimp email list](/library/subscribe-email-on-mailchimp-list).
 
 And you can [receive and process incoming data from any service](/extensions/http-request-via-schema) via a dedicated webhook (PRO). For instance, you can [capture the newsletter emails registered in an InstaWP sandbox site](/library/register-a-newsletter-subscriber-from-instawp-to-mailchimp) and send them automatically to Mailchimp.
 
-### Automation
+## Automation
 
 You can use GraphQL to [automate tasks and content workflows](/features/automation) (PRO).
 
@@ -126,6 +122,6 @@ For instance, when a new post is created (event via hook `draft_post`) you can e
   caption="Automation Rule editor"
 />
 
-### Ease of use
+## Ease of use
 
 All of these additional uses cases can be achieved directly within the wp-admin, providing the GraphQL query via a user interface, without having to deploy any PHP code.
