@@ -76,9 +76,7 @@ And also [Multiple Query Execution](/features/multiple-query-execution) (PRO).
 
 ## Composability
 
-Gato GraphQL provides the ability to compose fields, so that a foundational set of field resolvers can cover an unlimited number of use cases.
-
-With [Field to Input](/features/field-to-input), you can retrieve the value of a field, and provide it as input to another field (PRO).
+Gato GraphQL provides the ability to [compose fields](/features/field-to-input), where the value of a field can be provided as input to another field in the same query, allowing a foundational set of field resolvers to cover an unlimited number of use cases (PRO).
 
 For instance, instead of creating field `Post.hasExcerpt`, we can apply field `_notEmpty` on `Post.excerpt` to produce the same value:
 
@@ -93,7 +91,7 @@ query {
 
 Similarly, you can [compose directives](/features/composable-directives), so that a directive can be applied on an inner property from the field's value.
 
-For instance, the following query converts translates the category names to French:
+For instance, the following query translates the post's category names to another language:
 
 ```graphql
 query {
