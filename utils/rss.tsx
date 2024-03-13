@@ -5,6 +5,7 @@ import { sortByPublishedAt } from './content/sort';
 import { DOMAIN } from '@/data/env/domain';
 import { getPostURL } from './content/application-urls';
 import slugify from '@sindresorhus/slugify';
+import { maybeAddDomain } from './domain';
 
 export default async function generateRssFeed() {
   const posts = allPosts.sort(sortByPublishedAt) 
@@ -32,6 +33,7 @@ export default async function generateRssFeed() {
       link: getPostURL(post),
       description: post.summary,
       date: new Date(post.publishedAt),
+      ...(post.image ? {image: maybeAddDomain(post.image)} : {})
     });
   });
 
