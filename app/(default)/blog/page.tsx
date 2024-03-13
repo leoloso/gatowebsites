@@ -4,7 +4,7 @@ import PopularPosts from './popular-posts'
 import Topics from './topics'
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
-import { sortByPublishedAt } from '@/utils/sort'
+import { sortByPublishedAt } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
 
 export const metadata = {

@@ -4,7 +4,7 @@ import PricingGroup from "./pricing-group"
 import PricingItem from "./pricing-item"
 import { getShopURL, getShopAnchorClassname } from "@/utils/shop/shop"
 import { allFeatures } from "@/.contentlayer/generated"
-import { sortByOrderAndTitle } from "@/utils/sort"
+import { sortByOrderAndTitle } from "@/utils/content/sort"
 import InitializeShop from "./shop/initialize-shop"
 
 export default function Pricing() {

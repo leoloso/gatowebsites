@@ -6,7 +6,7 @@ import ArticleNavigation from '@/components/ui/article-navigation'
 import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
 import { Doc } from '@/.contentlayer/generated'
-import { getDocTopic } from '@/utils/document'
+import { getDocTopic } from '@/utils/content/document'
 
 export default function DocSection({
   svgOption,

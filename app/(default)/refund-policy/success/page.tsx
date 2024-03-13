@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import PageSection from '@/components/sections/page'
-import { getPage, getPageMetadata } from '@/utils/page'
-import { getPageSlugFromPageScriptFile } from '@/utils/path'
+import { getPage, getPageMetadata } from '@/utils/content/page'
+import { getPageSlugFromPageScriptFile } from '@/utils/content/path'
 
 // Get the page slug from the folder name
 const pageSlug = getPageSlugFromPageScriptFile(__filename)

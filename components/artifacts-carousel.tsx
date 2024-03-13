@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
 import ArtifactCard from './artifact-card'
-import { Artifact } from '@/utils/types'
+import { Artifact } from '@/utils/content/types'
 import { StaticImageData } from 'next/image'
 Swiper.use([Navigation])
 

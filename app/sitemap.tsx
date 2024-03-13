@@ -16,7 +16,7 @@ import {
   getExtensionDocumentationURL,
   // getVideoPostURL,
   getDocURL,
-} from '@/utils/application-urls'
+} from '@/utils/content/application-urls'
 import { getReleaseData } from '@/data/release'
  
 export default function sitemap(): MetadataRoute.Sitemap {

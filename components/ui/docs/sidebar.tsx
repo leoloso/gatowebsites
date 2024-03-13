@@ -11,8 +11,8 @@ import {
   getDocumentsByTopic,
   sortDocuments,
   getDocumentTopicsBySection,
-} from '@/utils/document'
-import { getDocURLPath } from '@/utils/application-urls'
+} from '@/utils/content/document'
+import { getDocURLPath } from '@/utils/content/application-urls'
 import AppConstants from '@/app/app.constants'
 
 export default function SupportSidebar() {

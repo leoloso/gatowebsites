@@ -1,6 +1,6 @@
-import { getPostURLPath } from "@/utils/application-urls";
-import { getFeaturedPosts } from "@/utils/post";
-import { sortByPublishedAt } from "@/utils/sort";
+import { getPostURLPath } from "@/utils/content/application-urls";
+import { getFeaturedPosts } from "@/utils/content/post";
+import { sortByPublishedAt } from "@/utils/content/sort";
 import Link from "next/link";
 
 export default function PopularPosts() {

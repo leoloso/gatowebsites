@@ -2,8 +2,8 @@ import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
 import Star from '@/public/assets/theme/star.svg'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png'
-import { getArtifactURLPath } from '@/utils/application-urls'
-import { Artifact } from '@/utils/types'
+import { getArtifactURLPath } from '@/utils/content/application-urls'
+import { Artifact } from '@/utils/content/types'
 
 type ArtifactCardProps = {
   artifact: Artifact,
