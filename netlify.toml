@@ -99,6 +99,11 @@
   status = 301
 
 [[redirects]]
+  from = "/bundles"
+  to = "/"
+  status = 301
+
+[[redirects]]
   from = "/bundles/all-in-one-toolbox-for-wordpress"
   to = "/"
   status = 301
