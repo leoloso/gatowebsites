@@ -40,6 +40,12 @@ You can validate that only logged-in users, or users with a certain role or capa
 
 ![Access Control List editor](/assets/extensions/upstream-pro/access-control-list.png)
 
+## Cache control
+
+When caching the GraphQL response using standard [HTTP caching](/features/http-caching), the `max-age` header is calculated automatically, from all the fields present in the GraphQL query (PRO).
+
+![Cache Control List editor](/assets/extensions/upstream-pro/cache-control-list.png "Cache Control List editor")
+
 ## Endpoint customization and management
 
 You can provide multiple [custom endpoints](/features/custom-endpoints), each of them customized to a specific customer or application, [protecting them via a password](/features/public-private-and-password-protected-endpoints).
