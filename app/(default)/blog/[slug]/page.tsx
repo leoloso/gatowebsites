@@ -17,7 +17,7 @@ import Newsletter from '@/components/newsletter'
 import { sortByPublishedAt } from '@/utils/content/sort'
 // import { getPrevNextArticles } from '@/utils/content/document'
 import generateRssFeed from '@/utils/rss'
-import PostSchemaJsonLdScript from './schema-json-ld-script'
+import PostSchemaJsonLdScript from './post-schema-json-ld-script'
 
 export async function generateStaticParams() {
   // Generate the RSS feed
