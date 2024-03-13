@@ -1,6 +1,6 @@
 import { Blog, WithContext } from 'schema-dts';
 import { maybeAddDomain } from '@/utils/domain'
-// import { DOMAIN } from '@/data/env/domain'
+import { DOMAIN } from '@/data/env/domain'
 import SchemaJsonLdScript from './schema-json-ld';
 
 interface BlogJsonLdProps {
@@ -29,6 +29,12 @@ export default async function BlogSchemaJsonLdScript({
       }
     } : {}),
     description: description,
+    author: {
+      '@type': 'Person',
+      name: 'Leonardo Losoviz',
+      url: 'https://leoloso.com',
+      image: `${DOMAIN}/assets/team/Leo-square.jpg`
+    },
   };
 
   return (
