@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import {
+  Post,
   // Post,
   allPosts,
 } from 'contentlayer/generated'
@@ -17,6 +18,11 @@ import Newsletter from '@/components/newsletter'
 import { sortByPublishedAt } from '@/utils/content/sort'
 // import { getPrevNextArticles } from '@/utils/content/document'
 import generateRssFeed from '@/utils/rss'
+import { Article, Graph, WithContext } from 'schema-dts';
+import { getPostURL } from '@/utils/content/application-urls'
+import { maybeAddDomain } from '@/utils/domain'
+import { DOMAIN } from '@/data/env/domain'
+import FounderPic from '@/public/assets/team/Leo-square.jpg'
 
 export async function generateStaticParams() {
   // Generate the RSS feed
@@ -51,6 +57,35 @@ export async function generateMetadata({ params }: {
   }
 }
 
+// @see https://www.kozhuhds.com/blog/how-to-build-a-static-mdx-blog-with-nextjs-and-contentlayer#structured-data
+async function getJsonLd(post: Post) {
+  const structuredData: WithContext<Article> = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    url: getPostURL(post),
+    ...(post.image ? {
+      image: {
+        '@type': 'ImageObject',
+        url: maybeAddDomain(post.image),
+      }
+    } : {}),
+    description: post.summary,
+    datePublished: post.publishedAt,
+    author: {
+      '@type': 'Person',
+      name: 'Leonardo Losoviz',
+      url: DOMAIN,
+      image: maybeAddDomain(FounderPic.src),
+    },
+  };
+  const jsonLd: Graph = {
+    '@context': 'https://schema.org',
+    '@graph': [structuredData],
+  };
+  return jsonLd
+}
+
 export default async function SingleVideoPost({ params }: {
   params: { slug: string }
 }) {
@@ -71,6 +106,15 @@ export default async function SingleVideoPost({ params }: {
   return (
     <>
       <section className="relative">
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            getJsonLd(post)
+          )
+        }}
+      />
 
         <StunningBackground />
         
