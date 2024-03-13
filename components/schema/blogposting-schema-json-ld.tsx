@@ -1,8 +1,9 @@
 import { Article, Graph, WithContext } from 'schema-dts';
 import { maybeAddDomain } from '@/utils/domain'
 import { DOMAIN } from '@/data/env/domain'
+import SchemaJsonLdScript from './schema-json-ld';
 
-interface JsonLdProps {
+interface BlogPostingJsonLdProps {
   headline: string,
   url: string,
   image?: string,
@@ -11,13 +12,13 @@ interface JsonLdProps {
 }
 
 // @see https://www.kozhuhds.com/blog/how-to-build-a-static-mdx-blog-with-nextjs-and-contentlayer#structured-data
-export default async function SchemaJsonLdScript({
+export default async function BlogPostingSchemaJsonLdScript({
   headline,
   url,
   image,
   description,
   datePublished,
-}: JsonLdProps) {
+}: BlogPostingJsonLdProps) {
   const structuredData: WithContext<Article> = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -44,13 +45,6 @@ export default async function SchemaJsonLdScript({
   };
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={
-        {
-          __html: JSON.stringify(jsonLd)
-        }
-      }
-    />
+    <SchemaJsonLdScript jsonLd={jsonLd} />
   )
 }
