@@ -1,10 +1,14 @@
-import { Graph } from 'schema-dts';
+import { Graph, WithContext } from 'schema-dts';
 
 export default async function SchemaJsonLdScript({
-  jsonLd,
+  structuredData,
 }: {
-  jsonLd: Graph,
+  structuredData: WithContext<any>,
 }) {
+  const jsonLd: Graph = {
+    '@context': 'https://schema.org',
+    '@graph': [structuredData],
+  };
   return (
     <script
       type="application/ld+json"

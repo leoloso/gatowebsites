@@ -45,6 +45,6 @@ export default async function BlogPostingSchemaJsonLdScript({
   };
 
   return (
-    <SchemaJsonLdScript jsonLd={jsonLd} />
+    <SchemaJsonLdScript structuredData={structuredData} />
   )
 }
