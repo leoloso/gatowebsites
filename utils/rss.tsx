@@ -27,11 +27,11 @@ export default async function generateRssFeed() {
 
   posts.forEach((post) => {
     feed.addItem({
-    title: post.title,
-    id: slugify(getPostURL(post)),
-    link: getPostURL(post),
-    description: post.summary,
-    date: new Date(post.publishedAt),
+      title: post.title,
+      id: slugify(getPostURL(post)),
+      link: getPostURL(post),
+      description: post.summary,
+      date: new Date(post.publishedAt),
     });
   });
 
