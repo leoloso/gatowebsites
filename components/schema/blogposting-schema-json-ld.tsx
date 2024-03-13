@@ -1,4 +1,4 @@
-import { Article, Graph, WithContext } from 'schema-dts';
+import { BlogPosting, WithContext } from 'schema-dts';
 import { maybeAddDomain } from '@/utils/domain'
 import { DOMAIN } from '@/data/env/domain'
 import SchemaJsonLdScript from './schema-json-ld';
@@ -19,9 +19,9 @@ export default async function BlogPostingSchemaJsonLdScript({
   description,
   datePublished,
 }: BlogPostingJsonLdProps) {
-  const structuredData: WithContext<Article> = {
+  const structuredData: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: headline,
     url: url,
     ...(image ? {
@@ -38,10 +38,6 @@ export default async function BlogPostingSchemaJsonLdScript({
       url: DOMAIN,
       image: `${DOMAIN}/assets/team/Leo-square.jpg`
     },
-  };
-  const jsonLd: Graph = {
-    '@context': 'https://schema.org',
-    '@graph': [structuredData],
   };
 
   return (
