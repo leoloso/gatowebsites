@@ -1,5 +1,6 @@
 import { Graph, WithContext } from 'schema-dts';
 
+// @see https://www.kozhuhds.com/blog/how-to-build-a-static-mdx-blog-with-nextjs-and-contentlayer#structured-data
 export default async function SchemaJsonLdScript({
   structuredData,
 }: {

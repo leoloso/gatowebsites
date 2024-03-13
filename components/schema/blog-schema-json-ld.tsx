@@ -10,7 +10,6 @@ interface BlogJsonLdProps {
   description: string,
 }
 
-// @see https://www.kozhuhds.com/blog/how-to-build-a-static-mdx-blog-with-nextjs-and-contentlayer#structured-data
 export default async function BlogSchemaJsonLdScript({
   headline,
   // url,
