@@ -61,15 +61,13 @@ The feature above also provides the foundation for upgrading the [Automation](/e
 
 The **Automation** extension now provides an "automator" user interface (directly via the WordPress editor) called [Automation Configurator](/extensions/automation/#heading-automation-configurator). The automation trigger is any WordPress action hook, and the action is the execution of a GraphQL persisted query.
 
-{/* <Image
-  src=/assets/extensions/upstream-pro/automation-rule-editor.png
+<Image
+  src="/assets/extensions/upstream-pro/automation-rule-editor.png"
   width="1024"
   height="940"
-  alt=Automation Rule editor
-  caption=Automation Rule editor
-/> */}
-
-![Automation Rule editor](/assets/extensions/upstream-pro/automation-rule-editor.png)
+  alt="Automation Rule editor"
+  caption="Automation Rule editor"
+/>
 
 For instance, when creating a new post, automation rule **Add comments block to new post** (executing the [persisted query with the same name](/library/add-a-mandatory-comments-block-to-post)) checks if the `core/comments` block is present and, if not, it adds it at the bottom of the post:
 
@@ -106,15 +104,13 @@ Several automation rules are already created by the plugin (with status `draft`,
 - Send notification email to admin when there is a new post
 - Generate a post's featured image using AI (and optimize it) if a new post has none
 
-{/* <Image
-  src=/assets/extensions/upstream-pro/automation-rules.png
+<Image
+  src="/assets/extensions/upstream-pro/automation-rules.png"
   width="1024"
   height="940"
-  alt=Automation Rules
-  caption=Automation Rules
-/> */}
-
-![Automation Rules](/assets/extensions/upstream-pro/automation-rules.png)
+  alt="Automation Rules"
+  caption="Automation Rules"
+/>
 
 <div className="flex justify-center"><Link className="not-prose btn text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group mb-4" href="https://app.instawp.io/launch?t=gatographql-demo&d=v2" target="_blank">Try it out in a testing site↗</Link></div>
 
