@@ -1,7 +1,7 @@
 [build]
   command = "npm run build"
   publish = ".next"
-  environment = { NODE_OPTIONS="--max-old-space-size=4096" }
+  environment = { NODE_OPTIONS="--max-old-space-size=8192" }
   
 [[redirects]]
   from = "/tags"
