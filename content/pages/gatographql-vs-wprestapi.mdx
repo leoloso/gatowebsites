@@ -1,0 +1,179 @@
+---
+leading: 'APIs for WordPress'
+title: 'Comparison: Gato GraphQL vs WP REST API'
+description: 'How is Gato GraphQL different than the WP REST API?'
+---
+
+The differences between REST and GraphQL APIs are generally valid when contrasting the **WP REST API** against **Gato GraphQL**.
+
+With GraphQL you can execute a tailored GraphQL query against an endpoint, indicating what specific data you need, and fetching only that data within a single request.
+
+For instance, the following GraphQL query will fetch the required data for a specific post, including data from its relationships (author, categories and tags), all within a single request:
+
+```graphql
+query {
+  post(by: { id: 1 }) {
+    title
+    content
+    url
+    date
+    author {
+      id
+      name
+    }
+    categories {
+      id
+      name
+    }
+    tags {
+      id
+      name
+    }
+  }
+}
+```
+
+To fetch the same data with REST, you may need to first execute a request to retrieve the post data, and a subsequent request for each of its relationships (author, categories and tags) to fetch their data.
+
+These architectural differences between REST and GraphQL have been widely <a href="https://www.howtographql.com/basics/1-graphql-is-the-better-rest/" rel="nofollow">covered elsewhere</a>, so from now on, we won't repeat them here.
+
+Below, let's do a more specific comparison between Gato GraphQL + Gato GraphQL PRO, and the <a href="https://developer.wordpress.org/rest-api/" rel="nofollow">WP REST API</a>.
+
+## Accessing predefined data
+
+With the WP REST API, you expose data via REST endpoints. Each endpoint has its own URL, and its data is pre-defined (for the corresponding resources, such as posts or users).
+
+Similar to REST endpoints, Gato GraphQL supports [Persisted Queries](/features/persisted-queries), which are also endpoints with pre-defined data. Requesting a persisted query via `GET` will execute the stored GraphQL query, and produce the expected `JSON` response:
+
+{/* <Image
+  src=/assets/guides/upstream/persisted-query-execution.png
+  width="1024"
+  height="940"
+  alt=Executing a persisted in the browser
+  caption=Executing a persisted in the browser
+/> */}
+
+![Executing a persisted in the browser](/assets/guides/upstream/persisted-query-execution.png)
+
+The difference between them is that while REST API endpoints are created via PHP code, and must be deployed within a theme or plugin, Gato GraphQL persisted queries are created using the [GraphQL language](https://graphql.org), and are published via a user interface (powered by the WordPress editor) within the wp-admin, without the need to deploy any code.
+
+{/* <Image
+  src=/assets/guides/upstream/persisted-query.png
+  width="1026"
+  height="1850"
+  alt=Persisted query editor
+  caption=Persisted query editor
+/> */}
+
+![Persisted query editor](/assets/guides/upstream/persisted-query.png)
+
+The same caching mechanisms can be applied to REST endpoints and GraphQL persisted queries. Since the persisted query is accessed under its own endpoint, its response can be cached using standard [HTTP caching](/features/http-caching) (PRO).
+
+## Access control
+
+Restricting data in the WP REST API depends on the `context` parameter. Passing `?context=view` produces data for unauthenticated users, and `?context=edit` includes additional data for authenticated users (with the right permissions), such as the post's `content.raw` field.
+
+Gato GraphQL provides much more flexibility, with every single field being either accessible or not based on [Access Control](/features/access-control) rules. You can validate that only logged-in users, or users with a certain role or capability, or visitors from a certain IP range, can access a specific field (PRO).
+
+{/* <Image
+  src=/assets/extensions/upstream-pro/access-control-list.png
+  width="1026"
+  height="940"
+  alt=Access Control List editor
+  caption=Access Control List editor
+/> */}
+
+![Access Control List editor](/assets/extensions/upstream-pro/access-control-list.png)
+
+## Bulk operations
+
+The WP REST API allows to execute [batch requests](https://developer.wordpress.org/rest-api/requests/#internal-requests), where multiple requests are satisfied internally within a single HTTP request.
+
+Gato GraphQL provides [Multiple Query Execution](/features/multiple-query-execution), where a single GraphQL document can execute multiple operations.
+
+**Multiple Query Execution** is an improvement over **batch requests**, as the operations can share state with one another via the `@export` directive.
+
+For instance, to [duplicate a post](/library/duplicate-post), we have a `query` operation fetch the post data, and pass this data to a `mutation` operation that creates a new post with it:
+
+```graphql
+query GetPostAndExportData($postId: ID!)
+{
+  post(by: { id: $postId }, status: any) {
+    author {
+      id @export(as: "authorID")
+    }
+    categories {
+      id @export(as: "categoryIDs", type: LIST)
+    }
+    rawContent @export(as: "rawContent")
+    rawExcerpt @export(as: "excerpt")
+    featuredImage {
+      id @export(as: "featuredImageID")
+    }
+    tags {
+      id @export(as: "tagIDs", type: LIST)
+    }
+    rawTitle @export(as: "title")
+  }
+}
+ 
+mutation DuplicatePost
+  @depends(on: "GetPostAndExportData")
+{
+  createPost(input: {
+    status: draft,
+    authorBy: {
+      id: $authorID
+    },
+    categoriesBy: {
+      ids: $categoryIDs
+    },
+    contentAs: {
+      html: $rawContent
+    },
+    excerpt: $excerpt
+    featuredImageBy: {
+      id: $featuredImageID
+    },
+    tagsBy: {
+      ids: $tagIDs
+    },
+    title: $title
+  }) {
+    postID
+  }
+}
+```
+
+## Managing the WordPress site
+
+Gato GraphQL allows us to fetch data from the database, modify it as required, and store it back, all of it within a single GraphQL document.
+
+This is achieved via user interfaces, to compose and publish the GraphQL queries, configure the endpoints as needed, and automate the execution of a query when some event happens.
+
+This all means that Gato GraphQL is a generic tool to manage our WordPress sites, satisfying those use cases where data (whether from the WordPress site, or provided by 3rd party services) must be mutated, as this can be accomplished by executing some GraphQL query.
+
+Please notice how Gato GraphQL can deliver the functionality of multiple plugins:
+
+- It is not a duplicator plugin, however you can [duplicate posts](/library/duplicate-multiple-posts) with it.
+- It is not an automator plugin, but you can [automate your tasks](/features/automation), without any restriction.
+- It is not a backup plugin, but you can [import](/library/import-posts-from-csv) and [export posts](/library/export-post-to-wp-site).
+- It is not a search and replace plugin, but you can [modify your posts in bulk](/library/regex-search-and-replace-multiple-strings-in-all-posts).
+- It is not webhook plugin or HTTP client, but you can both [send a request to any API](/features/http-client), and [receive and process incoming requests from any service](/library/register-a-newsletter-subscriber-from-instawp-to-mailchimp).
+- It is not a translation plugin, but you can [translate any content, including the properties inside Gutenberg blocks](https://gatographql.com/library/translate-post-gutenberg).
+
+<div className="aspect-video lg:-ml-32 lg:-mr-32">
+  <iframe
+    className="w-full h-full"
+    src="https://player.vimeo.com/video/836876255"
+    width="640"
+    height="360"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
+The WP REST API is just that, an API.
+
+Gato GraphQL is also an API, but also a lot more.

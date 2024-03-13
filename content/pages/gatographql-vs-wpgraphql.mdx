@@ -1,0 +1,235 @@
+---
+leading: 'GraphQL plugins for WordPress'
+title: 'Comparison: Gato GraphQL vs WPGraphQL'
+description: 'How is Gato GraphQL different than WPGraphQL?'
+---
+
+If you just need to build a headless WordPress site and deploy it as static, and you're currently using <a href="https://www.wpgraphql.com" rel="nofollow">WPGraphQL</a>, switching to Gato GraphQL will not make any difference.
+
+Otherwise, switching to Gato GraphQL provides many advantages. The following are benefits provided by Gato GraphQL + Gato GraphQL PRO, that WPGraphQL does not.
+
+## Ease of development
+
+The "n+1" query problem just doesn't happen, by design.
+
+## Security
+
+When using [persisted queries](/features/persisted-queries) to expose predefined data, you can completely disable the GraphQL single endpoint, so that it is not accessible even to authenticated users.
+
+{/* <Image
+  src=/assets/guides/upstream/persisted-query.png
+  width="1026"
+  height="1850"
+  alt=Persisted query editor
+  caption=Persisted query editor
+/> */}
+
+![Persisted query editor](/assets/guides/upstream/persisted-query.png)
+
+## Access control
+
+You can validate that only logged-in users, or users with a certain role or capability, or visitors from a certain IP range, [can access data](/features/access-control), on a field-by-field basis (PRO).
+
+{/* <Image
+  src=/assets/extensions/upstream-pro/access-control-list.png
+  width="1026"
+  height="940"
+  alt=Access Control List editor
+  caption=Access Control List editor
+/> */}
+
+![Access Control List editor](/assets/extensions/upstream-pro/access-control-list.png)
+
+## Cache control
+
+When caching the GraphQL response using standard [HTTP caching](/features/http-caching), the `max-age` header is calculated automatically, from all the fields present in the GraphQL query (PRO).
+
+![Cache Control List editor](/assets/extensions/upstream-pro/cache-control-list.png "Cache Control List editor")
+
+## Endpoint customization and management
+
+You can provide multiple [custom endpoints](/features/custom-endpoints), each of them customized to a specific customer or application, [protecting them via a password](/features/public-private-and-password-protected-endpoints).
+
+And you can [add custom categories](/features/endpoint-management) to them, and [give them a hierarchy](/features/api-hierarchy) (such as `/graphql/customers/some-customer` and `/graphql/customers/another-customer`).
+
+{/* <Image
+  src=/assets/guides/upstream/password-protected-custom-endpoint.png
+  width="1024"
+  height="940"
+  alt=Password-protected Custom Endpoint
+  caption=Password-protected Custom Endpoint
+/> */}
+
+![Password-protected Custom Endpoint](/assets/guides/upstream/password-protected-custom-endpoint.png)
+
+## Bulk updates
+
+You can execute updates in bulk. For instance, you can delete all comments on the site, or assign a tag or category to all your posts.
+
+And you can search and replace a string on hundreds of posts, for instance to [replace an old with the new domain](/library/replace-the-old-domain-with-a-new-domain-in-all-posts), and even [using a regex](/library/regex-search-and-replace-multiple-strings-in-all-posts) (PRO).
+
+## Custom GraphQL features
+
+You will have access to novel GraphQL features, proposed for the spec but not yet released, including [nested mutations](/features/nested-mutations), [schema namespacing](/features/schema-namespacing) and the ['oneOf' Input Object](/features/oneof-input-object).
+
+<div className="lg:-ml-32 lg:-mr-32">
+
+{/* <Image
+  src=/assets/guides/upstream/namespaced-interactive-schema.png
+  width="1487"
+  height="868"
+  alt=Namespaced interactive schema
+  caption=Namespaced interactive schema
+/> */}
+
+![Namespaced interactive schema](/assets/guides/upstream/namespaced-interactive-schema.png)
+
+</div>
+
+## Multiple Query Execution
+
+WPGraphQL allows to execute <a href="https://www.wpgraphql.com/docs/wpgraphql-vs-wp-rest-api#batch-queries" rel="nofollow">queries in batch</a>, where multiple GraphQL queries are resolved within a single HTTP request.
+
+Gato GraphQL provides [Multiple Query Execution](/features/multiple-query-execution), where a single GraphQL document can execute multiple operations.
+
+**Multiple Query Execution** is an improvement over **query batching**, as the operations can share state with one another via the `@export` directive.
+
+For instance, to [duplicate a post](/library/duplicate-post), we have a `query` operation fetch the post data, and pass this data to a `mutation` operation that creates a new post with it:
+
+```graphql
+query GetPostAndExportData($postId: ID!)
+{
+  post(by: { id: $postId }, status: any) {
+    author {
+      id @export(as: "authorID")
+    }
+    categories {
+      id @export(as: "categoryIDs", type: LIST)
+    }
+    rawContent @export(as: "rawContent")
+    rawExcerpt @export(as: "excerpt")
+    featuredImage {
+      id @export(as: "featuredImageID")
+    }
+    tags {
+      id @export(as: "tagIDs", type: LIST)
+    }
+    rawTitle @export(as: "title")
+  }
+}
+ 
+mutation DuplicatePost
+  @depends(on: "GetPostAndExportData")
+{
+  createPost(input: {
+    status: draft,
+    authorBy: {
+      id: $authorID
+    },
+    categoriesBy: {
+      ids: $categoryIDs
+    },
+    contentAs: {
+      html: $rawContent
+    },
+    excerpt: $excerpt
+    featuredImageBy: {
+      id: $featuredImageID
+    },
+    tagsBy: {
+      ids: $tagIDs
+    },
+    title: $title
+  }) {
+    postID
+  }
+}
+```
+
+## Composability
+
+You will have the ability to [compose fields](/features/field-to-input), where the value of a field can be provided as input to another field in the same query, allowing a foundational set of field resolvers to cover an unlimited number of use cases (PRO).
+
+For instance, instead of creating field `Post.hasExcerpt`, we can apply field `_notEmpty` on `Post.excerpt` to produce the same value:
+
+```graphql
+query {
+  post(by: { id: 1 }) {
+    excerpt 
+    hasExcerpt: _notEmpty(value: $__excerpt)
+  }
+}
+```
+
+Similarly, you can [compose directives](/features/composable-directives), so that a directive can be applied on an inner property from the field's value.
+
+For instance, the following query translates the post's category names to another language:
+
+```graphql
+query {
+  post(by: { id: 1 }) {
+    title
+    categoryNames
+    frenchCategoryNames: categoryNames
+      @underEachArrayItem
+        @strTranslate(
+          from: "en",
+          to: "fr"
+        )
+  }
+}
+```
+
+## GraphQL server availability
+
+You can expose private endpoints to power your Gutenberg blocks. And you can [access a private GraphQL server](/extensions/internal-graphql-server), to fetch data for your application using PHP code, without exposing any public-facing endpoint (PRO).
+
+## Versatility on mutating data
+
+You can use GraphQL to retrieve, modify and finally store again the content in your site, all within a single GraphQL document (PRO).
+
+For instance, you can fetch all the Gutenberg blocks in a post, extract their properties, [translate those strings via Google Translate API](/library/translate-post-gutenberg), insert those strings back into the block, and store the post again.
+
+<div className="aspect-video lg:-ml-32 lg:-mr-32">
+  <iframe
+    className="w-full h-full"
+    src="https://player.vimeo.com/video/836876255"
+    width="640"
+    height="360"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
+## Content sync and distribution
+
+You can use GraphQL to [import posts from another WordPress site](/library/import-post-from-wp-site), [from an RSS feed](/library/import-post-from-wp-rss-feed), [from a CSV](/library/import-posts-from-csv), or from any REST or GraphQL API (PRO).
+
+You can [export content to another WordPress site](/library/export-post-to-wp-site), and store it as JSON and CSV (PRO).
+
+## Web service interaction
+
+You can invoke the API of any external service via an [HTTP client](/features/http-client) (PRO). For instance, you can [subscribe your WordPress users to your Mailchimp email list](/library/subscribe-email-on-mailchimp-list).
+
+And you can [receive and process incoming data from any service](/extensions/http-request-via-schema) via a dedicated webhook (PRO). For instance, you can [capture the newsletter emails registered in an InstaWP sandbox site](/library/register-a-newsletter-subscriber-from-instawp-to-mailchimp) and send them automatically to Mailchimp.
+
+## Automation
+
+You can use GraphQL to [automate tasks and content workflows](/features/automation) (PRO).
+
+For instance, when a new post is created (event via hook `draft_post`) you can execute a persisted query that checks if the post does not have a thumbnail and, in that case, [generates an image by calling the Stable Diffusion API](/library/generate-an-optimized-post-featured-image-using-stable-diffusion-and-tinypng), compresses it via TinyPng, and finally inserts the image as the post's featured image.
+
+{/* <Image
+  src=/assets/extensions/upstream-pro/automation-rule-editor.png
+  width="1024"
+  height="940"
+  alt=Automation Rule editor
+  caption=Automation Rule editor
+/> */}
+
+![Automation Rule editor](/assets/extensions/upstream-pro/automation-rule-editor.png)
+
+## Ease of use
+
+All of these additional uses cases can be achieved directly within the wp-admin, providing the GraphQL query via a user interface, without having to deploy any PHP code.

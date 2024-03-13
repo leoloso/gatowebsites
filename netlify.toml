@@ -1,7 +1,18 @@
 [build]
   command = "npm run build"
   publish = ".next"
-
+  environment = { NODE_OPTIONS="--max-old-space-size=8192" }
+  
+[[redirects]]
+  from = "/tags"
+  to = "/blog"
+  status = 301
+  
+[[redirects]]
+  from = "/tags/*"
+  to = "/blog"
+  status = 301
+  
 [[redirects]]
   from = "/recipes/*"
   to = "/tutorial/:splat"
@@ -95,6 +106,11 @@
 [[redirects]]
   from = "/tutorial/mapping-js-components-to-gutenberg-blocks"
   to = "/guides/code/mapping-js-components-to-gutenberg-blocks"
+  status = 301
+
+[[redirects]]
+  from = "/bundles"
+  to = "/"
   status = 301
 
 [[redirects]]
