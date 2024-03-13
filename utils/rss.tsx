@@ -19,7 +19,7 @@ export default async function generateRssFeed() {
     copyright: `All rights reserved ${new Date().getFullYear()}, Gato GraphQL`,
     generator: 'Feed for Node.js',
     feedLinks: {
-    rss2: `${DOMAIN}/feed.xml`,
+      rss2: `${DOMAIN}/feed.xml`,
     },
   };
 
