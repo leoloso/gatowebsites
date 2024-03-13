@@ -16,25 +16,29 @@ The "n+1" query problem just doesn't happen, by design.
 
 When using [persisted queries](/features/persisted-queries) to expose predefined data, you can completely disable the GraphQL single endpoint, so that it is not accessible even to authenticated users.
 
-<Image
-  src="/assets/guides/upstream/persisted-query.png"
+{/* <Image
+  src=/assets/guides/upstream/persisted-query.png
   width="1026"
   height="1850"
-  alt="Persisted query editor"
-  caption="Persisted query editor"
-/>
+  alt=Persisted query editor
+  caption=Persisted query editor
+/> */}
+
+![Persisted query editor](/assets/guides/upstream/persisted-query.png)
 
 ## Access control
 
 You can validate that only logged-in users, or users with a certain role or capability, or visitors from a certain IP range, [can access data](/features/access-control), on a field-by-field basis (PRO).
 
-<Image
-  src="/assets/extensions/upstream-pro/access-control-list.png"
+{/* <Image
+  src=/assets/extensions/upstream-pro/access-control-list.png
   width="1026"
   height="940"
-  alt="Access Control List editor"
-  caption="Access Control List editor"
-/>
+  alt=Access Control List editor
+  caption=Access Control List editor
+/> */}
+
+![Access Control List editor](/assets/extensions/upstream-pro/access-control-list.png)
 
 ## Endpoint customization and management
 
@@ -42,13 +46,15 @@ You can provide multiple [custom endpoints](/features/custom-endpoints), each of
 
 And you can [add custom categories](/features/endpoint-management) to them, and [give them a hierarchy](/features/api-hierarchy) (such as `/graphql/customers/some-customer` and `/graphql/customers/another-customer`).
 
-<Image
-  src="/assets/guides/upstream/password-protected-custom-endpoint.png"
+{/* <Image
+  src=/assets/guides/upstream/password-protected-custom-endpoint.png
   width="1024"
   height="940"
-  alt="Password-protected Custom Endpoint"
-  caption="Password-protected Custom Endpoint"
-/>
+  alt=Password-protected Custom Endpoint
+  caption=Password-protected Custom Endpoint
+/> */}
+
+![Password-protected Custom Endpoint](/assets/guides/upstream/password-protected-custom-endpoint.png)
 
 ## Bulk updates
 
@@ -62,13 +68,15 @@ You will have access to novel GraphQL features, proposed for the spec but not ye
 
 <div className="lg:-ml-32 lg:-mr-32">
 
-<Image
-  src="/assets/guides/upstream/namespaced-interactive-schema.png"
+{/* <Image
+  src=/assets/guides/upstream/namespaced-interactive-schema.png
   width="1487"
   height="868"
-  alt="Namespaced interactive schema"
-  caption="Namespaced interactive schema"
-/>
+  alt=Namespaced interactive schema
+  caption=Namespaced interactive schema
+/> */}
+
+![Namespaced interactive schema](/assets/guides/upstream/namespaced-interactive-schema.png)
 
 </div>
 
@@ -206,13 +214,15 @@ You can use GraphQL to [automate tasks and content workflows](/features/automati
 
 For instance, when a new post is created (event via hook `draft_post`) you can execute a persisted query that checks if the post does not have a thumbnail and, in that case, [generates an image by calling the Stable Diffusion API](/library/generate-an-optimized-post-featured-image-using-stable-diffusion-and-tinypng), compresses it via TinyPng, and finally inserts the image as the post's featured image.
 
-<Image
-  src="/assets/extensions/upstream-pro/automation-rule-editor.png"
+{/* <Image
+  src=/assets/extensions/upstream-pro/automation-rule-editor.png
   width="1024"
   height="940"
-  alt="Automation Rule editor"
-  caption="Automation Rule editor"
-/>
+  alt=Automation Rule editor
+  caption=Automation Rule editor
+/> */}
+
+![Automation Rule editor](/assets/extensions/upstream-pro/automation-rule-editor.png)
 
 ## Ease of use
 

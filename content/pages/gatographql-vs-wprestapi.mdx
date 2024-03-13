@@ -45,23 +45,27 @@ With the WP REST API, you expose data via REST endpoints. Each endpoint has its 
 
 Similar to REST endpoints, Gato GraphQL supports [Persisted Queries](/features/persisted-queries), which are also endpoints with pre-defined data. Requesting a persisted query via `GET` will execute the stored GraphQL query, and produce the expected `JSON` response:
 
-<Image
-  src="/assets/guides/upstream/persisted-query-execution.png"
+{/* <Image
+  src=/assets/guides/upstream/persisted-query-execution.png
   width="1024"
   height="940"
-  alt="Executing a persisted in the browser"
-  caption="Executing a persisted in the browser"
-/>
+  alt=Executing a persisted in the browser
+  caption=Executing a persisted in the browser
+/> */}
+
+![Executing a persisted in the browser](/assets/guides/upstream/persisted-query-execution.png)
 
 The difference between them is that while REST API endpoints are created via PHP code, and must be deployed within a theme or plugin, Gato GraphQL persisted queries are created using the [GraphQL language](https://graphql.org), and are published via a user interface (powered by the WordPress editor) within the wp-admin, without the need to deploy any code.
 
-<Image
-  src="/assets/guides/upstream/persisted-query.png"
+{/* <Image
+  src=/assets/guides/upstream/persisted-query.png
   width="1026"
   height="1850"
-  alt="Persisted query editor"
-  caption="Persisted query editor"
-/>
+  alt=Persisted query editor
+  caption=Persisted query editor
+/> */}
+
+![Persisted query editor](/assets/guides/upstream/persisted-query.png)
 
 The same caching mechanisms can be applied to REST endpoints and GraphQL persisted queries. Since the persisted query is accessed under its own endpoint, its response can be cached using standard [HTTP caching](/features/http-caching) (PRO).
 
@@ -71,13 +75,15 @@ Restricting data in the WP REST API depends on the `context` parameter. Passing 
 
 Gato GraphQL provides much more flexibility, with every single field being either accessible or not based on [Access Control](/features/access-control) rules. You can validate that only logged-in users, or users with a certain role or capability, or visitors from a certain IP range, can access a specific field (PRO).
 
-<Image
-  src="/assets/extensions/upstream-pro/access-control-list.png"
+{/* <Image
+  src=/assets/extensions/upstream-pro/access-control-list.png
   width="1026"
   height="940"
-  alt="Access Control List editor"
-  caption="Access Control List editor"
-/>
+  alt=Access Control List editor
+  caption=Access Control List editor
+/> */}
+
+![Access Control List editor](/assets/extensions/upstream-pro/access-control-list.png)
 
 ## Bulk operations
 
