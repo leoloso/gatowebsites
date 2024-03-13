@@ -7,6 +7,8 @@ import Footer from '@/components/ui/docs/footer'
 import SecondaryNav from '@/components/ui/docs/secondary-nav'
 import { Doc } from '@/.contentlayer/generated'
 import { getDocTopic } from '@/utils/content/document'
+import ArticleSchemaJsonLdScript from '../schema/article-schema-json-ld'
+import { getDocURL } from '@/utils/content/application-urls'
 
 export default function DocSection({
   svgOption,
@@ -23,6 +25,12 @@ export default function DocSection({
 
   return (
     <>
+      <ArticleSchemaJsonLdScript
+        headline={doc.title}
+        url={getDocURL(doc)}
+        description={doc.description}
+      />
+
       {/* Page header */}
       <div className="h-16 flex items-center mb-6">
         <TopicTitle name={docTopic.name} svgOption={svgOption} />

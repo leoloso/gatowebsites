@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
-import { Post, allPosts } from 'contentlayer/generated'
+import {
+  // Post,
+  allPosts,
+} from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,8 +15,10 @@ import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
 // import ArticleNavigation from '@/components/ui/article-navigation'
 import { sortByPublishedAt } from '@/utils/content/sort'
-import { getPrevNextArticles } from '@/utils/content/document'
+// import { getPrevNextArticles } from '@/utils/content/document'
 import generateRssFeed from '@/utils/rss'
+import { getPostURL } from '@/utils/content/application-urls'
+import BlogPostingSchemaJsonLdScript from '@/components/schema/blogposting-schema-json-ld';
 
 export async function generateStaticParams() {
   // Generate the RSS feed
@@ -59,15 +64,23 @@ export default async function SingleVideoPost({ params }: {
   if (postIndex === -1) notFound()
 
   const post = posts[postIndex]
-  const paginationArticles = getPrevNextArticles(posts, postIndex)
-
-  const prevPost = paginationArticles.prev as Post
-  const nextPost = paginationArticles.next as Post
+  
+  {/* Page navigation */}
+  // const paginationArticles = getPrevNextArticles(posts, postIndex)
+  // const prevPost = paginationArticles.prev as Post
+  // const nextPost = paginationArticles.next as Post
 
   return (
     <>
-      <section className="relative">
+      <BlogPostingSchemaJsonLdScript
+        headline={post.title}
+        url={getPostURL(post)}
+        image={post.image}
+        description={post.summary}
+        datePublished={post.publishedAt}
+      />
 
+      <section className="relative">
         <StunningBackground />
         
         <div className="max-w-6xl mx-auto px-4 sm:px-6">

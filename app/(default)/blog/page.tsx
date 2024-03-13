@@ -6,6 +6,7 @@ import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
+import BlogSchemaJsonLdScript from '@/components/schema/blog-schema-json-ld'
 
 export const metadata = {
   title: 'Blog - Gato GraphQL',
@@ -18,8 +19,12 @@ export default function Blog() {
   const posts = allPosts.sort(sortByPublishedAt) 
   return (
     <>
-      <section className="relative">
+      <BlogSchemaJsonLdScript
+        headline={metadata.title}
+        description={metadata.description}
+      />
 
+      <section className="relative">
         <StunningBackground />
         
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
