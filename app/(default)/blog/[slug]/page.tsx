@@ -18,7 +18,7 @@ import { sortByPublishedAt } from '@/utils/content/sort'
 // import { getPrevNextArticles } from '@/utils/content/document'
 import generateRssFeed from '@/utils/rss'
 import { getPostURL } from '@/utils/content/application-urls'
-import BlogPostingJsonLdProps from '@/components/schema/blogposting-schema-json-ld';
+import BlogPostingSchemaJsonLdScript from '@/components/schema/blogposting-schema-json-ld';
 
 export async function generateStaticParams() {
   // Generate the RSS feed
@@ -72,7 +72,7 @@ export default async function SingleVideoPost({ params }: {
 
   return (
     <>
-      <BlogPostingJsonLdProps
+      <BlogPostingSchemaJsonLdScript
         headline={post.title}
         url={getPostURL(post)}
         image={post.image}
