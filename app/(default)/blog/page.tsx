@@ -6,6 +6,7 @@ import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
+import BlogPageSchemaJsonLdScript from './blog-schema-json-ld-script'
 
 export const metadata = {
   title: 'Blog - Gato GraphQL',
@@ -19,6 +20,8 @@ export default function Blog() {
   return (
     <>
       <section className="relative">
+
+        <BlogPageSchemaJsonLdScript />
 
         <StunningBackground />
         
