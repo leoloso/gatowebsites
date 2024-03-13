@@ -6,17 +6,10 @@ import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
-import generateRssFeed from '@/utils/rss'
 
 export const metadata = {
   title: 'Blog - Gato GraphQL',
   description: 'Stay up to date on the latest from Gato GraphQL and our engineering practices',
-}
-
-export async function generateStaticParams() {
-  await generateRssFeed();
-
-  return {};
 }
 
 export default function Blog() {

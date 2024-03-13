@@ -13,8 +13,12 @@ import Newsletter from '@/components/newsletter'
 // import ArticleNavigation from '@/components/ui/article-navigation'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import { getPrevNextArticles } from '@/utils/content/document'
+import generateRssFeed from '@/utils/rss'
 
 export async function generateStaticParams() {
+  // Generate the RSS feed
+  await generateRssFeed();
+
   return allPosts.map((post) => ({
     slug: post.slug,
   }))
