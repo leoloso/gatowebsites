@@ -35,7 +35,7 @@ export default async function BlogPostingSchemaJsonLdScript({
     author: {
       '@type': 'Person',
       name: 'Leonardo Losoviz',
-      url: DOMAIN,
+      url: 'https://leoloso.com',
       image: `${DOMAIN}/assets/team/Leo-square.jpg`
     },
   };
