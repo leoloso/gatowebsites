@@ -1,7 +1,6 @@
 import { Article, Graph, WithContext } from 'schema-dts';
 import { maybeAddDomain } from '@/utils/domain'
 import { DOMAIN } from '@/data/env/domain'
-import FounderPic from '@/public/assets/team/Leo-square.jpg'
 
 interface JsonLdProps {
   headline: string,
@@ -36,7 +35,7 @@ export default async function SchemaJsonLdScript({
       '@type': 'Person',
       name: 'Leonardo Losoviz',
       url: DOMAIN,
-      image: maybeAddDomain(FounderPic.src),
+      image: `${DOMAIN}/assets/team/Leo-square.jpg`
     },
   };
   const jsonLd: Graph = {
