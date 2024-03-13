@@ -9,10 +9,15 @@ import Story from '@/components/story'
 // import Recruitment from '@/components/recruitment'
 // import Testimonials from '@/components/testimonials-02'
 import Cta from '@/components/cta-03'
+import AboutPageSchemaJsonLdScript from '@/components/schema/aboutpage-schema-json-ld'
 
 export default function About() {
   return (
     <>
+      <AboutPageSchemaJsonLdScript
+        headline={metadata.title}
+        description={metadata.description}
+      />
       <Hero includeAnimation={false}/>
       <Story includeHeader={false} />
       {/* <Team />
