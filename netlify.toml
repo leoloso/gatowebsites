@@ -4,6 +4,16 @@
   environment = { NODE_OPTIONS="--max-old-space-size=4096" }
   
 [[redirects]]
+  from = "/tags"
+  to = "/blog"
+  status = 301
+  
+[[redirects]]
+  from = "/tags/*"
+  to = "/blog"
+  status = 301
+  
+[[redirects]]
   from = "/recipes/*"
   to = "/tutorial/:splat"
   status = 301
