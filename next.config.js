@@ -2,7 +2,11 @@ const { withContentlayer } = require('next-contentlayer')
 const { withPlausibleProxy } = require('next-plausible')
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    unoptimized: true,
+  }
+}
 
 // Proxy the Plausible Analytics script
 // @see https://github.com/4lejandrito/next-plausible?tab=readme-ov-file#proxy-the-analytics-script
