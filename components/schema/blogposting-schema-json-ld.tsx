@@ -37,6 +37,7 @@ export default async function BlogPostingSchemaJsonLdScript({
       url: 'https://leoloso.com',
       image: `${DOMAIN}/assets/team/Leo-square.jpg`
     },
+    inLanguage: 'en-US',
   };
 
   return (

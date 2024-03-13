@@ -33,6 +33,7 @@ export default async function AboutPageSchemaJsonLdScript({
       url: 'https://leoloso.com',
       image: `${DOMAIN}/assets/team/Leo-square.jpg`
     },
+    inLanguage: 'en-US',
   };
 
   return (

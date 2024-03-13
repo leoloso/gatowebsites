@@ -33,6 +33,7 @@ export default async function ContactPageSchemaJsonLdScript({
       url: 'https://leoloso.com',
       image: `${DOMAIN}/assets/team/Leo-square.jpg`
     },
+    inLanguage: 'en-US',
   };
 
   return (
