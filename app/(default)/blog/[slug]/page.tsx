@@ -17,7 +17,8 @@ import Newsletter from '@/components/newsletter'
 import { sortByPublishedAt } from '@/utils/content/sort'
 // import { getPrevNextArticles } from '@/utils/content/document'
 import generateRssFeed from '@/utils/rss'
-import PostSchemaJsonLdScript from './post-schema-json-ld-script'
+import { getPostURL } from '@/utils/content/application-urls'
+import BlogPostingJsonLdProps from '@/components/schema/blogposting-schema-json-ld';
 
 export async function generateStaticParams() {
   // Generate the RSS feed
@@ -73,7 +74,13 @@ export default async function SingleVideoPost({ params }: {
     <>
       <section className="relative">
 
-        <PostSchemaJsonLdScript post={post} />
+        <BlogPostingJsonLdProps
+          headline={post.title}
+          url={getPostURL(post)}
+          image={post.image}
+          description={post.summary}
+          datePublished={post.publishedAt}
+        />
 
         <StunningBackground />
         
