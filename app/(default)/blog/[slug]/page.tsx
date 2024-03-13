@@ -72,16 +72,15 @@ export default async function SingleVideoPost({ params }: {
 
   return (
     <>
+      <BlogPostingJsonLdProps
+        headline={post.title}
+        url={getPostURL(post)}
+        image={post.image}
+        description={post.summary}
+        datePublished={post.publishedAt}
+      />
+
       <section className="relative">
-
-        <BlogPostingJsonLdProps
-          headline={post.title}
-          url={getPostURL(post)}
-          image={post.image}
-          description={post.summary}
-          datePublished={post.publishedAt}
-        />
-
         <StunningBackground />
         
         <div className="max-w-6xl mx-auto px-4 sm:px-6">

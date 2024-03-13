@@ -19,13 +19,12 @@ export default function Blog() {
   const posts = allPosts.sort(sortByPublishedAt) 
   return (
     <>
+      <BlogSchemaJsonLdScript
+        headline={metadata.title}
+        description={metadata.description}
+      />
+
       <section className="relative">
-
-        <BlogSchemaJsonLdScript
-          headline={metadata.title}
-          description={metadata.description}
-        />
-
         <StunningBackground />
         
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
