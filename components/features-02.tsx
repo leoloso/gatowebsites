@@ -68,7 +68,7 @@ export default function Features02() {
                         <div className="mb-5">
                           <div>
                             <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">Optimized for speed</h3>
-                            <p className="text-slate-400">The query is resolved on linear time complexity, and does not suffer the "n+1" problem. The schema is generated only the first time, and cached. The response can be cached, using standard HTTP Caching.</p>
+                            <p className="text-slate-300 md:text-slate-400">The query is resolved on linear time complexity, and does not suffer the "n+1" problem. The schema is generated only the first time, and cached. The response can be cached, using standard HTTP Caching.</p>
                           </div>
                         </div>
                         {/* <div>
