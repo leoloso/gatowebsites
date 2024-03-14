@@ -16,16 +16,16 @@ export default function SectionHeader({
   id?: string,
 }) {
   return (
-    <div className={`max-w-3xl mx-auto text-center ${paddingClassname}`}>
+    <div
+      id={id || slugify(title)}
+      className={`scroll-mt-20 max-w-3xl mx-auto text-center ${paddingClassname}`}
+    >
       {leading && (
         <div>
           <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">{leading}</div>
         </div>
       )}
-      <h2
-        id={id || slugify(title)}
-        className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4 scroll-mt-20"
-      >
+      <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
         {title}
       </h2>
       {description && (
