@@ -70,7 +70,7 @@ export default function Features() {
                   <Particles className="absolute inset-0 -z-10" quantity={8} staticity={30} />
 
                   <div className="flex items-center justify-center">
-                    <div className="relative w-48 h-48 flex justify-center items-center">
+                    <div className="relative w-64 h-64 flex justify-center items-center">
                       {/* Halo effect */}
                       <svg className="absolute inset-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 will-change-transform pointer-events-none blur-md" width="480" height="480" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
                         <defs>
