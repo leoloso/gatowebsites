@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "NODE_OPTIONS=--max-old-space-size=8192 next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "netlify deploy --build --context deploy-preview",
+    "deploy-prod": "netlify deploy --build --prod"
   },
   "overrides": {
     "next-contentlayer": {
