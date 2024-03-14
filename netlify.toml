@@ -24,8 +24,8 @@
   status = 301
 
 [[redirects]]
-  from = "/about"
-  to = "/about-us"
+  from = "/about-us"
+  to = "/about"
   status = 301
 
 [[redirects]]
