@@ -34,6 +34,7 @@ export default function FeaturesList() {
             leading='Truly unleash your capabilities with Gato GraphQL PRO'
             title='Manage your WordPress site using advanced GraphQL'
             description='The Gato GraphQL PRO plugin provides features to retrieve, manipulate and store any piece of data, from WordPress and the wider web. Automate your tasks and content workflows.'
+            id='pro-features'
           />
         </div>
       </ArtifactsList>
