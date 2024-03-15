@@ -6,7 +6,13 @@ import { ClipboardIcon, CheckIcon } from '@heroicons/react/20/solid'
 
 const buttonClasses = 'flex items-center text-xs font-medium text-white rounded btn-sm'
 
-export function CopyButton({ text, className }: { text: string, className: string }) {
+export function CopyButton({
+  text,
+  className,
+}: {
+  text: string,
+  className: string,
+}) {
   const [isCopied, setIsCopied] = useState(false)
 
   const copy = async () => {
