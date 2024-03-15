@@ -334,7 +334,6 @@ export default makeSource({
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
-      preProcess,
       rehypeSlug,
       [
         rehypePrettyCode,
@@ -357,7 +356,6 @@ export default makeSource({
           },
         },
       ],
-      postProcess,
     ],
   },
 })
