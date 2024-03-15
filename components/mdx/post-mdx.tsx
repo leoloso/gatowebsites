@@ -12,17 +12,16 @@ const mdxComponents = {
 }
 
 interface PostMdxProps {
-  code: string
+  code: string,
 }
 
-// export function PostMdx({ code }: PostMdxProps) {
-export function PostMdx({ ...props }) {
-  const { code } = props;
+export function PostMdx({
+  code,
+}: PostMdxProps) {
   const Component = useMDXComponent(code)
 
   const custom = {
-    // pre: (props) => <Pre {...props} />,
-    pre: ({ ...props }) => <Pre {...props} />,
+    pre: ({ ...props }) => <Pre>{ props.children }</Pre>,
   }
 
   return (

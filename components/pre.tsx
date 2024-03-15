@@ -9,8 +9,8 @@ export function Pre({
   ...props
 }: {
   children: React.ReactNode,
-  buttonClasses: string,
-  className: string,
+  buttonClasses?: string,
+  className?: string,
 }) {
   const raw = Children.onlyText(children)
   return (
