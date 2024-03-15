@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import AppConfig from './app/app.config'
+import { preProcess, postProcess } from './utils/rehype/rehype-pre-raw'
 
 const Update = defineDocumentType(() => ({
   name: 'Update',
@@ -333,6 +334,7 @@ export default makeSource({
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
+      preProcess,
       rehypeSlug,
       [
         rehypePrettyCode,
@@ -355,6 +357,7 @@ export default makeSource({
           },
         },
       ],
+      postProcess,
     ],
   },
 })

@@ -2,11 +2,13 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 import PostLink from './link'
 import PostImage from './image'
 import PostBanner from './banner'
+import { Pre } from '../pre'
 
 const mdxComponents = {
   Link: PostLink,
   Image: PostImage,
   Banner: PostBanner,
+  Pre: Pre,
 }
 
 interface PostMdxProps {
