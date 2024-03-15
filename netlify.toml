@@ -4,6 +4,11 @@
   environment = { NODE_OPTIONS="--max-old-space-size=8192" }
   
 [[redirects]]
+  from = "/gatographql-vs-wprestapi"
+  to = "/gatographql-vs-wp-rest-api"
+  status = 301
+  
+[[redirects]]
   from = "/tags"
   to = "/blog"
   status = 301

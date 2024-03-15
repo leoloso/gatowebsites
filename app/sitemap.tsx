@@ -208,7 +208,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Gato GraphQL vs WP REST API
     {
-      url: `${DOMAIN}/gatographql-vs-wprestapi`,
+      url: `${DOMAIN}/gatographql-vs-wp-rest-api`,
       lastModified: releaseDateV2_2_1,
       changeFrequency: 'monthly',
       priority: 0.65,
