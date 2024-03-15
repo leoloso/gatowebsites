@@ -1,6 +1,13 @@
 export default function ContactForm() {
   return (
     <form className="max-w-xl mx-auto" name="contact" method="POST" data-netlify="true" action="/contact/success" netlify-honeypot="bot-field">
+      <div className="flex flex-wrap -mx-3 mb-8">
+        <div className="w-full px-3">
+          <div className="text-slate-300">
+            Send us an email to <a className="font-medium text-purple-600 dark:text-purple-300 no-underline hover:no-underline hover:text-purple-500 hover:dark:text-purple-400" href="mailto:info@gatographql.com">info@gatographql.com</a>, or fill the form below.
+          </div>
+        </div>
+      </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="name">Name <span className="text-red-600">*</span></label>
