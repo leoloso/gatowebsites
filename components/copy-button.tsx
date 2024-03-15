@@ -4,7 +4,7 @@ import { useState } from 'react'
 import clsx from 'clsx'
 import { ClipboardIcon, CheckIcon } from '@heroicons/react/20/solid'
 
-const buttonClasses = 'flex items-center text-xs font-medium text-white rounded'
+const buttonClasses = 'flex items-center text-xs font-medium text-white rounded btn-sm'
 
 export function CopyButton({ text, className }: { text: string, className: string }) {
   const [isCopied, setIsCopied] = useState(false)
