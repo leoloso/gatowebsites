@@ -4,12 +4,10 @@ import Children from 'react-children-utilities'
 
 export function Pre({
   children,
-  // raw,
   buttonClasses = 'absolute top-3 right-3 bg-zinc-900',
   ...props
 }: {
   children: React.ReactNode,
-  // raw: string,
   buttonClasses: string,
   className: string,
 }) {
