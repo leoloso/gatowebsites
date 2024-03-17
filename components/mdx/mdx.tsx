@@ -27,7 +27,7 @@ const mdxComponents = {
 
 interface MdxProps {
   code: string,
-  mdxClassName: string,
+  mdxClassName?: string,
 }
 
 export function Mdx({
