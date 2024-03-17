@@ -2,12 +2,26 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 import PostLink from './link'
 import PostImage from './image'
 import PostBanner from './banner'
+import PostModalVideo from './modal-video'
+import PostAccordion from './accordion'
+import PostTag from './tag'
+import PostTable, { TableHead, TableBody, TableHeadRow, TableBodyRow, TableTh, TableTd } from './table'
 import { Pre } from '../pre'
 
 const mdxComponents = {
   Link: PostLink,
   Image: PostImage,
   Banner: PostBanner,
+  ModalVideo: PostModalVideo,
+  Accordion: PostAccordion,
+  Tag: PostTag,
+  Table: PostTable,
+  THead: TableHead,
+  TBody: TableBody,
+  ThRow: TableHeadRow,
+  TbRow: TableBodyRow,
+  Th: TableTh,
+  Td: TableTd,
   Pre: Pre,
 }
 
