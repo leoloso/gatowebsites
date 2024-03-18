@@ -106,7 +106,7 @@ export default function MobileMenu({
                 <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.docs.tutorial}`}>Schema tutorial</Link>
               </li>
               <li>
-                <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.docs.architecture}`}>Architecture</Link>
+                <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.docs.architecture}`}>Architecture docs</Link>
               </li>
             </ul>
           </li>
