@@ -9,7 +9,7 @@ The goal for the [`@export` directive](/docs/operational/export) in GraphQL is t
 
 This directive would not work if reading the variable takes place before exporting the value into the variable. Hence, the engine needs to provide a way to control the field execution order. 
 
-GraphQL by PoP provides a way to manipulate the field execution order through the query itself. The engine loads data in iterations for each type, first resolving all fields from the first type it encounters in the query, then resolving all fields from the second type it encounters in the query, and so on until there are no more types to process. 
+Gato GraphQL provides a way to manipulate the field execution order through the query itself. The engine loads data in iterations for each type, first resolving all fields from the first type it encounters in the query, then resolving all fields from the second type it encounters in the query, and so on until there are no more types to process. 
 
 For instance, the following query involving objects of type `Director`, `Film` and `Actor`:
 

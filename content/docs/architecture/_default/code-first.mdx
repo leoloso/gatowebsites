@@ -12,13 +12,13 @@ The GraphQL schema defines the contracts for a GraphQL service, by exporting the
 
 In either case we will have a fully functioning GraphQL service, but, depending on which approach we use, we may be able to accomplish more or less features, more or less easily, down the road. These two approaches are called, respectively, "schema-first" (better called "SDL-first") and "code-first".
 
-GraphQL by PoP uses the code-first approach. Let's see why this is so.
+Gato GraphQL uses the code-first approach. Let's see why this is so.
 
-## Why GraphQL by PoP uses code-first
+## Why Gato GraphQL uses code-first
 
 In the code-first approach, we start by coding the resolvers and then, from code as a single source of truth, we have the schema generated as an artifact. Hence, the schema is created by running a script, instead of being manually created as in SDL-first. Since code-first also has a schema, it does not miss anything significant provided by SDL-first.
 
-However, code-first does provide a significant feature over SDL-first: the possibility to provide dynamic schemas, which can change their shape and attributes depending on the context, and regulated through code on runtime. Indeed, all the great features offered by GraphQL by PoP are a direct consequence of its embracing code-first.
+However, code-first does provide a significant feature over SDL-first: the possibility to provide dynamic schemas, which can change their shape and attributes depending on the context, and regulated through code on runtime. Indeed, all the great features offered by Gato GraphQL are a direct consequence of its embracing code-first.
 
 ## Advantages of code-first
 

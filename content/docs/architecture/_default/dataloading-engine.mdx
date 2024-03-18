@@ -5,7 +5,7 @@ description: @todo
 order: 400
 ---
 
-GraphQL by PoP [uses server-side components](./using-components-instead-of-graphs) to represent the data model (not graphs or trees). Let's see how it executes the data-loading process to resolve the GraphQL query.
+Gato GraphQL [uses server-side components](./using-components-instead-of-graphs) to represent the data model (not graphs or trees). Let's see how it executes the data-loading process to resolve the GraphQL query.
 
 In order to process the data, we must flatten the components into types (`<FeaturedDirector>` => `Director`, `<Film>` => `Film`, `<Actor>` => `Actor`), order them as they appeared in the component hierarchy (`Director`, then `Film`, then `Actor`) and deal with them in "iterations", retrieving the object data for each type on its own iteration, like this:
 

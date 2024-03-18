@@ -15,7 +15,7 @@ In this architecture:
 - Each directive performs its logic and passes the result to the next directive in the pipeline
 - The pipeline's output will be the resolved field value, having been processed by all the directives
 
-This architecture, though, doesn't make the most out of GraphQL. Below is the description of all the stages from the actual directive pipeline, until reaching the actual design implemented in GraphQL by PoP.
+This architecture, though, doesn't make the most out of GraphQL. Below is the description of all the stages from the actual directive pipeline, until reaching the actual design implemented in Gato GraphQL.
 
 ## Directives as building-blocks of the query resolution
 
@@ -23,7 +23,7 @@ Initially we could consider having the GraphQL server resolve the field through 
 
 However, it is much simpler to have a single mechanism to tackle everything: invoking the field resolvers (to both validate fields and resolve fields) can be already done through the directive pipeline. In this case, the directive pipeline is the single mechanism used to resolve the query.
 
-For this reason, the GraphQL by PoP server is provided with two special directives:
+For this reason, the Gato GraphQL server is provided with two special directives:
 
 - [`@validate`](https://github.com/getpop/component-model/blob/57a27af3841da284ea59c6f7ff3a9b4c0befa472/src/DirectiveResolvers/ValidateDirectiveResolver.php) calls the field resolver to validate that the field can be resolved (eg: the syntax is correct, the field exists, etc)
 - If successful, [`@resolveValueAndMerge`](https://github.com/getpop/component-model/blob/b2ef9fe693c69a6d4c4b549519eb236f527b841d/src/DirectiveResolvers/ResolveValueAndMergeDirectiveResolver.php) then calls the field resolver to resolve the field, and merges the value into the response object

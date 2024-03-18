@@ -5,7 +5,7 @@ description: @todo
 order: 200
 ---
 
-Let's learn how GraphQL by PoP completely avoids the "N+1 problem" already by architectural design.
+Let's learn how Gato GraphQL completely avoids the "N+1 problem" already by architectural design.
 
 ## What is the "N+1 problem"
 
@@ -76,13 +76,13 @@ This problem doesn't lie in the strategy itself, but in having the GraphQL serve
 
 The solution to this problem is, then, straightforward: the "deferred" strategy should not be an add-on but baked-in the GraphQL server itself. Instead of having 2 query execution strategies, "normal" and "deferred", there should only be only 1, "deferred". And the GraphQL server must execute the "deferred" mechanism even though the developer implements the resolver the "normal" way (in other words, the GraphQL server takes care of the extra complexity, not the developer).
 
-And that is exactly what GraphQL by PoP does.
+And that is exactly what Gato GraphQL does.
 
 ## Making "deferred" the only strategy executed by the GraphQL server
 
 The problem with most GraphQL servers is that the responsibility of resolving the object types (`object`, `union` and `interface`) as objects is done by the resolvers themselves when processing the parent node (eg: `films` => `directors`), instead of delegating this task to the dataloading engine.
 
-GraphQL by PoP transfers this responsibility away from the resolver and into the server's data-loading engine, like this:
+Gato GraphQL transfers this responsibility away from the resolver and into the server's data-loading engine, like this:
 
 1. The resolvers return IDs, and not objects, when resolving a relationship between the parent and child nodes
 2. Given a list of IDs of a certain type, a `DataLoader` entity obtains the corresponding objects from that type
@@ -157,7 +157,7 @@ However, if this behaviour must be removed (for instance, to have the returned t
 
 ## Implementing the adapted approach in code
 
-Let's see how GraphQL by PoP implements this approach in PHP code. The code below demonstrates the different resolvers (for the purpose of clarity, all code below has been edited).
+Let's see how Gato GraphQL implements this approach in PHP code. The code below demonstrates the different resolvers (for the purpose of clarity, all code below has been edited).
 
 ### `FieldResolvers`
 
