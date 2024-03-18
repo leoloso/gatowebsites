@@ -31,11 +31,11 @@ This is achievable because the GraphQL request can be thought-of as having a "co
 
 Let's use an example to visualize this relationship from component to GraphQL query. Let's say that we want to build the following "Featured director" widget:
 
-![Featured director widget](/images/featured-director-widget.jpg)
+![Featured director widget](/assets/architecture/featured-director-widget.jpg)
 
 Using Vue or React (or any other component-based library), we would first identify the components. In this case, we would have an outer component `<FeaturedDirector>` (in red), which wraps a component `<Film>` (in blue), which itself wraps a component `<Actor>` (in green):
 
-![Identifying components in the widget](/images/featured-director-widget-components.jpg)
+![Identifying components in the widget](/assets/architecture/featured-director-widget-components.jpg)
 
 The pseudo-code will look like this:
 
@@ -66,7 +66,7 @@ The pseudo-code will look like this:
 
 Then we identify what data is needed for each component. For `<FeaturedDirector>` we need the `name`, `avatar` and `country`. For `<Film>` we need `thumbnail` and `title`. And for `<Actor>` we need `name` and `avatar`:
 
-![Identifying data properties for each component](/images/featured-director-widget-data.jpg)
+![Identifying data properties for each component](/assets/architecture/featured-director-widget-data.jpg)
 
 And we build our GraphQL query to fetch the required data:
 

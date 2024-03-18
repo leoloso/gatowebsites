@@ -9,7 +9,7 @@ Gato GraphQL [uses server-side components](./using-components-instead-of-graphs)
 
 In order to process the data, we must flatten the components into types (`<FeaturedDirector>` => `Director`, `<Film>` => `Film`, `<Actor>` => `Actor`), order them as they appeared in the component hierarchy (`Director`, then `Film`, then `Actor`) and deal with them in "iterations", retrieving the object data for each type on its own iteration, like this:
 
-![Dealing with types in iterations](/images/featured-director-type-iterations.png)
+![Dealing with types in iterations](/assets/architecture/featured-director-type-iterations.png)
 
 The server's data-loading engine must implement the following (pseudo-)algorithm to load the data:
 
@@ -26,15 +26,15 @@ _Loop until there are no more entries on the queue:_
 
 By the end of the iterations, we will have loaded all the object data for all types, like this:
 
-![Dealing with types in iterations](/images/featured-director-loading-data-in-iterations.png)
+![Dealing with types in iterations](/assets/architecture/featured-director-loading-data-in-iterations.png)
 
 Please notice how all IDs for a type are collected, until the type is processed in the queue. If, for instance, we add a relational field `preferredActors` to type `Director`, these IDs would be added to the queue under type `Actor`, and it would be processed together with the IDs from field `actors` from type `Film`:
 
-![Dealing with types in iterations](/images/featured-director-loading-data-extension.png)
+![Dealing with types in iterations](/assets/architecture/featured-director-loading-data-extension.png)
 
 However, if a type has been processed and then we need to load more data from that type, then it's a new iteration on that type. For instance, adding a relational field `preferredDirector` to the `Author` type, will make the type `Director` be added to the queue once again:
 
-![Iterating over a repeated type](/images/featured-director-loading-data-repeated.png)
+![Iterating over a repeated type](/assets/architecture/featured-director-loading-data-repeated.png)
 
 Pay attention also that here we can use the "caching" mechanism as implemented in [dataloader](https://github.com/graphql/dataloader): on the second iteration for type `Director`, the object with ID 2 is not retrieved again, since it was already retrieved on the first iteration so it can be taken from the cache.
 
@@ -66,7 +66,7 @@ _Table for type `Actor`:_
 
 Having all the data organized as tables, and knowing how every type relates to each other (i.e. `Director` references `Film` through field `films`, `Film` references `Actor` through field `actors`), the GraphQL server can easily convert the data into the expected tree shape:
 
-![Tree-shaped response](/images/featured-director-graph.png)
+![Tree-shaped response](/assets/architecture/featured-director-graph.png)
 
 Finally, the GraphQL server outputs the tree, which has the shape of the expected response:
 

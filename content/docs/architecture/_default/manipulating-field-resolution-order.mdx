@@ -29,7 +29,7 @@ For instance, the following query involving objects of type `Director`, `Film` a
 
 ...is resolved by the GraphQL engine in this order:
 
-![Dealing with types in iterations](/images/dataloading-engine-type-iterations.png "Dealing with types in iterations")
+![Dealing with types in iterations](/assets/architecture/dataloading-engine-type-iterations.png "Dealing with types in iterations")
 
 If after processed, a type is referenced again in the query to retrieve non-loaded data (eg: from additional objects, or additional fields from already-loaded objects), then the type is added again at the end of the iteration list.
 
@@ -54,7 +54,7 @@ For instance, if we also query the `Actor`'s `preferredDirector` field (which re
 
 ...then the GraphQL engine processes the query in this order:
 
-![Repeated types in iterations](/images/dataloading-engine-repeated-type-iterations.png "Repeated types in iterations")
+![Repeated types in iterations](/assets/architecture/dataloading-engine-repeated-type-iterations.png "Repeated types in iterations")
 
 Let's see how this plays out for executing `@export` in a single query. For our first attempt, we create the query as we would normally do, without thinking about the execution order of the fields:
 
@@ -72,7 +72,7 @@ query GetPostsAuthorNames($_authorName: String = "") {
 
 When [running the query](https://newapi.getpop.org/graphiql/?query=query%20GetPostsAuthorNames(%24_authorName%3A%20String%20%3D%20%22%22)%20%7B%0A%20%20user(by:{id%3A%201})%20%7B%0A%20%20%20%20name%20%40export(as%3A%20%22_authorName%22)%0A%20%20%7D%0A%20%20posts(filter:{search%3A%20%24_authorName})%20%7B%0A%20%20%20%20id%0A%20%20%20%20title%0A%20%20%7D%0A%7D&operationName=GetPostsAuthorNames), it produces this response:
 
-![Executing a query using a variable](/images/third-query.png)
+![Executing a query using a variable](/assets/architecture/third-query.png)
 
 ...which contains the following error:
 
@@ -150,7 +150,7 @@ query GetPostsAuthorNames($_authorName: String = "") {
 }
 ```
 
-![Running the first query with `@export`](/images/first-query.png)
+![Running the first query with `@export`](/assets/architecture/first-query.png)
 
 Let's explore the order in which types are processed for this query, to understand why it works well:
 

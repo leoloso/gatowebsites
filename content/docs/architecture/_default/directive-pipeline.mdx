@@ -7,7 +7,7 @@ order: 800
 
 Directives are placed in a pipeline, and executed in order. Their initial design is simple, like this:
 
-![Directive pipeline](/images/directive-pipeline.png)
+![Directive pipeline](/assets/architecture/directive-pipeline.png)
 
 In this architecture:
 
@@ -50,7 +50,7 @@ query {
 
 The pipeline now looks like this (please notice that the pipeline receives the field as input, and not its initial resolved value):
 
-![Directive pipeline with @validate and @resolveValueAndMerge](/images/field-directive-pipeline.png)
+![Directive pipeline with @validate and @resolveValueAndMerge](/assets/architecture/field-directive-pipeline.png)
 
 ## Pipeline slots
 
@@ -71,11 +71,11 @@ The pipeline will then offer five different slots through class [`PipelinePositi
 
 The directive pipeline now looks like this (considering just 3 stages, to simplify):
 
-![Directive pipeline with slots](/images/slot-directive-pipeline.png)
+![Directive pipeline with slots](/assets/architecture/slot-directive-pipeline.png)
 
 Please notice how directives [`@skip`](https://github.com/getpop/engine/blob/b52f147c7d66d6677aad31b87794219fd9a1d92d/src/DirectiveResolvers/SkipDirectiveResolver.php) and [`@include`](https://github.com/getpop/engine/blob/b52f147c7d66d6677aad31b87794219fd9a1d92d/src/DirectiveResolvers/IncludeDirectiveResolver.php) can be so easily satisfied given this architecture: placed in the `"middle"` slot, they can inform directive `@resolveValueAndMerge` (along with all directives in later stages in the pipeline) to not execute by setting flag `skipExecution` to `true`.
 
-![@skip directive in pipeline](/images/skip-directive-pipeline.png)
+![@skip directive in pipeline](/assets/architecture/skip-directive-pipeline.png)
 
 ## Executing the directive on multiple fields in a single call
 
@@ -115,7 +115,7 @@ Then, the system directives will always receive all the fields as inputs.
 
 As a consequence, the directive pipeline is architected to receive multiple fields as input, and not just one at a time:
 
-![Receiving multiple fields as input in the directive pipeline](/images/multiple-fields-directive-pipeline.png)
+![Receiving multiple fields as input in the directive pipeline](/assets/architecture/multiple-fields-directive-pipeline.png)
 
 This architecture is more efficient, because executing a directive only once for all fields is faster than executing it once per field, and it will produce the same results.
 
@@ -179,7 +179,7 @@ It is for these reasons that the directives in the pipeline receive the input fi
 
 The pipeline now looks like this:
 
-![Receiving multiple fields as input in the directive pipeline](/images/multiple-fields-directive-pipeline.png)
+![Receiving multiple fields as input in the directive pipeline](/assets/architecture/multiple-fields-directive-pipeline.png)
 
 ## Executing a single directive pipeline for the whole query
 
@@ -207,7 +207,7 @@ query {
 
 In this scenario, fields `field2` and `field3` have the same set of directives, and `field1` has a different one, then we would have to generate 2 different pipelines to resolve the query:
 
-![The query requires 2 directive pipelines to be resolved](/images/two-distinct-field-directive-pipeline.png)
+![The query requires 2 directive pipelines to be resolved](/assets/architecture/two-distinct-field-directive-pipeline.png)
 
 And when all fields have a unique set of directives, the effect is more pronounced. Consider this query:
 
@@ -231,7 +231,7 @@ query {
 
 In this situation, we will have 3 pipelines to handle 3 fields, like this:
 
-![The query requires 3 directive pipelines to be resolved](/images/three-distinct-field-directive-pipeline.png)
+![The query requires 3 directive pipelines to be resolved](/assets/architecture/three-distinct-field-directive-pipeline.png)
 
 In this case, even though directives `@validate` and `@resolveValueAndMerge` are applied on the 3 fields, because they are executed through 3 different directive pipelines, then they will be executed independently of each other, which takes us back to having a directive being executed on a single item at a time.
 
@@ -249,7 +249,7 @@ query {
 
 ...directives `@validate` and `@resolveValueAndMerge` will get all 3 fields as inputs, and `directiveA` will only get `"field1"`:
 
-![Single directive pipeline to resolve all fields](/images/1st-single-multiple-fields-slot-directive-pipeline.png)
+![Single directive pipeline to resolve all fields](/assets/architecture/1st-single-multiple-fields-slot-directive-pipeline.png)
 
 And for this query:
 
@@ -263,7 +263,7 @@ query {
 
 ...directives `@validate` and `@resolveValueAndMerge` will get all 3 fields as inputs, `directiveA` will only get `"field1"`, `directiveB` will only get `"field2"`, and `directiveC` will get `"field2"` and `"field3"`:
 
-![Single directive pipeline to resolve all fields](/images/2nd-single-multiple-fields-slot-directive-pipeline.png)
+![Single directive pipeline to resolve all fields](/assets/architecture/2nd-single-multiple-fields-slot-directive-pipeline.png)
 
 ## Controlling the directive execution ID by ID
 
@@ -271,7 +271,7 @@ Until now, a directive at some stage could influence the execution of directives
 
 For instance, consider a `@cache` directive, which is placed in the `"end"` slot to store the field value, so that next time the field is queried, its value can be retrieved from the cache through a directive `@getCache` placed in the `"middle"` slot:
 
-![Pipeline with @getCache and @cache directives](/images/cache-single-multiple-fields-slot-directive-pipeline.png)
+![Pipeline with @getCache and @cache directives](/assets/architecture/cache-single-multiple-fields-slot-directive-pipeline.png)
 
 When [executing this query](https://leoloso.com/posts/cache-and-logtime-directives/#heading-@cache-directive):
 
@@ -310,22 +310,22 @@ Variable `fieldIDs` is unique to each directive, and every directive can modify 
 
 The pipeline now looks like this:
 
-![Passing the IDs per field to each directive](/images/id-single-multiple-fields-slot-directive-pipeline.png)
+![Passing the IDs per field to each directive](/assets/architecture/id-single-multiple-fields-slot-directive-pipeline.png)
 
 Applied to the previous example, when executing the first query translating 2 records, the pipeline looks like this:
 
-![Passing the IDs per field to each directive for the 1st query](/images/1st-id-single-multiple-fields-slot-directive-pipeline.png)
+![Passing the IDs per field to each directive for the 1st query](/assets/architecture/1st-id-single-multiple-fields-slot-directive-pipeline.png)
 
 When executing the second query translating 4 records, directive `@getCache` gets the IDs for all 4 records, but both `@resolveValueAndMerge` and `@cache` will only receive the IDs for the last 2 records only (which are not cached):
 
-![Passing the IDs per field to each directive for the 2nd query](/images/2nd-id-single-multiple-fields-slot-directive-pipeline.png)
+![Passing the IDs per field to each directive for the 2nd query](/assets/architecture/2nd-id-single-multiple-fields-slot-directive-pipeline.png)
 
 
 ## Tying it all together
 
 This is the final design of the directive pipeline:
 
-![Final design of the directive pipeline](/images/multiple-fields-slot-directive-pipeline.png)
+![Final design of the directive pipeline](/assets/architecture/multiple-fields-slot-directive-pipeline.png)
 
 Summarizing, these are its characteristics:
 
