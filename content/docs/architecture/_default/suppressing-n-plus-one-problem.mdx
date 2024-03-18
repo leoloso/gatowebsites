@@ -115,46 +115,6 @@ Now, let's consider the different behaviour, and have field `films` be resolved 
 
 Finally, in addition to the ID, the resolver must give an extra piece of information: the type of the expected object (in our example, it could be `[(Film, 2), (Film, 5), (Film, 9)]`). This information is internal though, passed over to the engine, and does not need be output in the response to the query.
 
-<!-- ## Type safety compromised?
-
-An implication of this new approach is that a field of object type will be resolved in 2 different ways: if it contains a nested query it will be represented as an object (or list of objects) and, if not, as an ID (or list of IDs).
-
-For instance, check the difference in the response from the following queries:
-
-_Field `author` [with nested query](https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20post(id%3A%201)%20%7B%0A%20%20%20%20title%0A%20%20%20%20author%20%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D):_
-
-```graphql
-query {
-  post(id: 1) {
-    title
-    author {
-      name
-    }
-  }
-}
-```
-
-![Field with nested query "Field with nested query"](/assets/architecture/connection-nested-query.jpg)
-
-_Field `author` without nested query (can't be executed in GraphiQL, only in the Playground):_
-
-```graphql
-query {
-  post(id: 1) {
-    title
-    author
-  }
-}
-```
-
-![Field without nested query "Field without nested query"](/assets/architecture/connection-alone.jpg)
-
-As it can be seen, the response to field `author` is, in the first case, the object `{"name": "leo"}` and, in the second case, it is the string `"1"`.
-
-This inconsistency may, in practical terms, never arise, since a field of object type is always expected to provide a nested query (or it would produce an empty object, which makes no sense). Indeed, GraphiQL does not allow to query for an object without its nested query: it always adds some predefined default fields.
-
-However, if this behaviour must be removed (for instance, to have the returned type always be coherent with the schema), then we can add a very simple solution: instead of resolving the field as an ID, we resolve it as an array with the ID stored under property `"id"` (or whatever the name of that property on the corresponding type), and have the data-loading engine retrieve the ID from within the array. Then, querying for an object without its nested query will return `{id: ...}`, which will be compatible with the definition in the schema for that type. -->
-
 ## Implementing the adapted approach in code
 
 Let's see how Gato GraphQL implements this approach in PHP code. The code below demonstrates the different resolvers (for the purpose of clarity, all code below has been edited).
@@ -264,7 +224,7 @@ class UserTypeDataLoader implements TypeDataLoaderInterface
 
 Let's test that this strategy works, by executing a query of great complexity, involving a graph 10-levels deep (`posts` => `author` => `posts` => `tags` => `posts` => `comments` => `author` => `posts` => `comments` => `author`), which could not be resolved if the "N+1 problem" were taking place.
 
-Running [this query](https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20posts(pagination:{limit%3A10})%20%7B%0A%20%20%20%20excerpt%0A%20%20%20%20title%0A%20%20%20%20url%0A%20%20%20%20author%20%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20url%0A%20%20%20%20%20%20posts(pagination:{limit%3A10})%20%7B%0A%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20tags(pagination:{limit%3A10})%20%7B%0A%20%20%20%20%20%20%20%20%20%20slug%0A%20%20%20%20%20%20%20%20%20%20url%0A%20%20%20%20%20%20%20%20%20%20posts(pagination:{limit%3A10})%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20%20%20%20%20comments(pagination:{limit%3A10})%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20date%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20author%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20posts(pagination:{limit%3A10})%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20url%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20comments(pagination:{limit%3A10})%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20date%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20author%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20username%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20url%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A):
+Running this query:
 
 ```graphql
 query {

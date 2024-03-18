@@ -70,7 +70,7 @@ query GetPostsAuthorNames($_authorName: String = "") {
 }
 ```
 
-When [running the query](https://newapi.getpop.org/graphiql/?query=query%20GetPostsAuthorNames(%24_authorName%3A%20String%20%3D%20%22%22)%20%7B%0A%20%20user(by:{id%3A%201})%20%7B%0A%20%20%20%20name%20%40export(as%3A%20%22_authorName%22)%0A%20%20%7D%0A%20%20posts(filter:{search%3A%20%24_authorName})%20%7B%0A%20%20%20%20id%0A%20%20%20%20title%0A%20%20%7D%0A%7D&operationName=GetPostsAuthorNames), it produces this response:
+When running the query, it produces this response:
 
 ![Executing a query using a variable](/assets/architecture/third-query.png)
 
@@ -134,7 +134,7 @@ It is here that we need to control the field execution flow. The solution implem
 
 The `self` field, as its name indicates, returns the same object; applied to the `Root` object, it returns the same `Root` object. You may wonder: "if I already have the root object, then why would I need to retrieve it again?". Because then the engine's algorithm will need to add this new reference to `Root` at the end of the FIFO list, and we can deliberately distribute the queried fields before or after every one of these iterations.
 
-That's why field `posts(filter:\{ search: $_authorName \})` is placed inside a `self` field in the query above, and [running the query](https://newapi.getpop.org/graphiql/?query=query%20GetPostsAuthorNames(%24_authorName%3A%20String%20%3D%20%22%22)%20%7B%0A%20%20user(by:{id%3A%201})%20%7B%0A%20%20%20%20name%20%40export(as%3A%20%22_authorName%22)%0A%20%20%7D%0A%20%20self%20%7B%0A%20%20%20%20posts(filter:{search%3A%20%24_authorName})%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20title%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=GetPostsAuthorNames) produces the expected response:
+That's why field `posts(filter:\{ search: $_authorName \})` is placed inside a `self` field in the query above, and running the query produces the expected response:
 
 ```graphql
 query GetPostsAuthorNames($_authorName: String = "") {
