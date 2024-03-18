@@ -8,6 +8,7 @@ export function PostMdx({
   return (
     <Mdx
       code={code}
+      mdxClassName="prose-lg"
     />
   )
 }
