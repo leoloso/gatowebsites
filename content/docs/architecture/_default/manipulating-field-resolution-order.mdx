@@ -63,7 +63,7 @@ query GetPostsAuthorNames($_authorName: String = "") {
   user(by: { id: 1 }) {
     name @export(as: "_authorName")
   }
-  posts(filter:\{ search: $_authorName \}) {
+  posts(filter: { search: $_authorName }) {
     id
     title
   }
@@ -99,7 +99,7 @@ query GetPostsAuthorNames($_authorName: String = "") {
     name @export(as: "_authorName")
   }
   # Type: Post
-  posts(filter:\{ search: $_authorName \}) {
+  posts(filter: { search: $_authorName }) {
     # Type: ID
     id
     # Type: String
@@ -142,7 +142,7 @@ query GetPostsAuthorNames($_authorName: String = "") {
     name @export(as: "_authorName")
   }
   self {
-    posts(filter:\{ search: $_authorName \}) {
+    posts(filter: { search: $_authorName }) {
       id
       title
     }
