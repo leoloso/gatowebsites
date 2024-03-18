@@ -49,6 +49,10 @@ export function getTutorialDocuments() {
   return getGroupDocuments(AppConfig.paths.docs.tutorial)
 }
 
+export function getArchitectureDocuments() {
+  return getGroupDocuments(AppConfig.paths.docs.architecture)
+}
+
 export function getPrevNextArticles(articles: Array<Doc | Post>, articleIndex: number) {
   // Calculate the prev/next items
   const prevArticle = articleIndex === 0 ? undefined : articles[articleIndex - 1]
