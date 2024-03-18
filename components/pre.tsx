@@ -6,7 +6,7 @@ import Children from 'react-children-utilities'
 // @see https://github.com/rehype-pretty/rehype-pretty-code/issues/34#issuecomment-1529567170
 export function Pre({
   children,
-  buttonClasses = 'absolute top-3 right-3 bg-slate-900 hover:bg-teal-900',
+  buttonClasses = 'absolute top-3 right-3 bg-slate-900 hover:bg-amber-900',
   ...props
 }: {
   children: React.ReactNode,
