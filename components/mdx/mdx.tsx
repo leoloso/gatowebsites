@@ -1,12 +1,12 @@
 import { useMDXComponent } from 'next-contentlayer/hooks'
-import PostLink from './link'
-import PostImage from './image'
-import PostBanner from './banner'
-import PostModalVideo from './modal-video'
-import PostAccordion from './accordion'
-import PostTag from './tag'
-import PostTable, { TableHead, TableBody, TableHeadRow, TableBodyRow, TableTh, TableTd } from './table'
-import { Pre } from '../pre'
+import PostLink from './components/link'
+import PostImage from './components/image'
+import PostBanner from './components/banner'
+import PostModalVideo from './components/modal-video'
+import PostAccordion from './components/accordion'
+import PostTag from './components/tag'
+import PostTable, { TableHead, TableBody, TableHeadRow, TableBodyRow, TableTh, TableTd } from './components/table'
+import { Pre } from './components/pre'
 
 const mdxComponents = {
   Link: PostLink,
