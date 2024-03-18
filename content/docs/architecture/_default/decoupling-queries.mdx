@@ -5,7 +5,7 @@ description: "@todo"
 order: 900
 ---
 
-Gato GraphQL uses a [directive pipeline](directive-pipeline.html), an architecture that enables the server's engine to resolve, validate, and execute the query. In order to make the engine as simple as possible, every action concerning the resolution of the query takes place within the pipeline, through directives.
+Gato GraphQL uses a [directive pipeline](/architecture/directive-pipeline), an architecture that enables the server's engine to resolve, validate, and execute the query. In order to make the engine as simple as possible, every action concerning the resolution of the query takes place within the pipeline, through directives.
 
 ![The directive pipeline](/assets/architecture/multiple-fields-slot-directive-pipeline.png)
 
@@ -49,5 +49,6 @@ The executable query will be this one:
 Gato GraphQL uses this mechanism to produce the executable query, in the following circumstances:
 
 - Adding system-type directives (such as `@validate` and `@resolveValueAndMerge`)
+- Adding any directive through [IFTTT through directives](../architecture/ifttt-through-directives)
 - Defining a strict [field-execution order when in PQL](/architecture/manipulating-field-resolution-order)
 

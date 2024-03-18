@@ -5,12 +5,12 @@ description: "@todo"
 order: 1000
 ---
 
-Gato GraphQL is a [code-first](code-first.html) server, i.e. it uses code to develop the schema. (The alternative is the SDL-first approach, which uses the Schema Definition Language to first produce the schema and then develop the service).
+Gato GraphQL is a [code-first](/architecture/code-first) server, i.e. it uses code to develop the schema. (The alternative is the SDL-first approach, which uses the Schema Definition Language to first produce the schema and then develop the service).
 
 Because it doesn't have an SDL, code-first servers can't naturally support schema-type directives. In order to avoid this limitation, Gato GraphQL has developed the following mechanism:
 
-- Transforming the query [from requested to executable](decoupling-queries.html)
-- Applying [IFTTT rules](../dynamic-schema/ifttt-through-directives.html) to the executable query
+- Transforming the query [from requested to executable](/architecture/decoupling-queries)
+- Applying [IFTTT rules](/architecture/ifttt-through-directives) to the executable query
 
 This results in a full support for schema-type directives on the GraphQL server.
 
