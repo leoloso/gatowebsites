@@ -2,6 +2,7 @@
   command = "npm run build"
   publish = ".next"
   environment = { NODE_OPTIONS="--max-old-space-size=8192" }
+
   
 [[redirects]]
   from = "/gatographql-vs-wprestapi"
@@ -212,6 +213,74 @@
   from = "/wpbuilds"
   to = "/specials/wpbuilds"
   status = 301
+
+# Docs migrated from graphql-by-pop.com
+
+[[redirects]]
+  from = "/docs/dynamic-schema/ifttt-through-directives.html"
+  to = "/architecture/ifttt-through-directives"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/dynamic-schema/field-directive-based-versioning.html"
+  to = "/architecture/field-directive-based-versioning"
+  status = 301
+
+[[redirects]]
+  from = "/docs/architecture/code-first.html"
+  to = "/architecture/code-first"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/dataloading-engine.html"
+  to = "/architecture/dataloading-engine"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/decoupling-queries.html"
+  to = "/architecture/decoupling-queries"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/directive-design.html"
+  to = "/architecture/directive-design"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/directive-pipeline.html"
+  to = "/architecture/directive-pipeline"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/manipulating-field-resolution-order.html"
+  to = "/architecture/manipulating-field-resolution-order"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/nested-mutations-single-source-of-code.html"
+  to = "/architecture/nested-mutations-single-source-of-code"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/schema-type-directives.html"
+  to = "/architecture/schema-type-directives"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/subscribing-fields-to-types.html"
+  to = "/architecture/subscribing-fields-to-types"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/suppressing-n-plus-one-problem.html"
+  to = "/architecture/suppressing-n-plus-one-problem"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/using-components-instead-of-graphs.html"
+  to = "/architecture/using-components-instead-of-graphs"
+  status = 301
+
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
