@@ -1,6 +1,6 @@
 ---
 title: Decoupling requested and executable queries
-description: "@todo"
+description: The executable query, to be resolved by the server, is produced from applying transformations on the requested query.
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 900
 ---
@@ -49,6 +49,6 @@ The executable query will be this one:
 Gato GraphQL uses this mechanism to produce the executable query, in the following circumstances:
 
 - Adding system-type directives (such as `@validate` and `@resolveValueAndMerge`)
-- Adding any directive through [IFTTT through directives](../architecture/ifttt-through-directives)
-- Defining a strict [field-execution order when in PQL](/architecture/manipulating-field-resolution-order)
+- Adding any directive through [IFTTT through directives](/architecture/ifttt-through-directives)
+- Defining a strict [field-execution order](/architecture/manipulating-field-resolution-order) for Multiple Query Execution
 
