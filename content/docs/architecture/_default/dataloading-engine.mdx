@@ -42,27 +42,24 @@ Now that we have fetched all the object data, we need to shape it into the expec
 
 _Table for type `Director`:_
 
-<table>
-<tr><th>ID</th><th>name</th><th>country</th><th>avatar</th><th>films</th></tr>
-<tr><td>2</td><td>George Lucas</td><td>USA</td><td>george-lucas.jpg</td><td>[3, 8]</td></tr>
-</table>
+| ID | name | country | avatar | films |
+| --- | --- | --- | --- | --- |
+| 2 | George Lucas | USA | george-lucas.jpg | [3, 8] |
 
 _Table for type `Film`:_
 
-<table>
-<tr><th>ID</th><th>title</th><th>thumbnail</th><th>actors</th></tr>
-<tr><td>3</td><td>The Phantom Menace</td><td>episode-1.jpg</td><td>[4, 6]</td></tr>
-<tr><td>8</td><td>Attack of the Clones</td><td>episode-2.jpg</td><td>[6, 7]</td></tr>
-</table>
+| ID | title | thumbnail | actors |
+| --- | --- | --- | --- |
+| 3 | The Phantom Menace | episode-1.jpg | [4, 6] |
+| 8 | Attack of the Clones | episode-2.jpg | [6, 7] |
 
 _Table for type `Actor`:_
 
-<table>
-<tr><th>ID</th><th>name</th><th>avatar</th></tr>
-<tr><td>4</td><td>Ewan McGregor</td><td>mcgregor.jpg</td></tr>
-<tr><td>6</td><td>Nathalie Portman</td><td>portman.jpg</td></tr>
-<tr><td>7</td><td>Hayden Christensen</td><td>christensen.jpg</td></tr>
-</table>
+| ID | name | avatar |
+| --- | --- | --- |
+| 4 | Ewan McGregor | mcgregor.jpg |
+| 6 | Nathalie Portman | portman.jpg |
+| 7 | Hayden Christensen | christensen.jpg |
 
 Having all the data organized as tables, and knowing how every type relates to each other (i.e. `Director` references `Film` through field `films`, `Film` references `Actor` through field `actors`), the GraphQL server can easily convert the data into the expected tree shape:
 
