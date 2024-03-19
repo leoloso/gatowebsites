@@ -1,6 +1,6 @@
 ---
 title: Directive pipeline
-description: "@todo"
+description: Directives are placed in a pipeline, and executed in order.
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 800
 ---
@@ -66,7 +66,7 @@ The pipeline will then offer five different slots through class [`PipelinePositi
 - The `"beginning"` slot: at the very beginning
 - The `"before-validate"` slot: before the validation takes place
 - The `"middle"` slot: after the validation and before the field resolution
-- The `"after_resolve"` slot: after the field resolution
+- The `"after-resolve"` slot: after the field resolution
 - The `"end"` slot: at the very end
 
 The directive pipeline now looks like this (considering just 3 stages, to simplify):
