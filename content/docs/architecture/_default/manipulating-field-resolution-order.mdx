@@ -110,23 +110,16 @@ query GetPostsAuthorNames {
 
 To process the types and load their data, the data-loading engine adds the query type `Root` into a FIFO (First-In, First-Out) list, thus making `[Root]` the initial list passed to the algorithm, and then iterates over the types sequentially, like this:
 
-<table>
-<thead>
-<tr>
-<th>#</th><th>Operation</th><th>List</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>0</td><td>Prepare FIFO list</td><td><code>[Root]</code></td></tr>
-<tr><td>1a</td><td>Pop the first type of the list (<code>Root</code>)</td><td><code>[]</code></td></tr>
-<tr><td>1b</td><td>Process all fields queried from the <code>Root</code> type:<br/>→ <code>user(by: \{id: 1\})</code><br/>→ <code>posts(filter: \{ search: $authorName \})</code><br/>Add their types (<code>User</code> and <code>Post</code>) to the list</td><td><code>[User, Post]</code></td></tr>
-<tr><td>2a</td><td>Pop the first type of the list (<code>User</code>)</td><td><code>[Post]</code></td></tr>
-<tr><td>2b</td><td>Process the field queried from the <code>User</code> type:<br/>→ <code>name @export(as: "authorName")</code><br/>Because it is a scalar type (<code>String</code>), there is no need to add it to the list</td><td><code>[Post]</code></td></tr>
-<tr><td>3a</td><td>Pop the first type of the list (<code>Post</code>)</td><td><code>[]</code></td></tr>
-<tr><td>3b</td><td>Process all fields queried from the <code>Post</code> type:<br/>→ <code>id</code><br/>→ <code>title</code><br/>Because these are scalar types (<code>ID</code> and <code>String</code>), there is no need to add them to the list</td><td><code>[]</code></td></tr>
-<tr><td>4</td><td>List is empty, iteration ends.</td><td>&nbsp;</td></tr>
-</tbody>
-</table>
+| # | Operation | List |
+| --- | --- | --- |
+| 0 | Prepare FIFO list | `[Root]` |
+| 1a | Pop the first type of the list (`Root`) | `[]` |
+| 1b | Process all fields queried from the `Root` type:<br/>→ `user(by: \{id: 1\})`<br/>→ `posts(filter: \{ search: $authorName \})`<br/>Add their types (`User` and `Post`) to the list | `[User, Post]` |
+| 2a | Pop the first type of the list (`User`) | `[Post]` |
+| 2b | Process the field queried from the `User` type:<br/>→ `name @export(as: "authorName")`<br/>Because it is a scalar type (`String`), there is no need to add it to the list | `[Post]` |
+| 3a | Pop the first type of the list (`Post`) | `[]` |
+| 3b | Process all fields queried from the `Post` type:<br/>→ `id`<br/>→ `title`<br/>Because these are scalar types (`ID` and `String`), there is no need to add them to the list | `[]` |
+| 4 | List is empty, iteration ends. | &nbsp; |
 
 Here we can see the problem: `@export` is executed on step `2b`, but it was read on step `1b`. 
 
@@ -154,25 +147,18 @@ query GetPostsAuthorNames {
 
 Let's explore the order in which types are processed for this query, to understand why it works well:
 
-<table>
-<thead>
-<tr>
-<th>#</th><th>Operation</th><th>List</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>0</td><td>Prepare FIFO list</td><td><code>[Root]</code></td></tr>
-<tr><td>1a</td><td>Pop the first type of the list (<code>Root</code>)</td><td><code>[]</code></td></tr>
-<tr><td>1b</td><td>Process all fields queried from the <code>Root</code> type:<br/>→ <code>user(by: \{id: 1\})</code><br/>→ <code>self</code><br/>Add their types (<code>User</code> and <code>Root</code>) to the list</td><td><code>[User, Root]</code></td></tr>
-<tr><td>2a</td><td>Pop the first type of the list (<code>User</code>)</td><td><code>[Root]</code></td></tr>
-<tr><td>2b</td><td>Process the field queried from the <code>User</code> type:<br/>→ <code>name @export(as: "authorName")</code><br/>Because it is a scalar type (<code>String</code>), there is no need to add it to the list</td><td><code>[Root]</code></td></tr>
-<tr><td>3a</td><td>Pop the first type of the list (<code>Root</code>)</td><td><code>[]</code></td></tr>
-<tr><td>3b</td><td>Process the field queried from the <code>Root</code> type:<br/>→ <code>posts(filter:\{ search: $authorName \})</code><br/>Add its type (<code>Post</code>) to the list</td><td><code>[Post]</code></td></tr>
-<tr><td>4a</td><td>Pop the first type of the list (<code>Post</code>)</td><td><code>[]</code></td></tr>
-<tr><td>4b</td><td>Process all fields queried from the <code>Post</code> type:<br/>→ <code>id</code><br/>→  <code>title</code><br/>Because these are scalar types (<code>ID</code> and <code>String</code>), there is no need to add them to the list</td><td><code>[]</code></td></tr>
-<tr><td>5</td><td>List is empty, iteration ends.</td><td>&nbsp;</td></tr>
-</tbody>
-</table>
+| # | Operation | List |
+| --- | --- | --- |
+| 0 | Prepare FIFO list | `[Root]` |
+| 1a | Pop the first type of the list (`Root`) | `[]` |
+| 1b | Process all fields queried from the `Root` type:<br/>→ `user(by: \{id: 1\})`<br/>→ `self`<br/>Add their types (`User` and `Root`) to the list | `[User, Root]` |
+| 2a | Pop the first type of the list (`User`) | `[Root]` |
+| 2b | Process the field queried from the `User` type:<br/>→ `name @export(as: "authorName")`<br/>Because it is a scalar type (`String`), there is no need to add it to the list | `[Root]` |
+| 3a | Pop the first type of the list (`Root`) | `[]` |
+| 3b | Process the field queried from the `Root` type:<br/>→ `posts(filter:\{ search: $authorName \})`<br/>Add its type (`Post`) to the list | `[Post]` |
+| 4a | Pop the first type of the list (`Post`) | `[]` |
+| 4b | Process all fields queried from the `Post` type:<br/>→ `id`<br/>→  `title`<br/>Because these are scalar types (`ID` and `String`), there is no need to add them to the list | `[]` |
+| 5 | List is empty, iteration ends. | &nbsp; |
 
 Now, we can see that the problem has been resolved: `@export` is executed on step `2b`, and it is read on step `3b`.
 
