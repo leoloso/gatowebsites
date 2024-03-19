@@ -1,6 +1,6 @@
 ---
 title: Subscribing fields to types
-description: "@todo"
+description: Gato GraphQL uses the Publish-subscribe pattern to have fields be subscribed to types
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 100
 ---
@@ -29,4 +29,4 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
 
 The `User` type does not know in advance which fields it will satisfy, but these (`username`, `email` and `url`) are instead injected to the type by the field resolver.
 
-This way, the GraphQL schema becomes easily extensible: by simply adding a field resolver, any extensions can add new fields to an existing type (such as field `User.shippingAddress`), or override how a field is resolved (such as redefining `User.url` to return the user's website instead).
+This way, the GraphQL schema becomes easily extensible: by simply adding a field resolver, any extension can add new fields to an existing type (such as field `User.shippingAddress`), or override how a field is resolved (such as redefining `User.url` to return the user's website instead).
