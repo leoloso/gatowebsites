@@ -1,0 +1,40 @@
+---
+title: Field/directive-based versioning
+description: Fields and directives can be independently versioned, and the version to use can be specified in the query.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 1200
+---
+
+Fields and directives can be independently versioned, and the version to use can be specified in the query through the field/directive argument `versionConstraint`.
+
+To select the version for the field/directive, Gato GraphQL uses the same [semver version constraints employed by Composer](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints).
+
+## Why
+
+The [evolution strategy](https://graphql.org/learn/best-practices/#versioning) adopted by GraphQL [has a problem](https://blog.logrocket.com/versioning-fields-graphql/): when deprecating a field (as to replace it with a newer implementation), the new field will need to have a new field name. Then, if the deprecated field cannot be removed (for instance, because some clients are still accessing it, from queries that were never revised), then all these fields for a same functionality tend to accumulate in the schema, and the new implementation of the field will not have an optimal name (indeed, it will be worse than the deprecated field's name).
+
+Evolution alone, over time, tends to pollute the schema with undesired definitions. Versioning the schema on a field/directive basis can solve this problem.
+
+## Targeted versioning through the query
+
+Pass the constraint to the field or directive, through argument `versionConstraint`:
+
+```graphql
+# Selecting version for fields
+query {
+  #This will produce version 0.1.0
+  firstVersion: userServiceURLs(versionConstraint: "^0.1")
+  # This will produce version 0.2.0
+  secondVersion: userServiceURLs(versionConstraint: ">0.1")
+  # This will produce version 0.2.0
+  thirdVersion: userServiceURLs(versionConstraint: "^0.2")
+}
+
+# Selecting version for directives
+query {
+  post(by: { id:1 }) {
+    titleCase: title @makeTitle(versionConstraint: "^0.1")
+    upperCase: title @makeTitle(versionConstraint: "^0.2")
+  }
+}
+```

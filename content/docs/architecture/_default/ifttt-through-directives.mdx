@@ -1,0 +1,107 @@
+---
+title: IFTTT through directives
+description: IFTTT directives are dynamically added to the query whenever some specific field or directive is present in the query.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 950
+---
+
+Gato GraphQL provides the ability to implement IFTTT (If This Then That) strategies through directives. These directives are dynamically added to the query whenever some specific field or directive is present in the query.
+
+In general, IFTTT are rules that trigger actions whenever a specified event happens. In our situation, the pairs of event/action are:
+
+- If "field X found on the query" then "attach directive Y to field X"
+- If "directive Z found on the query" then "execute directive Y before/after directive Z"
+
+Dynamically adding IFTTT directives to the schema is a recursive process: such directive can, itself, be configured its own set of IFTTT directives which are also added to the directive chain up.
+
+## Where is it used
+
+Under the hood, clients in Gato GraphQL use this mechanism to configure the GraphQL schema.
+
+For instance, [Access Control](/extensions/access-control) allows us to select what access control rules to apply to operations, fields and directives. It is by using IFTTT that these rules are applied on those elements from the GraphQL schema.
+
+![Access control entry](/assets/guides/upstream-pro/access-control-entry.png "Access control entry")
+
+In general, these are some use cases:
+
+### Define the cache control max-age a field by field basis
+
+Attach a `@CacheControl` directive to all fields, customizing the value of the `maxAge` parameter: 1 year for the `Post`'s field `url`, and 1 hour for field `title`.
+
+### Set-up access control
+
+Attach a `@validateDoesLoggedInUserHaveAnyRole` directive to field `email` from the `User` type, so only the admins can query the user email.
+
+### Synchronize access-control with cache-control
+
+By chaining up directives, we can make sure that, whenever validating if the user can access a field/directive, the response will not be cached. For instance:
+
+- Attach directive `@validateIsUserLoggedIn` to field `me`
+- Attach directive `@CacheControl` with `maxAge` argument value of `0` to directive `@validateIsUserLoggedIn`.
+
+### Beef up security
+
+Attach a `@validateIsUserLoggedIn` directive to directive `@translate`, to avoid malicious actors executing queries against the GraphQL service that can bring the server down and spike its bills (in this case, `@translate` is based on Google Translate and it pays a fee to use this service)
+
+## How it works
+
+How do we add directives to the schema via IFTTT? Say, for instance, we want to create a custom directive `@authorize(role: String!)`, to validate the that user executing field `myPosts` has the expected role `author`, or show an error otherwise.
+
+If we created the schema using the SDL, it would look like this:
+
+```graphql
+directive @authorize(role: String!) on FIELD_DEFINITION
+
+type User {
+  myPosts: [Post] @authorize(role: "author")
+}
+```
+
+The IFTTT rule defines the same intent that the SDL above is declaring: whenever requesting field `myPosts`, execute directive `@authorize(role: "author")` on it. Then, whenever field `myPosts` is found on the query, the engine will automatically attach `@authorize(role: 'author')` to that field on the executable query.
+
+IFTTT rules can also be triggered when encountering a directive, not just a field. For instance, we can set-up rule "Whenever directive `@translate` is found on the query, execute directive `@cache(time: 3600)` on that field".
+
+Adding IFTTT directives to the query is a recursive process: it will trigger a new event to be processed by IFTTT rules, potentially attaching other directives to the query, and so on.
+
+For instance, rule "Whenever directive `@cache` is found, execute directive `@log`" would log an entry about the execution of the field, and then trigger a new event concerning this newly added directive.
+
+## Setting it up via PHP code
+
+The `User` type has fields `roles` and `capabilities`, which can be considered to be sensitive information, so they should not be accessible by the random user.
+
+So we can attach directive `@validateDoesLoggedInUserHaveAnyRole` to these two fields, configured to validate that only a user with a given role (configured through environment variable) can access them. The configuration is provided via a CompilerPass:
+
+```php
+$accessControlManagerDefinition = $containerBuilderWrapper->getDefinition(AccessControlManagerInterface::class);
+
+if ($roles = Environment::anyRoleLoggedInUserMustHaveToAccessRolesFields()) {
+  $accessControlManagerDefinition->addMethodCall(
+    'addEntriesForFields',
+    [
+      UserRolesAccessControlGroups::ROLES,
+      [
+        [RootObjectTypeResolver::class, 'roles', $roles],
+        [UserObjectTypeResolver::class, 'roles', $roles],
+        [RootObjectTypeResolver::class, 'capabilities', $roles],
+        [UserObjectTypeResolver::class, 'capabilities', $roles],
+      ]
+    ]
+  );
+}
+if ($capabilities = Environment::anyCapabilityLoggedInUserMustHaveToAccessRolesFields()) {
+  $accessControlManagerDefinition->addMethodCall(
+    'addEntriesForFields',
+    [
+      UserCapabilitiesAccessControlGroups::CAPABILITIES,
+      [
+        [RootObjectTypeResolver::class, 'roles', $capabilities],
+        [UserObjectTypeResolver::class, 'roles', $capabilities],
+        [RootObjectTypeResolver::class, 'capabilities', $capabilities],
+        [UserObjectTypeResolver::class, 'capabilities', $capabilities],
+      ]
+    ]
+  );
+}
+```
+
+When executing the query, non-logged-in users and users without the required roles will not be allowed access those fields.

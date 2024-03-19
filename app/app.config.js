@@ -8,6 +8,7 @@ module.exports = {
       guides: "guides",
       tutorial: "tutorial",
       queryLibrary: "library",
+      architecture: "architecture",
     },
     extensions: "extensions",
     features: "features",

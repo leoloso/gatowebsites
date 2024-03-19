@@ -1,0 +1,81 @@
+---
+title: Directive design
+description: Gato GraphQL relies on a sound and solid architectural design for directives, which enables it to become both extensible and powerful.
+# image: /assets/GatoGraphQL-logo-suki.png
+order: 700
+---
+
+Directives play an important role: they allow to implement those features which are not natively-supported by the [GraphQL spec](https://spec.graphql.org/) or by the GraphQL server itself. Directives can then help fill the void in terms of functionality, so that the API can satisfy its requirements, either known or unknown ones.
+
+For this reason, directives are an extremely important element within the foundations of the GraphQL server. Gato GraphQL relies on a sound and solid architectural design for directives, which enables it to become both extensible and powerful.
+
+## Low-level functionality
+
+As a design decision, the engine depends directly on the directive pipeline for resolving the query. For this reason, directives are treated as low-level components, with access to the object where the response is stored.
+
+As a result, any custom directive has the power to modify the GraphQL response.
+
+An evident use case for this is the [`@remove` directive](/extensions/field-response-removal), which allows to indicate in the query if we'd rather omit the response from a field than to receive a `null` value (there is an [issue in the spec](https://github.com/graphql/graphql-spec/issues/476) concerning this feature).
+
+## Efficient directive calls
+
+Directives receive all their affected objects and fields together, for a single execution.
+
+For instance, calling the [Google Translate API](/extensions/google-translate) should be done the minimum possible amount of times. In this query, it is called only once, containing 10 pieces of text to translate (2 fields, title and excerpt, for 5 posts):
+
+```graphql
+query {
+  posts(pagination:{ limit: 5 }) {
+    title
+    excerpt
+    titleES: title @translate(from: "en", to: "es")
+    excerptES: excerpt @translate(from: "en", to: "es")
+  }
+}
+```
+
+In this query there are 3 calls to the API, one for every language (Spanish, French and German), 10 strings each, all calls are concurrent:
+
+```graphql
+query {
+  posts(pagination:{ limit: 5 }) {
+    title
+    excerpt
+    titleES: title @translate(from: "en", to: "es")
+    excerptES: excerpt @translate(from: "en", to: "es")
+    titleDE: title @translate(from: "en", to: "de")
+    excerptDE: excerpt @translate(from: "en", to: "de")
+    titleFR: title @translate(from: "en", to: "fr")
+    excerptFR: excerpt @translate(from: "en", to: "fr")
+  }
+}
+```
+
+## Function signature
+
+This is the [field directive interface](https://github.com/GatoGraphQL/GatoGraphQL/blob/51ac377bf3c905bca649af723e762b41625b1f7e/layers/Engine/packages/component-model/src/DirectiveResolvers/FieldDirectiveResolverInterface.php#L147). Please notice the parameters that function `resolveDirective` receives:
+
+```php
+public function resolveDirective(
+  RelationalTypeResolverInterface $relationalTypeResolver,
+  array $idFieldSet,
+  FieldDataAccessProviderInterface $fieldDataAccessProvider,
+  array $succeedingPipelineFieldDirectiveResolvers,
+  array $idObjects,
+  array $unionTypeOutputKeyIDs,
+  array $previouslyResolvedIDFieldValues,
+  array &$succeedingPipelineIDFieldSet,
+  array &$succeedingPipelineFieldDataAccessProviders,
+  array &$resolvedIDFieldValues,
+  array &$messages,
+  EngineIterationFeedbackStore $engineIterationFeedbackStore,
+): void;
+```
+
+These parameters evidence the low-level nature of the directive:
+
+- `$idFieldSet`: the list of IDs per field to be processed by the directive
+- `$succeedingPipelineIDFieldSet`: the list of IDs per field to be processed by directives at a later stage in the pipeline
+- `$resolvedIDFieldValues`: the response object
+
+The other parameters make it possible to: access the query variables and define dynamic variables, pass messages with custom data across directives, raise errors and warnings, identify and display deprecations, and store metrics.
