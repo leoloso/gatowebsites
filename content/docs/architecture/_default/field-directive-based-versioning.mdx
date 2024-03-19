@@ -1,6 +1,6 @@
 ---
 title: Field/directive-based versioning
-description: "@todo"
+description: Fields and directives can be independently versioned, and the version to use can be specified in the query.
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 1200
 ---
@@ -24,7 +24,7 @@ For directives it is similar, but in only 4 steps since they are not namespaced:
 
 If no versioning is found on any of these steps, then the field or directive is not versioned.
 
-To select the version for the field/directive, GraphQL by PoP uses the same [semver version constraints employed by Composer](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints).
+To select the version for the field/directive, Gato GraphQL uses the same [semver version constraints employed by Composer](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints).
 
 ## Why
 
@@ -72,17 +72,17 @@ The URL params to pass to the endpoint are:
 
 These params are arrays, so they can be defined multiple times in the URL as to version more than 1 field or directive. Directives are referenced directly by their name (without the `@`), like this:
 
-```elm
+```
 ?directiveVersionConstraints[makeTitle]=^0.1&directiveVersionConstraints[upperCase]=~0.2
 ```
 
 Fields are referenced as a combination of their type and their name, separated with a dot, like `Post.title` or `User.name`:
 
-```elm
+```
 ?fieldVersionConstraints[Post.title]=0.3.1&fieldVersionConstraints[User.name]=0.2|0.3
 ```
 
-The type name can be namespaced or not, it will work in either case, with [automatic namespacing](./automatic-namespacing) enabled or not.
+The type name can be namespaced or not, it will work in either case, with automatic namespacing enabled or not.
 
 Let's see some examples. In the links to execute the queries below, the URL parameters `fieldVersionConstraints[]` and `directiveVersionConstraints[]` were added to the GraphiQL URL, which then passes them to endpoint `/api/graphql/` (you can check it out using the Firefox/Chrome DevTools' Network tab).
 
@@ -177,14 +177,6 @@ Will produce different results, from the 2 different versions of the same field:
 ```
 
 ## Visualizing the schema for a specific version
-
-::: tip
-In order to know which version of the field and directive is the one being used, GraphQL by PoP outputs the field's version as part of the field's description:
-
-![Field description with version in GraphiQL](/assets/architecture/versioning-field-description.png)
-
-This is a temporary solution until [GraphQL allows to query the `extensions` field through introspection](https://github.com/graphql/graphql-spec/issues/543#issuecomment-462193626) (over which the versioning can be made available).
-:::
 
 GraphQL Voyager allows to visualize the schema for the different versions. In the default schema:
 
