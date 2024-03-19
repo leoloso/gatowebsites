@@ -14,9 +14,15 @@ In general, IFTTT are rules that trigger actions whenever a specified event happ
 
 Dynamically adding IFTTT directives to the schema is a recursive process: such directive can, itself, be configured its own set of IFTTT directives which are also added to the directive chain up.
 
-## Use cases
+## Where is it used
 
-We can add the following capabilities to the API, among others.
+Under the hood, clients in Gato GraphQL use this mechanism to configure the GraphQL schema.
+
+For instance, [Access Control](/extensions/access-control) allows us to select what access control rules to apply to operations, fields and directives. It is by using IFTTT that these rules are applied on those elements from the GraphQL schema.
+
+![Access control entry](/assets/guides/upstream-pro/access-control-entry.png "Access control entry")
+
+In general, these are some use cases:
 
 ### Define the cache control max-age a field by field basis
 
@@ -51,22 +57,7 @@ type User {
 }
 ```
 
-The IFTTT rule defines the same intent that the SDL above is declaring: whenever requesting field `myPosts`, execute directive `@authorize(role: "author")` on it.
-
-This rule for Gato GraphQL looks like this:
-
-```php
-ContainerBuilderUtils::injectValuesIntoService(
-  'access_control_manager',
-  'addEntriesForFields',
-  UserRolesAccessControlGroups::ROLES,
-  [
-    [RootTypeResolver::class, 'myPosts', ['author']],
-  ]
-);
-```
-
-Now, whenever field `myPosts` is found on the query, the engine will automatically attach `@authorize(role: 'author')` to that field on the executable query.
+The IFTTT rule defines the same intent that the SDL above is declaring: whenever requesting field `myPosts`, execute directive `@authorize(role: "author")` on it. Then, whenever field `myPosts` is found on the query, the engine will automatically attach `@authorize(role: 'author')` to that field on the executable query.
 
 IFTTT rules can also be triggered when encountering a directive, not just a field. For instance, we can set-up rule "Whenever directive `@translate` is found on the query, execute directive `@cache(time: 3600)` on that field".
 
@@ -74,11 +65,11 @@ Adding IFTTT directives to the query is a recursive process: it will trigger a n
 
 For instance, rule "Whenever directive `@cache` is found, execute directive `@log`" would log an entry about the execution of the field, and then trigger a new event concerning this newly added directive.
 
-## Example
+## Setting it up via PHP code
 
 The `User` type has fields `roles` and `capabilities`, which can be considered to be sensitive information, so they should not be accessible by the random user.
 
-So we can attach directive `@validateDoesLoggedInUserHaveAnyRole` to these two fields, configured to validate that only a user with a given role (configured through environment variable) can access them:
+So we can attach directive `@validateDoesLoggedInUserHaveAnyRole` to these two fields, configured to validate that only a user with a given role (configured through environment variable) can access them. The configuration is provided via a CompilerPass:
 
 ```php
 $accessControlManagerDefinition = $containerBuilderWrapper->getDefinition(AccessControlManagerInterface::class);
