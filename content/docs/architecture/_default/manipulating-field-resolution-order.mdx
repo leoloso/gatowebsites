@@ -162,4 +162,4 @@ Let's explore the order in which types are processed for this query, to understa
 
 Now, we can see that the problem has been resolved: `@export` is executed on step `2b`, and it is read on step `3b`.
 
-Multiple Query Execution does exactly this when [decoupling queries](/architecture/decoupling-queries): It converts the GraphQL document adding `self` fields, to have the fields in every operation be executed only after all the fields in all previous operations have been resolved.
+Multiple Query Execution does exactly this when [decoupling queries](/architecture/decoupling-queries): it converts the GraphQL document adding `self` fields, to have the fields in every operation be executed only after all the fields in all previous operations have been resolved.
