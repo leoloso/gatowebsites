@@ -94,7 +94,7 @@ Let's see why this happens. First, we analyze what types appear in the query, ad
 # Type: Root
 query GetPostsAuthorNames {
   # Type: User
-  user(by: \{id: 1\}) {
+  user(by: {id: 1}) {
     # Type: String
     name @export(as: "authorName")
   }
@@ -114,7 +114,7 @@ To process the types and load their data, the data-loading engine adds the query
 | --- | --- | --- |
 | 0 | Prepare FIFO list | `[Root]` |
 | 1a | Pop the first type of the list (`Root`) | `[]` |
-| 1b | Process all fields queried from the `Root` type:<br/>→ `user(by: \{id: 1\})`<br/>→ `posts(filter: \{ search: $authorName \})`<br/>Add their types (`User` and `Post`) to the list | `[User, Post]` |
+| 1b | Process all fields queried from the `Root` type:<br/>→ `user(by: {id: 1})`<br/>→ `posts(filter: { search: $authorName })`<br/>Add their types (`User` and `Post`) to the list | `[User, Post]` |
 | 2a | Pop the first type of the list (`User`) | `[Post]` |
 | 2b | Process the field queried from the `User` type:<br/>→ `name @export(as: "authorName")`<br/>Because it is a scalar type (`String`), there is no need to add it to the list | `[Post]` |
 | 3a | Pop the first type of the list (`Post`) | `[]` |
@@ -127,11 +127,11 @@ It is here that we need to control the field execution flow. The solution implem
 
 The `self` field, as its name indicates, returns the same object; applied to the `Root` object, it returns the same `Root` object. You may wonder: "if I already have the root object, then why would I need to retrieve it again?". Because then the engine's algorithm will need to add this new reference to `Root` at the end of the FIFO list, and we can deliberately distribute the queried fields before or after every one of these iterations.
 
-That's why field `posts(filter:\{ search: $authorName \})` is placed inside a `self` field in the query above, and running the query produces the expected response:
+That's why field `posts(filter:{ search: $authorName })` is placed inside a `self` field in the query above, and running the query produces the expected response:
 
 ```graphql
 query GetPostsAuthorNames {
-  user(by: \{id: 1\}) {
+  user(by: {id: 1}) {
     name @export(as: "authorName")
   }
   self {
@@ -151,11 +151,11 @@ Let's explore the order in which types are processed for this query, to understa
 | --- | --- | --- |
 | 0 | Prepare FIFO list | `[Root]` |
 | 1a | Pop the first type of the list (`Root`) | `[]` |
-| 1b | Process all fields queried from the `Root` type:<br/>→ `user(by: \{id: 1\})`<br/>→ `self`<br/>Add their types (`User` and `Root`) to the list | `[User, Root]` |
+| 1b | Process all fields queried from the `Root` type:<br/>→ `user(by: {id: 1})`<br/>→ `self`<br/>Add their types (`User` and `Root`) to the list | `[User, Root]` |
 | 2a | Pop the first type of the list (`User`) | `[Root]` |
 | 2b | Process the field queried from the `User` type:<br/>→ `name @export(as: "authorName")`<br/>Because it is a scalar type (`String`), there is no need to add it to the list | `[Root]` |
 | 3a | Pop the first type of the list (`Root`) | `[]` |
-| 3b | Process the field queried from the `Root` type:<br/>→ `posts(filter:\{ search: $authorName \})`<br/>Add its type (`Post`) to the list | `[Post]` |
+| 3b | Process the field queried from the `Root` type:<br/>→ `posts(filter:{ search: $authorName })`<br/>Add its type (`Post`) to the list | `[Post]` |
 | 4a | Pop the first type of the list (`Post`) | `[]` |
 | 4b | Process all fields queried from the `Post` type:<br/>→ `id`<br/>→  `title`<br/>Because these are scalar types (`ID` and `String`), there is no need to add them to the list | `[]` |
 | 5 | List is empty, iteration ends. | &nbsp; |
