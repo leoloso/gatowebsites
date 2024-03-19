@@ -213,7 +213,7 @@ These are some of the characteristics of the code:
 
 ✅ Every class is a service, and Symfony Dependency Injection takes care of autowiring the whole application together.
 
-✅ The underlying GraphQL server (called [GraphQL by PoP](https://graphql-by-pop.com/)) [is CMS-agnostic](https://graphql-by-pop.com/docs/architecture/cms-agnosticism.html). Gato GraphQL implements the contracts for WordPress, and adds a bit of custom logic (for instance, to provide the clients).
+✅ The underlying GraphQL server [is CMS-agnostic](/architecture/cms-agnosticism). Gato GraphQL implements the contracts for WordPress, and adds a bit of custom logic (for instance, to provide the clients).
 
 The WordPress-specific code is only around 10% of the overall code. Replicating this 10% for another framework or CMS (Laravel/Drupal/etc) can provide an implementation of a GraphQL server for them too.
 
@@ -221,7 +221,7 @@ The WordPress-specific code is only around 10% of the overall code. Replicating 
 
 ✅ Likewise, [the GraphQL schema is not a 1:1 replica of the WordPress data model](/blog/rejuvenating-wordpress-through-graphql), bypassing the technical debt accumulated by WordPress at the data layer, and providing a clean interface.
 
-✅ GraphQL's N+1 problem cannot happen, [by architectural design](https://graphql-by-pop.com/docs/architecture/suppressing-n-plus-one-problem.html), and without troubling the developer at all.
+✅ GraphQL's N+1 problem cannot happen, [by architectural design](/architecture/suppressing-n-plus-one-problem), and without troubling the developer at all.
 
 ✅ The server is not only a GraphQL server: it's actually an API server, where the response can be output in other formats or specifications (eg: REST) from a single source of truth. (More on this on round 11).
 
@@ -233,7 +233,7 @@ The WordPress-specific code is only around 10% of the overall code. Replicating 
 
 This is important not just for the present, but also for the future: I can have the certainty that I can use any dependency from the [Packagist](https://packagist.org/) repository, so I don't need to reinvent the wheel.
 
-✅ [Fields are subscribed to types](https://graphql-by-pop.com/docs/architecture/subscribing-fields-to-types.html), making the GraphQL schema easy to extend.
+✅ [Fields are subscribed to types](/architecture/subscribing-fields-to-types), making the GraphQL schema easy to extend.
 
 Winner of the round: Gato GraphQL (by a big margin, I dare say, if you don't mind).
 
@@ -277,7 +277,7 @@ I call this style "ADD": Array-Driven Development. I can't say I'm a fan of it.
 
 ---
 
-In Gato GraphQL, all code [is SOLID](https://graphql-by-pop.com/docs/architecture/solid.html). To register a field in the GraphQL schema, we create a class implementing interface [`FieldResolverInterface`](https://github.com/GatoGraphQL/GatoGraphQL/blob//d2d835c8f1c1a8e0f743228fa57ac981d5a4c5ea/layers/Engine/packages/component-model/src/FieldResolvers/FieldResolverInterface.php) (actually, extending from [`AbstractSchemaFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/f805ccafd6240a3467582ff73286b02c0722c25b/layers/Engine/packages/component-model/src/FieldResolvers/AbstractSchemaFieldResolver.php), which has many methods already implemented), and we [register it in the container](https://github.com/GatoGraphQL/GatoGraphQL/blob/992202c713c9857a2537c70d051173bd8bbd2e81/layers/Schema/packages/users/config/schema-services.yaml#L6).
+In Gato GraphQL, all code [is SOLID](/architecture/solid). To register a field in the GraphQL schema, we create a class implementing interface [`FieldResolverInterface`](https://github.com/GatoGraphQL/GatoGraphQL/blob//d2d835c8f1c1a8e0f743228fa57ac981d5a4c5ea/layers/Engine/packages/component-model/src/FieldResolvers/FieldResolverInterface.php) (actually, extending from [`AbstractSchemaFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/f805ccafd6240a3467582ff73286b02c0722c25b/layers/Engine/packages/component-model/src/FieldResolvers/AbstractSchemaFieldResolver.php), which has many methods already implemented), and we [register it in the container](https://github.com/GatoGraphQL/GatoGraphQL/blob/992202c713c9857a2537c70d051173bd8bbd2e81/layers/Schema/packages/users/config/schema-services.yaml#L6).
 
 For instance, [this code](https://github.com/getpop/users/blob/4ea244c419ad21bf9297d476180acf9435d9d104/src/FieldResolvers/UserFieldResolver.php) provides fields `username`, `email` and `url` to the `User` type:
 
@@ -536,7 +536,7 @@ This is a matter of opinion, and there's no right or wrong. But let me tell you 
 
 Directives are [unregulated by the spec](https://blog.logrocket.com/graphql-directives-are-underrated/#whyaredirectivesimportant), so GraphQL servers can implement them any way they like, make them as powerful as they need to. That is why plenty of new functionality in GraphQL is first introduced via directives, such as [`@stream` and `@defer`](https://foundation.graphql.org/news/2020/12/08/improving-latency-with-defer-and-stream-directives/).
 
-Gato GraphQL treats directives with reverence. They are [executed only once](https://graphql-by-pop.com/docs/architecture/directive-design.html) with the data from all entities, for all the fields they are applied to (which explains why the `@strTranslate` directive can fetch results from the Google Translate API so quickly), and the GraphQL engine itself is based on a [directive pipeline](https://graphql-by-pop.com/docs/architecture/directive-pipeline.html).
+Gato GraphQL treats directives with reverence. They are [executed only once](/architecture/directive-design) with the data from all entities, for all the fields they are applied to (which explains why the `@strTranslate` directive can fetch results from the Google Translate API so quickly), and the GraphQL engine itself is based on a [directive pipeline](/architecture/directive-pipeline).
 
 Ahhhh, but you're scared of making all this power available to the users, right? That's a valid concern. But then, you can just remove access to the single endpoint, and provide access to data only through persisted queries, where you (the admin of the site) are the only person with access to the directives.
 
@@ -568,11 +568,11 @@ But that is not enough to satisfy the WP REST API, because it also [has a JSON s
 
 Concerning Gato GraphQL. I must admit I've been lucky, because work on its underlying engine (the server-side component model called [PoP](https://github.com/GatoGraphQL/GatoGraphQL)) started circa 2013, that is several years before I knew of something called GraphQL, and this project evolved with some ideas of its own (which I documented in [this vintage article of mine](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/)).
 
-Then, when I started coding the CMS-agnostic [GraphQL by PoP](https://graphql-by-pop.com/) (on which Gato GraphQL stands) around 1.5 years ago, I merged the ideas developed for PoP, with the foundations established by GraphQL, creating a system that supports the GraphQL spec in its entirety, while being able to add a different set of features to it.
+Then, when I started coding the CMS-agnostic GraphQL server (on which Gato GraphQL stands) around 1.5 years ago, I merged the ideas developed for PoP, with the foundations established by GraphQL, creating a system that supports the GraphQL spec in its entirety, while being able to add a different set of features to it.
 
 In this regard, the schema that PoP uses is API-agnostic, and it's a superset of the one by GraphQL. Wanna see the PoP schema? Sure? Ok, here it is: [/api/graphql/?query=fullSchema](https://nextapi.getpop.org/api/graphql/?query=fullSchema).
 
-Then, the GraphQL by PoP layer formats the PoP schema following the GraphQL specification, which produces the GraphQL schema. And similarly, we can produce the JSON schema required by the WP REST API.
+Then, the GraphQL server layer formats the PoP schema following the GraphQL specification, which produces the GraphQL schema. And similarly, we can produce the JSON schema required by the WP REST API.
 
 Generating this JSON schema hasn't been done yet, but it's doable. 
 

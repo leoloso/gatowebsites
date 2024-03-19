@@ -159,7 +159,7 @@ Check-out the following 3 schemas:
 2. [Nested mutations keeping mutation fields duplicate](https://newapi.getpop.org/graphql-interactive/?mutation_scheme=nested):<br/>a single `Root` type handles queries and mutations, and redundant mutation fields in this type are kept
 3. [Nested mutations removing redundant mutation fields from the root type](https://newapi.getpop.org/graphql-interactive/?mutation_scheme=lean_nested):<br/>same as above, but removing all redundant mutation fields from the `Root` type
 
-✱ Btw1, these 3 schemas all use the same endpoint, but changing a URL param `?mutation_scheme` to values `standard`, `nested` and `lean_nested`. That's possible because the GraphQL server follows the [code-first approach](https://graphql-by-pop.com/docs/architecture/code-first.html). 🤟
+✱ Btw1, these 3 schemas all use the same endpoint, but changing a URL param `?mutation_scheme` to values `standard`, `nested` and `lean_nested`. That's possible because the GraphQL server follows the [code-first approach](/architecture/code-first). 🤟
 
 ✱ Btw2, these options can be selected on the "Mutation Scheme" section in the Schema configuration (shown above), hence you can also decide what behavior to apply for individual custom endpoints and persisted queries. 👏
 

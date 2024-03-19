@@ -15,11 +15,11 @@ tags:
 
 A few days ago I published article [Hosting all your PHP packages together in a monorepo](https://blog.logrocket.com/hosting-all-your-php-packages-together-in-a-monorepo/), explaining why we may want to use a monorepo to manage our PHP codebase, and how to do it via the [Monorepo Builder](https://github.com/symplify/monorepo-builder).
 
-Here I'd like to complement that article, explaining a bit more in detail why the [`GatoGraphQL/GatoGraphQL` codebase](https://github.com/GatoGraphQL/GatoGraphQL) (which hosts Gato GraphQL, its underlying engine [GraphQL by PoP](https://graphql-by-pop.com/), and the component-model architecture over which it is based) needs to be hosted on a monorepo, and the optimizations I've made for it.
+Here I'd like to complement that article, explaining a bit more in detail why the [`GatoGraphQL/GatoGraphQL` codebase](https://github.com/GatoGraphQL/GatoGraphQL) (which hosts Gato GraphQL, its underlying GraphQL engine, and the component-model architecture over which it is based) needs to be hosted on a monorepo, and the optimizations I've made for it.
 
 ## Why Gato GraphQL needs a monorepo
 
-In order to [support CMS-agnosticism](https://graphql-by-pop.com/docs/architecture/cms-agnosticism.html), the codebase for Gato GraphQL and associated projects was split into a multitude of packages, managed via Composer. In total, over 100 packages were created! (Currently, the number is over 200.)
+In order to [support CMS-agnosticism](/architecture/cms-agnosticism), the codebase for Gato GraphQL and associated projects was split into a multitude of packages, managed via Composer. In total, over 100 packages were created! (Currently, the number is over 200.)
 
 The big number of packages adds no extra complexity for assembling them all together via Composer: we just run `composer install`, and everything works. However, it does become problematic for development when each single package lives on its own repository, because of versioning.
 
