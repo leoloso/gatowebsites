@@ -4,7 +4,7 @@ import { useState } from 'react'
 import clsx from 'clsx'
 import { ClipboardIcon, CheckIcon } from '@heroicons/react/20/solid'
 
-const buttonClasses = 'flex items-center text-xs font-medium text-white rounded btn-sm'
+const buttonClasses = 'flex hidden group-hover:flex items-center text-xs font-medium text-white rounded btn-sm'
 
 export function CopyButton({
   text,

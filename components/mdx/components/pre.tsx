@@ -15,7 +15,7 @@ export function Pre({
 }) {
   const raw = Children.onlyText(children)
   return (
-    <pre {...props} className={clsx('relative', props.className)}>
+    <pre {...props} className={clsx('relative group', props.className)}>
       {children}
       <CopyButton text={raw} className={buttonClasses} />
     </pre>
