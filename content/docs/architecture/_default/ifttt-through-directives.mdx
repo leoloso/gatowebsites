@@ -1,6 +1,6 @@
 ---
 title: IFTTT through directives
-description: "@todo"
+description: IFTTT directives are dynamically added to the query whenever some specific field or directive is present in the query.
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 850
 ---
@@ -39,8 +39,6 @@ Attach a `@validateIsUserLoggedIn` directive to directive `@translate`, to avoid
 
 ## How it works
 
-
-
 How do we add directives to the schema via IFTTT? Say, for instance, we want to create a custom directive `@authorize(role: String!)`, to validate the that user executing field `myPosts` has the expected role `author`, or show an error otherwise.
 
 If we created the schema using the SDL, it would look like this:
@@ -55,16 +53,16 @@ type User {
 
 The IFTTT rule defines the same intent that the SDL above is declaring: whenever requesting field `myPosts`, execute directive `@authorize(role: "author")` on it.
 
-This rule for Gato GraphQL looks like [this](https://github.com/PoPSchema/user-roles-acl/blob/2c179ff6d7c88be2e63542fbad619963755fc566/src/Config/ServiceConfiguration.php#L51):
+This rule for Gato GraphQL looks like this:
 
 ```php
 ContainerBuilderUtils::injectValuesIntoService(
-    'access_control_manager',
-    'addEntriesForFields',
-    UserRolesAccessControlGroups::ROLES,
-    [
-        [RootTypeResolver::class, 'myPosts', ['author']],
-    ]
+  'access_control_manager',
+  'addEntriesForFields',
+  UserRolesAccessControlGroups::ROLES,
+  [
+    [RootTypeResolver::class, 'myPosts', ['author']],
+  ]
 );
 ```
 
@@ -76,21 +74,40 @@ Adding IFTTT directives to the query is a recursive process: it will trigger a n
 
 For instance, rule "Whenever directive `@cache` is found, execute directive `@log`" would log an entry about the execution of the field, and then trigger a new event concerning this newly added directive.
 
-## Example package
+## Example
 
 The `User` type has fields `roles` and `capabilities`, which can be considered to be sensitive information, so they should not be accessible by the random user.
 
-Package [Access Control List for User Roles](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/Schema/packages/user-roles-acl) deals with this issue, by attaching directive `@validateDoesLoggedInUserHaveAnyRole` to these two fields, configured to validate that only a user with a given role (configured through environment variable) can access them:
+So we can attach directive `@validateDoesLoggedInUserHaveAnyRole` to these two fields, configured to validate that only a user with a given role (configured through environment variable) can access them:
 
 ```php
+$accessControlManagerDefinition = $containerBuilderWrapper->getDefinition(AccessControlManagerInterface::class);
+
 if ($roles = Environment::anyRoleLoggedInUserMustHaveToAccessRolesFields()) {
-  ContainerBuilderUtils::injectValuesIntoService(
-    'access_control_manager',
+  $accessControlManagerDefinition->addMethodCall(
     'addEntriesForFields',
-    UserRolesAccessControlGroups::ROLES,
     [
-      [UserTypeResolver::class, 'roles', $roles],
-      [UserTypeResolver::class, 'capabilities', $roles],
+      UserRolesAccessControlGroups::ROLES,
+      [
+        [RootObjectTypeResolver::class, 'roles', $roles],
+        [UserObjectTypeResolver::class, 'roles', $roles],
+        [RootObjectTypeResolver::class, 'capabilities', $roles],
+        [UserObjectTypeResolver::class, 'capabilities', $roles],
+      ]
+    ]
+  );
+}
+if ($capabilities = Environment::anyCapabilityLoggedInUserMustHaveToAccessRolesFields()) {
+  $accessControlManagerDefinition->addMethodCall(
+    'addEntriesForFields',
+    [
+      UserCapabilitiesAccessControlGroups::CAPABILITIES,
+      [
+        [RootObjectTypeResolver::class, 'roles', $capabilities],
+        [UserObjectTypeResolver::class, 'roles', $capabilities],
+        [RootObjectTypeResolver::class, 'capabilities', $capabilities],
+        [UserObjectTypeResolver::class, 'capabilities', $capabilities],
+      ]
     ]
   );
 }
