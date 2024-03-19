@@ -1,11 +1,11 @@
 ---
 title: Dataloading engine
-description: "@todo"
+description: This is how Gato GraphQL executes the data-loading process to resolve the GraphQL query
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 400
 ---
 
-Gato GraphQL [uses server-side components](./using-components-instead-of-graphs) to represent the data model (not graphs or trees). Let's see how it executes the data-loading process to resolve the GraphQL query.
+Gato GraphQL [uses server-side components](/architecture/using-components-instead-of-graphs) to represent the data model (not graphs or trees). Let's see how it executes the data-loading process to resolve the GraphQL query.
 
 In order to process the data, we must flatten the components into types (`<FeaturedDirector>` => `Director`, `<Film>` => `Film`, `<Actor>` => `Actor`), order them as they appeared in the component hierarchy (`Director`, then `Film`, then `Actor`) and deal with them in "iterations", retrieving the object data for each type on its own iteration, like this:
 
@@ -36,20 +36,20 @@ However, if a type has been processed and then we need to load more data from th
 
 ![Iterating over a repeated type](/assets/architecture/featured-director-loading-data-repeated.png)
 
-Pay attention also that here we can use the "caching" mechanism as implemented in [dataloader](https://github.com/graphql/dataloader): on the second iteration for type `Director`, the object with ID 2 is not retrieved again, since it was already retrieved on the first iteration so it can be taken from the cache.
+{/* Pay attention also that here we can use the "caching" mechanism as implemented in [dataloader](https://github.com/graphql/dataloader): on the second iteration for type `Director`, the object with ID 2 is not retrieved again, since it was already retrieved on the first iteration so it can be taken from the cache. */}
 
 Now that we have fetched all the object data, we need to shape it into the expected response, mirroring the GraphQL query. However, as it can be seen, the data does not have the required tree structure. Instead, relational fields contain the IDs to the nested object, emulating how data is represented in a relational database. Hence, following this comparison, the data retrieved for each type can be represented as a table, like this:
 
 _Table for type `Director`:_
 
-<table class="table">
+<table>
 <tr><th>ID</th><th>name</th><th>country</th><th>avatar</th><th>films</th></tr>
 <tr><td>2</td><td>George Lucas</td><td>USA</td><td>george-lucas.jpg</td><td>[3, 8]</td></tr>
 </table>
 
 _Table for type `Film`:_
 
-<table class="table">
+<table>
 <tr><th>ID</th><th>title</th><th>thumbnail</th><th>actors</th></tr>
 <tr><td>3</td><td>The Phantom Menace</td><td>episode-1.jpg</td><td>[4, 6]</td></tr>
 <tr><td>8</td><td>Attack of the Clones</td><td>episode-2.jpg</td><td>[6, 7]</td></tr>
@@ -57,7 +57,7 @@ _Table for type `Film`:_
 
 _Table for type `Actor`:_
 
-<table class="table">
+<table>
 <tr><th>ID</th><th>name</th><th>avatar</th></tr>
 <tr><td>4</td><td>Ewan McGregor</td><td>mcgregor.jpg</td></tr>
 <tr><td>6</td><td>Nathalie Portman</td><td>portman.jpg</td></tr>
@@ -122,4 +122,4 @@ This solution is very performant, much better than the exponential complexity ex
 
 ## Implemented PHP code
 
-The data-loading process takes place on function `getModuleData` from class `Engine` in package [Component Model](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/Engine/packages/component-model).
+The data-loading process takes place on function [`getComponentData` from class `Engine`](https://github.com/GatoGraphQL/GatoGraphQL/blob/94da48de6f832aaa042260d74e3e79216f9b17dc/layers/Engine/packages/component-model/src/Engine/Engine.php#L1308) in package [Component Model](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/Engine/packages/component-model).
