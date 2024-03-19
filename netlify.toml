@@ -227,6 +227,16 @@
   status = 301
 
 [[redirects]]
+  from = "/docs/architecture/cms-agnosticism.html"
+  to = "/architecture/cms-agnosticism"
+  status = 301
+
+[[redirects]]
+  from = "/docs/architecture/solid.html"
+  to = "/architecture/solid"
+  status = 301
+
+[[redirects]]
   from = "/docs/architecture/code-first.html"
   to = "/architecture/code-first"
   status = 301
