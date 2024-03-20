@@ -42,3 +42,13 @@ For instance, when creating a new post, automation rule **Add comments block to 
   alt="Automatically inserting the comments block to new 'draft' posts"
   caption="Automatically inserting the comments block to new 'draft' posts"
 />
+
+Use <a href="https://developer.wordpress.org/plugins/cron/" target="_blank">WP-Cron</a> to execute GraphQL queries and persisted queries, using action hooks:
+
+- `gatographql__execute_query`
+- `gatographql__execute_persisted_query`
+
+You can also react to the resolution of a GraphQL query in your application's PHP code, via the following action hooks:
+
+1. `gatographql__executed_query:{$operationName}`
+2. `gatographql__executed_query`
