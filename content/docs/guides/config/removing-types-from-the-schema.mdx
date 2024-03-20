@@ -3,7 +3,7 @@ title: Removing types from the schema
 # isPRO: true
 description: "Two ways to remove types from the schema, whether for all endpoints, or for specific endpoints."
 # image: /assets/GatoGraphQL-logo-suki.png
-order: 3260
+order: 2000
 ---
 
 There are two ways to remove types from the schema:
@@ -25,7 +25,7 @@ This will remove the type in all schemas.
 
 For instance, if we don't need comments on the site, we can remove the `Comment` type by disabling module "Comments".
 
-## 2. Disabling types for some specific endpoint
+## 2. Disabling types for some specific endpoint [PRO]
 
 We can also remove a schema type by [disabling access to all fields which return that type](/guides/config/removing-fields-and-directives-from-the-schema). To do this, we must add the access control rule "Disable access" for the field in some access control list (ACL), make it private, and assign the ACL to the corresponding schema configuration.
 
