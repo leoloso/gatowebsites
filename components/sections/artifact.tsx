@@ -14,6 +14,7 @@ export default function ArtifactSection({
   children,
   widgetChildren,
   testimonialIndex = 0,
+  defaultArtifactImage,
   defaultArtifactIcon,
 }: {
   artifact: Artifact,
@@ -21,6 +22,7 @@ export default function ArtifactSection({
   children: React.ReactNode,
   widgetChildren?: React.ReactNode,
   testimonialIndex?: number,
+  defaultArtifactImage?: StaticImageData,
   defaultArtifactIcon?: StaticImageData,
 }) {
   const testimonial = getTestimonials()[testimonialIndex]
@@ -57,7 +59,7 @@ export default function ArtifactSection({
                     <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
                       <figure className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
-                        <Image className="w-full rounded-2xl" src={artifact.image || DefaultArtifactImg} width={586} height={316} alt="Artifact image" />
+                        <Image className="w-full rounded-2xl" src={artifact.image || defaultArtifactImage || DefaultArtifactImg} width={586} height={316} alt="Artifact image" />
                       </figure>
 
                       <h1 className="sr-only">{artifact.title}</h1>
