@@ -234,6 +234,9 @@ const Extension = defineDocumentType(() => ({
     featured: {
       type: 'boolean',
     },
+    relatedGuideURLPath: {
+      type: 'string',
+    },
     category: {
       type: 'enum',
       options: [
@@ -285,6 +288,9 @@ const Feature = defineDocumentType(() => ({
     },
     featured: {
       type: 'boolean',
+    },
+    relatedGuideURLPath: {
+      type: 'string',
     },
     category: {
       type: 'enum',
