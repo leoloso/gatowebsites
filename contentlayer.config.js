@@ -234,7 +234,7 @@ const Extension = defineDocumentType(() => ({
     featured: {
       type: 'boolean',
     },
-    relatedGuideURLPath: {
+    relatedGuideSlug: {
       type: 'string',
     },
     category: {
@@ -289,7 +289,7 @@ const Feature = defineDocumentType(() => ({
     featured: {
       type: 'boolean',
     },
-    relatedGuideURLPath: {
+    relatedGuideSlug: {
       type: 'string',
     },
     category: {
