@@ -4,6 +4,10 @@ description: Avoid conflicts in the schema, by having all type names automatical
 category: Free plugin
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 100
+relatedGuide: {
+  topic: schema,
+  slug: namespacing-the-schema
+}
 ---
 
 If plugins WooCommerce and Easy Digital Downloads both implemented a `Product` type for the GraphQL API, then we could not install both plugins at the same time, since their types would conflict.

@@ -234,6 +234,10 @@ const Extension = defineDocumentType(() => ({
     featured: {
       type: 'boolean',
     },
+    relatedGuide: {
+      type: 'nested',
+      of: RelatedGuide,
+    },
     category: {
       type: 'enum',
       options: [
@@ -270,6 +274,20 @@ const Extension = defineDocumentType(() => ({
   },
 }))
 
+const RelatedGuide = defineNestedType(() => ({
+  name: 'RelatedGuide',
+  fields: {
+    topic: {
+      type: 'string',
+      required: true
+    },
+    slug: {
+      type: 'string',
+      required: true
+    },  
+  },
+}))
+
 const Feature = defineDocumentType(() => ({
   name: 'Feature',
   filePathPattern: `${AppConfig.paths.features}/**/*.mdx`,
@@ -285,6 +303,10 @@ const Feature = defineDocumentType(() => ({
     },
     featured: {
       type: 'boolean',
+    },
+    relatedGuide: {
+      type: 'nested',
+      of: RelatedGuide,
     },
     category: {
       type: 'enum',

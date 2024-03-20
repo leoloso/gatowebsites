@@ -4,6 +4,10 @@ description: Input object where exactly one of the input fields must be provided
 category: Free plugin
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 345
+relatedGuide: {
+  topic: augment,
+  slug: oneof-input-object
+}
 ---
 
 The oneOf input object is a particular type of input object, where exactly one of the input fields must be provided as input, or otherwise the server returns a validation error. This behavior introduces polymorphism for inputs in GraphQL, allowing us to design neater schemas.
