@@ -168,7 +168,7 @@ export default function SearchModal({
                       >
                         <path d="M11.854.146a.5.5 0 0 0-.525-.116l-11 4a.5.5 0 0 0-.015.934l4.8 1.921 1.921 4.8A.5.5 0 0 0 7.5 12h.008a.5.5 0 0 0 .462-.329l4-11a.5.5 0 0 0-.116-.525Z" />
                       </svg>
-                      <span className="font-medium">Contact support</span>
+                      <span className="font-medium">Support request</span>
                     </Link>
                   </li>
                 </ul>
