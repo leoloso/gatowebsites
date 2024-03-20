@@ -33,6 +33,7 @@ export default function Story({
             {/* Section header */}
             {includeHeader && (
               <SectionHeader
+                // leading='About us'
                 title='Our story (so far)'
               />
             )}
