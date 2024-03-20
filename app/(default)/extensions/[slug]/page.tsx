@@ -5,7 +5,8 @@ import AppConfig from '@/app/app.config'
 import ArtifactSection from '@/components/sections/artifact'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon-01.png'
 import DefaultArtifactImage from '@/public/assets/theme/default/extension-image.png'
-import { getExtensionDocumentationURLPath } from '@/utils/content/application-urls'
+import { getDocURLPath, getExtensionDocumentationURLPath } from '@/utils/content/application-urls'
+import { getGuideDocuments } from '@/utils/content/document'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
@@ -36,6 +37,8 @@ export default async function SingleExtension({ params }: {
   const extension = allExtensions.find((extension) => extension.slug === params.slug)
 
   if (!extension) notFound()
+
+  const relatedGuide = extension.relatedGuide ? getGuideDocuments().find((doc) => doc.slug === extension.relatedGuide?.slug && doc.topicSlug === extension.relatedGuide?.topic) : null
 
   return (
     <ArtifactSection
@@ -72,6 +75,16 @@ export default async function SingleExtension({ params }: {
           <span className="text-slate-400">Category</span>
           <span className="text-slate-300 font-medium">{extension.category}</span>
         </li>
+        {!! relatedGuide && (
+          <li className="py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
+            <div className="text-slate-400">Related guide:</div>
+            <div className="mt-1">
+              <a className="text-purple-500 font-medium" href={getDocURLPath(relatedGuide)}>
+                <span>{relatedGuide.title}</span>
+              </a>
+            </div>
+          </li>
+        )}
       </ul>
     </ArtifactSection>
   )

@@ -4,6 +4,10 @@ description: Expose directives that augment other directives, modifying their be
 category: Free plugin
 # image: /assets/GatoGraphQL-logo-suki.png
 order: 330
+relatedGuide: {
+  topic: schema,
+  slug: using-composable-directives
+}
 ---
 
 Oftentimes, a directive cannot be applied on a field, because it has an input which is different than the field's output. For instance, directive `@strUpperCase` receives a string as input, so it can't be applied on field `User.capabilities`, which returns an array of strings.
