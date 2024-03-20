@@ -8,6 +8,7 @@ import DefaultArtifactIcon04 from '@/public/assets/theme/default/artifact-icon-0
 import DefaultArtifactImage01 from '@/public/assets/theme/default/feature-image.png'
 import DefaultArtifactImage02 from '@/public/assets/theme/default/feature-pro-image.png'
 import { getGuideDocuments } from '@/utils/content/document'
+import { getDocURLPath } from '@/utils/content/application-urls'
 
 export async function generateStaticParams() {
   return allFeatures.map((feature) => ({
@@ -39,7 +40,7 @@ export default async function SingleFeature({ params }: {
 
   if (!feature) notFound()
 
-  const guide = feature.relatedGuideSlug ? getGuideDocuments().find((doc) => doc.slug === feature.relatedGuideSlug) : null
+  const relatedGuide = feature.relatedGuide ? getGuideDocuments().find((doc) => doc.slug === feature.relatedGuide?.slug && doc.topicSlug === feature.relatedGuide?.topic) : null
 
   return (
     <ArtifactSection
@@ -58,11 +59,11 @@ export default async function SingleFeature({ params }: {
           <span className="text-slate-400">Category</span>
           <span className="text-slate-300 font-medium">{feature.category}</span>
         </li>
-        {!! guide && (
+        {!! relatedGuide && (
           <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
             <span className="text-slate-400">Guide</span>
-            <a className="text-purple-500 font-medium flex items-center space-x-1" href={feature.relatedGuideSlug}>
-              <span>{guide.title}</span>
+            <a className="text-purple-500 font-medium flex items-center space-x-1" href={getDocURLPath(relatedGuide)}>
+              <span>{relatedGuide.title}</span>
             </a>
           </li>
         )}
