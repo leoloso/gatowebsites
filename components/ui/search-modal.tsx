@@ -144,6 +144,20 @@ export default function SearchModal({
                 <div className="text-sm font-medium text-slate-500 px-2 mb-2">Actions</div>
                 <ul>
                   <li>
+                    <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={AppConfig.urls.instawpSandboxDemo} target='_blank'>
+                      <svg
+                        className="w-3 h-3 fill-teal-500 shrink-0 mr-3"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M6 0a6 6 0 1 0 0 12A6 6 0 0 0 6 0Zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
+                      </svg>
+                      <span className="font-medium">Try out Gato GraphQL PRO</span>
+                    </Link>
+                  </li>
+                  <li>
                     <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href="/contact">
                       <svg
                         className="w-3 h-3 fill-purple-500 shrink-0 mr-3"
