@@ -11,6 +11,7 @@ import { InstantSearchNext } from 'react-instantsearch-nextjs';
 import {
   SearchBox,
   useHits,
+  PoweredBy,
 } from 'react-instantsearch';
 
 import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
@@ -272,6 +273,14 @@ export default function SearchModal({
                 }}
               />
               <CustomHits />
+              <PoweredBy
+                // Optional props
+                theme='dark'
+                classNames={{
+                  root: 'flex justify-center',
+                  logo: 'text-sm font-medium text-slate-300 h-4 my-2',
+                }}
+              />
             </InstantSearchNext>
           </Dialog.Panel>
         </Transition.Child>
