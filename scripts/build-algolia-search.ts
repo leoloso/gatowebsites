@@ -1,7 +1,7 @@
 import dotenv from "dotenv"
 import algoliaSearch from "algoliasearch"
 import { allPosts } from 'contentlayer/generated'
-import { maybeAddDomain } from "@/utils/domain"
+import { maybeAddDomain } from "../utils/domain"
 
 dotenv.config()
 
