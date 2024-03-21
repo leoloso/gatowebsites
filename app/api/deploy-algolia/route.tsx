@@ -1,6 +1,7 @@
 import algoliaSearch from "algoliasearch"
 import { allPosts } from 'contentlayer/generated'
 import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
+import { getPostURLPath } from "@/utils/content/application-urls"
 
 export interface SearchObject {
   objectID: string // objectID is needed for Algolia
@@ -20,6 +21,7 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
         title: post.title,
         description: post.summary,
         slug: post.slug,
+        urlPath: getPostURLPath(post),
         date: post.publishedAt,
         thumbnail: post.image,
       }
