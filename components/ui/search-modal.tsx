@@ -274,7 +274,6 @@ export default function SearchModal({
               />
               <CustomHits />
               <PoweredBy
-                // Optional props
                 theme='dark'
                 classNames={{
                   root: 'flex justify-center',
