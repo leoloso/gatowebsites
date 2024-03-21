@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "deploy": "netlify deploy --build --context deploy-preview",
-    "deploy-prod": "netlify deploy --build --prod"
+    "deploy-prod": "netlify deploy --build --prod",
+    "deploy-algolia": "curl https://gatographql.com/api/deploy-algolia"
   },
   "overrides": {
     "next-contentlayer": {
