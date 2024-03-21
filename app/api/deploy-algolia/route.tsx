@@ -1,9 +1,10 @@
-import dotenv from "dotenv"
+// import dotenv from "dotenv"
 import algoliaSearch from "algoliasearch"
 import { maybeAddDomain } from '@/utils/domain';
 import { allPosts } from 'contentlayer/generated'
+import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
 
-dotenv.config()
+// dotenv.config()
 
 export interface SearchObject {
   objectID: string // objectID is needed for Algolia
@@ -31,14 +32,14 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
 }
 
 export async function GET(request: Request) {
-  dotenv.config()
+  // dotenv.config()
   try {
     const posts = await getAllPostsTransformed()
     const client = algoliaSearch(
-      process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
-      process.env.ALGOLIA_SEARCH_ADMIN_KEY!
+      ALGOLIA_API_CREDENTIALS.appId,// process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
+      ALGOLIA_API_CREDENTIALS.searchAdminKey// process.env.ALGOLIA_SEARCH_ADMIN_KEY!
     )
-    const searchIndex = client.initIndex('website')
+    const searchIndex = client.initIndex(ALGOLIA_API_CREDENTIALS.indexName)
     const algoliaSearchIndexResponse = await searchIndex.saveObjects([...posts]) // Add any more data needed to this array
     
     return new Response(`⭐️⭐️ Successfully added ${algoliaSearchIndexResponse.objectIDs.length} records to Algolia search. ⭐️⭐️`)
