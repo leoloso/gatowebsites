@@ -18,7 +18,7 @@ import { SearchObject } from '../search/algolia'
 
 function CustomHits({...props}) {
   const { hits, results } = useHits<SearchObject>(props);
-  
+  console.log(hits, results)
   return (
     <div className="py-4 px-2 space-y-4">
       { results?.query.trim() !== '' && hits.length === 0 && (
@@ -52,7 +52,18 @@ function CustomHits({...props}) {
                     <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
                       <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
                     </svg>
-                    <span>{hit.title}</span>
+                    <div>
+                      <strong dangerouslySetInnerHTML={
+                        {
+                          __html: hit._highlightResult?.title.value || hit.title
+                        }
+                      } />
+                      <p dangerouslySetInnerHTML={
+                        {
+                          __html: hit._highlightResult?.description.value || hit.description
+                        }
+                      } />
+                    </div>
                   </Link>
                 </li>
               ))}
