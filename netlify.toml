@@ -290,6 +290,81 @@
   from = "/docs/architecture/using-components-instead-of-graphs.html"
   to = "/architecture/using-components-instead-of-graphs"
   status = 301
+  
+[[redirects]]
+  from = "/guides/rapid-iteration-on-the-schema.html"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/guides/versioning-fields-and-directives.html"
+  to = "/features/field-and-directive-based-versioning"
+  status = 301
+  
+[[redirects]]
+  from = "/guides/localized-newsletter.html"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/guides/building-cms-agnostic-api.html"
+  to = "/architecture/cms-agnosticism"
+  status = 301
+
+[[redirects]]
+  from = "/docs/architecture/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/caching/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/clients/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/dynamic-schema/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/extended/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/getting-started/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/going-further/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/operational/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/roadmap/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/schema-objects/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/troubleshooting/*"
+  to = "/"
+  status = 301
 
 
 # Proxying Plausible through Netlify

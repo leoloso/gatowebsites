@@ -5,7 +5,7 @@ const releaseDates : { [key: string]: string } = {
 
 export function getReleaseData(version: string): string {
   if (!releaseDates[version]) {
-    throw new Error(`There is no release with version ${version}`)
+    throw new Error(`There is no release with version '${version}'`)
   }
   return releaseDates[version];
 }
