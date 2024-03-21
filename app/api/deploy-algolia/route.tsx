@@ -100,7 +100,7 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
 }
 
 export async function GET(request: NextApiRequest) {
-  const query = request.query;
+  const query = request.query || {};
   const { apiKey } = query;
   if (!apiKey || typeof apiKey !== 'string' || !isAdminUser(apiKey)) {
     return new Response(`⛔️ You are not allowed here`)
