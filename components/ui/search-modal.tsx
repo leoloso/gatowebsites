@@ -18,7 +18,6 @@ import { SearchObject } from '../search/algolia'
 
 function CustomHits({...props}) {
   const { hits, results } = useHits<SearchObject>(props);
-  console.log(hits, results)
   return (
     <div className="py-4 px-2 space-y-4">
       { results?.query.trim() !== '' && hits.length === 0 && (
@@ -55,12 +54,12 @@ function CustomHits({...props}) {
                     <div>
                       <strong dangerouslySetInnerHTML={
                         {
-                          __html: hit._highlightResult?.title.value || hit.title
+                          __html: (!Array.isArray(hit._highlightResult?.title) && hit._highlightResult?.title.value) || hit.title
                         }
                       } />
                       <p dangerouslySetInnerHTML={
                         {
-                          __html: hit._highlightResult?.description.value || hit.description
+                          __html: (!Array.isArray(hit._highlightResult?.description) && hit._highlightResult?.description.value) || hit.title
                         }
                       } />
                     </div>
