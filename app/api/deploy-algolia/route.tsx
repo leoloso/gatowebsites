@@ -22,7 +22,7 @@ export interface SearchObject {
   objectID: string // objectID is needed for Algolia
   title: string
   description: string
-  slug: string
+  urlPath: string
 }
 
 async function getAllPostsTransformed(): Promise<SearchObject[]> {
@@ -35,7 +35,6 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
         objectID: slugify(urlPath),
         title: post.title,
         description: post.summary,
-        slug: post.slug,
         urlPath: urlPath,
       }
     }) || []
@@ -52,7 +51,6 @@ async function getAllDocsTransformed(): Promise<SearchObject[]> {
         objectID: slugify(urlPath),
         title: doc.title,
         description: doc.description,
-        slug: doc.slug,
         urlPath: urlPath,
       }
     }) || []
@@ -69,7 +67,6 @@ async function getAllExtensionsTransformed(): Promise<SearchObject[]> {
         objectID: slugify(urlPath),
         title: extension.title,
         description: extension.description,
-        slug: extension.slug,
         urlPath: urlPath,
       }
     }) || []
@@ -86,7 +83,6 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
         objectID: slugify(urlPath),
         title: feature.title,
         description: feature.description,
-        slug: feature.slug,
         urlPath: urlPath,
       }
     }) || []
