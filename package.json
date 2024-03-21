@@ -2,6 +2,7 @@
   "name": "stellar-next",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "NODE_OPTIONS=--max-old-space-size=8192 next build",
@@ -9,7 +10,7 @@
     "lint": "next lint",
     "deploy": "netlify deploy --build --context deploy-preview",
     "deploy-prod": "netlify deploy --build --prod && npm run deploy-algolia",
-    "deploy-algolia": "node ./scripts/build-algolia-search.jsx"
+    "deploy-algolia": "npx ts-node --skip-project ./scripts/build-algolia-search.ts"
   },
   "overrides": {
     "next-contentlayer": {
