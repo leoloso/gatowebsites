@@ -17,8 +17,9 @@ import {
 import slugify from "@sindresorhus/slugify"
 import { isAdminUser } from "@/utils/admin"
 import { NextApiRequest } from "next"
+import type { BaseHit } from 'instantsearch.js';
 
-export interface SearchObject {
+export interface SearchObject extends BaseHit {
   objectID: string // objectID is needed for Algolia
   title: string
   description: string

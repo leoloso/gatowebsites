@@ -13,8 +13,11 @@ import {
   useHits,
 } from 'react-instantsearch';
 
+import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
+import { SearchObject } from '@/app/api/deploy-algolia/route'
+
 function CustomHits({...props}) {
-  const { hits, results, sendEvent } = useHits(props);
+  const { hits, results, sendEvent } = useHits<SearchObject>(props);
   
   return (
     <div className="py-4 px-2 space-y-4">
@@ -202,8 +205,6 @@ function CustomHits({...props}) {
     </div>
   );
 }
-
-import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
 
 // Initialize the Algolia client
 const searchClient = algoliasearch(
