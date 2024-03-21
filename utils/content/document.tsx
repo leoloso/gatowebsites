@@ -6,7 +6,7 @@ import { sortByOrder, sortByOrderAndTitle } from "./sort";
 export function getDocTopic(doc: Doc) {
   const docTopic = allDocTopics.find((docTopic) => doc.section === docTopic.section && docTopic.slug === doc.topicSlug);
   if (!docTopic) {
-    throw new Error(`There is no DocTopic with section ${doc.section} and slug ${doc.topicSlug}`)
+    throw new Error(`There is no DocTopic with section '${doc.section}' and slug '${doc.topicSlug}'`)
   }
   return docTopic
 }
@@ -70,7 +70,7 @@ export function getDocumentTopicsBySection(section: string) {
 export function getGuideDocument(relatedGuide: RelatedGuide) {
   const guide = getGuideDocuments().find((doc) => doc.slug === relatedGuide?.slug && doc.topicSlug === relatedGuide?.topic)
   if (!guide) {
-    throw new Error(`There is no guide with topic ${relatedGuide.topic} and slug ${relatedGuide.slug}`)
+    throw new Error(`There is no guide with topic '${relatedGuide.topic}' and slug '${relatedGuide.slug}'`)
   }
   return guide
 }
