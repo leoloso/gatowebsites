@@ -15,6 +15,8 @@ import {
   getPostURLPath,
 } from "@/utils/content/application-urls"
 import slugify from "@sindresorhus/slugify"
+import { isAdminUser } from "@/utils/admin"
+import { NextApiRequest } from "next"
 
 export interface SearchObject {
   objectID: string // objectID is needed for Algolia
@@ -97,7 +99,12 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
   )
 }
 
-export async function GET(request: Request) {
+export async function GET(request: NextApiRequest) {
+  const query = request.query;
+  const { apiKey } = query;
+  if (!apiKey || typeof apiKey !== 'string' || !isAdminUser(apiKey)) {
+    return new Response(`⛔️ You are not allowed here`)
+  }
   try {
     const posts = await getAllPostsTransformed()
     const docs = await getAllDocsTransformed()

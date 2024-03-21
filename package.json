@@ -10,7 +10,7 @@
     "deploy-dev": "netlify dev",
     "deploy": "netlify deploy --build --context deploy-preview",
     "deploy-prod": "netlify deploy --build --prod && npm run deploy-algolia",
-    "deploy-algolia": "curl https://gatographql.com/api/deploy-algolia"
+    "deploy-algolia": "curl https://gatographql.com/api/deploy-algolia?apiKey=Pf1GnIKlIAJthd0O0GwlCTJqxS0O9tIO"
   },
   "overrides": {
     "next-contentlayer": {
