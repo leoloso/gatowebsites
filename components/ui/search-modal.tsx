@@ -17,7 +17,7 @@ import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
 import { SearchObject } from '../search/algolia'
 
 function CustomHits({...props}) {
-  const { hits, results, sendEvent } = useHits<SearchObject>(props);
+  const { hits, results } = useHits<SearchObject>(props);
   
   return (
     <div className="py-4 px-2 space-y-4">
