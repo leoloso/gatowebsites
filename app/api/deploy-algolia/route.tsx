@@ -2,6 +2,7 @@ import algoliaSearch from "algoliasearch"
 import { allPosts } from 'contentlayer/generated'
 import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
 import { getPostURLPath } from "@/utils/content/application-urls"
+import slugify from "@sindresorhus/slugify"
 
 export interface SearchObject {
   objectID: string // objectID is needed for Algolia
@@ -16,12 +17,14 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
   return (
     allPosts?.map((post) => {
+      const urlPath = getPostURLPath(post)
       return {
-        objectID: `post_${post.slug}`, // objectID must be unique and consistent on each build
+        // objectID must be unique and consistent on each build
+        objectID: slugify(urlPath),
         title: post.title,
         description: post.summary,
         slug: post.slug,
-        urlPath: getPostURLPath(post),
+        urlPath: urlPath,
         date: post.publishedAt,
         thumbnail: post.image,
       }
