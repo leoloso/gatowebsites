@@ -203,5 +203,5 @@
 }
 
 mark {
-    @apply bg-yellow-400 dark:bg-yellow-200;
+    @apply bg-blue-400 dark:bg-blue-300;
 }
