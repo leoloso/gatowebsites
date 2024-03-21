@@ -277,7 +277,7 @@ export default function SearchModal({
                 theme='dark'
                 classNames={{
                   root: 'flex justify-center',
-                  logo: 'text-sm font-medium text-slate-300 h-4 my-2',
+                  logo: 'h-4 my-2',
                 }}
               />
             </InstantSearchNext>
