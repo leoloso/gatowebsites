@@ -24,15 +24,15 @@ function CustomHits({...props}) {
         <>
           {/* Results */}
           <div>
-            <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Results</div>
+            {/* <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Results</div> */}
             <ul>
               <li className='flex items-center px-2 py-1 leading-6 text-sm text-slate-800 rounded dark:text-slate-200 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none cursor-default'>
-                <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 12 12">
+                {/* <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 12 12">
                   <g transform="matrix(0.75 0 0 0.75 0 0)">
                     <path d="M4,14.75c-.192,0-.384-.073-.53-.22-.293-.293-.293-.768,0-1.061L13.47,3.47c.293-.293,.768-.293,1.061,0s.293,.768,0,1.061L4.53,14.53c-.146,.146-.338,.22-.53,.22Z" data-color="color-2"></path>
                     <path d="M14,14.75c-.192,0-.384-.073-.53-.22L3.47,4.53c-.293-.293-.293-.768,0-1.061s.768-.293,1.061,0L14.53,13.47c.293,.293,.293,.768,0,1.061-.146,.146-.338,.22-.53,.22Z" data-color="color-2"></path>
                   </g>
-                </svg>
+                </svg> */}
                 <span>No results found</span>
               </li>
             </ul>
@@ -43,7 +43,7 @@ function CustomHits({...props}) {
         <>
           {/* Results */}
           <div>
-            <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Results</div>
+            {/* <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Results</div> */}
             <ul>
               {hits.map((hit, index) => (                
                 <li key={index}>
