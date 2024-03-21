@@ -11,7 +11,6 @@ import { InstantSearchNext } from 'react-instantsearch-nextjs';
 import {
   SearchBox,
   useHits,
-  Hits,
 } from 'react-instantsearch';
 
 function CustomHits({...props}) {
@@ -207,52 +206,21 @@ export default function SearchModal({
           leaveTo="opacity-0 translate-y-4"
         >
           <Dialog.Panel className="bg-white dark:bg-slate-800 overflow-auto max-w-2xl w-full max-h-full rounded shadow-lg">
-            {/* Search form */}
-            {/* <form className="border-b border-slate-200 dark:border-slate-700"> */}
-            {/* <div className="border-b border-slate-200 dark:border-slate-700">
-              <div className="flex items-center">
-                <label htmlFor="search-modal">
-                  <span className="sr-only">Search</span>
-                  <svg
-                    className="w-4 h-4 fill-slate-500 shrink-0 ml-4 dark:fill-slate-400"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="m14.707 13.293-1.414 1.414-2.4-2.4 1.414-1.414 2.4 2.4ZM6.8 12.6A5.8 5.8 0 1 1 6.8 1a5.8 5.8 0 0 1 0 11.6Zm0-2a3.8 3.8 0 1 0 0-7.6 3.8 3.8 0 0 0 0 7.6Z" />
-                  </svg>
-                </label> */}
-                <InstantSearchNext indexName={ALGOLIA_API_CREDENTIALS.indexName} searchClient={searchClient}>
-                  <SearchBox
-                    placeholder={placeholder}
-                    autoFocus
-                    classNames={{
-                      form: 'relative flex justify-center border-b border-slate-200 dark:border-slate-700',
-                      input: 'text-sm text-slate-700 dark:text-slate-200 w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500',
-                      // submit: 'btn text-sm text-slate-700 bg-white dark:text-slate-200 dark:bg-slate-900 hover:bg-slate-600 dark:hover:bg-slate-700 shadow-sm group',
-                      // reset: 'btn text-sm text-slate-700 bg-white dark:text-slate-200 dark:bg-slate-900 hover:bg-slate-600 dark:hover:bg-slate-700 shadow-sm group',
-                      loadingIndicator: 'relative top-0 right-0 mt-4',
-                      submitIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
-                      resetIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
-                      loadingIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
-                    }}
-                  />
-                  {/* <input
-                    id="search-modal"
-                    className="text-sm text-slate-700 dark:text-slate-200 w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500"
-                    type="search"
-                    placeholder={placeholder}
-                  /> */}
-                  <CustomHits />
-                  	
-
-
-
-                </InstantSearchNext>
-              {/* </div> */}
-            {/* </form> */}
-            {/* </div> */}
+            <InstantSearchNext indexName={ALGOLIA_API_CREDENTIALS.indexName} searchClient={searchClient}>
+              <SearchBox
+                placeholder={placeholder}
+                autoFocus
+                classNames={{
+                  form: 'relative flex justify-center border-b border-slate-200 dark:border-slate-700',
+                  input: 'text-sm text-slate-700 dark:text-slate-200 w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500',
+                  loadingIndicator: 'relative top-0 right-0 mt-4',
+                  submitIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
+                  resetIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
+                  loadingIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
+                }}
+              />
+              <CustomHits />
+            </InstantSearchNext>
           </Dialog.Panel>
         </Transition.Child>
       </Dialog>
