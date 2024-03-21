@@ -14,7 +14,7 @@ import {
 } from 'react-instantsearch';
 
 import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
-import { SearchObject } from '@/app/api/deploy-algolia/route'
+import { SearchObject } from '../search/algolia'
 
 function CustomHits({...props}) {
   const { hits, results, sendEvent } = useHits<SearchObject>(props);

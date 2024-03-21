@@ -17,14 +17,7 @@ import {
 import slugify from "@sindresorhus/slugify"
 import { isAdminUser } from "@/utils/admin"
 import { NextApiRequest } from "next"
-import type { BaseHit } from 'instantsearch.js';
-
-export interface SearchObject extends BaseHit {
-  objectID: string // objectID is needed for Algolia
-  title: string
-  description: string
-  urlPath: string
-}
+import { SearchObject } from "@/components/search/algolia"
 
 async function getAllPostsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
