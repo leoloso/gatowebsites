@@ -103,7 +103,7 @@ export async function GET(request: NextApiRequest) {
   const query = request.query || {};
   const { apiKey } = query;
   if (!apiKey || typeof apiKey !== 'string' || !isAdminUser(apiKey)) {
-    return new Response(`⛔️ You are not allowed here`)
+    return new Response(`⛔️ You are not allowed here`, { status: 500 })
   }
   try {
     const posts = await getAllPostsTransformed()
