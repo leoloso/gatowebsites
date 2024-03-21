@@ -202,6 +202,6 @@
     @apply mt-0 rounded-t-none border-t-0;
 }
 
-/* mark {
-    @apply bg-blue-400 dark:bg-blue-300;
-} */
+mark {
+    @apply bg-blue-400 dark:bg-fuchsia-400;
+}
