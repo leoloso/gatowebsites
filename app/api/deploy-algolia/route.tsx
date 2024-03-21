@@ -23,8 +23,6 @@ export interface SearchObject {
   title: string
   description: string
   slug: string
-  date?: string
-  thumbnail?: string
 }
 
 async function getAllPostsTransformed(): Promise<SearchObject[]> {
@@ -39,8 +37,6 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
         description: post.summary,
         slug: post.slug,
         urlPath: urlPath,
-        date: post.publishedAt,
-        thumbnail: post.image,
       }
     }) || []
   )
@@ -75,7 +71,6 @@ async function getAllExtensionsTransformed(): Promise<SearchObject[]> {
         description: extension.description,
         slug: extension.slug,
         urlPath: urlPath,
-        thumbnail: extension.image,
       }
     }) || []
   )
@@ -93,7 +88,6 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
         description: feature.description,
         slug: feature.slug,
         urlPath: urlPath,
-        thumbnail: feature.image,
       }
     }) || []
   )
