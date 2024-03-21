@@ -1,4 +1,4 @@
-import { Doc, DocTopic, Post } from "@/.contentlayer/generated";
+import { Doc, DocTopic, Post, RelatedGuide } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from 'contentlayer/generated'
 import AppConfig from '@/app/app.config'
 import { sortByOrder, sortByOrderAndTitle } from "./sort";
@@ -65,4 +65,12 @@ export function getPrevNextArticles(articles: Array<Doc | Post>, articleIndex: n
 
 export function getDocumentTopicsBySection(section: string) {
   return allDocTopics.filter((docTopic) => docTopic.section === section)
+}
+
+export function getGuideDocument(relatedGuide: RelatedGuide) {
+  const guide = getGuideDocuments().find((doc) => doc.slug === relatedGuide?.slug && doc.topicSlug === relatedGuide?.topic)
+  if (!guide) {
+    throw new Error(`There is no guide with topic ${relatedGuide.topic} and slug ${relatedGuide.slug}`)
+  }
+  return guide
 }

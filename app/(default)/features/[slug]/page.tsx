@@ -7,7 +7,7 @@ import DefaultArtifactIcon02 from '@/public/assets/theme/default/artifact-icon-0
 import DefaultArtifactIcon04 from '@/public/assets/theme/default/artifact-icon-04.png'
 import DefaultArtifactImage01 from '@/public/assets/theme/default/feature-image.png'
 import DefaultArtifactImage02 from '@/public/assets/theme/default/feature-pro-image.png'
-import { getGuideDocuments } from '@/utils/content/document'
+import { getGuideDocument, getGuideDocuments } from '@/utils/content/document'
 import { getDocURLPath } from '@/utils/content/application-urls'
 
 export async function generateStaticParams() {
@@ -40,7 +40,7 @@ export default async function SingleFeature({ params }: {
 
   if (!feature) notFound()
 
-  const relatedGuide = feature.relatedGuide ? getGuideDocuments().find((doc) => doc.slug === feature.relatedGuide?.slug && doc.topicSlug === feature.relatedGuide?.topic) : null
+  const relatedGuide = feature.relatedGuide ? getGuideDocument(feature.relatedGuide) : null
 
   return (
     <ArtifactSection

@@ -6,7 +6,7 @@ import ArtifactSection from '@/components/sections/artifact'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon-01.png'
 import DefaultArtifactImage from '@/public/assets/theme/default/extension-image.png'
 import { getDocURLPath, getExtensionDocumentationURLPath } from '@/utils/content/application-urls'
-import { getGuideDocuments } from '@/utils/content/document'
+import { getGuideDocument, getGuideDocuments } from '@/utils/content/document'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
@@ -38,7 +38,7 @@ export default async function SingleExtension({ params }: {
 
   if (!extension) notFound()
 
-  const relatedGuide = extension.relatedGuide ? getGuideDocuments().find((doc) => doc.slug === extension.relatedGuide?.slug && doc.topicSlug === extension.relatedGuide?.topic) : null
+  const relatedGuide = extension.relatedGuide ? getGuideDocument(extension.relatedGuide) : null
 
   return (
     <ArtifactSection
