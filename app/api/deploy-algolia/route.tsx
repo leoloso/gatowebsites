@@ -1,5 +1,4 @@
 import algoliaSearch from "algoliasearch"
-import { maybeAddDomain } from '@/utils/domain';
 import { allPosts } from 'contentlayer/generated'
 import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
 
@@ -22,7 +21,7 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
         description: post.summary,
         slug: post.slug,
         date: post.publishedAt,
-        thumbnail: post.image ? maybeAddDomain(post.image) : undefined,
+        thumbnail: post.image,
       }
     }) || []
   )
