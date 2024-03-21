@@ -52,7 +52,7 @@ function CustomHits({...props}) {
                       <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
                     </svg>
                     <div>
-                      <strong dangerouslySetInnerHTML={
+                      <span className='text-lg font-bold leading-snug tracking-tight' dangerouslySetInnerHTML={
                         {
                           __html: (!Array.isArray(hit._highlightResult?.title) && hit._highlightResult?.title.value) || hit.title
                         }
