@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "export $(cat .env | xargs) && next dev",
-    "build": "NODE_OPTIONS=--max-old-space-size=8192 next build",
-    "start": "next start",
+    "build": "export $(cat .env | xargs) && NODE_OPTIONS=--max-old-space-size=8192 next build",
+    "start": "export $(cat .env | xargs) && next start",
     "lint": "next lint",
     "deploy-dev": "netlify dev",
     "deploy": "netlify deploy --build --context deploy-preview",
