@@ -201,3 +201,7 @@
 [data-rehype-pretty-code-title]+pre {
     @apply mt-0 rounded-t-none border-t-0;
 }
+
+mark {
+    @apply bg-purple-400 dark:bg-yellow-300;
+}
