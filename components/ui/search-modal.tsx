@@ -24,8 +24,14 @@ function CustomHits({...props}) {
           <div>
             <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Results</div>
             <ul>
-              <li>
-                <span className='flex items-center px-2 py-1 leading-6 text-sm text-slate-800 rounded dark:text-slate-200 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none'>No results found</span>
+              <li className='flex items-center px-2 py-1 leading-6 text-sm text-slate-800 rounded dark:text-slate-200 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none'>
+                <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 12 12">
+                  <g transform="matrix(0.75 0 0 0.75 0 0)">
+                    <path d="M4,14.75c-.192,0-.384-.073-.53-.22-.293-.293-.293-.768,0-1.061L13.47,3.47c.293-.293,.768-.293,1.061,0s.293,.768,0,1.061L4.53,14.53c-.146,.146-.338,.22-.53,.22Z" data-color="color-2"></path>
+                    <path d="M14,14.75c-.192,0-.384-.073-.53-.22L3.47,4.53c-.293-.293-.293-.768,0-1.061s.768-.293,1.061,0L14.53,13.47c.293,.293,.293,.768,0,1.061-.146,.146-.338,.22-.53,.22Z" data-color="color-2"></path>
+                  </g>
+                </svg>
+                <span>No results found</span>
               </li>
             </ul>
           </div>
@@ -40,15 +46,9 @@ function CustomHits({...props}) {
               {hits.map((hit, index) => (                
                 <li key={index}>
                   <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={hit.urlPath}>
-                    <svg
-                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                    </svg>
+                  <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
+                    <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
+                  </svg>
                     <span>{hit.title}</span>
                   </Link>
                 </li>
