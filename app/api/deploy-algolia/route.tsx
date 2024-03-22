@@ -20,20 +20,36 @@ import { NextApiRequest } from "next"
 import { SearchObject } from "@/components/search/algolia"
 import AppSettings from "@/app/app.settings"
 
+function getStructuredDataObject(
+  title: string,
+  description: string,
+  urlPath: string,
+  slug: string,
+  content: string,
+): SearchObject {
+  // return an object to be added to Algolia.
+  return {
+    // objectID must be unique and consistent on each build
+    objectID: slugify(urlPath),
+    title: title,
+    description: description,
+    urlPath: urlPath,
+    slug: slug,
+    content: content,
+  }
+}
+
 async function getAllPostsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
   return (
     allPosts?.map((post) => {
-      const urlPath = getPostURLPath(post)
-      return {
-        // objectID must be unique and consistent on each build
-        objectID: slugify(urlPath),
-        title: post.title,
-        description: post.summary,
-        urlPath: urlPath,
-        slug: post.slug,
-        content: post.body.code,
-      }
+      return getStructuredDataObject(
+        post.title,
+        post.summary,
+        getPostURLPath(post),
+        post.slug,
+        post.body.code
+      )
     }) || []
   )
 }
@@ -42,16 +58,13 @@ async function getAllDocsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
   return (
     allDocs?.map((doc) => {
-      const urlPath = getDocURLPath(doc)
-      return {
-        // objectID must be unique and consistent on each build
-        objectID: slugify(urlPath),
-        title: doc.title,
-        description: doc.description,
-        urlPath: urlPath,
-        slug: doc.slug,
-        content: doc.body.code,
-      }
+      return getStructuredDataObject(
+        doc.title,
+        doc.description,
+        getDocURLPath(doc),
+        doc.slug,
+        doc.body.code
+      )
     }) || []
   )
 }
@@ -60,16 +73,13 @@ async function getAllExtensionsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
   return (
     allExtensions?.map((extension) => {
-      const urlPath = getExtensionURLPath(extension)
-      return {
-        // objectID must be unique and consistent on each build
-        objectID: slugify(urlPath),
-        title: extension.title,
-        description: extension.description,
-        urlPath: urlPath,
-        slug: extension.slug,
-        content: extension.body.code,
-      }
+      return getStructuredDataObject(
+        extension.title,
+        extension.description,
+        getExtensionURLPath(extension),
+        extension.slug,
+        extension.body.code
+      )
     }) || []
   )
 }
@@ -78,16 +88,13 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
   return (
     allFeatures?.map((feature) => {
-      const urlPath = getFeatureURLPath(feature)
-      return {
-        // objectID must be unique and consistent on each build
-        objectID: slugify(urlPath),
-        title: feature.title,
-        description: feature.description,
-        urlPath: urlPath,
-        slug: feature.slug,
-        content: feature.body.code,
-      }
+      return getStructuredDataObject(
+        feature.title,
+        feature.description,
+        getFeatureURLPath(feature),
+        feature.slug,
+        feature.body.code
+      )
     }) || []
   )
 }
