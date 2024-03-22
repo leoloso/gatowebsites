@@ -12,7 +12,7 @@ import {
   SearchBox,
   useHits,
   PoweredBy,
-  Hits,
+  // Hits,
 } from 'react-instantsearch';
 import type { Hit } from 'instantsearch.js';
 
