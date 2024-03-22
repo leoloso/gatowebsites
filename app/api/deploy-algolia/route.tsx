@@ -16,7 +16,6 @@ import {
   getPostURLPath,
 } from "@/utils/content/application-urls"
 import { isAdminUser } from "@/utils/admin"
-import { NextApiRequest } from "next"
 import { SearchObject, Sections } from "@/components/search/algolia"
 import AppSettings from "@/app/app.settings"
 import {
@@ -141,7 +140,7 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
   )
 }
 
-export async function GET(request: NextApiRequest) {
+export async function GET(request: Request) {
   const url = request.url || ''
   const { searchParams } = new URL(url);
   const apiKey = searchParams.get('apiKey');
