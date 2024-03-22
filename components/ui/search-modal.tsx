@@ -249,7 +249,7 @@ function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
               __html: (!Array.isArray(hit._highlightResult?.title) && hit._highlightResult?.title.value) || hit.title
             }
           } />
-          <span dangerouslySetInnerHTML={
+          <span className='leading-snug tracking-tight block' dangerouslySetInnerHTML={
             {
               __html: (!Array.isArray(hit._highlightResult?.description) && hit._highlightResult?.description.value) || hit.title
             }
