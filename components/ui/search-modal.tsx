@@ -67,6 +67,8 @@ function CustomHits({...props}) {
                 <Link
                   className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
                   href={`/${AppConfig.paths.features}/persisted-queries`}
+                  onFocus={(e) => {e.target.tabIndex++; console.log(e.target.tabIndex)}}
+                  tabIndex={10}
                 >
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
@@ -236,6 +238,9 @@ function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
     <Link
       className="flex items-center px-2 py-2 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
       href={hit.urlPath}
+      // There's a bug with @headlessui: It only tabs to 2 elements
+      // workaround hack: increase their tabindex, so the ones below are then reachable
+      onFocus={(e) => {e.target.tabIndex++}}
       tabIndex={10}
     >
       <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
