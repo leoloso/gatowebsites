@@ -47,7 +47,7 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
       post.summary,
       getPostURLPath(post),
       post.slug,
-      post.body.code
+      post.body.raw
     )) || []
   )
 }
@@ -60,7 +60,7 @@ async function getAllDocsTransformed(): Promise<SearchObject[]> {
       doc.description,
       getDocURLPath(doc),
       doc.slug,
-      doc.body.code
+      doc.body.raw
     )) || []
   )
 }
@@ -73,7 +73,7 @@ async function getAllExtensionsTransformed(): Promise<SearchObject[]> {
       extension.description,
       getExtensionURLPath(extension),
       extension.slug,
-      extension.body.code
+      extension.body.raw
     )) || []
   )
 }
@@ -86,7 +86,7 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
       feature.description,
       getFeatureURLPath(feature),
       feature.slug,
-      feature.body.code
+      feature.body.raw
     )) || []
   )
 }
