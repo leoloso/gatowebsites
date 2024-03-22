@@ -64,108 +64,112 @@ function CustomHits({...props}) {
             <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
             <ul role='listbox'>
               <li role='option'>
-                <Link
-                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                <HitLink
                   href={`/${AppConfig.paths.features}/persisted-queries`}
-                  onFocus={(e) => {e.target.tabIndex++; console.log(e.target.tabIndex)}}
-                  tabIndex={10}
                 >
-                  <svg
-                    className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 12 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                  </svg>
-                  <span>Persisted queries</span>
-                </Link>
+                  <>
+                    <svg
+                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                    </svg>
+                    <span>Persisted queries</span>
+                  </>
+                </HitLink>
               </li>
               <li role='option'>
-                <Link
-                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                <HitLink
                   href={`/${AppConfig.paths.extensions}/automation`}
                 >
-                  <svg
-                    className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 12 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                  </svg>
-                  <span>Automation</span>
-                </Link>
+                  <>
+                    <svg
+                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                    </svg>
+                    <span>Automation</span>
+                  </>
+                </HitLink>
               </li>
               <li role='option'>
-                <Link
-                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                <HitLink
                   href={`/${AppConfig.paths.extensions}/multiple-query-execution`}
                 >
-                  <svg
-                    className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 12 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                  </svg>
-                  <span>Multiple Query Execution</span>
-                </Link>
+                  <>
+                    <svg
+                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                    </svg>
+                    <span>Multiple Query Execution</span>
+                  </>
+                </HitLink>
               </li>
               <li role='option'>
-                <Link
-                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                <HitLink
                   href={`/${AppConfig.paths.features}/oneof-input-object`}
                 >
-                  <svg
-                    className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 12 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                  </svg>
-                  <span>'oneOf' Input Object</span>
-                </Link>
+                  <>
+                    <svg
+                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                    </svg>
+                    <span>'oneOf' Input Object</span>
+                  </>
+                </HitLink>
               </li>
               <li role='option'>
-                <Link
-                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                <HitLink
                   href={`/${AppConfig.paths.features}/nested-mutations`}
                 >
-                  <svg
-                    className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 12 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                  </svg>
-                  <span>Nested mutations</span>
-                </Link>
+                  <>
+                    <svg
+                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                    </svg>
+                    <span>Nested mutations</span>
+                  </>
+                </HitLink>
               </li>
               <li role='option'>
-                <Link
-                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                <HitLink
                   href={`/${AppConfig.paths.features}/schema-namespacing`}
                 >
-                  <svg
-                    className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 12 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                  </svg>
-                  <span>Schema namespacing</span>
-                </Link>
+                  <>
+                    <svg
+                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                    </svg>
+                    <span>Schema namespacing</span>
+                  </>
+                </HitLink>
               </li>
             </ul>
           </div>
@@ -174,8 +178,7 @@ function CustomHits({...props}) {
             <div className="text-sm font-medium text-slate-500 px-2 mb-2">Actions</div>
             <ul role='listbox'>
               <li role='option'>
-                <Link
-                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                <HitLink
                   href={AppConfig.urls.instawpSandboxDemo}
                   target='_blank'
                 >
@@ -189,11 +192,10 @@ function CustomHits({...props}) {
                     <path d="M6 0a6 6 0 1 0 0 12A6 6 0 0 0 6 0Zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
                   </svg>
                   <span className="font-medium">Try out Gato GraphQL PRO</span>
-                </Link>
+                </HitLink>
               </li>
               <li role='option'>
-                <Link
-                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                <HitLink
                   href="/contact"
                 >
                   <svg
@@ -206,11 +208,10 @@ function CustomHits({...props}) {
                     <path d="M6 0C2.691 0 0 2.362 0 5.267c0 2.905 2.691 5.266 6 5.266a6.8 6.8 0 0 0 1.036-.079l2.725 1.485a.5.5 0 0 0 .739-.439V8.711A4.893 4.893 0 0 0 12 5.267C12 2.362 9.309 0 6 0Z" />
                   </svg>
                   <span className="font-medium">Contact us</span>
-                </Link>
+                </HitLink>
               </li>
               <li role='option'>
-                <Link
-                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                <HitLink
                   href="/support"
                 >
                   <svg
@@ -223,7 +224,7 @@ function CustomHits({...props}) {
                     <path d="M11.854.146a.5.5 0 0 0-.525-.116l-11 4a.5.5 0 0 0-.015.934l4.8 1.921 1.921 4.8A.5.5 0 0 0 7.5 12h.008a.5.5 0 0 0 .462-.329l4-11a.5.5 0 0 0-.116-.525Z" />
                   </svg>
                   <span className="font-medium">Support request</span>
-                </Link>
+                </HitLink>
               </li>
             </ul>
           </div>
@@ -236,7 +237,7 @@ function CustomHits({...props}) {
 function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
   return (
     <HitLink
-      urlPath={hit.urlPath}
+      href={hit.urlPath}
     >
       <>
         <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
@@ -259,17 +260,18 @@ function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
   );
 }
 
-function HitLink({ children, urlPath }: { children: React.ReactNode, urlPath: string }) {
+function HitLink({ ...props }) {
   return (
     <Link
       className="flex items-center px-2 py-2 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
-      href={urlPath}
+      href={props.href}
       // There's a bug with @headlessui: It only tabs to 2 elements
       // workaround hack: increase their tabindex, so the ones below are then reachable
       onFocus={(e) => {e.target.tabIndex++}}
       tabIndex={10}
+      {...props}
     >
-      {children}
+      {props.children}
     </Link>
   );
 }
