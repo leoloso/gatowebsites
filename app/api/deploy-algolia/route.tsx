@@ -24,9 +24,9 @@ import AppSettings from "@/app/app.settings"
 function removeUnneededContent(content: string): string {
   return content
     // Remove all ``` except the last one
-    .replace(/```[graphql|gql|js|javascript|html|php|css][^```]*```/igs,'')
+    .replace(/```[a-zA-Z_-]+\n[^```]*```/igs,'')
     // Remove the last ```
-    .replace(/```[graphql|gql|js|javascript|html|php|css].*```/igs,'')
+    .replace(/```[a-zA-Z_-]+\n.*```/igs,'')
 }
 
 function getStructuredDataObject(
