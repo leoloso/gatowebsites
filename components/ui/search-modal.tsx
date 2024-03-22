@@ -254,10 +254,7 @@ function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
           } />
           <span className='leading-snug tracking-tight block' dangerouslySetInnerHTML={
             {
-              __html: 
-                (!Array.isArray(hit._highlightResult?.content) && hit._highlightResult?.content.matchLevel !== 'none' && hit._highlightResult?.content.fullyHighlighted && hit._highlightResult?.content.value)
-                || (!Array.isArray(hit._highlightResult?.description) && hit._highlightResult?.description.matchLevel !== 'none' && hit._highlightResult?.description.value)
-                || hit.description
+              __html: (!Array.isArray(hit._highlightResult?.description) && hit._highlightResult?.description.value) || hit.description
             }
           } />
         </span>
