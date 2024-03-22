@@ -53,9 +53,9 @@ function CustomHits({...props}) {
         <>
           {/* Results */}
           <div>
-            {Object.keys(sectionHits).map((section) => (
+            {Object.keys(sectionHits).map((section, index) => (
               <>
-                <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">{section}</div>
+                <div className={`font-medium text-slate-500 px-2 dark:text-slate-400 ${index > 0 ? 'mt-4' : ''}`}>{section}</div>
                 <ul role='listbox'>
                   {sectionHits[section].map((hit, index) => (                
                     <li key={index} role='option'>
