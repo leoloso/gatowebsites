@@ -47,9 +47,9 @@ function CustomHits({...props}) {
           {/* Results */}
           <div>
             {/* <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Results</div> */}
-            <ul>
+            <ul role='listbox'>
               {hits.map((hit, index) => (                
-                <li key={index}>
+                <li key={index} role='option'>
                   <CustomHit hit={hit} />
                 </li>
               ))}
@@ -62,8 +62,8 @@ function CustomHits({...props}) {
           {/* Popular */}
           <div>
             <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
-            <ul>
-              <li>
+            <ul role='listbox'>
+              <li role='option'>
                 <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={`/${AppConfig.paths.features}/persisted-queries`}>
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
@@ -77,7 +77,7 @@ function CustomHits({...props}) {
                   <span>Persisted queries</span>
                 </Link>
               </li>
-              <li>
+              <li role='option'>
                 <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={`/${AppConfig.paths.extensions}/automation`}>
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
@@ -91,7 +91,7 @@ function CustomHits({...props}) {
                   <span>Automation</span>
                 </Link>
               </li>
-              <li>
+              <li role='option'>
                 <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={`/${AppConfig.paths.extensions}/multiple-query-execution`}>
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
@@ -105,7 +105,7 @@ function CustomHits({...props}) {
                   <span>Multiple Query Execution</span>
                 </Link>
               </li>
-              <li>
+              <li role='option'>
                 <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={`/${AppConfig.paths.features}/oneof-input-object`}>
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
@@ -119,7 +119,7 @@ function CustomHits({...props}) {
                   <span>'oneOf' Input Object</span>
                 </Link>
               </li>
-              <li>
+              <li role='option'>
                 <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={`/${AppConfig.paths.features}/nested-mutations`}>
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
@@ -133,7 +133,7 @@ function CustomHits({...props}) {
                   <span>Nested mutations</span>
                 </Link>
               </li>
-              <li>
+              <li role='option'>
                 <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={`/${AppConfig.paths.features}/schema-namespacing`}>
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
@@ -152,8 +152,8 @@ function CustomHits({...props}) {
           {/* Actions */}
           <div>
             <div className="text-sm font-medium text-slate-500 px-2 mb-2">Actions</div>
-            <ul>
-              <li>
+            <ul role='listbox'>
+              <li role='option'>
                 <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={AppConfig.urls.instawpSandboxDemo} target='_blank'>
                   <svg
                     className="w-3 h-3 fill-teal-500 shrink-0 mr-3"
@@ -167,7 +167,7 @@ function CustomHits({...props}) {
                   <span className="font-medium">Try out Gato GraphQL PRO</span>
                 </Link>
               </li>
-              <li>
+              <li role='option'>
                 <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href="/contact">
                   <svg
                     className="w-3 h-3 fill-purple-500 shrink-0 mr-3"
@@ -181,7 +181,7 @@ function CustomHits({...props}) {
                   <span className="font-medium">Contact us</span>
                 </Link>
               </li>
-              <li>
+              <li role='option'>
                 <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href="/support">
                   <svg
                     className="w-3 h-3 fill-blue-600 shrink-0 mr-3"
