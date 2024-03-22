@@ -235,29 +235,41 @@ function CustomHits({...props}) {
 
 function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
   return (
+    <HitLink
+      urlPath={hit.urlPath}
+    >
+      <>
+        <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
+          <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
+        </svg>
+        <span>
+          <span className='text-lg font-bold leading-snug tracking-tight block' dangerouslySetInnerHTML={
+            {
+              __html: (!Array.isArray(hit._highlightResult?.title) && hit._highlightResult?.title.value) || hit.title
+            }
+          } />
+          <span dangerouslySetInnerHTML={
+            {
+              __html: (!Array.isArray(hit._highlightResult?.description) && hit._highlightResult?.description.value) || hit.title
+            }
+          } />
+        </span>
+      </>
+    </HitLink>
+  );
+}
+
+function HitLink({ children, urlPath }: { children: React.ReactNode, urlPath: string }) {
+  return (
     <Link
       className="flex items-center px-2 py-2 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
-      href={hit.urlPath}
+      href={urlPath}
       // There's a bug with @headlessui: It only tabs to 2 elements
       // workaround hack: increase their tabindex, so the ones below are then reachable
       onFocus={(e) => {e.target.tabIndex++}}
       tabIndex={10}
     >
-      <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
-        <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-      </svg>
-      <span>
-        <span className='text-lg font-bold leading-snug tracking-tight block' dangerouslySetInnerHTML={
-          {
-            __html: (!Array.isArray(hit._highlightResult?.title) && hit._highlightResult?.title.value) || hit.title
-          }
-        } />
-        <span dangerouslySetInnerHTML={
-          {
-            __html: (!Array.isArray(hit._highlightResult?.description) && hit._highlightResult?.description.value) || hit.title
-          }
-        } />
-      </span>
+      {children}
     </Link>
   );
 }
