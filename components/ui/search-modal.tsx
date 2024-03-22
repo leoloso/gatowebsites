@@ -64,7 +64,10 @@ function CustomHits({...props}) {
             <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
             <ul role='listbox'>
               <li role='option'>
-                <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={`/${AppConfig.paths.features}/persisted-queries`}>
+                <Link
+                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                  href={`/${AppConfig.paths.features}/persisted-queries`}
+                >
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
                     width="12"
@@ -78,7 +81,10 @@ function CustomHits({...props}) {
                 </Link>
               </li>
               <li role='option'>
-                <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={`/${AppConfig.paths.extensions}/automation`}>
+                <Link
+                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                  href={`/${AppConfig.paths.extensions}/automation`}
+                >
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
                     width="12"
@@ -92,7 +98,10 @@ function CustomHits({...props}) {
                 </Link>
               </li>
               <li role='option'>
-                <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={`/${AppConfig.paths.extensions}/multiple-query-execution`}>
+                <Link
+                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                  href={`/${AppConfig.paths.extensions}/multiple-query-execution`}
+                >
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
                     width="12"
@@ -106,7 +115,10 @@ function CustomHits({...props}) {
                 </Link>
               </li>
               <li role='option'>
-                <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={`/${AppConfig.paths.features}/oneof-input-object`}>
+                <Link
+                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                  href={`/${AppConfig.paths.features}/oneof-input-object`}
+                >
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
                     width="12"
@@ -120,7 +132,10 @@ function CustomHits({...props}) {
                 </Link>
               </li>
               <li role='option'>
-                <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={`/${AppConfig.paths.features}/nested-mutations`}>
+                <Link
+                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                  href={`/${AppConfig.paths.features}/nested-mutations`}
+                >
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
                     width="12"
@@ -134,7 +149,10 @@ function CustomHits({...props}) {
                 </Link>
               </li>
               <li role='option'>
-                <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={`/${AppConfig.paths.features}/schema-namespacing`}>
+                <Link
+                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                  href={`/${AppConfig.paths.features}/schema-namespacing`}
+                >
                   <svg
                     className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
                     width="12"
@@ -154,7 +172,10 @@ function CustomHits({...props}) {
             <div className="text-sm font-medium text-slate-500 px-2 mb-2">Actions</div>
             <ul role='listbox'>
               <li role='option'>
-                <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={AppConfig.urls.instawpSandboxDemo} target='_blank'>
+                <Link
+                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                  href={AppConfig.urls.instawpSandboxDemo} target='_blank'
+                >
                   <svg
                     className="w-3 h-3 fill-teal-500 shrink-0 mr-3"
                     width="12"
