@@ -280,8 +280,9 @@ function TabbedHitLink({ ...props }) {
     <Link
       className="flex items-center px-2 py-4 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
       href={props.href}
-      // There's a bug with @headlessui: It only tabs to 2 elements
-      // workaround hack: increase their tabindex, so the ones below are then reachable
+      // There's a bug with @headlessui: It only tabs to 2 elements (even if all of them have the `tabIndex` prop set)
+      // Workaround hack: when focused increase their tabIndex, so the ones below are then reachable
+      // This works on Firefox. Pressing tab does not work on Safari.
       onFocus={(e) => {e.target.tabIndex = (e.target.tabIndex || 1) + 10}}
       tabIndex={10}
       {...props}
