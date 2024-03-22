@@ -12,7 +12,6 @@ import {
   SearchBox,
   useHits,
   PoweredBy,
-  // Hits,
 } from 'react-instantsearch';
 import type { Hit } from 'instantsearch.js';
 
@@ -358,12 +357,6 @@ export default function SearchModal({
                 }}
               />
               <CustomHits />
-              {/* <Hits
-                hitComponent={CustomHit}
-                classNames={{
-                  root: 'py-4 px-2 space-y-4',
-                }}
-              /> */}
               <PoweredBy
                 theme='dark'
                 classNames={{
