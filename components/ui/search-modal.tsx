@@ -263,7 +263,7 @@ function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
 function HitLink({ ...props }) {
   return (
     <Link
-      className="flex items-center px-2 py-2 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+      className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
       href={props.href}
       {...props}
     >
@@ -275,7 +275,7 @@ function HitLink({ ...props }) {
 function TabbedHitLink({ ...props }) {
   return (
     <Link
-      className="flex items-center px-2 py-2 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+      className="flex items-center px-2 py-4 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
       href={props.href}
       // There's a bug with @headlessui: It only tabs to 2 elements
       // workaround hack: increase their tabindex, so the ones below are then reachable
