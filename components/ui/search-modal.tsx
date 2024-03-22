@@ -213,18 +213,18 @@ function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
       <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
         <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
       </svg>
-      <div>
-        <span className='text-lg font-bold leading-snug tracking-tight' dangerouslySetInnerHTML={
+      <span>
+        <span className='text-lg font-bold leading-snug tracking-tight block' dangerouslySetInnerHTML={
           {
             __html: (!Array.isArray(hit._highlightResult?.title) && hit._highlightResult?.title.value) || hit.title
           }
         } />
-        <p dangerouslySetInnerHTML={
+        <span dangerouslySetInnerHTML={
           {
             __html: (!Array.isArray(hit._highlightResult?.description) && hit._highlightResult?.description.value) || hit.title
           }
         } />
-      </div>
+      </span>
     </Link>
   );
 }
