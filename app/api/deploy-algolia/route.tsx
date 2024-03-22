@@ -27,6 +27,9 @@ function removeUnneededContent(content: string): string {
     .replace(/```[a-zA-Z_-]+\n[^```]*```/igs,'')
     // Remove the last ```
     .replace(/```[a-zA-Z_-]+\n.*```/igs,'')
+    // Remove <Banner> and </Banner>
+    .replace(/<Banner[^>]*>/g,'')
+    .replace(/<\/Banner[^>]*>/g,'')
 }
 
 function getStructuredDataObject(
