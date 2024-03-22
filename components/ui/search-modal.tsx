@@ -307,7 +307,7 @@ interface SearchModalProps {
 export default function SearchModal({
   isOpen,
   setIsOpen,
-  placeholder = "Search for anything…",
+  placeholder = "Search in Documentation and Blog…",
   enableLightDarkThemeModeToggle = false,
 }: SearchModalProps) {  
   return (
