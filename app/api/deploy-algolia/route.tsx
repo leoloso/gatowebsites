@@ -20,6 +20,11 @@ import { NextApiRequest } from "next"
 import { SearchObject } from "@/components/search/algolia"
 import AppSettings from "@/app/app.settings"
 
+// Remove all GraphQL queries from the Algolia index
+function removeUnneededContent(content: string): string {
+  return content.replace(/```[graphql|gql|js|javascript|html|php|css].*```/igs,'')
+}
+
 function getStructuredDataObject(
   title: string,
   description: string,
@@ -35,7 +40,7 @@ function getStructuredDataObject(
     description: description,
     urlPath: urlPath,
     slug: slug,
-    content: content,
+    content: removeUnneededContent(content),
   }
 }
 
