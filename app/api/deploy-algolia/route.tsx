@@ -6,6 +6,7 @@ import {
   allDocs,
   allExtensions,
   allFeatures,
+  Doc,
 } from '@/.contentlayer/generated'
 import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
 import {
@@ -14,11 +15,17 @@ import {
   getFeatureURLPath,
   getPostURLPath,
 } from "@/utils/content/application-urls"
-import slugify from "@sindresorhus/slugify"
 import { isAdminUser } from "@/utils/admin"
 import { NextApiRequest } from "next"
-import { SearchObject } from "@/components/search/algolia"
+import { SearchObject, Sections } from "@/components/search/algolia"
 import AppSettings from "@/app/app.settings"
+import {
+  getGuideDocuments,
+  getExtensionReferenceDocuments,
+  getQueryLibraryDocuments,
+  getTutorialDocuments,
+  getArchitectureDocuments,
+} from "@/utils/content/document"
 
 // Remove all GraphQL queries from the Algolia index
 function removeUnneededContent(content: string): string {
@@ -38,6 +45,16 @@ function getStructuredDataObject(
   urlPath: string,
   slug: string,
   content: string,
+  section: Sections.Blog
+    | Sections.Changelog
+    | Sections.ExtensionsReference
+    | Sections.Guides
+    | Sections.SchemaTutorial
+    | Sections.QueryLibrary
+    | Sections.ArchitectureDocs
+    | Sections.Extensions
+    | Sections.Features
+    | Sections.Video
 ): SearchObject {
   // return an object to be added to Algolia.
   return {
@@ -48,6 +65,7 @@ function getStructuredDataObject(
     urlPath: urlPath,
     slug: slug,
     content: removeUnneededContent(content),
+    section: section
   }
 }
 
@@ -59,22 +77,40 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
       post.summary,
       getPostURLPath(post),
       post.slug,
-      post.body.raw
+      post.body.raw,
+      Sections.Blog
     )) || []
+  )
+}
+
+function getDocStructuredDataObject(
+  doc: Doc,
+  section: Sections.ExtensionsReference
+    | Sections.Guides
+    | Sections.SchemaTutorial
+    | Sections.QueryLibrary
+    | Sections.ArchitectureDocs
+  ): SearchObject {
+  // return an array of objects to be added to Algolia.
+  return getStructuredDataObject(
+    doc.title,
+    doc.description,
+    getDocURLPath(doc),
+    doc.slug,
+    doc.body.raw,
+    section
   )
 }
 
 async function getAllDocsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
-  return (
-    allDocs?.map((doc) => getStructuredDataObject(
-      doc.title,
-      doc.description,
-      getDocURLPath(doc),
-      doc.slug,
-      doc.body.raw
-    )) || []
-  )
+  return ([
+    ...(getGuideDocuments().map((doc) => getDocStructuredDataObject(doc, Sections.Guides)) || []),
+    ...(getExtensionReferenceDocuments().map((doc) => getDocStructuredDataObject(doc, Sections.ExtensionsReference)) || []),
+    ...(getQueryLibraryDocuments().map((doc) => getDocStructuredDataObject(doc, Sections.QueryLibrary)) || []),
+    ...(getTutorialDocuments().map((doc) => getDocStructuredDataObject(doc, Sections.SchemaTutorial)) || []),
+    ...(getArchitectureDocuments().map((doc) => getDocStructuredDataObject(doc, Sections.ArchitectureDocs)) || []),
+  ])
 }
 
 async function getAllExtensionsTransformed(): Promise<SearchObject[]> {
@@ -85,7 +121,8 @@ async function getAllExtensionsTransformed(): Promise<SearchObject[]> {
       extension.description,
       getExtensionURLPath(extension),
       extension.slug,
-      extension.body.raw
+      extension.body.raw,
+      Sections.Extensions
     )) || []
   )
 }
@@ -98,7 +135,8 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
       feature.description,
       getFeatureURLPath(feature),
       feature.slug,
-      feature.body.raw
+      feature.body.raw,
+      Sections.Features
     )) || []
   )
 }

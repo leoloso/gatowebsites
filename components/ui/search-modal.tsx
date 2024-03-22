@@ -22,6 +22,7 @@ import { SearchObject } from '../search/algolia'
 function CustomHits({...props}) {
   const { hits, results } = useHits<SearchObject>(props);
   const showPopular = true
+  // Group all hits under their section
   return (
     <div className="py-4 px-2 space-y-4">
       { results?.query.trim() !== '' && hits.length === 0 && (
