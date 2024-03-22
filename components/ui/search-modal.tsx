@@ -174,7 +174,8 @@ function CustomHits({...props}) {
               <li role='option'>
                 <Link
                   className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
-                  href={AppConfig.urls.instawpSandboxDemo} target='_blank'
+                  href={AppConfig.urls.instawpSandboxDemo}
+                  target='_blank'
                 >
                   <svg
                     className="w-3 h-3 fill-teal-500 shrink-0 mr-3"
@@ -189,7 +190,10 @@ function CustomHits({...props}) {
                 </Link>
               </li>
               <li role='option'>
-                <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href="/contact">
+                <Link
+                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                  href="/contact"
+                >
                   <svg
                     className="w-3 h-3 fill-purple-500 shrink-0 mr-3"
                     width="12"
@@ -203,7 +207,10 @@ function CustomHits({...props}) {
                 </Link>
               </li>
               <li role='option'>
-                <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href="/support">
+                <Link
+                  className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+                  href="/support"
+                >
                   <svg
                     className="w-3 h-3 fill-blue-600 shrink-0 mr-3"
                     width="12"
