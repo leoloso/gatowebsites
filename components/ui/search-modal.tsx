@@ -67,7 +67,7 @@ function CustomHits({...props}) {
               <ul role='listbox'>
                 <li role='option'>
                   <HitLink
-                    href={`/${AppConfig.paths.features}/persisted-queries`}
+                    href='/guides/use/creating-a-persisted-query'
                   >
                     <>
                       <svg
@@ -85,7 +85,7 @@ function CustomHits({...props}) {
                 </li>
                 <li role='option'>
                   <HitLink
-                    href={`/${AppConfig.paths.extensions}/automation`}
+                    href='/guides/manage/automating-tasks'
                   >
                     <>
                       <svg
@@ -103,7 +103,7 @@ function CustomHits({...props}) {
                 </li>
                 <li role='option'>
                   <HitLink
-                    href={`/${AppConfig.paths.extensions}/multiple-query-execution`}
+                    href='/guides/schema/executing-multiple-queries-concurrently'
                   >
                     <>
                       <svg
@@ -121,7 +121,7 @@ function CustomHits({...props}) {
                 </li>
                 <li role='option'>
                   <HitLink
-                    href={`/${AppConfig.paths.features}/oneof-input-object`}
+                    href='/guides/augment/oneof-input-object'
                   >
                     <>
                       <svg
@@ -139,7 +139,7 @@ function CustomHits({...props}) {
                 </li>
                 <li role='option'>
                   <HitLink
-                    href={`/${AppConfig.paths.features}/nested-mutations`}
+                    href='/guides/schema/using-nested-mutations'
                   >
                     <>
                       <svg
@@ -157,7 +157,7 @@ function CustomHits({...props}) {
                 </li>
                 <li role='option'>
                   <HitLink
-                    href={`/${AppConfig.paths.features}/schema-namespacing`}
+                    href='/guides/schema/namespacing-the-schema'
                   >
                     <>
                       <svg
