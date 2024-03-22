@@ -21,6 +21,7 @@ import { SearchObject } from '../search/algolia'
 
 function CustomHits({...props}) {
   const { hits, results } = useHits<SearchObject>(props);
+  const showPopular = true
   return (
     <div className="py-4 px-2 space-y-4">
       { results?.query.trim() !== '' && hits.length === 0 && (
@@ -60,119 +61,121 @@ function CustomHits({...props}) {
       { (!results || results.query.trim() === '') && (
         <>
           {/* Popular */}
-          <div>
-            <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
-            <ul role='listbox'>
-              <li role='option'>
-                <HitLink
-                  href={`/${AppConfig.paths.features}/persisted-queries`}
-                >
-                  <>
-                    <svg
-                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                    </svg>
-                    <span>Persisted queries</span>
-                  </>
-                </HitLink>
-              </li>
-              <li role='option'>
-                <HitLink
-                  href={`/${AppConfig.paths.extensions}/automation`}
-                >
-                  <>
-                    <svg
-                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                    </svg>
-                    <span>Automation</span>
-                  </>
-                </HitLink>
-              </li>
-              <li role='option'>
-                <HitLink
-                  href={`/${AppConfig.paths.extensions}/multiple-query-execution`}
-                >
-                  <>
-                    <svg
-                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                    </svg>
-                    <span>Multiple Query Execution</span>
-                  </>
-                </HitLink>
-              </li>
-              <li role='option'>
-                <HitLink
-                  href={`/${AppConfig.paths.features}/oneof-input-object`}
-                >
-                  <>
-                    <svg
-                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                    </svg>
-                    <span>'oneOf' Input Object</span>
-                  </>
-                </HitLink>
-              </li>
-              <li role='option'>
-                <HitLink
-                  href={`/${AppConfig.paths.features}/nested-mutations`}
-                >
-                  <>
-                    <svg
-                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                    </svg>
-                    <span>Nested mutations</span>
-                  </>
-                </HitLink>
-              </li>
-              <li role='option'>
-                <HitLink
-                  href={`/${AppConfig.paths.features}/schema-namespacing`}
-                >
-                  <>
-                    <svg
-                      className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                    </svg>
-                    <span>Schema namespacing</span>
-                  </>
-                </HitLink>
-              </li>
-            </ul>
-          </div>
+          {showPopular && (
+            <div>
+              <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
+              <ul role='listbox'>
+                <li role='option'>
+                  <HitLink
+                    href={`/${AppConfig.paths.features}/persisted-queries`}
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>Persisted queries</span>
+                    </>
+                  </HitLink>
+                </li>
+                <li role='option'>
+                  <HitLink
+                    href={`/${AppConfig.paths.extensions}/automation`}
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>Automation</span>
+                    </>
+                  </HitLink>
+                </li>
+                <li role='option'>
+                  <HitLink
+                    href={`/${AppConfig.paths.extensions}/multiple-query-execution`}
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>Multiple Query Execution</span>
+                    </>
+                  </HitLink>
+                </li>
+                <li role='option'>
+                  <HitLink
+                    href={`/${AppConfig.paths.features}/oneof-input-object`}
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>'oneOf' Input Object</span>
+                    </>
+                  </HitLink>
+                </li>
+                <li role='option'>
+                  <HitLink
+                    href={`/${AppConfig.paths.features}/nested-mutations`}
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>Nested mutations</span>
+                    </>
+                  </HitLink>
+                </li>
+                <li role='option'>
+                  <HitLink
+                    href={`/${AppConfig.paths.features}/schema-namespacing`}
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>Schema namespacing</span>
+                    </>
+                  </HitLink>
+                </li>
+              </ul>
+            </div>
+          )}
           {/* Actions */}
           <div>
             <div className="text-sm font-medium text-slate-500 px-2 mb-2">Actions</div>
