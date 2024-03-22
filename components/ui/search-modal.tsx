@@ -205,7 +205,10 @@ function CustomHits({...props}) {
 
 function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
   return (
-    <Link className="flex items-center px-2 py-2 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={hit.urlPath}>
+    <Link
+      className="flex items-center px-2 py-2 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+      href={hit.urlPath}
+    >
       <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
         <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
       </svg>
