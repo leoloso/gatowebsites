@@ -6,4 +6,5 @@ export interface SearchObject extends BaseHit {
   description: string
   urlPath: string,
   slug: string,
+  content: string,
 }

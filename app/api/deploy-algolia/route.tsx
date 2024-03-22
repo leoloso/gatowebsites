@@ -31,7 +31,8 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
         title: post.title,
         description: post.summary,
         urlPath: urlPath,
-        slug: post.slug
+        slug: post.slug,
+        content: post.body.code,
       }
     }) || []
   )
@@ -48,7 +49,8 @@ async function getAllDocsTransformed(): Promise<SearchObject[]> {
         title: doc.title,
         description: doc.description,
         urlPath: urlPath,
-        slug: doc.slug
+        slug: doc.slug,
+        content: doc.body.code,
       }
     }) || []
   )
@@ -65,7 +67,8 @@ async function getAllExtensionsTransformed(): Promise<SearchObject[]> {
         title: extension.title,
         description: extension.description,
         urlPath: urlPath,
-        slug: extension.slug
+        slug: extension.slug,
+        content: extension.body.code,
       }
     }) || []
   )
@@ -82,7 +85,8 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
         title: feature.title,
         description: feature.description,
         urlPath: urlPath,
-        slug: feature.slug
+        slug: feature.slug,
+        content: feature.body.code,
       }
     }) || []
   )
