@@ -42,7 +42,7 @@ function getStructuredDataObject(
   // return an object to be added to Algolia.
   return {
     // objectID must be unique and consistent on each build
-    objectID: slugify(urlPath),
+    objectID: urlPath,
     title: title,
     description: description,
     urlPath: urlPath,
