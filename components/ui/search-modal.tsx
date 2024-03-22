@@ -23,6 +23,11 @@ function CustomHits({...props}) {
   const { hits, results } = useHits<SearchObject>(props);
   const showPopular = true
   // Group all hits under their section
+  let sectionHits : { [key: string]: Hit<SearchObject>[] } = {}
+  hits.forEach((hit) => {
+    sectionHits[hit.section] = sectionHits[hit.section] || [];
+    sectionHits[hit.section].push(hit);
+  })
   return (
     <div className="py-4 px-2 space-y-4">
       { results?.query.trim() !== '' && hits.length === 0 && (
@@ -48,14 +53,18 @@ function CustomHits({...props}) {
         <>
           {/* Results */}
           <div>
-            {/* <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Results</div> */}
-            <ul role='listbox'>
-              {hits.map((hit, index) => (                
-                <li key={index} role='option'>
-                  <CustomHit hit={hit} />
-                </li>
-              ))}
-            </ul>
+            {Object.keys(sectionHits).map((section) => (
+              <>
+                <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">{section}</div>
+                <ul role='listbox'>
+                  {sectionHits[section].map((hit, index) => (                
+                    <li key={index} role='option'>
+                      <CustomHit hit={hit} />
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ))}
           </div>
         </>
       )}
