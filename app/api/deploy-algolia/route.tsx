@@ -42,60 +42,52 @@ function getStructuredDataObject(
 async function getAllPostsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
   return (
-    allPosts?.map((post) => {
-      return getStructuredDataObject(
-        post.title,
-        post.summary,
-        getPostURLPath(post),
-        post.slug,
-        post.body.code
-      )
-    }) || []
+    allPosts?.map((post) => getStructuredDataObject(
+      post.title,
+      post.summary,
+      getPostURLPath(post),
+      post.slug,
+      post.body.code
+    )) || []
   )
 }
 
 async function getAllDocsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
   return (
-    allDocs?.map((doc) => {
-      return getStructuredDataObject(
-        doc.title,
-        doc.description,
-        getDocURLPath(doc),
-        doc.slug,
-        doc.body.code
-      )
-    }) || []
+    allDocs?.map((doc) => getStructuredDataObject(
+      doc.title,
+      doc.description,
+      getDocURLPath(doc),
+      doc.slug,
+      doc.body.code
+    )) || []
   )
 }
 
 async function getAllExtensionsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
   return (
-    allExtensions?.map((extension) => {
-      return getStructuredDataObject(
-        extension.title,
-        extension.description,
-        getExtensionURLPath(extension),
-        extension.slug,
-        extension.body.code
-      )
-    }) || []
+    allExtensions?.map((extension) => getStructuredDataObject(
+      extension.title,
+      extension.description,
+      getExtensionURLPath(extension),
+      extension.slug,
+      extension.body.code
+    )) || []
   )
 }
 
 async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
   return (
-    allFeatures?.map((feature) => {
-      return getStructuredDataObject(
-        feature.title,
-        feature.description,
-        getFeatureURLPath(feature),
-        feature.slug,
-        feature.body.code
-      )
-    }) || []
+    allFeatures?.map((feature) => getStructuredDataObject(
+      feature.title,
+      feature.description,
+      getFeatureURLPath(feature),
+      feature.slug,
+      feature.body.code
+    )) || []
   )
 }
 
