@@ -18,6 +18,7 @@ import slugify from "@sindresorhus/slugify"
 import { isAdminUser } from "@/utils/admin"
 import { NextApiRequest } from "next"
 import { SearchObject } from "@/components/search/algolia"
+import AppSettings from "@/app/app.settings"
 
 async function getAllPostsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
@@ -90,11 +91,12 @@ export async function GET(request: NextApiRequest) {
   if (!apiKey || typeof apiKey !== 'string' || !isAdminUser(apiKey)) {
     return new Response(`⛔️ You are not allowed here`, { status: 500 })
   }
+  const searchFeaturesAndExtensions = AppSettings.searchFeaturesAndExtensions
   try {
     const posts = await getAllPostsTransformed()
     const docs = await getAllDocsTransformed()
-    const extensions = await getAllExtensionsTransformed()
-    const features = await getAllFeaturesTransformed()
+    const extensions = searchFeaturesAndExtensions ? await getAllExtensionsTransformed() : []
+    const features = searchFeaturesAndExtensions ? await getAllFeaturesTransformed() : []
     const client = algoliaSearch(
       ALGOLIA_API_CREDENTIALS.appId,
       ALGOLIA_API_CREDENTIALS.searchAdminKey
