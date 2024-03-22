@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "NODE_OPTIONS=--max-old-space-size=8192 next build",
-    "start": "next start",
+    "dev": "export $(cat .env | xargs) && next dev",
+    "build": "export $(cat .env | xargs) && NODE_OPTIONS=--max-old-space-size=8192 next build",
+    "start": "export $(cat .env | xargs) && next start",
     "lint": "next lint",
+    "deploy-dev": "netlify dev",
     "deploy": "netlify deploy --build --context deploy-preview",
-    "deploy-prod": "netlify deploy --build --prod"
+    "deploy-prod": "netlify deploy --build --prod && npm run deploy-algolia",
+    "deploy-algolia": "curl https://gatographql.com/api/deploy-algolia?apiKey=Pf1GnIKlIAJthd0O0GwlCTJqxS0O9tIO"
   },
   "overrides": {
     "next-contentlayer": {
@@ -16,12 +18,13 @@
     }
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.17",
+    "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
     "@sindresorhus/slugify": "^2.2.1",
     "@types/node": "^20.10.4",
     "@types/react": "^18.2.42",
     "@types/react-dom": "^18.2.17",
+    "algoliasearch": "^4.22.1",
     "aos": "^3.0.0-beta.6",
     "clsx": "^2.1.0",
     "contentlayer": "^0.3.4",
@@ -34,6 +37,7 @@
     "react": "18.2.0",
     "react-children-utilities": "^2.10.0",
     "react-dom": "18.2.0",
+    "react-instantsearch-nextjs": "^0.1.14",
     "rehype-pretty-code": "^0.12.0",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^3.0.1",

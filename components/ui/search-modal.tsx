@@ -1,6 +1,312 @@
+'use client'
+
+import AppConfig from '@/app/app.config'
 import Link from 'next/link'
 import { Dialog, Transition } from '@headlessui/react'
 import AppSettings from '@/app/app.settings'
+
+// import algoliasearch and InstantSearch
+import algoliasearch from "algoliasearch/lite"
+import { InstantSearchNext } from 'react-instantsearch-nextjs';
+import {
+  SearchBox,
+  useHits,
+  PoweredBy,
+  // Hits,
+} from 'react-instantsearch';
+import type { Hit } from 'instantsearch.js';
+
+import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
+import { SearchObject } from '../search/algolia'
+
+function CustomHits({...props}) {
+  const { hits, results } = useHits<SearchObject>(props);
+  const showPopular = true
+  // Group all hits under their section
+  let sectionHits : { [key: string]: Hit<SearchObject>[] } = {}
+  hits.forEach((hit) => {
+    sectionHits[hit.section] = sectionHits[hit.section] || [];
+    sectionHits[hit.section].push(hit);
+  })
+  return (
+    <div className="py-4 px-2 space-y-4">
+      { results?.query.trim() !== '' && hits.length === 0 && (
+        <>
+          {/* Results */}
+          <div>
+            {/* <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Results</div> */}
+            <ul>
+              <li className='flex items-center px-2 py-1 leading-6 text-sm text-slate-800 rounded dark:text-slate-200 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none cursor-default'>
+                {/* <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 12 12">
+                  <g transform="matrix(0.75 0 0 0.75 0 0)">
+                    <path d="M4,14.75c-.192,0-.384-.073-.53-.22-.293-.293-.293-.768,0-1.061L13.47,3.47c.293-.293,.768-.293,1.061,0s.293,.768,0,1.061L4.53,14.53c-.146,.146-.338,.22-.53,.22Z" data-color="color-2"></path>
+                    <path d="M14,14.75c-.192,0-.384-.073-.53-.22L3.47,4.53c-.293-.293-.293-.768,0-1.061s.768-.293,1.061,0L14.53,13.47c.293,.293,.293,.768,0,1.061-.146,.146-.338,.22-.53,.22Z" data-color="color-2"></path>
+                  </g>
+                </svg> */}
+                <span>No results found</span>
+              </li>
+            </ul>
+          </div>
+        </>
+      )}
+      { results?.query.trim() !== '' && hits.length !== 0 && (
+        <>
+          {/* Results */}
+          <div>
+            {Object.keys(sectionHits).map((section, index) => (
+              <>
+                <div className={`font-medium text-slate-500 px-2 dark:text-slate-400 ${index > 0 ? 'mt-4' : ''}`}>{section}</div>
+                <ul role='listbox'>
+                  {sectionHits[section].map((hit, index) => (                
+                    <li key={index} role='option'>
+                      <CustomHit hit={hit} />
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ))}
+          </div>
+        </>
+      )}
+      { (!results || results.query.trim() === '') && (
+        <>
+          {/* Popular */}
+          {showPopular && (
+            <div>
+              <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
+              <ul role='listbox'>
+                <li role='option'>
+                  <HitLink
+                    href='/guides/manage/automating-tasks'
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>Automation</span>
+                    </>
+                  </HitLink>
+                </li>
+                <li role='option'>
+                  <HitLink
+                    href='/guides/schema/executing-multiple-queries-concurrently'
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>Multiple Query Execution</span>
+                    </>
+                  </HitLink>
+                </li>
+                <li role='option'>
+                  <HitLink
+                    href='/guides/augment/oneof-input-object'
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>'oneOf' Input Object</span>
+                    </>
+                  </HitLink>
+                </li>
+                <li role='option'>
+                  <HitLink
+                    href='/guides/schema/using-nested-mutations'
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>Nested mutations</span>
+                    </>
+                  </HitLink>
+                </li>
+                <li role='option'>
+                  <HitLink
+                    href='/guides/schema/namespacing-the-schema'
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>Schema namespacing</span>
+                    </>
+                  </HitLink>
+                </li>
+                <li role='option'>
+                  <HitLink
+                    href='/guides/use/creating-a-persisted-query'
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>Persisted queries</span>
+                    </>
+                  </HitLink>
+                </li>
+              </ul>
+            </div>
+          )}
+          {/* Actions */}
+          <div>
+            <div className="text-sm font-medium text-slate-500 px-2 mb-2">Actions</div>
+            <ul role='listbox'>
+              <li role='option'>
+                <HitLink
+                  href={AppConfig.urls.instawpSandboxDemo}
+                  target='_blank'
+                >
+                  <svg
+                    className="w-3 h-3 fill-teal-500 shrink-0 mr-3"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M6 0a6 6 0 1 0 0 12A6 6 0 0 0 6 0Zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
+                  </svg>
+                  <span className="font-medium">Try out Gato GraphQL PRO</span>
+                </HitLink>
+              </li>
+              <li role='option'>
+                <HitLink
+                  href="/contact"
+                >
+                  <svg
+                    className="w-3 h-3 fill-purple-500 shrink-0 mr-3"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M6 0C2.691 0 0 2.362 0 5.267c0 2.905 2.691 5.266 6 5.266a6.8 6.8 0 0 0 1.036-.079l2.725 1.485a.5.5 0 0 0 .739-.439V8.711A4.893 4.893 0 0 0 12 5.267C12 2.362 9.309 0 6 0Z" />
+                  </svg>
+                  <span className="font-medium">Contact us</span>
+                </HitLink>
+              </li>
+              <li role='option'>
+                <HitLink
+                  href="/support"
+                >
+                  <svg
+                    className="w-3 h-3 fill-blue-600 shrink-0 mr-3"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M11.854.146a.5.5 0 0 0-.525-.116l-11 4a.5.5 0 0 0-.015.934l4.8 1.921 1.921 4.8A.5.5 0 0 0 7.5 12h.008a.5.5 0 0 0 .462-.329l4-11a.5.5 0 0 0-.116-.525Z" />
+                  </svg>
+                  <span className="font-medium">Support request</span>
+                </HitLink>
+              </li>
+            </ul>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
+  return (
+    <TabbedHitLink
+      href={hit.urlPath}
+    >
+      <>
+        <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
+          <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
+        </svg>
+        <span>
+          <span className='text-lg font-bold leading-snug tracking-tight block' dangerouslySetInnerHTML={
+            {
+              __html: (!Array.isArray(hit._highlightResult?.title) && hit._highlightResult?.title.value) || hit.title
+            }
+          } />
+          <span className='leading-snug tracking-tight block' dangerouslySetInnerHTML={
+            {
+              __html: (!Array.isArray(hit._highlightResult?.description) && hit._highlightResult?.description.value) || hit.description
+            }
+          } />
+        </span>
+      </>
+    </TabbedHitLink>
+  );
+}
+
+function HitLink({ ...props }) {
+  return (
+    <Link
+      className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+      href={props.href}
+      {...props}
+    >
+      {props.children}
+    </Link>
+  );
+}
+
+function TabbedHitLink({ ...props }) {
+  return (
+    <Link
+      className="flex items-center px-2 py-4 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+      href={props.href}
+      // There's a bug with @headlessui: It only tabs to 2 elements (even if all of them have the `tabIndex` prop set)
+      // Workaround hack: when focused increase their tabIndex, so the ones below are then reachable
+      // This works on Firefox. Pressing tab does not work on Safari.
+      onFocus={(e) => {e.target.tabIndex = (e.target.tabIndex || 1) + 10}}
+      tabIndex={10}
+      {...props}
+    >
+      {props.children}
+    </Link>
+  );
+}
+
+// Initialize the Algolia client
+const searchClient = algoliasearch(
+  ALGOLIA_API_CREDENTIALS.appId,
+  ALGOLIA_API_CREDENTIALS.searchAPIKey,
+)
 
 interface SearchModalProps {
   isOpen: boolean
@@ -12,7 +318,7 @@ interface SearchModalProps {
 export default function SearchModal({
   isOpen,
   setIsOpen,
-  placeholder = "Search for anything…",
+  placeholder = "Search in Documentation and Blog…",
   enableLightDarkThemeModeToggle = false,
 }: SearchModalProps) {  
   return (
@@ -38,127 +344,34 @@ export default function SearchModal({
           leaveTo="opacity-0 translate-y-4"
         >
           <Dialog.Panel className="bg-white dark:bg-slate-800 overflow-auto max-w-2xl w-full max-h-full rounded shadow-lg">
-            {/* Search form */}
-            <form className="border-b border-slate-200 dark:border-slate-700">
-              <div className="flex items-center">
-                <label htmlFor="search-modal">
-                  <span className="sr-only">Search</span>
-                  <svg
-                    className="w-4 h-4 fill-slate-500 shrink-0 ml-4 dark:fill-slate-400"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="m14.707 13.293-1.414 1.414-2.4-2.4 1.414-1.414 2.4 2.4ZM6.8 12.6A5.8 5.8 0 1 1 6.8 1a5.8 5.8 0 0 1 0 11.6Zm0-2a3.8 3.8 0 1 0 0-7.6 3.8 3.8 0 0 0 0 7.6Z" />
-                  </svg>
-                </label>
-                <input
-                  id="search-modal"
-                  className="text-sm text-slate-700 dark:text-slate-200 w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500"
-                  type="search"
-                  placeholder={placeholder}
-                />
-              </div>
-            </form>
-            <div className="py-4 px-2 space-y-4">
-              {/* Popular */}
-              <div>
-                <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
-                <ul>
-                  <li>
-                    <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href="#0">
-                      <svg
-                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                      </svg>
-                      <span>Alternative Schemas</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href="#0">
-                      <svg
-                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                      </svg>
-                      <span>Query string parameters</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href="#0">
-                      <svg
-                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                      </svg>
-                      <span>Integrations</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href="#0">
-                      <svg
-                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                      </svg>
-                      <span>Organize Contacts with Tags</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              {/* Actions */}
-              <div>
-                <div className="text-sm font-medium text-slate-500 px-2 mb-2">Actions</div>
-                <ul>
-                  <li>
-                    <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href="#0">
-                      <svg
-                        className="w-3 h-3 fill-blue-600 shrink-0 mr-3"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M11.854.146a.5.5 0 0 0-.525-.116l-11 4a.5.5 0 0 0-.015.934l4.8 1.921 1.921 4.8A.5.5 0 0 0 7.5 12h.008a.5.5 0 0 0 .462-.329l4-11a.5.5 0 0 0-.116-.525Z" />
-                      </svg>
-                      <span className="font-medium">Contact support</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href="#0">
-                      <svg
-                        className="w-3 h-3 fill-purple-500 shrink-0 mr-3"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M6 0C2.691 0 0 2.362 0 5.267c0 2.905 2.691 5.266 6 5.266a6.8 6.8 0 0 0 1.036-.079l2.725 1.485a.5.5 0 0 0 .739-.439V8.711A4.893 4.893 0 0 0 12 5.267C12 2.362 9.309 0 6 0Z" />
-                      </svg>
-                      <span className="font-medium">Submit feedback</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <InstantSearchNext indexName={ALGOLIA_API_CREDENTIALS.indexName} searchClient={searchClient}>
+              <SearchBox
+                placeholder={placeholder}
+                autoFocus
+                classNames={{
+                  form: 'relative flex justify-center border-b border-slate-200 dark:border-slate-700',
+                  input: 'text-sm text-slate-700 dark:text-slate-200 w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500',
+                  loadingIndicator: 'relative top-0 right-0 mt-4',
+                  submitIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
+                  resetIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
+                  loadingIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
+                }}
+              />
+              <CustomHits />
+              {/* <Hits
+                hitComponent={CustomHit}
+                classNames={{
+                  root: 'py-4 px-2 space-y-4',
+                }}
+              /> */}
+              <PoweredBy
+                theme='dark'
+                classNames={{
+                  root: 'flex justify-center',
+                  logo: 'h-4 my-2',
+                }}
+              />
+            </InstantSearchNext>
           </Dialog.Panel>
         </Transition.Child>
       </Dialog>
