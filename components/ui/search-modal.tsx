@@ -12,7 +12,9 @@ import {
   SearchBox,
   useHits,
   PoweredBy,
+  Hits,
 } from 'react-instantsearch';
+import type { Hit } from 'instantsearch.js';
 
 import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
 import { SearchObject } from '../search/algolia'
@@ -48,23 +50,7 @@ function CustomHits({...props}) {
             <ul>
               {hits.map((hit, index) => (                
                 <li key={index}>
-                  <Link className="flex items-center px-2 py-2 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={hit.urlPath}>
-                    <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
-                      <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-                    </svg>
-                    <div>
-                      <span className='text-lg font-bold leading-snug tracking-tight' dangerouslySetInnerHTML={
-                        {
-                          __html: (!Array.isArray(hit._highlightResult?.title) && hit._highlightResult?.title.value) || hit.title
-                        }
-                      } />
-                      <p dangerouslySetInnerHTML={
-                        {
-                          __html: (!Array.isArray(hit._highlightResult?.description) && hit._highlightResult?.description.value) || hit.title
-                        }
-                      } />
-                    </div>
-                  </Link>
+                  <CustomHit hit={hit} />
                 </li>
               ))}
             </ul>
@@ -217,6 +203,28 @@ function CustomHits({...props}) {
   );
 }
 
+function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
+  return (
+    <Link className="flex items-center px-2 py-2 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none" href={hit.urlPath}>
+      <svg className="shrink-0 fill-gray-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
+        <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
+      </svg>
+      <div>
+        <span className='text-lg font-bold leading-snug tracking-tight' dangerouslySetInnerHTML={
+          {
+            __html: (!Array.isArray(hit._highlightResult?.title) && hit._highlightResult?.title.value) || hit.title
+          }
+        } />
+        <p dangerouslySetInnerHTML={
+          {
+            __html: (!Array.isArray(hit._highlightResult?.description) && hit._highlightResult?.description.value) || hit.title
+          }
+        } />
+      </div>
+    </Link>
+  );
+}
+
 // Initialize the Algolia client
 const searchClient = algoliasearch(
   ALGOLIA_API_CREDENTIALS.appId,
@@ -273,6 +281,12 @@ export default function SearchModal({
                 }}
               />
               <CustomHits />
+              {/* <Hits
+                hitComponent={CustomHit}
+                classNames={{
+                  root: 'py-4 px-2 space-y-4',
+                }}
+              /> */}
               <PoweredBy
                 theme='dark'
                 classNames={{
