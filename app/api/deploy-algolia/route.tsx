@@ -22,7 +22,11 @@ import AppSettings from "@/app/app.settings"
 
 // Remove all GraphQL queries from the Algolia index
 function removeUnneededContent(content: string): string {
-  return content.replace(/```[graphql|gql|js|javascript|html|php|css].*```/igs,'')
+  return content
+    // Remove all ``` except the last one
+    .replace(/```[graphql|gql|js|javascript|html|php|css][^```]*```/igs,'')
+    // Remove the last ```
+    .replace(/```[graphql|gql|js|javascript|html|php|css].*```/igs,'')
 }
 
 function getStructuredDataObject(
