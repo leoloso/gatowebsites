@@ -46,7 +46,7 @@ function CustomHits({...props}) {
           {/* Results */}
           <div>
             {Object.keys(sectionHits).map((section, index) => (
-              <>
+              <div key={index}>
                 <div className={`font-medium text-slate-500 px-2 dark:text-slate-400 ${index > 0 ? 'mt-4' : ''}`}>{section}</div>
                 <ul role='listbox'>
                   {sectionHits[section].map((hit, index) => (                
@@ -55,7 +55,7 @@ function CustomHits({...props}) {
                     </li>
                   ))}
                 </ul>
-              </>
+              </div>
             ))}
           </div>
         </>

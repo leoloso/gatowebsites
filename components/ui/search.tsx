@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import SearchModal from './search-modal'
+import { usePathname } from 'next/navigation';
 
 export default function Search({
   showSearchInput = true,
@@ -12,6 +13,13 @@ export default function Search({
 }) {
 
   const [searchModalOpen, setSearchModalOpen] = useState<boolean>(false)
+
+  // Close the search Dialog when the page has loaded,
+  // otherwise it hides the page on mobile
+  const pathname = usePathname()
+  useEffect(() => {
+    setSearchModalOpen(false)
+  }, [pathname])
 
   return (
     <div className={showSearchInput ? 'grow ml-4 md:ml-8' : ''}>
