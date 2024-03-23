@@ -301,6 +301,8 @@ const searchClient = algoliasearch(
   ALGOLIA_API_CREDENTIALS.searchAPIKey,
 )
 
+const [initialSearchQuery, setInitialSearchQuery] = useState<string>('')
+
 interface SearchModalProps {
   isOpen: boolean
   setIsOpen: (value: boolean) => void,
@@ -313,9 +315,7 @@ export default function SearchModal({
   setIsOpen,
   placeholder = "Search in Documentation and Blog…",
   enableLightDarkThemeModeToggle = false,
-}: SearchModalProps) {
-  const [initialSearchQuery, setInitialSearchQuery] = useState<string>('')
-  
+}: SearchModalProps) {  
   let initialUiState: { [key: string]: { [key: string]: string }} = {}
   initialUiState[ALGOLIA_API_CREDENTIALS.indexName] = {
     query: initialSearchQuery,
