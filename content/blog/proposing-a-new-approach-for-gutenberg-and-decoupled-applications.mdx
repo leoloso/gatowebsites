@@ -309,9 +309,9 @@ The `Block` type will have a field `translatablePaths`, returning an array of th
 - `core/heading` returns `["header"]`
 - `core/list` returns `["items.0", "items.1", "items.2", ...]`
 
-[`@advancePointersInArray`](/guides/schema/using-composable-directives/#heading-@advancepointerinarray) is a meta-directive: it modifies the context for a subsequent directive. It makes the subsequent directive receive a sub-element from within the queried `JSONObject`, such as the `content` property from the paragraph block. The list of paths is obtained via field `translatablePaths`, evaluated on the same queried entity.
+[`@advancePointersInArray`](/guides/schema/using-composable-directives#heading-@advancepointerinarray) is a meta-directive: it modifies the context for a subsequent directive. It makes the subsequent directive receive a sub-element from within the queried `JSONObject`, such as the `content` property from the paragraph block. The list of paths is obtained via field `translatablePaths`, evaluated on the same queried entity.
 
-Then, [`@underEachArrayItem`](/guides/schema/using-composable-directives/#heading-@foreach) is another meta-directive, which iterates over a list of elements from the queried entity, and passes a reference to the iterated element to the next directive. In this case, it gets all the list of the properties to translate for all entities, each of them of type `String`, and passes individual `String` elements down the line.
+Then, [`@underEachArrayItem`](/guides/schema/using-composable-directives#heading-@foreach) is another meta-directive, which iterates over a list of elements from the queried entity, and passes a reference to the iterated element to the next directive. In this case, it gets all the list of the properties to translate for all entities, each of them of type `String`, and passes individual `String` elements down the line.
 
 Finally, directive `@strTranslate` receives an element of type `String` contained within the `JSONObject`, and it translates it right there, within the `JSONObject` itself.
 
