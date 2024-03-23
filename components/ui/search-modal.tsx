@@ -331,7 +331,7 @@ export default function SearchModal({
   
   return (
     <Transition appear show={isOpen}>
-      <Dialog as="div" onClose={() => setIsOpen(false)} unmount={false}>
+      <Dialog as="div" onClose={() => setIsOpen(false)}>
         <Transition.Child
           className="fixed inset-0 bg-slate-900 bg-opacity-30 z-50 transition-opacity"
           enter="transition ease-out duration-200"
