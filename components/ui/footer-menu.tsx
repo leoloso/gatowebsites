@@ -1,6 +1,5 @@
 import AppConfig from '@/app/app.config'
 import { getShopAnchorClassname, getShopURL } from '@/utils/shop/shop'
-import InitializeShop from '../shop/initialize-shop'
 
 export default function FooterMenu({
   children,
@@ -130,8 +129,6 @@ export default function FooterMenu({
           </li>
         </ul>
       </div>
-      
-      <InitializeShop />
     </>
   )
 }

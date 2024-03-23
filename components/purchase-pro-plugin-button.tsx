@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import AppConfig from '@/app/app.config'
 import { getShopAnchorClassname, getShopURL } from '@/utils/shop/shop'
-import InitializeShop from './shop/initialize-shop'
 
 export default function PurchasePROPluginButton({
   btnClassName = "btn-sm",
@@ -15,7 +14,6 @@ export default function PurchasePROPluginButton({
           Go PRO <span className="tracking-normal text-purple-100 dark:text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
         </span>
       </Link>
-      <InitializeShop />
     </>
   )
 }
