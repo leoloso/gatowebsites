@@ -7,6 +7,7 @@ import PostAccordion from './components/accordion'
 import PostTag from './components/tag'
 import PostTable, { TableHead, TableBody, TableHeadRow, TableBodyRow, TableTh, TableTd } from './components/table'
 import { Pre } from './components/pre'
+import { H1, H2, H3, H4, H5, H6 } from './components/headings'
 
 const mdxComponents = {
   Link: PostLink,
@@ -38,6 +39,12 @@ export function Mdx({
 
   const custom = {
     pre: ({ ...props }) => <Pre>{ props.children }</Pre>,
+    h1: H1,
+    h2: H2,
+    h3: H3,
+    h4: H4,
+    h5: H5,
+    h6: H6,
   }
 
   return (
