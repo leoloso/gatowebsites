@@ -7,8 +7,9 @@
     "build": "export $(cat .env | xargs) && NODE_OPTIONS=--max-old-space-size=8192 next build",
     "start": "export $(cat .env | xargs) && next start",
     "lint": "next lint",
+    "deploy": "npm run deploy-staging",
     "deploy-dev": "netlify dev",
-    "deploy": "netlify deploy --build --context deploy-preview",
+    "deploy-staging": "netlify deploy --build --context deploy-preview",
     "deploy-prod": "netlify deploy --build --prod",
     "deploy-algolia": "curl https://gatographql.com/api/deploy-algolia?apiKey=Pf1GnIKlIAJthd0O0GwlCTJqxS0O9tIO",
     "deploy-prod-with-algolia": "npm run deploy-prod && npm run deploy-algolia"
