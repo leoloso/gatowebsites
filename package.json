@@ -9,8 +9,9 @@
     "lint": "next lint",
     "deploy-dev": "netlify dev",
     "deploy": "netlify deploy --build --context deploy-preview",
-    "deploy-prod": "netlify deploy --build --prod && npm run deploy-algolia",
-    "deploy-algolia": "curl https://gatographql.com/api/deploy-algolia?apiKey=Pf1GnIKlIAJthd0O0GwlCTJqxS0O9tIO"
+    "deploy-prod": "netlify deploy --build --prod",
+    "deploy-algolia": "curl https://gatographql.com/api/deploy-algolia?apiKey=Pf1GnIKlIAJthd0O0GwlCTJqxS0O9tIO",
+    "deploy-prod-with-algolia": "npm run deploy-prod && npm run deploy-algolia"
   },
   "overrides": {
     "next-contentlayer": {
