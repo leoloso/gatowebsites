@@ -301,8 +301,6 @@ const searchClient = algoliasearch(
   ALGOLIA_API_CREDENTIALS.searchAPIKey,
 )
 
-const [initialSearchQuery, setInitialSearchQuery] = useState<string>('')
-
 interface SearchModalProps {
   isOpen: boolean
   setIsOpen: (value: boolean) => void,
@@ -316,10 +314,21 @@ export default function SearchModal({
   placeholder = "Search in Documentation and Blog…",
   enableLightDarkThemeModeToggle = false,
 }: SearchModalProps) {  
+  const [initialSearchQuery, setInitialSearchQuery] = useState<string>('')
   let initialUiState: { [key: string]: { [key: string]: string }} = {}
   initialUiState[ALGOLIA_API_CREDENTIALS.indexName] = {
     query: initialSearchQuery,
   }
+
+  // @see https://www.algolia.com/doc/api-reference/widgets/instantsearch/react/#widget-param-onstatechange
+  const onStateChange = ({ uiState, setUiState }: { uiState: any, setUiState: (uiState: any) => void }) => {
+    // Custom logic
+    const query = uiState[ALGOLIA_API_CREDENTIALS.indexName].query || ''
+    setInitialSearchQuery(query)
+
+    setUiState(uiState);
+  };
+  
   return (
     <Transition appear show={isOpen}>
       <Dialog as="div" onClose={() => setIsOpen(false)} unmount={false}>
@@ -348,6 +357,7 @@ export default function SearchModal({
               searchClient={searchClient}
               future={{preserveSharedStateOnUnmount: true}}
               initialUiState={initialUiState}
+              onStateChange={onStateChange}
             >
               <SearchBox
                 placeholder={placeholder}
