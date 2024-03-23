@@ -17,6 +17,7 @@ import type { Hit } from 'instantsearch.js';
 
 import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
 import { SearchObject } from '../search/algolia'
+import { useState } from 'react'
 
 function CustomHits({...props}) {
   const { hits, results } = useHits<SearchObject>(props);
@@ -312,10 +313,16 @@ export default function SearchModal({
   setIsOpen,
   placeholder = "Search in Documentation and Blog…",
   enableLightDarkThemeModeToggle = false,
-}: SearchModalProps) {  
+}: SearchModalProps) {
+  const [initialSearchQuery, setInitialSearchQuery] = useState<string>('')
+  
+  let initialUiState: { [key: string]: { [key: string]: string }} = {}
+  initialUiState[ALGOLIA_API_CREDENTIALS.indexName] = {
+    query: initialSearchQuery,
+  }
   return (
     <Transition appear show={isOpen}>
-      <Dialog as="div" onClose={() => setIsOpen(false)}>
+      <Dialog as="div" onClose={() => setIsOpen(false)} unmount={false}>
         <Transition.Child
           className="fixed inset-0 bg-slate-900 bg-opacity-30 z-50 transition-opacity"
           enter="transition ease-out duration-200"
@@ -336,7 +343,12 @@ export default function SearchModal({
           leaveTo="opacity-0 translate-y-4"
         >
           <Dialog.Panel className="bg-white dark:bg-slate-800 overflow-auto max-w-2xl w-full max-h-full rounded shadow-lg">
-            <InstantSearchNext indexName={ALGOLIA_API_CREDENTIALS.indexName} searchClient={searchClient}>
+            <InstantSearchNext
+              indexName={ALGOLIA_API_CREDENTIALS.indexName}
+              searchClient={searchClient}
+              future={{preserveSharedStateOnUnmount: true}}
+              initialUiState={initialUiState}
+            >
               <SearchBox
                 placeholder={placeholder}
                 autoFocus
