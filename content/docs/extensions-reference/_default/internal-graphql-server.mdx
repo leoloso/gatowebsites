@@ -100,15 +100,15 @@ $responseCacheControlHeader = $response->getHeaderLine('Cache-Control');
 
 Please notice that class `GraphQLServer` is not ready before the WordPress core `init` hook.
 
-{/* <!-- ## Schema Configuration
+## Schema Configuration
 
-The internal GraphQL Server applies the Schema Configuration selected in the Settings page, under tab "Internal GraphQL Server".
+The internal GraphQL Server applies its own Schema Configuration. For instance, the default one is selected in the Settings page, under tab "Internal GraphQL Server".
 
-![Configuring the Internal GraphQL Server in the Settings](/assets/extensions/upstream-pro/settings-schema-configuration-for-internal-graphql-server.png "Configuring the Internal GraphQL Server in the Settings")
+![Configuring the Internal GraphQL Server in the Settings](/assets/guides/upstream-pro/settings-schema-configuration-for-internal-graphql-server.png)
 
 This configuration also applies whenever the query executed against the internal GraphQL server was triggered by some other GraphQL query while being resolved in an endpoint with a different configuration (such as the public endpoint `graphql/`).
 
-For instance, let's say that we have configured the single endpoint `graphql/` to apply an Access Control List to validate users by IP, and we execute mutation `createPost` against this endpoint:
+To illustrate, let's say that we have configured the single endpoint `graphql/` to apply an Access Control List to validate users by IP, and we execute mutation `createPost` against this endpoint:
 
 ```graphql
 mutation {
@@ -131,7 +131,7 @@ add_action(
 
 This GraphQL query will be resolved using the schema configuration applied to the internal GraphQL server, and not to the single endpoint `graphql/`.
 
-As a result, the validation by user IP will not take place (that is, unless that Access Control List was also applied to the internal GraphQL server). --> */}
+As a result, the validation by user IP will not take place (that is, unless that Access Control List was also applied to the internal GraphQL server).
 
 ## Example
 
