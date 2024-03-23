@@ -16,19 +16,11 @@ Upon sharing the announcement on Hacker News, I [got the following question](htt
 
 > [...] I'm curious to know what took 16k commits. The projects that I've been on with more then ten thousand commits had many dozens or hundreds of folks working full time. [...] Is there some complexity that needed to be overcome that the post doesn't get into?
 
-{/* <!-- As a [response to that question](https://news.ycombinator.com/item?id=34354179#34357827), we are told that developing the WP REST API required only 1/4th of the number of commits:
-
-> For comparison, the WordPress REST API was about 4k commits over ~4 years or so (prior to us merging it into WordPress itself): https://github.com/WP-API/WP-API
->
-> (That said, commit count is a pretty useless metric.) --> */}
-
 The commit count is not a very reliable metric, as I might just do a very simple change and push that as a single commit. Many of those 16k commits were `"typo"` commits, or just improved a description in some `README`.
 
 Nevertheless, the commit count does give an idea of the actual effort involved. There were also plenty of commits packed with modifications, including dozens, and even hundres of changes at a time. The changes between versions `0.8` and `0.9` are indeed huge, and that took effort and time to pull out.
 
 In this blog post, I'll describe what those changes are, as to explain why it took so long. And in doing so, I'll also give a preview of some advanced features that were added to the codebase, and which will see the light of the day with the upcoming version `1.0`.
-
-{/* <!-- It's no coincidence that the release notes for version `0.9` are over 40 minutes reading time! --> */}
 
 ## Background of the GraphQL server
 
@@ -78,8 +70,6 @@ Other GraphQL servers in PHP rely on [`graphql-php`](https://github.com/webonyx/
 
 And as will be shown in the section below, this is a great advantage.
 
-{/* <!-- As a side not, PoP can possibly still render components as HTML, as to produce a website in the server-side. However, GraphQL is meant to handle pure object data (such as a post title), and not component configuration data (such as priting the title with CSS class `"title-big"`). So to satisfy this use case, I'd have to implement the adapter in the opposite direction: from GraphQL query to component. That's currently a TODO that may or may not ever happen. (Anyone interested to take on this challenge?) --> */}
-
 ## Incorporating original features to GraphQL
 
 GraphQL is normally associated with data fetching. Natually, you can retrieve any piece of data (posts, users, comments, etc) from Gato GraphQL:
@@ -118,7 +108,6 @@ Some examples where GraphQL is useful are:
   - On an ongoing basis, as to replace any `"http://"` to `"https://"` whenever a writer publishes a new blog post
 - Connecting to the Google Translate API to translate all the blog posts to a different language
 - Sending a tweet automatically after a blog post is published
-{/* <!-- - Sending notifications (by email, Slack, etc) after something happened (a new post, comment, etc) --> */}
 
 PoP had been designed to support these other use cases, via features which are not (naturally) supported by GraphQL, such as:
 
@@ -126,7 +115,6 @@ PoP had been designed to support these other use cases, via features which are n
 - Passing the result of a field as input to another field, within the same query
 - Composing directives, as to have a directive modify the behavior of another directive
 - Deciding to apply a directive or not dynamically, based on the value of the field
-{/* <!-- (such as a dynamic `@skip` or `@include` based on dynamic data, not on static variables) --> */}
 
 And I certainly did not want to remove these features from the GraphQL server: I had already coded them, and they are certainly valuable.
 
