@@ -5,7 +5,6 @@ import PricingItem from "./pricing-item"
 import { getShopURL, getShopAnchorClassname } from "@/utils/shop/shop"
 import { allFeatures } from "@/.contentlayer/generated"
 import { sortByOrderAndTitle } from "@/utils/content/sort"
-import InitializeShop from "./shop/initialize-shop"
 
 export default function Pricing() {
   const features = allFeatures.sort(sortByOrderAndTitle)
@@ -67,7 +66,6 @@ export default function Pricing() {
           buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier3)}
           buttonClassname={getShopAnchorClassname()}
         />
-        <InitializeShop />
         
         {/* # Usage */}
         <PricingGroup columns={4} name="Usage" />

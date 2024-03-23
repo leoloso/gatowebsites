@@ -5,6 +5,7 @@ import AppSettings from '@/app/app.settings'
 import PlausibleProvider from 'next-plausible'
 import LemonSqueezyScriptProvider from '@/components/scripts/lemonsqueezy'
 import { DOMAIN } from '@/data/env/domain'
+import InitializeShop from '@/components/shop/initialize-shop'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,6 +34,7 @@ export default function RootLayout({
         <PlausibleProvider domain="gatographql.com" />
 
         <LemonSqueezyScriptProvider />
+        <InitializeShop />
       </head>
       <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
         {children}
