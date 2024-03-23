@@ -57,48 +57,6 @@ When Multiple query execution is enabled, the following directives are made avai
 
 In addition, directives `@include` and `@skip` are also made available as operation directives (they are normally only field directives), and these can be used to conditionally execute an operation if it satisfies some condition.
 
-{/* <!-- ## When to use
-
-Let's suppose we want to search all posts which mention the name of the logged-in user. Normally, we would need 2 queries to accomplish this:
-
-We first retrieve the user's `name`:
-
-```graphql
-query GetLoggedInUserName {
-  me {
-    name
-  }
-}
-```
-
-...and then, having executed the first query, we can pass the retrieved user's `name` as variable `$search` to perform the search in a second query:
-
-```graphql
-query GetPostsContainingString($search: String = "") {
-  posts(filter: { search: $search }) {
-    id
-    title
-  }
-}
-```
-
-The `@export` directive exports the value from a field, and inject this value into a second field through a dynamic variable (whose name is defined under argument `as`), thus combining the 2 queries into 1:
-
-```graphql
-query GetLoggedInUserName {
-  me {
-    name @export(as: "search")
-  }
-}
-
-query GetPostsContainingString @depends(on: "GetLoggedInUserName") {
-  posts(filter: { search: $search }) {
-    id
-    title
-  }
-}
-``` --> */}
-
 ## `@depends`
 
 When the GraphQL document contains multiple operations, we indicate to the server which one to execute via URL param `?operationName=...`; otherwise, the last operation will be executed.
@@ -408,110 +366,6 @@ query {
   }
 }
 ```
-
-{/* <!-- Directive `@export` handles these cases:
-
-1. Exporting a single value from a single field
-2. Exporting a list of values from a single field
-
-In addition, when the **Multi-Field Directives** module is enabled, `@export` handles 2 additional cases:
-
-3. Exporting a dictionary of values, containing several fields from the same object
-4. Exporting a list of a dictionary of values, with each dictionary containing several fields from the same object
-
-#### 1. Exporting a single value from a single field
-
-`@export` must handle exporting a single value from a single field, such as the user's `name` in this query:
-
-```graphql
-query GetLoggedInUserName {
-  me {
-    name @export(as: "search")
-  }
-}
-
-query GetPostsContainingString @depends(on: "GetLoggedInUserName") {
-  posts(filter: { search: $search }) {
-    id
-    title
-  }
-}
-```
-
-#### 2. Exporting a list of values from a single field
-
-Fields returning lists should also be exportable. For instance, in the query below, the exported value is the list of names from the logged-in user's friends (hence the type of the `$search` variable went from `String` to `[String]`):
-
-```graphql
-query GetLoggedInUserFriendNames {
-  me {
-    friends {
-      name @export(as: "search")
-    }
-  }
-}
-
-query GetPostsContainingLoggedInUserFriendNames @depends(on: "GetLoggedInUserFriendNames") {
-  posts(filter: { searchAny: $search }) {
-    id
-    title
-  }
-}
-```
-
-#### 3. Exporting a dictionary of values, containing several fields from the same object
-
-We may also need to export several properties from a same object. Then, `@export` also allows to export these properties to the same variable, as a dictionary of values.
-
-For instance, the query could export both the `name` and `surname` fields from the user, and have a `searchByAnyProperty` input that receives a dictionary. This is done by appending the `affectAdditionalFieldsUnderPos` directive argument (see the documentation for **Multi-Field Directives**) pointing to the extra field(s):
-
-```graphql
-query GetLoggedInUserNameAndSurname {
-  me {
-    name
-    surname
-      @export(
-        as: "search"
-        affectAdditionalFieldsUnderPos: [1]
-      )
-  }
-}
-
-query GetPostsContainingLoggedInUserNameAndSurname @depends(on: "GetLoggedInUserNameAndSurname") {
-  posts(filter: { searchByAnyProperty: $search }) {
-    id
-    title
-  }
-}
-```
-
-#### 4. Exporting a list of a dictionary of values, with each dictionary containing several fields from the same object
-
-Similar to upgrading from a single value to a list of values, we can upgrade from a single dictionary to a list of dictionaries.
-
-For instance, we could export fields `name` and `surname` from the list of the logged-in user's friends:
-
-```graphql
-query GetLoggedInUserFriendNamesAndSurnames {
-  me {
-    friends {
-      name
-      surname
-        @export(
-          as: "search"
-          affectAdditionalFieldsUnderPos: [1]
-        )
-    }
-  }
-}
-
-query GetPostsContainingLoggedInUserFriendNamesAndSurnames @depends(on: "GetLoggedInUserFriendNamesAndSurnames") {
-  posts(filter: { searchAnyByAnyProperty: $search }) {
-    id
-    title
-  }
-}
-``` --> */}
 
 ## Exporting values when iterating an array or JSON object
 
@@ -935,43 +789,9 @@ query ExecuteAllAddCommentOperations
 }
 ```
 
-{/* <!-- ## GraphQL spec
+## GraphQL spec
 
 This functionality is currently not part of the GraphQL spec, but it has been requested:
 
 - <a href="https://github.com/graphql/graphql-spec/issues/375" target="_blank">Issue #375 - [RFC] Executing multiple operations in a query</a>
-- <a href="https://github.com/graphql/graphql-spec/issues/377" target="_blank">Issue #377 - [RFC] exporting variables between queries</a> --> */}
-
-{/* <!-- ## Bundles including extension
-
-- [“All in One Toolbox for WordPress” Bundle](/bundles/all-in-one-toolbox-for-wordpress)
-- [“Tailored WordPress Automator” Bundle](/bundles/tailored-wordpress-automator)
-- [“Simplest WordPress Content Translation” Bundle](/bundles/simplest-wordpress-content-translation)
-- [“Responsible WordPress Public API” Bundle](/bundles/responsible-wordpress-public-api) --> */}
-
-{/* <!-- ## Tutorial lessons referencing extension
-
-- [Duplicating a blog post](/tutorial/duplicating-a-blog-post)
-- [Duplicating multiple blog posts at once](/tutorial/duplicating-multiple-blog-posts-at-once)
-- [Customizing content for different users](/tutorial/customizing-content-for-different-users)
-- [Search, replace, and store again](/tutorial/search-replace-and-store-again)
-- [Adapting content in bulk](/tutorial/adapting-content-in-bulk)
-- [Site migrations](/tutorial/site-migrations)
-- [Inserting/Removing a (Gutenberg) block in bulk](/tutorial/inserting-removing-a-gutenberg-block-in-bulk)
-- [Modifying (and storing again) the image URLs from all Image blocks in a post](/tutorial/modifying-and-storing-again-the-image-urls-from-all-image-blocks-in-a-post)
-- [Translating block content in a post to a different language](/tutorial/translating-block-content-in-a-post-to-a-different-language)
-- [Bulk translating block content in multiple posts to a different language](/tutorial/bulk-translating-block-content-in-multiple-posts-to-a-different-language)
-- [Sending emails with pleasure](/tutorial/sending-emails-with-pleasure)
-- [Sending a notification when there is a new post](/tutorial/sending-a-notification-when-there-is-a-new-post)
-- [Sending a daily summary of activity](/tutorial/sending-a-daily-summary-of-activity)
-- [Automatically adding a mandatory block](/tutorial/automatically-adding-a-mandatory-block)
-- [Interacting with external services via webhooks](/tutorial/interacting-with-external-services-via-webhooks)
-- [Retrieving data from an external API](/tutorial/retrieving-data-from-an-external-api)
-- [Combining user data from different sources](/tutorial/combining-user-data-from-different-sources)
-- [Handling errors when connecting to services](/tutorial/handling-errors-when-connecting-to-services)
-- [Creating an API gateway](/tutorial/creating-an-api-gateway)
-- [Pinging external services](/tutorial/pinging-external-services)
-- [Updating large sets of data](/tutorial/updating-large-sets-of-data)
-- [Importing a post from another WordPress site](/tutorial/importing-a-post-from-another-wordpress-site)
-- [Distributing content from an upstream to multiple downstream sites](/tutorial/distributing-content-from-an-upstream-to-multiple-downstream-sites)
-- [Automatically sending newsletter subscribers from InstaWP to Mailchimp](/tutorial/automatically-sending-newsletter-subscribers-from-instawp-to-mailchimp) --> */}
+- <a href="https://github.com/graphql/graphql-spec/issues/377" target="_blank">Issue #377 - [RFC] exporting variables between queries</a>
