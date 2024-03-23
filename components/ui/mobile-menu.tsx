@@ -8,6 +8,7 @@ import AppSettings from '@/app/app.settings'
 import Search from './search'
 import ThemeToggle from './theme-toggle'
 import DownloadFreePluginButton from '../download-free-button'
+import { usePathname } from 'next/navigation'
 
 export default function MobileMenu({
   enableLightDarkThemeModeToggle = false,
@@ -18,6 +19,7 @@ export default function MobileMenu({
 
   const trigger = useRef<HTMLButtonElement>(null)
   const mobileNav = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
 
   // close the mobile menu on click outside
   useEffect(() => {
@@ -39,6 +41,12 @@ export default function MobileMenu({
     document.addEventListener('keydown', keyHandler)
     return () => document.removeEventListener('keydown', keyHandler)
   })
+
+  // Close the mobile menu when the page has loaded,
+  // otherwise it hides the page on mobile
+  useEffect(() => {
+    setMobileNavOpen(false)
+  }, [pathname])
 
   return (
     <div className="md:hidden flex items-center ml-4">
