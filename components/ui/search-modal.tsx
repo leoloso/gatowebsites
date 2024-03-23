@@ -311,7 +311,7 @@ interface SearchModalProps {
 export default function SearchModal({
   isOpen,
   setIsOpen,
-  placeholder = "Search in Documentation and Blog…",
+  placeholder = "Search in all docs…",
   enableLightDarkThemeModeToggle = false,
 }: SearchModalProps) {  
   const [initialSearchQuery, setInitialSearchQuery] = useState<string>('')
