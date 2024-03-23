@@ -190,6 +190,8 @@ The body is now accessible as a JSON object:
 - `_sendJSONObjectItemHTTPRequest`: When the content pertains a single JSON object
 - `_sendJSONObjectCollectionHTTPRequest`: When the content pertains a collection of JSON objects
 
+These fields already convert the response to `JSONObject` or `[JSONObject]`.
+
 <Banner type="info">
 
 These fields expect the status code of the response to be successful (i.e. in the `200-299` range, such as `200`, `201` or `202`), as it enables them to already return a `JSONObject` containing the decoded-as-JSON body of the response.
@@ -230,8 +232,6 @@ For instance, when fetching a non-existing post from the WP REST API's endpoint 
 If we do not want to treat any non-`200s` status code (such as `302`, `404` or `500`) as an error, we must use the `_sendHTTPRequest` field.
 
 </Banner>
-
-{/* <!-- These fields already convert the response to `JSONObject` or `[JSONObject]`. --> */}
 
 Adapting the previous query:
 
