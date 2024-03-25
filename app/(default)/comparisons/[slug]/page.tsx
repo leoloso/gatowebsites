@@ -75,9 +75,7 @@ export default async function SingleComparisonPost({ params }: {
 
                 {/* Article header */}
                 <PageHeader
-                  leading={comparisonPost.leading}
-                  title={comparisonPost.title}
-                  description={comparisonPost.description}
+                  {...comparisonPost}
                 />
 
                 {/* Article image */}
