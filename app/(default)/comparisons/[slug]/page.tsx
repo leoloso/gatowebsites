@@ -88,7 +88,7 @@ export default async function SingleComparisonPost({ params }: {
                     <Image className="w-full" src={comparisonPost.image} width={1024} height={576} alt={comparisonPost.title} priority />
                   </figure>
                 } */}
-                <div className="max-w-[352px] mx-auto sm:max-w-[728px] lg:max-w-none pb-12 md:pb-20">
+                <div className="pb-12 md:pb-20">
                   <div className="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
                     <div className="flex items-center justify-center">
                       <Image className="w-full h-full aspect-video object-cover" src={ComparisonTargetBg01} width={352} height={198} alt="Comparison Target Background" aria-hidden="true" />
