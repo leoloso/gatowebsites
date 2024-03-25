@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: {
 
   if (!comparisonPost) return
 
-  const { title, summary: description } = comparisonPost
+  const { title, description } = comparisonPost
 
   return {
     title,
