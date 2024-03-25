@@ -93,11 +93,15 @@ export default async function SingleComparisonPost({ params }: {
                     <div className="flex items-center justify-center">
                       <Image className="w-full h-full aspect-video object-cover" src={ComparisonTargetBg01} width={352} height={198} alt="Comparison Target Background" aria-hidden="true" />
                       <div className="absolute flex items-center justify-center">
-                        <Image src={Logo} alt={comparisonPost.title} width={250} height={250} />
+                        <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none">
+                          <Image src={Logo} alt={comparisonPost.title} width={300} height={300} />
+                        </div>
                         <div className="text-lg text-center font-medium font-inter antialiased bg-slate-900/70 text-slate-100 tracking-tight mx-4 sm:mx-8 sm:mx-16 lg:mx-24">
                           vs
                         </div>
-                        <Image src={comparisonPost.targetImage} alt={comparisonPost.title} width={250} height={250} />
+                        <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none">
+                          <Image src={comparisonPost.targetImage} alt={comparisonPost.title} width={300} height={300} />
+                        </div>
                       </div>
                     </div>
                   </div>
