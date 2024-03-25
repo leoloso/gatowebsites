@@ -5,6 +5,7 @@ import {
   allPosts,
   // allUpdates,
   // allVideoPosts,
+  allComparisonPosts,
   allDocs,
   allExtensions,
   allFeatures,
@@ -15,13 +16,15 @@ import {
   getFeatureURL,
   getExtensionDocumentationURL,
   // getVideoPostURL,
+  getComparisonPostURL,
   getDocURL,
 } from '@/utils/content/application-urls'
 import { getReleaseData } from '@/data/release'
  
 export default function sitemap(): MetadataRoute.Sitemap {
   const releaseDateV2_2 = new Date(getReleaseData('2.2'))
-  const releaseDateV2_2_1 = new Date(getReleaseData('2.2.1'))
+  // const releaseDateV2_2_1 = new Date(getReleaseData('2.2.1'))
+  const releaseDateV2_2_2 = new Date(getReleaseData('2.2.2'))
   const postSitemapEntries = allPosts.map((post) => (
     {
       url: getPostURL(post),
@@ -70,6 +73,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   //     priority: 0.5,
   //   }
   // ))
+  const comparisonPostSitemapEntries = allComparisonPosts.map((comparisonPost) => (
+    {
+      url: getComparisonPostURL(comparisonPost),
+      lastModified: releaseDateV2_2_2,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    }
+  ))
   const docSitemapEntries = allDocs.map((doc) => (
     {
       url: getDocURL(doc),
@@ -98,49 +109,56 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${DOMAIN}/${AppConfig.paths.features}`,
       lastModified: releaseDateV2_2,
-      changeFrequency: 'weekly',
+      changeFrequency: 'monthly',
       priority: 0.9,
     },
     // Extensions
     {
       url: `${DOMAIN}/${AppConfig.paths.extensions}`,
       lastModified: releaseDateV2_2,
-      changeFrequency: 'weekly',
+      changeFrequency: 'monthly',
       priority: 0.8,
     },
     // Videos
     // {
     //   url: `${DOMAIN}/${AppConfig.paths.videoPosts}`,
     //   lastModified: releaseDateV2_2,
-    //   changeFrequency: 'weekly',
+    //   changeFrequency: 'monthly',
     //   priority: 0.7,
+    // },
+    // Comparisons
+    // {
+    //   url: `${DOMAIN}/${AppConfig.paths.comparisonPosts}`,
+    //   lastModified: releaseDateV2_2_2,
+    //   changeFrequency: 'monthly',
+    //   priority: 0.8,
     // },
     // // Guides
     // {
     //   url: `${DOMAIN}/${AppConfig.paths.docs.guides}`,
     //   lastModified: releaseDateV2_2,
-    //   changeFrequency: 'weekly',
+    //   changeFrequency: 'monthly',
     //   priority: 0.7,
     // },
     // // Extensions reference
     // {
     //   url: `${DOMAIN}/${AppConfig.paths.docs.extensionsReference}`,
     //   lastModified: releaseDateV2_2,
-    //   changeFrequency: 'weekly',
+    //   changeFrequency: 'monthly',
     //   priority: 0.7,
     // },
     // // Queries library
     // {
     //   url: `${DOMAIN}/${AppConfig.paths.docs.queryLibrary}`,
     //   lastModified: releaseDateV2_2,
-    //   changeFrequency: 'weekly',
+    //   changeFrequency: 'monthly',
     //   priority: 0.7,
     // },
     // // Schema tutorial
     // {
     //   url: `${DOMAIN}/${AppConfig.paths.docs.tutorial}`,
     //   lastModified: releaseDateV2_2,
-    //   changeFrequency: 'weekly',
+    //   changeFrequency: 'monthly',
     //   priority: 0.7,
     // },
     // Changelog
@@ -206,20 +224,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.5,
     },
-    // Gato GraphQL vs WP REST API
-    {
-      url: `${DOMAIN}/gatographql-vs-wp-rest-api`,
-      lastModified: releaseDateV2_2_1,
-      changeFrequency: 'monthly',
-      priority: 0.65,
-    },
-    // Gato GraphQL vs WPGraphQL
-    {
-      url: `${DOMAIN}/gatographql-vs-wpgraphql`,
-      lastModified: releaseDateV2_2_1,
-      changeFrequency: 'monthly',
-      priority: 0.95,
-    },
     // My orders
     {
       url: `${DOMAIN}/shop/my-orders`,
@@ -242,6 +246,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       extensionDocumentationSitemapEntries,
       featureSitemapEntries,
       // videoPostSitemapEntries,
+      comparisonPostSitemapEntries,
       docSitemapEntries,
     )
 }
