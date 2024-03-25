@@ -96,6 +96,9 @@ export default async function SingleComparisonPost({ params }: {
                   {/* Main content */}
                   <div id={contentId} className='min-w-0'>
 
+                    {/* Have Tailwind include classes to .js, so they can be included in .mdx */}
+                    <div className='hidden lg:-ml-16 lg:-mr-16' />
+
                     {/* Article body */}
                     <PostMdx code={comparisonPost.body.code} />
 
