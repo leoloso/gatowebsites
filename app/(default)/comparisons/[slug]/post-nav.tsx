@@ -56,7 +56,7 @@ export default function PostNav({ contentId }: { contentId: string }) {
     <aside className="relative hidden lg:block w-64 mr-20 shrink-0">
       {links.length > 0 &&
         <div className="sticky top-20">
-          <h4 className="font-bold leading-snug tracking-tight mb-4">Table of contents</h4>
+          <h4 className="font-bold leading-snug tracking-tight mb-4">Comparison items</h4>
           <ul className="text-sm font-medium -my-1">
           {links.map((link, linkIndex) => (
             <li key={linkIndex} className="py-1">
