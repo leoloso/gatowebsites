@@ -76,7 +76,7 @@ export default async function SingleComparisonPost({ params }: {
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
             <div className="max-w-3xl mx-auto lg:max-w-none">
 
-              <article>
+              <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
                 {/* Article header */}
                 <PageHeader
@@ -123,9 +123,6 @@ export default async function SingleComparisonPost({ params }: {
                     {/* Article body */}
                     <PostMdx code={comparisonPost.body.code} />
 
-                    <hr className="w-full h-px pt-px mt-16 bg-gray-200 border-0" />
-
-                    <RelatedPosts />
 
                   </div>
 
@@ -133,6 +130,8 @@ export default async function SingleComparisonPost({ params }: {
 
                 {/* Article footer */}
               </article>
+
+              <RelatedPosts />
 
             </div>
 
