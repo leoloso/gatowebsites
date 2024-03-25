@@ -13,6 +13,7 @@ import Cta from '@/components/cta-02'
 import PageHeader from '@/components/page-header'
 import { allComparisonPosts } from '@/.contentlayer/generated'
 import ComparisonTargetBg01 from '@/public/assets/theme/customer-bg-01.png'
+import Logo from '@/public/assets/GatoGraphQL-logo.png'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({
@@ -91,9 +92,12 @@ export default async function SingleComparisonPost({ params }: {
                   <div className="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
                     <div className="flex items-center justify-center">
                       <Image className="w-full h-full aspect-video object-cover" src={ComparisonTargetBg01} width={352} height={198} alt="Comparison Target Background" aria-hidden="true" />
-                      <Image className="absolute" src={comparisonPost.targetImage} alt={comparisonPost.title} width={352} height={198} />
-                      <div className="absolute bottom-0 text-center text-sm font-medium font-inter antialiased bg-slate-900/70 text-slate-100 tracking-tight px-2">
-                        {comparisonPost.targetName}
+                      <div className="absolute flex items-center justify-center">
+                        <Image src={Logo} alt={comparisonPost.title} width={352} height={198} />
+                        <div className="text-lg text-center font-medium font-inter antialiased bg-slate-900/70 text-slate-100 tracking-tight mx-8">
+                          vs
+                        </div>
+                        <Image src={comparisonPost.targetImage} alt={comparisonPost.title} width={352} height={198} />
                       </div>
                     </div>
                   </div>
