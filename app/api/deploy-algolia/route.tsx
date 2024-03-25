@@ -89,7 +89,7 @@ async function getAllComparisonPostsTransformed(): Promise<SearchObject[]> {
   return (
     allComparisonPosts?.map((comparisonPost) => getStructuredDataObject(
       comparisonPost.title,
-      comparisonPost.summary,
+      comparisonPost.description,
       getComparisonPostURLPath(comparisonPost),
       comparisonPost.slug,
       comparisonPost.body.raw,
