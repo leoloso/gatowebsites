@@ -10,13 +10,12 @@ import ComparisonTargetBg07 from '@/public/assets/theme/customer-bg-07.png'
 import ComparisonTargetBg08 from '@/public/assets/theme/customer-bg-08.png'
 import ComparisonTargetBg09 from '@/public/assets/theme/customer-bg-09.png'
 import ComparisonTargetBg10 from '@/public/assets/theme/customer-bg-10.png'
-import ComparisonTargetAvatar01 from '@/public/assets/theme/customer-avatar-01.jpg'
-import ComparisonTargetAvatar02 from '@/public/assets/theme/customer-avatar-02.jpg'
 import Particles from '@/components/particles'
 import Highlighter, { HighlighterItem02 } from '@/components/highlighter'
 import { allComparisonPosts } from '@/.contentlayer/generated'
 import { sortByOrderAndTitle } from '@/utils/content/sort'
 import { getComparisonPostURLPath } from '@/utils/content/application-urls'
+import { getTestimonials } from '@/components/data/testimonials'
 
 export default function ComparisonList() {
   const comparisonPosts = allComparisonPosts.sort(sortByOrderAndTitle)
@@ -31,6 +30,11 @@ export default function ComparisonList() {
     ComparisonTargetBg08,
     ComparisonTargetBg09,
     ComparisonTargetBg10,
+  ]
+  const testimonials = getTestimonials()
+  const chosenTestimonials = [
+    testimonials[3],
+    testimonials[5],
   ]
 
   return (
@@ -57,35 +61,22 @@ export default function ComparisonList() {
           </div>
         ))}
 
-        {/* Testimonial #01 */}
-        <div className="flex flex-col items-center justify-center text-center p-4">
-          <p className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-3">
-            <span className="line-clamp-4">
-              “We struggled to bring all our conversations into one place until we found Stellar. The UI is very clean and we love the integration with Spark.”
-            </span>
-          </p>
-          <div className="inline-flex mb-2">
-            <Image className="rounded-full" src={ComparisonTargetAvatar01} width={32} height={32} alt="Comparison Target Avatar 01" />
+        {/* Testimonials */}
+        {chosenTestimonials.map((testimonial, index) => (
+          <div key={index} className="flex flex-col items-center justify-center text-center p-4">
+            <p className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-3">
+              <span className="line-clamp-4">
+                “ {testimonial.quote} ”
+              </span>
+            </p>
+            <div className="inline-flex mb-2">
+              <Image className="rounded-full" src={testimonial.img} width={32} height={32} alt="Testimonial author picture" />
+            </div>
+            <div className="text-sm font-medium text-slate-300">
+            {testimonial.name} <span className="text-slate-700">-</span> <span className="text-slate-400">{testimonial.role}</span>
+            </div>
           </div>
-          <div className="text-sm font-medium text-slate-300">
-            Mike Hunt <span className="text-slate-700">-</span> <a className="text-purple-500 hover:underline" href="#0">Thunderbolt</a>
-          </div>
-        </div>
-
-        {/* Testimonial #02 */}
-        <div className="flex flex-col items-center justify-center text-center p-4">
-          <p className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-3">
-            <span className="line-clamp-4">
-              “We struggled to bring all our conversations into one place until we found Stellar. The UI is very clean and we love the integration with Spark.”
-            </span>
-          </p>
-          <div className="inline-flex mb-2">
-            <Image className="rounded-full" src={ComparisonTargetAvatar02} width={32} height={32} alt="Comparison Target Avatar 02" />
-          </div>
-          <div className="text-sm font-medium text-slate-300">
-            Mirko Mitt <span className="text-slate-700">-</span> <a className="text-purple-500 hover:underline" href="#0">Mildrink</a>
-          </div>
-        </div>
+        ))}
 
       </Highlighter>
     </div>
