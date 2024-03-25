@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: {
   }
 }
 
-export default async function SingleVideoPost({ params }: {
+export default async function SinglePost({ params }: {
   params: { slug: string }
 }) {
 
