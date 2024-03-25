@@ -1,60 +1,38 @@
-import { allPosts } from 'contentlayer/generated'
-import PostItem from '@/components/post-item'
 import StunningBackground from '@/components/stunning-background'
-import Newsletter from '@/components/newsletter'
-import { sortByPublishedAt } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
-import BlogSchemaJsonLdScript from '@/components/schema/blog-schema-json-ld'
+import Cta from '@/components/cta-02'
+import ComparisonList from './comparison-list'
 
 export const metadata = {
-  title: 'Blog - Gato GraphQL',
-  description: 'Stay up to date on the latest from Gato GraphQL and our engineering practices',
+  title: 'Comparisons - Gato GraphQL',
+  description: 'How is Gato GraphQL different than many other WordPress plugins?',
 }
 
-export default function Blog() {
+export default function ComparisonsPage() {
 
-  // Sort posts by date
-  const posts = allPosts.sort(sortByPublishedAt) 
   return (
     <>
-      <BlogSchemaJsonLdScript
-        headline={metadata.title}
-        description={metadata.description}
-      />
-
       <section className="relative">
-        <StunningBackground />
-        
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
-            {/* Page header */}
+        <StunningBackground />
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="pt-32 md:pt-40">
+
+            {/* Section header */}
             <PageHeader
-              leading="Our blog"
-              title="query { posts { content } }"
-              description='Stay up to date on the latest from Gato GraphQL and our engineering practices.'
+              leading='Comparing Gato GraphQL against other plugins for WordPress'
+              title='Gato GraphQL comparisons'
+              description='How is Gato GraphQL different than many other WordPress plugins?'
             />
 
-            {/* Main content */}
-            <div className="md:flex md:justify-between">
-
-              {/* Articles container */}
-              <div className="md:grow -mt-4">
-                {posts.map((post, postIndex) => (
-                  <PostItem key={postIndex} post={post} />
-                ))}
-              </div>
-
-              {/* Sidebar */}
-              <aside className="relative mt-12 md:mt-0 md:w-64 md:ml-12 lg:ml-20 md:shrink-0">
-              </aside>
-
-            </div>
+            <ComparisonList />
 
           </div>
         </div>
+
       </section>
-      <Newsletter label="Want more posts & tutorials?" />
+      <Cta />
     </>
   )
 }
