@@ -1,36 +1,15 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import ComparisonTargetBg01 from '@/public/assets/theme/customer-bg-01.png'
-import ComparisonTargetBg02 from '@/public/assets/theme/customer-bg-02.png'
-import ComparisonTargetBg03 from '@/public/assets/theme/customer-bg-03.png'
-import ComparisonTargetBg04 from '@/public/assets/theme/customer-bg-04.png'
-import ComparisonTargetBg05 from '@/public/assets/theme/customer-bg-05.png'
-import ComparisonTargetBg06 from '@/public/assets/theme/customer-bg-06.png'
-import ComparisonTargetBg07 from '@/public/assets/theme/customer-bg-07.png'
-import ComparisonTargetBg08 from '@/public/assets/theme/customer-bg-08.png'
-import ComparisonTargetBg09 from '@/public/assets/theme/customer-bg-09.png'
-import ComparisonTargetBg10 from '@/public/assets/theme/customer-bg-10.png'
 import Particles from '@/components/particles'
 import Highlighter, { HighlighterItem02 } from '@/components/highlighter'
 import { allComparisonPosts } from '@/.contentlayer/generated'
 import { sortByOrderAndTitle } from '@/utils/content/sort'
 import { getComparisonPostURLPath } from '@/utils/content/application-urls'
 import { getTestimonials } from '@/components/data/testimonials'
+import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
 
 export default function ComparisonList() {
   const comparisonPosts = allComparisonPosts.sort(sortByOrderAndTitle)
-  const backgrounds = [
-    ComparisonTargetBg01,
-    ComparisonTargetBg02,
-    ComparisonTargetBg03,
-    ComparisonTargetBg04,
-    ComparisonTargetBg05,
-    ComparisonTargetBg06,
-    ComparisonTargetBg07,
-    ComparisonTargetBg08,
-    ComparisonTargetBg09,
-    ComparisonTargetBg10,
-  ]
   const testimonials = getTestimonials()
   const chosenTestimonials = [
     testimonials[3],
@@ -49,7 +28,7 @@ export default function ComparisonList() {
                   {/* Particles animation */}
                   <Particles className="absolute inset-0 -z-10" quantity={3} />
                   <div className="flex items-center justify-center">
-                    <Image className="w-full h-full aspect-video object-cover" src={backgrounds[index % backgrounds.length]} width={352} height={198} alt="Comparison Target Background" aria-hidden="true" />
+                    <Image className="w-full h-full aspect-video object-cover" src={getComparisonPostBackground(comparisonPost.targetName)} width={352} height={198} alt="Comparison Target Background" aria-hidden="true" />
                     <Image className="absolute" src={comparisonPost.targetImage} alt={comparisonPost.title} width={352} height={198} />
                     <div className="absolute bottom-0 text-center text-sm font-medium font-inter antialiased bg-slate-900/70 text-slate-100 tracking-tight px-2">
                       {comparisonPost.targetName}
