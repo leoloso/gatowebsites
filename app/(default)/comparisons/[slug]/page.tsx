@@ -10,9 +10,7 @@ import PostNav from './post-nav'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
-// import ArticleNavigation from '@/components/ui/article-navigation'
 import { sortByPublishedAt } from '@/utils/content/sort'
-// import { getPrevNextArticles } from '@/utils/content/document'
 import { getPostURL } from '@/utils/content/application-urls'
 import ArticleSchemaJsonLdScript from '@/components/schema/article-schema-json-ld';
 
