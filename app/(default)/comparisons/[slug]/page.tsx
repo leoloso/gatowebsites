@@ -9,10 +9,10 @@ import { PostMdx } from '@/components/mdx/post-mdx'
 import PostNav from './post-nav'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
-import Newsletter from '@/components/newsletter'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import { getPostURL } from '@/utils/content/application-urls'
 import ArticleSchemaJsonLdScript from '@/components/schema/article-schema-json-ld';
+import Cta from '@/components/cta-02'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({
@@ -129,7 +129,7 @@ export default async function SingleComparisonPost({ params }: {
           </div>
         </div>
       </section>
-      <Newsletter label="Want more comparisonPosts & tutorials?" />
+      <Cta />
     </>
   )
 }
