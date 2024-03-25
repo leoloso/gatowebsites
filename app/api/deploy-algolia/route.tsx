@@ -47,6 +47,7 @@ function getStructuredDataObject(
   content: string,
   section: Sections.Blog
     | Sections.Changelog
+    | Sections.Comparisons
     | Sections.ExtensionsReference
     | Sections.Guides
     | Sections.SchemaTutorial
@@ -92,7 +93,7 @@ async function getAllComparisonPostsTransformed(): Promise<SearchObject[]> {
       getComparisonPostURLPath(comparisonPost),
       comparisonPost.slug,
       comparisonPost.body.raw,
-      Sections.Blog
+      Sections.Comparisons
     )) || []
   )
 }
