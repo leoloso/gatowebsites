@@ -94,7 +94,7 @@ export default async function SingleComparisonPost({ params }: {
                       <Image className="w-full h-full aspect-video object-cover" src={ComparisonTargetBg01} width={352} height={198} alt="Comparison Target Background" aria-hidden="true" />
                       <div className="absolute flex items-center justify-center">
                         <Image src={Logo} alt={comparisonPost.title} width={250} height={250} />
-                        <div className="text-lg text-center font-medium font-inter antialiased bg-slate-900/70 text-slate-100 tracking-tight sm:mx-8 sm:mx-16">
+                        <div className="text-lg text-center font-medium font-inter antialiased bg-slate-900/70 text-slate-100 tracking-tight mx-4 sm:mx-8 sm:mx-16 lg:mx-24">
                           vs
                         </div>
                         <Image src={comparisonPost.targetImage} alt={comparisonPost.title} width={352} height={198} />
