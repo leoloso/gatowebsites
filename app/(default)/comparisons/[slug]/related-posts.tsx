@@ -13,7 +13,7 @@ export default function RelatedPosts({ current }: { current: ComparisonPost }) {
 
   return (
     <aside>
-      <h2 className="inline-flex font-bold text-lg bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8">More comparisons</h2>
+      <h2 className="inline-flex font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8">More comparisons</h2>
       <div className="mx-auto sm:max-w-[728px] lg:max-w-none">
         <Highlighter className="grid gap-4 lg:gap-6 sm:grid-cols-3 lg:grid-cols-3 group">
 
