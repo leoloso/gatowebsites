@@ -97,6 +97,9 @@ export default function FooterMenu({
       <div className={columnClassname}>
         <h6 className="text-sm text-slate-50 font-medium mb-2">Comparisons</h6>
         <ul className="text-sm space-y-2">
+          <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/comparisons">Overview</a>
+          </li>
           {allComparisonPosts.map((comparisonPost, index) => (
             <li key={index}>
               <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={getComparisonPostURL(comparisonPost)}>{comparisonPost.title}</a>
