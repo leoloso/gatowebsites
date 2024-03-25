@@ -119,19 +119,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    // Comparisons
+    {
+      url: `${DOMAIN}/${AppConfig.paths.comparisonPosts}`,
+      lastModified: releaseDateV2_2_2,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
     // Videos
     // {
     //   url: `${DOMAIN}/${AppConfig.paths.videoPosts}`,
     //   lastModified: releaseDateV2_2,
     //   changeFrequency: 'monthly',
     //   priority: 0.7,
-    // },
-    // Comparisons
-    // {
-    //   url: `${DOMAIN}/${AppConfig.paths.comparisonPosts}`,
-    //   lastModified: releaseDateV2_2_2,
-    //   changeFrequency: 'monthly',
-    //   priority: 0.8,
     // },
     // // Guides
     // {
