@@ -2,14 +2,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Particles from '@/components/particles'
 import Highlighter, { HighlighterItem02 } from '@/components/highlighter'
-import { allComparisonPosts } from '@/.contentlayer/generated'
+import { ComparisonPost, allComparisonPosts } from '@/.contentlayer/generated'
 import { sortByOrderAndTitle } from '@/utils/content/sort'
 import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
 import { getComparisonPostURLPath } from '@/utils/content/application-urls'
 
-export default function RelatedPosts() {
+export default function RelatedPosts({ current }: { current: ComparisonPost }) {
 
-  const comparisonPosts = allComparisonPosts.sort(sortByOrderAndTitle)
+  const comparisonPosts = allComparisonPosts.filter((comparisonPost) => (comparisonPost !== current)).sort(sortByOrderAndTitle)
 
   return (
     <aside>

@@ -131,7 +131,7 @@ export default async function SingleComparisonPost({ params }: {
                 {/* Article footer */}
               </article>
 
-              <RelatedPosts />
+              <RelatedPosts current={comparisonPost} />
 
             </div>
 
