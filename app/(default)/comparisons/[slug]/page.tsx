@@ -1,7 +1,4 @@
 import type { Metadata } from 'next'
-import {
-  allComparisonPosts,
-} from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,10 +7,11 @@ import PostNav from './post-nav'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
 import { sortByOrderAndTitle } from '@/utils/content/sort'
-import { getPostURL } from '@/utils/content/application-urls'
+import { getComparisonPostURL } from '@/utils/content/application-urls'
 import ArticleSchemaJsonLdScript from '@/components/schema/article-schema-json-ld';
 import Cta from '@/components/cta-02'
 import PageHeader from '@/components/page-header'
+import { allComparisonPosts } from '@/.contentlayer/generated'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({
@@ -61,9 +59,9 @@ export default async function SingleComparisonPost({ params }: {
     <>
       <ArticleSchemaJsonLdScript
         headline={comparisonPost.title}
-        url={getPostURL(comparisonPost)}
+        url={getComparisonPostURL(comparisonPost)}
         image={comparisonPost.image}
-        description={comparisonPost.summary}
+        description={comparisonPost.description}
       />
 
       <section className="relative">
