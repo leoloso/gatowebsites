@@ -167,6 +167,10 @@ const ComparisonPost = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
+    leading: {
+      type: 'string',
+      required: true,
+    },
     description: {
       type: 'string',
       required: true,
