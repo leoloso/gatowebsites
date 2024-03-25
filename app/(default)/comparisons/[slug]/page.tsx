@@ -12,6 +12,8 @@ import ArticleSchemaJsonLdScript from '@/components/schema/article-schema-json-l
 import Cta from '@/components/cta-02'
 import PageHeader from '@/components/page-header'
 import { allComparisonPosts } from '@/.contentlayer/generated'
+import Particles from '@/components/particles'
+import ComparisonTargetBg01 from '@/public/assets/theme/customer-bg-01.png'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({
@@ -81,11 +83,22 @@ export default async function SingleComparisonPost({ params }: {
                 />
 
                 {/* Article image */}
-                {comparisonPost.image &&
+                {/* {comparisonPost.image &&
                   <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="200">
                     <Image className="w-full" src={comparisonPost.image} width={1024} height={576} alt={comparisonPost.title} priority />
                   </figure>
-                }
+                } */}
+                <div className="max-w-[352px] mx-auto sm:max-w-[728px] lg:max-w-none pb-12 md:pb-20">
+                  <div className="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
+                    <div className="flex items-center justify-center">
+                      <Image className="w-full h-full aspect-video object-cover" src={ComparisonTargetBg01} width={352} height={198} alt="Comparison Target Background" aria-hidden="true" />
+                      <Image className="absolute" src={comparisonPost.targetImage} alt={comparisonPost.title} width={352} height={198} />
+                      <div className="absolute bottom-0 text-center text-sm font-medium font-inter antialiased bg-slate-900/70 text-slate-100 tracking-tight px-2">
+                        {comparisonPost.targetName}
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Article content */}
                 <div className="lg:flex lg:justify-between">
