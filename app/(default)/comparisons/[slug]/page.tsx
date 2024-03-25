@@ -82,6 +82,13 @@ export default async function SingleComparisonPost({ params }: {
                   description={comparisonPost.description}
                 />
 
+                {/* Article image */}
+                {comparisonPost.image &&
+                  <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="200">
+                    <Image className="w-full" src={comparisonPost.image} width={1024} height={576} alt={comparisonPost.title} priority />
+                  </figure>
+                }
+
                 {/* Article content */}
                 <div className="lg:flex lg:justify-between">
 
@@ -90,13 +97,6 @@ export default async function SingleComparisonPost({ params }: {
 
                   {/* Main content */}
                   <div className='min-w-0'>
-
-                    {/* Article image */}
-                    {comparisonPost.image &&
-                      <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="200">
-                        <Image className="w-full" src={comparisonPost.image} width={1024} height={576} alt={comparisonPost.title} priority />
-                      </figure>
-                    }
 
                     {/* Article body */}
                     <PostMdx code={comparisonPost.body.code} />
