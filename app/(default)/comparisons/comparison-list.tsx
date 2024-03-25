@@ -13,7 +13,9 @@ export default function ComparisonList() {
   const testimonials = getTestimonials()
   const chosenTestimonials = [
     testimonials[3],
-    testimonials[5],
+
+    // @todo Re-enable when adding more comparison items
+    // testimonials[5],
   ]
 
   return (
