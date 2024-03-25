@@ -160,7 +160,7 @@ const VideoPost = defineDocumentType(() => ({
 
 const ComparisonPost = defineDocumentType(() => ({
   name: 'ComparisonPost',
-  filePathPattern: `${AppConfig.paths.videoPosts}/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.comparisonPosts}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -178,7 +178,7 @@ const ComparisonPost = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.videoPosts + '/?'), ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.comparisonPosts + '/?'), ''),
     },    
   },
 }))
