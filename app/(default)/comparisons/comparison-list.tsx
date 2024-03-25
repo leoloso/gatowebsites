@@ -57,6 +57,9 @@ export default function ComparisonList() {
                   <div className="flex items-center justify-center">
                     <Image className="w-full h-full aspect-video object-cover" src={backgrounds[index % backgrounds.length]} width={352} height={198} alt="Comparison Target Background" aria-hidden="true" />
                     <Image className="absolute" src={comparisonPost.targetImage} alt={comparisonPost.title} width={352} height={198} />
+                    <div className="absolute bottom-0 text-center text-sm font-medium text-slate-300">
+                      {comparisonPost.targetName}
+                    </div>
                   </div>
                 </div>
               </HighlighterItem02>
