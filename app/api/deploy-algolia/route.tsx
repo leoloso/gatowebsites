@@ -47,6 +47,7 @@ function getStructuredDataObject(
   content: string,
   section: Sections.Blog
     | Sections.Changelog
+    | Sections.Comparisons
     | Sections.ExtensionsReference
     | Sections.Guides
     | Sections.SchemaTutorial
@@ -54,7 +55,7 @@ function getStructuredDataObject(
     | Sections.ArchitectureDocs
     | Sections.Extensions
     | Sections.Features
-    | Sections.Video
+    | Sections.Videos
 ): SearchObject {
   // return an object to be added to Algolia.
   return {
@@ -88,11 +89,11 @@ async function getAllComparisonPostsTransformed(): Promise<SearchObject[]> {
   return (
     allComparisonPosts?.map((comparisonPost) => getStructuredDataObject(
       comparisonPost.title,
-      comparisonPost.summary,
+      comparisonPost.description,
       getComparisonPostURLPath(comparisonPost),
       comparisonPost.slug,
       comparisonPost.body.raw,
-      Sections.Blog
+      Sections.Comparisons
     )) || []
   )
 }
