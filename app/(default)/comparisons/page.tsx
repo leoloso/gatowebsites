@@ -21,8 +21,8 @@ export default function ComparisonsPage() {
 
             {/* Section header */}
             <PageHeader
-              leading='Comparing Gato GraphQL against other plugins for WordPress'
-              title='Gato GraphQL comparisons'
+              leading='Plugins for WordPress'
+              title='Comparing Gato GraphQL vs [...]'
               description='How is Gato GraphQL different than many other WordPress plugins?'
             />
 
