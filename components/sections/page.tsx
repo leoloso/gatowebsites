@@ -26,11 +26,8 @@ export default function PageSection({
               <header className="mb-8">
 
                 {/* Title and excerpt */}
-                <PageHeader
-                  leading={page.leading}
-                  title={page.title}
-                  description={page.description}
-                />
+                <PageHeader {...page} />
+                
                 {/* Article meta */}
                 {!! page.lastModifiedAt && (
                   <div className="md:flex md:items-center md:justify-between mt-3">

@@ -77,9 +77,7 @@ export default async function SingleComparisonPost({ params }: {
               <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
                 {/* Article header */}
-                <PageHeader
-                  {...comparisonPost}
-                />
+                <PageHeader {...comparisonPost} />
 
                 {/* Article image */}
                 {/* {comparisonPost.image &&
