@@ -70,6 +70,8 @@ export default async function SinglePost({ params }: {
   // const prevPost = paginationArticles.prev as Post
   // const nextPost = paginationArticles.next as Post
 
+  const contentId = 'main-content'
+
   return (
     <>
       <BlogPostingSchemaJsonLdScript
@@ -99,10 +101,10 @@ export default async function SinglePost({ params }: {
                 <div className="lg:flex lg:justify-between">
 
                   {/* Sidebar */}
-                  <PostNav />
+                  <PostNav contentId={contentId} />
 
                   {/* Main content */}
-                  <div className='min-w-0'>
+                  <div id={contentId} className='min-w-0'>
 
                     {/* Article meta */}
                     <div className="md:flex md:items-center md:justify-between mt-3">

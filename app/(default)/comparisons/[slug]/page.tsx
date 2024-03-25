@@ -54,6 +54,8 @@ export default async function SingleComparisonPost({ params }: {
   if (comparisonPostIndex === -1) notFound()
 
   const comparisonPost = comparisonPosts[comparisonPostIndex]
+
+  const contentId = 'main-content'
   
   return (
     <>
@@ -89,10 +91,10 @@ export default async function SingleComparisonPost({ params }: {
                 <div className="lg:flex lg:justify-between">
 
                   {/* Sidebar */}
-                  <PostNav />
+                  <PostNav contentId={contentId} />
 
                   {/* Main content */}
-                  <div className='min-w-0'>
+                  <div id={contentId} className='min-w-0'>
 
                     {/* Article body */}
                     <PostMdx code={comparisonPost.body.code} />

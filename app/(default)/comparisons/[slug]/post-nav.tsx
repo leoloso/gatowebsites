@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-export default function PostNav() {
+export default function PostNav({ contentId }: { contentId: string }) {
 
   const [targets, setTargets] = useState<HTMLElement[]>([])
   const [links, setLinks] = useState<HTMLElement[]>([])
@@ -34,7 +34,7 @@ export default function PostNav() {
   
   // select targets
   useEffect(() => {
-    const targets = document.querySelectorAll('h2') as NodeListOf<HTMLElement>
+    const targets = document.querySelectorAll(`#${contentId} h2`) as NodeListOf<HTMLElement>
     setTargets(Array.from(targets))
   }, [])  
 
