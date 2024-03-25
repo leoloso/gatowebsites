@@ -179,6 +179,14 @@ const ComparisonPost = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    targetName: {
+      type: 'string',
+      required: true,
+    },
+    targetImage: {
+      type: 'string',
+      required: true,
+    },
     order: {
       type: 'number',
       required: true,
