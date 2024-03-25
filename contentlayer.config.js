@@ -177,6 +177,7 @@ const ComparisonPost = defineDocumentType(() => ({
     },
     image: {
       type: 'string',
+      required: true,
     },        
   },
   computedFields: {
