@@ -3,7 +3,6 @@ import {
   allPosts,
   // allUpdates,
   // allVideoPosts,
-  allDocs,
   allExtensions,
   allFeatures,
   Doc,
