@@ -13,6 +13,7 @@ import { sortByPublishedAt } from '@/utils/content/sort'
 import { getPostURL } from '@/utils/content/application-urls'
 import ArticleSchemaJsonLdScript from '@/components/schema/article-schema-json-ld';
 import Cta from '@/components/cta-02'
+import PageHeader from '@/components/page-header'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({
@@ -75,10 +76,11 @@ export default async function SingleComparisonPost({ params }: {
               <article>
 
                 {/* Article header */}
-                <header className="max-w-3xl mx-auto mb-20">
-                  {/* Title */}
-                  <h1 className="h1 text-center mb-4">{comparisonPost.title}</h1>
-                </header>
+                <PageHeader
+                  leading={comparisonPost.leading}
+                  title={comparisonPost.title}
+                  description={comparisonPost.description}
+                />
 
                 {/* Article content */}
                 <div className="lg:flex lg:justify-between">
