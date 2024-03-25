@@ -3,6 +3,7 @@ import {
   allPosts,
   // allUpdates,
   // allVideoPosts,
+  allComparisonPosts,
   allExtensions,
   allFeatures,
   Doc,
@@ -13,6 +14,7 @@ import {
   getExtensionURLPath,
   getFeatureURLPath,
   getPostURLPath,
+  getComparisonPostURLPath,
 } from "@/utils/content/application-urls"
 import { isAdminUser } from "@/utils/admin"
 import { SearchObject, Sections } from "@/components/search/algolia"
@@ -76,6 +78,20 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
       getPostURLPath(post),
       post.slug,
       post.body.raw,
+      Sections.Blog
+    )) || []
+  )
+}
+
+async function getAllComparisonPostsTransformed(): Promise<SearchObject[]> {
+  // return an array of objects to be added to Algolia.
+  return (
+    allComparisonPosts?.map((comparisonPost) => getStructuredDataObject(
+      comparisonPost.title,
+      comparisonPost.summary,
+      getComparisonPostURLPath(comparisonPost),
+      comparisonPost.slug,
+      comparisonPost.body.raw,
       Sections.Blog
     )) || []
   )
@@ -149,6 +165,7 @@ export async function GET(request: Request) {
   const searchFeaturesAndExtensions = AppSettings.searchFeaturesAndExtensions
   try {
     const posts = await getAllPostsTransformed()
+    const comparisonPosts = await getAllComparisonPostsTransformed()
     const docs = await getAllDocsTransformed()
     const extensions = searchFeaturesAndExtensions ? await getAllExtensionsTransformed() : []
     const features = searchFeaturesAndExtensions ? await getAllFeaturesTransformed() : []
@@ -159,6 +176,7 @@ export async function GET(request: Request) {
     const searchIndex = client.initIndex(ALGOLIA_API_CREDENTIALS.indexName)
     const algoliaSearchIndexResponse = await searchIndex.saveObjects([
       ...posts,
+      ...comparisonPosts,
       ...docs,
       ...extensions,
       ...features
