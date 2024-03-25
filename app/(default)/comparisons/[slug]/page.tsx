@@ -5,10 +5,8 @@ import {
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import PostDate from '@/components/post-date'
 import { PostMdx } from '@/components/mdx/post-mdx'
 import PostNav from './post-nav'
-import PostTags from '@/components/post-tags'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
@@ -93,29 +91,12 @@ export default async function SingleVideoPost({ params }: {
                   {/* Main content */}
                   <div className='min-w-0'>
 
-                    {/* Article meta */}
-                    <div className="md:flex md:items-center md:justify-between mt-3">
-                      <div className="flex items-center mb-6">
-                        <div className="flex shrink-0 mr-3">
-                          <a className="relative" href="#0">
-                            <span className="absolute inset-0 -m-px" aria-hidden="true"><span className="absolute inset-0 -m-px bg-white rounded-full"></span></span>
-                            <Image className="relative rounded-full" src={comparisonPost.authorImg} width={32} height={32} alt={comparisonPost.author} />
-                          </a>
-                        </div>
-                        <div>
-                          <span className="text-gray-600">By </span>
-                          <a className="font-medium hover:underline" href="#0">{comparisonPost.author}</a>
-                          <span className="text-gray-600"> · <PostDate dateString={comparisonPost.publishedAt} /></span>
-                        </div>
-                      </div>
-                      {/* Article tags */}
-                      {comparisonPost.tags &&
-                        <div className="flex justify-center mt-4 md:mt-0 items-center mb-6">
-                          <PostTags tags={comparisonPost.tags} />
-                        </div>
-                      }
-                    </div>
-                    <hr className="w-16 h-px pt-px bg-gray-200 border-0 mb-6" />
+                    {/* Article image */}
+                    {comparisonPost.image &&
+                      <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="200">
+                        <Image className="w-full" src={comparisonPost.image} width={1024} height={576} alt={comparisonPost.title} priority />
+                      </figure>
+                    }
 
                     {/* Article body */}
                     <PostMdx code={comparisonPost.body.code} />
