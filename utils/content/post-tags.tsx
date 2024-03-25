@@ -16,7 +16,7 @@ export function getPostTagColors(colors: Array<string>, posts: Array<Post> | und
     if (!postTag) {
       return;
     }
-    postTagColors[postTag] = colors[index]
+    postTagColors[postTag] = colors[index % colors.length]
   })
   return postTagColors
 }
