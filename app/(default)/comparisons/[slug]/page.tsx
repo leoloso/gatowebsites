@@ -90,13 +90,13 @@ export default async function SingleComparisonPost({ params }: {
                     <div className="flex items-center justify-center">
                       <Image className="w-full h-full aspect-video object-cover" src={getComparisonPostBackground(comparisonPost.targetName)} width={352} height={198} alt="Comparison Target Background" aria-hidden="true" />
                       <div className="absolute flex items-center justify-center">
-                        <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none">
+                        <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none" data-aos="fade-up" data-aos-delay="200">
                           <Image src={Logo} alt={comparisonPost.title} width={300} height={300} />
                         </div>
                         <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-4 sm:mx-8 sm:mx-16 lg:mx-24">
                           vs
                         </div>
-                        <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none">
+                        <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none" data-aos="fade-up" data-aos-delay="200">
                           <Image src={comparisonPost.targetImage} alt={comparisonPost.title} width={300} height={300} />
                         </div>
                       </div>
