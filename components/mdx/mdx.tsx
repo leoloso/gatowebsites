@@ -7,6 +7,7 @@ import PostAccordion from './components/accordion'
 import PostTag from './components/tag'
 import PostTable, { TableHead, TableBody, TableHeadRow, TableBodyRow, TableTh, TableTd } from './components/table'
 import { Pre } from './components/pre'
+import { H1, H2, H3, H4, H5, H6 } from './components/headings'
 
 const mdxComponents = {
   Link: PostLink,
@@ -38,10 +39,16 @@ export function Mdx({
 
   const custom = {
     pre: ({ ...props }) => <Pre>{ props.children }</Pre>,
+    h1: H1,
+    h2: H2,
+    h3: H3,
+    h4: H4,
+    h5: H5,
+    h6: H6,
   }
 
   return (
-    <article className={`prose dark:prose-invert prose-a:font-medium prose-a:text-purple-600 dark:prose-a:text-purple-300 prose-a:no-underline hover:prose-a:no-underline hover:prose-a:text-purple-500 hover:dark:prose-a:text-purple-400 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-[''] prose-code:after:content-[''] prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700 prose-li:marker:text-slate-400 prose-li:marker:dark:text-slate-400 prose-headings:scroll-mt-20 ${mdxClassName}`}>
+    <article className={`prose dark:prose-invert prose-a:font-medium prose-a:text-purple-600 dark:prose-a:text-purple-300 prose-a:no-underline hover:prose-a:no-underline hover:prose-a:text-purple-500 hover:dark:prose-a:text-purple-400 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-[''] prose-code:after:content-[''] prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700 prose-li:marker:text-slate-400 prose-li:marker:dark:text-slate-400 prose-headings:scroll-mt-20 prose-a:prose-headings:text-slate-600 dark:prose-a:prose-headings:text-slate-200 ${mdxClassName}`}>
       <Component components={{ ...mdxComponents, ...custom }} />
     </article>
   )
