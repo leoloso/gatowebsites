@@ -167,25 +167,9 @@ const ComparisonPost = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
-    publishedAt: {
-      type: 'date',
-      required: true
-    },
     summary: {
       type: 'string',
       required: true,
-    },
-    author: {
-      type: 'string',
-      required: true,
-    },
-    authorImg: {
-      type: 'string',
-      required: true,
-    },
-    tags: {
-      type: 'list',
-      of: { type: 'string' },
     },
     image: {
       type: 'string',
