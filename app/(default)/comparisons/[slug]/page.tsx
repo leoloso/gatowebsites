@@ -13,6 +13,7 @@ import { allComparisonPosts } from '@/.contentlayer/generated'
 import Logo from '@/public/assets/GatoGraphQL-logo-suki.png'
 import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
 import RelatedPosts from './related-posts'
+import Particles from '@/components/particles'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({
@@ -88,6 +89,7 @@ export default async function SingleComparisonPost({ params }: {
                 <div className="pb-12 md:pb-20">
                   <div className="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
                     <div className="flex items-center justify-center">
+                    <Particles className="absolute inset-0 -z-10" quantity={6} staticity={30} />
                       <Image className="w-full h-full aspect-video object-cover" src={getComparisonPostBackground(comparisonPost.targetName)} width={352} height={198} alt="Comparison Target Background" aria-hidden="true" />
                       <div className="absolute flex items-center justify-center">
                         <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none" data-aos="fade-up" data-aos-delay="200">
