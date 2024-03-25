@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
-import Link from 'next/link'
 import { PostMdx } from '@/components/mdx/post-mdx'
-import PostNav from './post-nav'
-import AppConfig from '@/app/app.config'
+import PostNav from '@/components/post-nav'
 import StunningBackground from '@/components/stunning-background'
 import { sortByOrderAndTitle } from '@/utils/content/sort'
 import { getComparisonPostURL } from '@/utils/content/application-urls'
@@ -112,7 +110,11 @@ export default async function SingleComparisonPost({ params }: {
                 <div className="lg:flex lg:justify-between">
 
                   {/* Sidebar */}
-                  <PostNav contentId={contentId} />
+                  <PostNav
+                    contentId={contentId}
+                    header='Comparison items'
+                    navClassName='bg-gradient-to-tr from-slate-800 to-slate-800/25 border border-slate-800 hover:border-slate-700/60 transition-colors group relative p-5 rounded-xl'
+                  />
 
                   {/* Main content */}
                   <div id={contentId} className='min-w-0'>
