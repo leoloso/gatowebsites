@@ -97,7 +97,7 @@ export default async function SingleComparisonPost({ params }: {
                         <div className="text-lg text-center font-medium font-inter antialiased bg-slate-900/70 text-slate-100 tracking-tight mx-4 sm:mx-8 sm:mx-16 lg:mx-24">
                           vs
                         </div>
-                        <Image src={comparisonPost.targetImage} alt={comparisonPost.title} width={352} height={198} />
+                        <Image src={comparisonPost.targetImage} alt={comparisonPost.title} width={250} height={250} />
                       </div>
                     </div>
                   </div>
