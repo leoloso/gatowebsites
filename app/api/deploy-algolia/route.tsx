@@ -54,7 +54,7 @@ function getStructuredDataObject(
     | Sections.ArchitectureDocs
     | Sections.Extensions
     | Sections.Features
-    | Sections.Video
+    | Sections.Videos
 ): SearchObject {
   // return an object to be added to Algolia.
   return {

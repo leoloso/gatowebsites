@@ -12,7 +12,7 @@ export const enum Sections {
   ArchitectureDocs = 'Architecture docs',
   Extensions = 'Extensions',
   Features = 'Features',
-  Video = 'Video',
+  Videos = 'Videos',
 }
 
 export interface SearchObject extends BaseHit {
@@ -32,5 +32,5 @@ export interface SearchObject extends BaseHit {
     | Sections.ArchitectureDocs
     | Sections.Extensions
     | Sections.Features
-    | Sections.Video
+    | Sections.Videos
 }
