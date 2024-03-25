@@ -178,7 +178,11 @@ const ComparisonPost = defineDocumentType(() => ({
     image: {
       type: 'string',
       required: true,
-    },        
+    },
+    order: {
+      type: 'number',
+      required: true,
+    },
   },
   computedFields: {
     slug: {

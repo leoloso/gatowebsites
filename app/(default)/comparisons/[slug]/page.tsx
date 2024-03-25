@@ -9,7 +9,7 @@ import { PostMdx } from '@/components/mdx/post-mdx'
 import PostNav from './post-nav'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
-import { sortByPublishedAt } from '@/utils/content/sort'
+import { sortByOrder, sortByOrderAndTitleAndTitle } from '@/utils/content/sort'
 import { getPostURL } from '@/utils/content/application-urls'
 import ArticleSchemaJsonLdScript from '@/components/schema/article-schema-json-ld';
 import Cta from '@/components/cta-02'
@@ -50,7 +50,7 @@ export default async function SingleComparisonPost({ params }: {
 }) {
 
   // Sort comparisonPosts. Needed to find the prev/next items below
-  const comparisonPosts = allComparisonPosts.sort(sortByPublishedAt)
+  const comparisonPosts = allComparisonPosts.sort(sortByOrderAndTitle)
   const comparisonPostIndex = comparisonPosts.findIndex((comparisonPost) => comparisonPost.slug === params.slug)
 
   if (comparisonPostIndex === -1) notFound()
