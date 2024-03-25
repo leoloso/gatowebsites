@@ -55,7 +55,7 @@ export default function PostNav({ contentId }: { contentId: string }) {
   return (
     <aside className="relative hidden lg:block w-64 mr-20 shrink-0">
       {links.length > 0 &&
-        <div className="sticky top-20">
+        <div className="sticky top-20 bg-gradient-to-tr from-slate-800 to-slate-800/25 border border-slate-800 hover:border-slate-700/60 transition-colors group relative p-5 rounded-xl">
           <h4 className="font-bold leading-snug tracking-tight mb-4">Comparison items</h4>
           <ul className="text-sm font-medium -my-1">
           {links.map((link, linkIndex) => (
