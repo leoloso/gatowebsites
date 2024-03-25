@@ -12,6 +12,8 @@ import ArticleSchemaJsonLdScript from '@/components/schema/article-schema-json-l
 import Cta from '@/components/cta-02'
 import PageHeader from '@/components/page-header'
 import { allComparisonPosts } from '@/.contentlayer/generated'
+import Logo from '@/public/assets/GatoGraphQL-logo-suki.png'
+import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({
@@ -81,11 +83,29 @@ export default async function SingleComparisonPost({ params }: {
                 />
 
                 {/* Article image */}
-                {comparisonPost.image &&
+                {/* {comparisonPost.image &&
                   <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="200">
                     <Image className="w-full" src={comparisonPost.image} width={1024} height={576} alt={comparisonPost.title} priority />
                   </figure>
-                }
+                } */}
+                <div className="pb-12 md:pb-20">
+                  <div className="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
+                    <div className="flex items-center justify-center">
+                      <Image className="w-full h-full aspect-video object-cover" src={getComparisonPostBackground(comparisonPost.targetName)} width={352} height={198} alt="Comparison Target Background" aria-hidden="true" />
+                      <div className="absolute flex items-center justify-center">
+                        <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none">
+                          <Image src={Logo} alt={comparisonPost.title} width={300} height={300} />
+                        </div>
+                        <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-4 sm:mx-8 sm:mx-16 lg:mx-24">
+                          vs
+                        </div>
+                        <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none">
+                          <Image src={comparisonPost.targetImage} alt={comparisonPost.title} width={300} height={300} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Article content */}
                 <div className="lg:flex lg:justify-between">
@@ -111,7 +131,7 @@ export default async function SingleComparisonPost({ params }: {
 
                     <div className="text-lg text-gray-600">
                       <div className="mt-8">
-                        <Link href={`/${AppConfig.paths.blog}`} className="inline-flex items-center text-base text-blue-600 font-medium hover:underline">
+                        <Link href={`/${AppConfig.paths.comparisonPosts}`} className="inline-flex items-center text-base text-blue-600 font-medium hover:underline">
                           <svg className="w-3 h-3 fill-current text-blue-400 shrink-0 mr-2" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                             <path d="M.293 5.282L5 .5l1.414 1.436-3 3.048H12v2.032H3.414l3 3.048L5 11.5.293 6.718a1.027 1.027 0 010-1.436z" />
                           </svg>
