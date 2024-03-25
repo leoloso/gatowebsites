@@ -9,7 +9,7 @@ import { PostMdx } from '@/components/mdx/post-mdx'
 import PostNav from './post-nav'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@/components/stunning-background'
-import { sortByOrder, sortByOrderAndTitleAndTitle } from '@/utils/content/sort'
+import { sortByOrderAndTitle } from '@/utils/content/sort'
 import { getPostURL } from '@/utils/content/application-urls'
 import ArticleSchemaJsonLdScript from '@/components/schema/article-schema-json-ld';
 import Cta from '@/components/cta-02'
