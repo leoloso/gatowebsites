@@ -14,6 +14,7 @@ import PageHeader from '@/components/page-header'
 import { allComparisonPosts } from '@/.contentlayer/generated'
 import Logo from '@/public/assets/GatoGraphQL-logo-suki.png'
 import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
+import RelatedPosts from './related-posts'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({
@@ -124,21 +125,7 @@ export default async function SingleComparisonPost({ params }: {
 
                     <hr className="w-full h-px pt-px mt-16 bg-gray-200 border-0" />
 
-                    {/* Page navigation */}
-                    {/* <div>
-                      <ArticleNavigation prevArticle={prevPost} nextArticle={nextPost} />
-                    </div> */}
-
-                    <div className="text-lg text-gray-600">
-                      <div className="mt-8">
-                        <Link href={`/${AppConfig.paths.comparisonPosts}`} className="inline-flex items-center text-base text-blue-600 font-medium hover:underline">
-                          <svg className="w-3 h-3 fill-current text-blue-400 shrink-0 mr-2" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M.293 5.282L5 .5l1.414 1.436-3 3.048H12v2.032H3.414l3 3.048L5 11.5.293 6.718a1.027 1.027 0 010-1.436z" />
-                          </svg>
-                          <span>Back to all comparisons</span>
-                        </Link>
-                      </div>
-                    </div>
+                    <RelatedPosts />
 
                   </div>
 
