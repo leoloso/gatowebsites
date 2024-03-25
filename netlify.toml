@@ -6,7 +6,17 @@
   
 [[redirects]]
   from = "/gatographql-vs-wprestapi"
-  to = "/gatographql-vs-wp-rest-api"
+  to = "/comparisons/gatographql-vs-wp-rest-api"
+  status = 301
+
+[[redirects]]
+  from = "/gatographql-vs-wp-rest-api"
+  to = "/comparisons/gatographql-vs-wp-rest-api"
+  status = 301
+
+[[redirects]]
+  from = "/gatographql-vs-wpgraphql"
+  to = "/comparisons/gatographql-vs-wpgraphql"
   status = 301
   
 [[redirects]]
