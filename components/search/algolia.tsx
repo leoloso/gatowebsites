@@ -4,6 +4,7 @@ import type { BaseHit } from 'instantsearch.js';
 export const enum Sections {
   Blog = 'Blog',
   Changelog = 'Changelog',
+  Comparisons = 'Comparisons',
   ExtensionsReference = 'Extensions reference',
   Guides = 'Guides',
   SchemaTutorial = 'Schema tutorial',
@@ -23,6 +24,7 @@ export interface SearchObject extends BaseHit {
   content: string,
   section: Sections.Blog
     | Sections.Changelog
+    | Sections.Comparisons
     | Sections.ExtensionsReference
     | Sections.Guides
     | Sections.SchemaTutorial

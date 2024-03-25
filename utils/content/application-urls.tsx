@@ -1,4 +1,11 @@
-import { Doc, Extension, VideoPost, Post, Feature } from "@/.contentlayer/generated";
+import {
+  Doc,
+  Extension,
+  VideoPost,
+  ComparisonPost,
+  Post,
+  Feature,
+} from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
 import AppConstants from "@/app/app.constants";
 import { Article, Artifact, isExtension, isPost } from "./types";
@@ -42,6 +49,14 @@ export function getVideoPostURLPath(videoPost: VideoPost) {
 
 export function getVideoPostURL(videoPost: VideoPost) {
   return `${DOMAIN}${getVideoPostURLPath(videoPost)}`
+}
+
+export function getComparisonPostURLPath(comparisonPost: ComparisonPost) {
+  return `/${AppConfig.paths.comparisonPosts}/${comparisonPost.slug}`
+}
+
+export function getComparisonPostURL(comparisonPost: ComparisonPost) {
+  return `${DOMAIN}${getComparisonPostURLPath(comparisonPost)}`
 }
 
 export function getDocURLPath(doc: Doc) {

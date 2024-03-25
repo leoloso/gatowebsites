@@ -158,6 +158,40 @@ const VideoPost = defineDocumentType(() => ({
   },
 }))
 
+const ComparisonPost = defineDocumentType(() => ({
+  name: 'ComparisonPost',
+  filePathPattern: `${AppConfig.paths.comparisonPosts}/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    leading: {
+      type: 'string',
+      required: true,
+    },
+    description: {
+      type: 'string',
+      required: true,
+    },
+    image: {
+      type: 'string',
+      required: true,
+    },
+    order: {
+      type: 'number',
+      required: true,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.comparisonPosts + '/?'), ''),
+    },    
+  },
+}))
+
 const Doc = defineDocumentType(() => ({
   name: 'Doc',
   filePathPattern: `docs/**/*.mdx`,
@@ -351,7 +385,7 @@ const NameURLPair = defineNestedType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Update, Post, Page, Snippet, VideoPost, Doc, DocTopic, Extension, Feature],
+  documentTypes: [Update, Post, Page, Snippet, VideoPost, ComparisonPost, Doc, DocTopic, Extension, Feature],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

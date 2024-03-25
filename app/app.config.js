@@ -3,6 +3,7 @@ module.exports = {
   paths: {
     blog: "blog",
     changelog: "update",
+    comparisonPosts: "comparisons",
     docs: {
       extensionsReference: "extensions-reference",
       guides: "guides",

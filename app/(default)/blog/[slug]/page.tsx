@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: {
   }
 }
 
-export default async function SingleVideoPost({ params }: {
+export default async function SinglePost({ params }: {
   params: { slug: string }
 }) {
 
@@ -69,6 +69,8 @@ export default async function SingleVideoPost({ params }: {
   // const paginationArticles = getPrevNextArticles(posts, postIndex)
   // const prevPost = paginationArticles.prev as Post
   // const nextPost = paginationArticles.next as Post
+
+  const contentId = 'main-content'
 
   return (
     <>
@@ -99,10 +101,10 @@ export default async function SingleVideoPost({ params }: {
                 <div className="lg:flex lg:justify-between">
 
                   {/* Sidebar */}
-                  <PostNav />
+                  <PostNav contentId={contentId} />
 
                   {/* Main content */}
-                  <div className='min-w-0'>
+                  <div id={contentId} className='min-w-0'>
 
                     {/* Article meta */}
                     <div className="md:flex md:items-center md:justify-between mt-3">
