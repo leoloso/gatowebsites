@@ -12,7 +12,6 @@ import ArticleSchemaJsonLdScript from '@/components/schema/article-schema-json-l
 import Cta from '@/components/cta-02'
 import PageHeader from '@/components/page-header'
 import { allComparisonPosts } from '@/.contentlayer/generated'
-import Particles from '@/components/particles'
 import ComparisonTargetBg01 from '@/public/assets/theme/customer-bg-01.png'
 
 export async function generateStaticParams() {
