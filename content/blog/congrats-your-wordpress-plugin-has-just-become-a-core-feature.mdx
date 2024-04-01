@@ -36,28 +36,20 @@ All they have to do is to **Gato GraphQL** as a plugin dependency:
  */
 ```
 
-Having the GraphQL server available, they can point to a private GraphQL endpoint and [fetch data to render their plugin's Gutenberg blocks](https://gatographql.com/guides/interact/working-with-gutenberg-blocks), and avoid creating (and maintaining) REST controllers.
+Having the GraphQL server available, they can point to a private GraphQL endpoint and [fetch data to render their plugin's Gutenberg blocks](/guides/interact/working-with-gutenberg-blocks), and avoid creating (and maintaining) REST controllers.
 
+It is true that a new **Gato GraphQL** item will become suddenly visible in the wp-admin's menu, and the website owner might rightfully wonder: "Where did that come from?"
 
+However, because [Gato GraphQL by default does not enable the public single endpoint](/guides/config/enabling-and-configuring-the-single-endpoint), it can be installed without any security concern at all.
 
-More importantly for us at Gato GraphQL, you can 
+## Using GraphQL in your plugin
 
+To be able to use GraphQL in your plugin, you'll need to declare `gatographql` as a plugin dependency (using the plugin header as shown above), and then you can point to the [internal `blockEditor` endpoint](/guides/code/feeding-data-to-blocks-in-the-editor):
 
-I had always maintained that [GraphQL should not be in WordPress core](https://gatographql.com/blog/why-graphql-should-not-be-in-wordpress-core), because the WP REST API can already satisfy most of the developers' expectations, and adding GraphQL could become a security risk.
-
-Well, good news is that, starting from WordPress 6.5, we can treat GraphQL as a "core" feature.
-
-That is thanks to the introduction of [Plugin Dependencies](https://make.wordpress.org/core/2024/03/05/introducing-plugin-dependencies-in-wordpress-6-5/), which makes available the `Requires Plugins` plugin header, for any plugin to declare dependencies to other plugins:
-
-```php
-/**
- * Plugin Name: My Ecommerce Payments for Gato GraphQL
- * Requires Plugins: gatographql
- */
+```
+https://mysite.com/wp-admin/edit.php?page=gatographql&action=execute_query&endpoint_group=blockEditor
 ```
 
-WordPress will then install the plugin alongside all its dependencies (as long as these are available in the [plugin directory](https://wordpress.org/plugins/)).
+To have more control and configure the GraphQL schema to your liking (for instance, to enable [nested mutations](/guides/schema/using-nested-mutations)), you can also [create an internal endpoint that is exclusive to your plugin](/guides/config/creating-custom-internal-endpoints-for-blocks).
 
-Since WPGraphQL and Gato GraphQL are in the plugin directory, we can now create a plugin that internally uses GraphQL, and distribute it via the plugin directory or, in general, without having to indicate how to install it.
-
-For instance, we can now decide to use GraphQL to [fetch data to render the plugin's Gutenberg blocks](https://gatographql.com/guides/interact/working-with-gutenberg-blocks).
+Enjoy!
