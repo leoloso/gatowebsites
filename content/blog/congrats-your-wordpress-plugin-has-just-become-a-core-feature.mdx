@@ -51,6 +51,8 @@ As there is no security risk, I believe that the upside of making a GraphQL serv
 
 ## Adding Gato GraphQL as a plugin dependency
 
+Let's now get our hands dirty, and play with this awesome new feature.
+
 To be able to use GraphQL in your plugin, you'll need to declare `[gatographql](https://wordpress.org/plugins/gatographql/)` as a plugin dependency in the plugin header:
 
 ```php
@@ -60,12 +62,64 @@ To be able to use GraphQL in your plugin, you'll need to declare `[gatographql](
  */
 ```
 
-Then your plugin can access data via the [internal `blockEditor` endpoint](/guides/code/feeding-data-to-blocks-in-the-editor):
+Then your plugin can access data via the [internal `blockEditor` endpoint](/guides/code/feeding-data-to-blocks-in-the-editor), available under JS const `GATOGRAPHQL_BLOCK_EDITOR_ADMIN_ENDPOINT`, which points to this URL:
 
 ```
 https://mysite.com/wp-admin/edit.php?page=gatographql&action=execute_query&endpoint_group=blockEditor
 ```
 
-To have more control and configure the GraphQL schema to your liking (for instance, to enable [nested mutations](/guides/schema/using-nested-mutations)), you can also [create an internal endpoint that is exclusive to your plugin](/guides/config/creating-custom-internal-endpoints-for-blocks).
+For instance, the block can fetch data like this:
+
+```js
+(async function () {
+  const data = {
+    query: `
+      query GetCookingRecipeBlockData($limit: Int) {
+        posts(pagination: { limit: $limit }) {
+          id
+          title
+          author {
+            id
+            name
+          }
+        }
+      }
+    `,
+    variables: {
+      limit: 3
+    },
+  };
+ 
+  const response = await fetch(
+    GATOGRAPHQL_BLOCK_EDITOR_ADMIN_ENDPOINT,
+    {
+      method: 'post',
+      body: JSON.stringify(data),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Content-Length': data.length,
+      },
+      credentials: 'include',
+    }
+  );
+ 
+  /**
+   * Execute the query, and await the response
+   */
+  const json = await response.json();
+ 
+  /**
+   * Check if the query produced errors, otherwise use the results
+   */
+  if (json.errors) {
+    console.log(JSON.stringify(json.errors));
+  } else {
+    console.log(JSON.stringify(json.data));
+  }
+})();
+```
+
+If you'd like to be able to use [nested mutations](/guides/schema/using-nested-mutations)), you can also [create an internal endpoint that is exclusive to your plugin](/guides/config/creating-custom-internal-endpoints-for-blocks).
 
 Enjoy!
