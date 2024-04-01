@@ -35,13 +35,13 @@ As plugins can safely rely on GraphQL, WordPress developers can (for first time 
 
 For instance, by having the GraphQL server available, developers can point to a private GraphQL endpoint and [fetch data to render their plugin's Gutenberg blocks](/guides/interact/working-with-gutenberg-blocks), and avoid creating (and maintaining) REST controllers.
 
-## Adding Gato GraphQL as a plugin dependency
+## Could the plugin dependency become a risk to the website?
 
 When added as a dependency, a **Gato GraphQL** item will appear in the wp-admin's menu, and the website owner might rightfully wonder: "Where did that come from?"
 
-That is something that could eventually be worked-upon (for instance, by releasing a **Gato GraphQL Lite** plugin, which simply installs a GraphQL server for internal consumption only, and not visible through the UI).
+That is something that could be annoying to the website owner, and it can be improved (for instance, by releasing a **Gato GraphQL Lite** plugin, which simply installs a GraphQL server for internal consumption only, not visible through the UI).
 
-However, the most important question is: Would the new site become less secure, as it now offers a public GraphQL endpoint that any visitor can access? Could it unintentionally expose private data?
+A more important question is: Would the new site become less secure, as it now offers a public GraphQL endpoint that any visitor can access? Could it unintentionally expose private data?
 
 The response is no. [Gato GraphQL by default does not enable the public single endpoint](/guides/config/enabling-and-configuring-the-single-endpoint), so it can be installed without fear of security risks.
 
