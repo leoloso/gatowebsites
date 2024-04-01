@@ -62,13 +62,13 @@ To be able to use GraphQL in your plugin, you'll need to declare [`gatographql`]
  */
 ```
 
-Then your plugin can access data via the [internal `blockEditor` endpoint](/guides/code/feeding-data-to-blocks-in-the-editor), available under JS const `GATOGRAPHQL_BLOCK_EDITOR_ADMIN_ENDPOINT`, which points to this URL:
+Then your plugin can access data via the [internal `blockEditor` endpoint](/guides/code/feeding-data-to-blocks-in-the-editor), available under JavaScript constant `GATOGRAPHQL_BLOCK_EDITOR_ADMIN_ENDPOINT` in the wp-admin, which points to this URL:
 
-```
+```apache
 https://mysite.com/wp-admin/edit.php?page=gatographql&action=execute_query&endpoint_group=blockEditor
 ```
 
-For instance, the block can fetch data like this:
+For instance, the block can fetch data using JavaScript code like this:
 
 ```js
 (async function () {
@@ -120,6 +120,4 @@ For instance, the block can fetch data like this:
 })();
 ```
 
-If you'd like to be able to use [nested mutations](/guides/schema/using-nested-mutations)), you can also [create an internal endpoint that is exclusive to your plugin](/guides/config/creating-custom-internal-endpoints-for-blocks).
-
-Enjoy!
+If you'd like to be able to use [nested mutations](/guides/schema/using-nested-mutations) in your GraphQL queries, you can also [create an internal endpoint that is exclusive to your plugin](/guides/config/creating-custom-internal-endpoints-for-blocks), and configure it accordingly.
