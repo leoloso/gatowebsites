@@ -39,19 +39,15 @@ For first time ever, plugin developers can now consider GraphQL as an actual alt
 
 As the plugin that is installed as a dependency will appear in the wp-admin, the unaware website owner might rightfully wonder: "Where did that come from? Have I been hacked? Is this spam? What is going on here?"
 
-Could that be a problem?
-
-Let's consider this issue whenever Gato GraphQL is the plugin dependency.
-
 If the website owner were annoyed, that would be worrying as no plugin can afford antagonizing its users (at least, until they understand what's going on, and welcome the solution).
 
-This situation could also be improved, and even completely avoided. For instance, Gato GraphQL could release a **Lite** version plugin, which simply installs a GraphQL server for internal consumption only, not visible through the UI. (Another tasks for my TODO list!)
+This situation could also be improved, and even completely avoided. For instance, considering Gato GraphQL as the plugin dependency, Gato GraphQL could also have a **Lite** version plugin, which simply installs a GraphQL server for internal consumption only, not visible through the UI. (Another tasks for my TODO list! 🤷🏻‍♂️)
 
-A more important question is: Would the new site become less secure, as it now offers a public GraphQL endpoint that any visitor can access? Could it unintentionally expose private data?
+A more important question for Gato GraphQL (and other plugins out there too) is: Would the new site become less secure?
+
+In particular for Gato GraphQL: Will a public GraphQL endpoint expose data that any visitor can access, and that may unintentionally expose private data?
 
 The response is no. [Gato GraphQL by default does not enable the public single endpoint](/guides/config/enabling-and-configuring-the-single-endpoint), so it can be installed without fear of security risks.
-
-As there is no security risk, I believe that the upside of making a GraphQL server available to your plugins outweigh the potential downsides.
 
 ## Adding Gato GraphQL as a plugin dependency
 
