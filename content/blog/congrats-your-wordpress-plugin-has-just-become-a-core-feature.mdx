@@ -25,7 +25,13 @@ That is exactly the case with Gato GraphQL.
 
 ## GraphQL becomes a "core" feature in WordPress
 
-The direct consequence of Plugin Dependencies is that, from now on, plugins can rely on GraphQL, and WordPress developers can, for first time ever, consider GraphQL as an alternative to the REST API.
+GraphQL is an interface to fetch, modify and store again any piece of data from the WordPress site. Any plugin that needs to interact with data (and pretty much all of them do) can potentially use GraphQL to satisfy its needs.
+
+GraphQL is "tooling". And Gato GraphQL is the tooling provider.
+
+Have your plugin declare a dependency on Gato GraphQL, and the GraphQL server will be immediately available for your own use.
+
+As plugins can safely rely on GraphQL, WordPress developers can (for first time ever) truly consider GraphQL as an alternative to the REST API.
 
 All they have to do is to **Gato GraphQL** as a plugin dependency:
 
