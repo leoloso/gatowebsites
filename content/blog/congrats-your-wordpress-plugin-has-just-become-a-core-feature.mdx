@@ -11,18 +11,19 @@ tags:
 
 Because the WP REST API already ships in WordPress core, I have generally advised to simply use the REST API to feed data to our WordPress plugins and Gutenberg blocks.
 
-Not anymore. [WordPress 6.5 was released today](...), including an incredible new feature: **Plugin Dependencies**,
+Not anymore. [WordPress 6.5 was released today](...), including an incredible new feature: **Plugin Dependencies**.
 
-With [Plugin Dependencies](https://make.wordpress.org/core/2024/03/05/introducing-plugin-dependencies-in-wordpress-6-5/), any WordPress plugin that is available in the [plugin directory](https://wordpress.org/plugins/) can be defined as a dependency for our plugin, and WordPress will install it in advance of installing our plugin.
+With [Plugin Dependencies](https://make.wordpress.org/core/2024/03/05/introducing-plugin-dependencies-in-wordpress-6-5/), any WordPress plugin that is available in the [plugin directory](https://wordpress.org/plugins/) can be defined as a dependency for our plugin, and WordPress will install that dependency right before installing our plugin.
 
 As a consequence, every plugin in the directory essentially becomes a "core" feature, as it will be implicitly installed whenever required by any other plugin.
 
 Some applications are both obvious and not really needed, such as having an WooCommerce add-on declare a dependency on WooCommerce, as the website owner will most certainly already use WooCommerce.
 
-But when the required plugin is "tooling", and we can't expect the website owner to install that plugin in advance, the result can be really impactful.
+But when the required plugin provides "tooling" for some other plugin, so that we can't expect the website owner to have that plugin installed in advance (or even know of its existence), the result can be really impactful.
 
 That is exactly the case with Gato GraphQL.
 
+## GraphQL becomes a core feature in WordPress
 
 More importantly for us at Gato GraphQL, you can 
 
