@@ -35,11 +35,13 @@ For instance, you can then use GraphQL to [fetch data for your plugin's Gutenber
 
 For first time ever, plugin developers can now consider GraphQL as a feasible alternative to the WP REST API.
 
-## Could the plugin dependency become a risk to the website?
+## Could the plugin dependency become a problem?
 
-When added as a dependency, a **Gato GraphQL** item will appear in the wp-admin's menu, and the website owner might rightfully wonder: "Where did that come from?"
+As the plugin that is installed as a dependency will appear in the wp-admin, the unaware website owner might rightfully wonder: "Where did that come from? Have I been hacked? Is this spam? Or what is going on?"
 
-That is something that could be annoying to the website owner, and it can be improved (for instance, by releasing a **Gato GraphQL Lite** plugin, which simply installs a GraphQL server for internal consumption only, not visible through the UI).
+Could that be a problem? Let's consider this as having Gato GraphQL be the plugin dependency.
+
+If the website owner were annoyed, this situation could be improved. For instance, Gato GraphQL could release a **Lite** version plugin, which simply installs a GraphQL server for internal consumption only, not visible through the UI. (Another tasks for my TODO list!)
 
 A more important question is: Would the new site become less secure, as it now offers a public GraphQL endpoint that any visitor can access? Could it unintentionally expose private data?
 
