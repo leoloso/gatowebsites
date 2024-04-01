@@ -29,18 +29,11 @@ GraphQL is an interface to fetch, modify and store again any piece of data from 
 
 GraphQL is "tooling". And Gato GraphQL is the tooling provider.
 
-Have your plugin declare a dependency on Gato GraphQL, and the GraphQL server will be immediately available for your own use.
+By having your plugin declare a dependency on Gato GraphQL, the GraphQL server will be immediately available for your own use.
 
 As plugins can safely rely on GraphQL, WordPress developers can (for first time ever) truly consider GraphQL as an alternative to the REST API.
 
-All they have to do is to **Gato GraphQL** as a plugin dependency:
 
-```php
-/**
- * Plugin Name: Set of blocks for your portfolio 
- * Requires Plugins: gatographql
- */
-```
 
 Having the GraphQL server available, they can point to a private GraphQL endpoint and [fetch data to render their plugin's Gutenberg blocks](/guides/interact/working-with-gutenberg-blocks), and avoid creating (and maintaining) REST controllers.
 
@@ -48,9 +41,18 @@ It is true that a new **Gato GraphQL** item will become suddenly visible in the 
 
 However, because [Gato GraphQL by default does not enable the public single endpoint](/guides/config/enabling-and-configuring-the-single-endpoint), it can be installed without any security concern at all.
 
-## Using GraphQL in your plugin
+## Adding Gato GraphQL as a plugin dependency
 
-To be able to use GraphQL in your plugin, you'll need to declare `gatographql` as a plugin dependency (using the plugin header as shown above), and then you can point to the [internal `blockEditor` endpoint](/guides/code/feeding-data-to-blocks-in-the-editor):
+To be able to use GraphQL in your plugin, you'll need to declare [`gatographql`](https://wordpress.org/plugins/gatographql/) as a plugin dependency in the plugin header:
+
+```php
+/**
+ * Plugin Name: Blocks for cooking recipes
+ * Requires Plugins: gatographql
+ */
+```
+
+Then you can point to the [internal `blockEditor` endpoint](/guides/code/feeding-data-to-blocks-in-the-editor):
 
 ```
 https://mysite.com/wp-admin/edit.php?page=gatographql&action=execute_query&endpoint_group=blockEditor
