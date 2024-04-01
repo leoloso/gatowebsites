@@ -9,7 +9,7 @@ tags:
   - wordpress
 ---
 
-Because the WP REST API already ships in WordPress core, I have generally advised to avoid GraphQL, and simply use the REST API to feed data to our WordPress plugins and Gutenberg blocks.
+Because the WP REST API already ships in WordPress core, I have often advised to avoid GraphQL, and simply use the REST API to feed data to our WordPress plugins and Gutenberg blocks.
 
 Not anymore. [WordPress 6.5 was released today](...), including an incredible new feature: **Plugin Dependencies**.
 
@@ -33,15 +33,19 @@ By having your plugin declare a dependency on Gato GraphQL, the GraphQL server w
 
 For instance, you can then use GraphQL to [fetch data for your plugin's Gutenberg blocks](/guides/interact/working-with-gutenberg-blocks), and avoid creating (and maintaining) REST controllers.
 
-For first time ever, plugin developers can now consider GraphQL as a feasible alternative to the WP REST API.
+For first time ever, plugin developers can now consider GraphQL as an actual alternative to the WP REST API.
 
 ## Could the plugin dependency become a problem?
 
-As the plugin that is installed as a dependency will appear in the wp-admin, the unaware website owner might rightfully wonder: "Where did that come from? Have I been hacked? Is this spam? Or what is going on?"
+As the plugin that is installed as a dependency will appear in the wp-admin, the unaware website owner might rightfully wonder: "Where did that come from? Have I been hacked? Is this spam? What is going on here?"
 
-Could that be a problem? Let's consider this as having Gato GraphQL be the plugin dependency.
+Could that be a problem?
 
-If the website owner were annoyed, this situation could be improved. For instance, Gato GraphQL could release a **Lite** version plugin, which simply installs a GraphQL server for internal consumption only, not visible through the UI. (Another tasks for my TODO list!)
+Let's consider this issue whenever Gato GraphQL is the plugin dependency.
+
+If the website owner were annoyed, that would be worrying as no plugin can afford antagonizing its users (at least, until they understand what's going on, and welcome the solution).
+
+This situation could also be improved, and even completely avoided. For instance, Gato GraphQL could release a **Lite** version plugin, which simply installs a GraphQL server for internal consumption only, not visible through the UI. (Another tasks for my TODO list!)
 
 A more important question is: Would the new site become less secure, as it now offers a public GraphQL endpoint that any visitor can access? Could it unintentionally expose private data?
 
