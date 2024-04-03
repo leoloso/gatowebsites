@@ -118,7 +118,7 @@ export default function Features07() {
         {/* Images */}
         <div className="max-w-[1440px] mx-auto px-4 md:px-0">
           <Highlighter>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 md:-mx-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 lg:-mx-5">
               {automationEntries.map((automationEntry, index) => (
                 <div key={index}>
                   <HighlighterItem02>
@@ -132,7 +132,9 @@ export default function Features07() {
                           <div className="sm:text-lg md:text-xl lg:text-2xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-2 sm:mx-4">
                             →
                           </div>
-                          <Image src={Logo} width={75} height={75} alt="Automation Gato GraphQL Logo" />
+                          <div className="sm:max-w-[75px] md:max-w-[75px]">
+                            <Image src={Logo} width={75} height={75} alt="Automation Gato GraphQL Logo" />
+                          </div>
                           <div className="sm:text-lg md:text-xl lg:text-2xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-2 sm:mx-4">
                             →
                           </div>
