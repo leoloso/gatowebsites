@@ -5,7 +5,6 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { Transition } from '@headlessui/react'
 import Particles from './particles'
-import Illustration from '@/public/assets/theme/glow-top.svg'
 import Pic1 from '@/public/assets/theme/heros/remain-in-control-access-control.png'
 import Pic2 from '@/public/assets/theme/heros/remain-in-control-persisted-queries.png'
 import Pic3 from '@/public/assets/theme/heros/remain-in-control-custom-endpoints.png'
@@ -18,14 +17,7 @@ export default function Features() {
     <section>
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
 
-        {/* Illustration */}
-        <div className="absolute inset-0 -z-10 -mx-28 rounded-t-[3rem] pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10">
-            <Image src={Illustration} className="max-w-none" width={1404} height={658} alt="Features Illustration" />
-          </div>
-        </div>
-
-        <div className="pt-16 pb-12 md:pt-52 md:pb-20">
+        <div className="pt-16 pb-12 md:pt-32 md:pb-20">
 
           <div>
 
