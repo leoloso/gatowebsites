@@ -85,7 +85,7 @@ export default function Features07() {
                 </svg>
               </div>
               <div className="font-bold text-slate-100 mb-1">Trigger on hooks</div>
-              <p className="text-sm text-slate-400">Whenever an action hook is triggered, execute your GraphQL query.</p>
+              <p className="text-sm text-slate-400">Whenever an action hook is triggered, execute your persisted GraphQL query.</p>
             </div>
             {/* Block #2 */}
             <div className="text-center p-5">
@@ -111,7 +111,7 @@ export default function Features07() {
                 </svg>
               </div>
               <div className="font-bold text-slate-100 mb-1">Invoke external services</div>
-              <p className="text-sm text-slate-400">Communicate with cloud-based services to synchronize state.</p>
+              <p className="text-sm text-slate-400">Communicate with cloud-based services to synchronize state and data.</p>
             </div>
           </div>
 
