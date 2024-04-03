@@ -9,7 +9,7 @@ export default function Features03() {
   return (
     <section className="relative">
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Particles animation */}
         <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 w-80 h-80 -mt-24 -ml-32">
@@ -29,7 +29,7 @@ export default function Features03() {
           </svg>
         </div>
 
-        <div className="pt-16 pb-12 md:pt-32 md:pb-20">
+        <div className="pt-16 pb-12 md:pt-32 md:pb-20 border-b border-slate-800">
 
           {/* Section header */}
           <SectionHeader
