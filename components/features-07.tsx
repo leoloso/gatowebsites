@@ -5,8 +5,43 @@ import Recruitment01 from '@/public/assets/theme/recruitment-01.jpg'
 import Recruitment02 from '@/public/assets/theme/recruitment-02.jpg'
 import Recruitment03 from '@/public/assets/theme/recruitment-03.jpg'
 import Recruitment04 from '@/public/assets/theme/recruitment-04.jpg'
+import ComparisonTargetBg01 from '@/public/assets/theme/customer-bg-01.png'
+import ComparisonTargetBg02 from '@/public/assets/theme/customer-bg-02.png'
+import ComparisonTargetBg03 from '@/public/assets/theme/customer-bg-03.png'
+import ComparisonTargetBg04 from '@/public/assets/theme/customer-bg-04.png'
+import FromLogoImg01 from '@/public/assets/automator/logos/gravity-forms-icon.svg'
+import FromLogoImg02 from '@/public/assets/automator/logos/learndash.svg'
+import FromLogoImg03 from '@/public/assets/automator/logos/woocommerce.svg'
+import FromLogoImg04 from '@/public/assets/automator/logos/wpforms-icon.svg'
+import ToLogoImg01 from '@/public/assets/automator/logos/airtable-icon.svg'
+import ToLogoImg02 from '@/public/assets/automator/logos/hubspot-icon.svg'
+import ToLogoImg03 from '@/public/assets/automator/logos/openai-icon.svg'
+import ToLogoImg04 from '@/public/assets/automator/logos/mailchimp-icon.svg'
+import Highlighter, { HighlighterItem02 } from './highlighter'
 
 export default function Features07() {
+  const automationEntries = [
+    {
+      backgroundImg: ComparisonTargetBg01,
+      fromLogoImg: FromLogoImg01,
+      toLogoImg: ToLogoImg01,
+    },
+    {
+      backgroundImg: ComparisonTargetBg02,
+      fromLogoImg: FromLogoImg02,
+      toLogoImg: ToLogoImg02,
+    },
+    {
+      backgroundImg: ComparisonTargetBg03,
+      fromLogoImg: FromLogoImg03,
+      toLogoImg: ToLogoImg03,
+    },
+    {
+      backgroundImg: ComparisonTargetBg04,
+      fromLogoImg: FromLogoImg04,
+      toLogoImg: ToLogoImg04,
+    },
+  ]
   return (
     <section className="relative">
 
@@ -85,12 +120,30 @@ export default function Features07() {
       <div className="pb-12 md:pb-20 border-b border-slate-800">
         {/* Images */}
         <div className="max-w-[1440px] mx-auto px-4 md:px-0">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 md:-mx-5">
-            <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={Recruitment01} width={352} height={220} alt="Recruitment 01" />
-            <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={Recruitment02} width={352} height={220} alt="Recruitment 02" />
-            <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={Recruitment03} width={352} height={220} alt="Recruitment 03" />
-            <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={Recruitment04} width={352} height={220} alt="Recruitment 04" />
-          </div>
+          <Highlighter className="w-full aspect-[16/10] object-cover rounded-lg">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 md:-mx-5">
+              {automationEntries.map((automationEntry, index) => (
+                <div key={index}>
+                  <HighlighterItem02>
+                    <div className="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
+                      {/* Particles animation */}
+                      <Particles className="absolute inset-0 -z-10" quantity={3} />
+                      <div className="flex items-center justify-center">
+                        <Image className="w-full h-full aspect-video object-cover" src={automationEntry.backgroundImg} width={352} height={220} alt="Automation Target Background" aria-hidden="true" />
+                        <div className="absolute flex items-center justify-center">
+                          <Image src={automationEntry.fromLogoImg} width={50} height={50} alt="Automation From Logo" />
+                          <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-4 sm:mx-8 sm:mx-16 lg:mx-24">
+                            +
+                          </div>
+                          <Image src={automationEntry.toLogoImg} width={50} height={50} alt="Automation To Logo" />
+                        </div>
+                      </div>
+                    </div>
+                  </HighlighterItem02>
+                </div>
+              ))}
+            </div>
+          </Highlighter>
         </div>
       </div>
 
