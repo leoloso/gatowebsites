@@ -1,0 +1,72 @@
+---
+title: Export user data to AirTable
+description: Retrieve all the users from your WordPress site, and create records on AirTable
+order: 0
+---
+
+This query retrieves all the users from the WordPress site, and creates records on [AirTable](https://airtable.com/), using the [AirTable API](https://airtable.com/developers/web/api/introduction).
+].
+
+The table on AirTable has columns `Name`, `URL` and `Email`, and we retrieve and send that data for each user.
+
+```graphql
+query ExportUserData {
+  users {
+    displayName
+    email
+    url    
+    userEntry: _echo(value: {
+      fields: {
+        Name: $__displayName,
+        URL: $__url,
+        Email: $__email,
+      }
+    })
+      @export(as: "userEntries", type: LIST)
+      @remove
+  }
+}
+
+query CreateRecordInAirTable(
+  $baseId: String!
+  $tableName: String!
+  $personalAccessToken: String!
+)
+  @depends(on: "ExportUserData")
+{
+  url: _sprintf(
+    string: "https://api.airtable.com/v0/%s/%s",
+    values: [$baseId, $tableName]
+  )
+  bearerToken: _sprintf(
+    string: "Bearer %s",
+    values: [$personalAccessToken]
+  )
+    @remove
+  response: _sendJSONObjectItemHTTPRequest(input: {
+    url: $__url,
+    method: POST,
+    options: {
+      headers: [
+        {
+          name: "Authorization",
+          value: $__bearerToken
+        }
+      ]
+      json: {
+        records: $userEntries
+      }
+    }
+  })
+}
+```
+
+You must provide the JSON dictionary for the following GraphQL variables:
+
+```json
+{
+  "baseId": "{ your baseId }",
+  "tableName": "{ your tableName }",
+  "personalAccessToken": "{ your access token }"
+}
+```
