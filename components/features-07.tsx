@@ -23,9 +23,9 @@ export default function Features07() {
 
           {/* Section header */}
           <SectionHeader
-            // leading='Like Zapier, for WordPress'
+            leading='GraphQL as automator'
             title="Automate everything"
-            description="Any task that involves data, can be accomplished with a GraphQL query."
+            description="Execute a GraphQL persisted query to deal with admin tasks and content workflows."
           />
 
           {/* Icons with text */}
