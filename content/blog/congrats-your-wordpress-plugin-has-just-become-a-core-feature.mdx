@@ -1,0 +1,123 @@
+---
+title: '🎯 Congrats: Your WordPress plugin has just become a "core" feature'
+summary: 'With the new Plugin Dependencies feature, released in WordPress 6.5, all plugins available in the directory become first-class citizens'
+publishedAt: '2024-04-02'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - news
+  - wordpress
+---
+
+Because the WP REST API already ships in WordPress core, I have often advised to avoid GraphQL, and simply use the REST API to feed data to our WordPress plugins and Gutenberg blocks.
+
+Not anymore. [WordPress 6.5 was just released](https://wordpress.org/news/2024/04/wordpress-6-5-regina/), including an incredible new feature: **Plugin Dependencies**.
+
+With [Plugin Dependencies](https://make.wordpress.org/core/2024/03/05/introducing-plugin-dependencies-in-wordpress-6-5/), any WordPress plugin that is available in the [plugin directory](https://wordpress.org/plugins/) can be defined as a dependency for our plugin, and WordPress will install that dependency right before installing our plugin.
+
+As a consequence, every plugin in the directory essentially becomes a "core" feature, as it will be implicitly installed whenever required by any other plugin.
+
+Some applications are both obvious and not really needed, such as having an WooCommerce add-on declare a dependency on WooCommerce, as the website owner will most certainly already use WooCommerce.
+
+But when the required plugin provides "tooling" for some other plugin, and we can't expect the website owner to have that plugin installed in advance (or even know of its existence), the result can be really impactful.
+
+That is the case with GraphQL, and Gato GraphQL.
+
+## GraphQL becomes a "core" feature in WordPress
+
+GraphQL is an interface to fetch, modify and store again any piece of data from the WordPress site. Any plugin that needs to interact with data (and pretty much all of them do) can potentially use GraphQL to satisfy its needs.
+
+GraphQL is "tooling". And Gato GraphQL is the tooling provider.
+
+By having your plugin declare a dependency on Gato GraphQL, the GraphQL server will be immediately available for your plugin's own use.
+
+For instance, you can then use GraphQL to [fetch data for your plugin's Gutenberg blocks](/guides/interact/working-with-gutenberg-blocks), and avoid creating (and maintaining) REST controllers.
+
+For first time ever, plugin developers can now consider GraphQL as an actual alternative to the WP REST API.
+
+## Could the plugin dependency become a problem?
+
+As the plugin that is installed as a dependency will appear in the wp-admin, the unaware website owner might rightfully wonder: "Where did that come from? Have I been hacked? Is this spam? What is going on here?"
+
+If the website owner were annoyed, that would be worrying as no plugin can afford antagonizing its users (at least, until they understand what's going on, and welcome the solution).
+
+This situation could also be improved, and even completely avoided. For instance, considering Gato GraphQL as the plugin dependency, Gato GraphQL could also have a **Lite** version plugin, which simply installs a GraphQL server for internal consumption only, not visible through the UI. (Another tasks for my TODO list! 🤷🏻‍♂️)
+
+A more important question for Gato GraphQL (and other plugins out there too) is: Would the new site become less secure?
+
+In particular for Gato GraphQL: Will a public GraphQL endpoint expose data that any visitor can access, and that may unintentionally expose private data?
+
+The response is no. [Gato GraphQL by default does not enable the public single endpoint](/guides/config/enabling-and-configuring-the-single-endpoint), so it can be installed without fear of security risks.
+
+## Adding Gato GraphQL as a plugin dependency
+
+Let's now get our hands dirty, and play with this awesome new feature.
+
+To be able to use GraphQL in your plugin, you'll need to declare [`gatographql`](https://wordpress.org/plugins/gatographql/) as a plugin dependency in the plugin header:
+
+```php
+/**
+ * Plugin Name: Blocks for cooking recipes
+ * Requires Plugins: gatographql
+ */
+```
+
+Then your plugin can access data via the [internal `blockEditor` endpoint](/guides/code/feeding-data-to-blocks-in-the-editor), available under JavaScript constant `GATOGRAPHQL_BLOCK_EDITOR_ADMIN_ENDPOINT` in the wp-admin, which points to this URL:
+
+```apache
+https://mysite.com/wp-admin/edit.php?page=gatographql&action=execute_query&endpoint_group=blockEditor
+```
+
+For instance, the block can fetch data using JavaScript code like this:
+
+```js
+(async function () {
+  const data = {
+    query: `
+      query GetCookingRecipeBlockData($limit: Int) {
+        posts(pagination: { limit: $limit }) {
+          id
+          title
+          author {
+            id
+            name
+          }
+        }
+      }
+    `,
+    variables: {
+      limit: 3
+    },
+  };
+ 
+  const response = await fetch(
+    GATOGRAPHQL_BLOCK_EDITOR_ADMIN_ENDPOINT,
+    {
+      method: 'post',
+      body: JSON.stringify(data),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Content-Length': data.length,
+      },
+      credentials: 'include',
+    }
+  );
+ 
+  /**
+   * Execute the query, and await the response
+   */
+  const json = await response.json();
+ 
+  /**
+   * Check if the query produced errors, otherwise use the results
+   */
+  if (json.errors) {
+    console.log(JSON.stringify(json.errors));
+  } else {
+    console.log(JSON.stringify(json.data));
+  }
+})();
+```
+
+If you'd like to be able to use [nested mutations](/guides/schema/using-nested-mutations) in your GraphQL queries, you can also [create an internal endpoint that is exclusive to your plugin](/guides/config/creating-custom-internal-endpoints-for-blocks), and configure it accordingly.
