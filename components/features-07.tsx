@@ -12,7 +12,7 @@ import FromLogoImg03 from '@/public/assets/automator/logos/woocommerce.svg'
 import FromLogoImg04 from '@/public/assets/automator/logos/wpforms-icon.svg'
 import ToLogoImg01 from '@/public/assets/automator/logos/airtable-icon.svg'
 import ToLogoImg02 from '@/public/assets/automator/logos/hubspot-icon.svg'
-import ToLogoImg03 from '@/public/assets/automator/logos/openai-icon.svg'
+import ToLogoImg03 from '@/public/assets/automator/logos/zapier-icon.svg'
 import ToLogoImg04 from '@/public/assets/automator/logos/mailchimp-bg-icon.svg'
 import Highlighter, { HighlighterItem02 } from './highlighter'
 
@@ -34,7 +34,7 @@ export default function Features07() {
       backgroundImg: ComparisonTargetBg03,
       fromLogoImg: FromLogoImg03,
       toLogoImg: ToLogoImg03,
-      desc: 'WooCommerce to OpenAI'
+      desc: 'WooCommerce to Zapier'
     },
     {
       backgroundImg: ComparisonTargetBg04,
