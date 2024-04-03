@@ -1,6 +1,8 @@
 import Particles from './particles'
 
 import SectionHeader from './section-header'
+import Image from 'next/image'
+import Illustration from '@/public/assets/theme/glow-top.svg'
 
 export default function Features06() {
   return (
@@ -11,14 +13,21 @@ export default function Features06() {
         <Particles className="absolute inset-0 -z-10" quantity={6} staticity={30} />    
       </div>
 
+      {/* Illustration */}
+      <div className="absolute inset-0 -z-10 -mx-28 rounded-t-[3rem] pointer-events-none overflow-hidden" aria-hidden="true">
+        <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10">
+          <Image src={Illustration} className="max-w-none" width={1404} height={658} alt="Features Illustration" />
+        </div>
+      </div>
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-16 pb-12 md:pt-32 md:pb-20 border-b border-slate-800">
 
           {/* Section header */}
           <SectionHeader
-            leading='Versatility to satisfy your needs'
-            title='Accomplish your goals'
-            description="Whether building an API, a website, theme, plugin or Gutenberg block, GraphQL can help you."
+            // leading='Versatility to satisfy your needs'
+            title="Expose your WordPress site's data via a GraphQL API"
+            description="Create public GraphQL endpoints for your visitors, and private endpoints to power your app."
           />
 
           {/* Features list */}

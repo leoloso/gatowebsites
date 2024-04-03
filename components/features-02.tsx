@@ -17,10 +17,11 @@ export default function Features02() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pt-16 md:pt-32">
+        <div className="pt-16 pb-12 md:pt-32 md:pb-20 border-b border-slate-800">
 
           {/* Section header */}
           <SectionHeader
+            leading='Peerless architecture'
             title='Fast. Extensible. Configurable.'
             description="The GraphQL server has been engineered from the ground up to be super fast, easily extensible, and configurable in elaborate detail."
           />
@@ -123,7 +124,7 @@ export default function Features02() {
                       {/* Text */}
                       <div className="md:max-w-[480px] shrink-0 order-1 md:order-none p-6 pt-0 md:p-8">
                         <div>
-                          <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">Limitless options</h3>
+                          <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">Customization</h3>
                           <p className="text-slate-400">Configure the plugin to suit your specific needs, even endpoint by endpoint.</p>
                         </div>
                       </div>
