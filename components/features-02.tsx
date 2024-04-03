@@ -21,6 +21,7 @@ export default function Features02() {
 
           {/* Section header */}
           <SectionHeader
+            leading='Peerless architecture'
             title='Fast. Extensible. Configurable.'
             description="The GraphQL server has been engineered from the ground up to be super fast, easily extensible, and configurable in elaborate detail."
           />

@@ -24,8 +24,8 @@ export default function Features07() {
           {/* Section header */}
           <SectionHeader
             // leading='Versatility to satisfy your needs'
-            title="Use GraphQL to manage your WordPress site"
-            description="Fetch data, modify it, store it back on the server, and invoke external services."
+            title="Manage your WordPress site"
+            description="Use GraphQL to fetch data, modify it, store it back on the server, and invoke external services, all within a single query."
           />
 
           {/* Icons with text */}
