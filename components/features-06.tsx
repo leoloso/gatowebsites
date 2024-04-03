@@ -26,8 +26,8 @@ export default function Features06() {
           {/* Section header */}
           <SectionHeader
             // leading='Versatility to satisfy your needs'
-            title='Public and Private endpoints'
-            description="Expose your WordPress site's data for both public and private consumption."
+            title="Expose your WordPress site's data via a GraphQL API"
+            description="Create public GraphQL endpoints for your visitors, and private endpoints to power your app."
           />
 
           {/* Features list */}
