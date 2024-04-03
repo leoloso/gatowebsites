@@ -1,6 +1,10 @@
 import SectionHeader from './section-header'
 import Image from 'next/image'
 import Illustration from '@/public/assets/theme/glow-top.svg'
+import Recruitment01 from '@/public/assets/theme/recruitment-01.jpg'
+import Recruitment02 from '@/public/assets/theme/recruitment-02.jpg'
+import Recruitment03 from '@/public/assets/theme/recruitment-03.jpg'
+import Recruitment04 from '@/public/assets/theme/recruitment-04.jpg'
 
 export default function Features07() {
   return (
@@ -15,7 +19,7 @@ export default function Features07() {
           </div>
         </div>
 
-        <div className="pt-16 pb-12 md:pt-32 md:pb-20 border-b border-slate-800">
+        <div className="pt-16 pb-12 md:pt-32 md:pb-20">
 
           {/* Section header */}
           <SectionHeader
@@ -24,42 +28,61 @@ export default function Features07() {
             description="Fetch data, modify it, store it back on the server, and invoke external services."
           />
 
-          {/* Features list */}
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-            {/* Feature */}
-            <div>
-              <div className="flex items-center space-x-2 mb-1">
-                <svg className="shrink-0 fill-slate-300" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                  <path d="M2 6H0V2a2 2 0 0 1 2-2h4v2H2v4ZM16 6h-2V2h-4V0h4a2 2 0 0 1 2 2v4ZM14 16h-4v-2h4v-4h2v4a2 2 0 0 1-2 2ZM6 16H2a2 2 0 0 1-2-2v-4h2v4h4v2Z"></path>
+          {/* Icons with text */}
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-10 max-w-xs mx-auto md:max-w-none -m-5">
+            {/* Block #1 */}
+            <div className="text-center p-5">
+              <div className="inline-flex items-center justify-center h-12 w-12 rounded-full border border-transparent [background:linear-gradient(theme(colors.slate.800),_theme(colors.slate.800))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24">
+                  <g fill="none" fillRule="nonzero" opacity=".8">
+                    <path className="fill-slate-600" d="M14.416 3.527C13.841 4.39 13.5 5.242 13.5 6a1.5 1.5 0 1 0 3 0c0-.758-.34-1.61-.916-2.473A8.962 8.962 0 0 0 15 2.748c-.2.239-.398.5-.584.78ZM17.5 6a2.5 2.5 0 1 1-5 0c0-.992.41-2.015 1.084-3.027a9.979 9.979 0 0 1 1.062-1.327L15 1.293l.354.353a9.979 9.979 0 0 1 1.062 1.326C17.091 3.986 17.5 5.009 17.5 6ZM6 6.5c-1.374 0-2.5-1.055-2.5-2.375 0-.243.043-.492.125-.746.176-.548.523-1.108.99-1.672A9.774 9.774 0 0 1 5.677.62L6 .344l.323.275a9.774 9.774 0 0 1 1.061 1.089c.468.563.815 1.123.991 1.671.082.254.125.503.125.746C8.5 5.445 7.374 6.5 6 6.5Zm-.615-4.154c-.393.474-.678.933-.808 1.339-.051.16-.077.307-.077.44C4.5 4.877 5.164 5.5 6 5.5s1.5-.623 1.5-1.375c0-.133-.026-.28-.077-.44-.13-.406-.415-.865-.808-1.34A8.746 8.746 0 0 0 6 1.682c-.21.205-.42.43-.615.665Z" />
+                    <path className="fill-slate-200" d="M9.483 14.562A6.495 6.495 0 0 1 15 11.5h4.5v.5a8.5 8.5 0 0 1-8.5 8.5H9.5v3h-1v-7H7A6.5 6.5 0 0 1 .5 10v-.5H4c2.89 0 5.26 2.23 5.483 5.062Zm-.485.938H8.5v1h.174a6.45 6.45 0 0 1 .324-1Zm.502 4H11a7.5 7.5 0 0 0 7.484-7H15A5.5 5.5 0 0 0 9.5 18v1.5Zm-1-4V15A4.5 4.5 0 0 0 4 10.5H1.522A5.5 5.5 0 0 0 7 15.5h1.5Z" />
+                  </g>
                 </svg>
-                <h4 className="font-medium text-slate-50">Synch</h4>
               </div>
-              <p className="text-sm text-slate-400">Use your JavaScript framework of choice to render your site.</p>
+              <div className="font-bold text-slate-100 mb-1">Passionate</div>
+              <p className="text-sm text-slate-400">You are passionate about digital products of any kind and are a builder at heart.</p>
             </div>
-            {/* Feature */}
-            <div>
-              <div className="flex items-center space-x-2 mb-1">
-                <svg className="shrink-0 fill-slate-300" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                  <path d="M15.5 11H13a5.022 5.022 0 0 1-3.453-1.4l-1.2 1.607A7.065 7.065 0 0 0 12 12.92v1.586a.5.5 0 0 0 .853.349l3-3A.5.5 0 0 0 15.5 11ZM1 5a5.022 5.022 0 0 1 3.453 1.4l1.205-1.61A7.028 7.028 0 0 0 1 3a1 1 0 1 0 0 2ZM13 5h2.5a.5.5 0 0 0 .354-.853l-3-3A.5.5 0 0 0 12 1.5v1.58a7.032 7.032 0 0 0-4.6 2.72L5 9a5.025 5.025 0 0 1-4 2 1 1 0 0 0 0 2 7.034 7.034 0 0 0 5.6-2.8L9 7a5.025 5.025 0 0 1 4-2Z"></path>
+            {/* Block #2 */}
+            <div className="text-center p-5">
+              <div className="inline-flex items-center justify-center h-12 w-12 rounded-full border border-transparent [background:linear-gradient(theme(colors.slate.800),_theme(colors.slate.800))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                  <path className="fill-slate-200" d="M9.423 12.278H.87L11.614.458l-1.037 7.264h8.553L8.386 19.542l1.037-7.264Zm-6.293-1h7.447l-.74 5.18 7.033-7.736H9.423l.74-5.18-7.033 7.736Z" opacity=".8" />
                 </svg>
-                <h4 className="font-medium text-slate-50">Power your Gutenberg blocks</h4>
               </div>
-              <p className="text-sm text-slate-400">Fetch data to render your Gutenberg blocks on both the client and server sides.</p>
+              <div className="font-bold text-slate-100 mb-1">Energetic</div>
+              <p className="text-sm text-slate-400">You are passionate about digital products of any kind and are a builder at heart.</p>
             </div>
-            {/* Feature */}
-            <div>
-              <div className="flex items-center space-x-2 mb-1">
-                <svg className="shrink-0 fill-slate-300" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                  <path d="M14 0a2 2 0 0 1 2 2v4a1 1 0 0 1-2 0V2H2v12h4a1 1 0 0 1 0 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12Zm-1.957 10.629 3.664 3.664a1 1 0 0 1-1.414 1.414l-3.664-3.664-.644 2.578a.5.5 0 0 1-.476.379H9.5a.5.5 0 0 1-.48-.362l-2-7a.5.5 0 0 1 .618-.618l7 2a.5.5 0 0 1-.017.965l-2.578.644Z" />
+            {/* Block #3 */}
+            <div className="text-center p-5">
+              <div className="inline-flex items-center justify-center h-12 w-12 rounded-full border border-transparent [background:linear-gradient(theme(colors.slate.800),_theme(colors.slate.800))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                  <g fill="none" fillRule="nonzero" opacity=".8">
+                    <path className="fill-slate-600" d="M11.5 1h1v4h-1V1ZM23 11.5v1h-4v-1h4ZM12.5 23h-1v-4h1v4ZM1 12.5v-1h4v1H1Z" />
+                    <path className="fill-slate-200" d="M12 23.5C5.649 23.5.5 18.351.5 12S5.649.5 12 .5 23.5 5.649 23.5 12 18.351 23.5 12 23.5Zm0-1c5.799 0 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5 1.5 6.201 1.5 12 6.201 22.5 12 22.5Zm0-8a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Zm0-1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" />
+                  </g>
                 </svg>
-                <h4 className="font-medium text-slate-50">Private GraphQL Server</h4>
               </div>
-              <p className="text-sm text-slate-400">Use GraphQL as a tool to internally power your application, without exposing an API.</p>
+              <div className="font-bold text-slate-100 mb-1">Achiever</div>
+              <p className="text-sm text-slate-400">You are passionate about digital products of any kind and are a builder at heart.</p>
             </div>
           </div>
 
         </div>
       </div>
+
+      <div className="pb-12 md:pb-20 border-b border-slate-800">
+        {/* Images */}
+        <div className="max-w-[1440px] mx-auto px-4 md:px-0">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 md:-mx-5">
+            <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={Recruitment01} width={352} height={220} alt="Recruitment 01" />
+            <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={Recruitment02} width={352} height={220} alt="Recruitment 02" />
+            <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={Recruitment03} width={352} height={220} alt="Recruitment 03" />
+            <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={Recruitment04} width={352} height={220} alt="Recruitment 04" />
+          </div>
+        </div>
+      </div>
+
     </section>
   )
 }
