@@ -1,10 +1,7 @@
 import SectionHeader from './section-header'
 import Image from 'next/image'
 import Particles from './particles'
-import Recruitment01 from '@/public/assets/theme/recruitment-01.jpg'
-import Recruitment02 from '@/public/assets/theme/recruitment-02.jpg'
-import Recruitment03 from '@/public/assets/theme/recruitment-03.jpg'
-import Recruitment04 from '@/public/assets/theme/recruitment-04.jpg'
+import Logo from '@/public/assets/GatoGraphQL-logo-face.png'
 import ComparisonTargetBg01 from '@/public/assets/theme/customer-bg-01.png'
 import ComparisonTargetBg02 from '@/public/assets/theme/customer-bg-02.png'
 import ComparisonTargetBg03 from '@/public/assets/theme/customer-bg-03.png'
@@ -132,8 +129,12 @@ export default function Features07() {
                         <Image className="w-full h-full aspect-video object-cover" src={automationEntry.backgroundImg} width={352} height={220} alt="Automation Target Background" aria-hidden="true" />
                         <div className="absolute flex items-center justify-center">
                           <Image src={automationEntry.fromLogoImg} width={50} height={50} alt="Automation From Logo" />
-                          <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-4 sm:mx-8 sm:mx-16 lg:mx-24">
-                            +
+                          <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-2 sm:mx-4">
+                            →
+                          </div>
+                          <Image src={Logo} width={75} height={75} alt="Automation Gato GraphQL Logo" />
+                          <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-2 sm:mx-4">
+                            →
                           </div>
                           <Image src={automationEntry.toLogoImg} width={50} height={50} alt="Automation To Logo" />
                         </div>
