@@ -22,21 +22,25 @@ export default function Features07() {
       backgroundImg: ComparisonTargetBg01,
       fromLogoImg: FromLogoImg01,
       toLogoImg: ToLogoImg01,
+      desc: 'Gravity Forms to AirTable'
     },
     {
       backgroundImg: ComparisonTargetBg02,
       fromLogoImg: FromLogoImg02,
       toLogoImg: ToLogoImg02,
+      desc: 'LearnDash to HubSpot'
     },
     {
       backgroundImg: ComparisonTargetBg03,
       fromLogoImg: FromLogoImg03,
       toLogoImg: ToLogoImg03,
+      desc: 'WooCommerce to OpenAI'
     },
     {
       backgroundImg: ComparisonTargetBg04,
       fromLogoImg: FromLogoImg04,
       toLogoImg: ToLogoImg04,
+      desc: 'WPForms to Mailchimp'
     },
   ]
   return (
@@ -126,7 +130,7 @@ export default function Features07() {
                     <Particles className="absolute inset-0 -z-10" quantity={3} />
                     <div className="flex items-center justify-center">
                       <Image className="w-full h-full aspect-video object-cover" src={automationEntry.backgroundImg} width={352} height={220} alt="Automation Target Background" aria-hidden="true" />
-                      <div className="absolute flex items-center justify-center">
+                      <div className="absolute flex items-center justify-center -mt-4">
                         <Image src={automationEntry.fromLogoImg} width={50} height={50} alt="Automation From Logo" />
                         <div className="sm:text-lg md:text-xl lg:text-2xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-2 sm:mx-4">
                           →
@@ -138,6 +142,9 @@ export default function Features07() {
                           →
                         </div>
                         <Image src={automationEntry.toLogoImg} width={50} height={50} alt="Automation To Logo" />
+                      </div>
+                      <div className="absolute bottom-0 mb-1 text-center text-sm font-medium font-inter antialiased bg-slate-900/70 text-slate-300 tracking-tight px-2">
+                        {automationEntry.desc}
                       </div>
                     </div>
                   </div>
