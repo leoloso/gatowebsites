@@ -25,8 +25,8 @@ export default function Home() {
       <Features02 />
       <Features />
       <FeaturesCarousel />
-      <Features07 />
       <Features03 />
+      <Features07 />
       <Features04 />
       <Pricing />
       <Testimonials />

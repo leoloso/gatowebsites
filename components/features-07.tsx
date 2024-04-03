@@ -1,6 +1,6 @@
 import SectionHeader from './section-header'
 import Image from 'next/image'
-import Illustration from '@/public/assets/theme/glow-top.svg'
+import Particles from './particles'
 import Recruitment01 from '@/public/assets/theme/recruitment-01.jpg'
 import Recruitment02 from '@/public/assets/theme/recruitment-02.jpg'
 import Recruitment03 from '@/public/assets/theme/recruitment-03.jpg'
@@ -10,13 +10,24 @@ export default function Features07() {
   return (
     <section className="relative">
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      {/* Particles animation */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 w-80 h-80 -mt-24 -ml-32">
+        <Particles className="absolute inset-0 -z-10" quantity={6} staticity={30} />    
+      </div>
 
-        {/* Illustration */}
-        <div className="absolute inset-0 -z-10 -mx-28 rounded-t-[3rem] pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10">
-            <Image src={Illustration} className="max-w-none" width={1404} height={658} alt="Features Illustration" />
-          </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
+
+        {/* Blurred shape */}
+        <div className="absolute top-0 right-0 blur-2xl opacity-70 pointer-events-none -z-10 rotate-[90deg] lg:mr-24" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="434" height="427">
+            <defs>
+              <linearGradient id="bs4-a" x1="19.609%" x2="50%" y1="14.544%" y2="100%">
+                <stop offset="0%" stopColor="#A855F7" />
+                <stop offset="100%" stopColor="#6366F1" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#bs4-a)" fillRule="evenodd" d="m0 0 461 369-284 58z" transform="matrix(1 0 0 -1 0 427)" />
+          </svg>
         </div>
 
         <div className="pt-16 pb-12 md:pt-32 md:pb-20">
