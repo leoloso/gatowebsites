@@ -26,8 +26,8 @@ export default function Features06() {
           {/* Section header */}
           <SectionHeader
             // leading='Versatility to satisfy your needs'
-            title='Accomplish your goals'
-            description="Whether building an API, a website, theme, plugin or Gutenberg block, GraphQL can help you."
+            title='Public and Private GraphQL APIs for your WordPress site'
+            description="Expose your data for public consumption, to build your headless sites, and to power your themes, plugins and Gutenberg blocks."
           />
 
           {/* Features list */}
