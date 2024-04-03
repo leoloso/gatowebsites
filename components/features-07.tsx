@@ -117,7 +117,7 @@ export default function Features07() {
       <div className="pb-12 md:pb-20 border-b border-slate-800">
         {/* Images */}
         <div className="max-w-[1440px] mx-auto px-4 md:px-0">
-          <Highlighter className="w-full aspect-[16/10] object-cover rounded-lg">
+          <Highlighter>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 md:-mx-5">
               {automationEntries.map((automationEntry, index) => (
                 <div key={index}>
