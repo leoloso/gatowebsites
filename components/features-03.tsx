@@ -22,9 +22,9 @@ export default function Features03() {
 
           {/* Section header */}
           <SectionHeader
-            leading='Your WordPress site, at the center of the web'
+            leading='Treat WordPress as the OS of the web'
             title='Interact with the Cloud'
-            description="Send requests to external services with ease and no limitations, and accept incoming requests via webhooks. Your WordPress site will be at the center of the web."
+            description="Send requests to external services with ease, and accept incoming requests via webhooks."
           />
 
           <div className="max-w-3xl mx-auto">
