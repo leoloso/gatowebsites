@@ -33,6 +33,7 @@ export default function Features03() {
 
           {/* Section header */}
           <SectionHeader
+            leading='WordPress ➕ Cloud = ❤️'
             title='Interact with the wider web'
             description="Send requests to external services with ease and no limitations, and accept incoming requests via webhooks. Your WordPress site will be at the center of the web."
           />
