@@ -7,7 +7,7 @@ import AppConfig from '@/app/app.config'
 import AppSettings from '@/app/app.settings'
 import Search from './search'
 import ThemeToggle from './theme-toggle'
-import DownloadFreePluginButton from '../download-free-button'
+// import DownloadFreePluginButton from '../download-free-button'
 import { usePathname } from 'next/navigation'
 
 export default function MobileMenu({
@@ -114,9 +114,9 @@ export default function MobileMenu({
               </li>
             </ul>
           </li>
-          <li className="py-1">
+          {/* <li className="py-1">
             <DownloadFreePluginButton btnClassName="btn" />
-          </li>
+          </li> */}
           <li className="py-1">
             <PurchasePROPluginButton btnClassName="btn" />
           </li>
