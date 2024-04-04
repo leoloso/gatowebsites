@@ -15,6 +15,7 @@ import { getDemoPostURLPath } from '@/utils/content/application-urls'
 import StunningBackground from '@/components/stunning-background'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
+import Pagination from '@/components/pagination'
 
 export default function Blog() {
 
@@ -95,31 +96,7 @@ export default function Blog() {
             </div>
 
             {/*  Pagination */}
-            <nav className="flex justify-center pt-16" role="navigation" aria-label="Pagination Navigation">
-              <ul className="inline-flex flex-wrap font-medium text-sm -m-1">
-                <li className="m-1">
-                  <span className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-4 rounded-full text-gray-500">Prev</span>
-                </li>
-                <li className="m-1">
-                  <Link href="#" className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">1</Link>
-                </li>
-                <li className="m-1">
-                  <Link href="#" className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">2</Link>
-                </li>
-                <li className="m-1">
-                  <Link href="#" className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">3</Link>
-                </li>
-                <li className="m-1">
-                  <span className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-500">...</span>
-                </li>
-                <li className="m-1">
-                  <Link href="#" className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">12</Link>
-                </li>
-                <li className="m-1">
-                  <Link href="#" className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-4 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">Next</Link>
-                </li>
-              </ul>
-            </nav>
+            <Pagination totalCount={5} />
 
           </div>
         </div>
