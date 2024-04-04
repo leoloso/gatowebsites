@@ -10,6 +10,10 @@ export default function Pagination({
   totalPages: number
 }) {
 
+  if (totalPages === 1) {
+    return <></>
+  }
+
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('page')) || 1;
