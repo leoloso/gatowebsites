@@ -29,7 +29,7 @@ export default function ArticleNavigation({
       }
       {/* Next link */}
       {nextArticle &&
-        <div className="sm:w-1/2 sm:flex flex-col items-end ml-auto">
+        <div className="sm:w-1/2 sm:flex flex-col items-end ml-auto mt-2 sm:mt-0">
           <div>
             <div className="text-xs font-[650] text-blue-600 uppercase mb-1">Next</div>
             <div>
