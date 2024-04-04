@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from '@/components/post-tags'
-import DemoPostPostItem from '@/components/video-post-item'
+import DemoPostPostItem from '@/components/demo-post-item'
 
 export const metadata = {
   title: 'Videos - Gato GraphQL',
