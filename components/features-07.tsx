@@ -132,13 +132,13 @@ export default function Features07() {
                       <Image className="w-full h-full aspect-video object-cover" src={automationEntry.backgroundImg} width={352} height={220} alt="Automation Target Background" aria-hidden="true" />
                       <div className="absolute flex items-center justify-center -mt-4">
                         <Image src={automationEntry.fromLogoImg} width={50} height={50} alt="Automation From Logo" />
-                        <div className="sm:text-lg md:text-xl lg:text-2xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-2 sm:mx-4">
+                        <div className="sm:text-lg md:text-xl lg:text-2xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-4">
                           →
                         </div>
-                        <div className="sm:max-w-[75px] md:max-w-[75px]">
+                        <div className="hidden sm:block sm:max-w-[75px] md:max-w-[75px]">
                           <Image src={Logo} width={75} height={75} alt="Automation Gato GraphQL Logo" />
                         </div>
-                        <div className="sm:text-lg md:text-xl lg:text-2xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-2 sm:mx-4">
+                        <div className="hidden sm:block sm:text-lg md:text-xl lg:text-2xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-4">
                           →
                         </div>
                         <Image src={automationEntry.toLogoImg} width={50} height={50} alt="Automation To Logo" />
