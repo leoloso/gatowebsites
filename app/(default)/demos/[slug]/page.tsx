@@ -11,6 +11,10 @@ import Newsletter from '@/components/newsletter'
 import ArticleNavigation from '@/components/ui/article-navigation'
 import { getPrevNextArticles } from '@/utils/content/document'
 import { sortByPublishedAt } from '@/utils/content/sort'
+import Logo from '@/public/assets/GatoGraphQL-logo-suki.png'
+import Particles from '@/components/particles'
+import Illustration from '@/public/assets/theme/cta-illustration.svg'
+import PlusImage from '@/public/assets/theme/plus.svg'
 
 export async function generateStaticParams() {
   return allDemoPosts.map((demoPost) => ({
@@ -92,11 +96,34 @@ export default async function SingleDemoPost({ params }: {
                 </header>
 
                 {/* Article image */}
-                {demoPost.image &&
+                {/* {demoPost.image &&
                   <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="600">
                     <Image className="w-full" src={demoPost.image} width={1024} height={576} alt={demoPost.title} priority />
                   </figure>
-                }
+                } */}
+
+                <div className="mb-8 lg:-ml-32 lg:-mr-32">
+                  <div className="relative bg-gradient-to-tr from-blue-600 to-purple-500 rounded py-10 px-8 md:py-16 md:px-12 h-full rounded-[inherit] z-20 overflow-hidden" data-aos="zoom-out">
+                    <div className="flex items-center justify-center">
+                      <Particles className="absolute inset-0 -z-10" quantity={10} />
+                      <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 mt-8 -z-10" aria-hidden="true">
+                        <Image src={Illustration} className="max-w-none" alt="Illustration" />
+                      </div>
+                      <div className="flex items-center justify-center">
+                        <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none" data-aos="fade-up" data-aos-delay="200">
+                          <Image src={Logo} alt={demoPost.title} width={300} height={300} />
+                        </div>
+                        <div className="max-w-[30px] mx-auto sm:max-w-[40px] md:max-w-none mx-4 sm:mx-8 sm:mx-16 lg:mx-24" data-aos="fade-up" data-aos-delay="200">
+                          <Image src={PlusImage} width={40} height={40} alt="plus image" />
+                        </div>
+                        <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none" data-aos="fade-up" data-aos-delay="200">
+                          <Image src={Logo} alt={demoPost.title} width={300} height={300} />
+                          {/* <Image src={demoPost.targetImage} alt={demoPost.title} width={300} height={300} /> */}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Article content */}
                 <PostMdx code={demoPost.body.code} />
