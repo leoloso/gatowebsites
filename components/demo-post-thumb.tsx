@@ -1,5 +1,5 @@
 
-import Logo from '@/public/assets/GatoGraphQL-logo-suki.png'
+import Logo from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
 import Particles from '@/components/particles'
 // import Illustration from '@/public/assets/theme/cta-illustration.svg'
 import PlusImage from '@/public/assets/theme/plus.svg'
@@ -56,20 +56,20 @@ export default function DemoPostThumb({
             </g>
           </svg>
         </div>
-        <div className="flex items-center justify-center">
-          <div className="mx-auto" data-aos="fade-up" data-aos-delay="200">
-            <Image src={Logo} alt={demoPost.title} width={300} height={300} />
+        <div className="items-center justify-center mx-auto">
+          <div className="items-center justify-center flex mx-auto" data-aos="fade-up" data-aos-delay="200">
+            <Image src={Logo} alt={demoPost.title} width={250} height={175} />
           </div>
-          {demoPost.targetImages.map((targetImageSrc) => (
-            <>
-              <div className="mx-4 sm:mx-8" data-aos="fade-up" data-aos-delay="200">
-                <Image src={PlusImage} width={30} height={30} alt="plus image" />
+          <div className="items-center justify-center flex mx-4 sm:mx-8 py-8" data-aos="fade-up" data-aos-delay="200">
+            <Image src={PlusImage} width={30} height={30} alt="plus image" />
+          </div>
+          <div className="flex justify-between">
+            {demoPost.targetImages.map((targetImageSrc, index) => (
+              <div key={index} className='px-4 sm:px-8 md:px-16' data-aos="fade-up" data-aos-delay="200">
+                <Image src={targetImageSrc} alt="Target Image" width={250} height={250} />
               </div>
-              <div className="mx-auto" data-aos="fade-up" data-aos-delay="200">
-                <Image src={targetImageSrc} alt="Target Image" width={300} height={300} />
-              </div>
-            </>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
