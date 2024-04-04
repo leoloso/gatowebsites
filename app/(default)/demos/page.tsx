@@ -1,11 +1,8 @@
-// 'use client'
-
 import { allDemoPosts } from 'contentlayer/generated'
 import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from '@/components/post-tags'
-import DemoPostPostItem from '@/components/demo-post-item'
 
 import Newsletter from '@/components/newsletter'
 import { getDemoPostURLPath } from '@/utils/content/application-urls'
@@ -15,7 +12,7 @@ import PageHeader from '@/components/page-header'
 import Pagination from '@/components/pagination'
 import AppSettings from '@/app/app.settings'
 
-// import { useSearchParams } from 'next/navigation';
+import DemoPostList from '@/components/demo-post-list'
 
 export const metadata = {
   title: 'Demos - Gato GraphQL',
@@ -29,19 +26,9 @@ export default function Demos() {
 
   const featuredDemoPost = allDemoPosts[0]
 
-  // Paginate posts
-  // const searchParams = useSearchParams();
-  // const currentPage = Number(searchParams.get('page')) || 1;
-  const currentPage = 1;
-
-  const firstPostPos = (currentPage - 1) * AppSettings.demoPostsPerPage
   const demoPosts = allDemoPosts.slice(1) // Remove the featured image
 
   const totalPages = Math.ceil(demoPosts.length / AppSettings.demoPostsPerPage)
-
-   // Pagination
-  const paginagedDemoPosts = demoPosts
-    .slice(firstPostPos, firstPostPos + AppSettings.demoPostsPerPage)
 
   return (
     <>
@@ -105,11 +92,7 @@ export default function Demos() {
               <h4 className="h4 pb-6 mb-10 border-b border-gray-700" data-aos="fade-up">Latest demos</h4>
 
               {/*  Articles container */}
-              <div className="grid gap-12 md:grid-cols-3 md:gap-x-6 md:gap-y-8 items-start">
-                {paginagedDemoPosts.map((demoPost, demoPostIndex) => (
-                  <DemoPostPostItem key={demoPostIndex} demoPost={demoPost} />
-                ))}
-              </div>
+              <DemoPostList demoPosts={demoPosts} />
 
             </div>
 
