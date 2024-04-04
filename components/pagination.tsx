@@ -26,11 +26,25 @@ export default function Pagination({
         <li className="m-1">
           <span className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-4 rounded-full text-gray-500">Prev</span>
         </li>
-        {Array.from(Array(totalPages), (e, i) => (
-          <li key={i} className="m-1">
-            <Link href={createPageURL(i + 1)} className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">{i + 1}</Link>
-          </li>
-        ))}
+        {[...Array(totalPages)].map((e, i) => {
+          const pageNumber = i + 1
+          if (pageNumber === currentPage) {
+            return (
+              <li key={i} className="m-1">
+                <span className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-700 px-2 rounded-full text-gray-300">
+                  {pageNumber}
+                </span>
+              </li>
+            )
+          }
+          return (
+            <li key={i} className="m-1">
+              <Link href={createPageURL(pageNumber)} className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">
+                {pageNumber}
+              </Link>
+            </li>
+          )
+        })}
         {/* <li className="m-1">
           <span className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-500">...</span>
         </li>
