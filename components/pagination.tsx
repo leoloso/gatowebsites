@@ -37,8 +37,8 @@ export default function Pagination({
               )}
               {pageNumber !== currentPage && (
                 <Link href={createPageURL(pageNumber)} className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">
-                {pageNumber}
-              </Link>
+                  {pageNumber}
+                </Link>
               )}
             </li>
           )
