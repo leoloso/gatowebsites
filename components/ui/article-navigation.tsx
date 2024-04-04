@@ -10,7 +10,7 @@ export default function ArticleNavigation({
     nextArticle?: Article,
 }) {
   return (
-    <div className="sm:flex justify-between">
+    <div className="sm:flex justify-between sm:gap-6">
       {/* Prev link */}
       {prevArticle &&
         <div className="sm:w-1/2 sm:flex flex-col items-start">
