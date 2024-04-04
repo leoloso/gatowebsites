@@ -25,7 +25,8 @@ export default function Blog() {
   const featuredDemoPost = allDemoPosts[0]
   const demoPosts = allDemoPosts.slice(1)
 
-  const totalPages = demoPosts.length
+  const postsPerPage = 12
+  const totalPages = Math.ceil(demoPosts.length / postsPerPage)
 
   return (
     <>
