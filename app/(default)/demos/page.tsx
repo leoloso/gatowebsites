@@ -3,26 +3,32 @@ import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from '@/components/post-tags'
-import DemoPostPostItem from '@/components/demo-post-item'
-
-export const metadata = {
-  title: 'Demos - Gato GraphQL',
-  description: 'Tutorials to learn what you can accomplish with Gato GraphQL',
-}
 
 import Newsletter from '@/components/newsletter'
 import { getDemoPostURLPath } from '@/utils/content/application-urls'
 import StunningBackground from '@/components/stunning-background'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
+import Pagination from '@/components/pagination'
+import AppSettings from '@/app/app.settings'
 
-export default function Blog() {
+import DemoPostList from '@/components/demo-post-list'
+
+export const metadata = {
+  title: 'Demos - Gato GraphQL',
+  description: 'Tutorials to learn what you can accomplish with Gato GraphQL',
+}
+
+export default function Demos() {
 
   // Sort demoPosts by date
   allDemoPosts.sort(sortByPublishedAt)  
 
   const featuredDemoPost = allDemoPosts[0]
-  const demoPosts = allDemoPosts.slice(1)
+
+  const demoPosts = allDemoPosts.slice(1) // Remove the featured image
+
+  const totalPages = Math.ceil(demoPosts.length / AppSettings.demoPostsPerPage)
 
   return (
     <>
@@ -86,40 +92,12 @@ export default function Blog() {
               <h4 className="h4 pb-6 mb-10 border-b border-gray-700" data-aos="fade-up">Latest demos</h4>
 
               {/*  Articles container */}
-              <div className="grid gap-12 md:grid-cols-3 md:gap-x-6 md:gap-y-8 items-start">
-                {demoPosts.map((demoPost, demoPostIndex) => (
-                  <DemoPostPostItem key={demoPostIndex} demoPost={demoPost} />
-                ))}
-              </div>
+              <DemoPostList demoPosts={demoPosts} />
 
             </div>
 
             {/*  Pagination */}
-            <nav className="flex justify-center pt-16" role="navigation" aria-label="Pagination Navigation">
-              <ul className="inline-flex flex-wrap font-medium text-sm -m-1">
-                <li className="m-1">
-                  <span className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-4 rounded-full text-gray-500">Prev</span>
-                </li>
-                <li className="m-1">
-                  <Link href="#" className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">1</Link>
-                </li>
-                <li className="m-1">
-                  <Link href="#" className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">2</Link>
-                </li>
-                <li className="m-1">
-                  <Link href="#" className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">3</Link>
-                </li>
-                <li className="m-1">
-                  <span className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-500">...</span>
-                </li>
-                <li className="m-1">
-                  <Link href="#" className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">12</Link>
-                </li>
-                <li className="m-1">
-                  <Link href="#" className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-4 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">Next</Link>
-                </li>
-              </ul>
-            </nav>
+            <Pagination totalPages={totalPages} />
 
           </div>
         </div>
