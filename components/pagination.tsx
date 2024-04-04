@@ -1,7 +1,7 @@
 import Link from "next/link"
 
-export default function Pagination({ totalCount }: {
-  totalCount: number
+export default function Pagination({ totalPages }: {
+  totalPages: number
 }) {
 
   return (

@@ -25,6 +25,8 @@ export default function Blog() {
   const featuredDemoPost = allDemoPosts[0]
   const demoPosts = allDemoPosts.slice(1)
 
+  const totalPages = demoPosts.length
+
   return (
     <>
       <section className="relative">
@@ -96,7 +98,7 @@ export default function Blog() {
             </div>
 
             {/*  Pagination */}
-            <Pagination totalCount={5} />
+            <Pagination totalPages={totalPages} />
 
           </div>
         </div>
