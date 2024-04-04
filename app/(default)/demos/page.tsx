@@ -24,7 +24,12 @@ export default function Blog() {
   allDemoPosts.sort(sortByPublishedAt)  
 
   const featuredDemoPost = allDemoPosts[0]
-  const demoPosts = allDemoPosts.slice(1)
+
+  const currentPage = 1
+  const firstPostPos = (currentPage - 1) * AppSettings.demoPostsPerPage
+  const demoPosts = allDemoPosts
+    .slice(1) // Remove the featured image
+    .slice(firstPostPos, firstPostPos + AppSettings.demoPostsPerPage) // Pagination
 
   const totalPages = Math.ceil(demoPosts.length / AppSettings.demoPostsPerPage)
 
