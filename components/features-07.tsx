@@ -135,8 +135,8 @@ export default function Features07() {
                         <div className="sm:text-lg md:text-xl lg:text-2xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-4">
                           →
                         </div>
-                        <div className="hidden sm:block sm:max-w-[75px] md:max-w-[75px]">
-                          <Image src={Logo} width={75} height={75} alt="Automation Gato GraphQL Logo" />
+                        <div className="hidden sm:block sm:max-w-[60px] md:max-w-[60px]">
+                          <Image src={Logo} width={60} height={60} alt="Automation Gato GraphQL Logo" />
                         </div>
                         <div className="hidden sm:block sm:text-lg md:text-xl lg:text-2xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-4">
                           →
