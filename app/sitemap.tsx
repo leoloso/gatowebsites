@@ -4,7 +4,7 @@ import AppConfig from '@/app/app.config'
 import {
   allPosts,
   // allUpdates,
-  // allDemoPosts,
+  allDemoPosts,
   allComparisonPosts,
   allDocs,
   allExtensions,
@@ -15,7 +15,7 @@ import {
   getExtensionURL,
   getFeatureURL,
   getExtensionDocumentationURL,
-  // getDemoPostURL,
+  getDemoPostURL,
   getComparisonPostURL,
   getDocURL,
 } from '@/utils/content/application-urls'
@@ -65,14 +65,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     }
   ))
-  // const demoPostSitemapEntries = allDemoPosts.map((demoPost) => (
-  //   {
-  //     url: getDemoPostURL(demoPost),
-  //     lastModified: new Date(demoPost.publishedAt),
-  //     changeFrequency: 'weekly',
-  //     priority: 0.5,
-  //   }
-  // ))
+  const demoPostSitemapEntries = allDemoPosts.map((demoPost) => (
+    {
+      url: getDemoPostURL(demoPost),
+      lastModified: new Date(demoPost.publishedAt),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    }
+  ))
   const comparisonPostSitemapEntries = allComparisonPosts.map((comparisonPost) => (
     {
       url: getComparisonPostURL(comparisonPost),
@@ -245,7 +245,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       extensionSitemapEntries,
       extensionDocumentationSitemapEntries,
       featureSitemapEntries,
-      // demoPostSitemapEntries,
+      demoPostSitemapEntries,
       comparisonPostSitemapEntries,
       docSitemapEntries,
     )
