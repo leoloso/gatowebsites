@@ -28,20 +28,18 @@ export default function Pagination({
         </li>
         {[...Array(totalPages)].map((e, i) => {
           const pageNumber = i + 1
-          if (pageNumber === currentPage) {
-            return (
-              <li key={i} className="m-1">
+          return (
+            <li key={i} className="m-1">
+              {pageNumber === currentPage && (
                 <span className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-700 px-2 rounded-full text-gray-300">
                   {pageNumber}
                 </span>
-              </li>
-            )
-          }
-          return (
-            <li key={i} className="m-1">
-              <Link href={createPageURL(pageNumber)} className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">
+              )}
+              {pageNumber !== currentPage && (
+                <Link href={createPageURL(pageNumber)} className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">
                 {pageNumber}
               </Link>
+              )}
             </li>
           )
         })}
