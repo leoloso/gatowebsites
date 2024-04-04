@@ -1,18 +1,22 @@
+import clsx from "clsx"
+
 export default function PageHeader({
   leading,
   title,
   description,
   children,
   paddingClassname = "pb-12 md:pb-20",
+  headerClassname
 }: {
   leading?: string,
   title: string,
   description?: string,
   children?: React.ReactNode,
   paddingClassname?: string,
+  headerClassname?: string,
 }) {
   return (
-    <div className={`max-w-3xl mx-auto text-center ${paddingClassname}`}>
+    <div className={`max-w-3xl mx-auto text-center ${clsx(paddingClassname, headerClassname)}`}>
       {leading && (
         <div>
           <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">{leading}</div>

@@ -13,7 +13,7 @@ module.exports = {
     },
     extensions: "extensions",
     features: "features",
-    videoPosts: "videos"
+    demoPosts: "demos"
   },
   urls: {
     githubExtensionStarter: "https://github.com/GatoGraphQL/ExtensionStarter",

@@ -1,4 +1,4 @@
-import { allPosts } from 'contentlayer/generated'
+import { allBlogPosts } from 'contentlayer/generated'
 import PostItem from '@/components/post-item'
 import PopularPosts from './popular-posts'
 import Topics from './topics'
@@ -16,7 +16,7 @@ export const metadata = {
 export default function Blog() {
 
   // Sort posts by date
-  const posts = allPosts.sort(sortByPublishedAt) 
+  const blogPosts = allBlogPosts.sort(sortByPublishedAt) 
   return (
     <>
       <BlogSchemaJsonLdScript
@@ -42,8 +42,8 @@ export default function Blog() {
 
               {/* Articles container */}
               <div className="md:grow -mt-4">
-                {posts.map((post, postIndex) => (
-                  <PostItem key={postIndex} post={post} />
+                {blogPosts.map((blogPost, index) => (
+                  <PostItem key={index} post={blogPost} />
                 ))}
               </div>
 

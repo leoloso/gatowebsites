@@ -1,5 +1,4 @@
 import { getPostTagColors } from '@/utils/content/post-tags'
-import Link from 'next/link'
 
 export default function PostTags({ tags }: {
   tags: string[]

@@ -1,14 +1,14 @@
 import {
   Doc,
   Extension,
-  VideoPost,
+  DemoPost,
   ComparisonPost,
-  Post,
+  BlogPost,
   Feature,
 } from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
 import AppConstants from "@/app/app.constants";
-import { Article, Artifact, isExtension, isPost } from "./types";
+import { Article, Artifact, isDemoPost, isExtension, isBlogPost } from "./types";
 import { DOMAIN } from '@/data/env/domain'
 
 export function getExtensionURLPath(extension: Extension) {
@@ -43,12 +43,12 @@ export function getExtensionDocumentationURL(extension: Extension) {
   return `${DOMAIN}${getExtensionDocumentationURLPath(extension)}`
 }
 
-export function getVideoPostURLPath(videoPost: VideoPost) {
-  return `/${AppConfig.paths.videoPosts}/${videoPost.slug}`
+export function getDemoPostURLPath(demoPost: DemoPost) {
+  return `/${AppConfig.paths.demoPosts}/${demoPost.slug}`
 }
 
-export function getVideoPostURL(videoPost: VideoPost) {
-  return `${DOMAIN}${getVideoPostURLPath(videoPost)}`
+export function getDemoPostURL(demoPost: DemoPost) {
+  return `${DOMAIN}${getDemoPostURLPath(demoPost)}`
 }
 
 export function getComparisonPostURLPath(comparisonPost: ComparisonPost) {
@@ -70,16 +70,16 @@ export function getDocURL(doc: Doc) {
   return `${DOMAIN}${getDocURLPath(doc)}`
 }
 
-export function getPostURLPath(post: Post) {
+export function getBlogPostURLPath(post: BlogPost) {
   return `/${AppConfig.paths.blog}/${post.slug}`
 }
 
-export function getPostURL(post: Post) {
-  return `${DOMAIN}${getPostURLPath(post)}`
+export function getBlogPostURL(post: BlogPost) {
+  return `${DOMAIN}${getBlogPostURLPath(post)}`
 }
 
 export function getArticleURLPath(article: Article) {
-  return isPost(article) ? getPostURLPath(article) : getDocURLPath(article)
+  return isBlogPost(article) ? getBlogPostURLPath(article) : (isDemoPost(article) ? getDemoPostURLPath(article) : getDocURLPath(article))
 }
 
 export function getArticleURL(article: Article) {

@@ -1,19 +1,19 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
-import { Post } from '@/.contentlayer/generated'
-import { getPostURLPath } from '@/utils/content/application-urls'
+import { BlogPost } from '@/.contentlayer/generated'
+import { getBlogPostURLPath } from '@/utils/content/application-urls'
 import PostTags from './post-tags'
 
 export default function PostItem({ post }: {
-  post: Post
+  post: BlogPost
 }) {
   return (
     <article className="flex items-center pt-4 pb-8 mb-4 border-b border-slate-200">
       <div className='w-full'>
         <header>
           <h2 className="h4 mb-2">
-            <Link href={getPostURLPath(post)} className="text-slate-300 hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
+            <Link href={getBlogPostURLPath(post)} className="text-slate-300 hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
           </h2>
         </header>
         <div className="text-lg text-slate-400 mb-4">{post.summary}</div>
@@ -39,7 +39,7 @@ export default function PostItem({ post }: {
           </div>
         </footer>
       </div>
-      <Link href={getPostURLPath(post)} className="block shrink-0 ml-6">
+      <Link href={getBlogPostURLPath(post)} className="block shrink-0 ml-6">
         <span className="sr-only">Read more</span>
         <svg className="w-4 h-4 fill-current text-purple-400" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
           <path d="M9.3 14.7l-1.4-1.4L12.2 9H0V7h12.2L7.9 2.7l1.4-1.4L16 8z" />

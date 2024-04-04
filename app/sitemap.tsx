@@ -2,20 +2,20 @@ import { DOMAIN } from '@/data/env/domain'
 import { MetadataRoute } from 'next'
 import AppConfig from '@/app/app.config'
 import {
-  allPosts,
+  allBlogPosts,
   // allUpdates,
-  // allVideoPosts,
+  allDemoPosts,
   allComparisonPosts,
   allDocs,
   allExtensions,
   allFeatures,
 } from '@/.contentlayer/generated'
 import {
-  getPostURL,
+  getBlogPostURL,
   getExtensionURL,
   getFeatureURL,
   getExtensionDocumentationURL,
-  // getVideoPostURL,
+  getDemoPostURL,
   getComparisonPostURL,
   getDocURL,
 } from '@/utils/content/application-urls'
@@ -25,10 +25,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const releaseDateV2_2 = new Date(getReleaseData('2.2'))
   // const releaseDateV2_2_1 = new Date(getReleaseData('2.2.1'))
   const releaseDateV2_2_2 = new Date(getReleaseData('2.2.2'))
-  const postSitemapEntries = allPosts.map((post) => (
+  const blogPostSitemapEntries = allBlogPosts.map((blogPost) => (
     {
-      url: getPostURL(post),
-      lastModified: new Date(post.publishedAt),
+      url: getBlogPostURL(blogPost),
+      lastModified: new Date(blogPost.publishedAt),
       changeFrequency: 'weekly',
       priority: 0.5,
     }
@@ -65,14 +65,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     }
   ))
-  // const videoPostSitemapEntries = allVideoPosts.map((videoPost) => (
-  //   {
-  //     url: getVideoPostURL(videoPost),
-  //     lastModified: new Date(videoPost.publishedAt),
-  //     changeFrequency: 'weekly',
-  //     priority: 0.5,
-  //   }
-  // ))
+  const demoPostSitemapEntries = allDemoPosts.map((demoPost) => (
+    {
+      url: getDemoPostURL(demoPost),
+      lastModified: new Date(demoPost.publishedAt),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    }
+  ))
   const comparisonPostSitemapEntries = allComparisonPosts.map((comparisonPost) => (
     {
       url: getComparisonPostURL(comparisonPost),
@@ -126,9 +126,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    // Videos
+    // Demos
     // {
-    //   url: `${DOMAIN}/${AppConfig.paths.videoPosts}`,
+    //   url: `${DOMAIN}/${AppConfig.paths.demoPosts}`,
     //   lastModified: releaseDateV2_2,
     //   changeFrequency: 'monthly',
     //   priority: 0.7,
@@ -240,12 +240,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
     .concat(
-      postSitemapEntries,
+      blogPostSitemapEntries,
       // updatesSitemapEntries,
       extensionSitemapEntries,
       extensionDocumentationSitemapEntries,
       featureSitemapEntries,
-      // videoPostSitemapEntries,
+      demoPostSitemapEntries,
       comparisonPostSitemapEntries,
       docSitemapEntries,
     )

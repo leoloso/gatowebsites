@@ -1,8 +1,8 @@
 import algoliaSearch from "algoliasearch"
 import {
-  allPosts,
+  allBlogPosts,
   // allUpdates,
-  // allVideoPosts,
+  allDemoPosts,
   allComparisonPosts,
   allExtensions,
   allFeatures,
@@ -13,7 +13,7 @@ import {
   getDocURLPath,
   getExtensionURLPath,
   getFeatureURLPath,
-  getPostURLPath,
+  getBlogPostURLPath,
   getComparisonPostURLPath,
 } from "@/utils/content/application-urls"
 import { isAdminUser } from "@/utils/admin"
@@ -55,7 +55,7 @@ function getStructuredDataObject(
     | Sections.ArchitectureDocs
     | Sections.Extensions
     | Sections.Features
-    | Sections.Videos
+    | Sections.Demos
 ): SearchObject {
   // return an object to be added to Algolia.
   return {
@@ -73,13 +73,27 @@ function getStructuredDataObject(
 async function getAllPostsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
   return (
-    allPosts?.map((post) => getStructuredDataObject(
+    allBlogPosts?.map((post) => getStructuredDataObject(
       post.title,
       post.summary,
-      getPostURLPath(post),
+      getBlogPostURLPath(post),
       post.slug,
       post.body.raw,
       Sections.Blog
+    )) || []
+  )
+}
+
+async function getAllDemoPostsTransformed(): Promise<SearchObject[]> {
+  // return an array of objects to be added to Algolia.
+  return (
+    allDemoPosts?.map((demoPost) => getStructuredDataObject(
+      demoPost.title,
+      demoPost.summary,
+      getBlogPostURLPath(demoPost),
+      demoPost.slug,
+      demoPost.body.raw,
+      Sections.Demos
     )) || []
   )
 }
@@ -166,6 +180,7 @@ export async function GET(request: Request) {
   const searchFeaturesAndExtensions = AppSettings.searchFeaturesAndExtensions
   try {
     const posts = await getAllPostsTransformed()
+    const demoPosts = await getAllDemoPostsTransformed()
     const comparisonPosts = await getAllComparisonPostsTransformed()
     const docs = await getAllDocsTransformed()
     const extensions = searchFeaturesAndExtensions ? await getAllExtensionsTransformed() : []
@@ -177,6 +192,7 @@ export async function GET(request: Request) {
     const searchIndex = client.initIndex(ALGOLIA_API_CREDENTIALS.indexName)
     const algoliaSearchIndexResponse = await searchIndex.saveObjects([
       ...posts,
+      ...demoPosts,
       ...comparisonPosts,
       ...docs,
       ...extensions,
