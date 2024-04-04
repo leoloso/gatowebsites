@@ -14,6 +14,7 @@ import Newsletter from '@/components/newsletter'
 import { getDemoPostURLPath } from '@/utils/content/application-urls'
 import StunningBackground from '@/components/stunning-background'
 import { sortByPublishedAt } from '@/utils/content/sort'
+import PageHeader from '@/components/page-header'
 
 export default function Blog() {
 
@@ -33,9 +34,11 @@ export default function Blog() {
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
             {/*  Page header */}
-            <div className="max-w-3xl pb-12 md:pb-20 text-center md:text-left">
-              <h1 className="h1" data-aos="fade-up">Gato GraphQL demos</h1>
-            </div>
+            <PageHeader
+              leading="Gato GraphQL demos"
+              title="Learn how to use Gato GraphQL with videos"
+              headerClassname="md:text-left mx-0"
+            />
 
             {/*  Featured article */}
             <div className="pb-12 md:pb-20">
