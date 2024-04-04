@@ -103,7 +103,7 @@ export default async function SingleDemoPost({ params }: {
                 } */}
 
                 <div className="mb-8 lg:-ml-32 lg:-mr-32">
-                  <div className="relative bg-gradient-to-tr from-blue-600 to-purple-500 rounded py-10 px-8 md:py-16 md:px-12 h-full rounded-[inherit] z-20 overflow-hidden" data-aos="zoom-out">
+                  <div className="relative bg-gradient-to-tr from-blue-600 to-purple-500 py-10 px-8 md:py-16 md:px-12 h-full z-20 overflow-hidden" data-aos="zoom-out">
                     <div className="flex items-center justify-center">
                       <Particles className="absolute inset-0 -z-10" quantity={10} />
                       <div className="absolute right-0 top-1/2 -translate-y-1/2 mt-8 -z-10" aria-hidden="true">
