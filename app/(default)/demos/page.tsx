@@ -34,7 +34,7 @@ export default function Blog() {
 
             {/*  Page header */}
             <div className="max-w-3xl pb-12 md:pb-20 text-center md:text-left">
-              <h1 className="h1" data-aos="fade-up">Video tutorials for developers</h1>
+              <h1 className="h1" data-aos="fade-up">Gato GraphQL demos</h1>
             </div>
 
             {/*  Featured article */}
@@ -80,7 +80,7 @@ export default function Blog() {
             <div className="max-w-sm mx-auto md:max-w-none">
 
               {/*  Section title */}
-              <h4 className="h4 pb-6 mb-10 border-b border-gray-700" data-aos="fade-up">Latest articles</h4>
+              <h4 className="h4 pb-6 mb-10 border-b border-gray-700" data-aos="fade-up">Latest demos</h4>
 
               {/*  Articles container */}
               <div className="grid gap-12 md:grid-cols-3 md:gap-x-6 md:gap-y-8 items-start">
