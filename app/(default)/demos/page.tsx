@@ -16,6 +16,7 @@ import StunningBackground from '@/components/stunning-background'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
 import Pagination from '@/components/pagination'
+import AppSettings from '@/app/app.settings'
 
 export default function Blog() {
 
@@ -25,8 +26,7 @@ export default function Blog() {
   const featuredDemoPost = allDemoPosts[0]
   const demoPosts = allDemoPosts.slice(1)
 
-  const postsPerPage = 12
-  const totalPages = Math.ceil(demoPosts.length / postsPerPage)
+  const totalPages = Math.ceil(demoPosts.length / AppSettings.demoPostsPerPage)
 
   return (
     <>
