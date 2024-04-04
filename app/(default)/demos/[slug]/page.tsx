@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { allDemoPosts } from 'contentlayer/generated'
+import { allDemoPosts, DemoPost } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -8,6 +8,9 @@ import PostTags from '@/components/post-tags'
 import { PostMdx } from '@/components/mdx/post-mdx'
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
+import ArticleNavigation from '@/components/ui/article-navigation'
+import { getPrevNextArticles } from '@/utils/content/document'
+import { sortByPublishedAt } from '@/utils/content/sort'
 
 export async function generateStaticParams() {
   return allDemoPosts.map((demoPost) => ({
@@ -35,9 +38,18 @@ export default async function SingleDemoPost({ params }: {
   params: { slug: string }
 }) {
 
-  const demoPost = allDemoPosts.find((demoPost) => demoPost.slug === params.slug)
+  // Sort posts. Needed to find the prev/next items below
+  const demoPosts = allDemoPosts.sort(sortByPublishedAt)
+  const demoPostIndex = demoPosts.findIndex((demoPost) => demoPost.slug === params.slug)
 
-  if (!demoPost) notFound()
+  if (demoPostIndex === -1) notFound()
+
+  const demoPost = demoPosts[demoPostIndex]
+  
+  {/* Page navigation */}
+  const paginationArticles = getPrevNextArticles(demoPosts, demoPostIndex)
+  const prevArticle = paginationArticles.prev as DemoPost
+  const nextArticle = paginationArticles.next as DemoPost
 
   return (
     <>
@@ -88,6 +100,13 @@ export default async function SingleDemoPost({ params }: {
 
                 {/* Article content */}
                 <PostMdx code={demoPost.body.code} />
+
+                <hr className="w-full h-px pt-px mt-16 bg-gray-200 border-0" />
+
+                {/* Page navigation */}
+                <div className="py-8 space-y-6 sm:space-y-0 sm:space-x-4">
+                  <ArticleNavigation prevArticle={prevArticle} nextArticle={nextArticle} />
+                </div>
 
                 {/* Article footer */}
                 <footer>
