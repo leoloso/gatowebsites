@@ -1,9 +1,9 @@
-import { allVideoPosts } from 'contentlayer/generated'
+import { allDemoPosts } from 'contentlayer/generated'
 import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from '@/components/post-tags'
-import VideoPostPostItem from '@/components/video-post-item'
+import DemoPostPostItem from '@/components/video-post-item'
 
 export const metadata = {
   title: 'Videos - Gato GraphQL',
@@ -11,17 +11,17 @@ export const metadata = {
 }
 
 import Newsletter from '@/components/newsletter'
-import { getVideoPostURLPath } from '@/utils/content/application-urls'
+import { getDemoPostURLPath } from '@/utils/content/application-urls'
 import StunningBackground from '@/components/stunning-background'
 import { sortByPublishedAt } from '@/utils/content/sort'
 
 export default function Blog() {
 
-  // Sort videoPosts by date
-  allVideoPosts.sort(sortByPublishedAt)  
+  // Sort demoPosts by date
+  allDemoPosts.sort(sortByPublishedAt)  
 
-  const featuredVideoPost = allVideoPosts[0]
-  const videoPosts = allVideoPosts.slice(1)
+  const featuredDemoPost = allDemoPosts[0]
+  const demoPosts = allDemoPosts.slice(1)
 
   return (
     <>
@@ -40,36 +40,36 @@ export default function Blog() {
             {/*  Featured article */}
             <div className="pb-12 md:pb-20">
               <article className="max-w-sm mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
-                <Link href={getVideoPostURLPath(featuredVideoPost)} className="relative block group" data-aos="fade-right" data-aos-delay="200">
+                <Link href={getDemoPostURLPath(featuredDemoPost)} className="relative block group" data-aos="fade-right" data-aos-delay="200">
                   <div className="absolute inset-0 bg-gray-800 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
-                  {featuredVideoPost.image &&
+                  {featuredDemoPost.image &&
                     <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[56.25%] overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
-                      <Image className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out" src={featuredVideoPost.image} width="540" height="303" alt={featuredVideoPost.title} />
+                      <Image className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out" src={featuredDemoPost.image} width="540" height="303" alt={featuredDemoPost.title} />
                     </figure>
                   }
                 </Link>
                 <div data-aos="fade-left" data-aos-delay="200">
                   <header>
                     <div className="mb-3">
-                      {featuredVideoPost.tags &&
+                      {featuredDemoPost.tags &&
                         <div className="mb-3">
-                          <PostTags tags={featuredVideoPost.tags} />
+                          <PostTags tags={featuredDemoPost.tags} />
                         </div>
                       }
                     </div>
                     <h3 className="h3 text-2xl lg:text-3xl mb-2">
-                      <Link href={getVideoPostURLPath(featuredVideoPost)} className="hover:text-gray-100 transition duration-150 ease-in-out">{featuredVideoPost.title}</Link>
+                      <Link href={getDemoPostURLPath(featuredDemoPost)} className="hover:text-gray-100 transition duration-150 ease-in-out">{featuredDemoPost.title}</Link>
                     </h3>
                   </header>
-                  <p className="text-lg text-gray-400 grow">{featuredVideoPost.summary}</p>
+                  <p className="text-lg text-gray-400 grow">{featuredDemoPost.summary}</p>
                   <footer className="flex items-center mt-4">
                     <Link href="#">
-                      <img className="rounded-full shrink-0 mr-4" src={featuredVideoPost.authorImg} width={40} height={40} alt={featuredVideoPost.author} />
+                      <img className="rounded-full shrink-0 mr-4" src={featuredDemoPost.authorImg} width={40} height={40} alt={featuredDemoPost.author} />
                     </Link>
                     <div>
-                      <Link href="#" className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">{featuredVideoPost.author}</Link>
+                      <Link href="#" className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">{featuredDemoPost.author}</Link>
                       <span className="text-gray-700"> - </span>
-                      <span className="text-gray-500"><PostDate dateString={featuredVideoPost.publishedAt} /></span>
+                      <span className="text-gray-500"><PostDate dateString={featuredDemoPost.publishedAt} /></span>
                     </div>
                   </footer>
                 </div>
@@ -84,8 +84,8 @@ export default function Blog() {
 
               {/*  Articles container */}
               <div className="grid gap-12 md:grid-cols-3 md:gap-x-6 md:gap-y-8 items-start">
-                {videoPosts.map((videoPost, videoPostIndex) => (
-                  <VideoPostPostItem key={videoPostIndex} videoPost={videoPost} />
+                {demoPosts.map((demoPost, demoPostIndex) => (
+                  <DemoPostPostItem key={demoPostIndex} demoPost={demoPost} />
                 ))}
               </div>
 

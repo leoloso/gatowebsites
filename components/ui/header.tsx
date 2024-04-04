@@ -41,7 +41,7 @@ export default function Header({
                 <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.extensions}`}>Extensions</Link>
               </li>
               {/* <li>
-                <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.videoPosts}`}>Videos</Link>
+                <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.demoPosts}`}>Videos</Link>
               </li> */}
               {/* 1st level: hover */}
               <Dropdown title="Documentation">

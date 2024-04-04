@@ -1,7 +1,7 @@
 import {
   Doc,
   Extension,
-  VideoPost,
+  DemoPost,
   ComparisonPost,
   Post,
   Feature,
@@ -43,12 +43,12 @@ export function getExtensionDocumentationURL(extension: Extension) {
   return `${DOMAIN}${getExtensionDocumentationURLPath(extension)}`
 }
 
-export function getVideoPostURLPath(videoPost: VideoPost) {
-  return `/${AppConfig.paths.videoPosts}/${videoPost.slug}`
+export function getDemoPostURLPath(demoPost: DemoPost) {
+  return `/${AppConfig.paths.demoPosts}/${demoPost.slug}`
 }
 
-export function getVideoPostURL(videoPost: VideoPost) {
-  return `${DOMAIN}${getVideoPostURLPath(videoPost)}`
+export function getDemoPostURL(demoPost: DemoPost) {
+  return `${DOMAIN}${getDemoPostURLPath(demoPost)}`
 }
 
 export function getComparisonPostURLPath(comparisonPost: ComparisonPost) {

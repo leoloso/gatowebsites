@@ -2,7 +2,7 @@ import algoliaSearch from "algoliasearch"
 import {
   allPosts,
   // allUpdates,
-  // allVideoPosts,
+  // allDemoPosts,
   allComparisonPosts,
   allExtensions,
   allFeatures,

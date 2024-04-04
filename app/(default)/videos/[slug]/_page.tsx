@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { allVideoPosts } from 'contentlayer/generated'
+import { allDemoPosts } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -10,8 +10,8 @@ import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
 
 export async function generateStaticParams() {
-  return allVideoPosts.map((videoPost) => ({
-    slug: videoPost.slug,
+  return allDemoPosts.map((demoPost) => ({
+    slug: demoPost.slug,
   }))
 }
 
@@ -19,11 +19,11 @@ export async function generateMetadata({ params }: {
   params: { slug: string }
 }): Promise<Metadata | undefined> {
 
-  const videoPost = allVideoPosts.find((videoPost) => videoPost.slug === params.slug)
+  const demoPost = allDemoPosts.find((demoPost) => demoPost.slug === params.slug)
 
-  if (!videoPost) return
+  if (!demoPost) return
 
-  const { title, summary: description } = videoPost
+  const { title, summary: description } = demoPost
 
   return {
     title,
@@ -31,13 +31,13 @@ export async function generateMetadata({ params }: {
   }
 }
 
-export default async function SingleVideoPost({ params }: {
+export default async function SingleDemoPost({ params }: {
   params: { slug: string }
 }) {
 
-  const videoPost = allVideoPosts.find((videoPost) => videoPost.slug === params.slug)
+  const demoPost = allDemoPosts.find((demoPost) => demoPost.slug === params.slug)
 
-  if (!videoPost) notFound()
+  if (!demoPost) notFound()
 
   return (
     <>
@@ -54,40 +54,40 @@ export default async function SingleVideoPost({ params }: {
                 <header className="mb-8">
                   {/* Title and excerpt */}
                   <div className="text-center md:text-left">
-                    <h1 className="h1 mb-4" data-aos="fade-up">{videoPost.title}</h1>
-                    <p className="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="200">{videoPost.summary}</p>
+                    <h1 className="h1 mb-4" data-aos="fade-up">{demoPost.title}</h1>
+                    <p className="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="200">{demoPost.summary}</p>
                   </div>
                   {/* Article meta */}
                   <div className="md:flex md:items-center md:justify-between mt-3">
                     {/* Author meta */}
                     <div className="flex items-center justify-center" data-aos="fade-up" data-aos-delay="400">
                       <Link href="#">
-                        <Image className="rounded-full shrink-0 mr-4" src={videoPost.authorImg} width={40} height={40} alt={videoPost.author} />
+                        <Image className="rounded-full shrink-0 mr-4" src={demoPost.authorImg} width={40} height={40} alt={demoPost.author} />
                       </Link>
                       <div>
-                        <Link href="#" className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">{videoPost.author}</Link>
+                        <Link href="#" className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">{demoPost.author}</Link>
                         <span className="text-gray-700"> - </span>
-                        <span className="text-gray-500"><PostDate dateString={videoPost.publishedAt} /></span>
+                        <span className="text-gray-500"><PostDate dateString={demoPost.publishedAt} /></span>
                       </div>
                     </div>
                     {/* Article tags */}
-                    {videoPost.tags &&
+                    {demoPost.tags &&
                       <div className="flex justify-center mt-4 md:mt-0" data-aos="fade-up" data-aos-delay="600">
-                        <PostTags tags={videoPost.tags} />
+                        <PostTags tags={demoPost.tags} />
                       </div>
                     }
                   </div>
                 </header>
 
                 {/* Article image */}
-                {videoPost.image &&
+                {demoPost.image &&
                   <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="600">
-                    <Image className="w-full" src={videoPost.image} width={1024} height={576} alt={videoPost.title} priority />
+                    <Image className="w-full" src={demoPost.image} width={1024} height={576} alt={demoPost.title} priority />
                   </figure>
                 }
 
                 {/* Article content */}
-                <PostMdx code={videoPost.body.code} />
+                <PostMdx code={demoPost.body.code} />
 
                 {/* Article footer */}
                 <footer>

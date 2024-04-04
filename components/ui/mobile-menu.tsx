@@ -95,7 +95,7 @@ export default function MobileMenu({
             <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.extensions}`}>Extensions</Link>
           </li>
           {/* <li>
-            <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.videoPosts}`}>Videos</Link>
+            <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.demoPosts}`}>Videos</Link>
           </li> */}
           <li className="py-2 my-2 border-t border-b border-slate-300 dark:border-gray-700">
             <span className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5">Documentation</span>
