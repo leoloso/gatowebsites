@@ -17,7 +17,7 @@ import Newsletter from '@/components/newsletter'
 import { sortByPublishedAt } from '@/utils/content/sort'
 // import { getPrevNextArticles } from '@/utils/content/document'
 import generateRssFeed from '@/utils/rss'
-import { getPostURL } from '@/utils/content/application-urls'
+import { getBlogPostURL } from '@/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from '@/components/schema/blogposting-schema-json-ld';
 
 export async function generateStaticParams() {
@@ -76,7 +76,7 @@ export default async function SinglePost({ params }: {
     <>
       <BlogPostingSchemaJsonLdScript
         headline={blogPost.title}
-        url={getPostURL(blogPost)}
+        url={getBlogPostURL(blogPost)}
         image={blogPost.image}
         description={blogPost.summary}
         datePublished={blogPost.publishedAt}

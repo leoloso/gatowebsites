@@ -70,16 +70,16 @@ export function getDocURL(doc: Doc) {
   return `${DOMAIN}${getDocURLPath(doc)}`
 }
 
-export function getPostURLPath(post: BlogPost) {
+export function getBlogPostURLPath(post: BlogPost) {
   return `/${AppConfig.paths.blog}/${post.slug}`
 }
 
-export function getPostURL(post: BlogPost) {
-  return `${DOMAIN}${getPostURLPath(post)}`
+export function getBlogPostURL(post: BlogPost) {
+  return `${DOMAIN}${getBlogPostURLPath(post)}`
 }
 
 export function getArticleURLPath(article: Article) {
-  return isBlogPost(article) ? getPostURLPath(article) : (isDemoPost(article) ? getDemoPostURLPath(article) : getDocURLPath(article))
+  return isBlogPost(article) ? getBlogPostURLPath(article) : (isDemoPost(article) ? getDemoPostURLPath(article) : getDocURLPath(article))
 }
 
 export function getArticleURL(article: Article) {

@@ -13,7 +13,7 @@ import {
   getDocURLPath,
   getExtensionURLPath,
   getFeatureURLPath,
-  getPostURLPath,
+  getBlogPostURLPath,
   getComparisonPostURLPath,
 } from "@/utils/content/application-urls"
 import { isAdminUser } from "@/utils/admin"
@@ -76,7 +76,7 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
     allBlogPosts?.map((post) => getStructuredDataObject(
       post.title,
       post.summary,
-      getPostURLPath(post),
+      getBlogPostURLPath(post),
       post.slug,
       post.body.raw,
       Sections.Blog
@@ -90,7 +90,7 @@ async function getAllDemoPostsTransformed(): Promise<SearchObject[]> {
     allDemoPosts?.map((demoPost) => getStructuredDataObject(
       demoPost.title,
       demoPost.summary,
-      getPostURLPath(demoPost),
+      getBlogPostURLPath(demoPost),
       demoPost.slug,
       demoPost.body.raw,
       Sections.Demos

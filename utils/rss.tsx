@@ -3,7 +3,7 @@ import { Feed } from 'feed';
 import { allBlogPosts } from 'contentlayer/generated'
 import { sortByPublishedAt } from './content/sort';
 import { DOMAIN } from '@/data/env/domain';
-import { getPostURL } from './content/application-urls';
+import { getBlogPostURL } from './content/application-urls';
 import slugify from '@sindresorhus/slugify';
 import { maybeAddDomain } from './domain';
 
@@ -29,8 +29,8 @@ export default async function generateRssFeed() {
   posts.forEach((post) => {
     feed.addItem({
       title: post.title,
-      id: slugify(getPostURL(post)),
-      link: getPostURL(post),
+      id: slugify(getBlogPostURL(post)),
+      link: getBlogPostURL(post),
       description: post.summary,
       date: new Date(post.publishedAt),
       ...(post.image ? {image: maybeAddDomain(post.image)} : {})
