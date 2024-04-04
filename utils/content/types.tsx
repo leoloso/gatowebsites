@@ -1,5 +1,6 @@
-import { DemoPost, Doc, Extension, Feature, Post } from "@/.contentlayer/generated";
+import { DemoPost, Doc, Extension, Feature, BlogPost } from "@/.contentlayer/generated";
 
+export type Post = BlogPost | DemoPost;
 export type Article = Doc | Post | DemoPost;
 export type Artifact = Extension | Feature;
 
