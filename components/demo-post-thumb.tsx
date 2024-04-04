@@ -5,14 +5,17 @@ import Particles from '@/components/particles'
 import PlusImage from '@/public/assets/theme/plus.svg'
 import { DemoPost } from '@/.contentlayer/generated';
 import Image from 'next/image'
+import clsx from 'clsx';
 
 export default function DemoPostThumb({
-  demoPost
+  demoPost,
+  paddingClassname = "py-10 px-8 md:py-16 md:px-12"
 }: {
-  demoPost: DemoPost
+  demoPost: DemoPost,
+  paddingClassname?: string,
 }) {
   return (
-    <div className="relative bg-gradient-to-tr from-blue-900 to-purple-800 py-10 px-8 md:py-16 md:px-12 h-full z-20 overflow-hidden" data-aos="zoom-out">
+    <div className={clsx("relative bg-gradient-to-tr from-blue-900 to-purple-800 h-full z-20 overflow-hidden", paddingClassname)} data-aos="zoom-out">
       <Particles className="absolute inset-0 -z-10" quantity={10} />
       <div className="w-full h-full aspect-video flex items-center justify-center">
         {/* <div className="absolute right-0 top-1/2 -translate-y-1/2 mt-8 -z-10" aria-hidden="true">
@@ -57,11 +60,11 @@ export default function DemoPostThumb({
           </svg>
         </div>
         <div className="flex flex-col items-center">
-          <Image src={Logo} className='mb-4 md:mb-8' alt={demoPost.title} width={250} height={175} />
+          <Image src={Logo} className='mb-2 md:mb-4' alt={demoPost.title} width={250} height={175} />
           <Image src={PlusImage} className='my-2 md:my-4' width={30} height={30} alt="plus image" />
           <div className="flex justify-between">
             {demoPost.targetImages.map((targetImageSrc, index) => (
-              <div key={index} className='mt-4 md:mt-8'>
+              <div key={index} className='mt-2 md:mt-4'>
                 <Image src={targetImageSrc} alt="Target Image" width={250} height={250} />
               </div>
             ))}

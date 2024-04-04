@@ -58,7 +58,10 @@ export default function Demos() {
                     </figure>
                   } */}
                   <div className="relative overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
-                    <DemoPostThumb demoPost={featuredDemoPost} />
+                    <DemoPostThumb
+                      demoPost={featuredDemoPost}
+                      paddingClassname="py-5 px-4 md:py-8 md:px-6"
+                    />
                   </div>
                 </Link>
                 <div data-aos="fade-left" data-aos-delay="200">
