@@ -148,13 +148,13 @@ export default async function SingleDemoPost({ params }: {
                         </svg>
                       </div>
                       <div className="flex items-center justify-center">
-                        <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none" data-aos="fade-up" data-aos-delay="200">
+                        <div className="mx-auto" data-aos="fade-up" data-aos-delay="200">
                           <Image src={Logo} alt={demoPost.title} width={300} height={300} />
                         </div>
                         <div className="max-w-[30px] mx-auto sm:max-w-[40px] md:max-w-none mx-4 sm:mx-8 sm:mx-16 lg:mx-24" data-aos="fade-up" data-aos-delay="200">
                           <Image src={PlusImage} width={40} height={40} alt="plus image" />
                         </div>
-                        <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none" data-aos="fade-up" data-aos-delay="200">
+                        <div className="mx-auto" data-aos="fade-up" data-aos-delay="200">
                           <Image src={Logo} alt={demoPost.title} width={300} height={300} />
                           {/* <Image src={demoPost.targetImage} alt={demoPost.title} width={300} height={300} /> */}
                         </div>
