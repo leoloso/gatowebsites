@@ -35,11 +35,13 @@ export default function Demos() {
   const currentPage = 1;
 
   const firstPostPos = (currentPage - 1) * AppSettings.demoPostsPerPage
-  const demoPosts = allDemoPosts
-    .slice(1) // Remove the featured image
-    .slice(firstPostPos, firstPostPos + AppSettings.demoPostsPerPage) // Pagination
+  const demoPosts = allDemoPosts.slice(1) // Remove the featured image
 
   const totalPages = Math.ceil(demoPosts.length / AppSettings.demoPostsPerPage)
+
+   // Pagination
+  const paginagedDemoPosts = demoPosts
+    .slice(firstPostPos, firstPostPos + AppSettings.demoPostsPerPage)
 
   return (
     <>
@@ -104,7 +106,7 @@ export default function Demos() {
 
               {/*  Articles container */}
               <div className="grid gap-12 md:grid-cols-3 md:gap-x-6 md:gap-y-8 items-start">
-                {demoPosts.map((demoPost, demoPostIndex) => (
+                {paginagedDemoPosts.map((demoPost, demoPostIndex) => (
                   <DemoPostPostItem key={demoPostIndex} demoPost={demoPost} />
                 ))}
               </div>
