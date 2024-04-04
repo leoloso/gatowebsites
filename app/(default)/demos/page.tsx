@@ -6,7 +6,7 @@ import PostTags from '@/components/post-tags'
 import DemoPostPostItem from '@/components/demo-post-item'
 
 export const metadata = {
-  title: 'Videos - Gato GraphQL',
+  title: 'Demos - Gato GraphQL',
   description: 'Tutorials to learn what you can accomplish with Gato GraphQL',
 }
 

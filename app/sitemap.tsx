@@ -126,7 +126,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    // Videos
+    // Demos
     // {
     //   url: `${DOMAIN}/${AppConfig.paths.demoPosts}`,
     //   lastModified: releaseDateV2_2,
