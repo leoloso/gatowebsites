@@ -13,7 +13,7 @@ import { getPrevNextArticles } from '@/utils/content/document'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import Logo from '@/public/assets/GatoGraphQL-logo-suki.png'
 import Particles from '@/components/particles'
-import Illustration from '@/public/assets/theme/cta-illustration.svg'
+// import Illustration from '@/public/assets/theme/cta-illustration.svg'
 import PlusImage from '@/public/assets/theme/plus.svg'
 
 export async function generateStaticParams() {
