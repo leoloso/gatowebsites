@@ -4,6 +4,7 @@ import PostDate from '@/components/post-date'
 import PostTags from './post-tags'
 import { DemoPost } from '@/.contentlayer/generated'
 import { getDemoPostURLPath } from '@/utils/content/application-urls'
+import DemoPostThumb from './demo-post-thumb'
 
 export default function DemoPostPostItem({ demoPost }: {
   demoPost: DemoPost,
@@ -12,13 +13,19 @@ export default function DemoPostPostItem({ demoPost }: {
     // @todo Remove AOS!?
     <article className="flex flex-col h-full" data-aos="fade-up">
       <header>
-        {demoPost.image &&
+        {/* {demoPost.image &&
           <Link href={getDemoPostURLPath(demoPost)} className="block mb-6">
             <figure className="relative h-0 pb-[56.25%] overflow-hidden rounded-sm">
               <Image className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out" src={demoPost.image} width={352} height={198} alt={demoPost.title} />
             </figure>
           </Link>
-        }
+        } */}
+        <Link href={getDemoPostURLPath(demoPost)} className="block mb-6">
+          <DemoPostThumb
+            demoPost={demoPost}
+            paddingClassname=""
+          />
+        </Link>
         {demoPost.tags &&
           <div className="mb-3">
             <PostTags tags={demoPost.tags} />
