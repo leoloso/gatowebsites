@@ -151,20 +151,16 @@ export default async function SingleDemoPost({ params }: {
                         <div className="mx-auto" data-aos="fade-up" data-aos-delay="200">
                           <Image src={Logo} alt={demoPost.title} width={300} height={300} />
                         </div>
-                        <div className="max-w-[30px] mx-auto mx-4 sm:mx-8" data-aos="fade-up" data-aos-delay="200">
-                          <Image src={PlusImage} width={40} height={40} alt="plus image" />
-                        </div>
-                        <div className="mx-auto" data-aos="fade-up" data-aos-delay="200">
-                          <Image src={Logo} alt={demoPost.title} width={300} height={300} />
-                          {/* <Image src={demoPost.targetImage} alt={demoPost.title} width={300} height={300} /> */}
-                        </div>
-                        <div className="max-w-[30px] mx-auto mx-4 sm:mx-8" data-aos="fade-up" data-aos-delay="200">
-                          <Image src={PlusImage} width={40} height={40} alt="plus image" />
-                        </div>
-                        <div className="mx-auto" data-aos="fade-up" data-aos-delay="200">
-                          <Image src={Logo} alt={demoPost.title} width={300} height={300} />
-                          {/* <Image src={demoPost.targetImage} alt={demoPost.title} width={300} height={300} /> */}
-                        </div>
+                        {demoPost.targetImages.map((targetImageSrc) => (
+                          <>
+                            <div className="mx-4 sm:mx-8" data-aos="fade-up" data-aos-delay="200">
+                              <Image src={PlusImage} width={30} height={30} alt="plus image" />
+                            </div>
+                            <div className="mx-auto" data-aos="fade-up" data-aos-delay="200">
+                              <Image src={targetImageSrc} alt="Target Image" width={300} height={300} />
+                            </div>
+                          </>
+                        ))}
                       </div>
                     </div>
                   </div>
