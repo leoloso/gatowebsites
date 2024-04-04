@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { Feed } from 'feed';
-import { allPosts } from 'contentlayer/generated'
+import { allBlogPosts } from 'contentlayer/generated'
 import { sortByPublishedAt } from './content/sort';
 import { DOMAIN } from '@/data/env/domain';
 import { getPostURL } from './content/application-urls';
@@ -8,7 +8,7 @@ import slugify from '@sindresorhus/slugify';
 import { maybeAddDomain } from './domain';
 
 export default async function generateRssFeed() {
-  const posts = allPosts.sort(sortByPublishedAt) 
+  const posts = allBlogPosts.sort(sortByPublishedAt) 
 
   const feedOptions = {
     title: 'Gato GraphQL Blog | RSS Feed',

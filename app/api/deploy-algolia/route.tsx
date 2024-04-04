@@ -1,6 +1,6 @@
 import algoliaSearch from "algoliasearch"
 import {
-  allPosts,
+  allBlogPosts,
   // allUpdates,
   allDemoPosts,
   allComparisonPosts,
@@ -73,7 +73,7 @@ function getStructuredDataObject(
 async function getAllPostsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
   return (
-    allPosts?.map((post) => getStructuredDataObject(
+    allBlogPosts?.map((post) => getStructuredDataObject(
       post.title,
       post.summary,
       getPostURLPath(post),

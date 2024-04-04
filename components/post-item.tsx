@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
-import { Post } from '@/.contentlayer/generated'
+import { BlogPost } from '@/.contentlayer/generated'
 import { getPostURLPath } from '@/utils/content/application-urls'
 import PostTags from './post-tags'
 
 export default function PostItem({ post }: {
-  post: Post
+  post: BlogPost
 }) {
   return (
     <article className="flex items-center pt-4 pb-8 mb-4 border-b border-slate-200">

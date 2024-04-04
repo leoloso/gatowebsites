@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import {
-  // Post,
-  allPosts,
+  // BlogPost,
+  allBlogPosts,
 } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
@@ -24,8 +24,8 @@ export async function generateStaticParams() {
   // Generate the RSS feed
   await generateRssFeed();
 
-  return allPosts.map((post) => ({
-    slug: post.slug,
+  return allBlogPosts.map((blogPost) => ({
+    slug: blogPost.slug,
   }))
 }
 
@@ -33,21 +33,21 @@ export async function generateMetadata({ params }: {
   params: { slug: string }
 }): Promise<Metadata | undefined> {
 
-  const post = allPosts.find((post) => post.slug === params.slug)
+  const blogPosts = allBlogPosts.find((blogPosts) => blogPosts.slug === params.slug)
 
-  if (!post) return
+  if (!blogPosts) return
 
-  const { title, summary: description } = post
+  const { title, summary: description } = blogPosts
 
   return {
     title,
     description,
-    ...post.image ? {
+    ...blogPosts.image ? {
       openGraph: {
-        images: [post.image],
+        images: [blogPosts.image],
       },
       twitter: {
-        images: [post.image],
+        images: [blogPosts.image],
       }
     } : {},
   }
@@ -58,28 +58,28 @@ export default async function SinglePost({ params }: {
 }) {
 
   // Sort posts. Needed to find the prev/next items below
-  const posts = allPosts.sort(sortByPublishedAt)
-  const postIndex = posts.findIndex((post) => post.slug === params.slug)
+  const blogPosts = allBlogPosts.sort(sortByPublishedAt)
+  const blogPostIndex = blogPosts.findIndex((blogPost) => blogPost.slug === params.slug)
 
-  if (postIndex === -1) notFound()
+  if (blogPostIndex === -1) notFound()
 
-  const post = posts[postIndex]
+  const blogPost = blogPosts[blogPostIndex]
   
   {/* Page navigation */}
-  // const paginationArticles = getPrevNextArticles(posts, postIndex)
-  // const prevPost = paginationArticles.prev as Post
-  // const nextPost = paginationArticles.next as Post
+  // const paginationArticles = getPrevNextArticles(blogPosts, blogPostIndex)
+  // const prevPost = paginationArticles.prev as BlogPost
+  // const nextPost = paginationArticles.next as BlogPost
 
   const contentId = 'main-content'
 
   return (
     <>
       <BlogPostingSchemaJsonLdScript
-        headline={post.title}
-        url={getPostURL(post)}
-        image={post.image}
-        description={post.summary}
-        datePublished={post.publishedAt}
+        headline={blogPost.title}
+        url={getPostURL(blogPost)}
+        image={blogPost.image}
+        description={blogPost.summary}
+        datePublished={blogPost.publishedAt}
       />
 
       <section className="relative">
@@ -94,7 +94,7 @@ export default async function SinglePost({ params }: {
                 {/* Article header */}
                 <header className="max-w-3xl mx-auto mb-20">
                   {/* Title */}
-                  <h1 className="h1 text-center mb-4">{post.title}</h1>
+                  <h1 className="h1 text-center mb-4">{blogPost.title}</h1>
                 </header>
 
                 {/* Article content */}
@@ -112,26 +112,26 @@ export default async function SinglePost({ params }: {
                         <div className="flex shrink-0 mr-3">
                           <a className="relative" href="#0">
                             <span className="absolute inset-0 -m-px" aria-hidden="true"><span className="absolute inset-0 -m-px bg-white rounded-full"></span></span>
-                            <Image className="relative rounded-full" src={post.authorImg} width={32} height={32} alt={post.author} />
+                            <Image className="relative rounded-full" src={blogPost.authorImg} width={32} height={32} alt={blogPost.author} />
                           </a>
                         </div>
                         <div>
                           <span className="text-gray-600">By </span>
-                          <a className="font-medium hover:underline" href="#0">{post.author}</a>
-                          <span className="text-gray-600"> · <PostDate dateString={post.publishedAt} /></span>
+                          <a className="font-medium hover:underline" href="#0">{blogPost.author}</a>
+                          <span className="text-gray-600"> · <PostDate dateString={blogPost.publishedAt} /></span>
                         </div>
                       </div>
                       {/* Article tags */}
-                      {post.tags &&
+                      {blogPost.tags &&
                         <div className="flex justify-center mt-4 md:mt-0 items-center mb-6">
-                          <PostTags tags={post.tags} />
+                          <PostTags tags={blogPost.tags} />
                         </div>
                       }
                     </div>
                     <hr className="w-16 h-px pt-px bg-gray-200 border-0 mb-6" />
 
                     {/* Article body */}
-                    <PostMdx code={post.body.code} />
+                    <PostMdx code={blogPost.body.code} />
 
                     <hr className="w-full h-px pt-px mt-16 bg-gray-200 border-0" />
 

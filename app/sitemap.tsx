@@ -2,7 +2,7 @@ import { DOMAIN } from '@/data/env/domain'
 import { MetadataRoute } from 'next'
 import AppConfig from '@/app/app.config'
 import {
-  allPosts,
+  allBlogPosts,
   // allUpdates,
   allDemoPosts,
   allComparisonPosts,
@@ -25,10 +25,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const releaseDateV2_2 = new Date(getReleaseData('2.2'))
   // const releaseDateV2_2_1 = new Date(getReleaseData('2.2.1'))
   const releaseDateV2_2_2 = new Date(getReleaseData('2.2.2'))
-  const postSitemapEntries = allPosts.map((post) => (
+  const blogPostSitemapEntries = allBlogPosts.map((blogPost) => (
     {
-      url: getPostURL(post),
-      lastModified: new Date(post.publishedAt),
+      url: getPostURL(blogPost),
+      lastModified: new Date(blogPost.publishedAt),
       changeFrequency: 'weekly',
       priority: 0.5,
     }
@@ -240,7 +240,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
     .concat(
-      postSitemapEntries,
+      blogPostSitemapEntries,
       // updatesSitemapEntries,
       extensionSitemapEntries,
       extensionDocumentationSitemapEntries,

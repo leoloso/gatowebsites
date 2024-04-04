@@ -30,8 +30,8 @@ const Update = defineDocumentType(() => ({
   },
 }))
 
-const Post = defineDocumentType(() => ({
-  name: 'Post',
+const BlogPost = defineDocumentType(() => ({
+  name: 'BlogPost',
   filePathPattern: `${AppConfig.paths.blog}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
@@ -392,7 +392,7 @@ const NameURLPair = defineNestedType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Update, Post, Page, Snippet, DemoPost, ComparisonPost, Doc, DocTopic, Extension, Feature],
+  documentTypes: [Update, BlogPost, Page, Snippet, DemoPost, ComparisonPost, Doc, DocTopic, Extension, Feature],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
