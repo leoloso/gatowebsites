@@ -58,14 +58,14 @@ export default function DemoPostThumb({
         </div>
         <div className="items-center justify-center mx-auto">
           <div className="items-center justify-center flex mx-auto" data-aos="fade-up" data-aos-delay="200">
-            <Image src={Logo} alt={demoPost.title} width={250} height={175} />
+            <Image src={Logo} className='mb-4 md:mb-8' alt={demoPost.title} width={250} height={175} />
           </div>
-          <div className="items-center justify-center flex mx-4 sm:mx-8 py-8" data-aos="fade-up" data-aos-delay="200">
-            <Image src={PlusImage} width={30} height={30} alt="plus image" />
+          <div className="items-center justify-center flex" data-aos="fade-up" data-aos-delay="200">
+            <Image src={PlusImage} className='my-2 md:my-4' width={30} height={30} alt="plus image" />
           </div>
           <div className="flex justify-between">
             {demoPost.targetImages.map((targetImageSrc, index) => (
-              <div key={index} className='px-4 sm:px-8 md:px-16' data-aos="fade-up" data-aos-delay="200">
+              <div key={index} className='mt-4 md:mt-8' data-aos="fade-up" data-aos-delay="200">
                 <Image src={targetImageSrc} alt="Target Image" width={250} height={250} />
               </div>
             ))}
