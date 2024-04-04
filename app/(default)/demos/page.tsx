@@ -42,7 +42,7 @@ export default function Blog() {
 
             {/*  Featured article */}
             <div className="pb-12 md:pb-20">
-              <article className="max-w-sm mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
+              <article className="max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
                 <Link href={getDemoPostURLPath(featuredDemoPost)} className="relative block group" data-aos="fade-right" data-aos-delay="200">
                   <div className="absolute inset-0 bg-gray-800 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
                   {featuredDemoPost.image &&
@@ -80,7 +80,7 @@ export default function Blog() {
             </div>
 
             {/*  Articles list */}
-            <div className="max-w-sm mx-auto md:max-w-none">
+            <div className="max-w-3xl mx-auto md:max-w-none">
 
               {/*  Section title */}
               <h4 className="h4 pb-6 mb-10 border-b border-gray-700" data-aos="fade-up">Latest demos</h4>
