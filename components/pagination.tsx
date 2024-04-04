@@ -1,6 +1,10 @@
 import Link from "next/link"
 
-export default function Pagination({ totalPages }: {
+export default function Pagination({
+  currentPage = 1,
+  totalPages,
+}: {
+  currentPage: number,
   totalPages: number
 }) {
 

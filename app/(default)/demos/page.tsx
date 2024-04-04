@@ -104,7 +104,7 @@ export default function Blog() {
             </div>
 
             {/*  Pagination */}
-            <Pagination totalPages={totalPages} />
+            <Pagination currentPage={currentPage} totalPages={totalPages} />
 
           </div>
         </div>
