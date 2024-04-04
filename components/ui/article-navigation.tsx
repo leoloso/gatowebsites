@@ -1,13 +1,13 @@
-import { Doc, Post } from '@/.contentlayer/generated'
 import Link from 'next/link'
 import { getArticleURLPath } from '@/utils/content/application-urls'
+import { Article } from '@/utils/content/types'
 
 export default function ArticleNavigation({
   prevArticle,
   nextArticle
 }: {
-    prevArticle?: Doc | Post,
-    nextArticle?: Doc | Post,
+    prevArticle?: Article,
+    nextArticle?: Article,
 }) {
   return (
     <div className="sm:flex items-center justify-between">
