@@ -1,14 +1,11 @@
+// 'use client'
+
 import { allDemoPosts } from 'contentlayer/generated'
 import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from '@/components/post-tags'
 import DemoPostPostItem from '@/components/demo-post-item'
-
-export const metadata = {
-  title: 'Demos - Gato GraphQL',
-  description: 'Tutorials to learn what you can accomplish with Gato GraphQL',
-}
 
 import Newsletter from '@/components/newsletter'
 import { getDemoPostURLPath } from '@/utils/content/application-urls'
@@ -18,14 +15,25 @@ import PageHeader from '@/components/page-header'
 import Pagination from '@/components/pagination'
 import AppSettings from '@/app/app.settings'
 
-export default function Blog() {
+// import { useSearchParams } from 'next/navigation';
+
+export const metadata = {
+  title: 'Demos - Gato GraphQL',
+  description: 'Tutorials to learn what you can accomplish with Gato GraphQL',
+}
+
+export default function Demos() {
 
   // Sort demoPosts by date
   allDemoPosts.sort(sortByPublishedAt)  
 
   const featuredDemoPost = allDemoPosts[0]
 
-  const currentPage = 1
+  // Paginate posts
+  // const searchParams = useSearchParams();
+  // const currentPage = Number(searchParams.get('page')) || 1;
+  const currentPage = 1;
+
   const firstPostPos = (currentPage - 1) * AppSettings.demoPostsPerPage
   const demoPosts = allDemoPosts
     .slice(1) // Remove the featured image
@@ -104,7 +112,7 @@ export default function Blog() {
             </div>
 
             {/*  Pagination */}
-            <Pagination currentPage={currentPage} totalPages={totalPages} />
+            <Pagination totalPages={totalPages} />
 
           </div>
         </div>
