@@ -1,7 +1,7 @@
 import { DemoPost, Doc, Extension, Feature, BlogPost } from "@/.contentlayer/generated";
 
 export type Post = BlogPost | DemoPost;
-export type Article = Doc | Post | DemoPost;
+export type Article = Doc | Post;
 export type Artifact = Extension | Feature;
 
 export function isPost(article: Article): article is Post {

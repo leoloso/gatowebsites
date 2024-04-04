@@ -3,7 +3,7 @@ import {
   Extension,
   DemoPost,
   ComparisonPost,
-  Post,
+  BlogPost,
   Feature,
 } from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
@@ -70,11 +70,11 @@ export function getDocURL(doc: Doc) {
   return `${DOMAIN}${getDocURLPath(doc)}`
 }
 
-export function getPostURLPath(post: Post) {
+export function getPostURLPath(post: BlogPost) {
   return `/${AppConfig.paths.blog}/${post.slug}`
 }
 
-export function getPostURL(post: Post) {
+export function getPostURL(post: BlogPost) {
   return `${DOMAIN}${getPostURLPath(post)}`
 }
 

@@ -1,7 +1,7 @@
 import { BlogPost, allBlogPosts } from 'contentlayer/generated'
 import { sortAlphabetically } from './sort'
 
-export function getPostTags(posts: Array<BlogPost>): Array<string> {
+export function getBlogPostTags(posts: Array<BlogPost>): Array<string> {
   return posts
     .map((post) => post.tags || [])
     .flat(1)
@@ -9,14 +9,14 @@ export function getPostTags(posts: Array<BlogPost>): Array<string> {
     .filter((value, index, array) => array.indexOf(value) === index)
 }
 
-export function getAllPostTags(): Array<string> {
+export function getPostTags(): Array<string> {
   return [
-    ...getPostTags(allBlogPosts)
+    ...getBlogPostTags(allBlogPosts)
   ]
 }
 
-export function getPostTagColors(colors: Array<string>, posts: Array<BlogPost> | undefined = allBlogPosts) {
-  const postTags = getPostTags(posts).sort(sortAlphabetically)
+export function getPostTagColors(colors: Array<string>) {
+  const postTags = getPostTags().sort(sortAlphabetically)
   let postTagColors : { [key: string]: string } = {}
   postTags.forEach(function (postTag: string | undefined, index: number) {
     if (!postTag) {

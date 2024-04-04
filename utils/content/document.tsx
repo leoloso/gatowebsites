@@ -1,7 +1,8 @@
-import { Doc, DocTopic, Post, RelatedGuide } from "@/.contentlayer/generated";
+import { Doc, DocTopic, RelatedGuide } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from 'contentlayer/generated'
 import AppConfig from '@/app/app.config'
 import { sortByOrder, sortByOrderAndTitle } from "./sort";
+import { Article } from "./types";
 
 export function getDocTopic(doc: Doc) {
   const docTopic = allDocTopics.find((docTopic) => doc.section === docTopic.section && docTopic.slug === doc.topicSlug);
@@ -53,7 +54,7 @@ export function getArchitectureDocuments() {
   return getGroupDocuments(AppConfig.paths.docs.architecture)
 }
 
-export function getPrevNextArticles(articles: Array<Doc | Post>, articleIndex: number) {
+export function getPrevNextArticles(articles: Array<Article>, articleIndex: number) {
   // Calculate the prev/next items
   const prevArticle = articleIndex === 0 ? undefined : articles[articleIndex - 1]
   const nextArticle = articleIndex === (articles.length - 1) ? undefined : articles[articleIndex + 1]
