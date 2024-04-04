@@ -62,9 +62,9 @@ export default function DemoPostThumb({
         <div className="flex flex-col items-center">
           <Image src={Logo} className='mb-2 md:mb-4' alt={demoPost.title} width={250} height={175} />
           <Image src={PlusImage} className='my-2 md:my-4' width={30} height={30} alt="plus image" />
-          <div className="flex justify-between mt-2 md:mt-4">
+          <div className="flex gap-3 sm:gap-6 md:gap-12 lg:gap-24 mt-2 md:mt-4">
             {demoPost.targetImages.map((targetImageSrc, index) => (
-              <Image key={index} src={targetImageSrc} alt="Target Image" width={250} height={250} />
+              <Image className='max-w-none' key={index} src={targetImageSrc} alt="Target Image" width={250} height={250} />
             ))}
           </div>
         </div>
