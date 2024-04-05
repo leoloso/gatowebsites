@@ -1,9 +1,9 @@
 ---
-title: 'How to automatically register users who completed a lesson from Masterstudy LMS on AirTable'
+title: 'How to automatically register users who completed a lesson from MasterStudy LMS on AirTable'
 publishedAt: '2024-04-05'
 image: '/images/thumbnails/demos/how-to-automatically-register-wordpress-users-who-completed-a-lesson-from-masterstudy-lms-on-airtable-using-gatographql.png'
 leading: Gato GraphQL automation demo
-description: 'Whenever a user completes a lesson from Masterstudy LMS on the WordPress site, send custom data (concerning the user, lesson and course) to AirTable and create records on a specified table.'
+description: 'Whenever a user completes a lesson from MasterStudy LMS on the WordPress site, send custom data (concerning the user, lesson and course) to AirTable and create records on a specified table.'
 author: 'Leonardo Losoviz'
 authorImg: '/images/leo-avatar.jpg'
 tags:
@@ -15,11 +15,11 @@ targetImages:
   - /images/logos/masterstudy-lms.svg
   - /images/logos/airtable.svg
 integrations: 
-  - { name: Masterstudy LMS, image: /images/logos/masterstudy-lms.svg, url: https://stylemixthemes.com/wordpress-lms-plugin/ }
+  - { name: MasterStudy LMS, image: /images/logos/masterstudy-lms.svg, url: https://stylemixthemes.com/wordpress-lms-plugin/ }
   - { name: AirTable, image: /images/logos/airtable.svg, url: https://airtable.com }
 ---
 
-Whenever a user completes a lesson from **Masterstudy LMS**, we will send custom data to AirTable, and create records on a specified table.
+Whenever a user completes a lesson from **MasterStudy LMS**, we will send custom data to AirTable, and create records on a specified table.
 
 In this video, the user completes two lessons from a course from the LMS. When each lesson is completed, a Gato GraphQL automation will create a record in AirTable with the required data:
 
@@ -49,7 +49,7 @@ The table has columns `Name`, `ProfileURL` and `Email` with data from the user, 
 
 </div>
 
-[Create a persisted query](/guides/use/creating-a-persisted-query) containing the following GraphQL query, and give it title **Export Masterstudy LMS lesson data to AirTable**:
+[Create a persisted query](/guides/use/creating-a-persisted-query) containing the following GraphQL query, and give it title **Export MasterStudy LMS lesson data to AirTable**:
 
 ```graphql
 query ExportUserData(
@@ -119,7 +119,7 @@ query CreateRecordInAirTable(
 }
 ```
 
-The persisted query will receive the parameters from Masterstudy LMS' action hook `stm_lms_lesson_passed` (see below), and retrieve all associated data with them:
+The persisted query will receive the parameters from MasterStudy LMS' action hook `stm_lms_lesson_passed` (see below), and retrieve all associated data with them:
 
 - The user's name, email and URL
 - The lesson's title
@@ -129,7 +129,7 @@ Then, it will connect to the [AirTable API](https://airtable.com/developers/web/
 
 To connect to the API we need [personal access tokens](https://airtable.com/developers/web/guides/personal-access-tokens) for authentication. So make sure to create a personal access token for your table, and [assign it scope `data.records:write`](https://airtable.com/developers/web/api/create-records).
 
-Next, we [create a new automation](/guides/manage/automating-tasks), providing Masterstudy's action `stm_lms_lesson_passed` as the trigger.
+Next, we [create a new automation](/guides/manage/automating-tasks), providing MasterStudy's action `stm_lms_lesson_passed` as the trigger.
 
 This action hook provides the following data:
 
@@ -155,7 +155,7 @@ We must also provide the JSON dictionary for the dynamic variables, to pass all 
   caption="Automation trigger"
 />
 
-For the action, we select the newly-created persisted query **Export Masterstudy LMS lesson data to AirTable**, and provide the JSON dictionary for the static GraphQL variables, with data from AirTable:
+For the action, we select the newly-created persisted query **Export MasterStudy LMS lesson data to AirTable**, and provide the JSON dictionary for the static GraphQL variables, with data from AirTable:
 
 ```json
 {
