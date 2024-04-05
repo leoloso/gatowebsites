@@ -75,7 +75,7 @@ export default function Demos() {
                       }
                     </div>
                     <h3 className="h3 text-2xl lg:text-3xl mb-2">
-                      <Link href={getDemoPostURLPath(featuredDemoPost)} className="hover:text-gray-100 transition duration-150 ease-in-out">{featuredDemoPost.title}</Link>
+                      <Link href={getDemoPostURLPath(featuredDemoPost)} className="hover:text-purple-300 transition duration-150 ease-in-out">{featuredDemoPost.title}</Link>
                     </h3>
                   </header>
                   <p className="text-lg text-gray-400 grow">{featuredDemoPost.summary}</p>

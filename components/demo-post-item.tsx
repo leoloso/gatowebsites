@@ -40,7 +40,7 @@ export default function DemoPostPostItem({
           </div>
         }
         <h3 className="h4 mb-2">
-          <Link href={getDemoPostURLPath(demoPost)} className="hover:text-gray-100 transition duration-150 ease-in-out">{demoPost.title}</Link>
+          <Link href={getDemoPostURLPath(demoPost)} className="hover:text-purple-300 transition duration-150 ease-in-out">{demoPost.title}</Link>
         </h3>
       </header>
       <p className="text-lg text-gray-400 grow">{demoPost.summary}</p>
