@@ -36,7 +36,8 @@ export default function Pricing() {
           price={0}
           description='Gato GraphQL plugin'
           buttonLabel="Download"
-          buttonURL={AppConfig.urls.wpDownload}
+          buttonURL={AppConfig.urls.wpDirectory}
+          buttonTarget="_blank"
         />
         {/* Personal price */}
         <PricingTier
