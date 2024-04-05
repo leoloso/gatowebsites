@@ -3,7 +3,7 @@ title: 'How to automatically register users who completed a lesson from Masterst
 publishedAt: '2024-04-05'
 image: '/images/thumbnails/demos/how-to-automatically-register-wordpress-users-who-completed-a-lesson-from-masterstudy-lms-on-airtable-using-gatographql.png'
 leading: Gato GraphQL automation demo
-description: 'Whenever a user completes a lessons from Masterstudy LMS on the WordPress site, send custom data (concerning the user, lesson and course) to AirTable and create records on a specified table.'
+description: 'Whenever a user completes a lesson from Masterstudy LMS on the WordPress site, send custom data (concerning the user, lesson and course) to AirTable and create records on a specified table.'
 author: 'Leonardo Losoviz'
 authorImg: '/images/leo-avatar.jpg'
 tags:
@@ -19,11 +19,25 @@ integrations:
   - { name: AirTable, image: /images/logos/airtable.svg, url: https://airtable.com }
 ---
 
-Whenever a user completes a lessons from [Masterstudy LMS](https://stylemixthemes.com/wordpress-lms-plugin/) on the WordPress site, send custom data (concerning the user, lesson and course) to AirTable and create records on a specified table.
+Whenever a user completes a lesson from **Masterstudy LMS**, we will send custom data to AirTable, and create records on a specified table.
+
+The table has columns `Name`, `URL` and `Email` from the user, and `Lesson` and `Course` from Masterstudy.
+
+The automation will be hooked on Masterstudy's action `stm_lms_lesson_passed`, which provides the following data:
 
 ```php
 do_action( 'stm_lms_lesson_passed', $user_id, $lesson_id, $course_id );
 ```
+
+The persisted query to execute will then connect to the [AirTable API](https://airtable.com/developers/web/api/introduction), create the records with the provided data.
+
+To connect to the API we need [personal access tokens](https://airtable.com/developers/web/guides/personal-access-tokens) for authentication.
+
+Make sure to create a personal access token for your table, and [assign it scope `data.records:write`](https://airtable.com/developers/web/api/create-records).
+
+In this example query, the table has columns `Name`, `URL` and `Email`, and we retrieve and send those data fields for each user.
+
+
 
 <Image
   src="/images/demos/masterstudy-lms-automation-trigger.png"
