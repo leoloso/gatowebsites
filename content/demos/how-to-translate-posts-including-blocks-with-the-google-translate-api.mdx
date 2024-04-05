@@ -1,7 +1,7 @@
 ---
 title: 'How to translate posts including blocks with the Google Translate API'
 publishedAt: '2024-04-04'
-image: '/images/thumbnails/demos/how-to-automatically-register-wordpress-users-who-completed-a-lesson-from-masterstudy-lms-on-airtable-using-gatographql.png'
+image: '/images/thumbnails/demos/how-to-translate-posts-including-blocks-with-the-google-translate-api-using-gatographql.png'
 leading: Gato GraphQL translation demo
 description: 'Translate a post to the desired language, with full support for (Gutenberg) blocks, by connecting to the Google Translate API.'
 author: 'Leonardo Losoviz'
@@ -14,6 +14,12 @@ targetImages:
 integrations: 
   - { name: Google Translate, image: /images/logos/google-translate.svg, url: https://cloud.google.com/translate/ }
 ---
+
+Gato GraphQL provides directive `@strTranslate`, which connects to the **Google Translate API** to translate the value in the corresponding field.
+
+Thanks to the ability to [retrieve block data](/guides/interact/working-with-gutenberg-blocks) and extract all properties from within the block, we are able to translate these properties, insert them back into each block, and store the post back to the DB.
+
+
 
 Whenever a user completes a lesson from **Masterstudy LMS**, we will send custom data to AirTable, and create records on a specified table.
 
