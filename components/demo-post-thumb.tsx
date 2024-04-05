@@ -17,7 +17,10 @@ export default function DemoPostThumb({
   isLandscape?: boolean,
 }) {
   return (
-    <div className={clsx("relative bg-gradient-to-tr from-blue-900 to-purple-800 h-full z-20 overflow-hidden", paddingClassname)} data-aos="zoom-out">
+    <div
+      className={clsx("relative bg-gradient-to-tr from-blue-900 to-purple-800 h-full z-20 overflow-hidden", paddingClassname)}
+      // data-aos="zoom-out"
+    >
       <Particles className="absolute inset-0 -z-10" quantity={10} />
       <div className="w-full h-full aspect-video flex items-center justify-center">
         {/* <div className="absolute right-0 top-1/2 -translate-y-1/2 mt-8 -z-10" aria-hidden="true">
