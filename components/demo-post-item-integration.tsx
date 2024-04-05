@@ -11,7 +11,9 @@ export default function DemoPostItemIntegration({
       <div className="px-4 py-6 bg-slate-800">
         <div className="sm:flex items-center space-y-3 sm:space-y-0 sm:space-x-5">
           <div className="shrink-0">
-            <img src={demoPostIntegration.image} width="56" height="56" alt={demoPostIntegration.name} />
+            <Link href={demoPostIntegration.url} target="_blank">
+              <img src={demoPostIntegration.image} width="56" height="56" alt={demoPostIntegration.name} />
+            </Link>
           </div>
           <div className="grow lg:flex items-center justify-between space-y-5 lg:space-x-2 lg:space-y-0">
             <div>
