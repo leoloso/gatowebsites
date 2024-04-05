@@ -16,3 +16,154 @@ targetImages:
   - /images/logos/airtable.svg
 ---
 
+```php
+do_action( 'stm_lms_lesson_passed', $user_id, $lesson_id, $course_id );
+```
+
+```graphql
+query ExportUserData(
+  $userId: ID!
+  $lessonId: ID!
+  $courseId: ID!
+) {
+  user(by: { id: $userId }) {
+    displayName
+      @export(as: "userDisplayName")
+    email
+      @export(as: "userEmail")
+    url
+      @export(as: "userURL")
+  }
+  course: customPost(by: {id: $courseId}, customPostTypes:["stm-courses"]) {
+    title
+      @export(as: "courseTitle")
+  }
+  lesson: customPost(by: {id: $lessonId}, customPostTypes:["stm-lessons"]) {
+    title
+      @export(as: "lessonTitle")
+  }
+}
+
+query CreateRecordInAirTable(
+  $baseId: String!
+  $tableName: String!
+  $personalAccessToken: String!
+)
+  @depends(on: "ExportUserData")
+{
+  url: _sprintf(
+    string: "https://api.airtable.com/v0/%s/%s",
+    values: [$baseId, $tableName]
+  )
+  bearerToken: _sprintf(
+    string: "Bearer %s",
+    values: [$personalAccessToken]
+  )
+    @remove
+  response: _sendJSONObjectItemHTTPRequest(input: {
+    url: $__url,
+    method: POST,
+    options: {
+      headers: [
+        {
+          name: "Authorization",
+          value: $__bearerToken
+        }
+      ]
+      json: {
+        records: [
+          {
+            fields: {
+              Name: $userDisplayName,
+              ProfileURL: $userURL,
+              Email: $userEmail,
+              Course: $courseTitle,
+              Lesson: $lessonTitle
+            }
+          }
+        ]
+      }
+    }
+  })
+}
+```
+
+<div className="aspect-video">
+  <iframe
+    className="w-full h-full"
+    src="https://player.vimeo.com/video/929862747"
+    width="640"
+    height="360"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
+This query retrieves all the users from the WordPress site, and creates records on [AirTable](https://airtable.com/), using the [AirTable API](https://airtable.com/developers/web/api/introduction) and [personal access tokens](https://airtable.com/developers/web/guides/personal-access-tokens) for authentication.
+
+Make sure to create a personal access token for your table, and [assign it scope `data.records:write`](https://airtable.com/developers/web/api/create-records).
+
+In this example query, the table has columns `Name`, `URL` and `Email`, and we retrieve and send those data fields for each user.
+
+```graphql
+query ExportUserData {
+  users {
+    displayName
+    email
+    url    
+    userEntry: _echo(value: {
+      fields: {
+        Name: $__displayName,
+        URL: $__url,
+        Email: $__email,
+      }
+    })
+      @export(as: "userEntries", type: LIST)
+      @remove
+  }
+}
+
+query CreateRecordsInAirTable(
+  $baseId: String!
+  $tableName: String!
+  $personalAccessToken: String!
+)
+  @depends(on: "ExportUserData")
+{
+  url: _sprintf(
+    string: "https://api.airtable.com/v0/%s/%s",
+    values: [$baseId, $tableName]
+  )
+  bearerToken: _sprintf(
+    string: "Bearer %s",
+    values: [$personalAccessToken]
+  )
+    @remove
+  response: _sendJSONObjectItemHTTPRequest(input: {
+    url: $__url,
+    method: POST,
+    options: {
+      headers: [
+        {
+          name: "Authorization",
+          value: $__bearerToken
+        }
+      ]
+      json: {
+        records: $userEntries
+      }
+    }
+  })
+}
+```
+
+You must provide the JSON dictionary for the following GraphQL variables:
+
+```json
+{
+  "baseId": "{ your baseId }",
+  "tableName": "{ your tableName }",
+  "personalAccessToken": "{ your access token }"
+}
+```
