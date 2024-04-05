@@ -24,6 +24,7 @@ export default function DemoPostPostItem({ demoPost }: {
           <DemoPostThumb
             demoPost={demoPost}
             paddingClassname=""
+            isLandscape={true}
           />
         </Link>
         {demoPost.tags &&
