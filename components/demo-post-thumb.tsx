@@ -65,13 +65,13 @@ export default function DemoPostThumb({
           </svg>
         </div>
         <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && "h-64")}>
-          <div className='shrink'>
-            <Image src={Logo} className={clsx("m-4", !isLandscape &&  'mb-2 md:mb-4', isLandscape &&  'mr-2 md:mr-4')} alt={demoPost.title} width={250} height={175} />
+          <div className={clsx("shrink", !isLandscape && "m-4")}>
+            <Image src={Logo} className={clsx(!isLandscape && 'mb-2 md:mb-4', isLandscape &&  'mr-2 md:mr-4')} alt={demoPost.title} width={250} height={175} />
           </div>
           <Image src={PlusImage} className={clsx("flex-none", !isLandscape &&  'my-2 md:my-4', isLandscape &&  'mx-2 md:mx-4')} width={30} height={30} alt="plus image" />
-          <div className={clsx("shrink flex items-center justify-center", !isLandscape &&  "gap-3 sm:gap-6 md:gap-12 lg:gap-24 mt-2 md:mt-4", isLandscape &&  "flex-col gap-2 sm:gap-3 md:gap-6 lg:gap-12 ml-2 md:ml-4")}>
+          <div className={clsx("shrink flex items-center justify-center", !isLandscape &&  "gap-3 sm:gap-6 md:gap-12 lg:gap-24 m-4 mt-2 md:mt-4", isLandscape &&  "flex-col")}>
             {demoPost.targetImages.map((targetImageSrc, index) => (
-              <Image className='m-4' key={index} src={targetImageSrc} alt="Target Image" width={175} height={175} />
+              <Image key={index} src={targetImageSrc} alt="Target Image" width={175} height={175} />
             ))}
           </div>
         </div>
