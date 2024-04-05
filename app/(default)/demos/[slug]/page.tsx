@@ -13,6 +13,7 @@ import { getPrevNextArticles } from '@/utils/content/document'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import DemoPostThumb from '@/components/demo-post-thumb'
 import PageHeader from '@/components/page-header'
+import DemoPostIntegration from '@/components/demo-post-integration'
 
 export async function generateStaticParams() {
   return allDemoPosts.map((demoPost) => ({
@@ -102,6 +103,18 @@ export default async function SingleDemoPost({ params }: {
                 <div className="mb-8 lg:-ml-32 lg:-mr-32">
                   <DemoPostThumb demoPost={demoPost} />
                 </div>
+
+                {!! demoPost.integrations && (
+                  <div className="mb-8">
+                    <h4 className="text-2xl font-bold font-inter mb-8">Integrations with</h4>
+                    {/* List container */}
+                    <div className="flex flex-col border-t border-gray-200">
+                      {demoPost.integrations.map((integration, index) => (
+                        <DemoPostIntegration key={index} {...integration} />
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Article content */}
                 <PostMdx code={demoPost.body.code} />
