@@ -105,7 +105,7 @@ query CreateRecordInAirTable(
 }
 ```
 
-The persisted query will receive the parameters from the Masterstudy LMS action hook `stm_lms_lesson_passed` (see below), and retrieve all associated data with them:
+The persisted query will receive the parameters from Masterstudy LMS' action hook `stm_lms_lesson_passed` (see below), and retrieve all associated data with them:
 
 - The user's name, email and URL
 - The lesson's title
@@ -117,13 +117,13 @@ To connect to the API we need [personal access tokens](https://airtable.com/deve
 
 Next, we [create a new automation](/guides/manage/automating-tasks), providing Masterstudy's action `stm_lms_lesson_passed` as the trigger.
 
-This action provides the following data:
+This action hook provides the following data:
 
 ```php
 do_action( 'stm_lms_lesson_passed', $user_id, $lesson_id, $course_id );
 ```
 
-And we provide the JSON for the dynamic variables, to retrieve all three parameters in the action:
+We must also provide the JSON dictionary for the dynamic variables, to pass all three parameters from the action as variables to the GraphQL query:
 
 ```json
 {
@@ -141,7 +141,7 @@ And we provide the JSON for the dynamic variables, to retrieve all three paramet
   caption="Automation trigger"
 />
 
-For the action, we select the newly-created persisted query **Export Masterstudy LMS lesson data to AirTable**, and provide the JSON dictionary for the static GraphQL variables with data from AirTable:
+For the action, we select the newly-created persisted query **Export Masterstudy LMS lesson data to AirTable**, and provide the JSON dictionary for the static GraphQL variables, with data from AirTable:
 
 ```json
 {
@@ -159,7 +159,7 @@ For the action, we select the newly-created persisted query **Export Masterstudy
   caption="Automation action"
 />
 
-Now, whenever the user completes a lesson, the AirTable table is automatically populated:
+Finally publish the automation. From now on, whenever the user completes a lesson, the AirTable table is automatically populated:
 
 <div className="aspect-video lg:-ml-32 lg:-mr-32">
   <iframe
