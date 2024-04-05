@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { allDemoPosts, DemoPost } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from '@/components/post-tags'
@@ -13,7 +12,7 @@ import { getPrevNextArticles } from '@/utils/content/document'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import DemoPostThumb from '@/components/demo-post-thumb'
 import PageHeader from '@/components/page-header'
-import DemoPostIntegration from '@/components/demo-post-integration'
+import DemoPostItemIntegration from '@/components/demo-post-item-integration'
 
 export async function generateStaticParams() {
   return allDemoPosts.map((demoPost) => ({
@@ -110,7 +109,7 @@ export default async function SingleDemoPost({ params }: {
                     {/* List container */}
                     <div className="flex flex-col border-t border-gray-200">
                       {demoPost.integrations.map((integration, index) => (
-                        <DemoPostIntegration key={index} {...integration} />
+                        <DemoPostItemIntegration key={index} {...integration} />
                       ))}
                     </div>
                   </div>
