@@ -43,7 +43,7 @@ const BlogPost = defineDocumentType(() => ({
       type: 'date',
       required: true
     },
-    summary: {
+    description: {
       type: 'string',
       required: true,
     },

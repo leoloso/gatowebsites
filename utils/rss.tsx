@@ -31,7 +31,7 @@ export default async function generateRssFeed() {
       title: post.title,
       id: slugify(getBlogPostURL(post)),
       link: getBlogPostURL(post),
-      description: post.summary,
+      description: post.description,
       date: new Date(post.publishedAt),
       ...(post.image ? {image: maybeAddDomain(post.image)} : {})
     });

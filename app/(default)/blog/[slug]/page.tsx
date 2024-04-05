@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: {
 
   if (!blogPosts) return
 
-  const { title, summary: description } = blogPosts
+  const { title, description } = blogPosts
 
   return {
     title,
@@ -78,7 +78,7 @@ export default async function SinglePost({ params }: {
         headline={blogPost.title}
         url={getBlogPostURL(blogPost)}
         image={blogPost.image}
-        description={blogPost.summary}
+        description={blogPost.description}
         datePublished={blogPost.publishedAt}
       />
 
