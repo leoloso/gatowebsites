@@ -21,6 +21,20 @@ integrations:
 
 Whenever a user completes a lesson from **Masterstudy LMS**, we will send custom data to AirTable, and create records on a specified table.
 
+In this video, the user completes two lessons from a course from the LMS. When each lesson is completed, a Gato GraphQL automation will create a record in AirTable with the required data:
+
+<div className="aspect-video lg:-ml-32 lg:-mr-32">
+  <iframe
+    className="w-full h-full"
+    src="https://player.vimeo.com/video/929862747"
+    width="640"
+    height="360"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
 The table has columns `Name`, `ProfileURL` and `Email` with data from the user, and `Course` and `Lesson` from the LMS.
 
 <div className="lg:-ml-16 lg:-mr-16">
@@ -159,17 +173,4 @@ For the action, we select the newly-created persisted query **Export Masterstudy
   caption="Automation action"
 />
 
-Finally publish the automation. From now on, whenever the user completes a lesson, the AirTable table is automatically populated:
-
-<div className="aspect-video lg:-ml-32 lg:-mr-32">
-  <iframe
-    className="w-full h-full"
-    src="https://player.vimeo.com/video/929862747"
-    width="640"
-    height="360"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowFullScreen
-  >
-  </iframe>
-</div>
-
+Finally publish the automation. From now on, whenever the user completes a lesson, the AirTable table will be automatically populated.

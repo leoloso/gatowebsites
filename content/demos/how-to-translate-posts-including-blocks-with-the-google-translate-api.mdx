@@ -15,6 +15,23 @@ integrations:
   - { name: Google Translate, image: /images/logos/google-translate.svg, url: https://cloud.google.com/translate/ }
 ---
 
+We can use Gato GraphQL to translate posts using the **Google Translate API**, translating all the properties within the blocks in the post.
+
+In this video, a post in English is open in the WordPress editor. When executing the GraphQL query, all properties for every block in the post are translated to Spanish:
+
+<div className="aspect-video lg:-ml-32 lg:-mr-32">
+  <iframe
+    className="w-full h-full"
+    src="https://player.vimeo.com/video/836876255"
+    width="640"
+    height="360"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
+
 Gato GraphQL provides directive [`@strTranslate`](/extensions-reference/google-translate), which connects to the **Google Translate API** to translate the value in the corresponding field.
 
 Thanks to the ability to [retrieve block data](/guides/interact/working-with-gutenberg-blocks) and extract all properties from within the block, we are able to translate block properties, insert them back into each block, and store the post back to the DB.
@@ -1229,16 +1246,4 @@ For instance:
 }
 ```
 
-When executing the query, the post will be translated. You can then open it again the WordPress editor, and keep editing it:
-
-<div className="aspect-video lg:-ml-32 lg:-mr-32">
-  <iframe
-    className="w-full h-full"
-    src="https://player.vimeo.com/video/836876255"
-    width="640"
-    height="360"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowFullScreen
-  >
-  </iframe>
-</div>
+When executing the query, the post will be translated. You can then open it again the WordPress editor, and keep editing it.
