@@ -14,6 +14,7 @@ import Logo from '@/public/assets/GatoGraphQL-logo-suki.png'
 import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
 import RelatedPosts from './related-posts'
 import Particles from '@/components/particles'
+import VsImage from '@/public/assets/theme/vs.svg'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({
@@ -95,8 +96,8 @@ export default async function SingleComparisonPost({ params }: {
                         <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none" data-aos="fade-up" data-aos-delay="200">
                           <Image src={Logo} alt={comparisonPost.title} width={300} height={300} />
                         </div>
-                        <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center font-medium font-inter antialiased text-slate-100 tracking-tight mx-4 sm:mx-8 sm:mx-16 lg:mx-24">
-                          vs
+                        <div className="mx-4 sm:mx-8 sm:mx-16 lg:mx-24">
+                          <Image src={VsImage} width={30} height={30} alt="plus image" />
                         </div>
                         <div className="max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-none" data-aos="fade-up" data-aos-delay="200">
                           <Image src={comparisonPost.targetImage} alt={comparisonPost.title} width={300} height={300} />
