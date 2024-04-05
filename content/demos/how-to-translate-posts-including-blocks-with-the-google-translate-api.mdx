@@ -1,0 +1,171 @@
+---
+title: 'How to translate posts including blocks with the Google Translate API'
+publishedAt: '2024-04-04'
+image: '/images/thumbnails/demos/how-to-automatically-register-wordpress-users-who-completed-a-lesson-from-masterstudy-lms-on-airtable-using-gatographql.png'
+leading: Gato GraphQL translation demo
+description: 'Translate a post to the desired language, with full support for (Gutenberg) blocks, by connecting to the Google Translate API.'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - translation
+  - google translate
+targetImages:
+  - /images/logos/google-translate.svg
+integrations: 
+  - { name: Google Translate, image: /images/logos/google-translate.svg, url: https://cloud.google.com/translate/ }
+---
+
+Whenever a user completes a lesson from **Masterstudy LMS**, we will send custom data to AirTable, and create records on a specified table.
+
+The table has columns `Name`, `ProfileURL` and `Email` with data from the user, and `Course` and `Lesson` from the LMS.
+
+<div className="lg:-ml-16 lg:-mr-16">
+
+  <Image
+    src="/images/demos/airtable-table-with-masterstudy-lms-user-data.png"
+    width="1024"
+    height="340"
+    alt="Table in AirTable with LMS data"
+    caption="Table in AirTable with LMS data"
+  />
+
+</div>
+
+[Create a persisted query](/guides/use/creating-a-persisted-query) containing the following GraphQL query, and give it title **Export Masterstudy LMS lesson data to AirTable**:
+
+```graphql
+query ExportUserData(
+  $userId: ID!
+  $lessonId: ID!
+  $courseId: ID!
+) {
+  user(by: { id: $userId }) {
+    displayName
+      @export(as: "userDisplayName")
+    email
+      @export(as: "userEmail")
+    url
+      @export(as: "userURL")
+  }
+  course: customPost(by: {id: $courseId}, customPostTypes:["stm-courses"]) {
+    title
+      @export(as: "courseTitle")
+  }
+  lesson: customPost(by: {id: $lessonId}, customPostTypes:["stm-lessons"]) {
+    title
+      @export(as: "lessonTitle")
+  }
+}
+
+query CreateRecordInAirTable(
+  $baseId: String!
+  $tableName: String!
+  $personalAccessToken: String!
+)
+  @depends(on: "ExportUserData")
+{
+  url: _sprintf(
+    string: "https://api.airtable.com/v0/%s/%s",
+    values: [$baseId, $tableName]
+  )
+  bearerToken: _sprintf(
+    string: "Bearer %s",
+    values: [$personalAccessToken]
+  )
+    @remove
+  response: _sendJSONObjectItemHTTPRequest(input: {
+    url: $__url,
+    method: POST,
+    options: {
+      headers: [
+        {
+          name: "Authorization",
+          value: $__bearerToken
+        }
+      ]
+      json: {
+        records: [
+          {
+            fields: {
+              Name: $userDisplayName,
+              ProfileURL: $userURL,
+              Email: $userEmail,
+              Course: $courseTitle,
+              Lesson: $lessonTitle
+            }
+          }
+        ]
+      }
+    }
+  })
+}
+```
+
+The persisted query will receive the parameters from Masterstudy LMS' action hook `stm_lms_lesson_passed` (see below), and retrieve all associated data with them:
+
+- The user's name, email and URL
+- The lesson's title
+- The courses's title
+
+Then, it will connect to the [AirTable API](https://airtable.com/developers/web/api/introduction), and create the records with the provided data.
+
+To connect to the API we need [personal access tokens](https://airtable.com/developers/web/guides/personal-access-tokens) for authentication. So make sure to create a personal access token for your table, and [assign it scope `data.records:write`](https://airtable.com/developers/web/api/create-records).
+
+Next, we [create a new automation](/guides/manage/automating-tasks), providing Masterstudy's action `stm_lms_lesson_passed` as the trigger.
+
+This action hook provides the following data:
+
+```php
+do_action( 'stm_lms_lesson_passed', $user_id, $lesson_id, $course_id );
+```
+
+We must also provide the JSON dictionary for the dynamic variables, to pass all three parameters from the action as variables to the GraphQL query:
+
+```json
+{
+  "userId": 1,
+  "lessonId": 2,
+  "courseId": 3
+}
+```
+
+<Image
+  src="/images/demos/masterstudy-lms-automation-trigger.png"
+  width="570"
+  height="360"
+  alt="Automation trigger"
+  caption="Automation trigger"
+/>
+
+For the action, we select the newly-created persisted query **Export Masterstudy LMS lesson data to AirTable**, and provide the JSON dictionary for the static GraphQL variables, with data from AirTable:
+
+```json
+{
+  "baseId": "{ your baseId }",
+  "tableName": "{ your tableName }",
+  "personalAccessToken": "{ your access token }"
+}
+```
+
+<Image
+  src="/images/demos/masterstudy-lms-automation-action.png"
+  width="550"
+  height="390"
+  alt="Automation action"
+  caption="Automation action"
+/>
+
+Finally publish the automation. From now on, whenever the user completes a lesson, the AirTable table is automatically populated:
+
+<div className="aspect-video lg:-ml-32 lg:-mr-32">
+  <iframe
+    className="w-full h-full"
+    src="https://player.vimeo.com/video/929862747"
+    width="640"
+    height="360"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
