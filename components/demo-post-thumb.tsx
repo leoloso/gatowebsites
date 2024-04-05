@@ -68,7 +68,7 @@ export default function DemoPostThumb({
           <div className={clsx("shrink", !isLandscape && "mb-2 md:mb-4", isLandscape &&  'mr-2 md:mr-4')}>
             <Image src={Logo} alt={demoPost.title} width={250} height={175} />
           </div>
-          <Image src={PlusImage} className="flex-none m-2 md:m-4" width={30} height={30} alt="plus image" />
+          <Image src={PlusImage} className="flex-none mx-2 my-4" width={30} height={30} alt="plus image" />
           <div className={clsx("flex items-center justify-center", !isLandscape &&  "gap-6 sm:gap-12 mt-2 md:mt-4", isLandscape &&  "flex-col ml-2 md:ml-4")}>
             {demoPost.targetImages.map((targetImageSrc, index) => (
               <div key={index}>
