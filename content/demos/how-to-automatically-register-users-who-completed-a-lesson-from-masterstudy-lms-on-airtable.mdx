@@ -21,50 +21,9 @@ integrations:
 
 Whenever a user completes a lesson from **Masterstudy LMS**, we will send custom data to AirTable, and create records on a specified table.
 
-The table has columns `Name`, `URL` and `Email` from the user, and `Lesson` and `Course` from Masterstudy.
+The table has columns `Name`, `URL` and `Email` with data from the user, and `Lesson` and `Course` from Masterstudy.
 
-We must [create a new automation](/guides/manage/automating-tasks), providing Masterstudy's action `stm_lms_lesson_passed` as the trigger.
-
-This action provides the following data:
-
-```php
-do_action( 'stm_lms_lesson_passed', $user_id, $lesson_id, $course_id );
-```
-
-And we retrieve all three parameters in the action:
-
-<Image
-  src="/images/demos/masterstudy-lms-automation-trigger.png"
-  width="570"
-  height="360"
-  alt="Automation trigger"
-  caption="Automation trigger"
-/>
-
-The persisted query to execute will connect to the [AirTable API](https://airtable.com/developers/web/api/introduction), create the records with the provided data.
-
-To connect to the API we need [personal access tokens](https://airtable.com/developers/web/guides/personal-access-tokens) for authentication.
-
-Make sure to create a personal access token for your table, and [assign it scope `data.records:write`](https://airtable.com/developers/web/api/create-records).
-
-You must provide the JSON dictionary for the following GraphQL variables:
-
-```json
-{
-  "baseId": "{ your baseId }",
-  "tableName": "{ your tableName }",
-  "personalAccessToken": "{ your access token }"
-}
-```
-
-<Image
-  src="/images/demos/masterstudy-lms-automation-action.png"
-  width="550"
-  height="390"
-  alt="Automation action"
-  caption="Automation action"
-/>
-
+[Create a persisted query](/guides/use/creating-a-persisted-query) with the following GraphQL query, and title **Export Masterstudy LMS lesson data to AirTable**:
 
 ```graphql
 query ExportUserData(
@@ -133,6 +92,62 @@ query CreateRecordInAirTable(
   })
 }
 ```
+
+The persisted query will receive the parameters from the Masterstudy LMS action hook `stm_lms_lesson_passed` (see below), and retrieve all associated data with them:
+
+- The user's name, email and URL
+- The lesson's title
+- The courses's title
+
+Then, it will connect to the [AirTable API](https://airtable.com/developers/web/api/introduction), and create the records with the provided data.
+
+To connect to the API we need [personal access tokens](https://airtable.com/developers/web/guides/personal-access-tokens) for authentication. So make sure to create a personal access token for your table, and [assign it scope `data.records:write`](https://airtable.com/developers/web/api/create-records).
+
+Next, we [create a new automation](/guides/manage/automating-tasks), providing Masterstudy's action `stm_lms_lesson_passed` as the trigger.
+
+This action provides the following data:
+
+```php
+do_action( 'stm_lms_lesson_passed', $user_id, $lesson_id, $course_id );
+```
+
+And we provide the JSON for the dynamic variables, to retrieve all three parameters in the action:
+
+```json
+{
+  "userId": 1,
+  "lessonId": 2,
+  "courseId": 3
+}
+```
+
+<Image
+  src="/images/demos/masterstudy-lms-automation-trigger.png"
+  width="570"
+  height="360"
+  alt="Automation trigger"
+  caption="Automation trigger"
+/>
+
+For the action, we select the newly-created persisted query **Export Masterstudy LMS lesson data to AirTable**, and provide the JSON dictionary for the static GraphQL variables with data from AirTable:
+
+```json
+{
+  "baseId": "{ your baseId }",
+  "tableName": "{ your tableName }",
+  "personalAccessToken": "{ your access token }"
+}
+```
+
+<Image
+  src="/images/demos/masterstudy-lms-automation-action.png"
+  width="550"
+  height="390"
+  alt="Automation action"
+  caption="Automation action"
+/>
+
+Now, whenever the user completes a lesson, the AirTable table is automatically populated:
 
 <div className="aspect-video">
   <iframe
