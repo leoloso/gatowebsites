@@ -10,15 +10,17 @@ import clsx from 'clsx';
 export default function DemoPostThumb({
   demoPost,
   paddingClassname = "py-10 px-8 md:py-16 md:px-12",
+  bgClassname = "bg-gradient-to-tr from-blue-900 to-purple-800",
   isLandscape = false,
 }: {
   demoPost: DemoPost,
   paddingClassname?: string,
+  bgClassname?: string,
   isLandscape?: boolean,
 }) {
   return (
     <div
-      className={clsx("relative bg-gradient-to-tr from-blue-900 to-purple-800 h-full z-20 overflow-hidden", paddingClassname)}
+      className={clsx("relative h-full z-20 overflow-hidden", bgClassname, paddingClassname)}
       // data-aos="zoom-out"
     >
       <Particles className="absolute inset-0 -z-10" quantity={10} />

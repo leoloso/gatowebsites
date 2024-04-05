@@ -1,13 +1,16 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from './post-tags'
 import { DemoPost } from '@/.contentlayer/generated'
 import { getDemoPostURLPath } from '@/utils/content/application-urls'
 import DemoPostThumb from './demo-post-thumb'
 
-export default function DemoPostPostItem({ demoPost }: {
+export default function DemoPostPostItem({
+  demoPost,
+  bgClassname,
+}: {
   demoPost: DemoPost,
+  bgClassname?: string,
 }) {
   return (
     // @todo Remove AOS!?
@@ -25,6 +28,7 @@ export default function DemoPostPostItem({ demoPost }: {
             demoPost={demoPost}
             paddingClassname=""
             isLandscape={true}
+            bgClassname={bgClassname}
           />
         </Link>
         {demoPost.tags &&
