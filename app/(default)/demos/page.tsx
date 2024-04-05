@@ -44,6 +44,7 @@ export default function Demos() {
             <PageHeader
               leading="Hands-on videos demonstrating Gato GraphQL"
               title="Gato GraphQL demos"
+              description='Learn how Gato GraphQL can be used for many use cases, and how to do it by yourself'
               headerClassname="md:text-left mx-0"
             />
 
