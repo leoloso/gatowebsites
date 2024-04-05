@@ -16,6 +16,8 @@ targetImages:
   - /images/logos/airtable.svg
 ---
 
+Whenever a user completes a lessons from [Masterstudy LMS](https://stylemixthemes.com/wordpress-lms-plugin/) on the WordPress site, send custom data (concerning the user, lesson and course) to AirTable and create records on a specified table.
+
 ```php
 do_action( 'stm_lms_lesson_passed', $user_id, $lesson_id, $course_id );
 ```
