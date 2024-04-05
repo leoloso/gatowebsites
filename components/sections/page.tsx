@@ -33,11 +33,9 @@ export default function PageSection({
                   <div className="md:flex md:items-center md:justify-between mt-3">
                     {/* Author meta */}
                     <div className="flex items-center justify-center">
-                      {/* <Link href="#">
-                        <Image className="rounded-full shrink-0 mr-4" src={post.authorImg} width={40} height={40} alt={post.author} />
-                      </Link> */}
+                      {/* <Image className="rounded-full shrink-0 mr-4" src={post.authorImg} width={40} height={40} alt={post.author} /> */}
                       <div>
-                        {/* <Link href="#" className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">{post.author}</Link> */}
+                        {/* <span className="font-medium text-gray-200">{post.author}</span> */}
                         {/* <span className="text-gray-700"> - </span> */}
                         <span className="text-gray-500">Date last modification: <PostDate dateString={page.lastModifiedAt} /></span>
                       </div>

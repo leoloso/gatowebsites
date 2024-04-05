@@ -80,11 +80,9 @@ export default function Demos() {
                   </header>
                   <p className="text-lg text-gray-400 grow">{featuredDemoPost.summary}</p>
                   <footer className="flex items-center mt-4">
-                    <Link href="#">
-                      <img className="rounded-full shrink-0 mr-4" src={featuredDemoPost.authorImg} width={40} height={40} alt={featuredDemoPost.author} />
-                    </Link>
+                    <img className="rounded-full shrink-0 mr-4" src={featuredDemoPost.authorImg} width={40} height={40} alt={featuredDemoPost.author} />
                     <div>
-                      <Link href="#" className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">{featuredDemoPost.author}</Link>
+                      <span className="font-medium text-gray-200">{featuredDemoPost.author}</span>
                       <span className="text-gray-700"> - </span>
                       <span className="text-gray-500"><PostDate dateString={featuredDemoPost.publishedAt} /></span>
                     </div>

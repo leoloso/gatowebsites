@@ -74,11 +74,9 @@ export default async function SingleDemoPost({ params }: {
                   <div className="md:flex md:items-center md:justify-between mt-3">
                     {/* Author meta */}
                     <div className="flex items-center justify-center" data-aos="fade-up" data-aos-delay="400">
-                      <Link href="#">
-                        <Image className="rounded-full shrink-0 mr-4" src={demoPost.authorImg} width={40} height={40} alt={demoPost.author} />
-                      </Link>
+                      <Image className="rounded-full shrink-0 mr-4" src={demoPost.authorImg} width={40} height={40} alt={demoPost.author} />
                       <div>
-                        <Link href="#" className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">{demoPost.author}</Link>
+                        <span className="font-medium text-gray-200">{demoPost.author}</span>
                         <span className="text-gray-700"> - </span>
                         <span className="text-gray-500"><PostDate dateString={demoPost.publishedAt} /></span>
                       </div>
