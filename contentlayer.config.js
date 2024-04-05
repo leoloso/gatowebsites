@@ -130,7 +130,11 @@ const DemoPost = defineDocumentType(() => ({
       type: 'date',
       required: true
     },
-    summary: {
+    leading: {
+      type: 'string',
+      required: true,
+    },
+    description: {
       type: 'string',
       required: true,
     },

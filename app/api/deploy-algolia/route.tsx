@@ -89,7 +89,7 @@ async function getAllDemoPostsTransformed(): Promise<SearchObject[]> {
   return (
     allDemoPosts?.map((demoPost) => getStructuredDataObject(
       demoPost.title,
-      demoPost.summary,
+      demoPost.description,
       getBlogPostURLPath(demoPost),
       demoPost.slug,
       demoPost.body.raw,

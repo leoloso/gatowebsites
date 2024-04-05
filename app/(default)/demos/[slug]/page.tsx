@@ -12,6 +12,7 @@ import ArticleNavigation from '@/components/ui/article-navigation'
 import { getPrevNextArticles } from '@/utils/content/document'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import DemoPostThumb from '@/components/demo-post-thumb'
+import PageHeader from '@/components/page-header'
 
 export async function generateStaticParams() {
   return allDemoPosts.map((demoPost) => ({
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: {
 
   if (!demoPost) return
 
-  const { title, summary: description } = demoPost
+  const { title, description } = demoPost
 
   return {
     title,
@@ -66,10 +67,11 @@ export default async function SingleDemoPost({ params }: {
 
                 <header className="mb-8">
                   {/* Title and excerpt */}
-                  <div className="text-center md:text-left">
-                    <h1 className="h1 mb-4" data-aos="fade-up">{demoPost.title}</h1>
-                    <p className="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="200">{demoPost.summary}</p>
-                  </div>
+                  <PageHeader
+                    {...demoPost}
+                    headerClassname="md:text-left"
+                  />
+
                   {/* Article meta */}
                   <div className="md:flex md:items-center md:justify-between mt-3">
                     {/* Author meta */}

@@ -43,7 +43,7 @@ export default function DemoPostPostItem({
           <Link href={getDemoPostURLPath(demoPost)} className="hover:text-purple-300 transition duration-150 ease-in-out">{demoPost.title}</Link>
         </h3>
       </header>
-      <p className="text-lg text-gray-400 grow">{demoPost.summary}</p>
+      <p className="text-lg text-gray-400 grow">{demoPost.description}</p>
       <footer className="flex items-center mt-4">
         <img className="rounded-full shrink-0 mr-4" src={demoPost.authorImg} width={40} height={40} alt={demoPost.author} />
         <div className="font-medium">
