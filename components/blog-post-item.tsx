@@ -5,7 +5,7 @@ import { BlogPost } from '@/.contentlayer/generated'
 import { getBlogPostURLPath } from '@/utils/content/application-urls'
 import PostTags from './post-tags'
 
-export default function PostItem({ post }: {
+export default function BlogPostItem({ post }: {
   post: BlogPost
 }) {
   return (

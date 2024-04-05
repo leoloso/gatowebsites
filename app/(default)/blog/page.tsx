@@ -1,5 +1,5 @@
 import { allBlogPosts } from 'contentlayer/generated'
-import PostItem from '@/components/post-item'
+import BlogPostItem from '@/components/blog-post-item'
 import PopularPosts from './popular-posts'
 import Topics from './topics'
 import StunningBackground from '@/components/stunning-background'
@@ -43,7 +43,7 @@ export default function Blog() {
               {/* Articles container */}
               <div className="md:grow -mt-4">
                 {blogPosts.map((blogPost, index) => (
-                  <PostItem key={index} post={blogPost} />
+                  <BlogPostItem key={index} post={blogPost} />
                 ))}
               </div>
 
