@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { allDemoPosts, DemoPost } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from '@/components/post-tags'
@@ -12,6 +11,8 @@ import ArticleNavigation from '@/components/ui/article-navigation'
 import { getPrevNextArticles } from '@/utils/content/document'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import DemoPostThumb from '@/components/demo-post-thumb'
+import PageHeader from '@/components/page-header'
+import DemoPostItemIntegration from '@/components/demo-post-item-integration'
 
 export async function generateStaticParams() {
   return allDemoPosts.map((demoPost) => ({
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: {
 
   if (!demoPost) return
 
-  const { title, summary: description } = demoPost
+  const { title, description } = demoPost
 
   return {
     title,
@@ -66,10 +67,11 @@ export default async function SingleDemoPost({ params }: {
 
                 <header className="mb-8">
                   {/* Title and excerpt */}
-                  <div className="text-center md:text-left">
-                    <h1 className="h1 mb-4" data-aos="fade-up">{demoPost.title}</h1>
-                    <p className="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="200">{demoPost.summary}</p>
-                  </div>
+                  <PageHeader
+                    {...demoPost}
+                    headerClassname="md:text-left"
+                  />
+
                   {/* Article meta */}
                   <div className="md:flex md:items-center md:justify-between mt-3">
                     {/* Author meta */}
@@ -100,6 +102,18 @@ export default async function SingleDemoPost({ params }: {
                 <div className="mb-8 lg:-ml-32 lg:-mr-32">
                   <DemoPostThumb demoPost={demoPost} />
                 </div>
+
+                {!! demoPost.integrations && (
+                  <div className="mb-8">
+                    <h4 className="text-2xl font-bold font-inter mb-8">Integrations</h4>
+                    {/* List container */}
+                    <div className="flex flex-col border-t border-gray-200">
+                      {demoPost.integrations.map((integration, index) => (
+                        <DemoPostItemIntegration key={index} {...integration} />
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Article content */}
                 <PostMdx code={demoPost.body.code} />

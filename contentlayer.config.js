@@ -130,7 +130,11 @@ const DemoPost = defineDocumentType(() => ({
       type: 'date',
       required: true
     },
-    summary: {
+    leading: {
+      type: 'string',
+      required: true,
+    },
+    description: {
       type: 'string',
       required: true,
     },
@@ -153,13 +157,35 @@ const DemoPost = defineDocumentType(() => ({
       type: 'list',
       of: { type: 'string' },
       required: true,
-    },     
+    },   
+    integrations: {
+      type: 'list',
+      of: DemoPostIntegration,
+    },  
   },
   computedFields: {
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.demoPosts + '/?'), ''),
     },    
+  },
+}))
+
+const DemoPostIntegration = defineNestedType(() => ({
+  name: 'DemoPostIntegration',
+  fields: {
+    name: {
+      type: 'string',
+      required: true
+    },
+    image: {
+      type: 'string',
+      required: true
+    }, 
+    url: {
+      type: 'string',
+      required: true
+    },  
   },
 }))
 
