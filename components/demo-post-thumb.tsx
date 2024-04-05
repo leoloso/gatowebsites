@@ -64,12 +64,12 @@ export default function DemoPostThumb({
             </g>
           </svg>
         </div>
-        <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && "h-64")}>
+        <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col")}>
           <div className={clsx("shrink", !isLandscape && "mb-2 md:mb-4", isLandscape &&  'mr-2 md:mr-4')}>
             <Image src={Logo} alt={demoPost.title} width={250} height={175} />
           </div>
           <Image src={PlusImage} className="flex-none m-2 md:m-4" width={30} height={30} alt="plus image" />
-          <div className={clsx("w-full flex items-center justify-between", !isLandscape &&  "gap-6 sm:gap-12 mt-2 md:mt-4", isLandscape &&  "flex-col ml-2 md:ml-4")}>
+          <div className={clsx("flex items-center justify-center", !isLandscape &&  "gap-6 sm:gap-12 mt-2 md:mt-4", isLandscape &&  "flex-col ml-2 md:ml-4 h-64 w-64")}>
             {demoPost.targetImages.map((targetImageSrc, index) => (
               <div key={index}>
                 <Image src={targetImageSrc} alt="Target Image" width={175} height={175} />
