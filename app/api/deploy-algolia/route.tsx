@@ -14,6 +14,7 @@ import {
   getExtensionURLPath,
   getFeatureURLPath,
   getBlogPostURLPath,
+  getDemoPostURLPath,
   getComparisonPostURLPath,
 } from "@/utils/content/application-urls"
 import { isAdminUser } from "@/utils/admin"
@@ -90,7 +91,7 @@ async function getAllDemoPostsTransformed(): Promise<SearchObject[]> {
     allDemoPosts?.map((demoPost) => getStructuredDataObject(
       demoPost.title,
       demoPost.description,
-      getBlogPostURLPath(demoPost),
+      getDemoPostURLPath(demoPost),
       demoPost.slug,
       demoPost.body.raw,
       Sections.Demos
