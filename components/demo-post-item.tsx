@@ -24,13 +24,15 @@ export default function DemoPostPostItem({
           </Link>
         } */}
         <Link href={getDemoPostURLPath(demoPost)} className="block mb-6">
-          <div className='transform hover:scale-105 transition duration-700 ease-out'>
-            <DemoPostThumb
-              demoPost={demoPost}
-              paddingClassname=""
-              isLandscape={true}
-              bgClassname={bgClassname}
-            />
+          <div className='relative h-0 pb-[56.25%] overflow-hidden rounded-sm'>
+            <div className='absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out'>
+              <DemoPostThumb
+                demoPost={demoPost}
+                paddingClassname=""
+                isLandscape={true}
+                bgClassname={bgClassname}
+              />
+            </div>
           </div>
         </Link>
         {demoPost.tags &&
