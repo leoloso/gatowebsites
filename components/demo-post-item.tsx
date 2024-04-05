@@ -24,7 +24,7 @@ export default function DemoPostPostItem({
           </Link>
         } */}
         <Link href={getDemoPostURLPath(demoPost)} className="block mb-6">
-          <div className='inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out'>
+          <div className='transform hover:scale-105 transition duration-700 ease-out'>
             <DemoPostThumb
               demoPost={demoPost}
               paddingClassname=""
