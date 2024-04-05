@@ -13,6 +13,7 @@ import Pagination from '@/components/pagination'
 import AppSettings from '@/app/app.settings'
 
 import DemoPostList from '@/components/demo-post-list'
+import DemoPostThumb from '@/components/demo-post-thumb'
 
 export const metadata = {
   title: 'Demos - Gato GraphQL',
@@ -41,8 +42,9 @@ export default function Demos() {
 
             {/*  Page header */}
             <PageHeader
-              leading="Gato GraphQL demos"
-              title="Learn how to use Gato GraphQL with videos"
+              leading="Hands-on videos demonstrating Gato GraphQL"
+              title="Gato GraphQL demos"
+              description='Learn how Gato GraphQL can be used for many use cases, and how to do it by yourself'
               headerClassname="md:text-left mx-0"
             />
 
@@ -50,12 +52,18 @@ export default function Demos() {
             <div className="pb-12 md:pb-20">
               <article className="max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
                 <Link href={getDemoPostURLPath(featuredDemoPost)} className="relative block group" data-aos="fade-right" data-aos-delay="200">
-                  <div className="absolute inset-0 bg-gray-800 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
-                  {featuredDemoPost.image &&
+                  <div className="absolute inset-0 bg-gray-700 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
+                  {/* {featuredDemoPost.image &&
                     <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[56.25%] overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
                       <Image className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out" src={featuredDemoPost.image} width="540" height="303" alt={featuredDemoPost.title} />
                     </figure>
-                  }
+                  } */}
+                  <div className="relative overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
+                    <DemoPostThumb
+                      demoPost={featuredDemoPost}
+                      paddingClassname="py-5 px-4 md:py-8 md:px-6"
+                    />
+                  </div>
                 </Link>
                 <div data-aos="fade-left" data-aos-delay="200">
                   <header>
@@ -67,16 +75,14 @@ export default function Demos() {
                       }
                     </div>
                     <h3 className="h3 text-2xl lg:text-3xl mb-2">
-                      <Link href={getDemoPostURLPath(featuredDemoPost)} className="hover:text-gray-100 transition duration-150 ease-in-out">{featuredDemoPost.title}</Link>
+                      <Link href={getDemoPostURLPath(featuredDemoPost)} className="hover:text-purple-300 transition duration-150 ease-in-out">{featuredDemoPost.title}</Link>
                     </h3>
                   </header>
                   <p className="text-lg text-gray-400 grow">{featuredDemoPost.summary}</p>
                   <footer className="flex items-center mt-4">
-                    <Link href="#">
-                      <img className="rounded-full shrink-0 mr-4" src={featuredDemoPost.authorImg} width={40} height={40} alt={featuredDemoPost.author} />
-                    </Link>
+                    <img className="rounded-full shrink-0 mr-4" src={featuredDemoPost.authorImg} width={40} height={40} alt={featuredDemoPost.author} />
                     <div>
-                      <Link href="#" className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">{featuredDemoPost.author}</Link>
+                      <span className="font-medium text-gray-200">{featuredDemoPost.author}</span>
                       <span className="text-gray-700"> - </span>
                       <span className="text-gray-500"><PostDate dateString={featuredDemoPost.publishedAt} /></span>
                     </div>

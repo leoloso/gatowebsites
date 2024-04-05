@@ -148,7 +148,12 @@ const DemoPost = defineDocumentType(() => ({
     },
     image: {
       type: 'string',
-    },        
+    },   
+    targetImages: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },     
   },
   computedFields: {
     slug: {

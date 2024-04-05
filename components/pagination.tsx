@@ -57,9 +57,6 @@ export default function Pagination({
         })}
         {/* <li className="m-1">
           <span className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-500">...</span>
-        </li>
-        <li className="m-1">
-          <Link href="#" className="inline-flex h-10 min-w-10 justify-center items-center bg-gray-800 px-2 rounded-full text-gray-300 hover:bg-purple-600 transition-colors duration-150 ease-in-out">12</Link>
         </li> */}
         <li className="m-1">
           {currentPage === totalPages && (

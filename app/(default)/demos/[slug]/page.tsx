@@ -11,6 +11,7 @@ import Newsletter from '@/components/newsletter'
 import ArticleNavigation from '@/components/ui/article-navigation'
 import { getPrevNextArticles } from '@/utils/content/document'
 import { sortByPublishedAt } from '@/utils/content/sort'
+import DemoPostThumb from '@/components/demo-post-thumb'
 
 export async function generateStaticParams() {
   return allDemoPosts.map((demoPost) => ({
@@ -73,11 +74,9 @@ export default async function SingleDemoPost({ params }: {
                   <div className="md:flex md:items-center md:justify-between mt-3">
                     {/* Author meta */}
                     <div className="flex items-center justify-center" data-aos="fade-up" data-aos-delay="400">
-                      <Link href="#">
-                        <Image className="rounded-full shrink-0 mr-4" src={demoPost.authorImg} width={40} height={40} alt={demoPost.author} />
-                      </Link>
+                      <Image className="rounded-full shrink-0 mr-4" src={demoPost.authorImg} width={40} height={40} alt={demoPost.author} />
                       <div>
-                        <Link href="#" className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">{demoPost.author}</Link>
+                        <span className="font-medium text-gray-200">{demoPost.author}</span>
                         <span className="text-gray-700"> - </span>
                         <span className="text-gray-500"><PostDate dateString={demoPost.publishedAt} /></span>
                       </div>
@@ -92,11 +91,15 @@ export default async function SingleDemoPost({ params }: {
                 </header>
 
                 {/* Article image */}
-                {demoPost.image &&
+                {/* {demoPost.image &&
                   <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="600">
                     <Image className="w-full" src={demoPost.image} width={1024} height={576} alt={demoPost.title} priority />
                   </figure>
-                }
+                } */}
+
+                <div className="mb-8 lg:-ml-32 lg:-mr-32">
+                  <DemoPostThumb demoPost={demoPost} />
+                </div>
 
                 {/* Article content */}
                 <PostMdx code={demoPost.body.code} />
