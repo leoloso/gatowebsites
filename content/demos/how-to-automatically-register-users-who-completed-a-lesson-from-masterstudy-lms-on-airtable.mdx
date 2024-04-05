@@ -23,21 +23,15 @@ Whenever a user completes a lesson from **Masterstudy LMS**, we will send custom
 
 The table has columns `Name`, `URL` and `Email` from the user, and `Lesson` and `Course` from Masterstudy.
 
-The automation will be hooked on Masterstudy's action `stm_lms_lesson_passed`, which provides the following data:
+We must [create a new automation](/guides/manage/automating-tasks), providing Masterstudy's action `stm_lms_lesson_passed` as the trigger.
+
+This action provides the following data:
 
 ```php
 do_action( 'stm_lms_lesson_passed', $user_id, $lesson_id, $course_id );
 ```
 
-The persisted query to execute will then connect to the [AirTable API](https://airtable.com/developers/web/api/introduction), create the records with the provided data.
-
-To connect to the API we need [personal access tokens](https://airtable.com/developers/web/guides/personal-access-tokens) for authentication.
-
-Make sure to create a personal access token for your table, and [assign it scope `data.records:write`](https://airtable.com/developers/web/api/create-records).
-
-In this example query, the table has columns `Name`, `URL` and `Email`, and we retrieve and send those data fields for each user.
-
-
+And we retrieve all three parameters in the action:
 
 <Image
   src="/images/demos/masterstudy-lms-automation-trigger.png"
@@ -46,6 +40,22 @@ In this example query, the table has columns `Name`, `URL` and `Email`, and we r
   alt="Automation trigger"
   caption="Automation trigger"
 />
+
+The persisted query to execute will connect to the [AirTable API](https://airtable.com/developers/web/api/introduction), create the records with the provided data.
+
+To connect to the API we need [personal access tokens](https://airtable.com/developers/web/guides/personal-access-tokens) for authentication.
+
+Make sure to create a personal access token for your table, and [assign it scope `data.records:write`](https://airtable.com/developers/web/api/create-records).
+
+You must provide the JSON dictionary for the following GraphQL variables:
+
+```json
+{
+  "baseId": "{ your baseId }",
+  "tableName": "{ your tableName }",
+  "personalAccessToken": "{ your access token }"
+}
+```
 
 <Image
   src="/images/demos/masterstudy-lms-automation-action.png"
@@ -136,70 +146,3 @@ query CreateRecordInAirTable(
   </iframe>
 </div>
 
-This query retrieves all the users from the WordPress site, and creates records on [AirTable](https://airtable.com/), using the [AirTable API](https://airtable.com/developers/web/api/introduction) and [personal access tokens](https://airtable.com/developers/web/guides/personal-access-tokens) for authentication.
-
-Make sure to create a personal access token for your table, and [assign it scope `data.records:write`](https://airtable.com/developers/web/api/create-records).
-
-In this example query, the table has columns `Name`, `URL` and `Email`, and we retrieve and send those data fields for each user.
-
-```graphql
-query ExportUserData {
-  users {
-    displayName
-    email
-    url    
-    userEntry: _echo(value: {
-      fields: {
-        Name: $__displayName,
-        URL: $__url,
-        Email: $__email,
-      }
-    })
-      @export(as: "userEntries", type: LIST)
-      @remove
-  }
-}
-
-query CreateRecordsInAirTable(
-  $baseId: String!
-  $tableName: String!
-  $personalAccessToken: String!
-)
-  @depends(on: "ExportUserData")
-{
-  url: _sprintf(
-    string: "https://api.airtable.com/v0/%s/%s",
-    values: [$baseId, $tableName]
-  )
-  bearerToken: _sprintf(
-    string: "Bearer %s",
-    values: [$personalAccessToken]
-  )
-    @remove
-  response: _sendJSONObjectItemHTTPRequest(input: {
-    url: $__url,
-    method: POST,
-    options: {
-      headers: [
-        {
-          name: "Authorization",
-          value: $__bearerToken
-        }
-      ]
-      json: {
-        records: $userEntries
-      }
-    }
-  })
-}
-```
-
-You must provide the JSON dictionary for the following GraphQL variables:
-
-```json
-{
-  "baseId": "{ your baseId }",
-  "tableName": "{ your tableName }",
-  "personalAccessToken": "{ your access token }"
-}
-```
