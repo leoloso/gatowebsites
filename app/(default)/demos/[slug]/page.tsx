@@ -105,7 +105,7 @@ export default async function SingleDemoPost({ params }: {
 
                 {!! demoPost.integrations && (
                   <div className="mb-8">
-                    <h4 className="text-2xl font-bold font-inter mb-8">Integrations with</h4>
+                    <h4 className="text-2xl font-bold font-inter mb-8">Integrations</h4>
                     {/* List container */}
                     <div className="flex flex-col border-t border-gray-200">
                       {demoPost.integrations.map((integration, index) => (

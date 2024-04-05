@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { DemoPostIntegration } from '@/.contentlayer/generated'
+// import { DemoPostIntegration } from '@/.contentlayer/generated'
 
 export default function DemoPostItemIntegration({
   ...demoPostIntegration
@@ -7,8 +7,8 @@ export default function DemoPostItemIntegration({
   demoPostIntegration: DemoPostIntegration
 }*/) {
   return (
-    <div className="group border-b border-gray-200">
-      <div className="px-4 py-6">
+    <div className="group border-b border-slate-200">
+      <div className="px-4 py-6 bg-slate-800">
         <div className="sm:flex items-center space-y-3 sm:space-y-0 sm:space-x-5">
           <div className="shrink-0">
             <img src={demoPostIntegration.image} width="56" height="56" alt={demoPostIntegration.name} />
@@ -16,7 +16,7 @@ export default function DemoPostItemIntegration({
           <div className="grow lg:flex items-center justify-between space-y-5 lg:space-x-2 lg:space-y-0">
             <div>
               <div className="mb-2">
-                <Link className="text-lg text-gray-800 font-bold" href={demoPostIntegration.url}>
+                <Link className="text-lg text-slate-300 hover:text-purple-400 transition duration-150 ease-in-out font-bold" href={demoPostIntegration.url} target="_blank">
                   {demoPostIntegration.name}
                 </Link>
               </div>
