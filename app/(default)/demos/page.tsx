@@ -14,6 +14,7 @@ import AppSettings from '@/app/app.settings'
 
 import DemoPostList from '@/components/demo-post-list'
 import DemoPostThumb from '@/components/demo-post-thumb'
+import { Suspense } from 'react'
 
 export const metadata = {
   title: 'Demos - Gato GraphQL',
@@ -98,12 +99,16 @@ export default function Demos() {
               <h4 className="h4 pb-6 mb-10 border-b border-gray-700" data-aos="fade-up">Latest demos</h4>
 
               {/*  Articles container */}
-              <DemoPostList demoPosts={demoPosts} />
+              <Suspense>
+                <DemoPostList demoPosts={demoPosts} />
+              </Suspense>
 
             </div>
 
             {/*  Pagination */}
-            <Pagination totalPages={totalPages} />
+            <Suspense>
+              <Pagination totalPages={totalPages} />
+            </Suspense>
 
           </div>
         </div>
