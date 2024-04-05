@@ -13,8 +13,7 @@ export default function DemoPostPostItem({
   bgClassname?: string,
 }) {
   return (
-    // @todo Remove AOS!?
-    <article className="flex flex-col h-full" data-aos="fade-up">
+    <article className="flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
       <header>
         {/* {demoPost.image &&
           <Link href={getDemoPostURLPath(demoPost)} className="block mb-6">
