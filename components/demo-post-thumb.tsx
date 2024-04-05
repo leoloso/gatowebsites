@@ -65,10 +65,10 @@ export default function DemoPostThumb({
           </svg>
         </div>
         <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && "aspect-video overflow-hidden")}>
-          <div className={clsx("shrink", !isLandscape && "mb-2 md:mb-4", isLandscape &&  'mr-2')}>
+          <div className={clsx(!isLandscape && "mb-2 md:mb-4", isLandscape &&  'mr-2')}>
             <Image src={Logo} alt={demoPost.title} width={250} height={175} />
           </div>
-          <Image src={PlusImage} className="flex-none mx-2 my-4" width={30} height={30} alt="plus image" />
+          <Image src={PlusImage} className="mx-2 my-4" width={30} height={30} alt="plus image" />
           <div className={clsx("flex items-center justify-center", !isLandscape &&  "gap-6 sm:gap-12 mt-2 md:mt-4", isLandscape &&  "flex-col ml-2")}>
             {demoPost.targetImages.map((targetImageSrc, index) => (
               <div key={index}>
