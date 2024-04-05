@@ -33,6 +33,14 @@ export async function generateMetadata({ params }: {
   return {
     title,
     description,
+    ...demoPost.image ? {
+      openGraph: {
+        images: [demoPost.image],
+      },
+      twitter: {
+        images: [demoPost.image],
+      }
+    } : {},
   }
 }
 
