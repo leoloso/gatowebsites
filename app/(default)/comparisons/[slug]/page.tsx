@@ -15,7 +15,7 @@ import { getComparisonPostBackground } from '@/utils/content/comparison-backgrou
 import RelatedPosts from './related-posts'
 import Particles from '@/components/particles'
 import VsImage from '@/public/assets/theme/vs.svg'
-import { getPageTitle, createPageTitle } from '@/utils/content/metadata'
+import { createPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: {
   const { title, seoTitle, description, seoDescription } = comparisonPost
 
   return {
-    title: getPageTitle(seoTitle) || title,
+    title: createPageTitle(title, seoTitle),
     description: seoDescription || description,
     openGraph: {
       title,

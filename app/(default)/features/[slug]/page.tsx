@@ -9,7 +9,7 @@ import DefaultArtifactImage01 from '@/public/assets/theme/default/feature-image.
 import DefaultArtifactImage02 from '@/public/assets/theme/default/feature-pro-image.png'
 import { getGuideDocument } from '@/utils/content/document'
 import { getDocURLPath } from '@/utils/content/application-urls'
-import { getPageTitle, createPageTitle } from '@/utils/content/metadata'
+import { createPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return allFeatures.map((feature) => ({
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: {
   const { title, seoTitle, description, seoDescription } = feature
 
   return {
-    title: createPageTitle(getPageTitle(seoTitle) || title),
+    title: createPageTitle(title, seoTitle),
     description: seoDescription || description,
     openGraph: {
       title,

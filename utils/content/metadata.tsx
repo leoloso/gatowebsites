@@ -1,16 +1,11 @@
-export function getPageTitle(title?: string): string | undefined {
+export function createPageTitle(
+  title: string,
+  seoTitle?: string,
+): string {
 
-  if (!title) {
-    return title;
-  }
-
-  return title.replaceAll(
+  const adaptedTitle = seoTitle ? seoTitle.replaceAll(
     '{year}',
     new Date().getFullYear().toString()
-  )
-}
-
-export function createPageTitle(title: string): string {
-
-  return `${title} | Gato GraphQL for WordPress`
+  ) : title
+  return `${adaptedTitle} | Gato GraphQL for WordPress`
 }
