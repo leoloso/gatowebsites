@@ -18,13 +18,13 @@ export function getPageMetadata(slug: string): Metadata | null {
   return {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
-    openGraph: {
-      title: createOpenGraphPageTitle(title),
-      description,
-    },
-    twitter: {
-      title: createOpenGraphPageTitle(title),
-      description,
-    },
+    // openGraph: {
+    //   title: createOpenGraphPageTitle(title),
+    //   description,
+    // },
+    // twitter: {
+    //   title: createOpenGraphPageTitle(title),
+    //   description,
+    // },
   }
 }

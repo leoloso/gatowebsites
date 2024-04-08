@@ -8,12 +8,12 @@ const pageTitle = 'Contact us'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'How can we help you?',
-  openGraph: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
-  twitter: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
+  // openGraph: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
+  // twitter: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
 }
 
 export default function Contact() {

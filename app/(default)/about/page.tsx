@@ -11,12 +11,12 @@ const pageTitle = 'About us'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Meet the Gato GraphQL team, and learn about the history of Gato GraphQL',
-  openGraph: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
-  twitter: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
+  // openGraph: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
+  // twitter: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
 }
 
 export default function About() {

@@ -7,12 +7,12 @@ const pageTitle = 'Howdy'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: "Let's stay in touch",
-  openGraph: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
-  twitter: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
+  // openGraph: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
+  // twitter: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
 }
 export default function Howdy() {
   return (

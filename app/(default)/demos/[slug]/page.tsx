@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 import { allDemoPosts, DemoPost } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
@@ -21,9 +21,10 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: {
-  params: { slug: string }
-}): Promise<Metadata | undefined> {
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata,
+): Promise<Metadata | undefined> {
 
   const demoPost = allDemoPosts.find((demoPost) => demoPost.slug === params.slug)
 
@@ -31,18 +32,21 @@ export async function generateMetadata({ params }: {
 
   const { title, seoTitle, description, seoDescription } = demoPost
 
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || []
+
   return {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,
-      ...demoPost.image ? { images: [demoPost.image] } : {},
+      images: demoPost.image ? [demoPost.image] : previousImages,
     },
     twitter: {
       title: createOpenGraphPageTitle(title),
       description,
-      ...demoPost.image ? { images: [demoPost.image] } : {},
+      images: demoPost.image ? [demoPost.image] : previousImages,
     },
   }
 }
