@@ -19,6 +19,7 @@ import { sortByPublishedAt } from '@/utils/content/sort'
 import generateRssFeed from '@/utils/rss'
 import { getBlogPostURL } from '@/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from '@/components/schema/blogposting-schema-json-ld';
+import { getPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   // Generate the RSS feed
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: {
   const { title, seoTitle, description, seoDescription } = blogPosts
 
   return {
-    title: `${seoTitle || title} | Gato GraphQL for WordPress`,
+    title: `${getPageTitle(seoTitle) || title} | Gato GraphQL for WordPress`,
     description: seoDescription || description,
     ...blogPosts.image ? {
       openGraph: {

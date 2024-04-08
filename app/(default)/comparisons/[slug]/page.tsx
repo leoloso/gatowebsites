@@ -15,6 +15,7 @@ import { getComparisonPostBackground } from '@/utils/content/comparison-backgrou
 import RelatedPosts from './related-posts'
 import Particles from '@/components/particles'
 import VsImage from '@/public/assets/theme/vs.svg'
+import { getPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: {
   const { title, seoTitle, description, seoDescription } = comparisonPost
 
   return {
-    title: `${seoTitle || title} | Gato GraphQL for WordPress`,
+    title: getPageTitle(seoTitle) || title,
     description: seoDescription || description,
     ...comparisonPost.image ? {
       openGraph: {

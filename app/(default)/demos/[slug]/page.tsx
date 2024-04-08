@@ -13,6 +13,7 @@ import { sortByPublishedAt } from '@/utils/content/sort'
 import DemoPostThumb from '@/components/demo-post-thumb'
 import PageHeader from '@/components/page-header'
 import DemoPostItemIntegration from '@/components/demo-post-item-integration'
+import { getPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return allDemoPosts.map((demoPost) => ({
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: {
   const { title, seoTitle, description, seoDescription } = demoPost
 
   return {
-    title: `${seoTitle || title} | Gato GraphQL for WordPress`,
+    title: `${getPageTitle(seoTitle) || title} | Gato GraphQL for WordPress`,
     description: seoDescription || description,
     ...demoPost.image ? {
       openGraph: {

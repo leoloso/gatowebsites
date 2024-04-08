@@ -7,8 +7,9 @@ import DefaultArtifactIcon02 from '@/public/assets/theme/default/artifact-icon-0
 import DefaultArtifactIcon04 from '@/public/assets/theme/default/artifact-icon-04.png'
 import DefaultArtifactImage01 from '@/public/assets/theme/default/feature-image.png'
 import DefaultArtifactImage02 from '@/public/assets/theme/default/feature-pro-image.png'
-import { getGuideDocument, getGuideDocuments } from '@/utils/content/document'
+import { getGuideDocument } from '@/utils/content/document'
 import { getDocURLPath } from '@/utils/content/application-urls'
+import { getPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return allFeatures.map((feature) => ({
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: {
   const { title, seoTitle, description, seoDescription } = feature
 
   return {
-    title: `${seoTitle || title} | Gato GraphQL for WordPress`,
+    title: `${getPageTitle(seoTitle) || title} | Gato GraphQL for WordPress`,
     description: seoDescription || description,
   }
 }
