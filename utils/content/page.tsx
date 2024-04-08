@@ -13,11 +13,12 @@ export function getPageMetadata(slug: string): Metadata | null {
 
   if (!page) return null
 
-  const { title, seoTitle, description, seoDescription } = page
+  const { title, seoTitle, description, seoDescription, seoKeywords } = page
 
   return {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
+    ...seoKeywords ? { keywords: seoKeywords } : {},
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,

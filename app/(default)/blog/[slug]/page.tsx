@@ -38,11 +38,12 @@ export async function generateMetadata({ params }: {
 
   if (!blogPost) return
 
-  const { title, seoTitle, description, seoDescription } = blogPost
+  const { title, seoTitle, description, seoDescription, tags, seoKeywords } = blogPost
 
   return {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
+    keywords: seoKeywords || tags,
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,

@@ -31,11 +31,12 @@ export async function generateMetadata({ params }: {
 
   if (!comparisonPost) return
 
-  const { title, seoTitle, description, seoDescription } = comparisonPost
+  const { title, seoTitle, description, seoDescription, targetName, seoKeywords } = comparisonPost
 
   return {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
+    keywords: seoKeywords || [targetName],
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,

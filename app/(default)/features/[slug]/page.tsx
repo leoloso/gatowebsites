@@ -25,11 +25,12 @@ export async function generateMetadata({ params }: {
 
   if (!feature) return
 
-  const { title, seoTitle, description, seoDescription } = feature
+  const { title, seoTitle, description, seoDescription, seoKeywords } = feature
 
   return {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
+    ...seoKeywords ? { keywords: seoKeywords } : {},
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,
