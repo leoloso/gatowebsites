@@ -1,4 +1,4 @@
-export function createPageTitle(
+export function createSEOPageTitle(
   title: string,
   seoTitle?: string,
 ): string {
