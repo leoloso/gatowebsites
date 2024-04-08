@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Page, allPages } from 'contentlayer/generated'
-import { getPageTitle } from './metadata'
+import { getPageTitle, createPageTitle } from './metadata'
 
 export function getPage(slug: string): Page | undefined {
 
@@ -16,7 +16,7 @@ export function getPageMetadata(slug: string): Metadata | null {
   const { title, seoTitle, description, seoDescription } = page
 
   return {
-    title: `${getPageTitle(seoTitle) || title} | Gato GraphQL for WordPress`,
+    title: createPageTitle(getPageTitle(seoTitle) || title),
     description: seoDescription || description,
     openGraph: {
       title,

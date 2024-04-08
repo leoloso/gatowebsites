@@ -7,7 +7,7 @@ import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon-01.
 import DefaultArtifactImage from '@/public/assets/theme/default/extension-image.png'
 import { getDocURLPath, getExtensionDocumentationURLPath } from '@/utils/content/application-urls'
 import { getGuideDocument } from '@/utils/content/document'
-import { getPageTitle } from '@/utils/content/metadata'
+import { getPageTitle, createPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: {
   const { title, seoTitle, description, seoDescription } = extension
 
   return {
-    title: `${getPageTitle(seoTitle) || title} | Gato GraphQL for WordPress`,
+    title: createPageTitle(getPageTitle(seoTitle) || title),
     description: seoDescription || description,
     openGraph: {
       title,

@@ -9,3 +9,8 @@ export function getPageTitle(title?: string): string | undefined {
     new Date().getFullYear().toString()
   )
 }
+
+export function createPageTitle(title: string): string {
+
+  return `${title} | Gato GraphQL for WordPress`
+}

@@ -15,7 +15,7 @@ import { getComparisonPostBackground } from '@/utils/content/comparison-backgrou
 import RelatedPosts from './related-posts'
 import Particles from '@/components/particles'
 import VsImage from '@/public/assets/theme/vs.svg'
-import { getPageTitle } from '@/utils/content/metadata'
+import { getPageTitle, createPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({

@@ -8,7 +8,7 @@ import {
 import DocSection from '@/components/sections/doc'
 import { topicTitleSVG2 } from '@/components/ui/docs/topic-title'
 import { Doc } from '@/.contentlayer/generated'
-import { getPageTitle } from '@/utils/content/metadata'
+import { getPageTitle, createPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return getArchitectureDocuments().map((doc) => ({
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: {
   const { title, seoTitle, description, seoDescription } = doc
 
   return {
-    title: `${getPageTitle(seoTitle) || title} | Gato GraphQL for WordPress`,
+    title: createPageTitle(getPageTitle(seoTitle) || title),
     description: seoDescription || description,
     openGraph: {
       title,
