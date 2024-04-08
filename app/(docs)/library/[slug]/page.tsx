@@ -8,7 +8,11 @@ import {
 import DocSection from '@/components/sections/doc'
 import { topicTitleSVG2 } from '@/components/ui/docs/topic-title'
 import { Doc } from '@/.contentlayer/generated'
-import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import {
+  createSEOPageTitle,
+  createOpenGraphPageTitle,
+  createSEOPageKeywords,
+} from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return getQueryLibraryDocuments().map((doc) => ({
@@ -29,7 +33,7 @@ export async function generateMetadata({ params }: {
   return {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
-    ...seoKeywords ? { keywords: seoKeywords } : {},
+    keywords: createSEOPageKeywords(seoKeywords),
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,

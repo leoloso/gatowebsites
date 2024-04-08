@@ -16,3 +16,13 @@ export function createOpenGraphPageTitle(
 
   return `${title} | Gato GraphQL`
 }
+
+export function createSEOPageKeywords(
+  keywords: Array<string> | undefined,
+): Array<string> {
+
+  return [
+    ...keywords || [],
+    ...['graphql', 'wordpress']
+  ]
+}

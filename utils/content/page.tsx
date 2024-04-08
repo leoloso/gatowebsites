@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 import { Page, allPages } from 'contentlayer/generated'
-import { createSEOPageTitle, createOpenGraphPageTitle } from './metadata'
+import {
+  createSEOPageTitle,
+  createOpenGraphPageTitle,
+  createSEOPageKeywords,
+} from './metadata'
 
 export function getPage(slug: string): Page | undefined {
 
@@ -18,7 +22,7 @@ export function getPageMetadata(slug: string): Metadata | null {
   return {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
-    ...seoKeywords ? { keywords: seoKeywords } : {},
+    keywords: createSEOPageKeywords(seoKeywords),
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,

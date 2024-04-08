@@ -7,7 +7,11 @@ import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon-01.
 import DefaultArtifactImage from '@/public/assets/theme/default/extension-image.png'
 import { getDocURLPath, getExtensionDocumentationURLPath } from '@/utils/content/application-urls'
 import { getGuideDocument } from '@/utils/content/document'
-import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import {
+  createSEOPageTitle,
+  createOpenGraphPageTitle,
+  createSEOPageKeywords,
+} from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
@@ -28,7 +32,7 @@ export async function generateMetadata({ params }: {
   return {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
-    ...seoKeywords ? { keywords: seoKeywords } : {},
+    keywords: createSEOPageKeywords(seoKeywords),
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,
