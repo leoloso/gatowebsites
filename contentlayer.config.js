@@ -53,6 +53,10 @@ const BlogPost = defineDocumentType(() => ({
     seoDescription: {
       type: 'string',
     },
+    seoKeywords: {
+      type: 'list',
+      of: { type: 'string' },
+    },
     featured: {
       type: 'boolean',
     },
@@ -98,6 +102,10 @@ const Page = defineDocumentType(() => ({
     },
     seoDescription: {
       type: 'string',
+    },
+    seoKeywords: {
+      type: 'list',
+      of: { type: 'string' },
     },
     leading: {
       type: 'string',
@@ -155,6 +163,10 @@ const DemoPost = defineDocumentType(() => ({
     },
     seoDescription: {
       type: 'string',
+    },
+    seoKeywords: {
+      type: 'list',
+      of: { type: 'string' },
     },
     author: {
       type: 'string',
@@ -230,6 +242,10 @@ const ComparisonPost = defineDocumentType(() => ({
     seoDescription: {
       type: 'string',
     },
+    seoKeywords: {
+      type: 'list',
+      of: { type: 'string' },
+    },
     image: {
       type: 'string',
     },
@@ -272,6 +288,10 @@ const Doc = defineDocumentType(() => ({
     },
     seoDescription: {
       type: 'string',
+    },
+    seoKeywords: {
+      type: 'list',
+      of: { type: 'string' },
     },
     order: {
       type: 'number',
@@ -338,6 +358,10 @@ const Extension = defineDocumentType(() => ({
     },
     seoDescription: {
       type: 'string',
+    },
+    seoKeywords: {
+      type: 'list',
+      of: { type: 'string' },
     },
     featured: {
       type: 'boolean',
@@ -414,6 +438,10 @@ const Feature = defineDocumentType(() => ({
     },
     seoDescription: {
       type: 'string',
+    },
+    seoKeywords: {
+      type: 'list',
+      of: { type: 'string' },
     },
     featured: {
       type: 'boolean',
