@@ -17,9 +17,16 @@ const nycd = Nothing_You_Could_Do({
   display: 'swap'
 })
 
+const pageTitle = 'Documentation'
 export const metadata = {
-  title: createSEOPageTitle('Documentation'),
+  title: createSEOPageTitle(pageTitle),
   description: 'Guides, tutorials, GraphQL queries, and reference docs, to learn how to use Gato GraphQL',
+  openGraph: {
+    title: pageTitle,
+  },
+  twitter: {
+    title: pageTitle,
+  },
 }
 
 export default function RootLayout({

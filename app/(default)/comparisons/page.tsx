@@ -4,9 +4,16 @@ import Cta from '@/components/cta-02'
 import ComparisonList from './comparison-list'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = 'Comparisons'
 export const metadata = {
-  title: createSEOPageTitle('Comparisons'),
+  title: createSEOPageTitle(pageTitle),
   description: 'How is Gato GraphQL different than many other WordPress plugins?',
+  openGraph: {
+    title: pageTitle,
+  },
+  twitter: {
+    title: pageTitle,
+  },
 }
 
 export default function ComparisonsPage() {

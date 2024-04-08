@@ -5,9 +5,16 @@ import StunningBackground from '@/components/stunning-background'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = 'Changelog'
 export const metadata = {
-  title: createSEOPageTitle('Changelog'),
+  title: createSEOPageTitle(pageTitle),
   description: 'New updates and improvements to Gato GraphQL',
+  openGraph: {
+    title: pageTitle,
+  },
+  twitter: {
+    title: pageTitle,
+  },
 }
 
 export default function Changelog() {

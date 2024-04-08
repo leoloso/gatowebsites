@@ -16,9 +16,16 @@ import DemoPostThumb from '@/components/demo-post-thumb'
 import { Suspense } from 'react'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = 'Demos'
 export const metadata = {
-  title: createSEOPageTitle('Demos'),
+  title: createSEOPageTitle(pageTitle),
   description: 'Tutorials to learn what you can accomplish with Gato GraphQL',
+  openGraph: {
+    title: pageTitle,
+  },
+  twitter: {
+    title: pageTitle,
+  },
 }
 
 export default function Demos() {

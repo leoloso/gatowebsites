@@ -4,9 +4,16 @@ import NotFoundImage from '@/public/assets/theme/404.jpg'
 import StunningBackground from '@/components/stunning-background';
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = '404'
 export const metadata = {
-  title: createSEOPageTitle('404'),
+  title: createSEOPageTitle(pageTitle),
   description: "Oops, this page doesn't exist",
+  openGraph: {
+    title: pageTitle,
+  },
+  twitter: {
+    title: pageTitle,
+  },
 }
 
 export default function NotFound() {

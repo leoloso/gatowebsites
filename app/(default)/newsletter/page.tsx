@@ -3,9 +3,16 @@ import Newsletter from '@/components/newsletter'
 import PageHeader from '@/components/page-header'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = 'Newsletter'
 export const metadata = {
-  title: createSEOPageTitle('Newsletter'),
+  title: createSEOPageTitle(pageTitle),
   description: 'Stay in the loop on all new things concerning Gato GraphQL',
+  openGraph: {
+    title: pageTitle,
+  },
+  twitter: {
+    title: pageTitle,
+  },
 }
 
 export default function NewsletterPage() {

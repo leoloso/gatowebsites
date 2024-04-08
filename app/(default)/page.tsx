@@ -1,8 +1,3 @@
-export const metadata = {
-  title: 'Gato GraphQL',
-  description: 'The most powerful GraphQL server for WordPress',
-}
-
 import Hero from '@/components/hero'
 import Clients from '@/components/clients'
 import Features from '@/components/features'
@@ -15,6 +10,11 @@ import Features04 from '@/components/features-04'
 import Pricing from './pricing-section'
 import Testimonials from '@/components/testimonials'
 import Cta from '@/components/cta'
+
+export const metadata = {
+  title: 'Gato GraphQL',
+  description: 'The most powerful GraphQL server for WordPress',
+}
 
 export default function Home() {
   return (

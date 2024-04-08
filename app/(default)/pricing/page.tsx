@@ -6,9 +6,16 @@ import Cta from '@/components/cta-02'
 import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = 'Pricing'
 export const metadata = {
-  title: createSEOPageTitle('Pricing'),
+  title: createSEOPageTitle(pageTitle),
   description: 'Pricing plans to unleash your capabilities with Gato GraphQL PRO',
+  openGraph: {
+    title: pageTitle,
+  },
+  twitter: {
+    title: pageTitle,
+  },
 }
 
 export default function Pricing() {

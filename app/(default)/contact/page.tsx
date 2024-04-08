@@ -4,9 +4,16 @@ import ContactPageSchemaJsonLdScript from "@/components/schema/contactpage-schem
 import StunningBackground from "@/components/stunning-background"
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = 'Contact us'
 export const metadata = {
-  title: createSEOPageTitle('Contact us'),
+  title: createSEOPageTitle(pageTitle),
   description: 'How can we help you?',
+  openGraph: {
+    title: pageTitle,
+  },
+  twitter: {
+    title: pageTitle,
+  },
 }
 
 export default function Contact() {

@@ -9,9 +9,16 @@ import PageHeader from '@/components/page-header'
 import BlogSchemaJsonLdScript from '@/components/schema/blog-schema-json-ld'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = 'Blog'
 export const metadata = {
-  title: createSEOPageTitle('Blog'),
+  title: createSEOPageTitle(pageTitle),
   description: 'Stay up to date on the latest from Gato GraphQL and our engineering practices',
+  openGraph: {
+    title: pageTitle,
+  },
+  twitter: {
+    title: pageTitle,
+  },
 }
 
 export default function Blog() {
