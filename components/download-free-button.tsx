@@ -9,7 +9,7 @@ export default function DownloadFreePluginButton({
   styleClassname?: string,
 }) {
   return (
-    <Link className={`${btnClassName} ${styleClassname}`} href={AppConfig.urls.wpDownload}>
+    <Link className={`${btnClassName} ${styleClassname}`} href={AppConfig.urls.wpDirectory} target="_blank">
       <span className="relative inline-flex items-center">
         Download free <span className="tracking-normal text-slate-100 dark:text-slate-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
       </span>

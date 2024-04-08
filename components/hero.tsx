@@ -2,9 +2,8 @@ import Image from 'next/image'
 import Particles from './particles'
 import Illustration from '@/public/assets/theme/glow-bottom.svg'
 import LogoPic from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
-import AppConfig from '@/app/app.config'
 import PurchasePROPluginButton from './purchase-pro-plugin-button'
-// import DownloadFreePluginButton from './download-free-button'
+import DownloadFreePluginButton from './download-free-button'
 
 export default function Hero() {
   return (
@@ -42,9 +41,9 @@ export default function Hero() {
             <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4" data-aos="fade-down">The most powerful GraphQL server for WordPress</h1>
             <p className="text-lg text-slate-300 mb-8" data-aos="fade-down" data-aos-delay="200">Use <strong>Gato GraphQL</strong> to interact with all your data, and manage your <strong>WordPress</strong> site.</p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-down" data-aos-delay="400">
-              {/* <div>
+              <div>
                 <DownloadFreePluginButton btnClassName='btn' />
-              </div> */}
+              </div>
               <div>
                 <PurchasePROPluginButton btnClassName='btn' />
               </div>
