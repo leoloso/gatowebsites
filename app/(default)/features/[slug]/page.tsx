@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: {
   const { title, seoTitle, description, seoDescription } = feature
 
   return {
-    title: seoTitle || title,
+    title: `${seoTitle || title} | Gato GraphQL for WordPress`,
     description: seoDescription || description,
   }
 }

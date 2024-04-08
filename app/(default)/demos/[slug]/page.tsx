@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: {
   const { title, seoTitle, description, seoDescription } = demoPost
 
   return {
-    title: seoTitle || title,
+    title: `${seoTitle || title} | Gato GraphQL for WordPress`,
     description: seoDescription || description,
     ...demoPost.image ? {
       openGraph: {
