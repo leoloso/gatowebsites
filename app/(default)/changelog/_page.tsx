@@ -3,17 +3,17 @@ import PostItem from './post-item'
 import Cta from '@/components/cta-03'
 import StunningBackground from '@/components/stunning-background'
 import { sortByPublishedAt } from '@/utils/content/sort'
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Changelog'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'New updates and improvements to Gato GraphQL',
   openGraph: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
   twitter: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
 }
 

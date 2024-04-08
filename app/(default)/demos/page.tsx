@@ -14,17 +14,17 @@ import AppSettings from '@/app/app.settings'
 import DemoPostList from '@/components/demo-post-list'
 import DemoPostThumb from '@/components/demo-post-thumb'
 import { Suspense } from 'react'
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Demos'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Tutorials to learn what you can accomplish with Gato GraphQL',
   openGraph: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
   twitter: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
 }
 

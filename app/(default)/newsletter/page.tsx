@@ -1,17 +1,17 @@
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
 import PageHeader from '@/components/page-header'
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Newsletter'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Stay in the loop on all new things concerning Gato GraphQL',
   openGraph: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
   twitter: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
 }
 

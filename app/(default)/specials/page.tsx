@@ -1,15 +1,15 @@
 import { redirect } from "next/navigation"
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Specials'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Webinar series, campaigns, events, and more concerning Gato GraphQL',
   openGraph: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
   twitter: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
 }
 

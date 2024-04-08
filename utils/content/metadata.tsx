@@ -9,3 +9,10 @@ export function createSEOPageTitle(
   ) : title
   return `${adaptedTitle} | Gato GraphQL for WordPress`
 }
+
+export function createOpenGraphPageTitle(
+  title: string,
+): string {
+
+  return `${title} | Gato GraphQL`
+}

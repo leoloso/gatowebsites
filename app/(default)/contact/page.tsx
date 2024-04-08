@@ -2,17 +2,17 @@ import ContactForm from "@/components/forms/contact"
 import PageHeader from "@/components/page-header"
 import ContactPageSchemaJsonLdScript from "@/components/schema/contactpage-schema-json-ld"
 import StunningBackground from "@/components/stunning-background"
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Contact us'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'How can we help you?',
   openGraph: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
   twitter: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
 }
 

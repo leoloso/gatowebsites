@@ -1,17 +1,17 @@
 import FeaturesSection from '@/components/features-section'
 import FeaturesList from '@/components/features-list'
 import Cta from '@/components/cta-02'
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Features'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'All the standard GraphQL features, plus custom ones for speed, performance and functionality',
   openGraph: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
   twitter: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
 }
 

@@ -5,17 +5,17 @@ import Story from '@/components/story'
 // import Testimonials from '@/components/testimonials-02'
 import Cta from '@/components/cta-03'
 import AboutPageSchemaJsonLdScript from '@/components/schema/aboutpage-schema-json-ld'
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'About us'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Meet the Gato GraphQL team, and learn about the history of Gato GraphQL',
   openGraph: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
   twitter: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
 }
 

@@ -8,7 +8,7 @@ import AppProvider from './app-provider'
 import Sidebar from '@/components/ui/docs/sidebar'
 import Header from '@/components/ui/header'
 import StunningBackground from '@/components/stunning-background'
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const nycd = Nothing_You_Could_Do({
   subsets: ['latin'],
@@ -22,10 +22,10 @@ export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Guides, tutorials, GraphQL queries, and reference docs, to learn how to use Gato GraphQL',
   openGraph: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
   twitter: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
 }
 

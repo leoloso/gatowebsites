@@ -7,17 +7,17 @@ import {
 } from '@/utils/content/extension'
 import { sortByOrderAndTitle } from '@/utils/content/sort'
 import Cta from '@/components/cta-02'
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Extensions'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Provide additional functionality to Gato GraphQL, and expand the GraphQL schema',
   openGraph: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
   twitter: {
-    title: pageTitle,
+    title: createOpenGraphPageTitle(pageTitle),
   },
 }
 
