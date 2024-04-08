@@ -9,7 +9,7 @@ import DefaultArtifactImage01 from '@/public/assets/theme/default/feature-image.
 import DefaultArtifactImage02 from '@/public/assets/theme/default/feature-pro-image.png'
 import { getGuideDocument } from '@/utils/content/document'
 import { getDocURLPath } from '@/utils/content/application-urls'
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return allFeatures.map((feature) => ({
@@ -31,11 +31,11 @@ export async function generateMetadata({ params }: {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
     openGraph: {
-      title,
+      title: createOpenGraphPageTitle(title),
       description,
     },
     twitter: {
-      title,
+      title: createOpenGraphPageTitle(title),
       description,
     },
   }

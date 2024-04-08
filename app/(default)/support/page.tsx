@@ -1,7 +1,7 @@
 import SupportForm from "@/components/forms/support"
 import PageHeader from "@/components/page-header"
 import StunningBackground from "@/components/stunning-background"
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 export const metadata = {
   title: createSEOPageTitle('Support'),

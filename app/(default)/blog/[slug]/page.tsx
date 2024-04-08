@@ -19,7 +19,7 @@ import { sortByPublishedAt } from '@/utils/content/sort'
 import generateRssFeed from '@/utils/rss'
 import { getBlogPostURL } from '@/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from '@/components/schema/blogposting-schema-json-ld';
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   // Generate the RSS feed
@@ -44,12 +44,12 @@ export async function generateMetadata({ params }: {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
     openGraph: {
-      title,
+      title: createOpenGraphPageTitle(title),
       description,
       ...blogPost.image ? { images: [blogPost.image] } : {},
     },
     twitter: {
-      title,
+      title: createOpenGraphPageTitle(title),
       description,
       ...blogPost.image ? { images: [blogPost.image] } : {},
     },

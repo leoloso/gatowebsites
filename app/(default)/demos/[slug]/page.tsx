@@ -13,7 +13,7 @@ import { sortByPublishedAt } from '@/utils/content/sort'
 import DemoPostThumb from '@/components/demo-post-thumb'
 import PageHeader from '@/components/page-header'
 import DemoPostItemIntegration from '@/components/demo-post-item-integration'
-import { createSEOPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return allDemoPosts.map((demoPost) => ({
@@ -35,12 +35,12 @@ export async function generateMetadata({ params }: {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
     openGraph: {
-      title,
+      title: createOpenGraphPageTitle(title),
       description,
       ...demoPost.image ? { images: [demoPost.image] } : {},
     },
     twitter: {
-      title,
+      title: createOpenGraphPageTitle(title),
       description,
       ...demoPost.image ? { images: [demoPost.image] } : {},
     },
