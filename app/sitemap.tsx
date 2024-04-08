@@ -3,7 +3,6 @@ import { MetadataRoute } from 'next'
 import AppConfig from '@/app/app.config'
 import {
   allBlogPosts,
-  // allUpdates,
   allDemoPosts,
   allComparisonPosts,
   allDocs,
@@ -33,14 +32,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     }
   ))
-  // const updatesSitemapEntries = allUpdates.map((update) => (
-  //   {
-  //     url: getUpdateURL(update),
-  //     lastModified: new Date(update.publishedAt),
-  //     changeFrequency: 'weekly',
-  //     priority: 0.5,
-  //   }
-  // ))
   const extensionSitemapEntries = allExtensions.map((extension) => (
     {
       url: getExtensionURL(extension),

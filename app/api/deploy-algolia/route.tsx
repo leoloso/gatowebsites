@@ -1,7 +1,6 @@
 import algoliaSearch from "algoliasearch"
 import {
   allBlogPosts,
-  // allUpdates,
   allDemoPosts,
   allComparisonPosts,
   allExtensions,
