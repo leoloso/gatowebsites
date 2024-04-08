@@ -8,6 +8,7 @@ import AppProvider from './app-provider'
 import Sidebar from '@/components/ui/docs/sidebar'
 import Header from '@/components/ui/header'
 import StunningBackground from '@/components/stunning-background'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const nycd = Nothing_You_Could_Do({
   subsets: ['latin'],
@@ -16,9 +17,16 @@ const nycd = Nothing_You_Could_Do({
   display: 'swap'
 })
 
+const pageTitle = 'Documentation'
 export const metadata = {
-  title: 'Documentation - Gato GraphQL',
+  title: createSEOPageTitle(pageTitle),
   description: 'Guides, tutorials, GraphQL queries, and reference docs, to learn how to use Gato GraphQL',
+  openGraph: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
+  twitter: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
 }
 
 export default function RootLayout({

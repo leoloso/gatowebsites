@@ -2,10 +2,18 @@ import Link from 'next/link'
 import Image from 'next/image'
 import NotFoundImage from '@/public/assets/theme/404.jpg'
 import StunningBackground from '@/components/stunning-background';
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = '404'
 export const metadata = {
-  title: '404 - Gato GraphQL',
+  title: createSEOPageTitle(pageTitle),
   description: "Oops, this page doesn't exist",
+  openGraph: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
+  twitter: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
 }
 
 export default function NotFound() {

@@ -2,10 +2,18 @@ import StunningBackground from '@/components/stunning-background'
 import PageHeader from '@/components/page-header'
 import Cta from '@/components/cta-02'
 import ComparisonList from './comparison-list'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = 'Comparisons'
 export const metadata = {
-  title: 'Comparisons - Gato GraphQL',
+  title: createSEOPageTitle(pageTitle),
   description: 'How is Gato GraphQL different than many other WordPress plugins?',
+  openGraph: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
+  twitter: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
 }
 
 export default function ComparisonsPage() {

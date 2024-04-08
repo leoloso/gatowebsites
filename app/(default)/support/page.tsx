@@ -1,9 +1,10 @@
 import SupportForm from "@/components/forms/support"
 import PageHeader from "@/components/page-header"
 import StunningBackground from "@/components/stunning-background"
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 export const metadata = {
-  title: 'Support - Gato GraphQL',
+  title: createSEOPageTitle('Support'),
   description: "Send us your request, and we'll work on it",
 }
 

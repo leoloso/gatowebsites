@@ -1,6 +1,5 @@
 import { allDemoPosts } from 'contentlayer/generated'
 import Link from 'next/link'
-import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from '@/components/post-tags'
 
@@ -15,10 +14,18 @@ import AppSettings from '@/app/app.settings'
 import DemoPostList from '@/components/demo-post-list'
 import DemoPostThumb from '@/components/demo-post-thumb'
 import { Suspense } from 'react'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = 'Demos'
 export const metadata = {
-  title: 'Demos - Gato GraphQL',
+  title: createSEOPageTitle(pageTitle),
   description: 'Tutorials to learn what you can accomplish with Gato GraphQL',
+  openGraph: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
+  twitter: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
 }
 
 export default function Demos() {

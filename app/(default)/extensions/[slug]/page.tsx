@@ -6,7 +6,8 @@ import ArtifactSection from '@/components/sections/artifact'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon-01.png'
 import DefaultArtifactImage from '@/public/assets/theme/default/extension-image.png'
 import { getDocURLPath, getExtensionDocumentationURLPath } from '@/utils/content/application-urls'
-import { getGuideDocument, getGuideDocuments } from '@/utils/content/document'
+import { getGuideDocument } from '@/utils/content/document'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
@@ -22,11 +23,19 @@ export async function generateMetadata({ params }: {
 
   if (!extension) return
 
-  const { title, description } = extension
+  const { title, seoTitle, description, seoDescription } = extension
 
   return {
-    title,
-    description,
+    title: createSEOPageTitle(title, seoTitle),
+    description: seoDescription || description,
+    openGraph: {
+      title: createOpenGraphPageTitle(title),
+      description,
+    },
+    twitter: {
+      title: createOpenGraphPageTitle(title),
+      description,
+    },
   }
 }
 

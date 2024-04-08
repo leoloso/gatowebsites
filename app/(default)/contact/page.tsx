@@ -2,10 +2,18 @@ import ContactForm from "@/components/forms/contact"
 import PageHeader from "@/components/page-header"
 import ContactPageSchemaJsonLdScript from "@/components/schema/contactpage-schema-json-ld"
 import StunningBackground from "@/components/stunning-background"
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = 'Contact us'
 export const metadata = {
-  title: 'Contact us - Gato GraphQL',
+  title: createSEOPageTitle(pageTitle),
   description: 'How can we help you?',
+  openGraph: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
+  twitter: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
 }
 
 export default function Contact() {

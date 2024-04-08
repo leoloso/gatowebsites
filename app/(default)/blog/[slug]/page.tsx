@@ -19,6 +19,7 @@ import { sortByPublishedAt } from '@/utils/content/sort'
 import generateRssFeed from '@/utils/rss'
 import { getBlogPostURL } from '@/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from '@/components/schema/blogposting-schema-json-ld';
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   // Generate the RSS feed
@@ -33,23 +34,25 @@ export async function generateMetadata({ params }: {
   params: { slug: string }
 }): Promise<Metadata | undefined> {
 
-  const blogPosts = allBlogPosts.find((blogPosts) => blogPosts.slug === params.slug)
+  const blogPost = allBlogPosts.find((blogPosts) => blogPosts.slug === params.slug)
 
-  if (!blogPosts) return
+  if (!blogPost) return
 
-  const { title, description } = blogPosts
+  const { title, seoTitle, description, seoDescription } = blogPost
 
   return {
-    title,
-    description,
-    ...blogPosts.image ? {
-      openGraph: {
-        images: [blogPosts.image],
-      },
-      twitter: {
-        images: [blogPosts.image],
-      }
-    } : {},
+    title: createSEOPageTitle(title, seoTitle),
+    description: seoDescription || description,
+    openGraph: {
+      title: createOpenGraphPageTitle(title),
+      description,
+      ...blogPost.image ? { images: [blogPost.image] } : {},
+    },
+    twitter: {
+      title: createOpenGraphPageTitle(title),
+      description,
+      ...blogPost.image ? { images: [blogPost.image] } : {},
+    },
   }
 }
 

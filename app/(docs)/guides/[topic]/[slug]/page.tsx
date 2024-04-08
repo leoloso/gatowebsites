@@ -8,6 +8,7 @@ import {
 import DocSection from '@/components/sections/doc'
 import { topicTitleSVG1 } from '@/components/ui/docs/topic-title'
 import { Doc } from '@/.contentlayer/generated'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return getGuideDocuments().map((doc) => ({
@@ -23,11 +24,19 @@ export async function generateMetadata({ params }: {
 
   if (!doc) return
 
-  const { title, description } = doc
+  const { title, seoTitle, description, seoDescription } = doc
 
   return {
-    title,
-    description,
+    title: createSEOPageTitle(title, seoTitle),
+    description: seoDescription || description,
+    openGraph: {
+      title: createOpenGraphPageTitle(title),
+      description,
+    },
+    twitter: {
+      title: createOpenGraphPageTitle(title),
+      description,
+    },
   }
 }
 

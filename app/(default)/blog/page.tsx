@@ -7,10 +7,18 @@ import Newsletter from '@/components/newsletter'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
 import BlogSchemaJsonLdScript from '@/components/schema/blog-schema-json-ld'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
+const pageTitle = 'Blog'
 export const metadata = {
-  title: 'Blog - Gato GraphQL',
+  title: createSEOPageTitle(pageTitle),
   description: 'Stay up to date on the latest from Gato GraphQL and our engineering practices',
+  openGraph: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
+  twitter: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
 }
 
 export default function Blog() {

@@ -1,13 +1,21 @@
-export const metadata = {
-  title: 'Changelog - Gato GraphQL',
-  description: 'New updates and improvements to Gato GraphQL',
-}
-
 import { allUpdates } from 'contentlayer/generated'
 import PostItem from './post-item'
 import Cta from '@/components/cta-03'
 import StunningBackground from '@/components/stunning-background'
 import { sortByPublishedAt } from '@/utils/content/sort'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+
+const pageTitle = 'Changelog'
+export const metadata = {
+  title: createSEOPageTitle(pageTitle),
+  description: 'New updates and improvements to Gato GraphQL',
+  openGraph: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
+  twitter: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
+}
 
 export default function Changelog() {
 

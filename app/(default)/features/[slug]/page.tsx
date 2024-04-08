@@ -7,8 +7,9 @@ import DefaultArtifactIcon02 from '@/public/assets/theme/default/artifact-icon-0
 import DefaultArtifactIcon04 from '@/public/assets/theme/default/artifact-icon-04.png'
 import DefaultArtifactImage01 from '@/public/assets/theme/default/feature-image.png'
 import DefaultArtifactImage02 from '@/public/assets/theme/default/feature-pro-image.png'
-import { getGuideDocument, getGuideDocuments } from '@/utils/content/document'
+import { getGuideDocument } from '@/utils/content/document'
 import { getDocURLPath } from '@/utils/content/application-urls'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 export async function generateStaticParams() {
   return allFeatures.map((feature) => ({
@@ -24,11 +25,19 @@ export async function generateMetadata({ params }: {
 
   if (!feature) return
 
-  const { title, description } = feature
+  const { title, seoTitle, description, seoDescription } = feature
 
   return {
-    title,
-    description,
+    title: createSEOPageTitle(title, seoTitle),
+    description: seoDescription || description,
+    openGraph: {
+      title: createOpenGraphPageTitle(title),
+      description,
+    },
+    twitter: {
+      title: createOpenGraphPageTitle(title),
+      description,
+    },
   }
 }
 

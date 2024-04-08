@@ -1,11 +1,19 @@
-export const metadata = {
-  title: 'Newsletter - Gato GraphQL',
-  description: 'Stay in the loop on all new things concerning Gato GraphQL',
-}
-
 import StunningBackground from '@/components/stunning-background'
 import Newsletter from '@/components/newsletter'
 import PageHeader from '@/components/page-header'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+
+const pageTitle = 'Newsletter'
+export const metadata = {
+  title: createSEOPageTitle(pageTitle),
+  description: 'Stay in the loop on all new things concerning Gato GraphQL',
+  openGraph: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
+  twitter: {
+    title: createOpenGraphPageTitle(pageTitle),
+  },
+}
 
 export default function NewsletterPage() {
   return (
