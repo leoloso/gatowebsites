@@ -36,14 +36,16 @@ export async function generateMetadata({ params }: {
   return {
     title: getPageTitle(seoTitle) || title,
     description: seoDescription || description,
-    ...comparisonPost.image ? {
-      openGraph: {
-        images: [comparisonPost.image],
-      },
-      twitter: {
-        images: [comparisonPost.image],
-      }
-    } : {},
+    openGraph: {
+      title,
+      description,
+      ...comparisonPost.image ? { images: [comparisonPost.image] } : {},
+    },
+    twitter: {
+      title,
+      description,
+      ...comparisonPost.image ? { images: [comparisonPost.image] } : {},
+    },
   }
 }
 

@@ -29,6 +29,14 @@ export async function generateMetadata({ params }: {
   return {
     title: `${getPageTitle(seoTitle) || title} | Gato GraphQL for WordPress`,
     description: seoDescription || description,
+    openGraph: {
+      title,
+      description,
+    },
+    twitter: {
+      title,
+      description,
+    },
   }
 }
 

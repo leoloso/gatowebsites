@@ -34,14 +34,16 @@ export async function generateMetadata({ params }: {
   return {
     title: `${getPageTitle(seoTitle) || title} | Gato GraphQL for WordPress`,
     description: seoDescription || description,
-    ...demoPost.image ? {
-      openGraph: {
-        images: [demoPost.image],
-      },
-      twitter: {
-        images: [demoPost.image],
-      }
-    } : {},
+    openGraph: {
+      title,
+      description,
+      ...demoPost.image ? { images: [demoPost.image] } : {},
+    },
+    twitter: {
+      title,
+      description,
+      ...demoPost.image ? { images: [demoPost.image] } : {},
+    },
   }
 }
 
