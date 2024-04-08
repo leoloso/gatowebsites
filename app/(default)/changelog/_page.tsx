@@ -1,13 +1,14 @@
-export const metadata = {
-  title: 'Changelog - Gato GraphQL',
-  description: 'New updates and improvements to Gato GraphQL',
-}
-
 import { allUpdates } from 'contentlayer/generated'
 import PostItem from './post-item'
 import Cta from '@/components/cta-03'
 import StunningBackground from '@/components/stunning-background'
 import { sortByPublishedAt } from '@/utils/content/sort'
+import { createSEOPageTitle } from '@/utils/content/metadata'
+
+export const metadata = {
+  title: createSEOPageTitle('Changelog'),
+  description: 'New updates and improvements to Gato GraphQL',
+}
 
 export default function Changelog() {
 

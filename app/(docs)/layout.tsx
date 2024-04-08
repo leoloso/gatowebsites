@@ -8,6 +8,7 @@ import AppProvider from './app-provider'
 import Sidebar from '@/components/ui/docs/sidebar'
 import Header from '@/components/ui/header'
 import StunningBackground from '@/components/stunning-background'
+import { createSEOPageTitle } from '@/utils/content/metadata'
 
 const nycd = Nothing_You_Could_Do({
   subsets: ['latin'],
@@ -17,7 +18,7 @@ const nycd = Nothing_You_Could_Do({
 })
 
 export const metadata = {
-  title: 'Documentation - Gato GraphQL',
+  title: createSEOPageTitle('Documentation'),
   description: 'Guides, tutorials, GraphQL queries, and reference docs, to learn how to use Gato GraphQL',
 }
 

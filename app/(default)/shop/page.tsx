@@ -1,7 +1,8 @@
 import { redirect } from "next/navigation"
+import { createSEOPageTitle } from '@/utils/content/metadata'
 
 export const metadata = {
-  title: 'Shop - Gato GraphQL',
+  title: createSEOPageTitle('Shop'),
   description: 'Purchase Gato GraphQL PRO, and access all your orders from our shop',
 }
 

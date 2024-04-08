@@ -2,9 +2,10 @@ import ContactForm from "@/components/forms/contact"
 import PageHeader from "@/components/page-header"
 import ContactPageSchemaJsonLdScript from "@/components/schema/contactpage-schema-json-ld"
 import StunningBackground from "@/components/stunning-background"
+import { createSEOPageTitle } from '@/utils/content/metadata'
 
 export const metadata = {
-  title: 'Contact us - Gato GraphQL',
+  title: createSEOPageTitle('Contact us'),
   description: 'How can we help you?',
 }
 

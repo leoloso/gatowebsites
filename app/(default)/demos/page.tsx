@@ -1,6 +1,5 @@
 import { allDemoPosts } from 'contentlayer/generated'
 import Link from 'next/link'
-import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import PostTags from '@/components/post-tags'
 
@@ -15,9 +14,10 @@ import AppSettings from '@/app/app.settings'
 import DemoPostList from '@/components/demo-post-list'
 import DemoPostThumb from '@/components/demo-post-thumb'
 import { Suspense } from 'react'
+import { createSEOPageTitle } from '@/utils/content/metadata'
 
 export const metadata = {
-  title: 'Demos - Gato GraphQL',
+  title: createSEOPageTitle('Demos'),
   description: 'Tutorials to learn what you can accomplish with Gato GraphQL',
 }
 

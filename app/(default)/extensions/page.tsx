@@ -7,9 +7,10 @@ import {
 } from '@/utils/content/extension'
 import { sortByOrderAndTitle } from '@/utils/content/sort'
 import Cta from '@/components/cta-02'
+import { createSEOPageTitle } from '@/utils/content/metadata'
 
 export const metadata = {
-  title: 'Extensions - Gato GraphQL',
+  title: createSEOPageTitle('Extensions'),
   description: 'Provide additional functionality to Gato GraphQL, and expand the GraphQL schema',
 }
 

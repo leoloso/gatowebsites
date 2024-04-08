@@ -7,9 +7,10 @@ import Newsletter from '@/components/newsletter'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
 import BlogSchemaJsonLdScript from '@/components/schema/blog-schema-json-ld'
+import { createSEOPageTitle } from '@/utils/content/metadata'
 
 export const metadata = {
-  title: 'Blog - Gato GraphQL',
+  title: createSEOPageTitle('Blog'),
   description: 'Stay up to date on the latest from Gato GraphQL and our engineering practices',
 }
 

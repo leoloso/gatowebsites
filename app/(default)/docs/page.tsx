@@ -1,8 +1,9 @@
 import AppConfig from "@/app/app.config"
 import { redirect } from "next/navigation"
+import { createSEOPageTitle } from '@/utils/content/metadata'
 
 export const metadata = {
-  title: 'Docs - Gato GraphQL',
+  title: createSEOPageTitle('Docs'),
   description: 'Gato GraphQL documentation',
 }
 
