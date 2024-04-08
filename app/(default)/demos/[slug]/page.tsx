@@ -41,12 +41,12 @@ export async function generateMetadata(
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,
-      images: [...demoPost.image ? [demoPost.image] : [], ...previousImages],
+      images: demoPost.image ? [demoPost.image] : previousImages,
     },
     twitter: {
       title: createOpenGraphPageTitle(title),
       description,
-      images: [...demoPost.image ? [demoPost.image] : [], ...previousImages],
+      images: demoPost.image ? [demoPost.image] : previousImages,
     },
   }
 }

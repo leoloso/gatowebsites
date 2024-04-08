@@ -50,12 +50,12 @@ export async function generateMetadata(
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,
-      images: [...blogPost.image ? [blogPost.image] : [], ...previousImages],
+      images: blogPost.image ? [blogPost.image] : previousImages,
     },
     twitter: {
       title: createOpenGraphPageTitle(title),
       description,
-      images: [...blogPost.image ? [blogPost.image] : [], ...previousImages],
+      images: blogPost.image ? [blogPost.image] : previousImages,
     },
   }
 }
