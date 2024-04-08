@@ -34,11 +34,11 @@ export async function generateMetadata({ params }: {
   params: { slug: string }
 }): Promise<Metadata | undefined> {
 
-  const blogPosts = allBlogPosts.find((blogPosts) => blogPosts.slug === params.slug)
+  const blogPost = allBlogPosts.find((blogPosts) => blogPosts.slug === params.slug)
 
-  if (!blogPosts) return
+  if (!blogPost) return
 
-  const { title, seoTitle, description, seoDescription } = blogPosts
+  const { title, seoTitle, description, seoDescription } = blogPost
 
   return {
     title: `${getPageTitle(seoTitle) || title} | Gato GraphQL for WordPress`,
@@ -46,12 +46,12 @@ export async function generateMetadata({ params }: {
     openGraph: {
       title,
       description,
-      ...blogPosts.image ? { images: [blogPosts.image] } : {},
+      ...blogPost.image ? { images: [blogPost.image] } : {},
     },
     twitter: {
       title,
       description,
-      ...blogPosts.image ? { images: [blogPosts.image] } : {},
+      ...blogPost.image ? { images: [blogPost.image] } : {},
     },
   }
 }
