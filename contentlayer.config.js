@@ -39,6 +39,9 @@ const BlogPost = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
+    seoTitle: {
+      type: 'string',
+    },
     publishedAt: {
       type: 'date',
       required: true
@@ -46,6 +49,9 @@ const BlogPost = defineDocumentType(() => ({
     description: {
       type: 'string',
       required: true,
+    },
+    seoDescription: {
+      type: 'string',
     },
     featured: {
       type: 'boolean',
@@ -83,9 +89,15 @@ const Page = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
+    seoTitle: {
+      type: 'string',
+    },
     description: {
       type: 'string',
       required: true,
+    },
+    seoDescription: {
+      type: 'string',
     },
     leading: {
       type: 'string',
@@ -126,6 +138,9 @@ const DemoPost = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
+    seoTitle: {
+      type: 'string',
+    },
     publishedAt: {
       type: 'date',
       required: true
@@ -137,6 +152,9 @@ const DemoPost = defineDocumentType(() => ({
     description: {
       type: 'string',
       required: true,
+    },
+    seoDescription: {
+      type: 'string',
     },
     author: {
       type: 'string',
@@ -198,6 +216,9 @@ const ComparisonPost = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
+    seoTitle: {
+      type: 'string',
+    },
     leading: {
       type: 'string',
       required: true,
@@ -205,6 +226,9 @@ const ComparisonPost = defineDocumentType(() => ({
     description: {
       type: 'string',
       required: true,
+    },
+    seoDescription: {
+      type: 'string',
     },
     image: {
       type: 'string',
@@ -239,9 +263,15 @@ const Doc = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
+    seoTitle: {
+      type: 'string',
+    },
     description: {
       type: 'string',
       required: true,
+    },
+    seoDescription: {
+      type: 'string',
     },
     order: {
       type: 'number',
@@ -299,9 +329,15 @@ const Extension = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
+    seoTitle: {
+      type: 'string',
+    },
     description: {
       type: 'string',
       required: true,
+    },
+    seoDescription: {
+      type: 'string',
     },
     featured: {
       type: 'boolean',
@@ -369,9 +405,15 @@ const Feature = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
+    seoTitle: {
+      type: 'string',
+    },
     description: {
       type: 'string',
       required: true,
+    },
+    seoDescription: {
+      type: 'string',
     },
     featured: {
       type: 'boolean',
