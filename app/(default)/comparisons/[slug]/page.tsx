@@ -30,11 +30,11 @@ export async function generateMetadata({ params }: {
 
   if (!comparisonPost) return
 
-  const { title, description } = comparisonPost
+  const { title, seoTitle, description, seoDescription } = comparisonPost
 
   return {
-    title,
-    description,
+    title: seoTitle || title,
+    description: seoDescription || description,
     ...comparisonPost.image ? {
       openGraph: {
         images: [comparisonPost.image],

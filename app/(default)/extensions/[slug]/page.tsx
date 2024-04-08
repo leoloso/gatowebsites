@@ -22,11 +22,11 @@ export async function generateMetadata({ params }: {
 
   if (!extension) return
 
-  const { title, description } = extension
+  const { title, seoTitle, description, seoDescription } = extension
 
   return {
-    title,
-    description,
+    title: seoTitle || title,
+    description: seoDescription || description,
   }
 }
 

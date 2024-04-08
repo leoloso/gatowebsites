@@ -23,11 +23,11 @@ export async function generateMetadata({ params }: {
 
   if (!doc) return
 
-  const { title, description } = doc
+  const { title, seoTitle, description, seoDescription } = doc
 
   return {
-    title,
-    description,
+    title: seoTitle || title,
+    description: seoDescription || description,
   }
 }
 

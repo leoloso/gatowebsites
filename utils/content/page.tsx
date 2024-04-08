@@ -12,10 +12,10 @@ export function getPageMetadata(slug: string): Metadata | null {
 
   if (!page) return null
 
-  const { title, description } = page
+  const { title, seoTitle, description, seoDescription } = page
 
   return {
-    title,
-    description,
+    title: seoTitle || title,
+    description: seoDescription || description,
   }
 }

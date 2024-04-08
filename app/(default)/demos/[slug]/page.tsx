@@ -28,11 +28,11 @@ export async function generateMetadata({ params }: {
 
   if (!demoPost) return
 
-  const { title, description } = demoPost
+  const { title, seoTitle, description, seoDescription } = demoPost
 
   return {
-    title,
-    description,
+    title: seoTitle || title,
+    description: seoDescription || description,
     ...demoPost.image ? {
       openGraph: {
         images: [demoPost.image],

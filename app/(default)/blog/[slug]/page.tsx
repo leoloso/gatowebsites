@@ -37,11 +37,11 @@ export async function generateMetadata({ params }: {
 
   if (!blogPosts) return
 
-  const { title, description } = blogPosts
+  const { title, seoTitle, description, seoDescription } = blogPosts
 
   return {
-    title,
-    description,
+    title: seoTitle || title,
+    description: seoDescription || description,
     ...blogPosts.image ? {
       openGraph: {
         images: [blogPosts.image],
