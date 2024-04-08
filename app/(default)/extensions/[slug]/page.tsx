@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 import { allExtensions } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import AppConfig from '@/app/app.config'
@@ -15,9 +15,10 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: {
-  params: { slug: string }
-}): Promise<Metadata | undefined> {
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata,
+): Promise<Metadata | undefined> {
 
   const extension = allExtensions.find((extension) => extension.slug === params.slug)
 
@@ -25,16 +26,21 @@ export async function generateMetadata({ params }: {
 
   const { title, seoTitle, description, seoDescription } = extension
 
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || []
+
   return {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,
+      images: previousImages,
     },
     twitter: {
       title: createOpenGraphPageTitle(title),
       description,
+      images: previousImages,
     },
   }
 }

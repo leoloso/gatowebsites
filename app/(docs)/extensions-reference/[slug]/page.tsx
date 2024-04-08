@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 import {
   sortDocuments,
@@ -16,9 +16,10 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: {
-  params: { slug: string }
-}): Promise<Metadata | undefined> {
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata,
+): Promise<Metadata | undefined> {
 
   const doc = getExtensionReferenceDocuments().find((doc) => doc.slug === params.slug)
 
@@ -26,16 +27,21 @@ export async function generateMetadata({ params }: {
 
   const { title, seoTitle, description, seoDescription } = doc
 
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || []
+
   return {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,
+      images: previousImages,
     },
     twitter: {
       title: createOpenGraphPageTitle(title),
       description,
+      images: previousImages,
     },
   }
 }
