@@ -15,7 +15,7 @@ export function getPageMetadata(slug: string): Metadata | null {
   const { title, seoTitle, description, seoDescription } = page
 
   return {
-    title: seoTitle || title,
+    title: `${seoTitle || title} | Gato GraphQL for WordPress`,
     description: seoDescription || description,
   }
 }
