@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { PostMdx } from '@/components/mdx/post-mdx'
@@ -23,9 +23,10 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: {
-  params: { slug: string }
-}): Promise<Metadata | undefined> {
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata,
+): Promise<Metadata | undefined> {
 
   const comparisonPost = allComparisonPosts.find((comparisonPost) => comparisonPost.slug === params.slug)
 
@@ -33,18 +34,21 @@ export async function generateMetadata({ params }: {
 
   const { title, seoTitle, description, seoDescription } = comparisonPost
 
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || []
+
   return {
     title: createSEOPageTitle(title, seoTitle),
     description: seoDescription || description,
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,
-      ...comparisonPost.image ? { images: [comparisonPost.image] } : {},
+      images: [...comparisonPost.image ? [comparisonPost.image] : [], ...previousImages],
     },
     twitter: {
       title: createOpenGraphPageTitle(title),
       description,
-      ...comparisonPost.image ? { images: [comparisonPost.image] } : {},
+      images: [...comparisonPost.image ? [comparisonPost.image] : [], ...previousImages],
     },
   }
 }
