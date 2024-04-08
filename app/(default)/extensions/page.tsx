@@ -13,12 +13,12 @@ const pageTitle = 'Extensions'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Provide additional functionality to Gato GraphQL, and expand the GraphQL schema',
-  openGraph: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
-  twitter: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
+  // openGraph: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
+  // twitter: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
 }
 
 export default function Extensions() {

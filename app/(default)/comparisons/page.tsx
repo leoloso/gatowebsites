@@ -8,12 +8,12 @@ const pageTitle = 'Comparisons'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'How is Gato GraphQL different than many other WordPress plugins?',
-  openGraph: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
-  twitter: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
+  // openGraph: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
+  // twitter: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
 }
 
 export default function ComparisonsPage() {

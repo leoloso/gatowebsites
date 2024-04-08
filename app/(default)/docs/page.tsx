@@ -6,12 +6,12 @@ const pageTitle = 'Docs'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Gato GraphQL documentation',
-  openGraph: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
-  twitter: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
+  // openGraph: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
+  // twitter: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
 }
 
 export default function Docs() {

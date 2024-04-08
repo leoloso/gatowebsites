@@ -21,12 +21,12 @@ const pageTitle = 'Documentation'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Guides, tutorials, GraphQL queries, and reference docs, to learn how to use Gato GraphQL',
-  openGraph: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
-  twitter: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
+  // openGraph: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
+  // twitter: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
 }
 
 export default function RootLayout({

@@ -20,12 +20,12 @@ const pageTitle = 'Demos'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Tutorials to learn what you can accomplish with Gato GraphQL',
-  openGraph: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
-  twitter: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
+  // openGraph: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
+  // twitter: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
 }
 
 export default function Demos() {

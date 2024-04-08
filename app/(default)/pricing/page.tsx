@@ -10,12 +10,12 @@ const pageTitle = 'Pricing'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Pricing plans to unleash your capabilities with Gato GraphQL PRO',
-  openGraph: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
-  twitter: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
+  // openGraph: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
+  // twitter: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
 }
 
 export default function Pricing() {

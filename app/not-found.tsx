@@ -8,12 +8,12 @@ const pageTitle = '404'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: "Oops, this page doesn't exist",
-  openGraph: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
-  twitter: {
-    title: createOpenGraphPageTitle(pageTitle),
-  },
+  // openGraph: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
+  // twitter: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
 }
 
 export default function NotFound() {
