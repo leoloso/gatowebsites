@@ -10,6 +10,8 @@ import BlogSchemaJsonLdScript from '@/components/schema/blog-schema-json-ld'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import BlogPostList from '@/components/blog-post-list'
 import { Suspense } from 'react'
+import Pagination from '@/components/pagination'
+import AppSettings from '@/app/app.settings'
 
 const pageTitle = 'Blog'
 export const metadata = {
@@ -27,6 +29,7 @@ export default function Blog() {
 
   // Sort posts by date
   const blogPosts = allBlogPosts.sort(sortByPublishedAt) 
+  const totalPages = Math.ceil(blogPosts.length / AppSettings.demoPostsPerPage)
   return (
     <>
       <BlogSchemaJsonLdScript
@@ -62,6 +65,11 @@ export default function Blog() {
               </aside>
 
             </div>
+
+            {/*  Pagination */}
+            <Suspense>
+              <Pagination totalPages={totalPages} />
+            </Suspense>
 
           </div>
         </div>
