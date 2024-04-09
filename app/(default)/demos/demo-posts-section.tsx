@@ -93,7 +93,24 @@ export default function DemoPostsSection() {
         <div className="max-w-3xl mx-auto md:max-w-none">
 
           {/*  Section title */}
-          <h4 className="h4 pb-6 mb-10 border-b border-gray-700" data-aos="fade-up">Latest demos</h4>
+          {!tag && (
+            <h4 className="h4 pb-6 mb-10 border-b border-gray-700" data-aos="fade-up">Latest demos</h4>
+          )}
+          {!! tag && (
+              <div className="h4 pb-6 mb-10 border-b border-gray-700 flex items-center">
+                <h4 className='mr-2'>Latest demos with tag</h4>
+                <PostTags tags={[tag]} tagClassName='text-sm' />
+                <Link href={`/${AppConfig.paths.demoPosts}`} className='flex items-center text-sm ml-4 text-slate-100 hover:text-slate-300 fill-slate-100 hover:fill-slate-300 transition duration-150 ease-in-out'>
+                  <svg className="shrink-0 mr-1" xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 12 12">
+                    <g transform="matrix(0.75 0 0 0.75 0 0)">
+                      <path d="M4,14.75c-.192,0-.384-.073-.53-.22-.293-.293-.293-.768,0-1.061L13.47,3.47c.293-.293,.768-.293,1.061,0s.293,.768,0,1.061L4.53,14.53c-.146,.146-.338,.22-.53,.22Z" data-color="color-2"></path>
+                      <path d="M14,14.75c-.192,0-.384-.073-.53-.22L3.47,4.53c-.293-.293-.293-.768,0-1.061s.768-.293,1.061,0L14.53,13.47c.293,.293,.293,.768,0,1.061-.146,.146-.338,.22-.53,.22Z" data-color="color-2"></path>
+                    </g>
+                  </svg>
+                  Clear
+                </Link>
+              </div>
+            )}
 
           {/*  Articles container */}
           <Suspense>
