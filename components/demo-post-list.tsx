@@ -17,7 +17,7 @@ export default function DemoPostList({
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('page')) || 1;
 
-  const firstPostPos = (currentPage - 1) * AppSettings.demoPostsPerPage
+  const firstPostPos = (currentPage - 1) * AppSettings.postsPerPage.demos
 
   const bgClassnames = [
     "bg-purple-900",
@@ -30,7 +30,7 @@ export default function DemoPostList({
 
 // Pagination
  const paginagedDemoPosts = demoPosts
-   .slice(firstPostPos, firstPostPos + AppSettings.demoPostsPerPage)
+   .slice(firstPostPos, firstPostPos + AppSettings.postsPerPage.demos)
   return (
     <div className="grid gap-12 md:grid-cols-3 md:gap-x-6 md:gap-y-8 items-start">
       {paginagedDemoPosts.map((demoPost, index) => (

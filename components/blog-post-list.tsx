@@ -16,12 +16,12 @@ export default function BlogPostList({
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('page')) || 1;
 
-  const firstPostPos = (currentPage - 1) * AppSettings.demoPostsPerPage
+  const firstPostPos = (currentPage - 1) * AppSettings.postsPerPage.blog
 
   
 // Pagination
  const paginagedBlogPosts = blogPosts
-   .slice(firstPostPos, firstPostPos + AppSettings.demoPostsPerPage)
+   .slice(firstPostPos, firstPostPos + AppSettings.postsPerPage.blog)
   return (
     <div className="md:grow -mt-4">
       {paginagedBlogPosts.map((blogPost, index) => (

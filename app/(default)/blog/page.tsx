@@ -29,7 +29,7 @@ export default function Blog() {
 
   // Sort posts by date
   const blogPosts = allBlogPosts.sort(sortByPublishedAt) 
-  const totalPages = Math.ceil(blogPosts.length / AppSettings.demoPostsPerPage)
+  const totalPages = Math.ceil(blogPosts.length / AppSettings.postsPerPage.blog)
   return (
     <>
       <BlogSchemaJsonLdScript

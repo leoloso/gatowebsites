@@ -37,7 +37,7 @@ export default function Demos() {
 
   const demoPosts = allDemoPosts.slice(1) // Remove the featured image
 
-  const totalPages = Math.ceil(demoPosts.length / AppSettings.demoPostsPerPage)
+  const totalPages = Math.ceil(demoPosts.length / AppSettings.postsPerPage.demos)
 
   return (
     <>
