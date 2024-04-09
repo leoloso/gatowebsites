@@ -9,6 +9,7 @@ import { Suspense } from 'react'
 import Pagination from '@/components/pagination'
 import AppSettings from '@/app/app.settings'
 import { useSearchParams } from 'next/navigation';
+import PostTags from '@/components/post-tags'
 
 export default function BlogSection() {
 
@@ -33,14 +34,21 @@ export default function BlogSection() {
           title="query { posts { content } }"
           description='Stay up to date on the latest from Gato GraphQL and our engineering practices.'
         />
-
         {/* Main content */}
         <div className="md:flex md:justify-between">
 
-          {/* Articles container */}
-          <Suspense>
-            <BlogPostList blogPosts={filteredBlogPosts} />
-          </Suspense>
+          <div>
+            {!! tag && (
+              <h3 className="text-lg font-bold leading-snug tracking-tight mb-4 inline-flex">
+                <span className='mr-2'>Entries with tag </span>
+                <PostTags tags={[tag]} />
+              </h3>
+            )}
+            <Suspense>
+              {/* Articles container */}
+              <BlogPostList blogPosts={filteredBlogPosts} />
+            </Suspense>
+          </div>
 
           {/* Sidebar */}
           <aside className="hidden sm:block relative mt-12 md:mt-0 md:w-64 md:ml-12 lg:ml-20 md:shrink-0">
