@@ -59,7 +59,7 @@ export default function Blog() {
               </Suspense>
 
               {/* Sidebar */}
-              <aside className="relative mt-12 md:mt-0 md:w-64 md:ml-12 lg:ml-20 md:shrink-0">
+              <aside className="hidden sm:block relative mt-12 md:mt-0 md:w-64 md:ml-12 lg:ml-20 md:shrink-0">
                 <PopularPosts />
                 {/* <Topics /> */}
               </aside>
