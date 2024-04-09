@@ -129,7 +129,7 @@ export default function Features07() {
             {automationEntries.map((automationEntry, index) => (
               <div key={index}>
                 <HighlighterItem02>
-                  <div className="relative h-full bg-purple-900/70 rounded-[inherit] z-20 overflow-hidden">
+                  <div className="relative h-full bg-purple-900/50 rounded-[inherit] z-20 overflow-hidden">
                     {/* Particles animation */}
                     <Particles className="absolute inset-0 -z-10" quantity={3} />
                     <div className="flex items-center justify-center">
