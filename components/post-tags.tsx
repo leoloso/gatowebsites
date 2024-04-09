@@ -52,7 +52,7 @@ export default function PostTags({ tags, baseURL }: {
     <ul className="flex flex-wrap text-xs font-medium -m-1">
       {tags.map((tag, tagIndex) => (
         <li key={tagIndex} className="m-1">
-          <Link href={`${baseURL}?tag=${encodeURI(tag)}`} className={`inline-flex text-center py-1 px-3 rounded-full ${tagColor(tag)} transition duration-150 ease-in-out pointer-events-none`}>
+          <Link href={`${baseURL}?tag=${encodeURI(tag)}`} className={`inline-flex text-center py-1 px-3 rounded-full ${tagColor(tag)} transition duration-150 ease-in-out`}>
             {tag}
           </Link>
         </li>
