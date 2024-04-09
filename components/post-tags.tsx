@@ -1,9 +1,11 @@
 import { getPostTagColors } from '@/utils/content/post-tags'
+import clsx from 'clsx'
 import Link from 'next/link'
 
-export default function PostTags({ tags, baseURL }: {
+export default function PostTags({ tags, baseURL, tagClassName = 'text-xs' }: {
   tags: string[],
-  baseURL?: string
+  baseURL?: string,
+  tagClassName?: string
 }) {
 
   const tagColor = (tag: string) => {
@@ -49,7 +51,7 @@ export default function PostTags({ tags, baseURL }: {
   }
 
   return (
-    <ul className="flex flex-wrap text-xs font-medium -m-1">
+    <ul className={clsx('flex flex-wrap font-medium -m-1', tagClassName)}>
       {tags.map((tag, tagIndex) => (
         <li key={tagIndex} className="m-1">
           {!! baseURL && (
