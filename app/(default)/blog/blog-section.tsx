@@ -41,8 +41,8 @@ export default function BlogSection() {
 
           <div>
             {!! tag && (
-              <div className="text-lg font-bold leading-snug tracking-tight mb-4 flex pb-2 border-b border-slate-400">
-                <h3 className='mr-2'>Entries with tag</h3>
+              <div className="h4 pb-6 mb-10 border-b border-gray-700 flex items-center">
+                <h4 className='mr-2'>Entries with tag</h4>
                 <PostTags tags={[tag]} />
                 <Link href={`/${AppConfig.paths.blog}`} className='flex items-center text-sm ml-1 text-slate-100 hover:text-slate-300 fill-slate-100 hover:fill-slate-300 transition duration-150 ease-in-out'>
                   <svg className="shrink-0 mr-1" xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 12 12">
