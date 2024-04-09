@@ -4,6 +4,7 @@ import PostDate from '@/components/post-date'
 import { BlogPost } from '@/.contentlayer/generated'
 import { getBlogPostURLPath } from '@/utils/content/application-urls'
 import PostTags from './post-tags'
+import AppConfig from '@/app/app.config'
 
 export default function BlogPostItem({ post }: {
   post: BlogPost
@@ -34,7 +35,7 @@ export default function BlogPostItem({ post }: {
           <div className="flex md:justify-center mt-4 md:mt-0 items-center mb-6 md:mb-0 md:ml-4">
             {/* Article tags */}
             {post.tags &&
-              <PostTags tags={post.tags} />
+              <PostTags tags={post.tags} baseURL={AppConfig.paths.blog} />
             }
           </div>
         </footer>

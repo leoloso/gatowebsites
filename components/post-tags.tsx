@@ -1,7 +1,9 @@
 import { getPostTagColors } from '@/utils/content/post-tags'
+import Link from 'next/link'
 
-export default function PostTags({ tags }: {
-  tags: string[]
+export default function PostTags({ tags, baseURL }: {
+  tags: string[],
+  baseURL: string
 }) {
 
   const tagColor = (tag: string) => {
@@ -50,9 +52,9 @@ export default function PostTags({ tags }: {
     <ul className="flex flex-wrap text-xs font-medium -m-1">
       {tags.map((tag, tagIndex) => (
         <li key={tagIndex} className="m-1">
-          <span className={`inline-flex text-center py-1 px-3 rounded-full ${tagColor(tag)} pointer-events-none`}>
+          <Link href={`${baseURL}?tag=${encodeURI(tag)}`} className={`inline-flex text-center py-1 px-3 rounded-full ${tagColor(tag)} pointer-events-none`}>
             {tag}
-          </span>
+          </Link>
         </li>
       ))}
     </ul>
