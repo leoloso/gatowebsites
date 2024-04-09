@@ -3,9 +3,7 @@ import Link from 'next/link'
 import PostDate from '@/components/post-date'
 import PostTags from '@/components/post-tags'
 
-import Newsletter from '@/components/newsletter'
 import { getDemoPostURLPath } from '@/utils/content/application-urls'
-import StunningBackground from '@/components/stunning-background'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
 import Pagination from '@/components/pagination'
@@ -14,7 +12,6 @@ import AppSettings from '@/app/app.settings'
 import DemoPostList from '@/components/demo-post-list'
 import DemoPostThumb from '@/components/demo-post-thumb'
 import { Suspense } from 'react'
-import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import AppConfig from '@/app/app.config'
 
 export default function DemoPostsSection() {
