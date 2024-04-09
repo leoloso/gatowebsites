@@ -41,7 +41,7 @@ export default function BlogSection() {
 
           <div>
             {!! tag && (
-              <div className="h4 pb-6 mb-10 border-b border-gray-700 flex items-center">
+              <div className="h4 pb-6 mb-10 border-b border-gray-700 flex items-center" data-aos="fade-up">
                 <h4 className='mr-2'>Entries with tag</h4>
                 <PostTags tags={[tag]} tagClassName='text-sm' />
                 <Link href={`/${AppConfig.paths.blog}`} className='flex items-center text-sm ml-4 text-slate-100 hover:text-slate-300 fill-slate-100 hover:fill-slate-300 transition duration-150 ease-in-out'>
