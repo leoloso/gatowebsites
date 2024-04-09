@@ -102,7 +102,7 @@ export default async function SingleDemoPost({ params }: {
                     {/* Article tags */}
                     {demoPost.tags &&
                       <div className="flex justify-center mt-4 md:mt-0" data-aos="fade-up" data-aos-delay="600">
-                        <PostTags tags={demoPost.tags} baseURL={AppConfig.paths.demoPosts} />
+                        <PostTags tags={demoPost.tags} baseURL={`/${AppConfig.paths.demoPosts}`} />
                       </div>
                     }
                   </div>

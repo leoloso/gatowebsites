@@ -79,7 +79,7 @@ export default function Demos() {
                     <div className="mb-3">
                       {featuredDemoPost.tags &&
                         <div className="mb-3">
-                          <PostTags tags={featuredDemoPost.tags} baseURL={AppConfig.paths.demoPosts} />
+                          <PostTags tags={featuredDemoPost.tags} baseURL={`/${AppConfig.paths.demoPosts}`} />
                         </div>
                       }
                     </div>

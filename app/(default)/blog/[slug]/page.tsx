@@ -131,7 +131,7 @@ export default async function SinglePost({ params }: {
                       {/* Article tags */}
                       {blogPost.tags &&
                         <div className="flex justify-center mt-4 md:mt-0 items-center mb-6">
-                          <PostTags tags={blogPost.tags} baseURL={AppConfig.paths.blog} />
+                          <PostTags tags={blogPost.tags} baseURL={`/${AppConfig.paths.blog}`} />
                         </div>
                       }
                     </div>

@@ -37,7 +37,7 @@ export default function DemoPostPostItem({
         </Link>
         {demoPost.tags &&
           <div className="mb-3">
-            <PostTags tags={demoPost.tags} baseURL={AppConfig.paths.demoPosts} />
+            <PostTags tags={demoPost.tags} baseURL={`/${AppConfig.paths.demoPosts}`} />
           </div>
         }
         <h3 className="h4 mb-2">

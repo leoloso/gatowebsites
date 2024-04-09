@@ -35,7 +35,7 @@ export default function BlogPostItem({ post }: {
           <div className="flex md:justify-center mt-4 md:mt-0 items-center mb-6 md:mb-0 md:ml-4">
             {/* Article tags */}
             {post.tags &&
-              <PostTags tags={post.tags} baseURL={AppConfig.paths.blog} />
+              <PostTags tags={post.tags} baseURL={`/${AppConfig.paths.blog}`} />
             }
           </div>
         </footer>

@@ -44,7 +44,7 @@ export default function BlogSection() {
               <div className="text-lg font-bold leading-snug tracking-tight mb-4 flex pb-2 border-b border-slate-400">
                 <h3 className='mr-2'>Entries with tag</h3>
                 <PostTags tags={[tag]} />
-                <Link href={AppConfig.paths.blog} className='flex items-center text-sm ml-1 text-slate-100 hover:text-slate-300 fill-slate-100 hover:fill-slate-300 transition duration-150 ease-in-out'>
+                <Link href={`/${AppConfig.paths.blog}`} className='flex items-center text-sm ml-1 text-slate-100 hover:text-slate-300 fill-slate-100 hover:fill-slate-300 transition duration-150 ease-in-out'>
                   <svg className="shrink-0 mr-1" xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 12 12">
                     <g transform="matrix(0.75 0 0 0.75 0 0)">
                       <path d="M4,14.75c-.192,0-.384-.073-.53-.22-.293-.293-.293-.768,0-1.061L13.47,3.47c.293-.293,.768-.293,1.061,0s.293,.768,0,1.061L4.53,14.53c-.146,.146-.338,.22-.53,.22Z" data-color="color-2"></path>
