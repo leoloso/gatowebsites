@@ -10,6 +10,8 @@ import Pagination from '@/components/pagination'
 import AppSettings from '@/app/app.settings'
 import { useSearchParams } from 'next/navigation';
 import PostTags from '@/components/post-tags'
+import Link from 'next/link'
+import AppConfig from '@/app/app.config'
 
 export default function BlogSection() {
 
@@ -42,6 +44,15 @@ export default function BlogSection() {
               <div className="text-lg font-bold leading-snug tracking-tight mb-4 inline-flex">
                 <h3 className='mr-2'>Entries with tag</h3>
                 <PostTags tags={[tag]} />
+                <Link href={AppConfig.paths.blog} className='flex items-center text-sm ml-1 text-slate-100 hover:text-slate-200 transition duration-150 ease-in-out'>
+                  <svg className="shrink-0 fill-white mr-1" xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 12 12">
+                    <g transform="matrix(0.75 0 0 0.75 0 0)">
+                      <path d="M4,14.75c-.192,0-.384-.073-.53-.22-.293-.293-.293-.768,0-1.061L13.47,3.47c.293-.293,.768-.293,1.061,0s.293,.768,0,1.061L4.53,14.53c-.146,.146-.338,.22-.53,.22Z" data-color="color-2"></path>
+                      <path d="M14,14.75c-.192,0-.384-.073-.53-.22L3.47,4.53c-.293-.293-.293-.768,0-1.061s.768-.293,1.061,0L14.53,13.47c.293,.293,.293,.768,0,1.061-.146,.146-.338,.22-.53,.22Z" data-color="color-2"></path>
+                    </g>
+                  </svg>
+                  Clear
+                </Link>
               </div>
             )}
             <Suspense>
