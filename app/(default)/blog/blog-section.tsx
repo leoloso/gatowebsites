@@ -39,10 +39,10 @@ export default function BlogSection() {
 
           <div>
             {!! tag && (
-              <h3 className="text-lg font-bold leading-snug tracking-tight mb-4 inline-flex">
-                <span className='mr-2'>Entries with tag </span>
+              <div className="text-lg font-bold leading-snug tracking-tight mb-4 inline-flex">
+                <h3 className='mr-2'>Entries with tag</h3>
                 <PostTags tags={[tag]} />
-              </h3>
+              </div>
             )}
             <Suspense>
               {/* Articles container */}
