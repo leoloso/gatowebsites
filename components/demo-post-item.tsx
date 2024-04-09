@@ -4,6 +4,7 @@ import PostTags from './post-tags'
 import { DemoPost } from '@/.contentlayer/generated'
 import { getDemoPostURLPath } from '@/utils/content/application-urls'
 import DemoPostThumb from './demo-post-thumb'
+import AppConfig from '@/app/app.config'
 
 export default function DemoPostPostItem({
   demoPost,
@@ -36,7 +37,7 @@ export default function DemoPostPostItem({
         </Link>
         {demoPost.tags &&
           <div className="mb-3">
-            <PostTags tags={demoPost.tags} />
+            <PostTags tags={demoPost.tags} baseURL={`/${AppConfig.paths.demoPosts}`} />
           </div>
         }
         <h3 className="h4 mb-2">

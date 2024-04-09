@@ -15,6 +15,7 @@ import DemoPostList from '@/components/demo-post-list'
 import DemoPostThumb from '@/components/demo-post-thumb'
 import { Suspense } from 'react'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import AppConfig from '@/app/app.config'
 
 const pageTitle = 'Demos'
 export const metadata = {
@@ -78,7 +79,7 @@ export default function Demos() {
                     <div className="mb-3">
                       {featuredDemoPost.tags &&
                         <div className="mb-3">
-                          <PostTags tags={featuredDemoPost.tags} />
+                          <PostTags tags={featuredDemoPost.tags} baseURL={`/${AppConfig.paths.demoPosts}`} />
                         </div>
                       }
                     </div>

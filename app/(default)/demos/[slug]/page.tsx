@@ -14,6 +14,7 @@ import DemoPostThumb from '@/components/demo-post-thumb'
 import PageHeader from '@/components/page-header'
 import DemoPostItemIntegration from '@/components/demo-post-item-integration'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import AppConfig from '@/app/app.config'
 
 export async function generateStaticParams() {
   return allDemoPosts.map((demoPost) => ({
@@ -101,7 +102,7 @@ export default async function SingleDemoPost({ params }: {
                     {/* Article tags */}
                     {demoPost.tags &&
                       <div className="flex justify-center mt-4 md:mt-0" data-aos="fade-up" data-aos-delay="600">
-                        <PostTags tags={demoPost.tags} />
+                        <PostTags tags={demoPost.tags} baseURL={`/${AppConfig.paths.demoPosts}`} />
                       </div>
                     }
                   </div>
