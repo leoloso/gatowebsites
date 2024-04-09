@@ -95,7 +95,7 @@ export default async function SingleComparisonPost({ params }: {
                   </figure>
                 } */}
                 <div className="pb-12 md:pb-20">
-                  <div className="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
+                  <div className="relative h-full bg-purple-900/70 rounded-[inherit] z-20 overflow-hidden">
                     <div className="flex items-center justify-center">
                       <Particles className="absolute inset-0 -z-10" quantity={10} />
                       <Image className="w-full h-full aspect-video object-cover" src={getComparisonPostBackground(comparisonPost.targetName)} width={352} height={198} alt="Comparison Target Background" aria-hidden="true" />
