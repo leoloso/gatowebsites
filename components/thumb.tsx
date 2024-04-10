@@ -10,7 +10,7 @@ export default function Thumb({
   title,
   targetImageSources,
   paddingClassname = "py-10 px-8 md:py-16 md:px-12",
-  bgClassname = "bg-gradient-to-tr from-blue-900 to-purple-800",
+  bgClassname = "bg-gradient-to-tr from-slate-900 to-violet-900",
   isLandscape = false,
   svgImage,
   logoImage,
