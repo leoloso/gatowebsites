@@ -24,7 +24,7 @@ export default function DemoPostThumb({
       // data-aos="zoom-out"
     >
       <Particles className="absolute inset-0 -z-10" quantity={10} />
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center h-full">
         {/* <div className="absolute right-0 top-1/2 -translate-y-1/2 mt-8 -z-10" aria-hidden="true">
           <Image src={Illustration} className="max-w-none" alt="Illustration" />
         </div> */}
