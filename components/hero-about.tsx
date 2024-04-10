@@ -2,11 +2,18 @@ import Image from 'next/image'
 import AboutIllustration from '@/public/assets/theme/about-illustration.svg'
 import Icon from '@/public/assets/theme/about-icon.png'
 import StunningBackground from './stunning-background'
+import Thumb from '@/components/thumb'
+import CircledEqualsSvgImage from '@/public/assets/theme/equals-circled.svg'
+import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
+import WordPressLogo from '@/public/assets/components/automator/logos/google-sheet-icon.svg'
+import GatoGraphQLLogo from '@/public/assets/components/automator/logos/airtable-icon.svg'
 
 export default function HeroAbout({
-  includeAnimation = true
+  includeAnimation = true,
+  includeThumbnail = false
 }: {
-  includeAnimation?: boolean
+  includeAnimation?: boolean,
+  includeThumbnail?: boolean,
 }) {
   return (
     <section className="relative">
@@ -33,6 +40,22 @@ export default function HeroAbout({
                 <Image className="absolute mt-[30%] drop-shadow-lg animate-float" src={Icon} width={72} height={72} alt="About icon" />
               </div>
             )}
+
+            {includeThumbnail && (
+              <div className="mb-8">
+                <Thumb
+                  bgClassname="bg-gradient-to-tr from-slate-900 to-purple-800"
+                  title="Gato GraphQL"
+                  targetImageSources={[WordPressLogo, GatoGraphQLLogo]}
+                  reverseItems={true}
+                  logoImage={Logo}
+                  svgImage={CircledEqualsSvgImage}
+                  svgClassname="px-8 opacity-70"
+                  isLandscape={true}
+                />
+              </div>
+            )}
+
           </div>
 
         </div>
