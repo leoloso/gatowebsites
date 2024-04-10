@@ -16,6 +16,7 @@ export default function Thumb({
   logoImage,
   reverseItems = false,
   svgClassname = "mx-2 my-4",
+  numberParticles = 10,
 }: {
   title: string,
   targetImageSources: Array<string>,
@@ -26,13 +27,14 @@ export default function Thumb({
   logoImage?: StaticImageData,
   reverseItems?: boolean,
   svgClassname?: string,
+  numberParticles?: number,
 }) {
   return (
     <div
       className={clsx("relative h-full z-20 overflow-hidden", bgClassname, paddingClassname)}
       // data-aos="zoom-out"
     >
-      <Particles className="absolute inset-0 -z-10" quantity={10} />
+      <Particles className="absolute inset-0 -z-10" quantity={numberParticles} />
       <div className="flex items-center justify-center h-full">
         {/* <div className="absolute right-0 top-1/2 -translate-y-1/2 mt-8 -z-10" aria-hidden="true">
           <Image src={Illustration} className="max-w-none" alt="Illustration" />
