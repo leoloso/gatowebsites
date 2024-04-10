@@ -5,8 +5,8 @@ import StunningBackground from './stunning-background'
 import Thumb from '@/components/thumb'
 import CircledEqualsSvgImage from '@/public/assets/theme/equals-circled.svg'
 import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
-import WordPressLogo from '@/public/assets/components/automator/logos/google-sheet-icon.svg'
-import GatoGraphQLLogo from '@/public/assets/components/automator/logos/airtable-icon.svg'
+import WordPressLogo from '@/public/assets/external-logos/wordpress-logo.svg'
+import GatoGraphQLLogo from '@/public/assets/external-logos/graphql-logo.svg'
 
 export default function HeroAbout({
   includeAnimation = true,
