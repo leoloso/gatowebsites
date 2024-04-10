@@ -26,7 +26,9 @@ export default function About() {
         headline={metadata.title}
         description={metadata.description}
       />
-      <Hero includeAnimation={true}/>
+
+      <Hero includeAnimation={false} includeThumbnail={true}/>
+
       <Story includeHeader={true} />
       {/* <Team />
       <Recruitment />
