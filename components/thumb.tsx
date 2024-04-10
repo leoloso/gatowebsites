@@ -78,13 +78,13 @@ export default function Thumb({
           </svg>
         </div>
         <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && reverseItems && "flex-row-reverse", !isLandscape && reverseItems && "flex-col-reverse", isLandscape && "aspect-video")}>
-          <div className={clsx(!isLandscape && "mb-2 md:mb-4", isLandscape &&  'mr-2')}>
+          <div className={clsx(!isLandscape && "mb-2 md:mb-4", isLandscape &&  'mx-2')}>
             <Image src={logoImage || Logo} alt={title} width={250} height={175} />
           </div>
           <div className={svgClassname}>
             <Image src={svgImage || PlusImage} width={30} height={30} alt="plus image" />
           </div>
-          <div className={clsx("flex items-center justify-center", !isLandscape &&  "gap-6 sm:gap-12 mt-2 md:mt-4", isLandscape &&  "flex-col ml-2")}>
+          <div className={clsx("flex items-center justify-center", !isLandscape &&  "gap-6 sm:gap-12 mt-2 md:mt-4", isLandscape &&  "flex-col mx-2")}>
             {targetImageSources.map((targetImageSrc, index) => (
               <div key={index}>
                 <Image src={targetImageSrc} alt="Target Image" width={175} height={175} />
