@@ -3,6 +3,7 @@ import StunningBackground from '@/components/stunning-background'
 import { Suspense } from 'react'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import DemoPostsSection from './demo-posts-section'
+import AppConfig from '@/app/app.config'
 
 const pageTitle = 'Demos'
 export const metadata = {
@@ -14,6 +15,9 @@ export const metadata = {
   // twitter: {
   //   title: createOpenGraphPageTitle(pageTitle),
   // },
+  alternates: {
+    canonical: `/${AppConfig.paths.demoPosts}`,
+  },
 }
 
 export default function Demos() {

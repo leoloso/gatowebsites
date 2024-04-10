@@ -4,6 +4,7 @@ import BlogSchemaJsonLdScript from '@/components/schema/blog-schema-json-ld'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import BlogSection from './blog-section'
 import { Suspense } from 'react'
+import AppConfig from '@/app/app.config'
 
 const pageTitle = 'Blog'
 export const metadata = {
@@ -15,6 +16,9 @@ export const metadata = {
   // twitter: {
   //   title: createOpenGraphPageTitle(pageTitle),
   // },
+  alternates: {
+    canonical: `/${AppConfig.paths.blog}`,
+  },
 }
 
 export default function Blog() {
