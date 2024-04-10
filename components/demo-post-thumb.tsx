@@ -66,7 +66,7 @@ export default function DemoPostThumb({
             </g>
           </svg>
         </div>
-        <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && "aspect-video overflow-hidden")}>
+        <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && "aspect-video")}>
           <div className={clsx(!isLandscape && "mb-2 md:mb-4", isLandscape &&  'mr-2')}>
             <Image src={Logo} alt={demoPost.title} width={250} height={175} />
           </div>
