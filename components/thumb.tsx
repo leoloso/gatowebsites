@@ -84,7 +84,7 @@ export default function Thumb({
           <div className={svgClassname}>
             <Image src={svgImage || PlusImage} width={30} height={30} alt="plus image" />
           </div>
-          <div className={clsx("flex items-center justify-center", !isLandscape &&  "gap-6 sm:gap-12 mt-2 md:mt-4", isLandscape &&  "flex-col mx-2")}>
+          <div className={clsx("flex items-center justify-center", !isLandscape &&  "gap-6 sm:gap-12 mt-2 md:mt-4", isLandscape &&  "gap-3 sm:gap-6  flex-col mx-2")}>
             {targetImageSources.map((targetImageSrc, index) => (
               <div key={index}>
                 <Image src={targetImageSrc} alt="Target Image" width={175} height={175} />
