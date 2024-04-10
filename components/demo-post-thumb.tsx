@@ -4,7 +4,7 @@ import Particles from '@/components/particles'
 // import Illustration from '@/public/assets/theme/cta-illustration.svg'
 import PlusImage from '@/public/assets/theme/plus.svg'
 import { DemoPost } from '@/.contentlayer/generated';
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import clsx from 'clsx';
 
 export default function DemoPostThumb({
@@ -12,11 +12,17 @@ export default function DemoPostThumb({
   paddingClassname = "py-10 px-8 md:py-16 md:px-12",
   bgClassname = "bg-gradient-to-tr from-blue-900 to-purple-800",
   isLandscape = false,
+  svgImage,
+  logoImage,
+  reverseItems = false,
 }: {
   demoPost: DemoPost,
   paddingClassname?: string,
   bgClassname?: string,
   isLandscape?: boolean,
+  svgImage?: StaticImageData,
+  logoImage?: StaticImageData,
+  reverseItems?: boolean,
 }) {
   return (
     <div
@@ -66,12 +72,12 @@ export default function DemoPostThumb({
             </g>
           </svg>
         </div>
-        <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && "aspect-video")}>
+        <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && reverseItems && "flex-row-reverse", !isLandscape && reverseItems && "flex-col-reverse", isLandscape && "aspect-video")}>
           <div className={clsx(!isLandscape && "mb-2 md:mb-4", isLandscape &&  'mr-2')}>
-            <Image src={Logo} alt={demoPost.title} width={250} height={175} />
+            <Image src={logoImage || Logo} alt={demoPost.title} width={250} height={175} />
           </div>
-          <div className="mx-2 my-4">
-            <Image src={PlusImage} width={30} height={30} alt="plus image" />
+          <div className="mx-2 my-4 fill-slate-300 text-white">
+            <Image src={svgImage || PlusImage} width={30} height={30} alt="plus image" />
           </div>
           <div className={clsx("flex items-center justify-center", !isLandscape &&  "gap-6 sm:gap-12 mt-2 md:mt-4", isLandscape &&  "flex-col ml-2")}>
             {demoPost.targetImages.map((targetImageSrc, index) => (
