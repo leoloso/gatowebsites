@@ -44,7 +44,7 @@ export default function Header({
                 <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-3 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.demoPosts}`}>Demos</Link>
               </li>
               {/* 1st level: hover */}
-              <Dropdown title="Documentation">
+              <Dropdown title="Docs">
                 {/* 2nd level: hover */}
                 <li>
                   <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-3 lg:mx-5 transition duration-150 ease-in-out py-0.5" href={`/${AppConfig.paths.docs.guides}`}>Guides</Link>
@@ -59,6 +59,9 @@ export default function Header({
                   <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-3 lg:mx-5 transition duration-150 ease-in-out py-0.5" href={`/${AppConfig.paths.docs.tutorial}`}>Schema tutorial</Link>
                 </li>
               </Dropdown>
+              <li>
+                <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-3 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.blog}`}>Blog</Link>
+              </li>
             </ul>
           </nav>
 
