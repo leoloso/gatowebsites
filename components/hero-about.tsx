@@ -42,9 +42,9 @@ export default function HeroAbout({
             )}
 
             {includeThumbnail && (
-              <div className="mb-8">
+              <div className="mb-8 aspect-video">
                 <Thumb
-                  bgClassname="bg-gradient-to-tr from-slate-900 to-blue-900 aspect-video rounded rounded-2xl"
+                  bgClassname="h-full bg-gradient-to-tr from-slate-900 to-blue-900 rounded rounded-2xl"
                   title="Gato GraphQL"
                   targetImageSources={[WordPressLogo, GatoGraphQLLogo]}
                   reverseItems={true}
