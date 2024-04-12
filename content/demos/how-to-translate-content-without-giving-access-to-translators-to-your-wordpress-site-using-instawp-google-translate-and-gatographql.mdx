@@ -41,16 +41,117 @@ This video demonstrates the translation workflow, using websites hosted in Insta
 
 The workflow involves three websites:
 
-- The origin site (`content-staging.instawp.xyz`), containing the source of content in English
-- The temporary site (`translation-es.instawp.xyz`), for the translator to fix the translation
-- The translated site (`content-es.instawp.xyz`), containing the content in Spanish
+- The **origin site** (`content-staging.instawp.xyz`), containing the source of content in English
+- The **provisional site** (`translation-es.instawp.xyz`), for the translator to fix the translation
+- The **translated site** (`content-es.instawp.xyz`), containing the content in Spanish
 
-Publish your blog post in your WordPress site and, depending on using the Gutenberg editor or the Classic editor, translate it to the desired language using Gato GraphQL + Google Translate, as explained in demos:
+Publish the blog post in your WordPress site and, depending on using the Gutenberg editor or the Classic editor, translate it to the desired language using Gato GraphQL + Google Translate, as explained in demos:
 
 - [How to translate posts including blocks with the Google Translate API](how-to-translate-posts-including-blocks-with-the-google-translate-api)
 - [...](...)
 
-The origin site will now contain the translated post as a duplicate from the original. Synchronize it to the 
+The **origin site** will now contain the Google-Translated post as a duplicate from the original, with `draft` status. Synchronize it to the **provisional site**, using the following GraphQL query:
+
+```graphql
+query ExportDownstreamGraphQLQuery
+{
+  query: _echo(value: """
+
+mutation LoginUserAndUpdatePost(
+  $username: String!
+  $userPassword: String!
+  $postSlug: String!
+  $postTitle: String!
+  $postContent: String!
+) {
+  loginUser(by: {
+    credentials: {
+      usernameOrEmail: $username,
+      password: $userPassword
+    }
+  }) {
+    userID
+  }
+
+  createPost(input: {
+    title: $postTitle,
+    slug: $postSlug,
+    contentAs: { html: $postContent },
+    status: draft
+  })
+  {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    post {
+      title
+      slug
+      content
+      status
+    }
+  }
+}
+
+    """
+  )
+    @export(as: "query")
+    @remove
+}
+
+query ExportPostToWPSite(
+  $downstreamServerGraphQLEndpointURL: String!
+  $username: String!
+  $userPassword: String!
+  $postSlug: String!
+)
+  @depends(on: "ExportDownstreamGraphQLQuery")
+  @skip(if: $isMissingPostInUpstream)
+{
+  _sendGraphQLHTTPRequest(
+    input: {
+      endpoint: $downstreamServerGraphQLEndpointURL,
+      query: $query,
+      variables: [
+        {
+          name: "username",
+          value: $username
+        },
+        {
+          name: "userPassword",
+          value: $userPassword
+        },
+        {
+          name: "postSlug",
+          value: $postSlug
+        },
+        {
+          name: "postTitle",
+          value: $postTitle
+        },
+        {
+          name: "postContent",
+          value: $postContent
+        }
+      ]
+    }
+  )
+}
+```
+
+And provide the JSON dictionary with the needed GraphQL variables:
+
+```json
+{
+  "downstreamServerGraphQLEndpointURL": "{ Gato GraphQL public endpoint on provisional site. Eg: https://translation-es.instawp.xyz/graphql }",
+  "username": "{ Username on the provisional site, with `create_posts` capability }",
+  "userPassword": "{ Password for that username }",
+  "postSlug": "{ The slug of the post to sync }"
+}
+```
 
 Export this post to the translator's dedicated site on InstaWP, using Gato GraphQL (as in the video) or InstaWP Connect.
 
