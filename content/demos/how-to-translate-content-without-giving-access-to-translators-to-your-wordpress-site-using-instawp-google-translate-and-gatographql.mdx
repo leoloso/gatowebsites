@@ -54,11 +54,34 @@ The **origin site** will now contain the Google-Translated post as a duplicate f
 [Create a persisted query](/guides/use/creating-a-persisted-query) containing the following GraphQL query, and give it title **Export post to another WordPress site**:
 
 ```graphql
+query CheckHasPost($postSlug: String!)
+{
+  post(by: { slug: $postSlug }, status: any)
+    @fail(
+      message: "There is no post in the upstream site with the provided slug"
+      data: {
+        slug: $postSlug
+      }
+    )
+  {
+    rawTitle
+      @export(as: "postTitle")
+    rawContent
+      @export(as: "postContent")
+  }
+
+  isMissingPostInUpstream: _isNull(value: $__post)
+    @export(as: "isMissingPostInUpstream")
+}
+
 query ExportDownstreamGraphQLQuery
+  @depends(on: "CheckHasPost")
+  @skip(if: $isMissingPostInUpstream)
 {
   query: _echo(value: """
 
 mutation LoginUserAndUpdatePost(
+  $update: Boolean! = false
   $username: String!
   $userPassword: String!
   $postSlug: String!
@@ -74,12 +97,36 @@ mutation LoginUserAndUpdatePost(
     userID
   }
 
+  post(by: { slug: $postSlug }, status: any)
+    @include(if: $update)
+  {
+    update(input: {
+      title: $postTitle,
+      contentAs: { html: $postContent },
+    }) {
+      status
+      errors {
+        __typename
+        ...on ErrorPayload {
+          message
+        }
+      }
+      post {
+        title
+        slug
+        content
+        status
+      }
+    }
+  }
+
   createPost(input: {
     title: $postTitle,
     slug: $postSlug,
     contentAs: { html: $postContent },
     status: draft
   })
+    @skip(if: $update)
   {
     status
     errors {
@@ -105,17 +152,23 @@ mutation LoginUserAndUpdatePost(
 
 query ExportPostToWPSite(
   $downstreamServerGraphQLEndpointURL: String!
+  $update: Boolean! = false
   $username: String!
   $userPassword: String!
   $postSlug: String!
 )
   @depends(on: "ExportDownstreamGraphQLQuery")
+  @skip(if: $isMissingPostInUpstream)
 {
   _sendGraphQLHTTPRequest(
     input: {
       endpoint: $downstreamServerGraphQLEndpointURL,
       query: $query,
       variables: [
+        {
+          name: "update",
+          value: $update
+        },
         {
           name: "username",
           value: $username
@@ -157,6 +210,6 @@ The **provisional site** will now contain the Google-Translated post.
 
 You can now ask the translator to log-in to the **provisional site** and fix the translation, directly within the WordPress editor.
 
-When finished, import the final translated post to your production site for that language.
+When the translation is finished, log-in to the **translated site**, import the final translated post to your production site for that language.
 
 Voilà! You have used independent environments to produce your content, translate it, and deploy it.
