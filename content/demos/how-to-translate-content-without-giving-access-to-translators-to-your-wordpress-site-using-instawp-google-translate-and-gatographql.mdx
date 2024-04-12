@@ -23,7 +23,7 @@ integrations:
 
 Let's say your website is a WordPress multisite, where every site is a translation to a different language, and you employ 3rd-party translators to translate the content. At the same time, you'd like to avoid giving access to your WordPress site's backend to external workers.
 
-You can use **InstaWP** together with **Gato GraphQL** to provide for this use case.
+You can use **InstaWP** together with **Gato GraphQL**, plus the integration with **Google Translate**, to provide for this use case.
 
 This video demonstrates the translation workflow, using websites hosted in InstaWP:
 
@@ -41,19 +41,16 @@ This video demonstrates the translation workflow, using websites hosted in Insta
 
 The workflow involves three websites:
 
-- The first site (`content-staging.instawp.xyz`) is the origin WordPress site, containing the source of content (in English)
-- The second site (`translation-es.instawp.xyz`) is a temporary InstaWP site, created to give access to the translator
-- The third site (`content-es.instawp.xyz`) is the translated site (in Spanish)
+- The origin site (`content-staging.instawp.xyz`), containing the source of content in English
+- The temporary site (`translation-es.instawp.xyz`), for the translator to fix the translation
+- The translated site (`content-es.instawp.xyz`), containing the content in Spanish
 
-The content is taken from the origin site and automatically translated using **Google Translate**, then synchronized to the second site.
+Publish your blog post in your WordPress site and, depending on using the Gutenberg editor or the Classic editor, translate it to the desired language using Gato GraphQL + Google Translate, as explained in demos:
 
-Create a site in InstaWP for your translator (or maybe for all the different translators, or for every language, or other). This may be a temporary site that is created just for this post, or a reserved site that you can keep using for future posts too.
+- [How to translate posts including blocks with the Google Translate API](how-to-translate-posts-including-blocks-with-the-google-translate-api)
+- [...](...)
 
-In your staging site, write your blog post either using the block-based WordPress editor, or the classic editor (they are both supported).
-
-When it's finished, use Gato GraphQL to translate the content to the desired language via Google Translate. If using the block editor, the translation will already be stored within each block (property by property), so you don't need to do any copy/pasting of strings and put them back on the post.
-
-At this point, the staging site will contain the translated post, as a duplicate from the original.
+The origin site will now contain the translated post as a duplicate from the original. Synchronize it to the 
 
 Export this post to the translator's dedicated site on InstaWP, using Gato GraphQL (as in the video) or InstaWP Connect.
 
