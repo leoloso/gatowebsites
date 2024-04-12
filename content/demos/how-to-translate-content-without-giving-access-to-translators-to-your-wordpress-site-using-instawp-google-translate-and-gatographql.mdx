@@ -47,12 +47,9 @@ The workflow involves three websites:
 - The **provisional site** (`translation-es.instawp.xyz`), created on InstaWP, for the translator to fix the translation
 - The **translated site** (`content-es.instawp.xyz`), containing the content in Spanish
 
-Publish the blog post in your origin WordPress site, and translate it to the desired language using Gato GraphQL + Google Translate, as explained in demos:
+Publish the blog post in your origin WordPress site, and translate it to the desired language using Gato GraphQL + Google Translate, as explained in demo [How to translate posts including blocks with the Google Translate API](/demos/how-to-translate-posts-including-blocks-with-the-google-translate-api).
 
-- [How to translate posts including blocks with the Google Translate API](how-to-translate-posts-including-blocks-with-the-google-translate-api)
-- [...](...)
-
-The **origin site** will now contain the Google-Translated post as a duplicate from the original, with `draft` status.
+The **origin site** will now contain the Google-Translated post as a duplicate from the original, with `draft` status. We need now to move it to the **provisional site**.
 
 [Create a persisted query](/guides/use/creating-a-persisted-query) containing the following GraphQL query, and give it title **Export post to another WordPress site**:
 
@@ -113,7 +110,6 @@ query ExportPostToWPSite(
   $postSlug: String!
 )
   @depends(on: "ExportDownstreamGraphQLQuery")
-  @skip(if: $isMissingPostInUpstream)
 {
   _sendGraphQLHTTPRequest(
     input: {
@@ -146,9 +142,7 @@ query ExportPostToWPSite(
 }
 ```
 
-This persisted query will synchronize the post from the **origin site** to the **provisional site**.
-
-Execute it, providing the JSON dictionary with the needed GraphQL variables:
+This persisted query will export the post from the **origin site** to the **provisional site**. Execute it, providing the JSON dictionary with the needed GraphQL variables:
 
 ```json
 {
