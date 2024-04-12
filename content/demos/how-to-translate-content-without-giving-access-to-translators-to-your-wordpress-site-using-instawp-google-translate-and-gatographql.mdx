@@ -21,11 +21,13 @@ integrations:
   - { name: Google Translate, image: /images/logos/google-translate.svg, url: https://cloud.google.com/translate/ }
 ---
 
-Let's say your website is a WordPress multisite, where every site is a translation to a different language, and you employ 3rd-party translators to translate the content. At the same time, you'd like to avoid giving access to your WordPress site's backend to external workers.
+Let's say your website is a WordPress multisite, where every site is a translation to a different language, and you employ 3rd-party translators to translate the content.
+
+At the same time, you'd like to avoid giving access to your WordPress site's backend to external workers.
 
 You can use **InstaWP** together with **Gato GraphQL**, plus the integration with **Google Translate**, to provide for this use case.
 
-This video demonstrates the translation workflow, using websites hosted in InstaWP:
+This video demonstrates the translation workflow:
 
 <div className="aspect-video lg:-ml-32 lg:-mr-32">
   <iframe
@@ -42,10 +44,10 @@ This video demonstrates the translation workflow, using websites hosted in Insta
 The workflow involves three websites:
 
 - The **origin site** (`content-staging.instawp.xyz`), containing the source of content in English
-- The **provisional site** (`translation-es.instawp.xyz`), for the translator to fix the translation
+- The **provisional site** (`translation-es.instawp.xyz`), created on InstaWP, for the translator to fix the translation
 - The **translated site** (`content-es.instawp.xyz`), containing the content in Spanish
 
-Publish the blog post in your WordPress site and, depending on using the Gutenberg editor or the Classic editor, translate it to the desired language using Gato GraphQL + Google Translate, as explained in demos:
+Publish the blog post in your origin WordPress site, and translate it to the desired language using Gato GraphQL + Google Translate, as explained in demos:
 
 - [How to translate posts including blocks with the Google Translate API](how-to-translate-posts-including-blocks-with-the-google-translate-api)
 - [...](...)
@@ -146,7 +148,7 @@ query ExportPostToWPSite(
 
 This persisted query will synchronize the post from the **origin site** to the **provisional site**.
 
-Executing it, providing the JSON dictionary with the needed GraphQL variables:
+Execute it, providing the JSON dictionary with the needed GraphQL variables:
 
 ```json
 {
@@ -159,7 +161,7 @@ Executing it, providing the JSON dictionary with the needed GraphQL variables:
 
 The **provisional site** will now contain the Google-Translated post.
 
-You can now ask the translator to fix the translation, directly within the WordPress editor.
+You can now ask the translator to log-in to the **provisional site** and fix the translation, directly within the WordPress editor.
 
 When finished, import the final translated post to your production site for that language.
 
