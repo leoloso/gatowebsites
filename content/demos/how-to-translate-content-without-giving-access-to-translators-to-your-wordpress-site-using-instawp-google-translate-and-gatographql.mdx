@@ -4,8 +4,8 @@ seoTitle: 'How to translate content without giving access to translators to your
 publishedAt: '2024-04-12'
 image: '/images/thumbnails/demos/how-to-translate-content-without-giving-access-to-translators-to-your-wordpress-site-using-instawp-google-translate-and-gatographql.png'
 leading: Gato GraphQL translation demo
-description: 'Creating a temporary site in InstaWP to have external workers fix the translation by Google Translate, and then syncing the content back to the actual site.'
-seoDescription: 'Creating a temporary WordPress site in InstaWP to have external workers fix the translation by Google Translate, and then syncing the content back to the actual WordPress site using Gato GraphQL.'
+description: 'Creating a temporary site in InstaWP to have 3rd-party translators adapt the translation by Google Translate, and then syncing the content back to the actual site.'
+seoDescription: 'Creating a temporary WordPress site in InstaWP to have 3rd-party translators adapt the translation by Google Translate, and then syncing the content back to the actual WordPress site using Gato GraphQL.'
 author: 'Leonardo Losoviz'
 authorImg: '/images/leo-avatar.jpg'
 tags:
@@ -20,6 +20,14 @@ integrations:
   - { name: InstaWP, image: /images/logos/instawp.svg, url: https://instawp.com }
   - { name: Google Translate, image: /images/logos/google-translate.svg, url: https://cloud.google.com/translate/ }
 ---
+
+Let's say your website is a WordPress multisite, where every site is a translation to a different language, and you employ 3rd-party translators to translate the content. At the same time, you'd like to avoid giving access to your WordPress site's backend to external workers.
+
+Using InstaWP with [Gato GraphQL](https://gatographql.com) offers a solution, which not only keeps your production site secure, but also makes it easy to translate the content (using the WordPress editor!), and saves plenty of time.
+
+![InstaWP + Gato GraphQL](/assets/logos/GatoGraphQL-plus-InstaWP-logo.png "InstaWP + Gato GraphQL")
+
+InstaWP provides the infrastructure, and Gato GraphQL the architecture and logic to deploy the solution.
 
 Whenever a user completes a lesson from **MasterStudy LMS**, we will send custom data to AirTable, and create records on a specified table.
 
