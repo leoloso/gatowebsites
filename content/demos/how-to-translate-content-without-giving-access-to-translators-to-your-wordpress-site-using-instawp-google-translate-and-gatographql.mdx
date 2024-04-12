@@ -50,7 +50,9 @@ Publish the blog post in your WordPress site and, depending on using the Gutenbe
 - [How to translate posts including blocks with the Google Translate API](how-to-translate-posts-including-blocks-with-the-google-translate-api)
 - [...](...)
 
-The **origin site** will now contain the Google-Translated post as a duplicate from the original, with `draft` status. Synchronize it to the **provisional site**, using the following GraphQL query:
+The **origin site** will now contain the Google-Translated post as a duplicate from the original, with `draft` status.
+
+[Create a persisted query](/guides/use/creating-a-persisted-query) containing the following GraphQL query, and give it title **Export post to another WordPress site**:
 
 ```graphql
 query ExportDownstreamGraphQLQuery
@@ -142,7 +144,9 @@ query ExportPostToWPSite(
 }
 ```
 
-And provide the JSON dictionary with the needed GraphQL variables:
+This persisted query will synchronize the post from the **origin site** to the **provisional site**.
+
+Executing it, providing the JSON dictionary with the needed GraphQL variables:
 
 ```json
 {
