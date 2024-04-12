@@ -1,30 +1,38 @@
 ---
-title: 'How to translate posts including blocks with the Google Translate API'
-seoTitle: 'How to translate WordPress posts with Gutenberg blocks via the Google Translate API using Gato GraphQL'
-publishedAt: '2024-04-04'
-image: '/images/thumbnails/demos/gatographql-google-translate-wordpress.png'
+title: 'How to translate content without giving access to 3rd-party translators to the backend of your WordPress site, using InstaWP and Google Translate'
+seoTitle: 'How to translate content without giving access to 3rd-party translators to the backend of your WordPress site, using InstaWP, Google Translate and Gato GraphQL'
+publishedAt: '2024-04-12'
+image: '/images/thumbnails/demos/gatographql-instawp-google-translate-wordpress.png'
 leading: Gato GraphQL translation demo
-description: 'Translate a post to the desired language, with full support for (Gutenberg) blocks, by connecting to the Google Translate API.'
-seoDescription: 'Translate a WordPress post to the desired language using Gato GraphQL, with full support for Gutenberg blocks, by connecting to the Google Translate API.'
+description: 'Translate content using Google Translate, synchronize it to a provisional site to have 3rd-party translators fix the translation, and then synchronize the content back to the site.'
+seoDescription: 'Translate content using Google Translate, synchronize it to a provisional WordPress site to have 3rd-party translators fix the translation, and then synchronize the content back to the WordPress site using Gato GraphQL.'
 author: 'Leonardo Losoviz'
 authorImg: '/images/leo-avatar.jpg'
 tags:
   - translation
+  - content sync
+  - InstaWP
   - Google Translate
 targetImages:
+  - /images/logos/instawp.svg
   - /images/logos/google-translate.svg
 integrations: 
+  - { name: InstaWP, image: /images/logos/instawp.svg, url: https://instawp.com }
   - { name: Google Translate, image: /images/logos/google-translate.svg, url: https://cloud.google.com/translate/ }
 ---
 
-We can use Gato GraphQL to translate posts using the **Google Translate API**, translating all the properties within the blocks in the post.
+Let's say your website is a WordPress multisite, where every site is a translation to a different language, and you employ 3rd-party translators to translate the content.
 
-In this video, a post in English is open in the WordPress editor. When executing the GraphQL query, all properties for every block in the post are translated to Spanish:
+At the same time, you'd like to avoid giving access to your WordPress site's backend to external workers.
+
+You can use **InstaWP** together with **Gato GraphQL**, plus the integration with **Google Translate**, to provide for this use case.
+
+This video demonstrates the translation workflow:
 
 <div className="aspect-video lg:-ml-32 lg:-mr-32">
   <iframe
     className="w-full h-full"
-    src="https://player.vimeo.com/video/836876255"
+    src="https://player.vimeo.com/video/887586551"
     width="640"
     height="360"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -33,10 +41,23 @@ In this video, a post in English is open in the WordPress editor. When executing
   </iframe>
 </div>
 
+The workflow involves three websites:
 
-Gato GraphQL provides directive [`@strTranslate`](/extensions-reference/google-translate), which connects to the **Google Translate API** to translate the value in the corresponding field.
+- The **origin site** (`content-staging.instawp.xyz`), containing the source of content in English
+- The **provisional site** (`translation-es.instawp.xyz`), created on InstaWP, for the translator to fix the translation
+- The **translated site** (`content-es.instawp.xyz`), containing the content in Spanish
 
-Thanks to the ability to [retrieve block data](/guides/interact/working-with-gutenberg-blocks) and extract all properties from within the block, we are able to translate block properties, insert them back into each block, and store the post back to the DB.
+Let's see how it works
+
+## Step 1: Google Translate your post in the origin site
+
+Publish the blog post in your origin WordPress site, and translate it to the desired language using Gato GraphQL + Google Translate.
+
+<Banner type="info">
+
+Demo [How to translate posts including blocks with the Google Translate API](/demos/how-to-translate-posts-including-blocks-with-the-google-translate-api) describes this use case with more details.
+
+</Banner>
 
 [Create a persisted query](/guides/use/creating-a-persisted-query) containing the following GraphQL query, and give it title **Translate post with blocks**:
 
@@ -1214,27 +1235,7 @@ mutation TranslatePost($postID: ID!)
 }
 ```
 
-This GraphQL query translates the post's title and content, supporting blocks of the following types:
-
-- `core/heading`
-- `core/paragraph`
-- `core/image`
-- `core/button`
-- `core/table`
-- `core/list-item`
-- `core/cover`
-- `core/media-text`
-- `core/verse`
-- `core/quote`
-- `core/pullquote`
-- `core/audio`
-- `core/video`
-- `core/preformatted`
-- `core/embed`
-
-If you need additional blocks, please customize the GraphQL query accordingly.
-
-To translate a post, provide the JSON dictionary with GraphQL variables:
+Execute the persisted query providing the JSON dictionary with GraphQL variables:
 
 - `postID`: The ID of the post to translate
 - `translateToLang`: the [language code](/extensions-reference/google-translate#list-of-languages) to translate to
@@ -1248,4 +1249,729 @@ For instance:
 }
 ```
 
-When executing the query, the post will be translated. You can then open it again the WordPress editor, and keep editing it.
+The **origin site** will now contain the Google-Translated post as a duplicate from the original, with `draft` status. We need now to move it to the **provisional site**.
+
+## Step 2: Copy the post from the origin site to the provisional site
+
+Create a persisted query containing the following GraphQL query, and give it title **Export post to another WordPress site**:
+
+```graphql
+query CheckHasPost($postSlug: String!)
+{
+  post(by: { slug: $postSlug }, status: any)
+    @fail(
+      message: "There is no post in the upstream site with the provided slug"
+      data: {
+        slug: $postSlug
+      }
+    )
+  {
+    rawTitle
+      @export(as: "postTitle")
+    rawContent
+      @export(as: "postContent")
+  }
+
+  isMissingPostInUpstream: _isNull(value: $__post)
+    @export(as: "isMissingPostInUpstream")
+}
+
+query ExportDownstreamGraphQLQuery
+  @depends(on: "CheckHasPost")
+  @skip(if: $isMissingPostInUpstream)
+{
+  query: _echo(value: """
+
+mutation LoginUserAndUpdatePost(
+  $update: Boolean! = false
+  $username: String!
+  $userPassword: String!
+  $postSlug: String!
+  $postTitle: String!
+  $postContent: String!
+) {
+  loginUser(by: {
+    credentials: {
+      usernameOrEmail: $username,
+      password: $userPassword
+    }
+  }) {
+    userID
+  }
+
+  post(by: { slug: $postSlug }, status: any)
+    @include(if: $update)
+  {
+    update(input: {
+      title: $postTitle,
+      contentAs: { html: $postContent },
+    }) {
+      status
+      errors {
+        __typename
+        ...on ErrorPayload {
+          message
+        }
+      }
+      post {
+        title
+        slug
+        content
+        status
+      }
+    }
+  }
+
+  createPost(input: {
+    title: $postTitle,
+    slug: $postSlug,
+    contentAs: { html: $postContent },
+    status: draft
+  })
+    @skip(if: $update)
+  {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    post {
+      title
+      slug
+      content
+      status
+    }
+  }
+}
+
+    """
+  )
+    @export(as: "query")
+    @remove
+}
+
+query ExportPostToWPSite(
+  $downstreamServerGraphQLEndpointURL: String!
+  $update: Boolean! = false
+  $username: String!
+  $userPassword: String!
+  $postSlug: String!
+)
+  @depends(on: "ExportDownstreamGraphQLQuery")
+  @skip(if: $isMissingPostInUpstream)
+{
+  _sendGraphQLHTTPRequest(
+    input: {
+      endpoint: $downstreamServerGraphQLEndpointURL,
+      query: $query,
+      variables: [
+        {
+          name: "update",
+          value: $update
+        },
+        {
+          name: "username",
+          value: $username
+        },
+        {
+          name: "userPassword",
+          value: $userPassword
+        },
+        {
+          name: "postSlug",
+          value: $postSlug
+        },
+        {
+          name: "postTitle",
+          value: $postTitle
+        },
+        {
+          name: "postContent",
+          value: $postContent
+        }
+      ]
+    }
+  )
+}
+```
+
+This persisted query will export the post from the **origin site** to the **provisional site**. Execute it, providing the JSON dictionary with the needed GraphQL variables:
+
+```json
+{
+  "downstreamServerGraphQLEndpointURL": "{ Gato GraphQL public endpoint on provisional site, with the 'nested mutations' feature enabled. Eg: https://translation-es.instawp.xyz/graphql/nested-mutations }",
+  "username": "{ Username on the provisional site, with `create_posts` capability }",
+  "userPassword": "{ Password for that username }",
+  "postSlug": "{ The slug of the post to sync }"
+}
+```
+
+The **provisional site** will now contain the Google-Translated post.
+
+## Step 3: Have the 3rd-party workers fix the translation
+
+You can now ask the translator to log-in to the **provisional site** and fix the translation, directly within the WordPress editor.
+
+<Image
+  src="/images/fix-translated-post-in-wordpress-editor.png"
+  width="1024"
+  height="940"
+  alt="Fixing translation in the WordPress editor"
+  caption="Fixing translation in the WordPress editor"
+/>
+
+When the translation is completed, we must synchronize it to the **translated site**.
+
+## Step 4: Copy the post from the provisional site to the translated site
+
+Log-in to the **translated site** and create a persisted query containing the following GraphQL query, with title **Import post from another WordPress site**:
+
+```graphql
+query InitializeDynamicVariables
+  @configureWarningsOnExportingDuplicateVariable(enabled: false)
+{
+  initVariablesWithFalse: _echo(value: false)
+    @export(as: "requestProducedErrors")
+    @export(as: "responseHasErrors")
+    @export(as: "postIsMissing")
+    @export(as: "postHasAuthor")
+    @export(as: "postHasFeaturedImage")
+    @export(as: "postHasCategories")
+    @export(as: "postHasTags")
+    @remove
+
+  initVariablesWithNull: _echo(value: null)
+    @export(as: "existingAuthorUsername")
+    @export(as: "existingFeaturedImageSlug")
+    @export(as: "featuredImageMutationInput")
+    @remove
+
+  initVariablesWithEmptyArray: _echo(value: [])
+    @export(as: "existingCategorySlugs")
+    @export(as: "existingTagSlugs")
+    @remove
+}
+
+query CheckIfPostExistsLocally($postSlug: String!)
+  @depends(on: "InitializeDynamicVariables")
+{
+  localPost: post(
+    by: { slug: $postSlug }
+    status: any
+  ) {
+    id
+  }
+
+  postAlreadyExists: _notNull(value: $__localPost)
+    @export(as: "postAlreadyExists")
+}
+
+query FailIfPostAlreadyExistsLocally($postSlug: String!)
+  @depends(on: "CheckIfPostExistsLocally")
+  @include(if: $postAlreadyExists)
+{
+  errorMessage: _sprintf(
+    string: "Post with slug '%s' already exists locally",
+    values: [$postSlug]
+  ) @remove
+
+  _fail(
+    message: $__errorMessage
+    data: {
+      slug: $postSlug
+    }
+  ) @remove
+
+  createPost: _echo(value: null)
+}
+
+query ConnectToGraphQLAPI(
+  $upstreamServerGraphQLEndpointURL: String!
+  $postSlug: String!
+)
+  @depends(on: "FailIfPostAlreadyExistsLocally")
+  @skip(if: $postAlreadyExists)
+{
+  externalData: _sendGraphQLHTTPRequest(input:{
+    endpoint: $upstreamServerGraphQLEndpointURL,
+    query: """
+    
+query GetPost($postSlug: String!) {
+  post(by: { slug: $postSlug }, status: any) {
+    id
+    slug
+    rawTitle
+    rawContent
+    rawExcerpt
+    author {
+      id
+      username
+    }
+    featuredImage {
+      id
+      slug
+    }
+    categories {
+      id
+      slug
+    }
+    tags {
+      id
+      slug
+    }
+  }
+}
+
+    """,
+    variables: [
+      {
+        name: "postSlug",
+        value: $postSlug
+      }
+    ]
+  })
+    @export(as: "externalData")
+
+  requestProducedErrors: _isNull(value: $__externalData)
+    @export(as: "requestProducedErrors")
+    @remove
+}
+
+query ValidateResponse
+  @depends(on: "ConnectToGraphQLAPI")
+  @skip(if: $postAlreadyExists)
+  @skip(if: $requestProducedErrors)
+{
+  responseHasErrors: _propertyIsSetInJSONObject(
+    object: $externalData
+    by: {
+      key: "errors"
+    }
+  )
+    @export(as: "responseHasErrors")
+    @remove
+
+  postExists: _propertyIsSetInJSONObject(
+    object: $externalData
+    by: {
+      path: "data.post"
+    }
+  )
+    @remove
+    
+  postIsMissing: _not(value: $__postExists)
+    @export(as: "postIsMissing")
+    @remove
+}
+
+query FailIfResponseHasErrors
+  @depends(on: "ValidateResponse")
+  @skip(if: $postAlreadyExists)
+  @skip(if: $requestProducedErrors)
+  @skip(if: $postIsMissing)
+  @include(if: $responseHasErrors)
+{
+  errors: _objectProperty(
+    object: $externalData,
+    by: {
+      key: "errors"
+    }
+  ) @remove
+
+  _fail(
+    message: "Executing the GraphQL query against the upstream webserver produced error(s)"
+    data: {
+      errors: $__errors
+    }
+  ) @remove
+
+  createPost: _echo(value: null)
+}
+
+query FailIfPostNotExists($postSlug: String!)
+  @depends(on: "FailIfResponseHasErrors")
+  @skip(if: $requestProducedErrors)
+  @include(if: $postIsMissing)
+{
+  errorMessage: _sprintf(
+    string: "There is no post with slug '%s' in the origin",
+    values: [$postSlug]
+  ) @remove
+
+  _fail(
+    message: $__errorMessage
+    data: {
+      slug: $postSlug
+    }
+  ) @remove
+  
+  createPost: _echo(value: null)
+}
+
+query ExportInputs
+  @depends(on: "FailIfPostNotExists")
+  @skip(if: $postAlreadyExists)
+  @skip(if: $requestProducedErrors)
+  @skip(if: $responseHasErrors)
+  @skip(if: $postIsMissing)
+{
+  postData: _objectProperty(
+    object: $externalData,
+    by: { path: "data.post" }
+  ) @remove
+
+  postTitle: _objectProperty(
+    object: $__postData,
+    by: { key: "rawTitle" }
+  )
+    @export(as: "postTitle")
+    @remove
+
+  postContent: _objectProperty(
+    object: $__postData,
+    by: { key: "rawContent" }
+  )
+    @export(as: "postContent")
+    @remove
+
+  postExcerpt: _objectProperty(
+    object: $__postData,
+    by: { key: "rawExcerpt" }
+  )
+    @export(as: "postExcerpt")
+    @remove
+
+  postAuthorUsername: _objectProperty(
+    object: $__postData,
+    by: { key: "author" }
+  )
+    @passOnwards(
+      as: "author"
+    )
+    @applyField(
+      name: "_notNull",
+      arguments: {
+        value: $author
+      },
+      passOnwardsAs: "hasAuthor"
+    )
+    @if(condition: $hasAuthor)
+      @applyField(
+        name: "_objectProperty",
+        arguments: {
+          object: $author,
+          by: { key: "username" }
+        },
+        setResultInResponse: true
+      )
+    @export(as: "postAuthorUsername")
+    @remove
+
+  postHasAuthor: _notNull(
+    value: $__postAuthorUsername
+  )
+    @export(as: "postHasAuthor")
+    @remove
+
+  postFeaturedImageSlug: _objectProperty(
+    object: $__postData,
+    by: { key: "featuredImage" }
+  )
+    @passOnwards(
+      as: "featuredImage"
+    )
+    @applyField(
+      name: "_notNull",
+      arguments: {
+        value: $featuredImage
+      },
+      passOnwardsAs: "hasFeaturedImage"
+    )
+    @if(condition: $hasFeaturedImage)
+      @applyField(
+        name: "_objectProperty",
+        arguments: {
+          object: $featuredImage,
+          by: { key: "slug" }
+        },
+        setResultInResponse: true
+      )
+    @export(as: "postFeaturedImageSlug")
+    @remove
+
+  postHasFeaturedImage: _notNull(
+    value: $__postFeaturedImageSlug
+  )
+    @export(as: "postHasFeaturedImage")
+    @remove
+
+  postCategorySlugs: _objectProperty(
+    object: $__postData,
+    by: { key: "categories" }
+  )
+    @underEachArrayItem(
+      passValueOnwardsAs: "category"
+    )
+      @applyField(
+        name: "_objectProperty"
+        arguments: {
+          object: $category,
+          by: {
+            key: "slug"
+          }
+        }
+        setResultInResponse: true
+      )
+    @export(as: "postCategorySlugs")
+    @remove
+
+  postHasCategories: _notEmpty(
+    value: $__postCategorySlugs
+  )
+    @export(as: "postHasCategories")
+    @remove
+
+  postTagSlugs: _objectProperty(
+    object: $__postData,
+    by: { key: "tags" }
+  )
+    @underEachArrayItem(
+      passValueOnwardsAs: "tag"
+    )
+      @applyField(
+        name: "_objectProperty"
+        arguments: {
+          object: $tag,
+          by: {
+            key: "slug"
+          }
+        }
+        setResultInResponse: true
+      )
+    @export(as: "postTagSlugs")
+    @remove
+
+  postHasTags: _notEmpty(
+    value: $__postTagSlugs
+  )
+    @export(as: "postHasTags")
+    @remove
+}
+
+query ExportExistingResources
+  @depends(on: "ExportInputs")
+  @skip(if: $postAlreadyExists)
+  @skip(if: $requestProducedErrors)
+  @skip(if: $responseHasErrors)
+  @skip(if: $postIsMissing)
+{
+  existingAuthorByUsername: user(by: { username: $postAuthorUsername })
+    @include(if: $postHasAuthor)
+  {
+    id
+    username @export(as: "existingAuthorUsername")
+  }
+
+  existingFeaturedImageBySlug: mediaItem(by: { slug: $postFeaturedImageSlug })
+    @include(if: $postHasFeaturedImage)
+  {
+    id
+    slug @export(as: "existingFeaturedImageSlug")
+  }
+
+  existingCategoriesBySlug: postCategories(filter: { slugs: $postCategorySlugs })
+    @include(if: $postHasCategories)
+  {
+    id
+    slug @export(as: "existingCategorySlugs", type: LIST)
+  }
+
+  existingTagsBySlug: postTags(filter: { slugs: $postTagSlugs })
+    @include(if: $postHasTags)
+  {
+    id
+    slug @export(as: "existingTagSlugs", type: LIST)
+  }
+}
+
+query ExportMissingResources
+  @depends(on: "ExportExistingResources")
+  @skip(if: $postAlreadyExists)
+  @skip(if: $requestProducedErrors)
+  @skip(if: $responseHasErrors)
+  @skip(if: $postIsMissing)
+{
+  isAuthorMissing: _notEquals(
+    value1: $postAuthorUsername,
+    value2: $existingAuthorUsername
+  ) @export(as: "isAuthorMissing")
+  
+  isFeaturedImageMissing: _notEquals(
+    value1: $postFeaturedImageSlug,
+    value2: $existingFeaturedImageSlug
+  ) @export(as: "isFeaturedImageMissing")
+
+  missingCategorySlugs: _arrayDiff(
+    arrays: [$postCategorySlugs, $existingCategorySlugs]
+  ) @export(as: "missingCategorySlugs")
+  areCategoriesMissing: _notEmpty(
+    value: $__missingCategorySlugs
+  ) @export(as: "areCategoriesMissing")
+
+  # missingTagSlugs: _arrayDiff(
+  #   arrays: [$postTagSlugs, $existingTagSlugs]
+  # ) @export(as: "missingTagSlugs")
+  # areTagsMissing: _notEmpty(
+  #   value: $__missingTagSlugs
+  # ) @export(as: "areTagsMissing")
+
+  isAnyResourceMissing: _or(
+    values: [
+      $__isAuthorMissing,
+      $__isFeaturedImageMissing,
+      $__areCategoriesMissing,
+      # $__areTagsMissing,
+    ]
+  ) @export(as: "isAnyResourceMissing")
+}
+
+query FailIfAnyResourceIsMissing
+  @depends(on: "ExportMissingResources")
+  @skip(if: $postAlreadyExists)
+  @skip(if: $requestProducedErrors)
+  @skip(if: $postIsMissing)
+  @skip(if: $responseHasErrors)
+  @include(if: $isAnyResourceMissing)
+{
+  performingValidations: id
+    @if(condition: $isAuthorMissing)
+      @fail(
+        message: "Author is missing in local site"
+        data: {
+          missingAuthorByUsername: $postAuthorUsername
+        }
+        condition: ALWAYS
+      )
+    @if(condition: $isFeaturedImageMissing)
+      @fail(
+        message: "Featured image is missing in local site"
+        data: {
+          missingFeaturedImageBySlug: $postFeaturedImageSlug
+        }
+        condition: ALWAYS
+      )
+    @if(condition: $areCategoriesMissing)
+      @fail(
+        message: "Categories are missing in local site"
+        data: {
+          missingCategoriesBySlug: $missingCategorySlugs
+        }
+        condition: ALWAYS
+      )
+    # @if(condition: $areTagsMissing)
+    #   @fail(
+    #     message: "Tags are missing in local site"
+    #     data: {
+    #       missingTagBySlug: $missingTagSlugs
+    #     }
+    #     condition: ALWAYS
+    #   )
+  
+  createPost: _echo(value: null)
+}
+
+query ExportMutationInputs
+  @depends(on: "FailIfAnyResourceIsMissing")
+  @skip(if: $postAlreadyExists)
+  @skip(if: $requestProducedErrors)
+  @skip(if: $responseHasErrors)
+  @skip(if: $postIsMissing)
+  @skip(if: $isAnyResourceMissing)
+{
+  featuredImageMutationInput: _echo(value: {
+    slug: $postFeaturedImageSlug
+  })
+    @include(if: $postHasFeaturedImage)
+    @export(as: "featuredImageMutationInput")
+    @remove
+}
+
+mutation ImportPostFromWPSite(
+  $postSlug: String!
+)
+  @depends(on: "ExportMutationInputs")
+  @skip(if: $postAlreadyExists)
+  @skip(if: $requestProducedErrors)
+  @skip(if: $responseHasErrors)
+  @skip(if: $postIsMissing)
+  @skip(if: $isAnyResourceMissing)
+{
+  createPost(input: {
+    status: draft,
+    slug: $postSlug
+    title: $postTitle
+    contentAs: {
+      html: $postContent
+    },
+    excerpt: $postExcerpt
+    authorBy: {
+      username: $postAuthorUsername
+    },
+    featuredImageBy: $featuredImageMutationInput,
+    categoriesBy: {
+      slugs: $postCategorySlugs
+    },
+    tagsBy: {
+      slugs: $postTagSlugs
+    }
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    post {
+      id
+      date
+      status
+
+      slug
+      title
+      content
+      excerpt
+
+      author {
+        id
+        username
+      }
+      featuredImage {
+        id
+        slug
+      }
+      categories {
+        id
+        slug
+      }
+      tags {
+        id
+        slug
+      }
+    }
+  }
+}
+```
+
+This persisted query will import the post from the **provisional site** to the **translated site**. Execute it, providing the JSON dictionary with the needed GraphQL variables:
+
+```json
+{
+  "upstreamServerGraphQLEndpointURL": "{ Gato GraphQL public endpoint on translated site. Eg: https://content-es.instawp.xyz/graphql }",
+  "postSlug": "{ The slug of the translated post to sync }"
+}
+```
+
+The **translated site** will now contain the Google-Translated post, and no access was ever given to the 3rd-party translators.
