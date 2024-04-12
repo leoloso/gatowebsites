@@ -1235,6 +1235,12 @@ mutation TranslatePost($postID: ID!)
 }
 ```
 
+<Banner type="info">
+
+Gato GraphQL already ships with this persisted query, under title **[PRO] Translate post (Gutenberg)**
+
+</Banner>
+
 Execute the persisted query providing the JSON dictionary with GraphQL variables:
 
 - `postID`: The ID of the post to translate
@@ -1396,6 +1402,12 @@ query ExportPostToWPSite(
   )
 }
 ```
+
+<Banner type="info">
+
+Gato GraphQL already ships with this persisted query, under title **[PRO] Export post to WordPress site**
+
+</Banner>
 
 This persisted query will export the post from the **origin site** to the **provisional site**. Execute it, providing the JSON dictionary with the needed GraphQL variables:
 
@@ -1964,6 +1976,12 @@ mutation ImportPostFromWPSite(
   }
 }
 ```
+
+<Banner type="info">
+
+Gato GraphQL already ships with this persisted query, under title **[PRO] Import post from WordPress site**
+
+</Banner>
 
 This persisted query will import the post from the **provisional site** to the **translated site**. Execute it, providing the JSON dictionary with the needed GraphQL variables:
 
