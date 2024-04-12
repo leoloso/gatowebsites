@@ -47,8 +47,6 @@ The workflow involves three websites:
 - The **provisional site** (`translation-es.instawp.xyz`), created on InstaWP, for the translator to fix the translation
 - The **translated site** (`content-es.instawp.xyz`), containing the content in Spanish
 
-The **origin site** needs to have **Gato GraphQL PRO** installed, while the other two sites only need the free **Gato GraphQL plugin**.
-
 Publish the blog post in your origin WordPress site, and translate it to the desired language using Gato GraphQL + Google Translate, as explained in demo [How to translate posts including blocks with the Google Translate API](/demos/how-to-translate-posts-including-blocks-with-the-google-translate-api).
 
 The **origin site** will now contain the Google-Translated post as a duplicate from the original, with `draft` status. We need now to move it to the **provisional site**.
@@ -212,9 +210,9 @@ The **provisional site** will now contain the Google-Translated post.
 
 You can now ask the translator to log-in to the **provisional site** and fix the translation, directly within the WordPress editor.
 
-When the translation is finished, we must synchronize it back to the **origin site**.
+When the translation is finished, we must synchronize it to the **translated site**.
 
-Create a persisted query containing the following GraphQL query, and give it title **Import post from another WordPress site**:
+Log-in to the **translated site** and create a persisted query containing the following GraphQL query, with title **Import post from another WordPress site**:
 
 ```graphql
 query InitializeDynamicVariables
@@ -753,4 +751,13 @@ mutation ImportPostFromWPSite(
 }
 ```
 
-Voilà! You have used independent environments to produce your content, translate it, and deploy it.
+This persisted query will import the post from the **provisional site** to the **translated site**. Execute it, providing the JSON dictionary with the needed GraphQL variables:
+
+```json
+{
+  "upstreamServerGraphQLEndpointURL": "{ Gato GraphQL public endpoint on provisional site. Eg: https://content-es.instawp.xyz/graphql }",
+  "postSlug": "{ The slug of the translated post to sync }"
+}
+```
+
+The **translated site** will now contain the Google-Translated post, and no access was ever given to the 3rd-party translators.
