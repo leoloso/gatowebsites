@@ -55,7 +55,7 @@ Publish the blog post in your origin WordPress site, and translate it to the des
 
 <Banner type="info">
 
-For more details, check out demo [How to translate posts including blocks with the Google Translate API](/demos/how-to-translate-posts-including-blocks-with-the-google-translate-api).
+Demo [How to translate posts including blocks with the Google Translate API](/demos/how-to-translate-posts-including-blocks-with-the-google-translate-api) describes this use case with more details.
 
 </Banner>
 
@@ -1401,7 +1401,7 @@ This persisted query will export the post from the **origin site** to the **prov
 
 ```json
 {
-  "downstreamServerGraphQLEndpointURL": "{ Gato GraphQL public endpoint on provisional site. Eg: https://translation-es.instawp.xyz/graphql }",
+  "downstreamServerGraphQLEndpointURL": "{ Gato GraphQL public endpoint on provisional site, with the 'nested mutations' feature enabled. Eg: https://translation-es.instawp.xyz/graphql/nested-mutations }",
   "username": "{ Username on the provisional site, with `create_posts` capability }",
   "userPassword": "{ Password for that username }",
   "postSlug": "{ The slug of the post to sync }"
@@ -1969,7 +1969,7 @@ This persisted query will import the post from the **provisional site** to the *
 
 ```json
 {
-  "upstreamServerGraphQLEndpointURL": "{ Gato GraphQL public endpoint on provisional site. Eg: https://content-es.instawp.xyz/graphql }",
+  "upstreamServerGraphQLEndpointURL": "{ Gato GraphQL public endpoint on translated site. Eg: https://content-es.instawp.xyz/graphql }",
   "postSlug": "{ The slug of the translated post to sync }"
 }
 ```
