@@ -125,7 +125,7 @@ query CreateRecordInAirTable(
 }
 ```
 
-Notice how query `IsCourseFinished` checks that a course's `$progress` parameter is `100` to know that the course has been completed, and then execute the data synchronization to AirTable.
+Notice how query `IsCourseFinished` checks if the course's progress is `100` (i.e. the course has been completed), and only then execute the data synchronization to AirTable.
 
 The persisted query will receive the parameters from MasterStudy LMS' action hook `stm_lms_progress_updated` (see below), and retrieve all associated data with them:
 
