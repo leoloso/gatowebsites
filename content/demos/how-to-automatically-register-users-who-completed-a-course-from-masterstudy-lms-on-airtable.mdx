@@ -127,12 +127,12 @@ query CreateRecordInAirTable(
 
 Notice how query `IsCourseFinished` checks if the course's progress is `100` (i.e. the course has been completed), and only then execute the data synchronization to AirTable.
 
-The persisted query will receive the parameters from MasterStudy LMS' action hook `stm_lms_progress_updated` (see below), and retrieve all associated data with them:
+The persisted query will receive the parameters from MasterStudy LMS' action hook `stm_lms_progress_updated` (see below), and retrieve the following data:
 
 - The user's name, email and URL
 - The courses's title
 
-Then, it will connect to the [AirTable API](https://airtable.com/developers/web/api/introduction), and create the records with the provided data.
+It will then connect to the [AirTable API](https://airtable.com/developers/web/api/introduction), and create the records with the provided data.
 
 To connect to the API we need [personal access tokens](https://airtable.com/developers/web/guides/personal-access-tokens) for authentication. So make sure to create a personal access token for your table, and [assign it scope `data.records:write`](https://airtable.com/developers/web/api/create-records).
 
@@ -155,8 +155,8 @@ We must also provide the JSON dictionary for the dynamic variables, to pass all 
 ```
 
 <Image
-  src="/images/demos/masterstudy-lms-automation-trigger.png"
-  width="570"
+  src="/images/demos/masterstudy-lms-course-automation-trigger.png"
+  width="700"
   height="360"
   alt="Automation trigger"
   caption="Automation trigger"
@@ -173,14 +173,14 @@ For the action, we select the newly-created persisted query **Export MasterStudy
 ```
 
 <Image
-  src="/images/demos/masterstudy-lms-automation-action.png"
-  width="550"
+  src="/images/demos/masterstudy-lms-course-automation-action.png"
+  width="680"
   height="390"
   alt="Automation action"
   caption="Automation action"
 />
 
-Finally publish the automation. From now on, whenever the user completes a course, the AirTable table will be automatically populated.
+Finally publish the automation. From now on, whenever the user completes a course, the AirTable table will be automatically populated, as is the result in the video above:
 
 <div className="lg:-ml-16 lg:-mr-16">
 
