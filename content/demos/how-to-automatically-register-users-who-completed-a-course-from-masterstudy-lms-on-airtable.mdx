@@ -1,0 +1,195 @@
+---
+title: 'How to automatically register users who completed a course from MasterStudy LMS on AirTable'
+seoTitle: 'How to automatically register users who completed a course from MasterStudy LMS on AirTable using Gato GraphQL'
+publishedAt: '2024-04-18'
+image: '/images/thumbnails/demos/gatographql-masterstudy-lms-airtable-wordpress.png'
+leading: Gato GraphQL automation demo
+description: 'Whenever a user completes a course from MasterStudy LMS on the WordPress site, send custom data (concerning the user and course) to AirTable and create records on a specified table.'
+seoDescription: 'Whenever a user completes a course from MasterStudy LMS on the WordPress site, use Gato GraphQL to send custom data (concerning the user and course) to AirTable and create records on a specified table.'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - automation
+  - MasterStudy LMS
+  - AirTable
+targetImages:
+  - /images/logos/masterstudy-lms.svg
+  - /images/logos/airtable.svg
+integrations: 
+  - { name: MasterStudy LMS, image: /images/logos/masterstudy-lms.svg, url: https://stylemixthemes.com/wordpress-lms-plugin/ }
+  - { name: AirTable, image: /images/logos/airtable.svg, url: https://airtable.com }
+---
+
+Whenever a user completes a course from **MasterStudy LMS**, we will send custom data to AirTable, and create records on a specified table.
+
+In this video, the user completes two lessons from a course from the LMS. When the last lesson on the course is completed, a Gato GraphQL automation will create a record in **AirTable** with the required data:
+
+<div className="aspect-video lg:-ml-32 lg:-mr-32">
+  <iframe
+    className="w-full h-full"
+    src="https://player.vimeo.com/video/936328414"
+    width="640"
+    height="360"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
+The table has columns `Name`, `ProfileURL` and `Email` with data from the user, and `Course` from the LMS.
+
+<div className="lg:-ml-16 lg:-mr-16">
+
+  <Image
+    src="/images/demos/airtable-table-with-masterstudy-lms-user-and-course-data.png"
+    width="1024"
+    height="400"
+    alt="Table in AirTable with LMS data"
+    caption="Table in AirTable with LMS data"
+  />
+
+</div>
+
+[Create a persisted query](/guides/use/creating-a-persisted-query) containing the following GraphQL query, and give it title **Export MasterStudy LMS course data to AirTable**:
+
+```graphql
+query IsCourseFinished(
+  $courseProgress: Int!  
+) {
+  isCourseFinished: _equals(value1: $courseProgress, value2: 100)
+    @export(as: "isCourseFinished")
+}
+
+query ExportUserData(
+  $courseId: ID!
+  $userId: ID!
+)
+  @depends(on: "IsCourseFinished")
+  @include(if: $isCourseFinished)
+{
+  user(by: { id: $userId }) {
+    displayName
+      @export(as: "userDisplayName")
+    email
+      @export(as: "userEmail")
+    url
+      @export(as: "userURL")
+  }
+  course: customPost(by: {id: $courseId}, customPostTypes:["stm-courses"]) {
+    title
+      @export(as: "courseTitle")
+  }
+}
+
+query CreateRecordInAirTable(
+  $baseId: String!
+  $tableName: String!
+  $personalAccessToken: String!
+)
+  @depends(on: "ExportUserData")
+  @include(if: $isCourseFinished)
+{
+  url: _sprintf(
+    string: "https://api.airtable.com/v0/%s/%s",
+    values: [$baseId, $tableName]
+  )
+  bearerToken: _sprintf(
+    string: "Bearer %s",
+    values: [$personalAccessToken]
+  )
+    @remove
+  response: _sendJSONObjectItemHTTPRequest(input: {
+    url: $__url,
+    method: POST,
+    options: {
+      headers: [
+        {
+          name: "Authorization",
+          value: $__bearerToken
+        }
+      ]
+      json: {
+        records: [
+          {
+            fields: {
+              Name: $userDisplayName,
+              ProfileURL: $userURL,
+              Email: $userEmail,
+              Course: $courseTitle
+            }
+          }
+        ]
+      }
+    }
+  })
+}
+```
+
+Notice how query `IsCourseFinished` checks if the course's progress is `100` (i.e. the course has been completed), and only then execute the data synchronization to AirTable.
+
+The persisted query will receive the parameters from MasterStudy LMS' action hook `stm_lms_progress_updated` (see below), and retrieve the following data:
+
+- The user's name, email and URL
+- The courses's title
+
+It will then connect to the [AirTable API](https://airtable.com/developers/web/api/introduction), and create the records with the provided data.
+
+To connect to the API we need [personal access tokens](https://airtable.com/developers/web/guides/personal-access-tokens) for authentication. So make sure to create a personal access token for your table, and [assign it scope `data.records:write`](https://airtable.com/developers/web/api/create-records).
+
+Next, we [create a new automation](/guides/manage/automating-tasks), providing MasterStudy's action `stm_lms_progress_updated` as the trigger.
+
+This action hook provides the following data:
+
+```php
+do_action( 'stm_lms_progress_updated', $course_id, $user_id, $progress );
+```
+
+We must also provide the JSON dictionary for the dynamic variables, to pass all three parameters from the action as variables to the GraphQL query:
+
+```json
+{
+  "courseId": 1,
+  "userId": 2,
+  "courseProgress": 3
+}
+```
+
+<Image
+  src="/images/demos/masterstudy-lms-course-automation-trigger.png"
+  width="700"
+  height="360"
+  alt="Automation trigger"
+  caption="Automation trigger"
+/>
+
+For the action, we select the newly-created persisted query **Export MasterStudy LMS course data to AirTable**, and provide the JSON dictionary for the static GraphQL variables, with data from AirTable:
+
+```json
+{
+  "baseId": "{ your baseId }",
+  "tableName": "{ your tableName }",
+  "personalAccessToken": "{ your access token }"
+}
+```
+
+<Image
+  src="/images/demos/masterstudy-lms-course-automation-action.png"
+  width="680"
+  height="390"
+  alt="Automation action"
+  caption="Automation action"
+/>
+
+Finally publish the automation. From now on, whenever the user completes a course, the AirTable table will be automatically populated, as is the result in the video above:
+
+<div className="lg:-ml-16 lg:-mr-16">
+
+  <Image
+    src="/images/demos/airtable-table-with-masterstudy-lms-user-and-course-data-full.png"
+    width="1024"
+    height="400"
+    alt="Table in AirTable with LMS data"
+    caption="Table in AirTable with LMS data"
+  />
+
+</div>
