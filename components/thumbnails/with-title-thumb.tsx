@@ -11,7 +11,7 @@ export default function WithTitleThumb({
   titleAOS="zoom-out",
   logoClassname,
   thumbClassname = "flex flex-col items-center justify-center",
-  extraThumbClassname = 'aspect-video',
+  extraThumbClassname,
   numberParticles,
 }: {
   title: string,

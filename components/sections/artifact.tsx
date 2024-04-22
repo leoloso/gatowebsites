@@ -62,7 +62,7 @@ export default function ArtifactSection({
                         <WithTitleThumb
                           title={artifact.title}
                           // titleClassname="h1"
-                          extraThumbClassname="aspect-video rounded-2xl"
+                          extraThumbClassname="rounded-2xl"
                           bgClassname={bgClassname}
                         />
                       </div>
