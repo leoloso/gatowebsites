@@ -10,7 +10,7 @@ export default function WithTitleThumb({
   titleClassname = "h2",
   logoClassname,
   thumbClassname = "flex flex-col items-center justify-center",
-  extraThumbClassname,
+  extraThumbClassname = 'aspect-video',
   numberParticles,
 }: {
   title: string,
