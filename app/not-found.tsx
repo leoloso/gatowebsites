@@ -19,7 +19,7 @@ export const metadata = {
 export default function NotFound() {
   return (
     <>
-        <section className="relative">
+      <section className="relative">
 
         <StunningBackground />
 

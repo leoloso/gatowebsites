@@ -1,6 +1,6 @@
 import { Mdx } from './mdx'
 
-export function UpdateMdx({
+export function HighlightMdx({
   code,
 }: {
   code: string,
