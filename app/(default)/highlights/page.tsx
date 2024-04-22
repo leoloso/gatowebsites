@@ -1,5 +1,5 @@
 import { allHighlights } from 'contentlayer/generated'
-import PostItem from './post-item'
+import HighlightItem from './post-item'
 import Cta from '@/components/cta-03'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import { sortByOrder } from '@/utils/content/sort'
@@ -46,7 +46,7 @@ export default function Highlights() {
               <div className="relative">
                 <div className="absolute h-full top-4 left-[2px] w-0.5 bg-slate-800 [mask-image:_linear-gradient(0deg,transparent,theme(colors.white)_150px,theme(colors.white))] -z-10 overflow-hidden after:absolute after:h-4 after:top-0 after:-translate-y-full after:left-0 after:w-0.5 after:bg-[linear-gradient(180deg,_transparent,_theme(colors.purple.500/.65)_25%,_theme(colors.purple.200)_50%,_theme(colors.purple.500/.65)_75%,_transparent)] after:animate-shine" aria-hidden="true"></div>
                 {allHighlights.map((highlight, highlightIndex) => (
-                  <PostItem key={highlightIndex} {...highlight} />
+                  <HighlightItem key={highlightIndex} {...highlight} />
                 ))}
               </div>
             </div>

@@ -2,7 +2,7 @@ import PostDate from '@/components/post-date'
 import { HighlightMdx } from '@/components/mdx/highlight-mdx'
 import { useRef } from 'react'
 
-export default function PostItem({ ...props }) {
+export default function HighlightItem({ ...props }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   return (
     <article className="pt-12 first-of-type:pt-0 group">
