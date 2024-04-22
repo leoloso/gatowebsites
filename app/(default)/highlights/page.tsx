@@ -36,9 +36,9 @@ export default function Highlights() {
 
             {/* Page header */}
             <PageHeader
-              leading='Experience how to reap the benefits from Gato GraphQL'
+              leading='Experience the power'
               title='Highlights'
-              description='Distinctive features to power your application'
+              description='Distinctive features from Gato GraphQL to power your application'
             />
 
             {/* Content */}
