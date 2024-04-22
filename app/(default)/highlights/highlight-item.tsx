@@ -17,7 +17,7 @@ export default function HighlightItem({ ...props }) {
             <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 leading-8 pb-6">{props.title}</h2>
           </header>
           <figure className="bg-gradient-to-b from-slate-300/20 to-transparent rounded-3xl p-px mb-8">
-            <video className="w-full rounded-[inherit]" ref={videoRef} width={1920} height={1080} loop controls>
+            <video className="w-full rounded-[inherit]" ref={videoRef} width={768} height={432} loop controls>
               <source src={props.video} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
