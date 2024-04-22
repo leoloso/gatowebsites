@@ -20,6 +20,7 @@ export default function HighlightItem({ ...props }) {
             <WithTitleThumb
               title={props.title}
               extraThumbClassname="rounded-2xl"
+              bgClassname="bg-gradient-to-tr from-slate-900 to-blue-900"
             />
           </header>
           <div className="p-px mb-6">
