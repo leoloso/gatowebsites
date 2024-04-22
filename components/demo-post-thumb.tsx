@@ -24,7 +24,6 @@ export default function DemoPostThumb({
 }) {
   return (
     <WithLogoThumb
-      title={demoPost.title}
       targetImageSources={demoPost.targetImages}
       paddingClassname={paddingClassname}
       bgClassname={bgClassname}

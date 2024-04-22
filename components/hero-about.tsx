@@ -45,7 +45,6 @@ export default function HeroAbout({
               <div className="mb-8 aspect-video">
                 <WithLogoThumb
                   bgClassname="h-full bg-gradient-to-tr from-slate-900 to-blue-900 rounded border-transparent rounded-2xl shadow-2xl"
-                  title="Gato GraphQL"
                   targetImageSources={[WordPressLogo, GatoGraphQLLogo]}
                   reverseItems={true}
                   logoImage={Logo}

@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import Thumb from './thumb';
 
 export default function WithLogoThumb({
-  title,
   targetImageSources,
   paddingClassname,
   bgClassname,
@@ -16,7 +15,6 @@ export default function WithLogoThumb({
   svgClassname = "mx-2 my-4",
   numberParticles,
 }: {
-  title: string,
   targetImageSources: Array<string>,
   paddingClassname?: string,
   bgClassname?: string,
@@ -35,7 +33,7 @@ export default function WithLogoThumb({
     >
       <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && reverseItems && "flex-row-reverse", !isLandscape && reverseItems && "flex-col-reverse", isLandscape && "aspect-video")}>
         <div className={clsx(!isLandscape && "mb-2 md:mb-4", isLandscape &&  'mx-2')}>
-          <Image src={logoImage || Logo} alt={title} width={250} height={175} />
+          <Image src={logoImage || Logo} alt="Gato GraphQL logo" width={250} height={175} />
         </div>
         <div className={svgClassname}>
           <Image src={svgImage || PlusImage} width={30} height={30} alt="plus image" />
