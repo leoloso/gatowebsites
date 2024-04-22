@@ -8,7 +8,7 @@ export default function WithTitleThumb({
   bgClassname,
   titleClassname = "h2",
   logoClassname,
-  thumbClassname = "text-center aspect-video",
+  thumbClassname = "text-center",
   extraThumbClassname,
   numberParticles,
 }: {
