@@ -21,6 +21,14 @@ const Highlight = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    category: {
+      type: 'enum',
+      options: [
+        'Free plugin',
+        'PRO plugin',
+      ],
+      required: true,
+    },
   },
   computedFields: {
     slug: {
