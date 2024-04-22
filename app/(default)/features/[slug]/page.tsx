@@ -5,11 +5,10 @@ import AppConfig from '@/app/app.config'
 import ArtifactSection from '@/components/sections/artifact'
 import DefaultArtifactIcon02 from '@/public/assets/theme/default/artifact-icon-02.png'
 import DefaultArtifactIcon04 from '@/public/assets/theme/default/artifact-icon-04.png'
-import DefaultArtifactImage01 from '@/public/assets/theme/default/feature-image.png'
-import DefaultArtifactImage02 from '@/public/assets/theme/default/feature-pro-image.png'
 import { getGuideDocument } from '@/utils/content/document'
 import { getDocURLPath } from '@/utils/content/application-urls'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import clsx from 'clsx'
 
 export async function generateStaticParams() {
   return allFeatures.map((feature) => ({
@@ -62,8 +61,8 @@ export default async function SingleFeature({ params }: {
       artifact={feature}
       sectionURL={`/${AppConfig.paths.features}`}
       testimonialIndex={feature.category === 'Free plugin' ? 1 : 4}
-      defaultArtifactImage={feature.category === 'Free plugin' ? DefaultArtifactImage01 : DefaultArtifactImage02}
       defaultArtifactIcon={feature.category === 'Free plugin' ? DefaultArtifactIcon02 : DefaultArtifactIcon04}
+      bgClassname={clsx("bg-gradient-to-tr", feature.category === 'Free plugin' && "from-slate-900 to-brown-900", feature.category !== 'Free plugin' && "from-slate-900 to-fuchsia-900")}
     >
       <ul className="text-sm">
         <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">

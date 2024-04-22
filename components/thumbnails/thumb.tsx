@@ -1,38 +1,24 @@
 
-import Logo from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
 import Particles from '@/components/particles'
 // import Illustration from '@/public/assets/theme/cta-illustration.svg'
-import PlusImage from '@/public/assets/theme/plus.svg'
-import Image, { StaticImageData } from 'next/image'
 import clsx from 'clsx';
 
 export default function Thumb({
-  title,
-  targetImageSources,
   paddingClassname = "py-10 px-8 md:py-16 md:px-12",
   bgClassname = "bg-gradient-to-tr from-slate-900 to-violet-900",
-  isLandscape = false,
-  svgImage,
-  logoImage,
-  reverseItems = false,
-  svgClassname = "mx-2 my-4",
+  extraThumbClassname,
   numberParticles = 10,
+  children,
 }: {
-  title: string,
-  targetImageSources: Array<string>,
   paddingClassname?: string,
   bgClassname?: string,
-  isLandscape?: boolean,
-  svgImage?: StaticImageData,
-  logoImage?: StaticImageData,
-  reverseItems?: boolean,
-  svgClassname?: string,
+  extraThumbClassname?: string,
   numberParticles?: number,
+  children: React.ReactNode,
 }) {
   return (
     <div
-      className={clsx("relative h-full z-20 overflow-hidden", bgClassname, paddingClassname)}
-      // data-aos="zoom-out"
+      className={clsx("relative h-full z-20 overflow-hidden", bgClassname, paddingClassname, extraThumbClassname)}
     >
       <Particles className="absolute inset-0 -z-10" quantity={numberParticles} />
       <div className="flex items-center justify-center h-full">
@@ -77,21 +63,7 @@ export default function Thumb({
             </g>
           </svg>
         </div>
-        <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && reverseItems && "flex-row-reverse", !isLandscape && reverseItems && "flex-col-reverse", isLandscape && "aspect-video")}>
-          <div className={clsx(!isLandscape && "mb-2 md:mb-4", isLandscape &&  'mx-2')}>
-            <Image src={logoImage || Logo} alt={title} width={250} height={175} />
-          </div>
-          <div className={svgClassname}>
-            <Image src={svgImage || PlusImage} width={30} height={30} alt="plus image" />
-          </div>
-          <div className={clsx("flex items-center justify-center", !isLandscape &&  "gap-6 sm:gap-12 mt-2 md:mt-4", isLandscape &&  "gap-3 sm:gap-6  flex-col mx-2")}>
-            {targetImageSources.map((targetImageSrc, index) => (
-              <div key={index}>
-                <Image src={targetImageSrc} alt="Target Image" width={175} height={175} />
-              </div>
-            ))}
-          </div>
-        </div>
+        {children}
       </div>
     </div>
   )

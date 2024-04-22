@@ -1,7 +1,7 @@
 
 import { DemoPost } from '@/.contentlayer/generated';
 import { StaticImageData } from 'next/image'
-import Thumb from './thumb';
+import WithLogoThumb from './thumbnails/with-logo-thumb';
 
 export default function DemoPostThumb({
   demoPost,
@@ -23,8 +23,7 @@ export default function DemoPostThumb({
   svgClassname?: string,
 }) {
   return (
-    <Thumb
-      title={demoPost.title}
+    <WithLogoThumb
       targetImageSources={demoPost.targetImages}
       paddingClassname={paddingClassname}
       bgClassname={bgClassname}

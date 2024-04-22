@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
-import DefaultArtifactImg from '@/public/assets/theme/default/artifact-image.png'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png'
 import Star from '@/public/assets/theme/star.svg'
 import { ArtifactMdx } from '@/components/mdx/artifact-mdx'
 import StunningBackground from '@/components/stunning-background'
 import { Artifact } from '@/utils/content/types'
 import { getTestimonials } from '../data/testimonials'
+import WithTitleThumb from '../thumbnails/with-title-thumb'
 
 export default function ArtifactSection({
   artifact,
@@ -14,16 +14,16 @@ export default function ArtifactSection({
   children,
   widgetChildren,
   testimonialIndex = 0,
-  defaultArtifactImage,
   defaultArtifactIcon,
+  bgClassname,
 }: {
   artifact: Artifact,
   sectionURL: string,
   children: React.ReactNode,
   widgetChildren?: React.ReactNode,
   testimonialIndex?: number,
-  defaultArtifactImage?: StaticImageData,
   defaultArtifactIcon?: StaticImageData,
+  bgClassname?: string
 }) {
   const testimonial = getTestimonials()[testimonialIndex]
   return (
@@ -58,9 +58,14 @@ export default function ArtifactSection({
                   <div>
                     <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
-                      <figure className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
-                        <Image className="w-full rounded-2xl" src={artifact.image || defaultArtifactImage || DefaultArtifactImg} width={586} height={316} alt="Artifact image" />
-                      </figure>
+                      <div className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
+                        <WithTitleThumb
+                          title={artifact.title}
+                          // titleClassname="h1"
+                          extraThumbClassname="rounded-2xl"
+                          bgClassname={bgClassname}
+                        />
+                      </div>
 
                       <h1 className="sr-only">{artifact.title}</h1>
 
