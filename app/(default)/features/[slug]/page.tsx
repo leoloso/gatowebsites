@@ -59,7 +59,7 @@ export default async function SingleFeature({ params }: {
   return (
     <ArtifactSection
       artifact={feature}
-      sectionURL={`/${AppConfig.paths.features}`}
+      sectionURL={`/${AppConfig.paths.features}${feature.category === 'Free plugin' ? '' : '#pro'}`}
       testimonialIndex={feature.category === 'Free plugin' ? 1 : 4}
       defaultArtifactIcon={feature.category === 'Free plugin' ? DefaultArtifactIcon02 : DefaultArtifactIcon04}
       bgClassname={clsx("bg-gradient-to-tr", feature.category === 'Free plugin' && "from-slate-900 to-brown-900", feature.category !== 'Free plugin' && "from-slate-900 to-fuchsia-900")}
