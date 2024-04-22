@@ -4,6 +4,7 @@ import Illustration from '@/public/images/page-illustration.svg'
 import PostItem from './post-item'
 import Cta from '@/components/cta-03'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import { sortByOrder } from '@/utils/content/sort'
 
 const pageTitle = 'Highlights'
 export const metadata = {
@@ -19,10 +20,8 @@ export const metadata = {
 
 export default function Highlights() {
 
-  // Sort posts by date
-  allHighlights.sort((a, b) => {
-    return (new Date(a.publishedAt) > new Date(b.publishedAt)) ? -1 : 1
-  })
+  // Sort highlights by order
+  allHighlights.sort(sortByOrder)
 
   return (
     <>
