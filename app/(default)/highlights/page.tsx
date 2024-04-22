@@ -4,11 +4,12 @@ import Cta from '@/components/cta-03'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import { sortByOrder } from '@/utils/content/sort'
 import StunningBackground from '@/components/stunning-background'
+import PageHeader from '@/components/page-header'
 
 const pageTitle = 'Highlights'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
-  description: 'These are the distinctive features from Gato GraphQL to power your application',
+  description: 'Distinctive features from Gato GraphQL to power your application',
   // openGraph: {
   //   title: createOpenGraphPageTitle(pageTitle),
   // },
@@ -34,12 +35,11 @@ export default function Highlights() {
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
             {/* Page header */}
-            <div className="text-center pb-12 md:pb-20">
-              <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">What's New</h1>
-              <div className="max-w-3xl mx-auto">
-                <p className="text-lg text-slate-400">New highlights and improvements to Stellar.</p>
-              </div>
-            </div>
+            <PageHeader
+              leading='Experience how to reap the benefits from Gato GraphQL'
+              title='Highlights'
+              description='Distinctive features to power your application'
+            />
 
             {/* Content */}
             <div className="max-w-3xl mx-auto">
