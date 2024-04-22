@@ -1,0 +1,13 @@
+---
+title: Multiple Query Execution
+category: PRO plugin
+order: 30
+video: /videos/video.mp4
+---
+
+Query batching enables the GraphQL server to execute multiple queries in a single request, but those queries are merely executed one after the other, independently from each other.
+
+**Multiple query execution** is an improvement over query batching, by combining all queries together and executing them as a single operation. The results of a query can be injected as input to another query via the `@export` directive.
+
+This feature improves performance, for whenever we need to execute an operation against the GraphQL server, then wait for its response, and then use that result to perform another operation. By combining them together, we are avoiding the latency from the extra request(s).
+
