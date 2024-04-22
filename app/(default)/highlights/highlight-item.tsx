@@ -1,3 +1,5 @@
+'use client'
+
 import { HighlightMdx } from '@/components/mdx/highlight-mdx'
 import { useRef } from 'react'
 
