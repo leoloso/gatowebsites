@@ -1,13 +1,13 @@
 import Logo from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
 import Image from 'next/image'
 import Thumb from './thumb';
-import clsx from 'clsx';
 
 export default function WithTitleThumb({
   title,
   paddingClassname,
   bgClassname,
   titleClassname = "h2",
+  logoClassname,
   thumbClassname = "text-center aspect-video",
   extraThumbClassname,
   numberParticles,
@@ -16,6 +16,7 @@ export default function WithTitleThumb({
   paddingClassname?: string,
   bgClassname?: string,
   titleClassname?: string,
+  logoClassname?: string,
   thumbClassname?: string,
   extraThumbClassname?: string,
   numberParticles?: number,
@@ -28,7 +29,7 @@ export default function WithTitleThumb({
       numberParticles={numberParticles}
     >
       <div className={thumbClassname}>
-        <div className='mx-2'>
+        <div className={logoClassname}>
           <Image src={Logo} alt="Gato GraphQL logo" width={250} height={175} />
         </div>
         <h2 className={titleClassname}>
