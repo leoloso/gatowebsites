@@ -2,7 +2,7 @@ import Image from 'next/image'
 import AboutIllustration from '@/public/assets/theme/about-illustration.svg'
 import Icon from '@/public/assets/theme/about-icon.png'
 import StunningBackground from './stunning-background'
-import Thumb from '@/components/thumb'
+import WithLogoThumb from '@/components/thumb'
 import CircledEqualsSvgImage from '@/public/assets/theme/equals-circled.svg'
 import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
 import WordPressLogo from '@/public/assets/external-logos/wordpress-logo.svg'
@@ -43,7 +43,7 @@ export default function HeroAbout({
 
             {includeThumbnail && (
               <div className="mb-8 aspect-video">
-                <Thumb
+                <WithLogoThumb
                   bgClassname="h-full bg-gradient-to-tr from-slate-900 to-blue-900 rounded border-transparent rounded-2xl shadow-2xl"
                   title="Gato GraphQL"
                   targetImageSources={[WordPressLogo, GatoGraphQLLogo]}

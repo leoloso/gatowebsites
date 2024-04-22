@@ -6,7 +6,7 @@ import PlusImage from '@/public/assets/theme/plus.svg'
 import Image, { StaticImageData } from 'next/image'
 import clsx from 'clsx';
 
-export default function Thumb({
+export default function WithLogoThumb({
   title,
   targetImageSources,
   paddingClassname = "py-10 px-8 md:py-16 md:px-12",
