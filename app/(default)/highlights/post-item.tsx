@@ -1,8 +1,9 @@
-import Image from 'next/image'
 import PostDate from '@/components/post-date'
 import { HighlightMdx } from '@/components/mdx/highlight-mdx'
+import { useRef } from 'react'
 
 export default function PostItem({ ...props }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
   return (
     <article className="pt-12 first-of-type:pt-0 group">
       <div className="md:flex">
@@ -16,7 +17,10 @@ export default function PostItem({ ...props }) {
             <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 leading-8 pb-6">{props.title}</h2>
           </header>
           <figure className="bg-gradient-to-b from-slate-300/20 to-transparent rounded-3xl p-px mb-8">
-            <Image className="w-full rounded-[inherit]" src={props.image} width={574} height={326} alt={props.title} />
+            <video className="w-full rounded-[inherit]" ref={videoRef} width={1920} height={1080} loop controls>
+              <source src={props.video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </figure>
           <HighlightMdx code={props.body.code} />
         </div>
