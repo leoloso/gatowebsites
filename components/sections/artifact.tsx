@@ -7,6 +7,7 @@ import { ArtifactMdx } from '@/components/mdx/artifact-mdx'
 import StunningBackground from '@/components/stunning-background'
 import { Artifact } from '@/utils/content/types'
 import { getTestimonials } from '../data/testimonials'
+import WithTitleThumb from '../thumbnails/with-title-thumb'
 
 export default function ArtifactSection({
   artifact,
@@ -58,9 +59,16 @@ export default function ArtifactSection({
                   <div>
                     <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
-                      <figure className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
+                      {/* <figure className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
                         <Image className="w-full rounded-2xl" src={artifact.image || defaultArtifactImage || DefaultArtifactImg} width={586} height={316} alt="Artifact image" />
-                      </figure>
+                      </figure> */}
+                      <div className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
+                        <WithTitleThumb
+                          title={artifact.title}
+                          titleClassname="h1"
+                          extraThumbClassname="rounded-2xl"
+                        />
+                      </div>
 
                       <h1 className="sr-only">{artifact.title}</h1>
 
