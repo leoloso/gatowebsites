@@ -15,6 +15,7 @@ export default function ArtifactSection({
   widgetChildren,
   testimonialIndex = 0,
   defaultArtifactIcon,
+  bgClassname,
 }: {
   artifact: Artifact,
   sectionURL: string,
@@ -22,6 +23,7 @@ export default function ArtifactSection({
   widgetChildren?: React.ReactNode,
   testimonialIndex?: number,
   defaultArtifactIcon?: StaticImageData,
+  bgClassname?: string
 }) {
   const testimonial = getTestimonials()[testimonialIndex]
   return (
@@ -61,6 +63,7 @@ export default function ArtifactSection({
                           title={artifact.title}
                           // titleClassname="h1"
                           extraThumbClassname="aspect-video rounded-2xl"
+                          bgClassname={bgClassname}
                         />
                       </div>
 
