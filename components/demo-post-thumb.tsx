@@ -1,7 +1,7 @@
 
 import { DemoPost } from '@/.contentlayer/generated';
 import { StaticImageData } from 'next/image'
-import WithLogoThumb from './thumb';
+import WithLogoThumb from './thumbnails/thumb';
 
 export default function DemoPostThumb({
   demoPost,
