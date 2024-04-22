@@ -2,7 +2,7 @@ const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   paths: {
     blog: "blog",
-    changelog: "update",
+    highlights: "highlights",
     comparisonPosts: "comparisons",
     docs: {
       extensionsReference: "extensions-reference",

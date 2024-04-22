@@ -6,7 +6,7 @@ import AppConfig from './app/app.config'
 
 const Highlight = defineDocumentType(() => ({
   name: 'Highlight',
-  filePathPattern: `${AppConfig.paths.changelog}/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.highlights}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -25,7 +25,7 @@ const Highlight = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.changelog + '/?'), ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.highlights + '/?'), ''),
     },    
   },
 }))
