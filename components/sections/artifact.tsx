@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
-import DefaultArtifactImg from '@/public/assets/theme/default/artifact-image.png'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png'
 import Star from '@/public/assets/theme/star.svg'
 import { ArtifactMdx } from '@/components/mdx/artifact-mdx'
@@ -15,7 +14,6 @@ export default function ArtifactSection({
   children,
   widgetChildren,
   testimonialIndex = 0,
-  defaultArtifactImage,
   defaultArtifactIcon,
 }: {
   artifact: Artifact,
@@ -23,7 +21,6 @@ export default function ArtifactSection({
   children: React.ReactNode,
   widgetChildren?: React.ReactNode,
   testimonialIndex?: number,
-  defaultArtifactImage?: StaticImageData,
   defaultArtifactIcon?: StaticImageData,
 }) {
   const testimonial = getTestimonials()[testimonialIndex]
