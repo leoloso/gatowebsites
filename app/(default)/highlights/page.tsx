@@ -60,8 +60,8 @@ export default function Highlights() {
             <div className="max-w-3xl mx-auto">
               <div className="relative">
                 <div className="absolute h-full top-4 left-[2px] w-0.5 bg-slate-800 [mask-image:_linear-gradient(0deg,transparent,theme(colors.white)_150px,theme(colors.white))] -z-10 overflow-hidden after:absolute after:h-4 after:top-0 after:-translate-y-full after:left-0 after:w-0.5 after:bg-[linear-gradient(180deg,_transparent,_theme(colors.purple.500/.65)_25%,_theme(colors.purple.200)_50%,_theme(colors.purple.500/.65)_75%,_transparent)] after:animate-shine" aria-hidden="true"></div>
-                {allHighlights.map((post, postIndex) => (
-                  <PostItem key={postIndex} {...post} />
+                {allHighlights.map((highlight, highlightIndex) => (
+                  <PostItem key={highlightIndex} {...highlight} />
                 ))}
               </div>
             </div>
