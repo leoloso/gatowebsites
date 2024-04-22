@@ -4,31 +4,31 @@ import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import AppConfig from './app/app.config'
 
-// const Update = defineDocumentType(() => ({
-//   name: 'Update',
-//   filePathPattern: `${AppConfig.paths.changelog}/**/*.mdx`,
-//   contentType: 'mdx',
-//   fields: {
-//     title: {
-//       type: 'string',
-//       required: true
-//     },
-//     publishedAt: {
-//       type: 'string',
-//       required: true,
-//     },
-//     image: {
-//       type: 'string',
-//       required: true,
-//     },
-//   },
-//   computedFields: {
-//     slug: {
-//       type: 'string',
-//       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.changelog + '/?'), ''),
-//     },    
-//   },
-// }))
+const Highlight = defineDocumentType(() => ({
+  name: 'Highlight',
+  filePathPattern: `${AppConfig.paths.changelog}/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    publishedAt: {
+      type: 'string',
+      required: true,
+    },
+    image: {
+      type: 'string',
+      required: true,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.changelog + '/?'), ''),
+    },    
+  },
+}))
 
 const BlogPost = defineDocumentType(() => ({
   name: 'BlogPost',
@@ -465,7 +465,7 @@ const NameURLPair = defineNestedType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [/*Update, */BlogPost, Page, Snippet, DemoPost, ComparisonPost, Doc, DocTopic, Extension, Feature],
+  documentTypes: [Highlight, BlogPost, Page, Snippet, DemoPost, ComparisonPost, Doc, DocTopic, Extension, Feature],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
