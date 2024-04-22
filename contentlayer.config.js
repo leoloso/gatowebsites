@@ -13,12 +13,8 @@ const Highlight = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
-    publishedAt: {
-      type: 'string',
-      required: true,
-    },
-    image: {
-      type: 'string',
+    order: {
+      type: 'number',
       required: true,
     },
   },
