@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const releaseDateV2_2 = new Date(getReleaseData('2.2'))
   // const releaseDateV2_2_1 = new Date(getReleaseData('2.2.1'))
   const releaseDateV2_2_2 = new Date(getReleaseData('2.2.2'))
+  const releaseDateV2_2_3 = new Date(getReleaseData('2.2.3'))
   const blogPostSitemapEntries = allBlogPosts.map((blogPost) => (
     {
       url: getBlogPostURL(blogPost),
@@ -110,6 +111,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    // Highlights
+    {
+      url: `${DOMAIN}/${AppConfig.paths.highlights}`,
+      lastModified: releaseDateV2_2_3,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     // Comparisons
     {
       url: `${DOMAIN}/${AppConfig.paths.comparisonPosts}`,
@@ -151,13 +159,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     //   lastModified: releaseDateV2_2,
     //   changeFrequency: 'monthly',
     //   priority: 0.7,
-    // },
-    // Changelog
-    // {
-    //   url: `${DOMAIN}/changelog`,
-    //   lastModified: releaseDateV2_2,
-    //   changeFrequency: 'weekly',
-    //   priority: 0.5,
     // },
     // Refund policy
     {
