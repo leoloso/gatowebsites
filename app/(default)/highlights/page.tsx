@@ -1,5 +1,5 @@
 import { allHighlights } from 'contentlayer/generated'
-import HighlightItem from './post-item'
+import HighlightItem from './highlight-item'
 import Cta from '@/components/cta-03'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import { sortByOrder } from '@/utils/content/sort'
