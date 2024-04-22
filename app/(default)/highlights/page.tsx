@@ -1,15 +1,23 @@
-export const metadata = {
-  title: 'Changelog - Stellar',
-  description: 'Page description',
-}
-
 import { allHighlights } from 'contentlayer/generated'
 import Image from 'next/image'
 import Illustration from '@/public/images/page-illustration.svg'
 import PostItem from './post-item'
 import Cta from '@/components/cta-03'
+import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
-export default function Changelog() {
+const pageTitle = 'Highlights'
+export const metadata = {
+  title: createSEOPageTitle(pageTitle),
+  description: 'These are the distinctive features from Gato GraphQL to power your application',
+  // openGraph: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
+  // twitter: {
+  //   title: createOpenGraphPageTitle(pageTitle),
+  // },
+}
+
+export default function Highlights() {
 
   // Sort posts by date
   allHighlights.sort((a, b) => {
@@ -45,7 +53,7 @@ export default function Changelog() {
             <div className="text-center pb-12 md:pb-20">
               <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">What's New</h1>
               <div className="max-w-3xl mx-auto">
-                <p className="text-lg text-slate-400">New updates and improvements to Stellar.</p>
+                <p className="text-lg text-slate-400">New highlights and improvements to Stellar.</p>
               </div>
             </div>
 

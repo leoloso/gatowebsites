@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import PostDate from '@/components/post-date'
-import { HighlightMdx } from '@/components/mdx/update-mdx'
+import { HighlightMdx } from '@/components/mdx/highlight-mdx'
 
 export default function PostItem({ ...props }) {
   return (
