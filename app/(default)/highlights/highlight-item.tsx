@@ -15,7 +15,7 @@ export default function HighlightItem({ ...props }) {
           </span>
         </div>
         <div className="grow ml-8 md:ml-0 pb-12 group-last-of-type:pb-0 border-b [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1] group-last-of-type:border-none">
-          <header className='pb-6'>
+          <header className='pb-8'>
             {/* <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 leading-8 pb-6">{props.title}</h2> */}
             <WithTitleThumb
               title={props.title}
@@ -25,7 +25,7 @@ export default function HighlightItem({ ...props }) {
           <div className="p-px mb-6">
             <HighlightMdx code={props.body.code} />
           </div>
-          <figure className="bg-gradient-to-b from-slate-300/20 to-transparent rounded-2xl">
+          <figure className="bg-gradient-to-b from-slate-300/20 to-transparent rounded-2xl mb-4">
             <video className="w-full rounded-[inherit]" ref={videoRef} width={768} height={432} loop controls>
               <source src={props.video} type="video/mp4" />
               Your browser does not support the video tag.
