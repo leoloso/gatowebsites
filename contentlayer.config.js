@@ -17,6 +17,10 @@ const Highlight = defineDocumentType(() => ({
       type: 'number',
       required: true,
     },
+    video: {
+      type: 'string',
+      required: true,
+    },
   },
   computedFields: {
     slug: {
