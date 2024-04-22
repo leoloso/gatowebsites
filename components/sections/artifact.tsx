@@ -59,9 +59,6 @@ export default function ArtifactSection({
                   <div>
                     <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
-                      {/* <figure className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
-                        <Image className="w-full rounded-2xl" src={artifact.image || defaultArtifactImage || DefaultArtifactImg} width={586} height={316} alt="Artifact image" />
-                      </figure> */}
                       <div className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
                         <WithTitleThumb
                           title={artifact.title}
