@@ -36,7 +36,7 @@ export default function WithLogoThumb({
           <Image src={logoImage || Logo} alt="Gato GraphQL logo" width={250} height={175} />
         </div>
         <div className={svgClassname}>
-          <Image src={svgImage || PlusImage} width={30} height={30} alt="plus image" />
+          <Image src={svgImage || PlusImage} width={30} height={30} alt="Image" />
         </div>
         <div className={clsx("flex items-center justify-center", !isLandscape &&  "gap-6 sm:gap-12 mt-2 md:mt-4", isLandscape &&  "gap-3 sm:gap-6  flex-col mx-2")}>
           {targetImageSources.map((targetImageSrc, index) => (
