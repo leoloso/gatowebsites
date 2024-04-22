@@ -9,7 +9,7 @@ export default function WithTitleThumb({
   bgClassname,
   titleClassname = "h2",
   thumbClassname = "text-center aspect-video",
-  extraThumbClassname = "text-center aspect-video",
+  extraThumbClassname,
   numberParticles,
 }: {
   title: string,
@@ -24,9 +24,10 @@ export default function WithTitleThumb({
     <Thumb
       paddingClassname={paddingClassname}
       bgClassname={bgClassname}
+      extraThumbClassname={extraThumbClassname}
       numberParticles={numberParticles}
     >
-      <div className={clsx(thumbClassname, extraThumbClassname)}>
+      <div className={thumbClassname}>
         <div className='mx-2'>
           <Image src={Logo} alt="Gato GraphQL logo" width={250} height={175} />
         </div>

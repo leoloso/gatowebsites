@@ -1,23 +1,24 @@
 
 import Particles from '@/components/particles'
 // import Illustration from '@/public/assets/theme/cta-illustration.svg'
-import { StaticImageData } from 'next/image'
 import clsx from 'clsx';
 
 export default function Thumb({
   paddingClassname = "py-10 px-8 md:py-16 md:px-12",
   bgClassname = "bg-gradient-to-tr from-slate-900 to-violet-900",
+  extraThumbClassname,
   numberParticles = 10,
   children,
 }: {
   paddingClassname?: string,
   bgClassname?: string,
+  extraThumbClassname?: string,
   numberParticles?: number,
   children: React.ReactNode,
 }) {
   return (
     <div
-      className={clsx("relative h-full z-20 overflow-hidden", bgClassname, paddingClassname)}
+      className={clsx("relative h-full z-20 overflow-hidden", bgClassname, paddingClassname, extraThumbClassname)}
     >
       <Particles className="absolute inset-0 -z-10" quantity={numberParticles} />
       <div className="flex items-center justify-center h-full">
