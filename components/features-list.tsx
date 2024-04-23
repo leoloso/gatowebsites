@@ -19,6 +19,7 @@ export default function FeaturesList() {
         showSearch={false}
         showHeading={false}
         defaultArtifactIcon={DefaultArtifactIcon02}
+        bgClassname="bg-gradient-to-tr from-slate-800 to-purple-800/25"
       />
       {/* PRO plugin features */}
       <ArtifactsList
@@ -28,6 +29,7 @@ export default function FeaturesList() {
         showHeading={false}
         addRadialGradient={true}
         defaultArtifactIcon={DefaultArtifactIcon04}
+        bgClassname="bg-gradient-to-tr from-slate-800 to-blue-800/25"
       >
         <div className="pt-12 md:pt-20">
           <SectionHeader
