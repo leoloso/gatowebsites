@@ -24,7 +24,7 @@ export default function HighlightItem({ ...props }) {
               bgClassname="bg-gradient-to-tr from-slate-900 to-blue-900"
             />
           </header>
-          <div className="p-px mb-6">
+          <div className="p-px mb-8">
             <HighlightMdx code={props.body.code} />
           </div>
           <figure className="bg-gradient-to-b from-slate-300/20 to-transparent rounded-2xl mb-4">
@@ -32,6 +32,7 @@ export default function HighlightItem({ ...props }) {
               <source src={props.video} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            <figcaption className="text-sm text-center font-bold text-slate-400 mt-4">{props.videoDesc}</figcaption>
           </figure>
         </div>
       </div>

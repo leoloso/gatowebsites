@@ -21,6 +21,10 @@ const Highlight = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    videoDesc: {
+      type: 'string',
+      required: true,
+    },
     category: {
       type: 'enum',
       options: [
