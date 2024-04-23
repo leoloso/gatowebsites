@@ -9,7 +9,7 @@ export default function HighlightSlidesItem({ ...props }) {
     >
       <WithTitleThumb
         title={props.title}
-        titleClassname="h1"
+        titleClassname="h1 max-w-3xl"
         // extraThumbClassname="rounded-2xl"
         bgClassname="bg-gradient-to-tr from-slate-900 to-blue-900"
       />
