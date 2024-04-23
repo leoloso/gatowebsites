@@ -1,7 +1,7 @@
 import WithTitleThumb from '@/components/thumbnails/with-title-thumb'
 import slugify from '@sindresorhus/slugify';
 
-export default function HighlightItem({ ...props }) {
+export default function HighlightSlidesItem({ ...props }) {
   return (
     <header
       id={slugify(props.title)}

@@ -1,12 +1,12 @@
 import { allHighlights } from 'contentlayer/generated'
-import HighlightItem from './highlight-item'
-import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import HighlightSlidesItem from './highlight-slides-item'
+import { createSEOPageTitle } from '@/utils/content/metadata'
 import { sortByOrder } from '@/utils/content/sort'
 
-const pageTitle = 'Slides'
+const pageTitle = 'Highlight Slides'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
-  description: 'Gato GraphQL Slides',
+  description: 'Gato GraphQL Highlight Slides',
 }
 
 export default function Slides() {
@@ -25,7 +25,7 @@ export default function Slides() {
         >
           <div className="relative">
             {allHighlights.map((highlight, highlightIndex) => (
-              <HighlightItem key={highlightIndex} {...highlight} />
+              <HighlightSlidesItem key={highlightIndex} {...highlight} />
             ))}
           </div>
 
