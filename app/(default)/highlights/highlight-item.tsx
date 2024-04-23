@@ -32,6 +32,7 @@ export default function HighlightItem({ ...props }) {
               <source src={props.video} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            <figcaption className="font-medium italic text-slate-300 mt-3">{props.videoDesc}</figcaption>
           </figure>
         </div>
       </div>
