@@ -6,6 +6,6 @@ video: /videos/video.mp4
 videoDesc: A field returns a different response depending on the logged-in user being an admin or not.
 ---
 
-**Multiple query execution** combines multiple GraphQL queries together and executes them as a single operation.
+**Multiple query execution** combines multiple GraphQL queries together and executes them as a single operation. Queries in the document can share state with each other, and be conditionally executed depending on the value of some variable.
 
-It improves the application's performance, as it avoids the latency from waiting for the response from executing multiple requests, and organizes the code into logical units.
+Multiple query execution improves the application's performance, as it avoids the latency from waiting for the response from executing multiple requests, and organizes the code into logical units.
