@@ -111,13 +111,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    // Highlights
-    {
-      url: `${DOMAIN}/${AppConfig.paths.highlights}`,
-      lastModified: releaseDateV2_2_3,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
+    // @todo Uncomment when Highlights goes live
+    // // Highlights
+    // {
+    //   url: `${DOMAIN}/${AppConfig.paths.highlights}`,
+    //   lastModified: releaseDateV2_2_3,
+    //   changeFrequency: 'weekly',
+    //   priority: 0.9,
+    // },
     // Comparisons
     {
       url: `${DOMAIN}/${AppConfig.paths.comparisonPosts}`,
