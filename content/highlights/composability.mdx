@@ -2,8 +2,8 @@
 title: Composability
 category: Free plugin
 order: 400
-video: /videos/video.mp4
-videoDesc: We avoid coding a custom `Post.hasExcerpt` field by combining fields `Post.excerpt` and `Root._notEmpty`.
+video: /videos/highlights/composability.mp4
+videoDesc: We avoid coding a custom `Post.isNotEmptyExcerpt` field by combining fields `Post.rawExcerpt`, `_isEmpty` and `_not`.
 ---
 
 Gato GraphQL gives you the ability to **compose fields** —where the value of a field can be provided as input to another field in the same query— and **compose directives** —where a directive can modify the behavior of another directive—.
