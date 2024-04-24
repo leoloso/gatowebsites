@@ -108,7 +108,7 @@ For instance, in this query we export the logged-in user's name, and use this va
 ```graphql
 query GetLoggedInUserName {
   me {
-    name @export(as: $loggedInUserName)
+    name @export(as: "loggedInUserName")
   }
 }
 

@@ -21,7 +21,7 @@ This feature improves performance, for whenever we need to execute an operation 
 ```graphql
 query GetLoggedInUserName {
   me {
-    name @export(as: $loggedInUserName)
+    name @export(as: "loggedInUserName")
   }
 }
 
