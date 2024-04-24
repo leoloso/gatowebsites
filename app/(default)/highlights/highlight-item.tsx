@@ -27,7 +27,7 @@ export default function HighlightItem({ ...props }) {
           <div className="p-px mb-8">
             <HighlightMdx code={props.body.code} />
           </div>
-          <figure className="bg-gradient-to-b from-slate-300/20 to-transparent rounded-2xl mb-4">
+          <figure className="bg-gradient-to-b from-slate-300/20 to-transparent rounded mb-4">
             <video className="w-full rounded-[inherit]" ref={videoRef} width={768} height={432} loop controls>
               <source src={props.video} type="video/mp4" />
               Your browser does not support the video tag.
