@@ -1,6 +1,7 @@
 export default function SupportForm() {
   return (
     <form className="max-w-xl mx-auto" name="support" method="POST" data-netlify="true" action="/support/success" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="support" />
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="name">Name <span className="text-red-600">*</span></label>

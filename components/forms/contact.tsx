@@ -1,6 +1,7 @@
 export default function ContactForm() {
   return (
     <form className="max-w-xl mx-auto" name="contact" method="POST" data-netlify="true" action="/contact/success" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact" />
       <div className="flex flex-wrap -mx-3 mb-8">
         <div className="w-full px-3">
           <div className="text-slate-300">
