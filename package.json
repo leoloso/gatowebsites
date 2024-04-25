@@ -11,7 +11,7 @@
     "deploy": "npm run deploy-staging",
     "deploy-dev": "netlify dev",
     "deploy-staging": "netlify deploy --build --context deploy-preview",
-    "deploy-prod": "netlify deploy --build --prod",
+    "deploy-prod": "netlify deploy --build --prod --context production",
     "deploy-algolia": "curl https://gatographql.com/api/deploy-algolia?apiKey=Pf1GnIKlIAJthd0O0GwlCTJqxS0O9tIO",
     "deploy-prod-with-algolia": "npm run deploy-prod && npm run deploy-algolia"
   },
