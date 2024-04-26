@@ -1,6 +1,42 @@
+'use client';
+
+import { useState } from 'react';
+
 export default function ContactForm() {
+  const [status, setStatus] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      setStatus('pending');
+      setError(null);
+      const myForm = event.target;
+      const formData = new FormData(myForm);
+      const res = await fetch('/__forms.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      });
+      if (res.status === 200) {
+        setStatus('ok');
+      } else {
+        setStatus('error');
+        setError(`${res.status} ${res.statusText}`);
+      }
+    } catch (e) {
+      setStatus('error');
+      setError(`${e}`);
+    }
+  };
+  
   return (
-    <form className="max-w-xl mx-auto" name="contact" method="POST" data-netlify="true" action="/contact/success" netlify-honeypot="bot-field">
+    <form
+      className="max-w-xl mx-auto"
+      name="contact"
+      onSubmit={handleFormSubmit}
+      // netlify-honeypot="bot-field"
+    >
       <input type="hidden" name="form-name" value="contact" />
       <div className="flex flex-wrap -mx-3 mb-8">
         <div className="w-full px-3">
@@ -55,9 +91,27 @@ export default function ContactForm() {
       </div> */}
       <div className="flex flex-wrap -mx-3 mt-6">
         <div className="w-full px-3">
-          <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Send</button>
+          <button
+            className="btn text-white bg-purple-600 hover:bg-purple-700 w-full"
+            type="submit"
+            disabled={status === 'pending'}
+          >
+            Send
+          </button>
         </div>
       </div>
+      {status === 'ok' && (
+        <div className="alert alert-success">
+          <SuccessIcon />
+          Submitted!
+        </div>
+      )}
+      {status === 'error' && (
+        <div className="alert alert-error">
+          <ErrorIcon />
+          {error}
+        </div>
+      )}
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <div className="text-sm text-gray-600 mt-4">
@@ -66,11 +120,46 @@ export default function ContactForm() {
           </div>
         </div>
       </div>
-      <div className="hidden flex flex-wrap -mx-3 mb-4">
+      {/* <div className="hidden flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
         </div>
-      </div>
+      </div> */}
     </form>
   )
+}
+
+function SuccessIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="stroke-current shrink-0 h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+  );
+}
+function ErrorIcon(success) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="stroke-current shrink-0 h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+  );
 }
