@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import Alert from '../mdx/components/alert';
+import clsx from 'clsx';
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<string|null>(null);
+  const [status, setStatus] = useState<string>('pending');
   const [error, setError] = useState<string|null>(null);
 
   const handleFormSubmit = async (event) => {
@@ -20,7 +21,7 @@ export default function ContactForm() {
         body: new URLSearchParams(formData).toString()
       });
       if (res.status === 200) {
-        setStatus('ok');
+        setStatus('success');
       } else {
         setStatus('error');
         setError(`${res.status} ${res.statusText}`);
@@ -31,7 +32,7 @@ export default function ContactForm() {
     }
   };
 
-  const canSubmitForm = status === 'pending' || status === 'success'
+  const canSubmitForm = status === 'pending' || status === 'error'
   
   return (
     <form
@@ -95,9 +96,9 @@ export default function ContactForm() {
       <div className="flex flex-wrap -mx-3 mt-6">
         <div className="w-full px-3">
           <button
-            className="btn text-white bg-purple-600 hover:bg-purple-700 w-full"
+            className={clsx("btn text-white bg-purple-600 w-full", canSubmitForm && 'hover:bg-purple-700')}
             type="submit"
-            disabled={canSubmitForm}
+            disabled={!canSubmitForm}
           >
             Send
           </button>
