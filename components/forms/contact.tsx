@@ -4,8 +4,8 @@ import { useState } from 'react';
 import Alert from '../mdx/components/alert';
 
 export default function ContactForm() {
-  const [status, setStatus] = useState(null);
-  const [error, setError] = useState(null);
+  const [status, setStatus] = useState<string|null>(null);
+  const [error, setError] = useState<string|null>(null);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
