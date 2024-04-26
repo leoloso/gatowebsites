@@ -8,6 +8,8 @@ export default function ContactForm() {
   const [status, setStatus] = useState<string>('pending');
   const [error, setError] = useState<string|null>(null);
 
+  const formURL = '/__forms/contact.html'
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -15,7 +17,7 @@ export default function ContactForm() {
       setError(null);
       const myForm = event.target;
       const formData = new FormData(myForm);
-      const res = await fetch('/__forms/contact.html', {
+      const res = await fetch(formURL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
