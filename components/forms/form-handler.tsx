@@ -26,3 +26,9 @@ export const handleFormSubmit = async (
     setError(`${e}`);
   }
 };
+
+export function canSubmitForm(
+  status: string
+): boolean {
+  return status === 'pending' || status === 'error'
+}

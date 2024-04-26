@@ -3,13 +3,13 @@
 import { useState } from 'react';
 import Alert from '../mdx/components/alert';
 import clsx from 'clsx';
-import { handleFormSubmit } from './form-handler';
+import { handleFormSubmit, canSubmitForm } from './form-handler';
 
 export default function ContactForm() {
   const [status, setStatus] = useState<string>('pending');
   const [error, setError] = useState<string|null>(null);
 
-  const canSubmitForm = status === 'pending' || status === 'error'
+  const isFormEnabled = canSubmitForm(status)
   
   return (
     <form
@@ -44,7 +44,7 @@ export default function ContactForm() {
             className="form-input w-full text-gray-300"
             placeholder="Enter your name"
             required
-            readOnly={!canSubmitForm}
+            readOnly={!isFormEnabled}
           />
         </div>
       </div>
@@ -58,7 +58,7 @@ export default function ContactForm() {
             className="form-input w-full text-gray-300"
             placeholder="Enter your email address"
             required
-            readOnly={!canSubmitForm}
+            readOnly={!isFormEnabled}
           />
         </div>
       </div>
@@ -72,7 +72,7 @@ export default function ContactForm() {
             className="form-input w-full text-gray-300"
             placeholder="How can we help you?"
             required
-            readOnly={!canSubmitForm}
+            readOnly={!isFormEnabled}
           />
         </div>
       </div>
@@ -83,7 +83,7 @@ export default function ContactForm() {
             id="topic"
             name="topic"
             className="form-select w-full text-gray-300"
-            disabled={!canSubmitForm}
+            disabled={!isFormEnabled}
           >
             <option>General</option>
             <option>Sales</option>
@@ -103,7 +103,7 @@ export default function ContactForm() {
             className="form-textarea w-full text-gray-300"
             placeholder="Write your message"
             required
-            readOnly={!canSubmitForm}
+            readOnly={!isFormEnabled}
           ></textarea>
         </div>
       </div>
@@ -118,9 +118,9 @@ export default function ContactForm() {
       <div className="flex flex-wrap -mx-3 mt-6">
         <div className="w-full px-3">
           <button
-            className={clsx("btn text-white bg-purple-600 w-full", canSubmitForm && 'hover:bg-purple-700')}
+            className={clsx("btn text-white bg-purple-600 w-full", isFormEnabled && 'hover:bg-purple-700')}
             type="submit"
-            disabled={!canSubmitForm}
+            disabled={!isFormEnabled}
           >
             Send
           </button>
