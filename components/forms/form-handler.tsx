@@ -12,7 +12,9 @@ export const handleFormSubmit = async (
     const formData = new FormData(formEventTarget);
     const res = await fetch(formURL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
       body: new URLSearchParams(formData).toString()
     });
     if (res.status === 200) {
