@@ -101,11 +101,11 @@ export default function ContactForm() {
           </button>
         </div>
       </div>
-      {status === 'ok' && (
+      {status === 'success' && (
         <div className="flex flex-wrap -mx-3 mt-6">
           <div className="w-full px-3">        
             <Alert type='success'>
-              Thanks for your message. We will come back to you soon.
+              <strong>Message submitted!</strong> We will come back to you soon.
             </Alert>
           </div>
         </div>
