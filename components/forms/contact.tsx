@@ -129,7 +129,7 @@ export default function ContactForm() {
         <div className="flex flex-wrap -mx-3 mt-6">
           <div className="w-full px-3">        
             <Alert type='success'>
-              <strong>Message submitted!</strong> We will come back to you soon.
+              <strong>Message submitted successfully.</strong> We will come back to you soon. Thanks.
             </Alert>
           </div>
         </div>
