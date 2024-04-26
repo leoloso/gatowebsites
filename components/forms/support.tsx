@@ -1,8 +1,25 @@
+'use client';
+
+import { useState } from 'react';
+import Alert from '../mdx/components/alert';
+import clsx from 'clsx';
+import { handleFormSubmit, canSubmitForm } from './form-handler';
+
 export default function SupportForm() {
+  const formURL = '/__forms/support.html'
+
+  const [status, setStatus] = useState<string>('pending');
+  const [error, setError] = useState<string|null>(null);
+  const isFormEnabled = canSubmitForm(status)
+
   return (
     <form
       name="support"
       className="max-w-xl mx-auto"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleFormSubmit(formURL, e.target, setStatus, setError)
+      }}
       // method="POST"
       // data-netlify="true"
       // action="/support/success"
@@ -19,6 +36,7 @@ export default function SupportForm() {
             className="form-input w-full text-gray-300"
             placeholder="Enter your name"
             required
+            readOnly={!isFormEnabled}
           />
         </div>
       </div>
@@ -32,6 +50,7 @@ export default function SupportForm() {
             className="form-input w-full text-gray-300"
             placeholder="Enter your email address"
             required
+            readOnly={!isFormEnabled}
           />
         </div>
       </div>
@@ -45,6 +64,7 @@ export default function SupportForm() {
             className="form-input w-full text-gray-300"
             placeholder="How can we help you?"
             required
+            readOnly={!isFormEnabled}
           />
         </div>
       </div>
@@ -58,6 +78,7 @@ export default function SupportForm() {
             className="form-textarea w-full text-gray-300"
             placeholder="Write your message"
             required
+            readOnly={!isFormEnabled}
           ></textarea>
         </div>
       </div>
@@ -71,6 +92,7 @@ export default function SupportForm() {
             className="form-textarea w-full text-gray-300"
             placeholder="Copy/paste the license data, available in the plugin on the 'About > Support' form"
             required
+            readOnly={!isFormEnabled}
           ></textarea>
         </div>
       </div>
@@ -84,9 +106,33 @@ export default function SupportForm() {
       </div> */}
       <div className="flex flex-wrap -mx-3 mt-6">
         <div className="w-full px-3">
-          <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Send</button>
+          <button
+            className={clsx("btn text-white bg-purple-600 w-full", isFormEnabled && 'hover:bg-purple-700')}
+            type="submit"
+            disabled={!isFormEnabled}
+          >
+            Send
+          </button>
         </div>
       </div>
+      {status === 'success' && (
+        <div className="flex flex-wrap -mx-3 mt-6">
+          <div className="w-full px-3">        
+            <Alert type='success'>
+              <strong>We have received your request, and created a new ticket.</strong> We will reply soon. Thanks.
+            </Alert>
+          </div>
+        </div>
+      )}
+      {status === 'error' && (
+        <div className="flex flex-wrap -mx-3 mt-6">
+          <div className="w-full px-3">        
+            <Alert type='error'>
+              {error}
+            </Alert>
+          </div>
+        </div>
+      )}
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <div className="text-sm text-gray-600 mt-4">
