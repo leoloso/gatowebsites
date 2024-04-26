@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import Alert from '../mdx/components/alert';
 import clsx from 'clsx';
-import { handleFormSubmit, canSubmitForm } from './form-handler';
+import { handleFormSubmit, canSubmitForm, FormStatus } from './form-handler';
 
 export default function RefundForm() {
   const formURL = '/__forms/refund.html'
 
-  const [status, setStatus] = useState<string>('pending');
+  const [status, setStatus] = useState<FormStatus>('pending');
   const [error, setError] = useState<string|null>(null);
   const isFormEnabled = canSubmitForm(status)
 

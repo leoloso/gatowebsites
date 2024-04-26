@@ -1,9 +1,11 @@
 import { Dispatch, SetStateAction } from 'react';
 
+export type FormStatus = 'success' | 'error' | 'pending';
+
 export const handleFormSubmit = async (
   formURL: string,
   formEventTarget: EventTarget,
-  setStatus: Dispatch<SetStateAction<string>>,
+  setStatus: Dispatch<SetStateAction<FormStatus>>,
   setError: Dispatch<SetStateAction<string | null>>
 ) => {
   try {
@@ -30,7 +32,7 @@ export const handleFormSubmit = async (
 };
 
 export function canSubmitForm(
-  status: string
+  status: FormStatus
 ): boolean {
   return status === 'pending' || status === 'error'
 }
