@@ -1,35 +1,9 @@
 'use client';
 
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import Alert from '../mdx/components/alert';
 import clsx from 'clsx';
-
-const handleFormSubmit = async (
-  formURL: string,
-  formEventTarget: EventTarget,
-  setStatus: Dispatch<SetStateAction<string>>,
-  setError: Dispatch<SetStateAction<string | null>>
-) => {
-  try {
-    setStatus('pending');
-    setError(null);
-    const formData = new FormData(formEventTarget);
-    const res = await fetch(formURL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString()
-    });
-    if (res.status === 200) {
-      setStatus('success');
-    } else {
-      setStatus('error');
-      setError(`${res.status} ${res.statusText}`);
-    }
-  } catch (e) {
-    setStatus('error');
-    setError(`${e}`);
-  }
-};
+import { handleFormSubmit } from './form-handler';
 
 export default function ContactForm() {
   const [status, setStatus] = useState<string>('pending');
