@@ -20,6 +20,9 @@ export default function ContactForm() {
         e.preventDefault();
         handleFormSubmit(formURL, e.target, setStatus, setError)
       }}
+      // method="POST"
+      // data-netlify="true"
+      // action="/contact/success"
       // netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value="contact" />
