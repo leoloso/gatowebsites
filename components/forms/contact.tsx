@@ -30,6 +30,8 @@ export default function ContactForm() {
       setError(`${e}`);
     }
   };
+
+  const canSubmitForm = status === 'pending' || status === 'success'
   
   return (
     <form
@@ -95,7 +97,7 @@ export default function ContactForm() {
           <button
             className="btn text-white bg-purple-600 hover:bg-purple-700 w-full"
             type="submit"
-            disabled={status === 'pending'}
+            disabled={canSubmitForm}
           >
             Send
           </button>
