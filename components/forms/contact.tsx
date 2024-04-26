@@ -11,19 +11,14 @@ export default function ContactForm() {
   const [status, setStatus] = useState<string>('pending');
   const [error, setError] = useState<string|null>(null);
   const isFormEnabled = canSubmitForm(status)
-  
+
   return (
     <form
       className="max-w-xl mx-auto"
       name="contact"
       onSubmit={(e) => {
         e.preventDefault();
-        handleFormSubmit(
-          formURL,
-          e.target,
-          setStatus,
-          setError
-        )
+        handleFormSubmit(formURL, e.target, setStatus, setError)
       }}
       // netlify-honeypot="bot-field"
     >
