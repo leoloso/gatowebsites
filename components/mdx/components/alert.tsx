@@ -59,7 +59,7 @@ export default function Alert({ type, ...props }: AlertProps) {
     <div className={clsx("text-sm p-4 border rounded", alertClassnames(type))}>
       <div className="flex items-start">
         {typeIcon(type)}
-        <div>
+        <div className="text-left">
           {props.children}
         </div>
       </div>
