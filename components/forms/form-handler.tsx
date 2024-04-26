@@ -4,14 +4,14 @@ export type FormStatus = 'success' | 'error' | 'pending';
 
 export const handleFormSubmit = async (
   formURL: string,
-  formEventTarget: EventTarget,
+  formElement: HTMLFormElement,
   setStatus: Dispatch<SetStateAction<FormStatus>>,
   setError: Dispatch<SetStateAction<string | null>>
 ) => {
   try {
     setStatus('pending');
     setError(null);
-    const formData = new FormData(formEventTarget);
+    const formData = new FormData(formElement);
     const res = await fetch(formURL, {
       method: 'POST',
       headers: {

@@ -18,7 +18,7 @@ export default function SupportForm() {
       className="max-w-xl mx-auto"
       onSubmit={(e) => {
         e.preventDefault();
-        handleFormSubmit(formURL, e.target, setStatus, setError)
+        handleFormSubmit(formURL, e.target as HTMLFormElement, setStatus, setError)
       }}
       // method="POST"
       // data-netlify="true"
