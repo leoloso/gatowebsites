@@ -25,10 +25,9 @@ export default function FooterMenu({
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/pricing">Pricing</a>
           </li>
-          {/* @todo Uncomment when Highlights goes live */}
-          {/* <li>
+          <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.highlights}`}>Highlights</a>
-          </li> */}
+          </li>
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.features}`}>Features</a>
           </li>
