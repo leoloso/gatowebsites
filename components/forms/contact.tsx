@@ -52,25 +52,54 @@ export default function ContactForm() {
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="name">Name <span className="text-red-600">*</span></label>
-          <input id="name" name="name" type="text" className="form-input w-full text-gray-300" placeholder="Enter your name" required readOnly={!canSubmitForm} />
+          <input
+            id="name"
+            name="name"
+            type="text"
+            className="form-input w-full text-gray-300"
+            placeholder="Enter your name"
+            required
+            readOnly={!canSubmitForm}
+          />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
-          <input id="email" name="email" type="email" className="form-input w-full text-gray-300" placeholder="Enter your email address" required readOnly={!canSubmitForm} />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            className="form-input w-full text-gray-300"
+            placeholder="Enter your email address"
+            required
+            readOnly={!canSubmitForm}
+          />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="subject">Subject <span className="text-red-600">*</span></label>
-          <input id="subject" name="subject" type="text" className="form-input w-full text-gray-300" placeholder="How can we help you?" required readOnly={!canSubmitForm} />
+          <input
+            id="subject"
+            name="subject"
+            type="text"
+            className="form-input w-full text-gray-300"
+            placeholder="How can we help you?"
+            required
+            readOnly={!canSubmitForm}
+          />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="topic">Topic</label>
-          <select id="topic" name="topic" className="form-select w-full text-gray-300" disabled={!canSubmitForm}>
+          <select
+            id="topic"
+            name="topic"
+            className="form-select w-full text-gray-300"
+            disabled={!canSubmitForm}
+          >
             <option>General</option>
             <option>Sales</option>
             <option>Affiliate Program</option>
@@ -82,7 +111,15 @@ export default function ContactForm() {
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="message">Message <span className="text-red-600">*</span></label>
-          <textarea id="message" name="message" rows={4} className="form-textarea w-full text-gray-300" placeholder="Write your message" required readOnly={!canSubmitForm}></textarea>
+          <textarea
+            id="message"
+            name="message"
+            rows={4}
+            className="form-textarea w-full text-gray-300"
+            placeholder="Write your message"
+            required
+            readOnly={!canSubmitForm}
+          ></textarea>
         </div>
       </div>
       {/* <div className="flex flex-wrap -mx-3 mb-4">
