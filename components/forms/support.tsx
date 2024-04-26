@@ -1,35 +1,77 @@
 export default function SupportForm() {
   return (
-    <form className="max-w-xl mx-auto" name="support" method="POST" data-netlify="true" action="/support/success" netlify-honeypot="bot-field">
+    <form
+      className="max-w-xl mx-auto"
+      name="support"
+      method="POST"
+      data-netlify="true"
+      action="/support/success"
+      netlify-honeypot="bot-field"
+    >
       <input type="hidden" name="form-name" value="support" />
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="name">Name <span className="text-red-600">*</span></label>
-          <input id="name" name="name" type="text" className="form-input w-full text-gray-300" placeholder="Enter your name" required />
+          <input
+            id="name"
+            name="name"
+            type="text"
+            className="form-input w-full text-gray-300"
+            placeholder="Enter your name"
+            required
+          />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
-          <input id="email" name="email" type="email" className="form-input w-full text-gray-300" placeholder="Enter your email address" required />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            className="form-input w-full text-gray-300"
+            placeholder="Enter your email address"
+            required
+          />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="subject">Subject <span className="text-red-600">*</span></label>
-          <input id="subject" name="subject" type="text" className="form-input w-full text-gray-300" placeholder="How can we help you?" required />
+          <input
+            id="subject"
+            name="subject"
+            type="text"
+            className="form-input w-full text-gray-300"
+            placeholder="How can we help you?"
+            required
+          />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="message">Message <span className="text-red-600">*</span></label>
-          <textarea id="message" name="message" rows={4} className="form-textarea w-full text-gray-300" placeholder="Write your message" required></textarea>
+          <textarea
+            id="message"
+            name="message"
+            rows={4}
+            className="form-textarea w-full text-gray-300"
+            placeholder="Write your message"
+            required
+          ></textarea>
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label className="block text-gray-300 font-medium mb-1" htmlFor="extensions-license-data">License data <span className="text-red-600">*</span></label>
-          <textarea id="extensions-license-data" name="extensions-license-data" rows={4} className="form-textarea w-full text-gray-300" placeholder="Copy/paste the license data, available in the plugin on the 'About > Support' form" required></textarea>
+          <textarea
+            id="extensions-license-data"
+            name="extensions-license-data"
+            rows={4}
+            className="form-textarea w-full text-gray-300"
+            placeholder="Copy/paste the license data, available in the plugin on the 'About > Support' form"
+            required
+          ></textarea>
         </div>
       </div>
       {/* <div className="flex flex-wrap -mx-3 mb-4">
