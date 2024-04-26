@@ -6,9 +6,10 @@ import clsx from 'clsx';
 import { handleFormSubmit, canSubmitForm } from './form-handler';
 
 export default function ContactForm() {
+  const formURL = '/__forms/contact.html'
+
   const [status, setStatus] = useState<string>('pending');
   const [error, setError] = useState<string|null>(null);
-
   const isFormEnabled = canSubmitForm(status)
   
   return (
@@ -18,7 +19,7 @@ export default function ContactForm() {
       onSubmit={(e) => {
         e.preventDefault();
         handleFormSubmit(
-          '/__forms/contact.html',
+          formURL,
           e.target,
           setStatus,
           setError
