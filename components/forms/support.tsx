@@ -1,12 +1,12 @@
 export default function SupportForm() {
   return (
     <form
-      className="max-w-xl mx-auto"
       name="support"
-      method="POST"
-      data-netlify="true"
-      action="/support/success"
-      netlify-honeypot="bot-field"
+      className="max-w-xl mx-auto"
+      // method="POST"
+      // data-netlify="true"
+      // action="/support/success"
+      // netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value="support" />
       <div className="flex flex-wrap -mx-3 mb-4">
@@ -95,11 +95,11 @@ export default function SupportForm() {
           </div>
         </div>
       </div>
-      <div className="hidden flex flex-wrap -mx-3 mb-4">
+      {/* <div className="hidden flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
         </div>
-      </div>
+      </div> */}
     </form>
   )
 }

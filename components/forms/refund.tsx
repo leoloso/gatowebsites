@@ -1,12 +1,12 @@
 export default function RefundForm() {
   return (
     <form
-      className="max-w-xl mx-auto mt-10"
       name="refund"
-      method="POST"
-      data-netlify="true"
-      action="/refund-policy/success"
-      netlify-honeypot="bot-field"
+      className="max-w-xl mx-auto mt-10"
+      // method="POST"
+      // data-netlify="true"
+      // action="/refund-policy/success"
+      // netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value="refund" />
       <div className="flex flex-wrap -mx-3 mb-4">
@@ -86,11 +86,11 @@ export default function RefundForm() {
           </div>
         </div>
       </div>
-      <div className="hidden flex flex-wrap -mx-3 mb-4">
+      {/* <div className="hidden flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
         </div>
-      </div>
+      </div> */}
     </form>
   )
 }
