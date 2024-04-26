@@ -8,11 +8,13 @@ import PostTag from './components/tag'
 import PostTable, { TableHead, TableBody, TableHeadRow, TableBodyRow, TableTh, TableTd } from './components/table'
 import { Pre } from './components/pre'
 import { H1, H2, H3, H4, H5, H6 } from './components/headings'
+import Alert from './components/alert'
 
 const mdxComponents = {
   Link: PostLink,
   Image: PostImage,
   Banner: PostBanner,
+  Alert: Alert,
   ModalVideo: PostModalVideo,
   Accordion: PostAccordion,
   Tag: PostTag,
