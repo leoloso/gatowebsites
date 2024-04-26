@@ -17,7 +17,7 @@ export const handleFormSubmit = async (
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: new URLSearchParams(formData).toString()
+      body: new URLSearchParams(formData as any).toString()
     });
     if (res.status === 200) {
       setStatus('success');
