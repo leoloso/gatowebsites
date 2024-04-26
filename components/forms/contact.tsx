@@ -14,8 +14,8 @@ export default function ContactForm() {
 
   return (
     <form
-      className="max-w-xl mx-auto"
       name="contact"
+      className="max-w-xl mx-auto"
       onSubmit={(e) => {
         e.preventDefault();
         handleFormSubmit(formURL, e.target, setStatus, setError)
