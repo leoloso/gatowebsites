@@ -3,7 +3,7 @@ import AppConfig from '@/app/app.config'
 
 export default function BrowseHighlightsButton({
   btnClassName = "btn-sm",
-  styleClassname = "text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group",
+  styleClassname = "text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group w-full",
 }: {
   btnClassName?: string
   styleClassname?: string,
