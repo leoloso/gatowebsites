@@ -54,21 +54,17 @@ export default function Hero() {
                 video="/videos/GatoGraphQL-intro.mp4"
                 videoWidth={1920}
                 videoHeight={1080}
-              >
-                {/* <div className="absolute bottom-5">
-                  <BrowseHighlightsButton btnClassName='btn' />
-                </div> */}
-              </ModalVideo>
+              />
             </div>
             
             <div className="mt-4 max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-down" data-aos-delay="400">
               <div>
                 <BrowseHighlightsButton btnClassName='btn' />
               </div>
-              {/* <div>
+              <div>
                 <DownloadFreePluginButton btnClassName='btn' />
               </div>
-              <div>
+              {/* <div>
                 <PurchasePROPluginButton btnClassName='btn' />
               </div> */}
             </div>
