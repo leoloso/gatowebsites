@@ -38,7 +38,7 @@ export default function ModalVideo({
       <div className="relative inline-flex justify-center items-center my-2">
         <Image src={thumb} width={thumbWidth} height={thumbHeight} alt={thumbAlt} />
         {!! title && (
-          <p className="absolute bottom-0 text-slate-300 mb-1 sm:text-lg sm:mb-12" data-aos="fade-down" data-aos-delay="400">{title}</p>
+          <p className="absolute bottom-0 text-slate-300 mb-4 sm:text-lg sm:mb-12" data-aos="fade-down" data-aos-delay="400">{title}</p>
         )}
         <button className="absolute group" onClick={() => { setModalOpen(true) }} aria-label="Watch the video">
           <svg className="w-16 h-16 fill-current sm:w-20 sm:h-20 group" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
