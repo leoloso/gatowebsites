@@ -20,10 +20,6 @@ export default function ContactForm() {
         e.preventDefault();
         handleFormSubmit(formURL, e.target as HTMLFormElement, setStatus, setError)
       }}
-      // method="POST"
-      // data-netlify="true"
-      // action="/contact/success"
-      // netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value="contact" />
       <div className="flex flex-wrap -mx-3 mb-8">
@@ -151,11 +147,6 @@ export default function ContactForm() {
           </div>
         </div>
       </div>
-      {/* <div className="hidden flex flex-wrap -mx-3 mb-4">
-        <div className="w-full px-3">
-          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-        </div>
-      </div> */}
     </form>
   )
 }
