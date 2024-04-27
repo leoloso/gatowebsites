@@ -137,11 +137,6 @@ export default function SupportForm() {
           </div>
         </div>
       </div>
-      {/* <div className="hidden flex flex-wrap -mx-3 mb-4">
-        <div className="w-full px-3">
-          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-        </div>
-      </div> */}
     </form>
   )
 }
