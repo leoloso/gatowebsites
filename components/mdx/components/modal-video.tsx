@@ -12,7 +12,8 @@ interface ModalVideoProps {
   thumbAlt: string
   video: string
   videoWidth: number
-  videoHeight: number
+  videoHeight: number,
+  children?: React.ReactNode
 }
 
 export default function ModalVideo({
@@ -23,6 +24,7 @@ export default function ModalVideo({
   video,
   videoWidth,
   videoHeight,
+  children,
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -42,6 +44,7 @@ export default function ModalVideo({
             />
           </svg>
         </button>
+        {children}
       </div>
       {/* End: Video thumbnail */}
 

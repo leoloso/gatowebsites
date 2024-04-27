@@ -4,6 +4,9 @@ import Illustration from '@/public/assets/theme/glow-bottom.svg'
 import LogoPic from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
 import PurchasePROPluginButton from './purchase-pro-plugin-button'
 import DownloadFreePluginButton from './download-free-button'
+import ModalVideo from './mdx/components/modal-video'
+import VideoThumb from '@/public/assets/GatoGraphQL-intro-video-background.png'
+import BrowseHighlightsButton from './browse-highlights-button'
 
 export default function Hero() {
   return (
@@ -40,13 +43,33 @@ export default function Hero() {
             </div>
             <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4" data-aos="fade-down">The most powerful GraphQL server for WordPress</h1>
             <p className="text-lg text-slate-300 mb-8" data-aos="fade-down" data-aos-delay="200">Use <strong>Gato GraphQL</strong> to interact with all your data, and manage your <strong>WordPress</strong> site.</p>
-            <div className="max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-down" data-aos-delay="400">
+
+            <div className="max-w-xs mx-auto sm:max-w-none space-y-4" data-aos="fade-down" data-aos-delay="200">
+              <ModalVideo
+                thumb={VideoThumb}
+                thumbWidth={768}
+                thumbHeight={432}
+                thumbAlt="Gato GraphQL intro video"
+                video="/videos/GatoGraphQL-intro.mp4"
+                videoWidth={1920}
+                videoHeight={1080}
+              >
+                {/* <div className="absolute bottom-5">
+                  <BrowseHighlightsButton btnClassName='btn' />
+                </div> */}
+              </ModalVideo>
+            </div>
+            
+            <div className="mt-4 max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-down" data-aos-delay="400">
               <div>
+                <BrowseHighlightsButton btnClassName='btn' />
+              </div>
+              {/* <div>
                 <DownloadFreePluginButton btnClassName='btn' />
               </div>
               <div>
                 <PurchasePROPluginButton btnClassName='btn' />
-              </div>
+              </div> */}
             </div>
 
           </div>
