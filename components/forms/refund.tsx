@@ -20,10 +20,6 @@ export default function RefundForm() {
         e.preventDefault();
         handleFormSubmit(formURL, e.target as HTMLFormElement, setStatus, setError)
       }}
-      // method="POST"
-      // data-netlify="true"
-      // action="/refund-policy/success"
-      // netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value="refund" />
       <div className="flex flex-wrap -mx-3 mb-4">
