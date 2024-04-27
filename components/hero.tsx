@@ -46,6 +46,7 @@ export default function Hero() {
 
             <div className="max-w-xs mx-auto sm:max-w-none space-y-4" data-aos="fade-down" data-aos-delay="200">
               <ModalVideo
+                title="Click Play to learn what you can do with Gato GraphQL"
                 thumb={VideoThumb}
                 thumbWidth={768}
                 thumbHeight={432}
