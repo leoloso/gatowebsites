@@ -33,7 +33,7 @@ Multiple query execution combines multiple queries into a single query, executin
 ```graphql
 query GetLoggedInUserName {
   me {
-    name @export(as: $loggedInUserName)
+    name @export(as: "loggedInUserName")
   }
 }
 

@@ -58,6 +58,7 @@ export default function ArtifactsCarousel({
               <ArtifactCard
                 artifact={extension}
                 defaultArtifactIcon={defaultArtifactIcon}
+                bgClassname="bg-gradient-to-tr from-slate-800 to-blue-800/25"
               />
             </div>
           ))}

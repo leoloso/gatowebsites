@@ -14,6 +14,7 @@ export default function ArtifactsList({
   addRadialGradient = false,
   children,
   defaultArtifactIcon,
+  bgClassname,
 }: {
   artifacts: Array<Artifact>,
   showTopbar?: boolean
@@ -22,6 +23,7 @@ export default function ArtifactsList({
   addRadialGradient?: boolean
   children?: React.ReactNode
   defaultArtifactIcon?: StaticImageData,
+  bgClassname?: string,
 }) {
   const artifactCategories = getArtifactCategories(artifacts).sort(sortAlphabetically)
   return (
@@ -91,6 +93,7 @@ export default function ArtifactsList({
                         <ArtifactCard
                           artifact={artifact}
                           defaultArtifactIcon={defaultArtifactIcon}
+                          bgClassname={bgClassname}
                         />
                       </div>
                     )

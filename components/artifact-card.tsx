@@ -4,19 +4,22 @@ import Star from '@/public/assets/theme/star.svg'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png'
 import { getArtifactURLPath } from '@/utils/content/application-urls'
 import { Artifact } from '@/utils/content/types'
+import clsx from 'clsx'
 
 type ArtifactCardProps = {
   artifact: Artifact,
   defaultArtifactIcon?: StaticImageData,
+  bgClassname?: string,
 }
 
 export default function ArtifactCard({
   artifact,
-  defaultArtifactIcon
+  defaultArtifactIcon,
+  bgClassname = "bg-gradient-to-tr from-slate-800 to-slate-800/25"
 }: ArtifactCardProps) {
   const artifactIcon = artifact.icon || defaultArtifactIcon || DefaultArtifactIcon
   return (
-    <div className="bg-gradient-to-tr from-slate-800 to-slate-800/25 rounded-3xl border border-slate-800 hover:border-slate-700/60 transition-colors group relative">
+    <div className={clsx(bgClassname, "rounded-3xl border border-slate-800 hover:border-slate-700/60 transition-colors group relative")}>
       <div className="flex flex-col p-5 h-full">
         <div className="flex items-center space-x-3 mb-3">
           <div className="relative">

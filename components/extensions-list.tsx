@@ -14,6 +14,7 @@ export default function ExtensionsList({
       showTopbar={true}
       showSearch={false}
       defaultArtifactIcon={DefaultArtifactIcon}
+      bgClassname="bg-gradient-to-tr from-slate-800 to-violet-800/25"
     />
   )
 }
