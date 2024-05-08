@@ -3,12 +3,11 @@ import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
 import Image from 'next/image'
 
 export default function HighlightSlidesItem({
-  title,
   thumbClassname,
 }: {
-  title: string,
   thumbClassname?: string,
 }) {
+  const title = 'Automatically translating posts for Polylang'
   const logoClassname = 'flex items-center justify-center h-full'
   return (
     <header

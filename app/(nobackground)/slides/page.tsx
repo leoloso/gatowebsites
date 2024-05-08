@@ -19,9 +19,7 @@ export default function Slides() {
           // className="max-w-6xl mx-auto px-4 sm:px-6"
         >
           <div className="relative">
-            <HighlightSlidesItem
-              title='Automatically translating posts for Polylang'
-            />
+            <HighlightSlidesItem />
           </div>
 
         </div>
