@@ -1,3 +1,6 @@
+'use client'
+
+import { useSearchParams } from 'next/navigation';
 import Thumb from '@/components/thumbnails/thumb'
 import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
 import Image from 'next/image'
@@ -7,7 +10,8 @@ export default function SlidesCoverItem({
 }: {
   thumbClassname?: string,
 }) {
-  const title = 'Automatically translating posts for Polylang'
+  const searchParams = useSearchParams();
+  const title = searchParams.get('title') || '(Undefined title / Please pass param ?title=...)'
   const logoClassname = 'flex items-center justify-center h-full'
   return (
     <header
