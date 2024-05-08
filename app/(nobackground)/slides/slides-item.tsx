@@ -2,7 +2,7 @@ import Thumb from '@/components/thumbnails/thumb'
 import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
 import Image from 'next/image'
 
-export default function SlidesItem({
+export default function SlidesCoverItem({
   thumbClassname,
 }: {
   thumbClassname?: string,

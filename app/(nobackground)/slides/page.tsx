@@ -1,13 +1,13 @@
-import SlidesItem from './slides-item'
+import SlidesCoverItem from './slides-item'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
-const pageTitle = 'Slides'
+const pageTitle = 'Slides Cover'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
-  description: 'Gato GraphQL Slides',
+  description: 'Gato GraphQL Slides Cover',
 }
 
-export default function Slides() {
+export default function SlidesCover() {
 
   return (
     <>
@@ -19,7 +19,7 @@ export default function Slides() {
           // className="max-w-6xl mx-auto px-4 sm:px-6"
         >
           <div className="relative">
-            <SlidesItem />
+            <SlidesCoverItem />
           </div>
 
         </div>
