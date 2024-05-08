@@ -1,18 +1,13 @@
-import { allHighlights } from 'contentlayer/generated'
 import HighlightSlidesItem from './highlight-slides-item'
 import { createSEOPageTitle } from '@/utils/content/metadata'
-import { sortByOrder } from '@/utils/content/sort'
 
-const pageTitle = 'Highlight Slides'
+const pageTitle = 'Slides'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
-  description: 'Gato GraphQL Highlight Slides',
+  description: 'Gato GraphQL Slides',
 }
 
 export default function Slides() {
-
-  // Sort highlights by order
-  allHighlights.sort(sortByOrder)
 
   return (
     <>
@@ -24,9 +19,9 @@ export default function Slides() {
           // className="max-w-6xl mx-auto px-4 sm:px-6"
         >
           <div className="relative">
-            {allHighlights.map((highlight, highlightIndex) => (
-              <HighlightSlidesItem key={highlightIndex} {...highlight} />
-            ))}
+            <HighlightSlidesItem
+              title='Automatically translating posts for Polylang'
+            />
           </div>
 
         </div>
