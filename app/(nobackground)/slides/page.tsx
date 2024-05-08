@@ -1,4 +1,4 @@
-import HighlightSlidesItem from './highlight-slides-item'
+import SlidesItem from './slides-item'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Slides'
@@ -19,7 +19,7 @@ export default function Slides() {
           // className="max-w-6xl mx-auto px-4 sm:px-6"
         >
           <div className="relative">
-            <HighlightSlidesItem />
+            <SlidesItem />
           </div>
 
         </div>
