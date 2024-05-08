@@ -1,19 +1,30 @@
-import WithTitleThumb from '@/components/thumbnails/with-title-thumb'
-import slugify from '@sindresorhus/slugify';
+import Thumb from '@/components/thumbnails/thumb'
+import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
+import Image from 'next/image'
 
-export default function HighlightSlidesItem({ ...props }) {
+export default function HighlightSlidesItem() {
+  const title = 'Automatically translating posts for Polylang'
+  const thumbClassname = ''
+  const logoClassname = 'flex items-center justify-center h-full'
   return (
     <header
-      id={slugify(props.title)}
       className='aspect-video'
     >
-      <WithTitleThumb
-        title={props.title}
-        titleClassname="h1 max-w-3xl"
-        // extraThumbClassname="rounded-2xl"
-        bgClassname="bg-gradient-to-tr from-slate-900 to-blue-900"
+      <Thumb
+        // paddingClassname={paddingClassname}
+        bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
+        // extraThumbClassname={extraThumbClassname}
         numberParticles={20}
-      />
+      >
+        <div className={thumbClassname}>
+          <h1 className='h1 text-center leading-[5rem] text-[4.5rem] mb-16 max-w-5xl'>
+            {title}
+          </h1>
+          <div className={logoClassname}>
+            <Image src={Logo} alt="Gato GraphQL logo" width={375} height={375} />
+          </div>
+        </div>
+      </Thumb>
     </header>
   )
 }
