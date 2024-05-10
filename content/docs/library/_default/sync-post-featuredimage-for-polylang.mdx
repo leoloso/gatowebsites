@@ -22,9 +22,9 @@ By default, the origin post must have the default language of the site, or the u
 
 **Variables:**
 
-- postId: The post with the origin language, from where to trigger the featured image updates
-- statusToUpdate: The status that the translation posts must have to be updated. It is `draft` by default. Pass `any` for any status.
-- triggerUpdateFromDefaultLanguageOnly: Indicate if to only execute the featured image update when the origin post has the default language of the site. It is `true` by default.
+- `$postId`: The post with the origin language, from where to trigger the featured image updates
+- `$statusToUpdate`: The status that the translation posts must have to be updated. It is `draft` by default. Pass `any` for any status.
+- `$triggerUpdateFromDefaultLanguageOnly`: Indicate if to only execute the featured image update when the origin post has the default language of the site. It is `true` by default.
 
 ```graphql
 query InitializeVariables
