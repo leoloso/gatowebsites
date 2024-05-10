@@ -38,12 +38,12 @@ It uses the integration with the **Polylang** plugin (and **Polylang PRO**), and
 
 In the demo video, Polylang is configured with 3 languages: English (set as the default), Spanish and French, and we have a post that has alredy been translated to all three languages (following the previous demo).
 
-We edit the post in English, and assign featured image. We then execute [persisted query **Sync featured image for Polylang**](/library/sync-tags-and-categories-for-polylang) (already available by the Gato GraphQL plugin).
+We edit the post in English, and assign a featured image. We then execute [persisted query **Sync featured image for Polylang**](/library/sync-post-featuredimage-for-polylang) (already available by the Gato GraphQL plugin).
 
-Since the featured image only have an English version, both the Spanish and French translation will not receive any of these.
+The image doesn't yet have translations for either Spanish or French, then those translation posts will still use the original image in English.
 
-Then we translate featured image for Spanish and execute the persisted GraphQL query again. As a result, the Spanish post will have received the corresponding Spanish translations for the featured image.
+When adding a translation for Spanish for the image, and executing the persisted GraphQL query again, the Spanish post will then be set with that corresponding image.
 
-Finally we automate the process. By publishing [automation](/features/automation) rule **Polylang: When publishing a post, set the featured image for each language on all translation posts**, whenever the origin post in English is updated, all featured image will be automatically synchronized, for all translation posts.
+Finally we automate the process. By publishing [automation](/features/automation) rule **Polylang: When publishing a post, set the featured image for each language on all translation posts**, whenever the origin post in English is updated, the featured image will be automatically synchronized for all translation posts.
 
-We then translate featured image to French, and update the origin post in English (twice). As a result, the post in French will now have the corresponding featured image in French.
+We then add a translation for French for that image, and update the origin post in English (twice). As a result, the post in French will now have the corresponding featured image in French.
