@@ -39,6 +39,6 @@ In the demo video, Polylang is configured with 3 languages: English (set as the 
 
 We first translate a block-based post to all languages by running [persisted query **Translate posts for Polylang (Gutenberg)**](/library/translate-posts-for-polylang-gutenberg) (already available by the Gato GraphQL plugin).
 
-Then we automate the process, by publishing automation rule **Polylang: When publishing a post, translate it to all languages (Gutenberg)** (already available by Gato GraphQL PRO, with `draft` status so it is disabled by default), which automatically translates the post to all languages, and stores the translations in the corresponding translation posts.
+Then we automate the process, by publishing [automation](/features/automation) rule **Polylang: When publishing a post, translate it to all languages (Gutenberg)** (already available by Gato GraphQL PRO, with `draft` status so it is disabled by default), which automatically translates the post to all languages, and stores the translations in the corresponding translation posts.
 
 The automation will update translation posts with `draft` status only (by default). As the Spanish translation post is changed to `publish`, its contents will not be updated anymore when the origin content in English is modified.
