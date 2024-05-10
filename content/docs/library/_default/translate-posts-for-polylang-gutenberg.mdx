@@ -6,6 +6,12 @@ order: 0
 
 This GraphQL query is an integration for <a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a> plugin (and also **Polylang PRO**), to translate posts based on the Gutenberg editor.
 
+<Banner type='important'>
+
+This query requires the endpoint to have [Nested Mutations](/guides/schema/using-nested-mutations) enabled.
+
+</Banner>
+
 It takes an origin post, it translates it using the Google Translate API to all the other languages defined in Polylang, and stores those translations in the corresponding posts, as set-up via Polylang.
 
 All translation posts must already exist, created using the Polylang UI. These posts must also have the  `draft` status to be updated. To update posts with any other status, use variable `$statusToUpdate` (for instance, passing value `publish`, `pending` or `any`)

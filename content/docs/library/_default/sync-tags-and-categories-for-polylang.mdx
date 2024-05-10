@@ -6,6 +6,12 @@ order: 0
 
 This GraphQL query is an integration for <a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a> plugin (and also **Polylang PRO**).
 
+<Banner type='important'>
+
+This query requires the endpoint to have [Nested Mutations](/guides/schema/using-nested-mutations) enabled.
+
+</Banner>
+
 It takes an origin post, queries its tags and categories, and updates its translation posts with the corresponding tags and categories for the corresponding language, as set-up via Polylang. If some tag or category does not have a translation, that tag or category is removed.
 
 All translation posts must have the  `draft` status to be updated. To update posts with any other status, use variable `$statusToUpdate` (for instance, passing value `publish`, `pending` or `any`)
