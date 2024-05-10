@@ -4,60 +4,24 @@ description: Translate a block-based post to all languages defined in the Polyla
 order: 0
 ---
 
-Integration with the <a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a> plugin (and also **Polylang PRO**).
+This GraphQL query is an integration for <a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a> plugin (and also **Polylang PRO**), to translate posts based on the Gutenberg editor.
 
-This query exports a post from this WordPress site into some downstream WordPress site.
+It takes an origin post, it translates it using the Google Translate API to all the other languages defined in Polylang, and stores those translations in the corresponding posts, as set-up via Polylang.
 
-The Gato GraphQL plugin (free version) must be installed on the downstream website. It must expose an endpoint with "Nested mutations" enabled.
+All translation posts must already exist, created using the Polylang UI. These posts must also have the  `draft` status to be updated. To update posts with any other status, use variable `$statusToUpdate` (for instance, passing value `publish`, `pending` or `any`)
 
-The `$update` parameter indicates if to create or update a post in the downstream site.
+By default, the origin post must have the default language of the site, or the translation will not be executed. To translate from any language, pass variable `$translateDefaultLanguageOnly` with `false`.
 
-If updating the post, the common identifier between the upstream and downstream sites is the post slug.
+By default it also translates the post slug. To disable, pass variable `updateSlug` with `false`.
+
+**Variables:**
+
+- `$postId`: The post with the origin language, from where all translations will be made
+- `$statusToUpdate`: The status the translation posts must have to be updated. It is `draft` by default. Pass `any` for any status.
+- `$updateSlug`: Indicate if to update the post slug, using the translated title. It is `true` by default.
+- `$translateDefaultLanguageOnly`: Indicate if only execute the translation when the origin post has the default language of the site. It is `true` by default.
 
 ```graphql
-########################################################################
-# 
-# Variables:
-#   - postId: The post with the origin language, from where all translations will be made
-#   - statusToUpdate: The status the translation posts must have to be updated. It is `draft` by default. Pass `any` for any status.
-#   - updateSlug: Indicate if to update the post slug, using the translated title. It is `true` by default.
-#   - translateDefaultLanguageOnly: Indicate if only execute the translation when the origin post has the default language of the site. It is `true` by default.
-#
-# *********************************************************************
-#
-# === Description ===
-#
-# This Persisted GraphQL query is an integration for Polylang,
-# to translate posts based on the Gutenberg editor.
-#
-# It takes an origin post, it translates it using the Google
-# Translate API to all the other languages defined in Polylang,
-# and stores those translations in the corresponding posts,
-# as set-up via Polylang.
-#
-# All translation posts must already exist, created using the
-# Polylang UI. These posts must also have the  `draft` status
-# to be updated. To update posts with any other status, use
-# variable `$statusToUpdate` (for instance, passing value
-# `publish`, `pending` or `any`)
-#
-# By default, the origin post must have the default language
-# of the site, or the translation will not be executed.
-# To translate from any language, pass variable
-# `$translateDefaultLanguageOnly` with `false`.
-#
-# By default it also translates the post slug. To disable, pass
-# variable `updateSlug` with `false`.
-#
-# See Persisted Query "Translate post (Gutenberg)" for additional
-# documentation.
-#
-# *********************************************************************
-# 
-# More info:
-#   - https://gatographql.com/tutorial/bulk-translating-block-content-in-multiple-posts-to-a-different-language/
-#
-########################################################################
 query InitializeVariables
   @configureWarningsOnExportingDuplicateVariable(enabled: false)
 {
