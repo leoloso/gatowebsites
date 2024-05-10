@@ -4,47 +4,21 @@ description: 'Integration with Polylang: For a given post, update its translatio
 order: 0
 ---
 
-Integration with the <a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a> plugin (and also **Polylang PRO**).
+This GraphQL query is an integration for <a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a> plugin (and also **Polylang PRO**).
 
-This query exports a post from this WordPress site into some downstream WordPress site.
+It takes an origin post, queries its tags and categories, and updates its translation posts with the corresponding tags and categories for the corresponding language, as set-up via Polylang. If some tag or category does not have a translation, that tag or category is removed.
 
-The Gato GraphQL plugin (free version) must be installed on the downstream website. It must expose an endpoint with "Nested mutations" enabled.
+All translation posts must have the  `draft` status to be updated. To update posts with any other status, use variable `$statusToUpdate` (for instance, passing value `publish`, `pending` or `any`)
 
-The `$update` parameter indicates if to create or update a post in the downstream site.
+By default, the origin post must have the default language of the site, or the update will not be executed. To trigger the update from any language, pass variable `$triggerUpdateFromDefaultLanguageOnly` with `false`.
 
-If updating the post, the common identifier between the upstream and downstream sites is the post slug.
+**Variables:**
+
+- postId: The post with the origin language, from where to trigger the updates
+- statusToUpdate: The status that the translation posts must have to be updated. It is `draft` by default. Pass `any` for any status.
+- triggerUpdateFromDefaultLanguageOnly: Indicate if to only execute the update when the origin post has the default language of the site. It is `true` by default.
 
 ```graphql
-########################################################################
-# 
-# Variables:
-#   - postId: The post with the origin language, from where to trigger the updates
-#   - statusToUpdate: The status that the translation posts must have to be updated. It is `draft` by default. Pass `any` for any status.
-#   - triggerUpdateFromDefaultLanguageOnly: Indicate if to only execute the update when the origin post has the default language of the site. It is `true` by default.
-#
-# *********************************************************************
-#
-# === Description ===
-#
-# This Persisted GraphQL query is an integration for Polylang.
-#
-# It takes an origin post, queries its tags and categories,
-# and updates its translation posts with the corresponding
-# tags and categories for the corresponding language,
-# as set-up via Polylang. If some tag or category does not
-# have a translation, that tag or category is removed.
-#
-# All translation posts must have the  `draft` status
-# to be updated. To update posts with any other status, use
-# variable `$statusToUpdate` (for instance, passing value
-# `publish`, `pending` or `any`)
-#
-# By default, the origin post must have the default language
-# of the site, or the update will not be executed.
-# To trigger the update from any language, pass variable
-# `$triggerUpdateFromDefaultLanguageOnly` with `false`.
-#
-########################################################################
 query InitializeVariables
   @configureWarningsOnExportingDuplicateVariable(enabled: false)
 {
