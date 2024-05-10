@@ -20,14 +20,14 @@ By default, the origin post must have the default language of the site, or the t
 
 By default it also translates the post slug. To disable, pass variable `updateSlug` with `false`.
 
-**Variables:**
-
-- `$postId`: The post with the origin language, from where all translations will be made
-- `$statusToUpdate`: The status the translation posts must have to be updated. It is `draft` by default. Pass `any` for any status.
-- `$updateSlug`: Indicate if to update the post slug, using the translated title. It is `true` by default.
-- `$translateDefaultLanguageOnly`: Indicate if only execute the translation when the origin post has the default language of the site. It is `true` by default.
-
 ```graphql
+########################################################################
+# Variables:
+#   - `$postId`: The post with the origin language, from where all translations will be made
+#   - `$statusToUpdate`: The status the translation posts must have to be updated. It is `draft` by default. Pass `any` for any status.
+#   - `$updateSlug`: Indicate if to update the post slug, using the translated title. It is `true` by default.
+#   - `$translateDefaultLanguageOnly`: Indicate if only execute the translation when the origin post has the default language of the site. It is `true` by default.
+########################################################################
 query InitializeVariables
   @configureWarningsOnExportingDuplicateVariable(enabled: false)
 {
