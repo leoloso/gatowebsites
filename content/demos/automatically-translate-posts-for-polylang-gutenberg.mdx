@@ -22,14 +22,6 @@ integrations:
 
 We can use Gato GraphQL to automatically translate posts por the **Polylang** plugin (and **Polylang PRO**), using the **Google Translate API**, with support for the Gutenberg block editor, and the Classic editor.
 
-In the demo video, Polylang is configured with 3 languages: English (set as the default), Spanish and French.
-
-We first translate a block-based post to all languages by running [persisted query **Translate posts for Polylang (Gutenberg)**](/library/translate-posts-for-polylang-gutenberg) (already available by the Gato GraphQL plugin).
-
-Then we automate the process, by publishing automation rule **Polylang: When publishing a post, translate it to all languages (Gutenberg)** (already available by Gato GraphQL PRO, with `draft` status so it is disabled by default), which automatically translates the post to all languages, and stores the translations in the corresponding translation posts.
-
-The automation will update translation posts with `draft` status only (by default). As the Spanish translation post is changed to `publish`, its contents will not be updated anymore when the origin content in English is modified.
-
 <div className="aspect-video lg:-ml-32 lg:-mr-32">
   <iframe
     className="w-full h-full"
@@ -42,3 +34,11 @@ The automation will update translation posts with `draft` status only (by defaul
   >
   </iframe>
 </div>
+
+In the demo video, Polylang is configured with 3 languages: English (set as the default), Spanish and French.
+
+We first translate a block-based post to all languages by running [persisted query **Translate posts for Polylang (Gutenberg)**](/library/translate-posts-for-polylang-gutenberg) (already available by the Gato GraphQL plugin).
+
+Then we automate the process, by publishing automation rule **Polylang: When publishing a post, translate it to all languages (Gutenberg)** (already available by Gato GraphQL PRO, with `draft` status so it is disabled by default), which automatically translates the post to all languages, and stores the translations in the corresponding translation posts.
+
+The automation will update translation posts with `draft` status only (by default). As the Spanish translation post is changed to `publish`, its contents will not be updated anymore when the origin content in English is modified.

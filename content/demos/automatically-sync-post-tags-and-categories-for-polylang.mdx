@@ -23,18 +23,6 @@ This demo is a continuation of **[Automatically translating posts for Polylang](
 
 It uses the integration with the **Polylang** plugin (and **Polylang PRO**), and connects to the **Google Translate API**.
 
-In the demo video, Polylang is configured with 3 languages: English (set as the default), Spanish and French, and we have a post that has alredy been translated to all three languages (following the previous demo).
-
-We edit once again the post in English, and assign tags and categories. We then execute [persisted query **Sync tags and categories for Polylang**](/library/sync-tags-and-categories-for-polylang) (already available by the Gato GraphQL plugin).
-
-Since the tags and categories only have an English version, both the Spanish and French translation will not receive any of these.
-
-Then we add translations for Spanish and execute the query again. We will now see that the Spanish post has received the corresponding Spanish translations for the tags and categories, while the French post still has not.
-
-Finally we automate the process, by publishing automation rule **Polylang: When publishing a post, set the tags and categories for each language on all translation posts**. From now on, whenever updating the origin post in English, all tags and categories will be automatically synchronized to all translation posts.
-
-To demonstrate, we now create the translations for Frech for tags and categories, and update the origin post in English (twice). As a result, the post in French will now have the corresponding tags and categories in French.
-
 <div className="aspect-video lg:-ml-32 lg:-mr-32">
   <iframe
     className="w-full h-full"
@@ -47,3 +35,15 @@ To demonstrate, we now create the translations for Frech for tags and categories
   >
   </iframe>
 </div>
+
+In the demo video, Polylang is configured with 3 languages: English (set as the default), Spanish and French, and we have a post that has alredy been translated to all three languages (following the previous demo).
+
+We edit once again the post in English, and assign tags and categories. We then execute [persisted query **Sync tags and categories for Polylang**](/library/sync-tags-and-categories-for-polylang) (already available by the Gato GraphQL plugin).
+
+Since the tags and categories only have an English version, both the Spanish and French translation will not receive any of these.
+
+Then we add translations for Spanish and execute the query again. We will now see that the Spanish post has received the corresponding Spanish translations for the tags and categories, while the French post still has not.
+
+Finally we automate the process, by publishing automation rule **Polylang: When publishing a post, set the tags and categories for each language on all translation posts**. From now on, whenever updating the origin post in English, all tags and categories will be automatically synchronized to all translation posts.
+
+To demonstrate, we now create the translations for Frech for tags and categories, and update the origin post in English (twice). As a result, the post in French will now have the corresponding tags and categories in French.
