@@ -16,7 +16,7 @@ It takes an origin post, queries its featured image, and updates its translation
 
 If the origin post does not have a featured image, it removes it from all translation posts.
 
-All translation posts must have the  `draft` status to be updated. To update posts with any other status, use variable `$statusToUpdate` (for instance, passing value `publish`, `pending` or `any`).
+All translation posts must have the `draft` status to be updated. To update posts with any other status, use variable `$statusToUpdate` (for instance, passing value `publish`, `pending` or `any`).
 
 By default, the origin post must have the default language of the site, or the update will not be executed. To trigger the update from any language, pass variable `$triggerUpdateFromDefaultLanguageOnly` with `false`.
 
