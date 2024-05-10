@@ -24,9 +24,17 @@ This demo is a continuation of **[Automatically translating posts for Polylang](
 
 It uses the integration with the **Polylang** plugin (and **Polylang PRO**) and connecting to the **Google Translate API**.
 
-In the demo video, Polylang is configured with 3 languages: English (set as the default), Spanish and French.
+In the demo video, Polylang is configured with 3 languages: English (set as the default), Spanish and French, and we have a post that has been translated to all three languages (following the previous demo).
 
-We first translate a block-based post to all languages by running [persisted query **Translate posts for Polylang (Gutenberg)**](/library/translate-posts-for-polylang-gutenberg) (already available by the Gato GraphQL plugin).
+We edit once again the post in English, and assign tags and categories. We then execute [persisted query **Sync tags and categories for Polylang**](/library/sync-tags-and-categories-for-polylang) (already available by the Gato GraphQL plugin).
+
+Since the tags and categories only have an English version, both the Spanish and French translation will not receive any.
+
+Then we add translations to Spanish and execute the query again. We will now see that the Spanish post has received the corresponding Spanish translations for the tags and categories.
+
+Finally we automate the process, by publishing automation rule **Polylang: When publishing a post, set the tags and categories for each language on all translation posts**. From now on, whenever updating the origin post in English, all tags and categories will be automatically synchronized to all translation posts.
+
+To demonstrate, we now create the translations for Frech for tags and categories, and update the post (twice). As a result, the post in French will now have the corresponding tags and categories in French.
 
 Then we automate the process, by publishing automation rule **Polylang: When publishing a post, translate it to all languages (Gutenberg)** (already available by Gato GraphQL PRO, with `draft` status so it is disabled by default), which automatically translates the post to all languages, and stores the translations in the corresponding translation posts.
 
