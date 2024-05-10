@@ -1,0 +1,42 @@
+---
+title: 'Automatically translating posts for Polylang (with support for the Gutenberg block editor)'
+seoTitle: 'Automatically translating posts for Polylang (with support for the Gutenberg block editor) via the Google Translate API using Gato GraphQL'
+publishedAt: '2024-05-10'
+image: '/images/thumbnails/demos/gatographql-polylang-google-translate-wordpress.png'
+leading: Gato GraphQL translation demo
+description: 'Translate a block-based post to all languages defined in the Polylang settings, and store those translations in the corresponding posts, using a Gato GraphQL automation.'
+seoDescription: 'Translate a block-based post to all languages defined in the Polylang settings, and store those translations in the corresponding posts, using a Gato GraphQL automation that connects to the Google Translate API.'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - translation
+  - Polylang
+  - Google Translate
+targetImages:
+  - /images/logos/polylang.png
+  - /images/logos/google-translate.svg
+integrations: 
+  - { name: Polylang, image: /images/logos/polylang.png, url: https://wordpress.org/plugins/polylang/ }
+  - { name: Google Translate, image: /images/logos/google-translate.svg, url: https://cloud.google.com/translate/ }
+---
+
+We can use Gato GraphQL to automatically translate posts por the **Polylang** plugin (and **Polylang PRO**), using the **Google Translate API**, with support for the block editor.
+
+In the demo video, Polylang is configured with 3 languages: English (set as the default), Spanish and French.
+
+We first translate a post to all languages by running [persisted query **Translate posts for Polylang (Gutenberg)**](/library/translate-posts-for-polylang-gutenberg) (already available by the Gato GraphQL plugin).
+
+Then we automate the process, by publishing automation rule **Polylang: When publishing a post, translate it to all languages (Gutenberg)** (already available by Gato GraphQL PRO, but as `draft`), which automatically translates the post to all languages, and stores the translations in the corresponding translation posts.
+
+<div className="aspect-video lg:-ml-32 lg:-mr-32">
+  <iframe
+    className="w-full h-full"
+    src="https://www.youtube.com/embed/uPbGVDLB9Lg"
+    title="Automatically translating posts for Polylang (with support for the Gutenberg block editor)"
+    width="768"
+    height="432"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
