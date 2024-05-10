@@ -28,7 +28,7 @@ export default function DemoPostsSection() {
 
   const demoPosts = tag ? allDemoPosts : allDemoPosts.slice(1) // Remove the featured image
 
-  const filteredDemoPosts = tag ? demoPosts.filter((post) => (post.tags?.includes(tag))) : demoPosts
+  const filteredDemoPosts = tag ? demoPosts.filter((post) => (post.tags?.map((tag) => tag.toLocaleLowerCase()).includes(tag.toLocaleLowerCase()))) : demoPosts
 
   const totalPages = Math.ceil(filteredDemoPosts.length / AppSettings.postsPerPage.demos)
 

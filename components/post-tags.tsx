@@ -47,7 +47,7 @@ export default function PostTags({ tags, baseURL, tagClassName = 'text-xs' }: {
       'bg-rose-600 hover:bg-rose-500',
     ]
     const postTagColors = getPostTagColors(colors)
-    return `text-gray-100 ${postTagColors[tag]}`
+    return `text-gray-100 ${postTagColors[tag.toLowerCase()]}`
   }
 
   return (

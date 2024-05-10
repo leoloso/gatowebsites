@@ -22,7 +22,7 @@ export default function BlogSection() {
   const searchParams = useSearchParams();
   const tag = searchParams.get('tag');
 
-  const filteredBlogPosts = tag ? blogPosts.filter((post) => (post.tags?.includes(tag))) : blogPosts
+  const filteredBlogPosts = tag ? blogPosts.filter((post) => (post.tags?.map((tag) => tag.toLocaleLowerCase()).includes(tag.toLocaleLowerCase()))) : blogPosts
 
   const totalPages = Math.ceil(filteredBlogPosts.length / AppSettings.postsPerPage.blog)
 

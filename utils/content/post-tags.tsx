@@ -18,7 +18,7 @@ export function getAllPostTags(): Array<string> {
 }
 
 export function getPostTagColors(colors: Array<string>) {
-  const postTags = getAllPostTags().sort(sortAlphabetically)
+  const postTags = getAllPostTags().sort(sortAlphabetically).map((tag) => tag.toLocaleLowerCase())
   let postTagColors : { [key: string]: string } = {}
   postTags.forEach(function (postTag: string | undefined, index: number) {
     if (!postTag) {
