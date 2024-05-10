@@ -24,9 +24,9 @@ We can use Gato GraphQL to automatically translate posts por the **Polylang** pl
 
 In the demo video, Polylang is configured with 3 languages: English (set as the default), Spanish and French.
 
-We first translate a post to all languages by running [persisted query **Translate posts for Polylang (Gutenberg)**](library/translate-posts-for-polylang-gutenberg) (already provided by the Gato GraphQL plugin).
+We first translate a post to all languages by running [persisted query **Translate posts for Polylang (Gutenberg)**](/library/translate-posts-for-polylang-gutenberg) (already available by the Gato GraphQL plugin).
 
-Then we automate the process, by publishing automation rule **Polylang: When publishing a post, translate it to all languages (Gutenberg)** (already available by Gato GraphQL PRO, but as `draft`), which translates the post automatically (whenever the `publish_post` hook is triggered).
+Then we automate the process, by publishing automation rule **Polylang: When publishing a post, translate it to all languages (Gutenberg)** (already available by Gato GraphQL PRO, but as `draft`), which automatically translates the post to all languages, and stores the translations in the corresponding translation posts.
 
 <div className="aspect-video lg:-ml-32 lg:-mr-32">
   <iframe
