@@ -1,0 +1,49 @@
+---
+title: "Automatically synchronizing translations for a post's featured image for Polylang"
+publishedAt: '2024-05-10 07:00:00'
+image: '/images/thumbnails/demos/gatographql-polylang-google-translate-wordpress.png'
+leading: Gato GraphQL translation demo
+description: 'Synchronize the featured image across all translations for a post, for all languages defined in the Polylang settings, using a Gato GraphQL automation.'
+seoDescription: 'Synchronize the featured image across all translations for a post, for all languages defined in the Polylang settings, using a Gato GraphQL automation that connects to the Google Translate API.'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - translation
+  - Polylang
+  - Google Translate
+targetImages:
+  - /images/logos/polylang.png
+  - /images/logos/google-translate.svg
+integrations: 
+  - { name: Polylang, image: /images/logos/polylang.png, url: https://wordpress.org/plugins/polylang/ }
+  - { name: Google Translate, image: /images/logos/google-translate.svg, url: https://cloud.google.com/translate/ }
+---
+
+This demo is a continuation of **[Automatically synchronizing translations for a post's tags and categories for Polylang](/demos/automatically-sync-post-tags-and-categories-for-polylang)**, to also synchronize the translations for the post's featured image (in addition to translating the content, and synchronizing the tags and categories).
+
+It uses the integration with the **Polylang** plugin (and **Polylang PRO**), and connects to the **Google Translate API**.
+
+<div className="aspect-video lg:-ml-32 lg:-mr-32">
+  <iframe
+    className="w-full h-full"
+    src="https://www.youtube.com/embed/RgjIAO7Ck9M"
+    title="Automatically synchronizing translations for a post's featured image for Polylang"
+    width="768"
+    height="432"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
+In the demo video, Polylang is configured with 3 languages: English (set as the default), Spanish and French, and we have a post that has alredy been translated to all three languages (following the previous demo).
+
+We edit the post in English, and assign featured image. We then execute [persisted query **Sync featured image for Polylang**](/library/sync-tags-and-categories-for-polylang) (already available by the Gato GraphQL plugin).
+
+Since the featured image only have an English version, both the Spanish and French translation will not receive any of these.
+
+Then we translate featured image for Spanish and execute the persisted GraphQL query again. As a result, the Spanish post will have received the corresponding Spanish translations for the featured image.
+
+Finally we automate the process. By publishing [automation](/features/automation) rule **Polylang: When publishing a post, set the featured image for each language on all translation posts**, whenever the origin post in English is updated, all featured image will be automatically synchronized, for all translation posts.
+
+We then translate featured image to French, and update the origin post in English (twice). As a result, the post in French will now have the corresponding featured image in French.
