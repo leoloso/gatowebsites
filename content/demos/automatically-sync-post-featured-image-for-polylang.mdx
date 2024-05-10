@@ -40,10 +40,12 @@ In the demo video, Polylang is configured with 3 languages: English (set as the 
 
 We edit the post in English, and assign a featured image. We then execute [persisted query **Sync featured image for Polylang**](/library/sync-post-featuredimage-for-polylang) (already available by the Gato GraphQL plugin).
 
-The image doesn't yet have translations for either Spanish or French, then those translation posts will still use the original image in English.
+The media item doesn't yet have translations for either Spanish or French, then those translation posts will still use the original image in English.
 
 When adding a translation for Spanish for the image, and executing the persisted GraphQL query again, the Spanish post will then be set with that corresponding image.
 
 Finally we automate the process. By publishing [automation](/features/automation) rule **Polylang: When publishing a post, set the featured image for each language on all translation posts**, whenever the origin post in English is updated, the featured image will be automatically synchronized for all translation posts.
 
-We then add a translation for French for that image, and update the origin post in English (twice). As a result, the post in French will now have the corresponding featured image in French.
+We then add a translation for French for that image, and update the origin post in English. As a result, the post in French will now have the corresponding featured image in French.
+
+When the featured image is removed from the post in English, it will be likewise removed from all translation posts, guaranteeing that all posts are synchronized.
