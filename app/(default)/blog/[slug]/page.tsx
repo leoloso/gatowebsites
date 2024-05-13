@@ -123,9 +123,9 @@ export default async function SinglePost({ params }: {
                           </span>
                         </div>
                         <div>
-                          <span className="text-gray-600">By </span>
+                          <span className="text-gray-500">By </span>
                           <span className="font-medium">{blogPost.author}</span>
-                          <span className="text-gray-600"> · <PostDate dateString={blogPost.publishedAt} /></span>
+                          <span className="text-gray-500"> · <PostDate dateString={blogPost.publishedAt} /></span>
                         </div>
                       </div>
                       {/* Article tags */}
