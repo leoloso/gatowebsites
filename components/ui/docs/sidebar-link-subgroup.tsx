@@ -17,7 +17,7 @@ export default function SidebarLinkSubgroup({
     <li className="mt-3">
       <a
         className="flex items-center space-x-3 text-slate-800 font-medium dark:text-slate-200"
-        href="#0"
+        href="#"
         onClick={(e) => {
           e.preventDefault()
           setLinkOpen(!linkOpen)

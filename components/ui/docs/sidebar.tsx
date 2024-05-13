@@ -112,7 +112,7 @@ export default function SupportSidebar() {
                             return (
                               <>
                                 <a
-                                  href="#0"
+                                  href="#"
                                   className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${!isDocTopicSelected && 'before:hidden'}`}
                                   onClick={(e) => {
                                     e.preventDefault();

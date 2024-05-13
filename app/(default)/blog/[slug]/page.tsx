@@ -117,14 +117,14 @@ export default async function SinglePost({ params }: {
                     <div className="md:flex md:items-center md:justify-between mt-3">
                       <div className="flex items-center mb-6">
                         <div className="flex shrink-0 mr-3">
-                          <a className="relative" href="#0">
+                          <span className="relative">
                             <span className="absolute inset-0 -m-px" aria-hidden="true"><span className="absolute inset-0 -m-px bg-white rounded-full"></span></span>
                             <Image className="relative rounded-full" src={blogPost.authorImg} width={32} height={32} alt={blogPost.author} />
-                          </a>
+                          </span>
                         </div>
                         <div>
                           <span className="text-gray-600">By </span>
-                          <a className="font-medium hover:underline" href="#0">{blogPost.author}</a>
+                          <span className="font-medium">{blogPost.author}</span>
                           <span className="text-gray-600"> · <PostDate dateString={blogPost.publishedAt} /></span>
                         </div>
                       </div>
