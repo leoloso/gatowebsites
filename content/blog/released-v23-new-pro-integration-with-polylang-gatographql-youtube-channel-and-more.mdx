@@ -11,10 +11,44 @@ tags:
 
 Howdy! Here are all our news concerning **Gato GraphQL** up to mid-May 2024.
 
-## New integration with Polylang!
+## Released Gato GraphQL v2.3
 
+Gato GraphQL `v2.3` has been released with several improvements.
 
-## New integration with Polylang!
+Among others, it adds mutations to create an update custom posts!
+
+For instance, this query updates the title and content for a Custom Post Type `"my-portfolio"`:
+
+```graphql
+mutation UpdateCustomPost {
+  updateCustomPost(input: {
+    id: 1616
+    customPostType: "my-portfolio"
+    title: "Updated title"
+    contentAs: { html: "Updated content" }
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    customPost {
+      __typename
+      ...on CustomPost {
+        id
+        title
+        content
+      }
+    }
+  }
+}
+```
+
+Check out the [release notes in GitHub](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/2.3.0).
+
+## New PRO integration with Polylang!
 
 This same website, where you're reading this blog post, has been rebuilt anew:
 
