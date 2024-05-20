@@ -392,26 +392,26 @@
 # Download file redirects
 [[redirects]]
   from = "/releases/latest/gatographql-testing-schema.zip"
-  to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/2.3.0/gatographql-testing-schema-2.3.0.zip"
+  to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/2.4.0/gatographql-testing-schema-2.4.0.zip"
   force = true
   status = 302
 
 [[redirects]]
   from = "/releases/latest/gatographql-testing.zip"
-  to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/2.3.0/gatographql-testing-2.3.0.zip"
+  to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/2.4.0/gatographql-testing-2.4.0.zip"
   force = true
   status = 302
 
 [[redirects]]
   from = "/releases/latest/gatographql.zip"
-  to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/2.3.0/gatographql-2.3.0.zip"
+  to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/2.4.0/gatographql-2.4.0.zip"
   force = true
   status = 302
 
 [[redirects]]
   from = "/releases/latest"
-  # to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/2.3.0/gatographql-2.3.0.zip"
-  # to = "https://downloads.wordpress.org/plugin/gatographql.2.3.0.zip"
+  # to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/2.4.0/gatographql-2.4.0.zip"
+  # to = "https://downloads.wordpress.org/plugin/gatographql.2.4.0.zip"
   to = "https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip"
   force = true
   status = 302
