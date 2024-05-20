@@ -1,0 +1,139 @@
+---
+title: User authentication
+description: This is how to log the user in when executing a GraphQL query against the server.
+order: 50
+---
+
+The GraphQL query to execute may require the user to be logged-in, for instance to execute a mutation to create a post.
+
+There are several ways to authenticate the user in.
+
+## Using cookies from already authenticated session in WordPress
+
+Because WordPress uses cookie-based user authentication, whenever we are logged-in to the WordPress site, we can simply open the GraphiQL client and execute GraphQL queries from there.
+
+As the cookies sent to the GraphQL request are the same as those from the WordPress site, the user will be already logged-in.
+
+<Image
+  src="/assets/guides/downstream/wp-admin-graphiql.png"
+  width="1200"
+  height="811"
+  alt="GraphiQL client within the wp-admin"
+  caption="GraphiQL client within the wp-admin"
+/>
+
+## `loginUser` mutation
+
+In the same GraphQL query to execute the required mutation, we can use the `loginUser` mutation to authenticate the user.
+
+Please notice that the order matters: `loginUser` must be added before the other mutation (in this case, `createPost`):
+
+```graphql
+mutation {
+  loginUser(
+    by: {
+      credentials: {
+        usernameOrEmail: "myusername",
+        password: "mypassword"
+      }
+    }
+  ) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+      ...on GenericErrorPayload {
+        code
+      }
+    }
+    userID
+  }
+
+  createPost(input: {
+    title: "Hello world!"
+    contentAs: {
+      html: "<p>How are you?</p>"
+    }
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    post {
+      id
+      title
+      content
+    }
+  }
+}
+```
+
+## Application Passwords
+
+We can use WordPress [Application Passwords](https://make.wordpress.org/core/2020/11/05/application-passwords-integration-guide/) to send an authenticated request to the GraphQL endpoint.
+
+For instance, we can pass the application password when executing the `curl` command against the GraphQL server, replacing the `USERNAME` and `PASSWORD` values:
+
+```bash
+curl -i \
+  --user "USERNAME:PASSWORD" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"query": "{ me { name } }"}' \
+  https://mysite.com/graphql
+```
+
+When using Gato GraphQL PRO, we can use GraphQL to execute authenticated HTTP requests against another WordPress site.
+
+The query below receives the username and application password (and the endpoint to connect to), creates the required authentication header, and executes a query against the external GraphQL server:
+
+```graphql
+query GetDataFromExternalWPSite(
+  $username: String!
+  $appPassword: String!
+  $endpoint: URL!
+) {
+  loginCredentials: _sprintf(
+    string: "%s:%s",
+    values: [$username, $appPassword]
+  )
+    @remove
+
+  base64EncodedLoginCredentials: _strBase64Encode(
+    string: $__loginCredentials
+  )
+    @remove
+
+  loginCredentialsHeaderValue: _sprintf(
+    string: "Basic %s",
+    values: [$__base64EncodedLoginCredentials]
+  )
+    @remove
+
+  externalHTTPRequestWithUserPassword: _sendGraphQLHTTPRequest(input:{
+    endpoint: $endpoint,
+    query: """
+  
+{
+  me {
+    name
+  }
+}
+
+    """,
+    options: {
+      headers: [
+        {
+          name: "Authorization",
+          value: $__loginCredentialsHeaderValue
+        }
+      ]
+    }
+  })
+}
+```
