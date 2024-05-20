@@ -12,6 +12,8 @@ There are several ways to authenticate the user in.
 
 Because WordPress uses cookie-based user authentication, whenever we are logged-in to the WordPress site, we can simply open the GraphiQL client and execute GraphQL queries from there: As the cookies sent to the GraphQL request are the same as those from the WordPress site, the user will be already logged-in.
 
+![GraphiQL client within the wp-admin](/assets/guides/downstream/wp-admin-graphiql.png "GraphiQL client within the wp-admin")
+
 ## `loginUser` mutation
 
 In the same GraphQL query to execute the required mutation, we can use the `loginUser` mutation to authenticate the user.
