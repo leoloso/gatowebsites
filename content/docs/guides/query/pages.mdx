@@ -58,3 +58,118 @@ fragment PageProps on Page {
   urlAbsolutePath
 }
 ```
+
+## Fetching the logged-in user's pages
+
+Fields `page`, `pages` and `pageCount` only retrieve pages with status `"publish"`.
+
+To fetch pages from the logged-in user, with any status (`"publish"`, `"pending"`, `"draft"` or `"trash"`), use these fields:
+
+- `myPage`
+- `myPages`
+- `myPageCount`
+
+```graphql
+query {
+  myPages(filter: { status: [draft, pending] }) {
+    id
+    title
+    status
+  }
+}
+```
+
+## Creating pages
+
+Only logged-in users can create pages.
+
+```graphql
+mutation {
+  createPage(
+    input: {
+      title: "Hi there!"
+      contentAs: { html: "How do you like it?" }
+      status: draft
+    }
+  ) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+      ...on GenericErrorPayload {
+        code
+      }
+    }
+    pageID
+    page {
+      status
+      title
+      content
+      url
+      date
+      author {
+        id
+        name
+      }
+    }
+  }
+}
+```
+
+## Updating pages
+
+Only users with the corresponding capabilities can edit pages.
+
+```graphql
+mutation {
+  updatePage(
+    input: {
+      id: 2,
+      title: "This is my new title",
+    }
+  ) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+      ...on GenericErrorPayload {
+        code
+      }
+    }
+    page {
+      id
+      title
+    }
+  }
+}
+```
+
+This query uses nested mutations to update the page:
+
+```graphql
+mutation {
+  page(by: { id: 2 }) {
+    originalTitle: title
+    update(input: {
+      title: "This is my new title",
+      contentAs: { html: "This rocks!" }
+    }) {
+      status
+      errors {
+        __typename
+        ...on ErrorPayload {
+          message
+        }
+      }
+      page {
+        newTitle: title
+        content
+      }
+    }
+  }
+}
+```
