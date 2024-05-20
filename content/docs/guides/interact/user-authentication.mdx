@@ -8,3 +8,53 @@ The GraphQL query to execute may require the user to be logged-in, for instance 
 
 There are several ways to authenticate the user in.
 
+## `loginUser` mutation
+
+In the same GraphQL query to execute the required mutation, we can use the `loginUser` mutation to authenticate the user.
+
+Please notice that the order matters: `loginUser` must be added before the other mutation (in this case, `createPost`):
+
+```graphql
+mutation {
+  loginUser(
+    by: {
+      credentials: {
+        usernameOrEmail: "myusername",
+        password: "mypassword"
+      }
+    }
+  ) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+      ...on GenericErrorPayload {
+        code
+      }
+    }
+    userID
+  }
+
+  createPost(input: {
+    title: "Hello world!"
+    contentAs: {
+      html: "<p>How are you?</p>"
+    }
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    post {
+      id
+      title
+      content
+    }
+  }
+}
+```
