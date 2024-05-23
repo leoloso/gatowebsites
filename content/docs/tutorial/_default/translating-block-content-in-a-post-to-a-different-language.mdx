@@ -136,11 +136,11 @@ query InitializeEmptyVariables {
     @remove
 }
 
-query FetchData($postID: ID!)
+query FetchData($postId: ID!)
   @configureWarningsOnExportingDuplicateVariable(enabled: false)
   @depends(on: "InitializeEmptyVariables")
 {
-  post(by: { id: $postID }, status: any) {
+  post(by: { id: $postId }, status: any) {
     id
     title
       @export(as: "title")
@@ -401,7 +401,7 @@ query FetchData($postID: ID!)
 }
 
 query TransformData(
-  $translateToLang: String!
+  $toLang: String!
 )
   @depends(on: "FetchData")
 {  
@@ -490,7 +490,7 @@ query TransformData(
     @underEachJSONObjectProperty
       @underJSONObjectProperty(by: { key: "to" })
         @underEachArrayItem
-          @strTranslate(to: $translateToLang)
+          @strTranslate(to: $toLang)
     @export(as: "transformations")
 }
 
@@ -1262,7 +1262,7 @@ query PrepareMetaReplacements
 }
 
 mutation TranslateGutenbergPost(
-  $postID: ID!
+  $postId: ID!
   $update: Boolean! = false
 )
   @depends(on: [
@@ -1295,7 +1295,7 @@ mutation TranslateGutenbergPost(
   }
 
   updatePost(input: {
-    id: $postID,
+    id: $postId,
     title: $transformedTitle,
     contentAs: {
       html: $transformedRawContent
@@ -1323,8 +1323,8 @@ Passing these `variables`:
 
 ```json
 {
-  "postID": 40,
-  "translateToLang": "es"
+  "postId": 40,
+  "toLang": "es"
 }
 ```
 
