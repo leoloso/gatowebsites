@@ -143,11 +143,11 @@ query InitializeEmptyVariables {
     @remove
 }
 
-query FetchData($postID: ID!)
+query FetchData($postId: ID!)
   @configureWarningsOnExportingDuplicateVariable(enabled: false)
   @depends(on: "InitializeEmptyVariables")
 {
-  post(by: { id: $postID }, status: any) {
+  post(by: { id: $postId }, status: any) {
     id
     title
       @export(as: "title")
@@ -1269,7 +1269,7 @@ query PrepareMetaReplacements
 }
 
 mutation TranslateGutenbergPost(
-  $postID: ID!
+  $postId: ID!
   $update: Boolean! = false
 )
   @depends(on: [
@@ -1302,7 +1302,7 @@ mutation TranslateGutenbergPost(
   }
 
   updatePost(input: {
-    id: $postID,
+    id: $postId,
     title: $transformedTitle,
     contentAs: {
       html: $transformedRawContent
@@ -1334,14 +1334,14 @@ Gato GraphQL already ships with this persisted query, under title **[PRO] Transl
 
 Execute the persisted query providing the JSON dictionary with GraphQL variables:
 
-- `postID`: The ID of the post to translate
+- `postId`: The ID of the post to translate
 - `translateToLang`: the [language code](/extensions-reference/google-translate#list-of-languages) to translate to
 
 For instance:
 
 ```json
 {
-  "postID": 40,
+  "postId": 40,
   "translateToLang": "es"
 }
 ```
