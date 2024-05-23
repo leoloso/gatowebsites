@@ -408,7 +408,7 @@ query FetchData($postId: ID!)
 }
 
 query TransformData(
-  $translateToLang: String!
+  $toLang: String!
 )
   @depends(on: "FetchData")
 {  
@@ -497,7 +497,7 @@ query TransformData(
     @underEachJSONObjectProperty
       @underJSONObjectProperty(by: { key: "to" })
         @underEachArrayItem
-          @strTranslate(to: $translateToLang)
+          @strTranslate(to: $toLang)
     @export(as: "transformations")
 }
 
@@ -1335,14 +1335,14 @@ Gato GraphQL already ships with this persisted query, under title **[PRO] Transl
 Execute the persisted query providing the JSON dictionary with GraphQL variables:
 
 - `postId`: The ID of the post to translate
-- `translateToLang`: the [language code](/extensions-reference/google-translate#list-of-languages) to translate to
+- `toLang`: the [language code](/extensions-reference/google-translate#list-of-languages) to translate to
 
 For instance:
 
 ```json
 {
   "postId": 40,
-  "translateToLang": "es"
+  "toLang": "es"
 }
 ```
 
