@@ -17,15 +17,15 @@ integrations:
   - { name: Google Translate, image: /images/logos/google-translate.svg, url: https://cloud.google.com/translate/ }
 ---
 
-This demo is a continuation of **[Automatically synchronizing translations for a post's tags and categories for Polylang](/demos/automatically-sync-post-tags-and-categories-for-polylang)**, to also synchronize the translations for the post's featured image (in addition to translating the content, tags and categories).
+We can use Gato GraphQL to create a multilingual site based on a [WordPress multisite network](https://developer.wordpress.org/advanced-administration/multisite/create-network/) (where every site is the translation for some language) without the need for any other plugin.
 
-It uses the integration with the **Polylang** plugin (and **Polylang PRO**), and connects to the **Google Translate API**.
+In this video, we translate pages from the origin site, and automatically create them on the translation site:
 
 <div className="aspect-video lg:-ml-32 lg:-mr-32">
   <iframe
     className="w-full h-full"
-    src="https://www.youtube.com/embed/a3z0wC2sTAM"
-    title="Automatically synchronizing translations for a post's featured image for Polylang"
+    src="https://www.youtube.com/embed/uPbGVDLB9Lg"
+    title="Translating pages on a Multilingual WordPress site"
     width="768"
     height="432"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -34,16 +34,12 @@ It uses the integration with the **Polylang** plugin (and **Polylang PRO**), and
   </iframe>
 </div>
 
-In the demo video, Polylang is configured with 3 languages: English (set as the default), Spanish and French, and we have a post that has alredy been translated to all three languages (following the previous demo).
+, with support for the Gutenberg block editor, and the Classic editor
 
-We edit the post in English, and assign a featured image. We then execute [persisted query **Sync featured image for Polylang**](/library/sync-post-featuredimage-for-polylang) (already available by the Gato GraphQL plugin).
+In the demo video, Polylang is configured with 3 languages: English (set as the default), Spanish and French.
 
-The media item doesn't yet have translations for either Spanish or French, then those translation posts will still use the original image in English.
+We first translate a block-based post to all languages by running [persisted query **Translate posts for Polylang (Gutenberg)**](/library/translate-posts-for-polylang-gutenberg) (already available by the Gato GraphQL plugin).
 
-When adding a translation for Spanish for the image, and executing the persisted GraphQL query again, the Spanish post will then be set with that corresponding image.
+Then we automate the process, by publishing [automation](/features/automation) rule **Polylang: When publishing a post, translate it to all languages (Gutenberg)** (already available by Gato GraphQL PRO, with `draft` status so it is disabled by default), which automatically translates the post to all languages, and stores the translations in the corresponding translation posts.
 
-Finally we automate the process. By publishing [automation](/features/automation) rule **Polylang: When publishing a post, set the featured image for each language on all translation posts**, whenever the origin post in English is updated, the featured image will be automatically synchronized for all translation posts.
-
-We then add a translation for French for that image, and update the origin post in English. As a result, the post in French will now have the corresponding featured image in French.
-
-When the featured image is removed from the post in English, it will be likewise removed from all translation posts, guaranteeing that all posts are synchronized.
+The automation will update translation posts with `draft` status only (by default). As the Spanish translation post is changed to `publish`, its contents will not be updated anymore when the origin content in English is modified.
