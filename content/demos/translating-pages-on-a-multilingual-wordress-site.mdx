@@ -1,0 +1,50 @@
+---
+title: "Translating pages on a Multilingual WordPress site"
+publishedAt: '2024-05-28'
+image: '/images/thumbnails/demos/gatographql-google-translate-wordpress.png'
+leading: Gato GraphQL + WordPress Multisite demo
+description: 'In a WordPress Multisite network, translate pages from the source site into the language of a translation site, and create those pages on the translation site.'
+seoDescription: 'In a WordPress Multisite network, translate pages from the source site into the language of a translation site, and create those pages on the translation site, by connecting to the Google Translate API via Gato GraphQL.'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - translation
+  - Multisite
+  - Google Translate
+targetImages:
+  - /images/logos/google-translate.svg
+integrations: 
+  - { name: Google Translate, image: /images/logos/google-translate.svg, url: https://cloud.google.com/translate/ }
+---
+
+We can use Gato GraphQL to create a multilingual site based on a [WordPress multisite network](https://developer.wordpress.org/advanced-administration/multisite/create-network/) (where every site is the translation for some language) without the need for any other plugin.
+
+<div className="aspect-video lg:-ml-32 lg:-mr-32">
+  <iframe
+    className="w-full h-full"
+    src="https://www.youtube.com/embed/EOwZyw71TyA"
+    title="Translating pages on a Multilingual WordPress site"
+    width="768"
+    height="432"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
+In the demo video, there is a multilingual site based on a WordPress Multisite network, with 3 languages configured as subdomains:
+
+- `subdomain-multisite.local`: Main site with source content
+- `en.subdomain-multisite.local`: Site in English
+- `es.subdomain-multisite.local`: Site in Spanish
+- `fr.subdomain-multisite.local`: Site in French
+
+We translate the Classic editor-based pages from the main site (with source content) to all translation sites, by running [persisted query **Translate pages for a multilingual site (Multisite / Classic editor)**](/library/translate-pages-for-multilingual-wordpress-site-classic-editor) (already available by the Gato GraphQL plugin).
+
+(To translate content based on the WordPress block editor, run [persisted query **Translate pages for a multilingual site (Multisite / Gutenberg)**](/library/translate-pages-for-multilingual-wordpress-site-gutenberg), also already available by the Gato GraphQL plugin.)
+
+In this example, the main site with source content is in English, and there is also a translation site in English (under `en.subdomain-multisite.local`). When executing the persisted query for this site, the content is simply copied, without any translation performed.
+
+When selecting the Spanish (and also the French) site as destination, the content is translated to that language, and the corresponding pages created.
+
+The persisted query logs into the translation site by using [WordPress application passwords](https://make.wordpress.org/core/2020/11/05/application-passwords-integration-guide/).
