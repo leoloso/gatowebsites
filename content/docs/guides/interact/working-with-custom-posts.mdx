@@ -267,11 +267,11 @@ query {
 
 ## Mutating custom CPT data
 
-Concerning Custom Post Types (CPT) of your own creation, which do not require any additional fields over those from the `Post` type, you can use both `createCustomPost` and `updateCustomPost` mutations without any fear or restraint.
+Concerning CPTs which do not require any additional fields over those from the `Post` type, you can use both `createCustomPost` and `updateCustomPost` mutations without any fear or restraint.
 
-For instance, a `MyPortfolio` CPT that simply uses the standard fields `title` and `content`, and has no extra fields, can be fully managed via these new fields.
+For instance, a `MyPortfolio` CPT that uses the standard fields `title` and `content`, and has no extra fields, can be fully managed via these mutations.
 
-This query creates an entry for a Custom Post Type `"my-portfolio"`:
+This query creates an entry for the `"my-portfolio"` CPT:
 
 ```graphql
 mutation {
@@ -333,7 +333,9 @@ mutation {
 }
 ```
 
-Custom post types that are provided by 3rd-party plugins may need to be created (and possibly updated too) by the corresponding plugin only. This is because they may have their custom data (either in `wp_postmeta` or in a proprietary table) that needs to be added too, and that Gato GraphQL is unaware of.
+Custom post types that are provided by 3rd-party plugins may need to be created (and possibly updated too) by the corresponding plugin only.
+
+This is because they may have their custom data (either in `wp_postmeta` or in a proprietary table) that needs to be added too, and that Gato GraphQL is unaware of.
 
 To manage these CPTs appropriately, a corresponding integration between that plugin and Gato GraphQL must be created, to provide the mapping for all the fields for the CPT.
 
