@@ -99,3 +99,102 @@ query {
   }
 }
 ```
+
+## Creating custom posts
+
+To create CPTs which do not require any additional fields over those from a `Post`, you can use the `createCustomPost` mutation.
+
+This query creates an entry for the `"my-portfolio"` CPT:
+
+```graphql
+mutation {
+  createCustomPost(
+    input: {
+      customPostType: "my-portfolio"
+      title: "My photograph"
+      contentAs: { html: "This is my photo, check it out." }
+    }
+  ) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+      ...on GenericErrorPayload {
+        code
+      }
+    }
+    customPost {
+      __typename
+      ...on CustomPost {
+        id
+        title
+        content
+      }
+    }
+  }
+}
+```
+
+## Updating custom posts
+
+This query updates the title and content for the `"my-portfolio"` CPT:
+
+```graphql
+mutation {
+  updateCustomPost(input: {
+    id: 1
+    customPostType: "my-portfolio"
+    title: "Updated title"
+    contentAs: { html: "Updated content" }
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    customPost {
+      __typename
+      ...on CustomPost {
+        id
+        title
+        content
+      }
+    }
+  }
+}
+```
+
+Or using nested mutations:
+
+```graphql
+mutation {
+  customPost(by: { id: 1 }, customPostTypes: "my-portfolio") {
+    originalTitle: title
+    update(input: {
+      title: "This is my new title",
+      contentAs: { html: "This rocks!" }
+    }) {
+      status
+      errors {
+        __typename
+        ...on ErrorPayload {
+          message
+        }
+      }
+      customPost {
+        __typename
+        ...on CustomPost {
+          id
+          newTitle: title
+          content
+        }
+      }
+    }
+  }
+}
+```
+
