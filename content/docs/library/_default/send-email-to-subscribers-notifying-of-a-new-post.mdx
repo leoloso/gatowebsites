@@ -35,6 +35,7 @@ mutation SendEmailToUsersAboutNewPost
   @depends(on: "GetEmailData")
 {
   users(
+    # Users subscribed to the list. Comment out this filter to retrieve all the users
     filter: {
       metaQuery: {
         key: "email_list",
