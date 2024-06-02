@@ -1,0 +1,100 @@
+---
+title: Send an email to subscribers notifying of a new post
+description: "Integrate this query with automation to notify users when there's a new post on the site"
+order: 0
+---
+
+This query sends an email to all the users who have subscribed to an email list, notifying of the creation of a new post on the site.
+
+The subscribed users are those with meta `email_list` with value `new_posts`. To retrieve all the users, comment out the filter in the `users` field.
+
+<Banner type='important'>
+
+This query requires the endpoint to have [Nested Mutations](/guides/schema/using-nested-mutations) enabled.
+
+</Banner>
+
+```graphql
+query GetPostAndExportData($postId: ID!) {
+  post(by: { id: $postId }, status: any) {
+    content @export(as: "postContent")
+    title @export(as: "postTitle")
+    url @export(as: "postURL")
+  }
+}
+
+ 
+query GetEmailData
+  @depends(on: "GetPostAndExportData")
+{ 
+  siteName: optionValue(name: "blogname")
+    @export(as: "siteName")
+
+  emailSubject: _sprintf(
+    string: "There is a new post: \"%s\"",
+    values: [$postTitle]
+  )
+    @export(as: "emailSubject")
+}
+ 
+mutation SendEmailToUsersAboutNewPost
+  @depends(on: "GetEmailData")
+{
+  users(
+    # Users subscribed to the list. Comment out this filter to retrieve all the users
+    filter: {
+      metaQuery: {
+        key: "email_list",
+        compareBy: {
+          arrayValue: {
+            value: "new_posts",
+            operator: IN
+          }
+        }
+      }
+    }
+  ) {
+    displayName
+    email
+
+    emailMessageTemplate: _strConvertMarkdownToHTML(
+      text: """
+
+  Hi {$userDisplayName},
+  
+  There is a new post on the **{$siteName}** website:
+  
+  [**{$postTitle}**]({$postURL})
+  
+  {$postContent}
+  
+      """
+    )
+      @remove
+    emailMessage: _strReplaceMultiple(
+      search: ["{$userDisplayName}", "{$siteName}", "{$postTitle}", "{$postContent}", "{$postURL}"],
+      replaceWith: [$__displayName, $siteName, $postTitle, $postContent, $postURL],
+      in: $__emailMessageTemplate
+    )
+      @remove
+
+    _sendEmail(
+      input: {
+        to: $__email
+        subject: $emailSubject
+        messageAs: {
+          html: $__emailMessage
+        }
+      }
+    ) {
+      status
+      errors {
+        __typename
+        ...on ErrorPayload {
+          message
+        }
+      }
+    }
+  }
+}
+```
