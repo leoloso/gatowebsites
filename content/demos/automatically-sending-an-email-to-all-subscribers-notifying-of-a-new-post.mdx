@@ -32,7 +32,7 @@ We can use Gato GraphQL to automatically send a notification email to all users 
 
 In the demo video, website users are subscribed to email lists. This is done by storing user meta `email_list` (which is an array of list names). Users that need to be notified that there is a new post on the site are those with meta value `new_posts`.
 
-We [create a persisted query](/guides/use/creating-a-persisted-query) called **Send an email to subscribers notifying of a new post**, which uses the **Nested Mutations** Schema Configuration, and containing the [following GraphQL query](/library/send-email-to-subscribers-notifying-of-a-new-post):
+We [create a persisted query](/guides/use/creating-a-persisted-query) called **Send an email to subscribers notifying of a new post**, select the **Nested Mutations** Schema Configuration, and provide the [following GraphQL query](/library/send-email-to-subscribers-notifying-of-a-new-post):
 
 ```graphql
 query GetPostAndExportData($postId: ID!) {
