@@ -6,7 +6,13 @@ order: 0
 
 This query sends an email to all the users who have subscribed to an email list, notifying of the creation of a new post on the site.
 
-The subscribed users are those with meta `email_list` with value `new_posts`. To retrieve all the users, comment out the filter in the `users` field:
+The subscribed users are those with meta `email_list` with value `new_posts`. To retrieve all the users, comment out the filter in the `users` field.
+
+<Banner type='important'>
+
+This query requires the endpoint to have [Nested Mutations](/guides/schema/using-nested-mutations) enabled.
+
+</Banner>
 
 ```graphql
 query GetPostAndExportData($postId: ID!) {
