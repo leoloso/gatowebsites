@@ -21,6 +21,9 @@ query GetPostAndExportData($postId: ID!) {
 query GetEmailData
   @depends(on: "GetPostAndExportData")
 { 
+  siteName: optionValue(name: "blogname")
+    @export(as: "siteName")
+
   emailSubject: _sprintf(
     string: "There is a new post: \"%s\"",
     values: [$postTitle]
@@ -52,7 +55,7 @@ mutation SendEmailToUsersAboutNewPost
 
   Hi {$userDisplayName},
   
-  There is a new post on the site:
+  There is a new post on the **{$siteName}** website:
   
   [**{$postTitle}**]({$postURL})
   
@@ -62,8 +65,8 @@ mutation SendEmailToUsersAboutNewPost
     )
       @remove
     emailMessage: _strReplaceMultiple(
-      search: ["{$userDisplayName}", "{$postTitle}", "{$postContent}", "{$postURL}"],
-      replaceWith: [$__displayName, $postTitle, $postContent, $postURL],
+      search: ["{$userDisplayName}", "{$siteName}", "{$postTitle}", "{$postContent}", "{$postURL}"],
+      replaceWith: [$__displayName, $siteName, $postTitle, $postContent, $postURL],
       in: $__emailMessageTemplate
     )
       @remove
