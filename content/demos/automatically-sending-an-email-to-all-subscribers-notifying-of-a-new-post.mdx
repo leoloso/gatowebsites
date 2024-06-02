@@ -119,17 +119,17 @@ mutation SendEmailToUsersAboutNewPost
 }
 ```
 
-We test it by passing GraphQL variable `$postId` with value `1` in the JSON dictionary, and executing the GraphQL query. When checking in Mailpit (which intercepts all emails), we verify that an email was sent to all 3 users who have subscribed to the email list:
+We test it by passing GraphQL variable `$postId` with value `1` in the JSON dictionary, and executing the GraphQL query. When checking in Mailpit (which intercepts all emails), we verify that an email was indeed sent to all 3 users who have subscribed to the email list.
 
-```md
-Hi Subscriber Bennett,
+For instance, user "Blogger Davenport" received the following email:
 
-There is a new post on the **playground** website:
-
-[Hello world!](#)
-
-Welcome to WordPress. This is your first post. Edit or delete it, then start writing!
-```
+<Image
+  src="/images/notification-email-about-new-post-sent-to-user.png"
+  width="1024"
+  height="680"
+  alt="Notification email about new post sent to user"
+  caption="Notification email about new post sent to user"
+/>
 
 Finally we automate the process, so that whenever there is a new post on the site, the notification email is automatically sent.
 
