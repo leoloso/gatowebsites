@@ -16,16 +16,19 @@ This query requires the endpoint to have [Nested Mutations](/guides/schema/using
 
 ```graphql
 query GetPostAndExportData($postId: ID!) {
-  post(by: { id: $postId }, status: any) {
+  post(by: { id: $postId }) {
     content @export(as: "postContent")
     title @export(as: "postTitle")
     url @export(as: "postURL")
   }
-}
 
+  hasPost: _notNull(value: $__post)
+    @export(as: "doSendEmail")
+}
  
 query GetEmailData
   @depends(on: "GetPostAndExportData")
+  @include(if: $doSendEmail)
 { 
   siteName: optionValue(name: "blogname")
     @export(as: "siteName")
@@ -39,6 +42,7 @@ query GetEmailData
  
 mutation SendEmailToUsersAboutNewPost
   @depends(on: "GetEmailData")
+  @include(if: $doSendEmail)
 {
   users(
     # Users subscribed to the list. Comment out this filter to retrieve all the users
