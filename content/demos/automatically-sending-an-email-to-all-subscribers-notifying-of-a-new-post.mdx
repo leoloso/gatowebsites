@@ -43,7 +43,6 @@ query GetPostAndExportData($postId: ID!) {
   }
 }
 
- 
 query GetEmailData
   @depends(on: "GetPostAndExportData")
 { 
