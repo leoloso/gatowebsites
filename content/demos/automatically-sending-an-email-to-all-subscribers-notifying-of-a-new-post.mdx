@@ -30,100 +30,9 @@ We can use Gato GraphQL to automatically send a notification email to all users 
   </iframe>
 </div>
 
-In the demo video, website users are subscribed to email lists. This is done by storing user meta `email_list` (which is an array of list names). Users that need to be notified that there is a new post on the site are those with meta value `new_posts`.
+In the demo video, we first execute persisted query [[PRO] Send email to users about post](/library/send-email-to-subscribers-notifying-of-a-new-post) and test sending an email with the content of a specific post.
 
-We [create a persisted query](/guides/use/creating-a-persisted-query) called **Send an email to subscribers notifying of a new post**, select the **Nested Mutations** Schema Configuration, and provide the [following GraphQL query](/library/send-email-to-subscribers-notifying-of-a-new-post):
-
-```graphql
-query GetPostAndExportData($postId: ID!) {
-  post(by: { id: $postId }) {
-    content @export(as: "postContent")
-    title @export(as: "postTitle")
-    url @export(as: "postURL")
-  }
-
-  hasPost: _notNull(value: $__post)
-    @export(as: "doSendEmail")
-}
- 
-query GetEmailData
-  @depends(on: "GetPostAndExportData")
-  @include(if: $doSendEmail)
-{ 
-  siteName: optionValue(name: "blogname")
-    @export(as: "siteName")
-
-  emailSubject: _sprintf(
-    string: "There is a new post: \"%s\"",
-    values: [$postTitle]
-  )
-    @export(as: "emailSubject")
-}
- 
-mutation SendEmailToUsersAboutNewPost
-  @depends(on: "GetEmailData")
-  @include(if: $doSendEmail)
-{
-  users(
-    # Users subscribed to the list. Comment out this filter to retrieve all the users
-    filter: {
-      metaQuery: {
-        key: "email_list",
-        compareBy: {
-          arrayValue: {
-            value: "new_posts",
-            operator: IN
-          }
-        }
-      }
-    }
-  ) {
-    displayName
-    email
-
-    emailMessageTemplate: _strConvertMarkdownToHTML(
-      text: """
-
-  Hi {$userDisplayName},
-  
-  There is a new post on the **{$siteName}** website:
-  
-  [**{$postTitle}**]({$postURL})
-  
-  {$postContent}
-  
-      """
-    )
-      @remove
-    emailMessage: _strReplaceMultiple(
-      search: ["{$userDisplayName}", "{$siteName}", "{$postTitle}", "{$postContent}", "{$postURL}"],
-      replaceWith: [$__displayName, $siteName, $postTitle, $postContent, $postURL],
-      in: $__emailMessageTemplate
-    )
-      @remove
-
-    _sendEmail(
-      input: {
-        to: $__email
-        subject: $emailSubject
-        messageAs: {
-          html: $__emailMessage
-        }
-      }
-    ) {
-      status
-      errors {
-        __typename
-        ...on ErrorPayload {
-          message
-        }
-      }
-    }
-  }
-}
-```
-
-We test it by passing GraphQL variable `$postId` with value `1` in the JSON dictionary, and executing the GraphQL query. When checking in Mailpit (which intercepts all emails), we verify that an email was indeed sent to all 3 users who have subscribed to the email list.
+We test it by passing GraphQL variable `$postId` with value `1` in the JSON dictionary, and executing the GraphQL query. When checking in Mailpit (which intercepts all emails), we verify that a personalized email was indeed sent to all users.
 
 For instance, user "Blogger Davenport" received the following email:
 
@@ -134,6 +43,10 @@ For instance, user "Blogger Davenport" received the following email:
   alt="Notification email about new post sent to user"
   caption="Notification email about new post sent to user"
 />
+
+By default, that GraphQL persisted query sends the email to all users. We can also specify which users to send the email to, such as those who have been subscribed to some email list. This is done by uncommenting the `users(filter:)` input in the query. This filter then retrieves those users who have meta `email_list` (which is an array of list names) with value `new_posts`.
+
+When executing the query again, this time the email was sent to 3 users (those subscribed to that email list).
 
 Finally we automate the process, so that whenever there is a new post on the site, the notification email is automatically sent.
 
