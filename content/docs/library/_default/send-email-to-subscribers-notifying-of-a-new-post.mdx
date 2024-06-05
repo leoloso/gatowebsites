@@ -66,13 +66,13 @@ mutation SendEmailToUsersAboutNewPost
     emailMessageTemplate: _strConvertMarkdownToHTML(
       text: """
 
-  Hi {$userDisplayName},
-  
-  There is a new post on the **{$siteName}** website:
-  
-  [**{$postTitle}**]({$postURL})
-  
-  {$postContent}
+Hi {$userDisplayName},
+
+There is a new post on the **{$siteName}** website:
+
+[**{$postTitle}**]({$postURL})
+
+{$postContent}
   
       """
     )
