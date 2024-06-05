@@ -48,17 +48,6 @@ By default, that GraphQL persisted query sends the email to all users. We can al
 
 When executing the query again, this time the email was sent to 3 users (those subscribed to that email list).
 
-Finally we automate the process, so that whenever there is a new post on the site, the notification email is automatically sent.
+Finally we automate the process, so that whenever there is a new post on the site, the notification email is automatically sent. For that, we publish [automation](/features/automation) rule **Send notification email to users when there is a new post**.
 
-For that, we [create an automation rule](/guides/manage/automating-tasks) called **When a post is published, send an email to subscribers**, selecting the previously-created persisted query **Send an email to subscribers notifying of a new post** as the action, and providing the following information as the trigger:
-
-- Hook name: `publish_post`
-- Dynamic GraphQL variables:
-
-```json
-{
-  "postId": 1
-}
-```
-
-Finally we create a new post, and publish it. As a result, a notification email is sent to all subscribers.
+This automation rule is triggered on [hook `gatographql:draft_to_publish`](/guides/manage/automating-tasks#wordpress-hook-mapping). As such, whenever the status of a post is switched from `draft` to `publish`, a notification email is automatically sent to the users.
