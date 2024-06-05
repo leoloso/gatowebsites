@@ -44,7 +44,29 @@ For instance, user "Blogger Davenport" received the following email:
   caption="Notification email about new post sent to user"
 />
 
-By default, that GraphQL persisted query sends the email to all users. We can also specify which users to send the email to, such as those who have been subscribed to some email list. This is done by uncommenting the `users(filter:)` input in the query. This filter then retrieves those users who have meta `email_list` (which is an array of list names) with value `new_posts`.
+By default, that GraphQL persisted query sends the email to all users. We can also specify which users to send the email to, such as those who have been subscribed to some email list. This is done by uncommenting the `users(filter:)` input in the query:
+
+```graphql
+{
+  users
+  # # Retrieve only users subscribed to an email list (uncomment if needed)
+  # (
+  #   filter: {
+  #     metaQuery: {
+  #       key: "email_list",
+  #       compareBy: {
+  #         arrayValue: {
+  #           value: "new_posts",
+  #           operator: IN
+  #         }
+  #       }
+  #     }
+  #   }
+  # )
+}
+```
+
+This filter then retrieves those users who have meta `email_list` (which is an array of list names) with value `new_posts`.
 
 When executing the query again, this time the email was sent to 3 users (those subscribed to that email list).
 
