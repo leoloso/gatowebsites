@@ -1,0 +1,75 @@
+---
+title: "Automatically sending an email to all subscribers notifying of a new post"
+publishedAt: '2024-06-03 08:00:00'
+image: '/images/thumbnails/demos/gatographql-email-wordpress.png'
+leading: Gato GraphQL automation demo
+description: 'Whenever creating a new post on the WordPress site, automatically send a notification email to all subscriber users.'
+seoDescription: 'Whenever creating a new post on the WordPress site, automatically send a notification email to all subscriber users, via Gato GraphQL.'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - automation
+  - email
+  - notification
+targetImages:
+  - /images/logos/email.svg
+---
+
+We can use Gato GraphQL to automatically send a notification email to all users subscribed to an email list, whenever a new post is created on the site.
+
+<div className="aspect-video lg:-ml-32 lg:-mr-32">
+  <iframe
+    className="w-full h-full"
+    src="https://www.youtube.com/embed/YzIZUJvUyrM"
+    title="Automatically sending an email to all subscribers notifying of a new post"
+    width="768"
+    height="432"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
+In the demo video, we first execute persisted query [[PRO] Send email to users about post](/library/send-email-to-subscribers-notifying-of-a-new-post) and test sending an email with the content of a specific post.
+
+We test it by passing GraphQL variable `$postId` with value `1` in the JSON dictionary, and executing the GraphQL query. When checking in Mailpit (which intercepts all emails), we verify that a personalized email was indeed sent to all users.
+
+For instance, user "Blogger Davenport" received the following email:
+
+<Image
+  src="/images/notification-email-about-new-post-sent-to-user.png"
+  width="1024"
+  height="600"
+  alt="Notification email about new post sent to user"
+  caption="Notification email about new post sent to user"
+/>
+
+By default, that GraphQL persisted query sends the email to all users. We can also specify which users to send the email to, such as those who have been subscribed to some email list. This is done by uncommenting the `users(filter:)` input in the query:
+
+```graphql
+{
+  users
+  # # Retrieve only users subscribed to an email list (uncomment if needed)
+  # (
+  #   filter: {
+  #     metaQuery: {
+  #       key: "email_list",
+  #       compareBy: {
+  #         arrayValue: {
+  #           value: "new_posts",
+  #           operator: IN
+  #         }
+  #       }
+  #     }
+  #   }
+  # )
+}
+```
+
+This filter then retrieves those users who have meta `email_list` (which is an array of list names) with value `new_posts`.
+
+When executing the query again, this time the email was sent to 3 users (those subscribed to that email list).
+
+Finally we automate the process, so that whenever there is a new post on the site, the notification email is automatically sent. For that, we publish [automation](/features/automation) rule **Send notification email to users when there is a new post**.
+
+This automation rule is triggered on [hook `gatographql:draft_to_publish`](/guides/manage/automating-tasks#wordpress-hook-mapping). As such, whenever the status of a post is switched from `draft` to `publish`, a notification email is automatically sent to the users.

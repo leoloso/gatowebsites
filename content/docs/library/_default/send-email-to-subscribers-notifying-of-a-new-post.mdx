@@ -4,9 +4,9 @@ description: "Integrate this query with automation to notify users when there's 
 order: 0
 ---
 
-This query sends an email to all the users who have subscribed to an email list, notifying of the creation of a new post on the site.
+This query sends an email to all users, notifying of the creation of a new post on the site.
 
-The subscribed users are those with meta `email_list` with value `new_posts`. To retrieve all the users, comment out the filter in the `users` field.
+It includes the ability to select users who subscribed to an email list, however this portion of the query is commented out. (Please uncomment if needed.) The subscribed users are those with meta `email_list` with value `new_posts`.
 
 <Banner type='important'>
 
@@ -44,33 +44,35 @@ mutation SendEmailToUsersAboutNewPost
   @depends(on: "GetEmailData")
   @include(if: $doSendEmail)
 {
-  users(
-    # Users subscribed to the list. Comment out this filter to retrieve all the users
-    filter: {
-      metaQuery: {
-        key: "email_list",
-        compareBy: {
-          arrayValue: {
-            value: "new_posts",
-            operator: IN
-          }
-        }
-      }
-    }
-  ) {
+  users
+  # # Retrieve only users subscribed to an email list (uncomment if needed)
+  # (
+  #   filter: {
+  #     metaQuery: {
+  #       key: "email_list",
+  #       compareBy: {
+  #         arrayValue: {
+  #           value: "new_posts",
+  #           operator: IN
+  #         }
+  #       }
+  #     }
+  #   }
+  # )
+  {
     displayName
     email
 
     emailMessageTemplate: _strConvertMarkdownToHTML(
       text: """
 
-  Hi {$userDisplayName},
-  
-  There is a new post on the **{$siteName}** website:
-  
-  [**{$postTitle}**]({$postURL})
-  
-  {$postContent}
+Hi {$userDisplayName},
+
+There is a new post on the **{$siteName}** website:
+
+[**{$postTitle}**]({$postURL})
+
+{$postContent}
   
       """
     )
