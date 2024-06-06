@@ -1,0 +1,34 @@
+---
+title: "⭐️ Released v2.5 with WordPress hook mapping (PRO) and persisted query to send email notifications"
+description: 'Gato GraphQL v2.5 has been released with a couple of improvements'
+publishedAt: '2024-06-05 08:00:00'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - news
+  - release
+---
+
+Gato GraphQL `v2.5` has been released, containing the following changes.
+
+## Added persisted query to notify users on new post
+
+Predefined persisted query [[PRO] Send email to users about post](/library/send-email-to-subscribers-notifying-of-a-new-post) has been added.
+
+This query sends an email to all users, or to a segment of users, notifying of the creation of a new post on the site.
+
+It is integrated with the new automation rule **Automatically sending an email to all subscribers notifying of a new post** added to Gato GraphQL PRO.
+
+## [PRO] Added "WordPress hook mapping" for the Automation extension
+
+There are WordPress hooks which cannot be directly used in the Automation Configurator, because they provide a PHP object via the hook, which can't be input as a GraphQL variable.
+
+Starting from `v2.5` of Gato GraphQL PRO, several of these hooks have been mapped, by triggering a new hook prepended with `gatographql:` and the same hook name, and passing the corresponding object ID as a variable, which can be input as a GraphQL variable.
+
+For instance, WordPress hook `draft_to_publish` passes the `$post` as variable (of type `WP_Post`). Gato GraphQL PRO maps this hook as [`gatographql:draft_to_publish`](/guides/manage/automating-tasks#wordpress-hook-mapping), and passes the `$postId` (of type `int`) as variable.
+
+The following table lists down the mapped WordPress hooks:
+
+| WordPress hook | Mapped hook by Gato GraphQL |
+| --- | --- |
+| [`{$old_status}_to_{$new_status}`](https://developer.wordpress.org/reference/hooks/old_status_to_new_status/) (passing `WP_Post $post`) | `gatographql:{$old_status}_to_{$new_status}` (passing `int $postId`) |
