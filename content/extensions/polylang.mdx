@@ -54,6 +54,7 @@ query {
       }
       
       tags(taxonomy: "some-tag") {
+        ...on GenericTag {
           polylangIsTranslatable
           polylangLanguage
           polylangTranslationLanguageIDs
