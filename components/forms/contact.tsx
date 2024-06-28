@@ -81,6 +81,7 @@ export default function ContactForm() {
             disabled={!isFormEnabled}
           >
             <option>General</option>
+            <option>Request extension</option>
             <option>Sales</option>
             <option>Affiliate Program</option>
             <option>Developer Partnership Program</option>
