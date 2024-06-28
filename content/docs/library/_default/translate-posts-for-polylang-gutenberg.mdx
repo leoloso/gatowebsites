@@ -47,6 +47,56 @@ There are languages for which the code used by WordPress and by Google Translate
 #   - excludeLanguagesToTranslate: Exclude languages from executing the translation
 #   - languageMapping: JSON object to convert languages codes to work with Google Translate. For instance, WordPress uses "nb" as the code for Norwegian, but Google Translate uses "no" instead; to translate to Norwegian, then pass value `{"nb": "no"}`
 #
+# *********************************************************************
+#
+# === Description ===
+#
+# This Persisted GraphQL query is an integration for Polylang,
+# to translate posts based on the Gutenberg editor.
+#
+# It takes an origin post, it translates it using the Google
+# Translate API to all the other languages defined in Polylang,
+# and stores those translations in the corresponding posts,
+# as set-up via Polylang.
+#
+# All translation posts must already exist, created using the
+# Polylang UI. These posts must also have the  `draft` status
+# to be updated. To update posts with any other status, use
+# variable `$statusToUpdate` (for instance, passing value
+# `publish`, `pending` or `any`)
+#
+# By default, the origin post must have the default language
+# of the site, or the translation will not be executed.
+# To translate from any language, pass variable
+# `$translateDefaultLanguageOnly` with `false`.
+#
+# Additionally, translate only from a specific language by
+# providing `$translateFromLanguage` with the language code
+# (for instance, `"en"`). It applies only when
+# `$translateDefaultLanguageOnly` is `false`.
+#
+# To limit for what languages to execute the translation, pass
+# variables `$includeLanguagesToTranslate` (if empty, all languages
+# will be included) and `$excludeLanguagesToTranslate`.
+#
+# By default it also translates the post slug. To disable, pass
+# variable `updateSlug` with `false`.
+#
+# For some languages, the code used by WordPress and Google Translate
+# are different. For instance, Norwegian is represented as "nb" by
+# WordPress, and as "no" by Google Translate. To support translating
+# to these languages, provide the language code mapping via the
+# `$languageMapping` GraphQL variable, such as:
+#
+#   {
+#     "languageMapping": {
+#       "nb": "no"
+#     }
+#   }
+#
+# See Persisted Query "Translate post (Gutenberg)" for additional
+# documentation.
+#
 ########################################################################
 query InitializeVariables
   @configureWarningsOnExportingDuplicateVariable(enabled: false)
@@ -167,8 +217,8 @@ query ExportOriginPost(
       @export(as: "hasTranslationPosts")
 
 
-    title
-      @export(as: "originTitle")
+    rawTitle
+      @export(as: "originRawTitle")
     rawContent
       @export(as: "originRawContent")
     rawExcerpt
@@ -430,7 +480,7 @@ query InitializeTranslationVariables(
   emptyTranslationPostVars: posts(filter: { ids: $translationPostIds, status: $statusToUpdate } ) {
     emptyArray: _echo(value: [])
       @export(
-        as: "title"
+        as: "rawTitle"
         type: DICTIONARY
       )
       @export(
@@ -723,9 +773,9 @@ query FetchData($statusToUpdate: CustomPostStatusEnum! = draft)
     id
 
 
-    title: _echo(value: $originTitle)
+    rawTitle: _echo(value: $originRawTitle)
       @export(
-        as: "title",
+        as: "rawTitle",
         type: DICTIONARY
       )
       @remove
@@ -1153,7 +1203,7 @@ query AdaptData
   @depends(on: "FetchData")
   @include(if: $executeTranslation)
 {
-  adaptedToTitle: _echo(value: $title)
+  adaptedToTitle: _echo(value: $rawTitle)
     @underEachJSONObjectProperty(
       passValueOnwardsAs: "value"
     )
@@ -1165,7 +1215,7 @@ query AdaptData
         setResultInResponse: true
       )
     @export(as: "adaptedToTitle")
-  adaptedFromTitle: _echo(value: $title)
+  adaptedFromTitle: _echo(value: $rawTitle)
     @underEachJSONObjectProperty
       @applyField(
         name: "_echo"
@@ -1207,7 +1257,7 @@ query TransformData(
   @include(if: $executeTranslation)
 {
   transformations: _echo(value: {
-    metaTitle: {
+    metaRawTitle: {
       from: $adaptedFromTitle,
       to: $adaptedToTitle,
     },
@@ -1329,7 +1379,7 @@ query EscapeRegexStrings
       filter: {
         by: {
           excludeKeys: [
-            "metaTitle",
+            "metaRawTitle",
             "metaRawExcerpt"
           ]
         }
@@ -1384,7 +1434,7 @@ query EscapeRegexStrings
       filter: {
         by: {
           excludeKeys: [
-            "metaTitle",
+            "metaRawTitle",
             "metaRawExcerpt"
           ]
         }
@@ -2714,7 +2764,7 @@ query PrepareMetaReplacements
   @depends(on: "TransformData")
   @include(if: $executeTranslation)
 {
-  transformedMetaTitle: _echo(value: $title)
+  transformedMetaTitle: _echo(value: $rawTitle)
     @underEachJSONObjectProperty(
       passKeyOnwardsAs: "postID"
       affectDirectivesUnderPos: [1, 2, 3]
@@ -2722,7 +2772,7 @@ query PrepareMetaReplacements
       @applyField(
         name: "_sprintf",
         arguments: {
-          string: "metaTitle.to.%s",
+          string: "metaRawTitle.to.%s",
           values: [$postID]
         }
         passOnwardsAs: "titlePath"
@@ -2744,7 +2794,7 @@ query PrepareMetaReplacements
         setResultInResponse: true
       )
     @export(
-      as: "transformedTitle"
+      as: "transformedRawTitle"
     )
 
   transformedMetaRawExcerpt: _echo(value: $rawExcerpt)
@@ -2799,15 +2849,15 @@ mutation TranslateGutenbergPosts(
         key: $__id
       }
     )
-    transformedTitle: _objectProperty(
-      object: $transformedTitle,
+    transformedRawTitle: _objectProperty(
+      object: $transformedRawTitle,
       by: {
         key: $__id
       }
     )
     transformedSlug: _if(
       condition: $updateSlug,
-      then: $__transformedTitle,
+      then: $__transformedRawTitle,
       else: null
     )
     transformedRawExcerpt: _objectProperty(
@@ -2817,7 +2867,7 @@ mutation TranslateGutenbergPosts(
       }
     )
     update(input: {
-      title: $__transformedTitle,
+      title: $__transformedRawTitle,
       slug: $__transformedSlug,
       excerpt: $__transformedRawExcerpt,
       contentAs: {

@@ -47,12 +47,63 @@ There are languages for which the code used by WordPress and by Google Translate
 #   - excludeLanguagesToTranslate: Exclude languages from executing the translation
 #   - languageMapping: JSON object to convert languages codes to work with Google Translate. For instance, WordPress uses "nb" as the code for Norwegian, but Google Translate uses "no" instead; to translate to Norwegian, then pass value `{"nb": "no"}`
 #
+# *********************************************************************
+#
+# === Description ===
+#
+# This Persisted GraphQL query is an integration for Polylang,
+# to translate posts based on the Classic editor.
+#
+# It takes an origin post, it translates it using the Google
+# Translate API to all the other languages defined in Polylang,
+# and stores those translations in the corresponding posts,
+# as set-up via Polylang.
+#
+# All translation posts must already exist, created using the
+# Polylang UI. These posts must also have the  `draft` status
+# to be updated. To update posts with any other status, use
+# variable `$statusToUpdate` (for instance, passing value
+# `publish`, `pending` or `any`)
+#
+# By default, the origin post must have the default language
+# of the site, or the translation will not be executed.
+# To translate from any language, pass variable
+# `$translateDefaultLanguageOnly` with `false`.
+#
+# Additionally, translate only from a specific language by
+# providing `$translateFromLanguage` with the language code
+# (for instance, `"en"`). It applies only when
+# `$translateDefaultLanguageOnly` is `false`.
+#
+# To limit for what languages to execute the translation, pass
+# variables `$includeLanguagesToTranslate` (if empty, all languages
+# will be included) and `$excludeLanguagesToTranslate`.
+#
+# By default it also translates the post slug. To disable, pass
+# variable `updateSlug` with `false`.
+#
+# For some languages, the code used by WordPress and Google Translate
+# are different. For instance, Norwegian is represented as "nb" by
+# WordPress, and as "no" by Google Translate. To support translating
+# to these languages, provide the language code mapping via the
+# `$languageMapping` GraphQL variable, such as:
+#
+#   {
+#     "languageMapping": {
+#       "nb": "no"
+#     }
+#   }
+#
+# See Persisted Query "Translate post (Classic editor)" for additional
+# documentation.
+#
 ########################################################################
 query InitializeVariables
   @configureWarningsOnExportingDuplicateVariable(enabled: false)
 {
   emptyString: _echo(value: null)
     @export(as: "fromLanguage")
+    @remove
 
   emptyBool: _echo(value: false)
     @export(as: "hasTranslationPosts")
@@ -92,8 +143,8 @@ query ExportOriginPost(
       @export(as: "hasTranslationPosts")
 
 
-    title
-      @export(as: "originTitle")
+    rawTitle
+      @export(as: "originRawTitle")
     rawContent
       @export(as: "originRawContent")
     rawExcerpt
@@ -122,7 +173,7 @@ query FetchData(
         type: DICTIONARY
       )
 
-    title: _echo(value: $originTitle)
+    rawTitle: _echo(value: $originRawTitle)
     rawContent: _echo(value: $originRawContent)
     rawExcerpt: _echo(value: $originRawExcerpt)
       @export(
@@ -218,16 +269,16 @@ query GenerateMutationInputs(
         arguments: {
           object: $postTranslatedData,
           by: {
-            key: "title",
+            key: "rawTitle",
           }
         },
-        passOnwardsAs: "postTranslatedTitle"
+        passOnwardsAs: "postTranslatedRawTitle"
       )
       @applyField(
         name: "_if",
         arguments: {
           condition: $updateSlug,
-          then: $postTranslatedTitle,
+          then: $postTranslatedRawTitle,
           else: null
         },
         passOnwardsAs: "postMaybeTranslatedSlug"
@@ -256,7 +307,7 @@ query GenerateMutationInputs(
         name: "_echo",
         arguments: {
           value: {
-            title: $postTranslatedTitle,
+            title: $postTranslatedRawTitle,
             slug: $postMaybeTranslatedSlug,
             excerpt: $postTranslatedRawExcerpt,
             contentAs: {
