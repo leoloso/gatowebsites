@@ -16,7 +16,7 @@ The query must be executed on the master site (with source content), which must 
 
 An Application Password is used to connect to the network sites. Make sure to provide the `$username` and `$appPassword` variables for a user with access to all sites.
 
-It takes an origin post, it translates it using the Google Translate API to the other languages defined as connections via MultilingualPress, and stores those translations in the corresponding sites in the network. All translation posts must already exist.
+The query takes an origin post, translates it using the Google Translate API to the other languages defined as connections via MultilingualPress, and stores those translations in the corresponding sites in the network. All translation posts must already exist.
 
 To limit for what languages to execute the translation, pass variables `$includeSiteIDsToTranslate` (if empty, all sites will be included) and `$excludeSiteIDsToTranslate`.
 
