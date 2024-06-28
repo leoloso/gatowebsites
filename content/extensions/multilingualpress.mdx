@@ -1,0 +1,126 @@
+---
+title: MultilingualPress
+description: "Integration with the MultilingualPress plugin."
+order: 0
+# order: 2150
+featured: true
+category: 'Plugin integration'
+integration:
+  name: 'MultilingualPress'
+  url: 'https://multilingualpress.org/'
+---
+
+Integration with the **MultilingualPress** plugin.
+
+The GraphQL schema is provided the fields to query multilingual data.
+
+```graphql
+{
+  posts {
+    id
+    title
+    multilingualpressTranslationConnections {
+      ...MultilingualPressConnectionData
+    }
+    categories {
+      id
+      name
+      multilingualpressTranslationConnections {
+        ...MultilingualPressConnectionData
+      }
+    }
+    tags {
+      id
+      name
+      multilingualpressTranslationConnections {
+        ...MultilingualPressConnectionData
+      }
+    }
+  }
+
+  pages {
+    id
+    title
+    multilingualpressTranslationConnections {
+      ...MultilingualPressConnectionData
+    }
+  }
+
+  postCategories {
+    name
+    slug
+    multilingualpressTranslationConnections {
+      ...MultilingualPressConnectionData
+    }
+  }
+
+  postTags {
+    name
+    slug
+    multilingualpressTranslationConnections {
+      ...MultilingualPressConnectionData
+    }
+  }
+
+  customPosts(filter: { customPostTypes: "some-cpt" }) {
+    __typename
+    title
+    customPostType
+    multilingualpressIsTranslatable
+    multilingualpressTranslationConnections {
+      ...MultilingualPressConnectionData
+    }
+    ...on GenericCustomPost {
+      categories(taxonomy: "some-category") {
+        name
+        ...on GenericCategory {
+          multilingualpressIsTranslatable
+          multilingualpressTranslationConnections {
+            ...MultilingualPressConnectionData
+          }
+        }
+      }
+      tags(taxonomy: "some-tag") {
+        name
+        ...on GenericTag {
+          multilingualpressIsTranslatable
+          multilingualpressTranslationConnections {
+            ...MultilingualPressConnectionData
+          }
+        }
+      }
+    }
+  }
+
+  categories(taxonomy: "some-category") {
+    __typename
+    ...on GenericCategory {
+      name
+      slug
+      taxonomy
+      multilingualpressIsTranslatable
+      multilingualpressTranslationConnections {
+        ...MultilingualPressConnectionData
+      }
+    }
+  }
+
+  tags(taxonomy: "some-tag") {
+    __typename
+    ...on GenericTag {
+      name
+      slug
+      taxonomy
+      multilingualpressIsTranslatable
+      multilingualpressTranslationConnections {
+        ...MultilingualPressConnectionData
+      }
+    }
+  }
+}
+
+fragment MultilingualPressConnectionData {
+  siteID
+  entityID
+}
+```
