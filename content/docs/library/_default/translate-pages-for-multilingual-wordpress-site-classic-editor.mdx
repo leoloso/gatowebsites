@@ -14,6 +14,8 @@ This query requires the endpoint to have [Nested Mutations](/guides/schema/using
 
 The query must be executed on the master site (with source content), which must have the PRO plugin. All other sites in the network can have the free Gato GraphQL plugin.
 
+An Application Password is used to connect to the network sites. Make sure to provide the `$username` and `$appPassword` variables for a user with access to all sites.
+
 The query retrieves the language from the main site and from the external site, and compares them: 
 
 - If they are the same, simply replicate all pages
