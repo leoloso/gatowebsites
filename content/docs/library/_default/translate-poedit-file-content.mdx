@@ -4,9 +4,9 @@ description: Translate the empty strings from a Poedit file, then create a new t
 order: 0
 ---
 
-This GraphQL query translates the empty strings from a Poedit file (by executing a single call to the Google Translate API) that is accessible under some URL (provided via `$fileURL`), and adds those translations in the corresponding entry of a new translation Poedit file, for some language (provided via `$toLang`).
+This GraphQL query translates the empty strings from a Poedit file (by executing a single call to the Google Translate API) that is accessible under some URL, and adds those translations in the corresponding entry of a new translation Poedit file, for some language.
 
-It then uploads the translation file to [Filestack](https://www.filestack.com), under the application for the given API key (provided via `$filestackApiKey`).
+It then uploads the translation file to [Filestack](https://www.filestack.com), under the application for the given API key.
 
 After running the query, the URL with the uploaded file will be printed under entry `uploadedFileURL`.
 
