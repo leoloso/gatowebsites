@@ -41,6 +41,7 @@ This query, containing a variety of function fields and directives:
   _arraySetItem(array: ["uno", "dos"], index: 0, value: "tres")
   _arrayKeys(array: ["uno", "dos", "tres"])
   _arrayLength(array: ["uno", "dos", "tres"])
+  _strRegexFindMatches(regex: "/https?:\\/\\/([a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\\.[a-zA-Z]{2,})/", string: "In website https://gatographql.com there is more information")
   _strReplace(search: "https://", replaceWith: "http://", in: "https://gatographql.com")
   _strReplaceMultiple(search: ["https://", "gato"], replaceWith: ["http://", "dog"], in: "https://gatographql.com")
   _strRegexReplace(searchRegex: "/^https?:\\/\\//", replaceWith: "", in: "https://gatographql.com")
@@ -127,6 +128,14 @@ This query, containing a variety of function fields and directives:
       2
     ],
     "_arrayLength": 3,
+    "_strRegexFindMatches": [
+      [
+        "https:\/\/gatographql.com"
+      ],
+      [
+        "gatographql.com"
+      ]
+    ],
     "_strReplace": "http://gatographql.com",
     "_strReplaceMultiple": "http://doggraphql.com",
     "_strRegexReplace": "gatographql.com",
