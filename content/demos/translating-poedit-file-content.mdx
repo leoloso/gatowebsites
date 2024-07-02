@@ -38,6 +38,6 @@ We can use Gato GraphQL to translate all the empty strings in a Poedit file, to 
   </iframe>
 </div>
 
-In the demo video, we access the `.po` or `.pot` Poedit file from some URL, and execute the [persisted query **Translate Poedit file content**](/library/translate-poedit-file-content) (already available by the Gato GraphQL plugin), which extracts empty strings from the Poedit file, translates them to the desired language by executing a single request to the Google Translate API, and uploading the new translated Poedit file to Filestack.
+In the demo video, we access the `.po` or `.pot` Poedit file from some URL, and execute the [persisted query **Translate Poedit file content**](/library/translate-poedit-file-content) (already available by the Gato GraphQL plugin), which extracts empty strings from the Poedit file, translates them to the desired language by executing a single request to the Google Translate API, and uploads the new translated Poedit file to Filestack.
 
-The response includes the URL of the translated file on Filestack, from where we can download it, and use Poedit to compile it to `.mo` and include it in our themes/plugins.
+The response includes entry `uploadedFileURL` with the URL of the translated file on Filestack, from where we can download it. Opening the translated file on Poedit, we can then compile it to `.mo`, and include this file in our theme or plugin.
