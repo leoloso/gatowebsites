@@ -22,7 +22,7 @@ The GraphQL schema is provided the fields to retrieve multilingual data.
 For instance, you can now run this query:
 
 ```graphql
-{
+query {
   posts {
     __typename
     id
@@ -108,7 +108,7 @@ Field `_strRegexFindMatches` has been added to the **Helper Function Collection*
 For instance, running this query:
 
 ```graphql
-{
+query {
   _strRegexFindMatches(regex: "/https?:\\/\\/([a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\\.[a-zA-Z]{2,})/", string: "In website https://gatographql.com there is more information")
 }
 ```
@@ -156,7 +156,7 @@ Added the following field to the GraphQL schema, via the "Site" module:
 For instance, executing the following query:
 
 ```graphql
-{
+query {
   siteURL
 }
 ```
@@ -193,7 +193,7 @@ These fields are only enabled when multisite is enabled (i.e. when method `is_mu
 For instance, executing the following query:
 
 ```graphql
-{
+query {
   networkSiteCount
   networkSites {
     id
