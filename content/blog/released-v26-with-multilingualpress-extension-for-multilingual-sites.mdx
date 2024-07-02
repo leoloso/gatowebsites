@@ -17,7 +17,7 @@ Below are the most important additions.
 
 Gato GraphQL PRO now has an integration with the <a href="https://multilingualpress.org" target="_blank">MultilingualPress</a> plugin.
 
-The GraphQL schema is provided the fields to retrieve multilingual data.
+With the new [MultilingualPress extension](/extensions/multilingualpress), the GraphQL schema is provided the fields to retrieve multilingual data.
 
 For instance, you can now run this query:
 
@@ -103,9 +103,9 @@ Check the video for demo [Automatically translating posts for MultilingualPress 
 
 ## [PRO] Added field `_strRegexFindMatches`
 
-Field `_strRegexFindMatches` has been added to the **Helper Function Collection** module. This field executes a regular expression to extract all matches from a string.
+The `_strRegexFindMatches` field has been added to the GraphQL schema ([under the **PHP Functions via Schema** extension](/extensions-reference/php-functions-via-schema#_strregexfindmatches)).
 
-For instance, running this query:
+This field executes a regular expression to extract all matches from a string. For instance, running this query:
 
 ```graphql
 query {
