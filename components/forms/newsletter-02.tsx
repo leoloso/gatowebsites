@@ -48,7 +48,7 @@ export default function NewsletterForm() {
       {status === 'success' && (
         <div className="mt-3 max-w-sm">
           <Alert type='success'>
-            Please check your email, and confirm your subscription.
+            You have been successfully joined our newsletter 🙏
           </Alert>
         </div>
       )}
