@@ -24,32 +24,44 @@ For instance, you can now run this query:
 ```graphql
 query {
   posts {
-    multilingualpressTranslationConnections
+    multilingualpressTranslationConnections  {
+      ...MultilingualPressConnectionData
+    }
 
     categories {
-      multilingualpressTranslationConnections
+      multilingualpressTranslationConnections  {
+        ...MultilingualPressConnectionData
+      }
     }
     
     tags {
-      multilingualpressTranslationConnections
+      multilingualpressTranslationConnections  {
+        ...MultilingualPressConnectionData
+      }
     }
   }
 
   pages {
-    multilingualpressTranslationConnections
+    multilingualpressTranslationConnections  {
+      ...MultilingualPressConnectionData
+    }
   }
   
   customPosts(filter: { customPostTypes: "some-cpt" }) {
     __typename
     ...on GenericCustomPost {
       multilingualpressIsTranslatable
-      multilingualpressTranslationConnections
+      multilingualpressTranslationConnections  {
+        ...MultilingualPressConnectionData
+      }
       
       categories(taxonomy: "some-category") {
         __typename
         ...on GenericCategory {
           multilingualpressIsTranslatable
-          multilingualpressTranslationConnections
+          multilingualpressTranslationConnections  {
+            ...MultilingualPressConnectionData
+          }
         }
       }
       
@@ -57,11 +69,18 @@ query {
         __typename
         ...on GenericTag {
           multilingualpressIsTranslatable
-          multilingualpressTranslationConnections
+          multilingualpressTranslationConnections  {
+            ...MultilingualPressConnectionData
+          }
         }
       }
     }
   }
+}
+
+fragment MultilingualPressConnectionData {
+  siteID
+  entityID
 }
 ```
 
