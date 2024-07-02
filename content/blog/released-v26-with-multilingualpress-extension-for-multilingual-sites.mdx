@@ -24,47 +24,30 @@ For instance, you can now run this query:
 ```graphql
 query {
   posts {
-    __typename
-    id
-    title
     multilingualpressTranslationConnections
 
     categories {
-      __typename
-      id
-      name
       multilingualpressTranslationConnections
     }
     
     tags {
-      __typename
-      id
-      name
       multilingualpressTranslationConnections
     }
   }
 
   pages {
-    __typename
-    id
-    title
     multilingualpressTranslationConnections
   }
   
   customPosts(filter: { customPostTypes: ["some-cpt", "another-cpt"] }) {
     __typename
     ...on GenericCustomPost {
-      id
-      title
-      customPostType
       multilingualpressIsTranslatable
       multilingualpressTranslationConnections
       
       categories(taxonomy: "some-category") {
         __typename
         ...on GenericCategory {
-          id
-          name
           multilingualpressIsTranslatable
           multilingualpressTranslationConnections
         }
@@ -73,8 +56,6 @@ query {
       tags(taxonomy: "some-tag") {
         __typename
         ...on GenericTag {
-          id
-          name
           multilingualpressIsTranslatable
           multilingualpressTranslationConnections
         }
