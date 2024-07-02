@@ -24,25 +24,25 @@ For instance, you can now run this query:
 ```graphql
 query {
   posts {
-    multilingualpressTranslationConnections  {
+    multilingualpressTranslationConnections {
       ...MultilingualPressConnectionData
     }
 
     categories {
-      multilingualpressTranslationConnections  {
+      multilingualpressTranslationConnections {
         ...MultilingualPressConnectionData
       }
     }
     
     tags {
-      multilingualpressTranslationConnections  {
+      multilingualpressTranslationConnections {
         ...MultilingualPressConnectionData
       }
     }
   }
 
   pages {
-    multilingualpressTranslationConnections  {
+    multilingualpressTranslationConnections {
       ...MultilingualPressConnectionData
     }
   }
@@ -51,7 +51,7 @@ query {
     __typename
     ...on GenericCustomPost {
       multilingualpressIsTranslatable
-      multilingualpressTranslationConnections  {
+      multilingualpressTranslationConnections {
         ...MultilingualPressConnectionData
       }
       
@@ -59,7 +59,7 @@ query {
         __typename
         ...on GenericCategory {
           multilingualpressIsTranslatable
-          multilingualpressTranslationConnections  {
+          multilingualpressTranslationConnections {
             ...MultilingualPressConnectionData
           }
         }
@@ -69,7 +69,7 @@ query {
         __typename
         ...on GenericTag {
           multilingualpressIsTranslatable
-          multilingualpressTranslationConnections  {
+          multilingualpressTranslationConnections {
             ...MultilingualPressConnectionData
           }
         }
@@ -215,21 +215,21 @@ might return:
   "data": {
     "networkSiteCount": 3,
     "networkSites": [
-      {
+     {
         "id": 1,
         "name": "Site in English",
         "url": "https://mymultisite.com",
         "locale": "en_US",
         "language": "en"
       },
-      {
+     {
         "id": 2,
         "name": "Site in Spanish",
         "url": "https://es.mymultisite.com",
         "locale": "es_AR",
         "language": "es"
       },
-      {
+     {
         "id": 3,
         "name": "Site in French",
         "url": "https://fr.mymultisite.com",
