@@ -39,7 +39,7 @@ query {
     multilingualpressTranslationConnections
   }
   
-  customPosts(filter: { customPostTypes: ["some-cpt", "another-cpt"] }) {
+  customPosts(filter: { customPostTypes: "some-cpt" }) {
     __typename
     ...on GenericCustomPost {
       multilingualpressIsTranslatable
