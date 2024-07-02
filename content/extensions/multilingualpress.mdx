@@ -17,21 +17,15 @@ The GraphQL schema is provided the fields to query multilingual data.
 ```graphql
 {
   posts {
-    id
-    title
     multilingualpressTranslationConnections {
       ...MultilingualPressConnectionData
     }
     categories {
-      id
-      name
       multilingualpressTranslationConnections {
         ...MultilingualPressConnectionData
       }
     }
     tags {
-      id
-      name
       multilingualpressTranslationConnections {
         ...MultilingualPressConnectionData
       }
@@ -39,24 +33,18 @@ The GraphQL schema is provided the fields to query multilingual data.
   }
 
   pages {
-    id
-    title
     multilingualpressTranslationConnections {
       ...MultilingualPressConnectionData
     }
   }
 
   postCategories {
-    name
-    slug
     multilingualpressTranslationConnections {
       ...MultilingualPressConnectionData
     }
   }
 
   postTags {
-    name
-    slug
     multilingualpressTranslationConnections {
       ...MultilingualPressConnectionData
     }
@@ -64,15 +52,13 @@ The GraphQL schema is provided the fields to query multilingual data.
 
   customPosts(filter: { customPostTypes: "some-cpt" }) {
     __typename
-    title
-    customPostType
     multilingualpressIsTranslatable
     multilingualpressTranslationConnections {
       ...MultilingualPressConnectionData
     }
     ...on GenericCustomPost {
       categories(taxonomy: "some-category") {
-        name
+        __typename
         ...on GenericCategory {
           multilingualpressIsTranslatable
           multilingualpressTranslationConnections {
@@ -81,7 +67,7 @@ The GraphQL schema is provided the fields to query multilingual data.
         }
       }
       tags(taxonomy: "some-tag") {
-        name
+        __typename
         ...on GenericTag {
           multilingualpressIsTranslatable
           multilingualpressTranslationConnections {
@@ -95,9 +81,6 @@ The GraphQL schema is provided the fields to query multilingual data.
   categories(taxonomy: "some-category") {
     __typename
     ...on GenericCategory {
-      name
-      slug
-      taxonomy
       multilingualpressIsTranslatable
       multilingualpressTranslationConnections {
         ...MultilingualPressConnectionData
@@ -108,9 +91,6 @@ The GraphQL schema is provided the fields to query multilingual data.
   tags(taxonomy: "some-tag") {
     __typename
     ...on GenericTag {
-      name
-      slug
-      taxonomy
       multilingualpressIsTranslatable
       multilingualpressTranslationConnections {
         ...MultilingualPressConnectionData
