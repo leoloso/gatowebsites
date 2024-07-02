@@ -23,13 +23,13 @@ integrations:
   - { name: Filestack, image: /images/logos/filestack.png, url: https://www.filestack.com/ }
 ---
 
-We can use Gato GraphQL to automatically translate posts por the **MultilingualPress** plugin, and store those translations in the corresponding sites in the WordPress multisite network. The translation is done using the **Google Translate API**, and the posts can be based on Gutenberg or the Classic editor.
+We can use Gato GraphQL to translate all the empty strings in a Poedit file, to easily create the translations for our themes and plugins for any language. The translated file is stored in Filestack, from where we can then download it.
 
 <div className="aspect-video lg:-ml-32 lg:-mr-32">
   <iframe
     className="w-full h-full"
-    src="https://www.youtube.com/embed/6wbQtY0BEAM"
-    title="Automatically translating posts for MultilingualPress"
+    src="https://www.youtube.com/embed/oiWqNWY3Of8"
+    title="Translating all strings in a Poedit file for any language"
     width="768"
     height="432"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -38,10 +38,6 @@ We can use Gato GraphQL to automatically translate posts por the **MultilingualP
   </iframe>
 </div>
 
-In the demo video, there is a WordPress multisite network composed of 3 sites, for a multilingual site with 3 languages: English (set as the default), Spanish and French. The multisite is managed via MultilingualPress.
+In the demo video, we access the `.po` or `.pot` Poedit file from some URL, and execute the [persisted query **Translate Poedit file content**](/library/translate-poedit-file-content) (already available by the Gato GraphQL plugin), which extracts empty strings from the Poedit file, translates them to the desired language by executing a single request to the Google Translate API, and uploading the new translated Poedit file to Filestack.
 
-We first create a post in English, and select the "Create a new post, and use it as translation in ..." options from MultilingualPress to create the corresponding empty posts in Spanish and French. After saving the post in English as a draft, we validate that MultilingualPress has indeed created those translation posts in the network.
-
-Then we run the [persisted query **Translate posts for MultilingualPress (Gutenberg)**](/library/translate-posts-for-multilingualpress-gutenberg) (already available by the Gato GraphQL plugin), which will translate the content in English to all languages defined in the multilingual site, and store each translation in the corresponding post from the corresponding site in the network.
-
-Then we automate the process, by publishing [automation](/features/automation) rule **MultilingualPress: When publishing a post, translate it to all languages (Gutenberg)** (already available by Gato GraphQL PRO, with `draft` status so it is disabled by default), which triggers the process automatically whenever the status of the post in English goes from `draft` to `publish`.
+The response includes the URL of the translated file on Filestack, from where we can download it, and use Poedit to compile it to `.mo` and include it in our themes/plugins.
