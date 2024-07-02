@@ -1,0 +1,43 @@
+---
+title: 'Translating all strings in a Poedit file for any language'
+seoTitle: 'Translating all strings in a Poedit file for any language, and storing the new translated Poedit file in Filestack, via the Google Translate API using Gato GraphQL'
+publishedAt: '2024-07-02 05:00:00'
+image: '/images/thumbnails/demos/gatographql-poedit-google-translate-filestack-wordpress.png'
+leading: Gato GraphQL + Poedit demo
+description: 'Translate all the empty strings in a Poedit file from your themes and plugins to any language, and store the new translated Poedit file in Filestack.'
+seoDescription: 'Translate all the empty strings in a Poedit file from your themes and plugins to any language, and store the new translated Poedit file in Filestack, by using Gato GraphQL and connecting to the Google Translate API.'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - translation
+  - Poedit
+  - Google Translate
+  - Filestack
+targetImages:
+  - /images/logos/poedit.png
+  - /images/logos/google-translate.svg
+  - /images/logos/filestack.png
+integrations: 
+  - { name: Poedit, image: /images/logos/poedit.png, url: https://poedit.net }
+  - { name: Google Translate, image: /images/logos/google-translate.svg, url: https://cloud.google.com/translate/ }
+  - { name: Filestack, image: /images/logos/filestack.png, url: https://www.filestack.com/ }
+---
+
+We can use Gato GraphQL to translate all the empty strings in a Poedit file, to easily create the translations for our themes and plugins for any language. The translated file is stored in Filestack, from where we can then download it.
+
+<div className="aspect-video lg:-ml-32 lg:-mr-32">
+  <iframe
+    className="w-full h-full"
+    src="https://www.youtube.com/embed/oiWqNWY3Of8"
+    title="Translating all strings in a Poedit file for any language"
+    width="768"
+    height="432"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
+In the demo video, we access the `.po` or `.pot` Poedit file from some URL, and execute the [persisted query **Translate Poedit file content**](/library/translate-poedit-file-content) (already available by the Gato GraphQL plugin), which extracts empty strings from the Poedit file, translates them to the desired language by executing a single request to the Google Translate API, and uploads the new translated Poedit file to Filestack.
+
+The response includes entry `uploadedFileURL` with the URL of the translated file on Filestack, from where we can download it. Opening the translated file on Poedit, we can then compile it to `.mo`, and include this file in our theme or plugin.
