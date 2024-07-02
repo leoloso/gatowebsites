@@ -1,0 +1,257 @@
+---
+title: "⭐️ Released v2.6 with new MultilingualPress extension (for multilingual sites)"
+description: 'Gato GraphQL v2.6 has been released with several new features and improvements'
+publishedAt: '2024-07-02 08:00:00'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - news
+  - release
+---
+
+Gato GraphQL `v2.6` has been released, containing several new features. Check out the [release notes in GitHub](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/2.6.0) for the complete list of changes.
+
+Below are the most important additions.
+
+## [PRO] Added integration with MultilingualPress
+
+Gato GraphQL PRO now has an integration with the <a href="https://multilingualpress.org" target="_blank">MultilingualPress</a> plugin.
+
+The GraphQL schema is provided the fields to retrieve multilingual data.
+
+For instance, you can now run this query:
+
+```graphql
+query {
+  posts {
+    multilingualpressTranslationConnections {
+      ...MultilingualPressConnectionData
+    }
+
+    categories {
+      multilingualpressTranslationConnections {
+        ...MultilingualPressConnectionData
+      }
+    }
+    
+    tags {
+      multilingualpressTranslationConnections {
+        ...MultilingualPressConnectionData
+      }
+    }
+  }
+
+  pages {
+    multilingualpressTranslationConnections {
+      ...MultilingualPressConnectionData
+    }
+  }
+  
+  customPosts(filter: { customPostTypes: "some-cpt" }) {
+    __typename
+    ...on GenericCustomPost {
+      multilingualpressIsTranslatable
+      multilingualpressTranslationConnections {
+        ...MultilingualPressConnectionData
+      }
+      
+      categories(taxonomy: "some-category") {
+        __typename
+        ...on GenericCategory {
+          multilingualpressIsTranslatable
+          multilingualpressTranslationConnections {
+            ...MultilingualPressConnectionData
+          }
+        }
+      }
+      
+      tags(taxonomy: "some-tag") {
+        __typename
+        ...on GenericTag {
+          multilingualpressIsTranslatable
+          multilingualpressTranslationConnections {
+            ...MultilingualPressConnectionData
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment MultilingualPressConnectionData {
+  siteID
+  entityID
+}
+```
+
+With this addition, we can use Gato GraphQL to automatically translate posts for the **MultilingualPress** plugin, and store those translations in the corresponding sites in the WordPress multisite network.
+
+Check the video for demo [Automatically translating posts for MultilingualPress (on a WordPress multisite network)](/demos/automatically-translate-posts-for-multilingualpress-gutenberg) to see how it works:
+
+<div className="aspect-video">
+  <iframe
+    className="w-full h-full"
+    src="https://www.youtube.com/embed/6wbQtY0BEAM"
+    title="Automatically translating posts for MultilingualPress"
+    width="768"
+    height="432"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
+## [PRO] Added field `_strRegexFindMatches`
+
+Field `_strRegexFindMatches` has been added to the **Helper Function Collection** module. This field executes a regular expression to extract all matches from a string.
+
+For instance, running this query:
+
+```graphql
+query {
+  _strRegexFindMatches(
+    regex: "/https?:\\/\\/([a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\\.[a-zA-Z]{2,})/",
+    string: "In website https://gatographql.com there is more information"
+  )
+}
+```
+
+...will produce:
+
+```json
+{
+  "data": {
+    "_strRegexFindMatches": [
+      [
+        "https:\/\/gatographql.com"
+      ],
+      [
+        "gatographql.com"
+      ]
+    ]
+  }
+}
+```
+
+With this addition, we can use Gato GraphQL to extract the empty strings from a <a href="https://poedit.net" target="_blank">Poedit</a> file, translate them to any language, and create the corresponding Poedit file for that language.
+
+Check the video for demo [Translating all strings in a Poedit file for any language](/demos/translating-all-strings-in-a-Poedit-file-for-any-language) to see how it works:
+
+<div className="aspect-video">
+  <iframe
+    className="w-full h-full"
+    src="https://www.youtube.com/embed/oiWqNWY3Of8"
+    title="Translating all strings in a Poedit file for any language"
+    width="768"
+    height="432"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
+## Added `siteURL` field
+
+Added the following field to the GraphQL schema, via the "Site" module:
+
+- `Root.siteURL`
+
+For instance, executing the following query:
+
+```graphql
+query {
+  siteURL
+}
+```
+
+...will produce:
+
+```json
+{
+  "data": {
+    "siteURL": "https://mysite.com"
+  }
+}
+```
+
+## Added fields to fetch multisite data
+
+The GraphQL schema now supports fetching data from a WordPress multisite network, provided via the new "Multisite" module.
+
+This module adds the following fields to the GraphQL schema:
+
+- `Root.networkSites`
+- `Root.networkSiteCount`
+
+Field `networkSites` returns an array with all the sites in the network, each of the new `NetworkSite` type, which contains the following fields:
+
+- `id`
+- `name`
+- `url`
+- `locale`
+- `language`
+
+These fields are only enabled when multisite is enabled (i.e. when method `is_multisite()` returns `true`).
+
+For instance, executing the following query:
+
+```graphql
+query {
+  networkSiteCount
+  networkSites {
+    id
+    name
+    url
+    locale
+    language
+  }
+}
+```
+
+might return:
+
+```json
+{
+  "data": {
+    "networkSiteCount": 3,
+    "networkSites": [
+     {
+        "id": 1,
+        "name": "Site in English",
+        "url": "https://mymultisite.com",
+        "locale": "en_US",
+        "language": "en"
+      },
+     {
+        "id": 2,
+        "name": "Site in Spanish",
+        "url": "https://es.mymultisite.com",
+        "locale": "es_AR",
+        "language": "es"
+      },
+     {
+        "id": 3,
+        "name": "Site in French",
+        "url": "https://fr.mymultisite.com",
+        "locale": "fr_FR",
+        "language": "fr"
+      }
+    ]
+  }
+}
+```
+
+## Added predefined persisted queries
+
+The following persisted queries have been added to Gato GraphQL:
+
+- [[PRO] Translate posts for MultilingualPress (Gutenberg)](/library/translate-posts-for-multilingualpress-gutenberg)
+- [[PRO] Translate posts for MultilingualPress (Classic editor)](/library/translate-posts-for-multilingualpress-classic-editor)
+- [[PRO] Translate Poedit file content](/library/translate-poedit-file-content)
+
+## [PRO] Added automation rules
+
+The following automation rules have been added to Gato GraphQL PRO:
+
+- **MultilingualPress: When publishing a post, translate it to all languages (Gutenberg)**
+- **MultilingualPress: When publishing a post, translate it to all languages (Classic editor)**

@@ -23,21 +23,15 @@ Field `multilingualpressTranslationConnections` provides results of type `Multil
 ```graphql
 {
   posts {
-    id
-    title
     multilingualpressTranslationConnections {
       ...MultilingualPressConnectionData
     }
     categories {
-      id
-      name
       multilingualpressTranslationConnections {
         ...MultilingualPressConnectionData
       }
     }
     tags {
-      id
-      name
       multilingualpressTranslationConnections {
         ...MultilingualPressConnectionData
       }
@@ -45,24 +39,18 @@ Field `multilingualpressTranslationConnections` provides results of type `Multil
   }
 
   pages {
-    id
-    title
     multilingualpressTranslationConnections {
       ...MultilingualPressConnectionData
     }
   }
 
   postCategories {
-    name
-    slug
     multilingualpressTranslationConnections {
       ...MultilingualPressConnectionData
     }
   }
 
   postTags {
-    name
-    slug
     multilingualpressTranslationConnections {
       ...MultilingualPressConnectionData
     }
@@ -94,15 +82,13 @@ In addition, field `multilingualpressIsTranslatable` indicates if the CPT or tax
 {
   customPosts(filter: { customPostTypes: "some-cpt" }) {
     __typename
-    title
-    customPostType
     multilingualpressIsTranslatable
     multilingualpressTranslationConnections {
       ...MultilingualPressConnectionData
     }
     ...on GenericCustomPost {
       categories(taxonomy: "some-category") {
-        name
+        __typename
         ...on GenericCategory {
           multilingualpressIsTranslatable
           multilingualpressTranslationConnections {
@@ -111,7 +97,7 @@ In addition, field `multilingualpressIsTranslatable` indicates if the CPT or tax
         }
       }
       tags(taxonomy: "some-tag") {
-        name
+        __typename
         ...on GenericTag {
           multilingualpressIsTranslatable
           multilingualpressTranslationConnections {
@@ -125,9 +111,6 @@ In addition, field `multilingualpressIsTranslatable` indicates if the CPT or tax
   categories(taxonomy: "some-category") {
     __typename
     ...on GenericCategory {
-      name
-      slug
-      taxonomy
       multilingualpressIsTranslatable
       multilingualpressTranslationConnections {
         ...MultilingualPressConnectionData
@@ -138,9 +121,6 @@ In addition, field `multilingualpressIsTranslatable` indicates if the CPT or tax
   tags(taxonomy: "some-tag") {
     __typename
     ...on GenericTag {
-      name
-      slug
-      taxonomy
       multilingualpressIsTranslatable
       multilingualpressTranslationConnections {
         ...MultilingualPressConnectionData
