@@ -37,8 +37,8 @@ We can use Gato GraphQL to automatically translate posts por the **MultilingualP
 
 In the demo video, there is a WordPress multisite network composed of 3 sites, for a multilingual site with 3 languages: English (set as the default), Spanish and French. The multisite is managed via MultilingualPress.
 
-We first create a post in English, and select the "Create a new post, and use it as translation in ..." options from MultilingualPress to create the corresponding empty posts in Spanish and French. We validate that MultilingualPress has indeed created those translation posts in the network.
+We first create a post in English, and select the "Create a new post, and use it as translation in ..." options from MultilingualPress to create the corresponding empty posts in Spanish and French. After saving the post in English as a draft, we validate that MultilingualPress has indeed created those translation posts in the network.
 
-Then we run the [persisted query **Translate posts for MultilingualPress (Gutenberg)**](/library/translate-posts-for-multilingualpress-gutenberg) (already available by the Gato GraphQL plugin), which will translate the content in English to all languages defined in the multilingual site, and store each translation in the corresponding post from the corresponding site.
+Then we run the [persisted query **Translate posts for MultilingualPress (Gutenberg)**](/library/translate-posts-for-multilingualpress-gutenberg) (already available by the Gato GraphQL plugin), which will translate the content in English to all languages defined in the multilingual site, and store each translation in the corresponding post from the corresponding site in the network.
 
 Then we automate the process, by publishing [automation](/features/automation) rule **MultilingualPress: When publishing a post, translate it to all languages (Gutenberg)** (already available by Gato GraphQL PRO, with `draft` status so it is disabled by default), which triggers the process automatically whenever the status of the post in English goes from `draft` to `publish`.
