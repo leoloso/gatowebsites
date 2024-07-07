@@ -18,11 +18,31 @@ This query duplicates the posts retrieved via the provided `$limit` and `$offset
 
 <Banner type='important'>
 
-This query requires the endpoint to have [Nested Mutations](/guides/schema/using-nested-mutations) enabled, and [Payload Types for Mutations](/guides/config/returning-a-payload-object-or-the-mutated-entity-for-mutations) with value `"Do not use Payload Types for Mutations (i.e. return the mutated entity)"`.
+This query requires the endpoint to have [Nested Mutations](/guides/schema/using-nested-mutations) enabled, and [Payload Types for Mutations](/guides/config/returning-a-payload-object-or-the-mutated-entity-for-mutations) with value `"Use payload types for mutations, and add fields to query those payload objects"`.
 
 </Banner>
 
 ```graphql
+########################################################################
+# 
+# Variables:
+#   - limit: Number of posts to duplicate
+#   - offset: Position of the first post to duplicate
+# 
+# *********************************************************************
+#
+# === Description ===
+#
+# This Persisted GraphQL query duplicates the posts retrieved via the
+# provided `$limit` and `$offset` variables (sorted by ascending ID).
+#
+# *********************************************************************
+#
+# More info:
+#   - https://gatographql.com/tutorial/duplicating-multiple-blog-posts-at-once/
+#
+########################################################################
+
 query InitializeDynamicVariables
   @configureWarningsOnExportingDuplicateVariable(enabled: false)
 {
@@ -93,10 +113,10 @@ query GetPostsAndExportData($limit: Int! = 5, $offset: Int! = 0)
   }
 }
 
-mutation DuplicatePosts
+mutation CreatePosts
   @depends(on: "GetPostsAndExportData")
 {
-  createdPostIDs: _echo(value: $postInput)
+  createdPostMutationPayloadObjectIDs: _echo(value: $postInput)
     @underEachArrayItem(
       passValueOnwardsAs: "input"
     )
@@ -107,40 +127,46 @@ mutation DuplicatePosts
         },
         setResultInResponse: true
       )
-    @export(as: "createdPostIDs")
+    @export(as: "createdPostMutationPayloadObjectIDs")
 }
 
-query DuplicateMultiplePosts
-  @depends(on: "DuplicatePosts")
+query DuplicatePosts
+  @depends(on: "CreatePosts")
 {
-  createdPosts: posts(
-    filter: {
-      ids: $createdPostIDs,
-      status: [draft]
-    }
-  ) {
-    # Fields not to be duplicated
-    id
-    slug
-    date
+  createdPostMutationObjectPayloads: createPostMutationPayloadObjects(input: {
+    ids: $createdPostMutationPayloadObjectIDs
+  }) {
     status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    post {
+      # Fields not to be duplicated
+      id
+      slug
+      date
+      status
 
-    # Fields to be duplicated
-    author {
-      id
+      # Fields to be duplicated
+      author {
+        id
+      }
+      categories {
+        id
+      }
+      rawContent
+      excerpt
+      featuredImage {
+        id
+      }
+      tags {
+        id
+      }
+      title
     }
-    categories {
-      id
-    }
-    rawContent
-    excerpt
-    featuredImage {
-      id
-    }
-    tags {
-      id
-    }
-    title
   }
 }
 ```

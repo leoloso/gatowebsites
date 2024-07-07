@@ -106,6 +106,93 @@ In this mode, the GraphQL schema will contain plenty of additional `MutationPayl
 
 ![GraphQL schema with payload object types for mutations](/assets/guides/upstream/mutations-using-payload-object-types.png "GraphQL schema with payload object types for mutations")
 
+### Query the mutation payload objects
+
+Every mutation in the schema has a corresponding field to query its recently-created payload objects, with name `{mutationName}MutationPayloadObjects`.
+
+These fields include:
+
+- `addCommentToCustomPostMutationPayloadObjects` (for `addCommentToCustomPost`)
+- `createCustomPostMutationPayloadObjects` (for `createCustomPost`)
+- `createMediaItemMutationPayloadObjects` (for `createMediaItem`)
+- `createPageMutationPayloadObjects` (for `createPage`)
+- `createPostMutationPayloadObjects` (for `createPost`)
+- `removeFeaturedImageFromCustomPostMutationPayloadObjects` (for `removeFeaturedImageFromCustomPost`)
+- `replyCommentMutationPayloadObjects` (for `replyComment`)
+- `setCategoriesOnPostMutationPayloadObjects` (for `setCategoriesOnPost`)
+- `setFeaturedImageOnCustomPostMutationPayloadObjects` (for `setFeaturedImageOnCustomPost`)
+- `setTagsOnPostMutationPayloadObjects` (for `setTagsOnPost`)
+- `updateCustomPostMutationPayloadObjects` (for `updateCustomPost`)
+- `updatePageMutationPayloadObjects` (for `updatePage`)
+- `updatePostMutationPayloadObjects` (for `updatePost`)
+
+These fields enable us to retrieve the results of mutations executed using `@applyField` while iterating the items in an array.
+
+For instance, the following query duplicates posts in bulk:
+
+```graphql
+query GetPostsAndExportData
+{
+  postsToDuplicate: posts {
+    title
+    rawContent
+    excerpt
+
+    # Already create (and export) the inputs for the mutation
+    postInput: _echo(value: {
+      title: $__title
+      contentAs: {
+        html: $__rawContent
+      },
+      excerpt: $__excerpt
+    })
+      @export(as: "postInput", type: LIST)
+      @remove
+  }
+}
+
+mutation CreatePosts
+  @depends(on: "GetPostsAndExportData")
+{
+  createdPostMutationPayloadObjectIDs: _echo(value: $postInput)
+    @underEachArrayItem(
+      passValueOnwardsAs: "input"
+    )
+      @applyField(
+        name: "createPost"
+        arguments: {
+          input: $input
+        },
+        setResultInResponse: true
+      )
+    @export(as: "createdPostMutationPayloadObjectIDs")
+}
+
+query DuplicatePosts
+  @depends(on: "CreatePosts")
+{
+  createdPostMutationObjectPayloads: createPostMutationPayloadObjects(input: {
+    ids: $createdPostMutationPayloadObjectIDs
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    post {
+      id
+      title
+      rawContent
+      excerpt
+    }
+  }
+}
+```
+
+By default, these fields are not added to the GraphQL schema. For that, we must select option "Use payload types for mutations, and add fields to query those payload objects".
+
 ## Mutated entity
 
 The mutation will directly return the mutated entity in case of success, or <code>null</code> in case of failure, and any error message will be displayed in the JSON response's top-level <code>errors</code> entry.

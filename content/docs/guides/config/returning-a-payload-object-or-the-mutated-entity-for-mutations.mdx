@@ -9,11 +9,19 @@ We can configure mutation fields to return [either of these 2 different entities
 - A payload object type
 - Directly the mutated entity
 
+When returning using the payload object type, we can additionally [add fields to the schema to query the mutation payload objects](/guides/interact/handling-mutation-payloads#query-the-mutation-payload-objects).
+
+Overall, we can configure the GraphQL schema with one among three options:
+
+- Use payload types for mutations
+- Use payload types for mutations, and add fields to query those payload objects
+- Do not use payload types for mutations (i.e. return the mutated entity)
+
 Using payload object types for mutations in the schema can be configured as follows, in order of priority:
 
 ✅ Specific mode for the custom endpoint or persisted query, defined in the schema configuration
 
-![Defining if to use payload object types for mutations, set in the Schema configuration](/assets/guides/upstream/schema-configuration-payload-object-types-for-mutations.png "Defining if to use payload object types for mutations, set in the Schema configuration")
+![Defining if and how to use payload object types for mutations, set in the Schema configuration](/assets/guides/upstream/schema-configuration-payload-object-types-for-mutations.png "Defining if and how to use payload object types for mutations, set in the Schema configuration")
 
 ✅ Default mode, defined in the Settings
 
@@ -23,6 +31,6 @@ If the schema configuration has value `"Default"`, it will use the mode defined 
   src="/assets/guides/upstream/settings-payload-object-types-for-mutations-default.png"
   width="1024"
   height="940"
-  alt="Defining if to use payload object types for mutations, in the Settings"
-  caption="Defining if to use payload object types for mutations, in the Settings"
+  alt="Defining if and how to use payload object types for mutations, in the Settings"
+  caption="Defining if and how to use payload object types for mutations, in the Settings"
 />
