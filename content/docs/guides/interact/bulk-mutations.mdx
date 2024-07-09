@@ -1,0 +1,133 @@
+---
+title: Bulk mutations
+description: This guide introduces bulk mutation fields.
+order: 315
+---
+
+Gato GraphQL provides "bulk" mutation fields for all mutations in the schema, allowing us to mutate multiple resources.
+
+For instance, mutation `createPosts` (single-resource mutation is `createPost`) will create multiple posts:
+
+```graphql
+mutation CreatePosts {
+  createPosts(inputs: [
+    {
+      title: "First post"
+      contentAs: {
+        html: "This is the content for the first post"
+      }
+    },
+    {
+      title: "Second post"
+      contentAs: {
+        html: "Here is another content, for another post"
+      }
+      excerpt: "The cup is within reach"
+    },
+    {
+      title: "Third post"
+      contentAs: {
+        html: "This is yet another piece of content"
+      },
+      authorBy: {
+        id: 1
+      },
+      status: draft
+    }
+  ]) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    post {
+      id
+      title
+      content
+      excerpt
+      author {
+        name
+      }
+      status
+    }
+  }
+}
+```
+
+## List of bulk fields
+
+The GraphQL schema offers the following bulk mutation fields:
+
+- `_sendEmails` (Global mutation / PRO)
+- `Root.addCommentToCustomPosts`
+- `Root.createCustomPosts`
+- `Root.createMediaItems`
+- `Root.createPages`
+- `Root.createPosts`
+- `Root.removeFeaturedImageFromCustomPosts`
+- `Root.replyComments`
+- `Root.setCategoriesOnPosts`
+- `Root.setFeaturedImageOnCustomPosts`
+- `Root.setTagsOnPosts`
+- `Root.updateCustomPosts`
+- `Root.updatePages`
+- `Root.updatePosts`
+- `Comment.replyWithComments`
+- `CustomPost.addComments`
+
+## Arguments
+
+All bulk mutations accept two arguments:
+
+- `inputs` (mandatory): The array of input items, where each item contains the data to mutate one resource
+- `stopExecutingMutationItemsOnFirstError` (default `false`): Indicate if, in case any of the inputs produces an error, should stop executing the mutation on the following inputs.
+
+All mutations are executed in the same order provided in the `inputs` argument.
+
+## Use cases
+
+Bulk mutations unlock plenty of possibilities for managing our WordPress site.
+
+For instance, the following GraphQL query uses `createPosts` to duplicate posts:
+
+```graphql
+query ExportPostData
+{
+  postsToDuplicate: posts {
+    rawTitle
+    rawContent
+    rawExcerpt
+    postInput: _echo(value: {
+      title: $__rawTitle
+      contentAs: {
+        html: $__rawContent
+      },
+      excerpt: $__rawExcerpt
+    })
+      @export(as: "postInputs", type: LIST)
+      @remove
+  }
+}
+
+mutation CreatePosts
+  @depends(on: "ExportPostData")
+{
+  createPosts(inputs: $postInputs) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    post {
+      id
+      title
+      content
+      excerpt
+    }
+  }
+}
+```
