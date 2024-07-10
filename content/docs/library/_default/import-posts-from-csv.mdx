@@ -17,12 +17,6 @@ order: 0
 
 This query imports posts from a CSV.
 
-<Banner type='important'>
-
-This query requires the endpoint to have [Nested Mutations](/guides/schema/using-nested-mutations) enabled, and [Payload Types for Mutations](/guides/config/returning-a-payload-object-or-the-mutated-entity-for-mutations) with value `"Use payload types for mutations, and add fields to query those payload objects"`.
-
-</Banner>
-
 It creates a new post with the title, excerpt, content and author (provided via username) of each post.
 
 The names of the columns with those fields are provided via variables:
@@ -191,26 +185,7 @@ query GetPostsFromCSVAndExportData(
 mutation CreatePostsFromCSVEntries
   @depends(on: "GetPostsFromCSVAndExportData")
 {
-  createdPostMutationPayloadObjectIDs: _echo(value: $postInputs)
-    @underEachArrayItem(
-      passValueOnwardsAs: "input"
-    )
-      @applyField(
-        name: "createPost"
-        arguments: {
-          input: $input
-        },
-        setResultInResponse: true
-      )
-    @export(as: "createdPostMutationPayloadObjectIDs")
-}
-
-query ImportPostsFromCSVEntries
-  @depends(on: "CreatePostsFromCSVEntries")
-{
-  createdPostMutationObjectPayloads: createPostMutationPayloadObjects(input: {
-    ids: $createdPostMutationPayloadObjectIDs
-  }) {
+  createPosts(inputs: $postInputs) {
     status
     errors {
       __typename
@@ -233,4 +208,4 @@ query ImportPostsFromCSVEntries
     }
   }
 }
-```
+
