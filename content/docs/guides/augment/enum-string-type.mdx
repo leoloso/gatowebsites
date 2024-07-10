@@ -4,7 +4,7 @@ description: "Gato GraphQL implements a custom 'Enum String' type, which is a St
 order: 300
 ---
 
-Certain pieces of information can only have a value from a predefined set, which should ideally be modeled using an `Enum` type. However, enum types have the limitation that its values can't include the `"-"` char, and there are ocassions when this can't be avoided.
+Certain pieces of information can only have a value from a predefined set, which should ideally be modeled using an `Enum` type. However, enum types have the limitation that its values can't include the `"-"` char, and there are occassions when this can't be avoided.
 
 For instance, it would make sense to have a `CustomPostEnum` enum type, listing all the custom post types that can be queried (i.e. those registered in the site, and which have been allowed to be queried). However, custom post types can include the `"-"` char in their names, as in the `"some-custom-cpt"` example below:
 
