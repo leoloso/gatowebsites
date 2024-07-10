@@ -9,23 +9,9 @@ tags:
   - release
 ---
 
-Gato GraphQL `v3.0` has been released, containing new features and a couple of breaking changes. Check out the [release notes in GitHub](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/3.0.0).
+Gato GraphQL `v3.0` has been released, containing new features and a couple of breaking changes. Check out the [release notes in GitHub](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/3.0.0) for the complete list of changes.
 
-These are the updates.
-
-## Breaking change: Require at least WordPress v6.0
-
-When using Gato GraphQL with WordPress `v6.6`, [blocks in the plugin stopped working](https://github.com/WordPress/gutenberg/issues/63009).
-
-As a solution, blocks were adapted and re-compiled, and the new [compiled files only work only with WordPress `v6.0`+](https://github.com/WordPress/gutenberg/issues/63135#issuecomment-2211631051).
-
-That's why, from now on, Gato GraphQL requires at least WordPress `v6.0`.
-
-## Breaking change: Option "Do not use payload types for mutations (i.e. return the mutated entity)" in schema configuration block "Payload Types for Mutations" must be re-selected
-
-Schema configuration block "Payload Types for Mutations" has been added a new option value (see below). For this reason, its inner attribute to store the selected option has changed (it went from storing a `true/false` value, to storing an option string value).
-
-If you have created a schema configuration with option "Do not use payload types for mutations (i.e. return the mutated entity)" selected, after upgrading to `v3.0` this selection value will be lost. You need to edit the schema configuration, select this option again, and save.
+Below are the most important updates.
 
 ## Added compatibility with WordPress 6.6
 
@@ -84,13 +70,6 @@ mutation CreatePosts {
   }
 }
 ```
-
-All bulk mutations accept two arguments:
-
-- `inputs` (mandatory): The array of input items, where each item contains the data to mutate one resource
-- `stopExecutingMutationItemsOnFirstError` (default `false`): Indicate if, in case any of the inputs produces an error, should stop executing the mutation on the following inputs.
-
-All mutations are executed in the same order provided in the `inputs` argument.
 
 Bulk mutations unlock possibilities for managing our WordPress site. For instance, the following GraphQL query uses `createPosts` (and Multiple Query Execution, provided by Gato GraphQL PRO) to duplicate posts:
 
@@ -152,114 +131,14 @@ The list of added bulk mutation fields is the following:
 - `Comment.replyWithComments`
 - `CustomPost.addComments`
 
-## Added fields to query the mutation payload objects
+## Breaking change: Require at least WordPress v6.0
 
-In addition to a bulk mutation, every mutation in the GraphQL schema has also been added a corresponding field to query its recently-created payload objects, with name `{mutationName}MutationPayloadObjects` (such as field `createPostMutationPayloadObjects` to query the payload objects from mutation `createPost`).
+When using Gato GraphQL with WordPress `v6.6`, blocks in the plugin stopped working, and had to be re-compiled targetting WordPress `v6.0`+.
 
-These fields provide a method to execute a mutation via the `@applyField` directive (for instance, while iterating all items in an array via `@underEachArrayItem`), and then be able to retrieve the results of the mutation.
+That's why Gato GraphQL `v3.0` requires at least WordPress `v6.0`.
 
-For instance, this is an alternative way for duplicating posts in bulk:
+## Breaking change: Option "Do not use payload types for mutations (i.e. return the mutated entity)" in schema configuration block "Payload Types for Mutations" must be re-selected
 
-```graphql
-query ExportPostData
-{
-  postsToDuplicate: posts {
-    rawTitle
-    rawContent
-    rawExcerpt
-    postInput: _echo(value: {
-      title: $__rawTitle
-      contentAs: {
-        html: $__rawContent
-      },
-      excerpt: $__rawExcerpt
-    })
-      @export(as: "postInputs", type: LIST)
-      @remove
-  }
-}
+Schema configuration block "Payload Types for Mutations" has been added a new option value (see below), hence its inner data structure has changed.
 
-mutation CreatePosts
-  @depends(on: "ExportPostData")
-{
-  createdPostMutationPayloadObjectIDs: _echo(value: $postInputs)
-    @underEachArrayItem(
-      passValueOnwardsAs: "input"
-    )
-      @applyField(
-        name: "createPost"
-        arguments: {
-          input: $input
-        },
-        setResultInResponse: true
-      )
-    @export(as: "createdPostMutationPayloadObjectIDs")
-}
-
-query DuplicatePosts
-  @depends(on: "CreatePosts")
-{
-  createdPostMutationObjectPayloads: createPostMutationPayloadObjects(input: {
-    ids: $createdPostMutationPayloadObjectIDs
-  }) {
-    status
-    errors {
-      __typename
-      ...on ErrorPayload {
-        message
-      }
-    }
-    post {
-      id
-      title
-      content
-      excerpt
-    }
-  }
-}
-```
-
-The list of added fields is the following:
-
-- `Root.addCommentToCustomPostMutationPayloadObjects` (for `Root.addCommentToCustomPost`)
-- `Root.createCustomPostMutationPayloadObjects` (for `Root.createCustomPost`)
-- `Root.createMediaItemMutationPayloadObjects` (for `Root.createMediaItem`)
-- `Root.createPageMutationPayloadObjects` (for `Root.createPage`)
-- `Root.createPostMutationPayloadObjects` (for `Root.createPost`)
-- `Root.removeFeaturedImageFromCustomPostMutationPayloadObjects` (for `Root.removeFeaturedImageFromCustomPost`)
-- `Root.replyCommentMutationPayloadObjects` (for `Root.replyComment`)
-- `Root.setCategoriesOnPostMutationPayloadObjects` (for `Root.setCategoriesOnPost`)
-- `Root.setFeaturedImageOnCustomPostMutationPayloadObjects` (for `Root.setFeaturedImageOnCustomPost`)
-- `Root.setTagsOnPostMutationPayloadObjects` (for `Root.setTagsOnPost`)
-- `Root.updateCustomPostMutationPayloadObjects` (for `Root.updateCustomPost`)
-- `Root.updatePageMutationPayloadObjects` (for `Root.updatePage`)
-- `Root.updatePostMutationPayloadObjects` (for `Root.updatePost`)
-
-By default, these fields are not added to the GraphQL schema. For that, the new option "Use payload types for mutations, and add fields to query those payload objects" must be selected (see below).
-
-## Added option to schema configuration block "Payload Types for Mutations"
-
-The schema configuration block "Payload Types for Mutations" has been added a new option value:
-
-- Use payload types for mutations, and add fields to query those payload objects
-
-This option will add those fields to query the mutation payload objects (see above) to the GraphQL schema.
-
-## Added predefined custom endpoint "Bulk mutations"
-
-Custom endpoint "Bulk mutations" (alongside its schema configuration with the same name) is created by default when installing the plugin.
-
-This custom endpoint is useful for executing CRUD operations in bulk, such as for persisted queries "Duplicate posts" and "Import posts from CSV".
-
-## Removed predefined custom endpoint "Nested mutations + Entity as mutation payload type"
-
-Since adding predefined custom endpoint "Bulk mutations", the predefined custom endpoint "Nested mutations + Entity as mutation payload type" became unnecessary, so it's been removed.
-
-Similarly, its schema configuration "Nested mutations + Entity as mutation payload type" has also been removed.
-
-(This is not a breaking change, because these items will simply not be installed anymore; If you have them already installed, they will not get deleted.)
-
-## Fixed
-
-- Catch exception if dependency version is not semver
-- Convert entries in JSON dictionary of variables in persisted query from array to object
+If you have created a schema configuration with option "Do not use payload types for mutations (i.e. return the mutated entity)" selected, after upgrading to `v3.0` this selection value will be lost. You need to edit the schema configuration, select this option again, and save.
