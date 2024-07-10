@@ -139,8 +139,8 @@ In order to support WordPress `v6.6`, blocks in the plugin had to be re-compiled
 
 Hence, starting from `v3.0`, Gato GraphQL requires at least WordPress `v6.0`.
 
-## Breaking change: Option "Do not use payload types for mutations (i.e. return the mutated entity)" in schema configuration block "Payload Types for Mutations" must be re-selected
+## Breaking change: Schema configuration block "Payload Types for Mutations" must be saved again
 
-Schema configuration block "Payload Types for Mutations" has been added a new option value, hence its inner data structure has changed.
+Schema configuration block "Payload Types for Mutations" has been added a new option value: "Do not use payload types for mutations (i.e. return the mutated entity)". For this reason, its inner data structure has changed.
 
 If you have created a schema configuration with option "Do not use payload types for mutations (i.e. return the mutated entity)" selected, after upgrading to `v3.0` this selection value will be lost. You need to edit the schema configuration, select this option again, and save.
