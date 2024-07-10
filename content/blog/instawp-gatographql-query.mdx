@@ -17,10 +17,10 @@ This GraphQL query captures the email from the visitors who ticked the "Subscrib
 
 ```graphql
 query HasSubscribedToNewsletter {
-  hasSubscriberOptin: _httpRequestHasParam(name: "marketing_optin")
-  subscriberOptin: _httpRequestStringParam(name: "marketing_optin")
-  isNotSubscriberOptinNAValue: _notEquals(value1: $__subscriberOptin, value2: "NA")
-  subscribedToNewsletter: _and(values: [$__hasSubscriberOptin, $__isNotSubscriberOptinNAValue])
+  hasSubscriberOptIn: _httpRequestHasParam(name: "marketing_optin")
+  subscriberOptIn: _httpRequestStringParam(name: "marketing_optin")
+  isNotSubscriberOptInNAValue: _notEquals(value1: $__subscriberOptIn, value2: "NA")
+  subscribedToNewsletter: _and(values: [$__hasSubscriberOptIn, $__isNotSubscriberOptInNAValue])
     @export(as: "subscribedToNewsletter")
 }
 
@@ -92,7 +92,7 @@ query MaybeCreateContactOnMailchimp
 ```graphql
 query HasSubscribedToNewsletter {
   # ...
-  subscribedToNewsletter: _and(values: [$__hasSubscriberOptin, $__isNotSubscriberOptinNAValue])
+  subscribedToNewsletter: _and(values: [$__hasSubscriberOptIn, $__isNotSubscriberOptInNAValue])
     @export(as: "subscribedToNewsletter")
 }
 ```
@@ -119,16 +119,16 @@ This is computed in the `HasSubscribedToNewsletter` operation. Here it is with c
 query HasSubscribedToNewsletter {
 
   # Check if field `marketing_optin` is present
-  hasSubscriberOptin: _httpRequestHasParam(name: "marketing_optin")
+  hasSubscriberOptIn: _httpRequestHasParam(name: "marketing_optin")
 
   # Get the value of field `marketing_optin`
-  subscriberOptin: _httpRequestStringParam(name: "marketing_optin")
+  subscriberOptIn: _httpRequestStringParam(name: "marketing_optin")
 
   # Check if the value of the field is not "NA"
-  isNotSubscriberOptinNAValue: _notEquals(value1: $__subscriberOptin, value2: "NA")
+  isNotSubscriberOptInNAValue: _notEquals(value1: $__subscriberOptIn, value2: "NA")
 
   # Perform an AND operation: field present && value != "NA"
-  subscribedToNewsletter: _and(values: [$__hasSubscriberOptin, $__isNotSubscriberOptinNAValue])
+  subscribedToNewsletter: _and(values: [$__hasSubscriberOptIn, $__isNotSubscriberOptInNAValue])
     
     # Export the result under dynamic variable $subscribedToNewsletter
     @export(as: "subscribedToNewsletter")
@@ -152,15 +152,15 @@ These are [global fields](/features/global-fields), which are fields that are av
 
 Have you noticed those variables starting with `$__`? Namely:
 
-- `$__subscriberOptin`
-- `$__hasSubscriberOptin`
-- `$__isNotSubscriberOptinNAValue`
+- `$__subscriberOptIn`
+- `$__hasSubscriberOptIn`
+- `$__isNotSubscriberOptInNAValue`
 
-These are dynamic variables that contain the value of a field defined before them within the same operation. For instance, variable `$__subscriberOptin` contains the value of field `subscriberOptin` declared above it.
+These are dynamic variables that contain the value of a field defined before them within the same operation. For instance, variable `$__subscriberOptIn` contains the value of field `subscriberOptIn` declared above it.
 
 This is a feature provided by the [Field to Input](/extensions/field-to-input) extension, which allows to use the output of a field as input into another field. This is how we can create functionality within the GraphQL query.
 
-In the query, field `isNotSubscriberOptinNAValue` checks that the value of the previously queried field `subscriberOptin` does not equal `"NA"`, and `subscribedToNewsletter` computes an `AND` operation involving the values of fields `hasSubscriberOptin` and `isNotSubscriberOptinNAValue`.
+In the query, field `isNotSubscriberOptInNAValue` checks that the value of the previously queried field `subscriberOptIn` does not equal `"NA"`, and `subscribedToNewsletter` computes an `AND` operation involving the values of fields `hasSubscriberOptIn` and `isNotSubscriberOptInNAValue`.
 
 ## Connecting to Mailchimp
 
