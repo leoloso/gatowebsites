@@ -1,0 +1,146 @@
+---
+title: "⭐️ Released v3.0 with support for WordPress 6.6, and bulk mutations"
+seoTitle: "⭐️ Released Gato GraphQL v3.0 with support for WordPress 6.6, and bulk mutations"
+description: 'Gato GraphQL v3.0 has been released with several new features and improvements'
+seoDescription: 'Gato GraphQL v3.0 has been released with several new features and improvements, including support for WordPress 6.6, bulk mutations, and more'
+publishedAt: '2024-07-10 08:00:00'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - news
+  - release
+---
+
+Gato GraphQL `v3.0` has been released, containing new features and a couple of breaking changes. Check out the [release notes in GitHub](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/3.0.0) for the complete list of changes.
+
+Below are the most important updates.
+
+## Added compatibility with WordPress 6.6
+
+Gato GraphQL `3.0` has recompiled all its blocks, to make them compatible with WordPress 6.6. (For all previous versions, blocks will throw a JS error.)
+
+## Added bulk mutation fields (for all mutations in the schema)
+
+Gato GraphQL `3.0` adds "bulk" mutation fields for all mutations in the schema, allowing us to mutate multiple resources.
+
+For instance, mutation `createPosts` (single-resource mutation is `createPost`) will create multiple posts:
+
+```graphql
+mutation CreatePosts {
+  createPosts(inputs: [
+    {
+      title: "First post"
+      contentAs: {
+        html: "This is the content for the first post"
+      }
+    },
+    {
+      title: "Second post"
+      contentAs: {
+        html: "Here is another content, for another post"
+      }
+      excerpt: "The cup is within reach"
+    },
+    {
+      title: "Third post"
+      contentAs: {
+        html: "This is yet another piece of content"
+      },
+      authorBy: {
+        id: 1
+      },
+      status: draft
+    }
+  ]) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    post {
+      id
+      title
+      content
+      excerpt
+      author {
+        name
+      }
+      status
+    }
+  }
+}
+```
+
+Bulk mutations unlock possibilities for managing our WordPress site. For instance, the following GraphQL query uses `createPosts` (and Multiple Query Execution, provided by Gato GraphQL PRO) to duplicate posts:
+
+```graphql
+query ExportPostData
+{
+  postsToDuplicate: posts {
+    rawTitle
+    rawContent
+    rawExcerpt
+    postInput: _echo(value: {
+      title: $__rawTitle
+      contentAs: {
+        html: $__rawContent
+      },
+      excerpt: $__rawExcerpt
+    })
+      @export(as: "postInputs", type: LIST)
+      @remove
+  }
+}
+
+mutation CreatePosts
+  @depends(on: "ExportPostData")
+{
+  createPosts(inputs: $postInputs) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    post {
+      id
+      title
+      content
+      excerpt
+    }
+  }
+}
+```
+
+The list of added bulk mutation fields is the following:
+
+- `Root.addCommentToCustomPosts`
+- `Root.createCustomPosts`
+- `Root.createMediaItems`
+- `Root.createPages`
+- `Root.createPosts`
+- `Root.removeFeaturedImageFromCustomPosts`
+- `Root.replyComments`
+- `Root.setCategoriesOnPosts`
+- `Root.setFeaturedImageOnCustomPosts`
+- `Root.setTagsOnPosts`
+- `Root.updateCustomPosts`
+- `Root.updatePages`
+- `Root.updatePosts`
+- `Comment.replyWithComments`
+- `CustomPost.addComments`
+
+## Breaking change: Require at least WordPress v6.0
+
+In order to support WordPress `v6.6`, blocks in the plugin had to be re-compiled targetting WordPress `v6.0`+.
+
+Hence, starting from `v3.0`, Gato GraphQL requires at least WordPress `v6.0`.
+
+## Breaking change: Schema configuration block "Payload Types for Mutations" may need be reconfigured
+
+Schema configuration block "Payload Types for Mutations" has been added a new option value: "Do not use payload types for mutations (i.e. return the mutated entity)". For this reason, its inner data structure has changed.
+
+If you have created a schema configuration with option "Do not use payload types for mutations (i.e. return the mutated entity)" selected, after upgrading to `v3.0` this selection value will be lost. You need to edit the schema configuration, select this option again, and save.
