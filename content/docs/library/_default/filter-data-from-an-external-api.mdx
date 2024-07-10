@@ -1,6 +1,6 @@
 ---
 title: Filter data from an external API
-description: "If the API does not allow filtering results that satisfy some condition (such as having a field with a non-empty value), we can implement an API gateway that removes those entries that do not satifsy our condition"
+description: "If the API does not allow filtering results that satisfy some condition (such as having a field with a non-empty value), we can implement an API gateway that removes those entries that do not satisfy our condition"
 order: 0
 # referencedTutorialLessonSlugs:
 # - 'filtering-data-from-an-external-api'
@@ -13,7 +13,7 @@ order: 0
 # - 'php-functions-via-schema'
 ---
 
-If we need to fetch data from an external API, but we only need those results that satisfy some condition (such as having a field with a non-empty value), and the API does not support filtering, we can then use Gato GraphQL to implement an API gateway that removes those entries that do not satifsy our condition.
+If we need to fetch data from an external API, but we only need those results that satisfy some condition (such as having a field with a non-empty value), and the API does not support filtering, we can then use Gato GraphQL to implement an API gateway that removes those entries that do not satisfy our condition.
 
 For instance, when invoking the REST API endpoint `/users` from some WordPress site, we can filter out those users that have the `url` field empty:
 
