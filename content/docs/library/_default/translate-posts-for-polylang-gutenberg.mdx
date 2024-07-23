@@ -195,15 +195,24 @@ query ExportOriginPost(
 )
   @depends(on: "InitializeVariables")
 {
-  defaultLanguage: polylangDefaultLanguage
-    @export(as: "defaultLanguage")
+  defaultLanguage: polylangDefaultLanguage {
+    code @export(as: "defaultLanguage")
+  }
+
+  languages: polylangLanguages {
+    code @export(
+      as: "languageLocaleCodes"
+      type: DICTIONARY
+    )
+  }
 
   originPost: post(by: { id: $postId }, status: any) {
     id
 
 
-    polylangLanguage
-      @export(as: "fromLanguage")
+    polylangLanguage {
+      code @export(as: "fromLanguage")
+    }
     
 
     polylangTranslationLanguageIDs(filter: {
@@ -478,6 +487,7 @@ query InitializeTranslationVariables(
   @include(if: $hasTranslationPosts)
 {
   emptyTranslationPostVars: posts(filter: { ids: $translationPostIds, status: $statusToUpdate } ) {
+    id
     emptyArray: _echo(value: [])
       @export(
         as: "rawTitle"
@@ -730,6 +740,8 @@ query InitializeTranslationVariables(
         as: "coreEmbedCaptionReplacementsTo"
         type: DICTIONARY
       )
+
+      @remove
   }
 
   hasTranslationPosts: _notEmpty(value: $__emptyTranslationPostVars)
@@ -793,12 +805,12 @@ query FetchData($statusToUpdate: CustomPostStatusEnum! = draft)
       @remove
 
 
-    polylangLanguage
-      @export(
-        as: "translationPostLanguages"
-        type: DICTIONARY
-      )
-      @remove
+    polylangLanguage @export(
+      as: "translationPostLanguages"
+      type: DICTIONARY
+    ) {
+      code
+    }
 
 
     coreHeadingContentItems: _echo(value: $originCoreHeadingContentItems)
@@ -1342,13 +1354,21 @@ query TransformData(
       @underJSONObjectProperty(by: { key: "to" })
         @underEachJSONObjectProperty(
           passKeyOnwardsAs: "postId"
-          affectDirectivesUnderPos: [1, 2, 3]
+          affectDirectivesUnderPos: [1, 2, 3, 4]
         )
           @applyField(
             name: "_objectProperty",
             arguments: {
               object: $translationPostLanguages,
               by: { key: $postId }
+            },
+            passOnwardsAs: "toLanguageLocale"
+          )
+          @applyField(
+            name: "_objectProperty",
+            arguments: {
+              object: $languageLocaleCodes,
+              by: { key: $toLanguageLocale }
             },
             passOnwardsAs: "toLanguage"
           )
