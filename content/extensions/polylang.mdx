@@ -16,39 +16,71 @@ The GraphQL schema is provided the fields to query multilingual data.
 
 ```graphql
 query {
-  polylangDefaultLanguage
-  polylangEnabledLanguages
+  polylangDefaultLanguage {
+    name
+    code
+    locale
+  }
+  polylangLanguages {
+    name
+    code
+    locale
+  }
 
   posts {
-    polylangLanguage
+    polylangLanguage {
+      name
+      code
+      locale
+    }
     polylangTranslationLanguageIDs
 
     categories {
-      polylangLanguage
+      polylangLanguage {
+        name
+        code
+        locale
+      }
       polylangTranslationLanguageIDs
     }
     
     tags {
-      polylangLanguage
+      polylangLanguage {
+        name
+        code
+        locale
+      }
       polylangTranslationLanguageIDs
     }
   }
 
   pages {
-    polylangLanguage
+    polylangLanguage {
+      name
+      code
+      locale
+    }
     polylangTranslationLanguageIDs
   }
 
   customPosts(filter: { customPostTypes: ["some-cpt"] }) {
     ...on GenericCustomPost {
       polylangIsTranslatable
-      polylangLanguage
+      polylangLanguage {
+        name
+        code
+        locale
+      }
       polylangTranslationLanguageIDs
       
       categories(taxonomy: "some-category") {
         ...on GenericCategory {
           polylangIsTranslatable
-          polylangLanguage
+          polylangLanguage {
+            name
+            code
+            locale
+          }
           polylangTranslationLanguageIDs
         }
       }
@@ -56,7 +88,11 @@ query {
       tags(taxonomy: "some-tag") {
         ...on GenericTag {
           polylangIsTranslatable
-          polylangLanguage
+          polylangLanguage {
+            name
+            code
+            locale
+          }
           polylangTranslationLanguageIDs
         }
       }
@@ -64,7 +100,11 @@ query {
   }
 
   mediaItems {
-    polylangLanguage
+    polylangLanguage {
+      name
+      code
+      locale
+    }
     polylangTranslationLanguageIDs
   }
 }
