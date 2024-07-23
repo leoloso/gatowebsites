@@ -20,11 +20,35 @@ By default, the origin post must have the default language of the site, or the u
 
 ```graphql
 ########################################################################
+# 
 # Variables:
-#   - `$postId`: The post with the origin language, from where to trigger the updates
-#   - `$statusToUpdate`: The status that the translation posts must have to be updated. It is `draft` by default. Pass `any` for any status.
-#   - `$triggerUpdateFromDefaultLanguageOnly`: Indicate if to only execute the update when the origin post has the default language of the site. It is `true` by default.
-# ########################################################################
+#   - postId: The post with the origin language, from where to trigger the updates
+#   - statusToUpdate: The status that the translation posts must have to be updated. It is `draft` by default. Pass `any` for any status.
+#   - triggerUpdateFromDefaultLanguageOnly: Indicate if to only execute the update when the origin post has the default language of the site. It is `true` by default.
+#
+# *********************************************************************
+#
+# === Description ===
+#
+# This Persisted GraphQL query is an integration for Polylang.
+#
+# It takes an origin post, queries its tags and categories,
+# and updates its translation posts with the corresponding
+# tags and categories for the corresponding language,
+# as set-up via Polylang. If some tag or category does not
+# have a translation, that tag or category is removed.
+#
+# All translation posts must have the  `draft` status
+# to be updated. To update posts with any other status, use
+# variable `$statusToUpdate` (for instance, passing value
+# `publish`, `pending` or `any`)
+#
+# By default, the origin post must have the default language
+# of the site, or the update will not be executed.
+# To trigger the update from any language, pass variable
+# `$triggerUpdateFromDefaultLanguageOnly` with `false`.
+#
+########################################################################
 query InitializeVariables
   @configureWarningsOnExportingDuplicateVariable(enabled: false)
 {
@@ -48,14 +72,23 @@ query InitializeVariables
 query ExportDataFromOriginPost($postId: ID!)
   @depends(on: "InitializeVariables")
 {
-  defaultLanguage: polylangDefaultLanguage
-    @export(as: "defaultLanguage")
+  defaultLanguage: polylangDefaultLanguage {
+    code @export(as: "defaultLanguage")
+  }
+
+  languages: polylangLanguages {
+    code @export(
+      as: "languageLocaleCodes"
+      type: DICTIONARY
+    )
+  }
 
   originPost: post(by: { id: $postId }, status: any) {
     id
 
-    polylangLanguage
-      @export(as: "fromLanguage")
+    polylangLanguage {
+      code @export(as: "fromLanguage")
+    }
     
     polylangTranslationLanguageIDs
     translationPostIds: _objectValues(object: $__polylangTranslationLanguageIDs)
@@ -67,7 +100,9 @@ query ExportDataFromOriginPost($postId: ID!)
     tags @export(as: "originPostTagIDs") {
       id
       name
-      polylangLanguage
+      polylangLanguage {
+        code
+      }
       polylangTranslationLanguageIDs
         @export(
           as: "tagIDTranslationLanguageIDs",
@@ -78,7 +113,9 @@ query ExportDataFromOriginPost($postId: ID!)
     categories @export(as: "originPostCategoryIDs") {
       id
       name
-      polylangLanguage
+      polylangLanguage {
+        code
+      }
       polylangTranslationLanguageIDs
         @export(
           as: "categoryIDTranslationLanguageIDs",
@@ -88,16 +125,41 @@ query ExportDataFromOriginPost($postId: ID!)
   }
 }
 
-query FilterTranslationPostsToUpdate(
+query ExportTranslationPostLanguages(
   $statusToUpdate: CustomPostStatusEnum! = draft
-  $triggerUpdateFromDefaultLanguageOnly: Boolean! = true
 )
   @depends(on: "ExportDataFromOriginPost")
   @include(if: $hasOriginPostTranslationPosts)
 {
+  translationPostLanguages: posts(filter: { ids: $originPostTranslationPostIds, status: $statusToUpdate } ) {
+    id
+
+    polylangLanguage @export(
+      as: "translationPostLanguages"
+      type: DICTIONARY
+    ) {
+      code
+    }
+  }
+}
+
+query FilterTranslationPostsToUpdate(
+  $statusToUpdate: CustomPostStatusEnum! = draft
+  $triggerUpdateFromDefaultLanguageOnly: Boolean! = true
+)
+  @depends(on: "ExportTranslationPostLanguages")
+  @include(if: $hasOriginPostTranslationPosts)
+{
   translationPosts: posts(filter: { ids: $originPostTranslationPostIds, status: $statusToUpdate } ) {
     id
-    polylangLanguage
+    polylangLanguageCode: _objectProperty(
+      object: $translationPostLanguages,
+      by: { key: $__id }
+    )
+    polylangLanguage: _objectProperty(
+      object: $languageLocaleCodes,
+      by: { key: $__polylangLanguageCode }
+    )
 
     translationPostTagIDs: _echo(value: $__polylangLanguage)
       @passOnwards(as: "lang")
@@ -199,7 +261,9 @@ mutation UpdateTagsAndCategoriesForTranslationPosts(
   updateTranslationPosts: posts(filter: { ids: $originPostTranslationPostIds, status: $statusToUpdate } )
   {
     id
-    polylangLanguage
+    polylangLanguage {
+      code
+    }
 
     tagIDs: _objectProperty(
       object: $translationPostTagIDs,
@@ -228,7 +292,9 @@ mutation UpdateTagsAndCategoriesForTranslationPosts(
         tags {
           id
           name
-          polylangLanguage
+          polylangLanguage {
+            code
+          }
         }
       }
     }
@@ -251,7 +317,9 @@ mutation UpdateTagsAndCategoriesForTranslationPosts(
         categories {
           id
           name
-          polylangLanguage
+          polylangLanguage {
+            code
+          }
         }
       }
     }
