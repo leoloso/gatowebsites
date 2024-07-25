@@ -1,0 +1,79 @@
+---
+title: "⭐️ Released v4.0 with Polylang mutations (PRO)"
+seoTitle: "⭐️ Released Gato GraphQL v4.0 with Polylang mutations (PRO)"
+description: 'Gato GraphQL v4.0 has been released with an important bug fix, and Polylang mutations for PRO'
+seoDescription: 'Gato GraphQL v4.0 has been released with an important bug fix, and new features for PRO, including Polylang mutations'
+publishedAt: '2024-07-25 08:00:00'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - news
+  - release
+---
+
+Gato GraphQL `v4.0` has been released. Check out the [release notes in GitHub](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/4.0.0) for the complete list of changes.
+
+**This version fixes a serious bug that made the plugin not work on PHP 8.2**.
+
+Concerning new features, the most important one belongs to Gato GraphQL PRO.
+
+## [PRO] Added Polylang Mutations
+
+The new PRO module **Polylang Mutations** provides mutations for the integration with the [Polylang](https://wordpress.org/plugins/polylang/) plugin.
+
+The GraphQL schema is provided with mutations to:
+
+- Establish the language for custom posts, tags and categories, and
+- Define associations among them (i.e. indicate that a set of custom posts, tags or categories is a translation for each other).
+
+| Mutation | Description |
+| --- | --- |
+| `polylangSetCustomPostLanguage` | Set the language of the custom post. |
+| `polylangSetTaxonomyTermLanguage` | Set the language of the taxonomy term. |
+| `polylangSaveCustomPostTranslationAssociation` | Set the translation association for the custom post. |
+| `polylangSaveTaxonomyTermTranslationAssociation` | Set the translation association for the taxonomy term. |
+
+For instance, the following query defines the language for 3 posts (to English, Spanish and French), and then defines that these 3 posts are a translation of each other:
+
+```graphql
+mutation {
+  post1: polylangSetCustomPostLanguage(input: {id: 1, languageBy: { code: "en" }}) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+  post2: polylangSetCustomPostLanguage(input: {id: 2, languageBy: { code: "es" }}) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+  post3: polylangSetCustomPostLanguage(input: {id: 3, languageBy: { code: "fr" }}) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+  polylangSaveCustomPostTranslationAssociation(input: {
+    ids: [1, 2, 3]
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+}
+```
