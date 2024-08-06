@@ -173,3 +173,65 @@ mutation {
   }
 }
 ```
+
+## Creating, updating and deleting a post tag
+
+This query creates, updates and deletes post category terms:
+
+```graphql
+mutation CreateUpdateDeletePostTags {
+  createPostTag(input: {
+    name: "Some name"
+    slug: "Some slug"
+    description: "Some description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...PostTagData
+    }
+  }
+
+  updatePostTag(input: {
+    id: 1
+    name: "Some updated name"
+    slug: "Some updated slug"
+    description: "Some updated description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...PostTagData
+    }
+  }
+
+  deletePostTag(input: {
+    id: 1
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+}
+
+fragment PostTagData on PostTag {
+  id
+  name
+  slug
+  description
+}
+```

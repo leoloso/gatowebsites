@@ -95,3 +95,68 @@ query {
   }
 }
 ```
+
+## Creating, updating and deleting a custom tag
+
+This query creates, updates and deletes category terms for a custom `some-tag-taxonomy` category:
+
+```graphql
+mutation CreateUpdateDeleteTags {
+  createTag(input: {
+    taxonomy: "some-tag-taxonomy",
+    name: "Some name"
+    slug: "Some slug"
+    description: "Some description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...TagData
+    }
+  }
+
+  updateTag(input: {
+    id: 1
+    taxonomy: "some-cat-taxonomy"
+    name: "Some updated name"
+    slug: "Some updated slug"
+    description: "Some updated description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...TagData
+    }
+  }
+
+  deleteTag(input: {
+    id: 1
+    taxonomy: "some-cat-taxonomy"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+}
+
+fragment TagData on Tag {
+  id
+  name
+  slug
+  description
+}
+```
