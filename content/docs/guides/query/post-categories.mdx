@@ -200,3 +200,69 @@ mutation {
   }
 }
 ```
+
+## Creating, updating and deleting a post category
+
+This query creates, updates and deletes post category terms:
+
+```graphql
+mutation CreateUpdateDeletePostCategories {
+  createPostCategory(input: {
+    name: "Some name"
+    slug: "Some slug"
+    description: "Some description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      id
+      ...PostCategoryData
+    }
+  }
+
+  updatePostCategory(input: {
+    id: 1
+    name: "Some updated name"
+    slug: "Some updated slug"
+    description: "Some updated description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...PostCategoryData
+    }
+  }
+
+  deletePostCategory(input: {
+    id: 1
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+}
+
+fragment PostCategoryData on PostCategory {
+  id
+  name
+  slug
+  description
+  parent {
+    id
+  }
+}
+```
