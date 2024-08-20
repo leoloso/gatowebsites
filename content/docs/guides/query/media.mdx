@@ -259,3 +259,35 @@ mutation CreateMediaItems {
   }
 }
 ```
+
+Creating a media item reusing the attached file from another media item:
+
+```graphql
+mutation CreateMediaItems {
+  createMediaItem(input: {
+    from: {
+      mediaItemBy: {
+        id: 1361
+      }
+    }
+    title: "Hello world!"
+  }) {
+    mediaItemID
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    mediaItem {
+      altText
+      caption
+      mimeType
+      slug
+      src
+      title
+    }
+  }
+}
+```
