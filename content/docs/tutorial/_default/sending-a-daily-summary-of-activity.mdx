@@ -133,6 +133,7 @@ wp_schedule_event(
 
 Or via the [WP-Crontrol](https://wordpress.org/plugins/wp-crontrol/) plugin:
 
+- Event type: Standard cron event
 - Hook name: `gatographql__execute_persisted_query`
 - Arguments: `["daily-stats-by-email-number-of-comments",{"to":["admin@mysite.com"]},"SendDailyStatsByEmailNumberOfComments",1]`
 - Recurrence: Once Daily
