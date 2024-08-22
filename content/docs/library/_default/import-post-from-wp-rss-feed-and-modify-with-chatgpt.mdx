@@ -23,7 +23,10 @@ Variable `$url` receives the URL of the WordPress single post's RSS feed. It usu
 https://mysite.com/blog/hello-world/feed/rss/?withoutcomments=1
 ```
 
-To connect to the OpenAI API, you must also provide variables `$openAIAPIKey` with the API key, and `prompt` with the prompt to rewrite the post's content.
+To connect to the OpenAI API, you must provide variables `$openAIAPIKey` with the API key, and `$prompt` with the prompt to rewrite the post's content.
+
+In addition, you can override the default value for variables `$model` (`"text-davinci-002"`), `$temperature` (`0.5`) and `$maxTokens` (`50`):
+
 
 ```graphql
 query GetPostFromRSSFeedAndExportData(
