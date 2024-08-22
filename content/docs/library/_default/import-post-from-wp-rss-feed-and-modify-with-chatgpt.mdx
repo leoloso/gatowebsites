@@ -90,7 +90,7 @@ query transformContentWithChatGPT(
   @depends(on: "GetPostFromRSSFeedAndExportData")
 {
   openAIResponse: _sendJSONObjectItemHTTPRequest(input: {
-    url: "https://api.openai.com/v3/chat/generations",
+    url: "https://api.openai.com/v1/chat/completions",
     method: POST,
     options: {
       auth: {
