@@ -103,11 +103,17 @@ query transformContentWithChatGPT(
         password: $openAIAPIKey
       },
       json: {
-        prompt: $prompt,
         model: $model,
         temperature: $temperature,
         max_tokens: $maxTokens,
         messages: [
+          {
+            role: "system",
+            content: {
+              type: "text",
+              text: $prompt
+            }
+          },
           {
             role: "user",
             content: {
