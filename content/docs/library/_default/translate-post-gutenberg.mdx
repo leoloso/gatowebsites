@@ -36,7 +36,53 @@ This query translates a post to the desired language, with full support for Gute
 Depending on the `$update` parameter, the translation will either be saved under the same post, or as a new post.
 
 ```graphql
-query InitializeEmptyVariables {
+########################################################################
+# 
+# Variables:
+#   - postId: ID of the post to translate
+#   - toLang: The language code to translate to, from Google Translate (https://cloud.google.com/translate/docs/languages)
+#   - update: Indicate if to update the post, or create a new one
+#
+# *********************************************************************
+#
+# === Description ===
+#
+# This Persisted GraphQL query translates a post to the desired language,
+# with full support for Gutenberg, for the following block types:
+# 
+#   - core/heading
+#   - core/paragraph
+#   - core/image
+#   - core/button
+#   - core/table
+#   - core/list-item
+#   - core/cover
+#   - core/media-text
+#   - core/verse
+#   - core/quote
+#   - core/pullquote
+#   - core/audio
+#   - core/video
+#   - core/preformatted
+#   - core/embed
+#
+# Depending on the `$update` parameter, the translation will either
+# be saved as:
+#
+#   - false (default): A new post (using the translated slug) with "draft" status
+#   - true: The same post
+#
+# *********************************************************************
+# 
+# More info:
+#   - https://gatographql.com/tutorial/translating-block-content-in-a-post-to-a-different-language/
+#
+########################################################################
+
+query InitializeVariables {
+  isGutenbergEditorEnabled
+    @export(as: "isGutenbergEditorEnabled")
+
   emptyArray: _echo(value: [])
     @export(as: "coreHeadingContentItems")
     @export(as: "coreHeadingContentReplacementsFrom")
@@ -115,7 +161,8 @@ query InitializeEmptyVariables {
 
 query FetchData($postId: ID!)
   @configureWarningsOnExportingDuplicateVariable(enabled: false)
-  @depends(on: "InitializeEmptyVariables")
+  @depends(on: "InitializeVariables")
+  @include(if: $isGutenbergEditorEnabled)
 {
   post(by: { id: $postId }, status: any) {
     id
@@ -369,6 +416,7 @@ query TransformData(
   $toLang: String!
 )
   @depends(on: "FetchData")
+  @include(if: $isGutenbergEditorEnabled)
 {  
   transformations: _echo(value: {
     meta: {
@@ -457,6 +505,7 @@ query TransformData(
 
 query EscapeRegexStrings
   @depends(on: "TransformData")
+  @include(if: $isGutenbergEditorEnabled)
 {  
   escapedRegexStrings: _echo(value: $transformations)
     @underEachJSONObjectProperty
@@ -485,7 +534,7 @@ query EscapeRegexStrings
           @applyField(
             name: "_sprintf",
             arguments: {
-              string: "$1%s$2",
+              string: "${1}%s${2}",
               values: [$value]
             },
             setResultInResponse: true
@@ -495,6 +544,7 @@ query EscapeRegexStrings
 
 query CreateRegexReplacements
   @depends(on: "EscapeRegexStrings")
+  @include(if: $isGutenbergEditorEnabled)
 {  
   regexReplacements: _echo(value: $escapedRegexTransformations)
     @underJSONObjectProperty(
@@ -1039,6 +1089,7 @@ query CreateRegexReplacements
 
 query ExecuteRegexReplacements
   @depends(on: "CreateRegexReplacements")
+  @include(if: $isGutenbergEditorEnabled)
 {  
   transformedRawContent: _echo(value: $rawContent)
     @strRegexReplaceMultiple(
@@ -1137,6 +1188,7 @@ query ExecuteRegexReplacements
 
 query PrepareMetaReplacements
   @depends(on: "TransformData")
+  @include(if: $isGutenbergEditorEnabled)
 {  
   transformedMeta: _objectProperty(
     object: $transformations,
@@ -1154,6 +1206,7 @@ mutation TranslateGutenbergPost(
     "ExecuteRegexReplacements",
     "PrepareMetaReplacements"
   ]
+  @include(if: $isGutenbergEditorEnabled)
 ) {
   createPost(input: {
     title: $transformedTitle,

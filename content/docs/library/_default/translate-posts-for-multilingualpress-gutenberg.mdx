@@ -88,6 +88,9 @@ There are languages for which the code used by WordPress and by Google Translate
 query InitializeVariables
   @configureWarningsOnExportingDuplicateVariable(enabled: false)
 {
+  isGutenbergEditorEnabled
+    @export(as: "isGutenbergEditorEnabled")
+
   emptyBool: _echo(value: false)
     @export(as: "hasTranslationConnections")
     @export(as: "executeTranslation")
@@ -177,6 +180,7 @@ query ExportData(
   $externalSiteGraphQLEndpointPath: String! = "/graphql/internal/"
 )
   @depends(on: "InitializeVariables")
+  @include(if: $isGutenbergEditorEnabled)
 {
   # Retrieve the language of the content
   siteLanguage
@@ -227,6 +231,7 @@ query ExportOriginPost(
   $excludeSiteIDsToTranslate: [ID!]
 )
   @depends(on: "ExportData")
+  @include(if: $isGutenbergEditorEnabled)
 {
   originPost: post(by: { id: $postId }, status: any) {
     id
@@ -517,7 +522,6 @@ query InitializeTranslationVariables
   @include(if: $executeTranslation)
 {
   arrayItems: _arrayLength(array: $networkSiteTranslationConnectionDataItems)
-    @remove
 
   rawTitle: _arrayPad(array: [], length: $__arrayItems, value: $originRawTitle)
     @export(as: "rawTitle")
