@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // const releaseDateV2_2_1 = new Date(getReleaseData('2.2.1'))
   const releaseDateV2_2_2 = new Date(getReleaseData('2.2.2'))
   const releaseDateV2_2_3 = new Date(getReleaseData('2.2.3'))
+  const releaseDateV2_2_4 = new Date(getReleaseData('2.2.4'))
   const blogPostSitemapEntries = allBlogPosts.map((blogPost) => (
     {
       url: getBlogPostURL(blogPost),
@@ -220,6 +221,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${DOMAIN}/shop/my-orders`,
       lastModified: releaseDateV2_2,
+      changeFrequency: 'yearly',
+      priority: 0.1,
+    },
+    // Customer portal
+    {
+      url: `${DOMAIN}/shop/customer-portal`,
+      lastModified: releaseDateV2_2_4,
       changeFrequency: 'yearly',
       priority: 0.1,
     },
