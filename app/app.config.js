@@ -22,6 +22,7 @@ module.exports = {
     nextjsWordPressStarter: "https://github.com/GatoGraphQL/next-wordpress-starter",
     shopAffiliateProgram: "https://shop.gatographql.com/affiliates",
     shopClientOrders: "https://app.lemonsqueezy.com/my-orders",
+    shopCustomerPortal: "https://shop.gatographql.com/billing",
     shopPurchase: isProd
       ? "https://shop.gatographql.com/checkout/buy/24018c6f-1fd2-4c95-a22b-cce5844eb910"
       : "https://shop.gatographql.com/checkout/buy/3a50305d-a275-40e9-a8ac-56c01321b83c",
