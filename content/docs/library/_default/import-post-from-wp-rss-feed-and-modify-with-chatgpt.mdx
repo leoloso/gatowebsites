@@ -23,7 +23,7 @@ Variable `$url` receives the URL of the WordPress single post's RSS feed. It usu
 https://mysite.com/blog/hello-world/feed/rss/?withoutcomments=1
 ```
 
-To connect to the OpenAI API, you must also provide variables `$openAIApiKey` with the API key, and `prompt` with the prompt to rewrite the post's content.
+To connect to the OpenAI API, you must also provide variables `$openAIAPIKey` with the API key, and `prompt` with the prompt to rewrite the post's content.
 
 ```graphql
 query GetPostFromRSSFeedAndExportData(
@@ -83,12 +83,36 @@ query GetPostFromRSSFeedAndExportData(
   }
 }
 
+query transformContentWithChatGPT(
+  $openAIAPIKey: String!
+  $prompt: String!
+)
+  @depends(on: "GetPostFromRSSFeedAndExportData")
+{
+  openAIResponse: _sendJSONObjectItemHTTPRequest(input: {
+    url: "https://api.openai.com/v3/chat/generations",
+    method: POST,
+    options: {
+      auth: {
+        password: $openAIAPIKey
+      },
+      json: {
+        prompt: $prompt
+      }
+    }
+  })
+    @underJSONObjectProperty(by: { key: "data" })
+      @underArrayItem(index: 0)
+        @underJSONObjectProperty(by: { key: "url" })
+          @export(as: "generatedImageURL")
+}
+
 # If the author's username exists in this site, keep it
 # Otherwise, use the default one
 query CheckAuthorExistsOrChange(
   $defaultAuthorUsername: String! = "admin"
 )
-  @depends(on: "GetPostFromRSSFeedAndExportData")
+  @depends(on: "transformContentWithChatGPT")
 {
   existingUserByUsername: user(by: { username: $authorUsername })
   {
