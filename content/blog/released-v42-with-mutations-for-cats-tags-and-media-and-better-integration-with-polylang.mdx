@@ -1,0 +1,464 @@
+---
+title: "⭐️ Released v4.2 with new mutations for tags and categories, improved mutations for media, and enhanced integration with Polylang (PRO)"
+seoTitle: "⭐️ Released Gato GraphQL v4.2 with new mutations for tags and categories, improved mutations for media, and enhanced integration with Polylang (PRO)"
+description: 'Gato GraphQL v4.2 has been released with added mutations for tags and categories, improved mutations for media, and new capabilities in the PRO integration with Polylang'
+seoDescription: 'Gato GraphQL v4.2 has been released with added mutations for tags and categories, improved mutations for media, and new capabilities in the PRO integration with Polylang'
+publishedAt: '2024-08-22 08:00:00'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - news
+  - release
+---
+
+Gato GraphQL `v4.2` has been released. Check out the [release notes in GitHub](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/4.2.0) for the complete list of changes.
+
+Below are the most important new features.
+
+## Added mutations for tags and categories
+
+It is now possible to create, update and delete post tags and categories, with the newly-added mutations:
+
+- `PostCategory.delete`
+- `PostCategory.update`
+- `PostTag.delete`
+- `PostTag.update`
+- `Root.createPostCategory`
+- `Root.createPostTag`
+- `Root.deletePostCategory`
+- `Root.deletePostTag`
+- `Root.updatePostCategory`
+- `Root.updatePostTag`
+
+And also custom tags and categories, with the newly-added mutations:
+
+- `GenericCategory.delete`
+- `GenericCategory.update`
+- `GenericTag.delete`
+- `GenericTag.update`
+- `Root.createCategory`
+- `Root.createTag`
+- `Root.deleteCategory`
+- `Root.deleteTag`
+- `Root.updateCategory`
+- `Root.updateTag`
+
+This query creates, updates and deletes post tag terms:
+
+```graphql
+mutation CreateUpdateDeletePostTags {
+  createPostTag(input: {
+    name: "Some name"
+    slug: "Some slug"
+    description: "Some description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...PostTagData
+    }
+  }
+
+  updatePostTag(input: {
+    id: 1
+    name: "Some updated name"
+    slug: "Some updated slug"
+    description: "Some updated description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...PostTagData
+    }
+  }
+
+  deletePostTag(input: {
+    id: 1
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+}
+
+fragment PostTagData on PostTag {
+  id
+  name
+  slug
+  description
+}
+```
+
+This query creates, updates and deletes post category terms:
+
+```graphql
+mutation CreateUpdateDeletePostCategories {
+  createPostCategory(input: {
+    name: "Some name"
+    slug: "Some slug"
+    description: "Some description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...PostCategoryData
+    }
+  }
+
+  updatePostCategory(input: {
+    id: 1
+    name: "Some updated name"
+    slug: "Some updated slug"
+    description: "Some updated description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...PostCategoryData
+    }
+  }
+
+  deletePostCategory(input: {
+    id: 1
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+}
+
+fragment PostCategoryData on PostCategory {
+  id
+  name
+  slug
+  description
+  parent {
+    id
+  }
+}
+```
+
+This query creates, updates and deletes tag terms for a custom `some-tag-taxonomy` tag:
+
+```graphql
+mutation CreateUpdateDeleteTags {
+  createTag(input: {
+    taxonomy: "some-tag-taxonomy",
+    name: "Some name"
+    slug: "Some slug"
+    description: "Some description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...TagData
+    }
+  }
+
+  updateTag(input: {
+    id: 1
+    taxonomy: "some-tag-taxonomy"
+    name: "Some updated name"
+    slug: "Some updated slug"
+    description: "Some updated description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...TagData
+    }
+  }
+
+  deleteTag(input: {
+    id: 1
+    taxonomy: "some-tag-taxonomy"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+}
+
+fragment TagData on Tag {
+  id
+  name
+  slug
+  description
+}
+```
+
+This query creates, updates and deletes category terms for a custom `some-cat-taxonomy` category:
+
+```graphql
+mutation CreateUpdateDeleteCategories {
+  createCategory(input: {
+    taxonomy: "some-cat-taxonomy",
+    name: "Some name"
+    slug: "Some slug"
+    description: "Some description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...CategoryData
+    }
+  }
+
+  updateCategory(input: {
+    id: 1
+    taxonomy: "some-cat-taxonomy"
+    name: "Some updated name"
+    slug: "Some updated slug"
+    description: "Some updated description"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      ...CategoryData
+    }
+  }
+
+  deleteCategory(input: {
+    id: 1
+    taxonomy: "some-cat-taxonomy"
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+}
+
+fragment CategoryData on Category {
+  id
+  name
+  slug
+  description
+  parent {
+    id
+  }
+}
+```
+
+## Create a media item using the attachment from an existing media item
+
+Mutation `createMediaItem` can now create a media item using the same attachment from an existing media item (i.e. without duplicating the file on disk):
+
+```graphql
+mutation {
+  createMediaItem(input: {
+    from: {
+      mediaItemBy: {
+        id: 337
+      }
+    }
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    mediaItem {
+      id  # New media item created
+      src # Same attachment as the provided media item
+    }
+  }
+}
+```
+
+## [PRO] Define the Polylang language on tag and category mutations
+
+With the **Polylang integration**, when creating a tag or category (see above), we can pass `polylangLanguageBy` input to already define its language.
+
+For instance, this query creates a post category, and defines its language as Spanish:
+
+```graphql
+mutation {
+  createPostCategory(input: {
+    name: "Noticias"
+    polylangLanguageBy: { code: "es" }
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    category {
+      polylangLanguage {
+        locale
+      }
+      name
+    }
+  }
+}
+```
+
+## [PRO] Added Polylang Mutations for Media Items
+
+PRO module **Polylang Mutations** provides mutations for the integration with the [Polylang](https://wordpress.org/plugins/polylang/) plugin.
+
+The GraphQL schema has been augmented with mutations to:
+
+- Establish the language for media items, and
+- Define associations among them (i.e. indicate that a set of media items is a translation for each other).
+
+| Mutation | Description |
+| --- | --- |
+| `polylangSetMediaItemLanguage` | Set the language of the media item. |
+| `polylangSaveMediaItemTranslationAssociation` | Set the translation association for the media item. |
+
+For instance, the following query defines the language for 3 media items (to English, Spanish and French), and then defines that these 3 media items are a translation of each other:
+
+```graphql
+mutation {
+  mediaItem1: polylangSetMediaItemLanguage(input: {id: 1007, languageBy: { code: "en" }}) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+  mediaItem2: polylangSetMediaItemLanguage(input: {id: 204, languageBy: { code: "es" }}) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+  mediaItem3: polylangSetMediaItemLanguage(input: {id: 377, languageBy: { code: "fr" }}) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+  polylangSaveMediaItemTranslationAssociation(input: {
+    ids: [1007, 204, 377]
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+  }
+}
+```
+
+## [PRO] Filter entities by Polylang's default language
+
+It's now possible to filter entities by default language set on Polylang, by providing the `DEFAULT` enum value on the `polylangLanguagesBy` filter:
+
+```graphql
+{
+  posts(
+    filter: {
+      polylangLanguagesBy: {
+        predefined: DEFAULT
+      }
+    }
+  ) {
+    title
+    polylangLanguage {
+      code
+    }
+  }
+
+  pages(
+    filter: {
+      polylangLanguagesBy: {
+        predefined: DEFAULT
+      }
+    }
+  ) {
+    title
+    polylangLanguage {
+      code
+    }
+  }
+
+  customPosts(
+    filter: {
+      polylangLanguagesBy: {
+        predefined: DEFAULT
+      }
+      customPostTypes: "dummy-cpt"
+    }
+  ) {
+    title
+    polylangLanguage {
+      code
+    }
+  }
+}
+```
+
+## [PRO] Automation: Store the GraphQL response in the info logs
+
+The complete GraphQL response for an automation execution (for both WP-Cron and Automation Rules, whether the execution was successful or not) is logged under file `wp-content/gatographql/logs/info.log`.
