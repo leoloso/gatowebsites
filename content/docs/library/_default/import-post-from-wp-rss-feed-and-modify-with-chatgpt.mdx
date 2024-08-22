@@ -29,7 +29,7 @@ In addition, you can override the default value for variables `$model` (`"text-d
 
 
 ```graphql
-query GetPostFromRSSFeedAndExportData(
+query GetPostFromRSSFeed(
   $url: URL!
 ) {
   _sendHTTPRequest(input: {
@@ -93,7 +93,7 @@ query transformContentWithChatGPT(
   $temperature: Float! = 0.5
   $maxTokens: Int! = 50
 )
-  @depends(on: "GetPostFromRSSFeedAndExportData")
+  @depends(on: "GetPostFromRSSFeed")
 {
   openAIResponse: _sendJSONObjectItemHTTPRequest(input: {
     url: "https://api.openai.com/v1/chat/completions",
