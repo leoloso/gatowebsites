@@ -59,9 +59,9 @@ There are languages for which the code used by WordPress and by Google Translate
 # and stores those translations in the corresponding posts,
 # as set-up via Polylang.
 #
-# All translation posts must already exist, created using the
-# Polylang UI. These posts must also have the  `draft` status
-# to be updated. To update posts with any other status, use
+# All translation posts must already exist. These posts
+# must also have the `draft` status to be updated.
+# To update posts with any other status, use
 # variable `$statusToUpdate` (for instance, passing value
 # `publish`, `pending` or `any`)
 #
@@ -98,20 +98,21 @@ There are languages for which the code used by WordPress and by Google Translate
 # documentation.
 #
 ########################################################################
+
 query InitializeVariables
   @configureWarningsOnExportingDuplicateVariable(enabled: false)
 {
+  isGutenbergEditorEnabled
+    @export(as: "isGutenbergEditorEnabled")
+
   emptyString: _echo(value: null)
     @export(as: "fromLanguage")
     @remove
 
   emptyBool: _echo(value: false)
+    @export(as: "hasOriginPost")
     @export(as: "hasTranslationPosts")
     @export(as: "executeTranslation")
-    @remove
-  
-  emptyArray: _echo(value: [])
-    @export(as: "translationPostIds")
     @remove
 }
 
@@ -121,6 +122,7 @@ query ExportOriginPost(
   $excludeLanguagesToTranslate: [String!]
 )
   @depends(on: "InitializeVariables")
+  @skip(if: $isGutenbergEditorEnabled)
 {
   defaultLanguage: polylangDefaultLanguage {
     code @export(as: "defaultLanguage")
@@ -146,10 +148,12 @@ query ExportOriginPost(
       includeLanguages: $includeLanguagesToTranslate
       excludeLanguages: $excludeLanguagesToTranslate
     })
-    translationPostIds: _objectValues(object: $__polylangTranslationLanguageIDs)
-      @export(as: "translationPostIds")
+      @remove
+    postIDTranslationLanguageIDs: _echo(value: $__polylangTranslationLanguageIDs)
+      @default(value: {})
+      @export(as: "postIDTranslationLanguageIDs")
 
-    hasTranslationPosts: _notEmpty(value: $__translationPostIds)
+    hasTranslationPosts: _notEmpty(value: $__postIDTranslationLanguageIDs)
       @export(as: "hasTranslationPosts")
 
 
@@ -174,7 +178,9 @@ query FetchData(
   @include(if: $hasOriginPost)
   @include(if: $hasTranslationPosts)
 {
-  translationPosts: posts(filter: { ids: $translationPostIds, status: $statusToUpdate } ) {
+  translationPostIds: _objectValues(object: $postIDTranslationLanguageIDs)
+    @export(as: "translationPostIds")
+  translationPosts: posts(filter: { ids: $__translationPostIds, status: $statusToUpdate } ) {
     id
 
     polylangLanguage @export(
