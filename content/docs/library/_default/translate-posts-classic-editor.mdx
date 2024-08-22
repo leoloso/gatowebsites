@@ -22,7 +22,37 @@ This query requires the endpoint to have [Nested Mutations](/guides/schema/using
 </Banner>
 
 ```graphql
+########################################################################
+# 
+# Variables:
+#   - postIds: List of IDs of the posts to translate
+#   - toLang: The language code to translate to, from Google Translate (https://cloud.google.com/translate/docs/languages)
+#
+# *********************************************************************
+#
+# === Description ===
+#
+# This Persisted GraphQL query translates multiple "Classic editor"
+# posts at once (in bulk), while executing a single call to the Google
+# Translate API containing all text to translate from all the posts.
+#
+# The translation for each post will be saved under the same post.
+#
+# See Persisted Query "Translate post (Classic editor)" for additional
+# documentation.
+#
+########################################################################
+
+query InitializeVariables
+  @configureWarningsOnExportingDuplicateVariable(enabled: false)
+{
+  isGutenbergEditorEnabled
+    @export(as: "isGutenbergEditorEnabled")
+}
+
 query FetchData($postIds: [ID!]!)
+  @depends(on: "InitializeVariables")
+  @skip(if: $isGutenbergEditorEnabled)
 {
   posts(filter: { ids: $postIds, status: any } ) {
     title
@@ -40,6 +70,7 @@ query TranslateData(
   $toLang: String!
 )
   @depends(on: "FetchData")
+  @skip(if: $isGutenbergEditorEnabled)
 {  
   translatedData: _echo(value: $dataToTranslate)
     @underEachJSONObjectProperty
@@ -50,6 +81,7 @@ query TranslateData(
 
 query GenerateMutationInputs
   @depends(on: "TranslateData")
+  @skip(if: $isGutenbergEditorEnabled)
 {  
   postInputs: _echo(value: $translatedData)
     @underEachJSONObjectProperty(
@@ -104,6 +136,7 @@ query GenerateMutationInputs
 
 mutation TranslateClassicEditorPosts($postIds: [ID!]!)
   @depends(on: "GenerateMutationInputs")
+  @skip(if: $isGutenbergEditorEnabled)
 {
   updatePosts: posts(filter: { ids: $postIds, status: any } ) {
     id

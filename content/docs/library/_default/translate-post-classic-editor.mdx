@@ -15,7 +15,38 @@ This query translates a "Classic editor" post to the desired language.
 Depending on the `$update` parameter, the translation will either be saved under the same post, or as a new post.
 
 ```graphql
+########################################################################
+# 
+# Variables:
+#   - postId: ID of the post to translate
+#   - toLang: The language code to translate to, from Google Translate (https://cloud.google.com/translate/docs/languages)
+#   - update: Indicate if to update the post, or create a new one
+#
+# *********************************************************************
+#
+# === Description ===
+#
+# This Persisted GraphQL query translates a "Classic editor" post to
+# the desired language.
+#
+# Depending on the `$update` parameter, the translation will either
+# be saved as:
+#
+#   - false (default): A new post (using the translated slug) with "draft" status
+#   - true: The same post
+#
+########################################################################
+
+query InitializeVariables
+  @configureWarningsOnExportingDuplicateVariable(enabled: false)
+{
+  isGutenbergEditorEnabled
+    @export(as: "isGutenbergEditorEnabled")
+}
+
 query FetchData($postId: ID!)
+  @depends(on: "InitializeVariables")
+  @skip(if: $isGutenbergEditorEnabled)
 {
   post(by: { id: $postId }, status: any) {
     title
@@ -32,6 +63,7 @@ query TranslateData(
   $toLang: String!
 )
   @depends(on: "FetchData")
+  @skip(if: $isGutenbergEditorEnabled)
 {  
   translations: _echo(value: $dataToTranslate)
     @underEachJSONObjectProperty
@@ -49,6 +81,7 @@ mutation TranslateClassicEditorPost(
   $update: Boolean! = false
 )
   @depends(on: "TranslateData")
+  @skip(if: $isGutenbergEditorEnabled)
 {
   createPost(input: {
     title: $translatedTitle,
