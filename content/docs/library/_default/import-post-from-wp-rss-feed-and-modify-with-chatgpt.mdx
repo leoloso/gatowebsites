@@ -106,14 +106,37 @@ query transformContentWithChatGPT(
         prompt: $prompt,
         model: $model,
         temperature: $temperature,
-        max_tokens: $maxTokens
+        max_tokens: $maxTokens,
+        messages: [
+          {
+            role: "user",
+            content: {
+              type: "text",
+              text: $title
+            }
+          },
+          {
+            role: "user",
+            content: {
+              type: "text",
+              text: $content
+            }
+          },
+          {
+            role: "user",
+            content: {
+              type: "text",
+              text: $excerpt
+            }
+          }
+        ]
       }
     }
   })
-    @underJSONObjectProperty(by: { key: "data" })
-      @underArrayItem(index: 0)
-        @underJSONObjectProperty(by: { key: "url" })
-          @export(as: "generatedImageURL")
+    # @underJSONObjectProperty(by: { key: "data" })
+    #   @underArrayItem(index: 0)
+    #     @underJSONObjectProperty(by: { key: "url" })
+    #       @export(as: "generatedImageURL")
 }
 
 # If the author's username exists in this site, keep it
