@@ -88,7 +88,7 @@ query GetPostFromRSSFeed(
 
 query transformContentWithChatGPT(
   $openAIAPIKey: String!
-  $prompt: String!
+  $prompt: String! = "I want you to be an English Content rewriter, a grammar checker, and a better writer. I will give you some English text. Please rewrite it following these instructions: Change the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences. Maintain the original meaning, but rewrite the sentences in a more standard style."
   $model: String! = "text-davinci-002"
   $temperature: Float! = 0.5
   $maxTokens: Int! = 50
