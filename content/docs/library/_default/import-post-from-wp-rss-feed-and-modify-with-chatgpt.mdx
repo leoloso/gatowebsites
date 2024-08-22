@@ -86,6 +86,9 @@ query GetPostFromRSSFeedAndExportData(
 query transformContentWithChatGPT(
   $openAIAPIKey: String!
   $prompt: String!
+  $model: String! = "text-davinci-002"
+  $temperature: Float! = 0.5
+  $maxTokens: Int! = 50
 )
   @depends(on: "GetPostFromRSSFeedAndExportData")
 {
@@ -97,7 +100,10 @@ query transformContentWithChatGPT(
         password: $openAIAPIKey
       },
       json: {
-        prompt: $prompt
+        prompt: $prompt,
+        model: $model,
+        temperature: $temperature,
+        max_tokens: $maxTokens
       }
     }
   })
