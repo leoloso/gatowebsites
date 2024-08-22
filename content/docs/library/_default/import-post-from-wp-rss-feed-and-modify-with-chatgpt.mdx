@@ -25,7 +25,7 @@ https://mysite.com/blog/hello-world/feed/rss/?withoutcomments=1
 
 To connect to the OpenAI API, you must provide variables `$openAIAPIKey` with the API key, and `$prompt` with the prompt to rewrite the post's content.
 
-In addition, you can override the default value for variables `$model` (`"text-davinci-002"`), `$temperature` (`0.5`) and `$maxTokens` (`50`):
+In addition, you can override the default value for variables `$model` (`"gpt-3.5-turbo-instruct"`), `$temperature` (`0.7`) and `$maxTokens` (`50`):
 
 
 ```graphql
@@ -89,8 +89,8 @@ query GetPostFromRSSFeed(
 query TransformContentWithChatGPT(
   $openAIAPIKey: String!
   $prompt: String! = "I want you to be an English Content rewriter, a grammar checker, and a better writer. I will give you some English text. Please rewrite it following these instructions: Change the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences. Maintain the original meaning, but rewrite the sentences in a more standard style."
-  $model: String! = "text-davinci-002"
-  $temperature: Float! = 0.5
+  $model: String! = "gpt-3.5-turbo-instruct"
+  $temperature: Float! = 0.7
   $maxTokens: Int! = 50
 )
   @depends(on: "GetPostFromRSSFeed")
