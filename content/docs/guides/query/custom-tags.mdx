@@ -96,6 +96,67 @@ query {
 }
 ```
 
+## Setting tags on a custom post
+
+Mutation:
+
+```graphql
+mutation {
+  setTagsOnCustomPost(
+    input: {
+      id: 1499, 
+      tags: ["api", "development"]
+      taxonomy: "tag-taxonomy"
+    }
+  ) {
+    status
+    errors {
+      __typename
+      ... on ErrorPayload {
+        message
+      }
+    }
+    customPostID
+    customPost {
+      tags(taxonomy: "tag-taxonomy") {
+        id
+      }
+      tagNames(taxonomy: "tag-taxonomy")
+    }
+  }
+}
+```
+
+Nested mutation:
+
+```graphql
+mutation {
+  customPost(by: { id: 1499 }) {
+    setTags(
+      input: {
+        tags: ["api", "development"]
+        taxonomy: "tag-taxonomy"
+      }
+    ) {
+      status
+      errors {
+        __typename
+        ... on ErrorPayload {
+          message
+        }
+      }
+      customPostID
+      customPost {
+        tags(taxonomy: "tag-taxonomy") {
+          id
+        }
+        tagNames(taxonomy: "tag-taxonomy")
+      }
+    }
+  }
+}
+```
+
 ## Creating, updating and deleting a custom tag
 
 This query creates, updates and deletes tag terms for a custom `some-tag-taxonomy` tag:

@@ -86,6 +86,67 @@ query {
 }
 ```
 
+## Setting categories on a custom post
+
+Mutation:
+
+```graphql
+mutation {
+  setCategoriesOnCustomPost(
+    input: {
+      id: 1499, 
+      categoryIDs: [2, 5]
+      taxonomy: "cat-taxonomy"
+    }
+  ) {
+    status
+    errors {
+      __typename
+      ... on ErrorPayload {
+        message
+      }
+    }
+    customPostID
+    customPost {
+      categories(taxonomy: "cat-taxonomy") {
+        id
+      }
+      categoryNames(taxonomy: "cat-taxonomy")
+    }
+  }
+}
+```
+
+Nested mutation:
+
+```graphql
+mutation {
+  customPost(by: { id: 1499 }) {
+    setCategories(
+      input: {
+        categoryIDs: [2, 5]
+        taxonomy: "cat-taxonomy"
+      }
+    ) {
+      status
+      errors {
+        __typename
+        ... on ErrorPayload {
+          message
+        }
+      }
+      customPostID
+      customPost {
+        categories(taxonomy: "cat-taxonomy") {
+          id
+        }
+        categoryNames(taxonomy: "cat-taxonomy")
+      }
+    }
+  }
+}
+```
+
 ## Creating, updating and deleting a custom category
 
 This query creates, updates and deletes category terms for a custom `some-cat-taxonomy` category:
