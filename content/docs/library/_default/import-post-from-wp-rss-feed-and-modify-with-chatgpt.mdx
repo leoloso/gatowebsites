@@ -124,10 +124,10 @@ query TransformContentWithChatGPT(
       }
     }
   })
-    # @underJSONObjectProperty(by: { key: "data" })
-    #   @underArrayItem(index: 0)
-    #     @underJSONObjectProperty(by: { key: "url" })
-    #       @export(as: "generatedImageURL")
+    @underJSONObjectProperty(by: { key: "choices" })
+      @underArrayItem(index: 0)
+        @underJSONObjectProperty(by: { path: "message.content" })
+          @export(as: "rewrittenContent")
 }
 
 # If the author's username exists in this site, keep it
@@ -151,7 +151,7 @@ query CheckAuthorExistsOrChange(
     @export(as: "existingAuthorUsername")
 }
 
-mutation ImportPostFromWPRSSFeed
+mutation ImportPostFromWordPressRSSFeedAndRewriteContent
   @depends(on: "CheckAuthorExistsOrChange")
 {
   createPost(input: {
@@ -160,7 +160,7 @@ mutation ImportPostFromWPRSSFeed
       username: $existingAuthorUsername
     },
     contentAs: {
-      html: $content
+      html: $rewrittenContent
     },
     excerpt: $excerpt
     title: $title
