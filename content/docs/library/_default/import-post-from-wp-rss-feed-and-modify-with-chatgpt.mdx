@@ -89,7 +89,7 @@ query GetPostFromRSSFeed(
 query RewriteContentWithChatGPT(
   $openAIAPIKey: String!
   $systemRolePrompt: String! = "You are an English Content rewriter, a grammar checker, and a better writer"
-  $prompt: String! = "Please rewrite the following English text, by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
+  $prompt: String! = "Please rewrite the following English text (contained within HTML), by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
   $model: String! = "gpt-3.5-turbo-instruct"
   $temperature: Float! = 0.7
   $maxTokens: Int! = 50
