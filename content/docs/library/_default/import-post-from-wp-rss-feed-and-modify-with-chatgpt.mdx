@@ -13,14 +13,14 @@ order: 0
 # predefinedPersistedQueryTitleInPlugin: Import post from WordPress RSS feed
 ---
 
-This query fetches the post data from a WordPress RSS feed (including the title, content and excerpt), rewrites it using ChatGPT, and stores it on the local WordPress site.
+This query fetches the post data from a WordPress RSS feed (including the title, content and excerpt), rewrites the content using ChatGPT, and stores it on the local WordPress site.
 
 If the author with that username exists locally, it uses it, otherwise it replaces it with the one defined via variable `$defaultAuthorUsername`.
 
 Variable `$url` receives the URL of the WordPress single post's RSS feed. It usually is the blog post URL + `"/feed/rss/?withoutcomments=1"`. Eg:
 
 ```apacheconf
-https://mysite.com/blog/hello-world/feed/rss/?withoutcomments=1
+https://wordpress.com/blog/2024/07/16/wordpress-6-6/feed/rss/?withoutcomments=1
 ```
 
 To connect to the OpenAI API, you must provide variables `$openAIAPIKey` with the API key, and the `$prompt` and (optional) `$systemRolePrompt` with the prompts to rewrite the post's content.
