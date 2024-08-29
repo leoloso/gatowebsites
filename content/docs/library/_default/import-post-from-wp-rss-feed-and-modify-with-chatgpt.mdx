@@ -25,7 +25,7 @@ https://wordpress.com/blog/2024/07/16/wordpress-6-6/feed/rss/?withoutcomments=1
 
 To connect to the OpenAI API, you must provide variables `$openAIAPIKey` with the API key, and the `$prompt` and (optional) `$systemRolePrompt` with the prompts to rewrite the post's content.
 
-In addition, you can override the default value for variables `$model` (`"gpt-3.5-turbo-instruct"`), `$temperature` (`0.7`) and `$maxTokens` (`50`):
+In addition, you can override the default value for variables `$model` (`"gpt-3.5-turbo-instruct"`) and `$temperature` (`0.7`), and be aware to provide `$maxTokens` with a suitable number for the length of the content (`50` by default):
 
 
 ```graphql
