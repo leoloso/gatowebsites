@@ -14,10 +14,16 @@ Variable `$url` receives the URL of the WordPress single post's RSS feed. It usu
 https://wordpress.com/blog/2024/07/16/wordpress-6-6/feed/rss/?withoutcomments=1
 ```
 
-To connect to the OpenAI API, you must provide variables `$openAIAPIKey` with the API key, and the `$prompt` and (optional) `$systemRolePrompt` with the prompts to rewrite the post's content.
+To connect to the OpenAI API, you must provide variables `$openAIAPIKey` with the API key.
+
+You can optionally provide the system message and prompt to rewrite the post's content. If not provided, the following values are used:
+
+- System message (`$systemMessage`): "You are an English Content rewriter and a grammar checker"
+- Prompt (`$prompt`): "Please rewrite the following English text (contained within HTML), by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
+
+(The content string is appended at the end of the prompt.)
 
 In addition, you can override the default value for variables `$model` (`"gpt-3.5-turbo-instruct"`) and `$temperature` (`0.7`), and be aware to provide `$maxTokens` with a suitable number for the length of the content (`50` by default):
-
 
 ```graphql
 query GetPostFromRSSFeed(
@@ -79,7 +85,7 @@ query GetPostFromRSSFeed(
 
 query RewriteContentWithChatGPT(
   $openAIAPIKey: String!
-  $systemRolePrompt: String! = "You are an English Content rewriter and a grammar checker"
+  $systemMessage: String! = "You are an English Content rewriter and a grammar checker"
   $prompt: String! = "Please rewrite the following English text (contained within HTML), by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
   $model: String! = "gpt-3.5-turbo-instruct"
   $temperature: Float! = 0.7
@@ -105,7 +111,7 @@ query RewriteContentWithChatGPT(
         messages: [
           {
             role: "system",
-            content: $systemRolePrompt
+            content: $systemMessage
           },
           {
             role: "user",
