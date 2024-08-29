@@ -194,7 +194,7 @@ query {
 
 A custom post type can have custom taxonomies (tags and categories) associated to them. For instance, a CPT `"product"` may have associated the category taxonomy `"product-cat"` and the tag taxonomy `"product-tag"`.
 
-We can filter results by these associated taxonomies, via inputs `tagTaxonomy` and `categoryTaxonomy` in the `filter` input.
+We can filter results by these associated taxonomies, via inputs `tags` and `categories` in the `filter` input.
 
 In the query below, we fetch custom posts filtering by category:
 
@@ -202,8 +202,12 @@ In the query below, we fetch custom posts filtering by category:
 query {
   customPosts(
     filter: {
-      categoryIDs: [26, 28],
-      categoryTaxonomy: "product-cat"
+      categories: {
+        includeBy: {
+          ids: [26, 28]
+        }
+        taxonomy: "product-cat"
+      }
     }
   ) {
     ... on CustomPost {
