@@ -23,7 +23,7 @@ Variable `$url` receives the URL of the WordPress single post's RSS feed. It usu
 https://mysite.com/blog/hello-world/feed/rss/?withoutcomments=1
 ```
 
-To connect to the OpenAI API, you must provide variables `$openAIAPIKey` with the API key, and `$prompt` with the prompt to rewrite the post's content.
+To connect to the OpenAI API, you must provide variables `$openAIAPIKey` with the API key, and the `$prompt` and (optional) `$systemRolePrompt` with the prompts to rewrite the post's content.
 
 In addition, you can override the default value for variables `$model` (`"gpt-3.5-turbo-instruct"`), `$temperature` (`0.7`) and `$maxTokens` (`50`):
 
@@ -88,13 +88,26 @@ query GetPostFromRSSFeed(
 
 query TransformContentWithChatGPT(
   $openAIAPIKey: String!
-  $prompt: String! = "I want you to be an English Content rewriter, a grammar checker, and a better writer. I will give you some English text. Please rewrite it following these instructions: Change the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences. Maintain the original meaning, but rewrite the sentences in a more standard style."
+  $systemRolePrompt: String! = "You are an English Content rewriter, a grammar checker, and a better writer"
+  $prompt: String! = "Please rewrite the following English text, by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
   $model: String! = "gpt-3.5-turbo-instruct"
   $temperature: Float! = 0.7
   $maxTokens: Int! = 50
 )
   @depends(on: "GetPostFromRSSFeed")
 {
+  promptWithTitle: _strAppend(
+    after: $prompt
+    append: $title
+  )
+  promptWithContent: _strAppend(
+    after: $prompt
+    append: $content  
+  )
+  promptWithExcerpt: _strAppend(
+    after: $prompt
+    append: $excerpt  
+  )
   openAIResponse: _sendJSONObjectItemHTTPRequest(input: {
     url: "https://api.openai.com/v1/chat/completions",
     method: POST,
@@ -109,31 +122,19 @@ query TransformContentWithChatGPT(
         messages: [
           {
             role: "system",
-            content: {
-              type: "text",
-              text: $prompt
-            }
+            content: $systemRolePrompt
           },
           {
             role: "user",
-            content: {
-              type: "text",
-              text: $title
-            }
+            content: $__promptWithTitle
           },
           {
             role: "user",
-            content: {
-              type: "text",
-              text: $content
-            }
+            content: $__promptWithContent
           },
           {
             role: "user",
-            content: {
-              type: "text",
-              text: $excerpt
-            }
+            content: $__promptWithExcerpt
           }
         ]
       }
