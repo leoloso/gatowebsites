@@ -70,18 +70,97 @@ query {
 
 ## Filtering custom posts by category
 
-To retrieve the custom posts with a given category or categories, we can use inputs `filter.categoryIDs` and `filter.categoryTaxonomy`:
+To retrieve the custom posts with given categories, we can use input `filter.categories`:
 
 ```graphql
 query {
-  customPostsByCat: customPosts(
+  customPostsByCatIDs: customPosts(
     filter: {
-      categoryIDs: [26, 28],
-      categoryTaxonomy: "product-category"
+      categories: {
+        includeBy: {
+          ids: [26, 28]
+        }
+        taxonomy: "product-cat"
+      }
     }
   ) {
     id
     title
+  }
+
+  customPostsByCatSlugs: customPosts(
+    filter: {
+      categories: {
+        includeBy: {
+          slugs: ["news", "sports"]
+        }
+        taxonomy: "product-cat"
+      }
+    }
+  ) {
+    id
+    title
+  }
+}
+```
+
+## Setting categories on a custom post
+
+Mutation:
+
+```graphql
+mutation {
+  setCategoriesOnCustomPost(
+    input: {
+      id: 1499, 
+      categoryIDs: [2, 5]
+      taxonomy: "cat-taxonomy"
+    }
+  ) {
+    status
+    errors {
+      __typename
+      ... on ErrorPayload {
+        message
+      }
+    }
+    customPostID
+    customPost {
+      categories(taxonomy: "cat-taxonomy") {
+        id
+      }
+      categoryNames(taxonomy: "cat-taxonomy")
+    }
+  }
+}
+```
+
+Nested mutation:
+
+```graphql
+mutation {
+  customPost(by: { id: 1499 }) {
+    setCategories(
+      input: {
+        categoryIDs: [2, 5]
+        taxonomy: "cat-taxonomy"
+      }
+    ) {
+      status
+      errors {
+        __typename
+        ... on ErrorPayload {
+          message
+        }
+      }
+      customPostID
+      customPost {
+        categories(taxonomy: "cat-taxonomy") {
+          id
+        }
+        categoryNames(taxonomy: "cat-taxonomy")
+      }
+    }
   }
 }
 ```
