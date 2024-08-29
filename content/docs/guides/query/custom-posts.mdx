@@ -83,8 +83,12 @@ Fetch custom posts filtering by category:
 query {
   customPosts(
     filter: {
-      categoryIDs: [26, 28],
-      categoryTaxonomy: "product-cat"
+      categories: {
+        includeBy: {
+          ids: [26, 28]
+        }
+        taxonomy: "product-cat"
+      }
     }
   ) {
     ... on CustomPost {

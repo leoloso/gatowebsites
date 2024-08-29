@@ -70,14 +70,32 @@ query {
 
 ## Filtering custom posts by category
 
-To retrieve the custom posts with a given category or categories, we can use inputs `filter.categoryIDs` and `filter.categoryTaxonomy`:
+To retrieve the custom posts with given categories, we can use input `filter.categories`:
 
 ```graphql
 query {
-  customPostsByCat: customPosts(
+  customPostsByCatIDs: customPosts(
     filter: {
-      categoryIDs: [26, 28],
-      categoryTaxonomy: "product-category"
+      categories: {
+        includeBy: {
+          ids: [26, 28]
+        }
+        taxonomy: "product-cat"
+      }
+    }
+  ) {
+    id
+    title
+  }
+
+  customPostsByCatSlugs: customPosts(
+    filter: {
+      categories: {
+        includeBy: {
+          slugs: ["news", "sports"]
+        }
+        taxonomy: "product-cat"
+      }
     }
   ) {
     id
