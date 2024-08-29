@@ -70,14 +70,18 @@ query {
 
 ## Filtering custom posts by tag
 
-To retrieve the custom posts with a given tag or tags, we can use inputs `filter.tagIDs` or `filter.tagSlugs` and `filter.tagTaxonomy`:
+To retrieve the custom posts with given tags, we can use input `filter.tags`:
 
 ```graphql
 query {
   customPostsByTagIDs: customPosts(
     filter: {
-      tagIDs: [26, 28],
-      tagTaxonomy: "product-tag"
+      tags: {
+        includeBy: {
+          ids: [26, 28],
+        }
+        taxonomy: "product-tag"
+      }
     }
   ) {
     id
@@ -86,8 +90,12 @@ query {
 
   customPostsByTagSlugs: customPosts(
     filter: {
-      tagSlugs: ["tango", "rock"],
-      tagTaxonomy: "product-tag"
+      tags: {
+        includeBy: {
+          slugs: ["tango", "rock"]
+        }
+        taxonomy: "product-tag"
+      }
     }
   ) {
     id
