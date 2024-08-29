@@ -96,17 +96,9 @@ query TransformContentWithChatGPT(
 )
   @depends(on: "GetPostFromRSSFeed")
 {
-  promptWithTitle: _strAppend(
-    after: $prompt
-    append: $title
-  )
   promptWithContent: _strAppend(
     after: $prompt
     append: $content  
-  )
-  promptWithExcerpt: _strAppend(
-    after: $prompt
-    append: $excerpt  
   )
   openAIResponse: _sendJSONObjectItemHTTPRequest(input: {
     url: "https://api.openai.com/v1/chat/completions",
@@ -126,15 +118,7 @@ query TransformContentWithChatGPT(
           },
           {
             role: "user",
-            content: $__promptWithTitle
-          },
-          {
-            role: "user",
             content: $__promptWithContent
-          },
-          {
-            role: "user",
-            content: $__promptWithExcerpt
           }
         ]
       }
