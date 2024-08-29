@@ -86,7 +86,7 @@ query GetPostFromRSSFeed(
   }
 }
 
-query TransformContentWithChatGPT(
+query RewriteContentWithChatGPT(
   $openAIAPIKey: String!
   $systemRolePrompt: String! = "You are an English Content rewriter, a grammar checker, and a better writer"
   $prompt: String! = "Please rewrite the following English text, by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
@@ -135,7 +135,7 @@ query TransformContentWithChatGPT(
 query CheckAuthorExistsOrChange(
   $defaultAuthorUsername: String! = "admin"
 )
-  @depends(on: "transformContentWithChatGPT")
+  @depends(on: "RewriteContentWithChatGPT")
 {
   existingUserByUsername: user(by: { username: $authorUsername })
   {
