@@ -45,83 +45,86 @@ query GetPostsFromRSSFeedAndExportData(
         "item",
       ],
     )
-    inputs: _echo(value: $__rssJSON)
-      @underJSONObjectProperty(by: { path: "rss.channel.item" })
-        @underEachArrayItem(
-          passValueOnwardsAs: "item"
-          affectDirectivesUnderPos: [1, 2, 3, 4, 6]
+    items: _objectProperty(
+      object: $__rssJSON,
+      by: { path: "rss.channel.item" }
+    )
+    inputs: _echo(value: $__items)
+      @underEachArrayItem(
+        passValueOnwardsAs: "item"
+        affectDirectivesUnderPos: [1, 2, 3, 4, 6]
+      )
+        @applyField(
+          name: "_objectProperty"
+          arguments: {
+            object: $item
+            by: { key: "pubDate" }
+          }
+          passOnwardsAs: "dateAsString"
+        )
+        @applyField(
+          name: "_strToTime",
+          arguments: {
+            string: $dateAsString
+          },
+          passOnwardsAs: "date"
+        )
+        @applyField(
+          name: "_greaterThanOrEquals",
+          arguments: {
+            value1: $date,
+            value2: $newPostsStartTime
+          },
+          passOnwardsAs: "isNewPost"
+        )
+        @unless(
+          condition: $isNewPost
+        )
+          @setNull
+        @if(
+          condition: $isNewPost
+          affectDirectivesUnderPos: [1, 2, 3, 4]
         )
           @applyField(
             name: "_objectProperty"
             arguments: {
               object: $item
-              by: { key: "pubDate" }
+              by: { key: "title" }
             }
-            passOnwardsAs: "dateAsString"
+            passOnwardsAs: "title"
           )
           @applyField(
-            name: "_strToTime",
+            name: "_objectProperty"
             arguments: {
-              string: $dateAsString
-            },
-            passOnwardsAs: "date"
+              object: $item
+              by: { key: "content:encoded" }
+            }
+            passOnwardsAs: "content"
           )
           @applyField(
-            name: "_greaterThanOrEquals",
+            name: "_objectProperty"
             arguments: {
-              value1: $date,
-              value2: $newPostsStartTime
-            },
-            passOnwardsAs: "isNewPost"
+              object: $item
+              by: { key: "description" }
+            }
+            passOnwardsAs: "excerpt"
           )
-          @unless(
-            condition: $isNewPost
-          )
-            @setNull
-          @if(
-            condition: $isNewPost
-            affectDirectivesUnderPos: [1, 2, 3, 4]
-          )
-            @applyField(
-              name: "_objectProperty"
-              arguments: {
-                object: $item
-                by: { key: "title" }
-              }
-              passOnwardsAs: "title"
-            )
-            @applyField(
-              name: "_objectProperty"
-              arguments: {
-                object: $item
-                by: { key: "content:encoded" }
-              }
-              passOnwardsAs: "content"
-            )
-            @applyField(
-              name: "_objectProperty"
-              arguments: {
-                object: $item
-                by: { key: "description" }
-              }
-              passOnwardsAs: "excerpt"
-            )
-            @applyField(
-              name: "_echo",
-              arguments: {
-                value: {
-                  input: {
-                    status: draft,
-                    contentAs: {
-                      html: $content
-                    },
-                    excerpt: $excerpt
-                    title: $title
-                  }
+          @applyField(
+            name: "_echo",
+            arguments: {
+              value: {
+                input: {
+                  status: draft,
+                  contentAs: {
+                    html: $content
+                  },
+                  excerpt: $excerpt
+                  title: $title
                 }
-              },
-              setResultInResponse: true
-            )
+              }
+            },
+            setResultInResponse: true
+          )
       @arrayFilter
       @export(as: "inputs")
   }
