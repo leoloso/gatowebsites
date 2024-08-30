@@ -16,13 +16,13 @@ https://wordpress.com/blog/feed/rss/?withoutcomments=1
 
 ```graphql
 query GetTime(
-  $deltaTime: Int! = 86400
+  $timeDeltaInSeconds: Int! = 86400
 ) {
-  now: _time
+  todayMidnightTime: _makeTime(hour: 0, minute: 0, second: 0)
   
   newPostsStartTime: _intSubtract(
-    from: $__now
-    subtract: $deltaTime,
+    from: $__todayMidnightTime
+    subtract: $timeDeltaInSeconds,
   )
     @export(as: "newPostsStartTime")
 }
