@@ -18,10 +18,10 @@ https://wordpress.com/blog/feed/rss/?withoutcomments=1
 query GetTime(
   $timeDeltaInSeconds: Int! = 86400
 ) {
-  todayMidnightTime: _makeTime(hour: 0, minute: 0, second: 0)
+  now: _time
   
   newPostsStartTime: _intSubtract(
-    from: $__todayMidnightTime
+    from: $__now
     subtract: $timeDeltaInSeconds,
   )
     @export(as: "newPostsStartTime")
