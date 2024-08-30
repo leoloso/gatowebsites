@@ -36,9 +36,6 @@ query GetPostFromRSSFeed(
     body
     rssJSON: _strDecodeXMLAsJSON(
       xml: $__body
-      alwaysArrayTagNames: [
-        "category",
-      ],
     )
 
     # Fields to be imported
