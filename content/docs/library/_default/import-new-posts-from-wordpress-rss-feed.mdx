@@ -29,6 +29,7 @@ query GetPostsFromRSSFeedAndExportData(
         "item",
       ],
     )
+    inputs: _echo(value: $__rssJSON)
       @underJSONObjectProperty(by: { path: "rss.channel.item" })
         @underEachArrayItem(
           passValueOnwardsAs: "item"
@@ -58,31 +59,23 @@ query GetPostsFromRSSFeedAndExportData(
             }
             passOnwardsAs: "excerpt"
           )
-
-    # Fields to be imported
-    content:  _objectProperty(
-      object: $__rssJSON,
-      by: {
-        path: "rss.channel.item.content:encoded"
-      }
-    )
-      @export(as: "content")
-
-    excerpt:  _objectProperty(
-      object: $__rssJSON,
-      by: {
-        path: "rss.channel.item.description"
-      }
-    )
-      @export(as: "excerpt")
-
-    title:  _objectProperty(
-      object: $__rssJSON,
-      by: {
-        path: "rss.channel.item.title"
-      }
-    )
-      @export(as: "title")
+          @applyField(
+            name: "_echo",
+            arguments: {
+              value: {
+                input: {
+                  status: draft,
+                  contentAs: {
+                    html: $content
+                  },
+                  excerpt: $excerpt
+                  title: $title
+                }
+              }
+            },
+            setResultInResponse: true
+          )
+      @export(as: "inputs")
   }
 }
 
