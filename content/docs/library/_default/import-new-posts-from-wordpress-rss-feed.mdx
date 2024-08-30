@@ -14,6 +14,8 @@ Variable `$url` receives the URL of the WordPress post archive's RSS feed. It us
 https://wordpress.com/blog/feed/rss/?withoutcomments=1
 ```
 
+Variable `$timeDeltaInSeconds` indicates from when to consider a post as a new post. By default it's `86400` seconds (i.e. one day).
+
 ```graphql
 query GetTime(
   $timeDeltaInSeconds: Int! = 86400
