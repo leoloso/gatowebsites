@@ -1,0 +1,135 @@
+---
+title: Import new posts from WordPress RSS feed
+description: Create all the new posts using the data from some WordPress RSS feed
+order: 0
+---
+
+This query imports all the new posts from a WordPress RSS feed, using the title, content and excerpt of the post.
+
+The new posts are those created in the last 24 hs (configurable via variable). Execute this persisted query with a daily [WP-Cron automation task](/extensions-reference/automation#wp-cron) to automatically import all new posts from the other site.
+
+If the author with that username exists locally, it uses it, otherwise it replaces it with the one defined via variable `$defaultAuthorUsername`.
+
+Variable `$url` receives the URL of the WordPress post archive's RSS feed. It usually is the post archive URL + `"/feed/rss/?withoutcomments=1"`. Eg:
+
+```apacheconf
+https://wordpress.com/blog/feed/rss/?withoutcomments=1
+```
+
+```graphql
+query GetPostFromRSSFeedAndExportData(
+  $url: URL!
+) {
+  _sendHTTPRequest(input: {
+    url: $url,
+    method: GET
+  }) {
+    body
+    rssJSON: _strDecodeXMLAsJSON(
+      xml: $__body
+      alwaysArrayTagNames: [
+        "category",
+      ],
+    )
+
+    # Fields to be imported
+    authorUsername: _objectProperty(
+      object: $__rssJSON,
+      by: {
+        path: "rss.channel.item.dc:creator"
+      }
+    )
+      @export(as: "authorUsername")
+
+    # categorySlugs: _objectProperty(
+    #   object: $__rssJSON,
+    #   by: {
+    #     path: "rss.channel.item.category"
+    #   }
+    # )
+
+    content:  _objectProperty(
+      object: $__rssJSON,
+      by: {
+        path: "rss.channel.item.content:encoded"
+      }
+    )
+      @export(as: "content")
+
+    excerpt:  _objectProperty(
+      object: $__rssJSON,
+      by: {
+        path: "rss.channel.item.description"
+      }
+    )
+      @export(as: "excerpt")
+
+    title:  _objectProperty(
+      object: $__rssJSON,
+      by: {
+        path: "rss.channel.item.title"
+      }
+    )
+      @export(as: "title")
+  }
+}
+
+# If the author's username exists in this site, keep it
+# Otherwise, use the default one
+query CheckAuthorExistsOrChange(
+  $defaultAuthorUsername: String! = "admin"
+)
+  @depends(on: "GetPostFromRSSFeedAndExportData")
+{
+  existingUserByUsername: user(by: { username: $authorUsername })
+  {
+    id
+    username
+  }
+  userExists: _notNull(value: $__existingUserByUsername)
+  username: _if(
+    condition: $__userExists,
+    then: $authorUsername,
+    else: $defaultAuthorUsername
+  )
+    @export(as: "existingAuthorUsername")
+}
+
+mutation ImportPostFromWPRSSFeed
+  @depends(on: "CheckAuthorExistsOrChange")
+{
+  createPost(input: {
+    status: draft,
+    authorBy: {
+      username: $existingAuthorUsername
+    },
+    contentAs: {
+      html: $content
+    },
+    excerpt: $excerpt
+    title: $title
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    post {
+      id
+      slug
+      date
+      status
+
+      author {
+        id
+        username
+      }
+      content
+      excerpt
+      title
+    }
+  }
+}
+```
