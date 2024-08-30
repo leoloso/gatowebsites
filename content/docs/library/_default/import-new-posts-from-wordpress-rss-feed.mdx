@@ -17,7 +17,7 @@ https://wordpress.com/blog/feed/rss/?withoutcomments=1
 ```
 
 ```graphql
-query GetPostFromRSSFeedAndExportData(
+query GetPostsFromRSSFeedAndExportData(
   $url: URL!
 ) {
   _sendHTTPRequest(input: {
@@ -79,7 +79,7 @@ query GetPostFromRSSFeedAndExportData(
 query CheckAuthorExistsOrChange(
   $defaultAuthorUsername: String! = "admin"
 )
-  @depends(on: "GetPostFromRSSFeedAndExportData")
+  @depends(on: "GetPostsFromRSSFeedAndExportData")
 {
   existingUserByUsername: user(by: { username: $authorUsername })
   {
