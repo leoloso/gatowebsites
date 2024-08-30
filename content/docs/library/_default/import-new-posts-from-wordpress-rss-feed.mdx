@@ -62,19 +62,15 @@ query GetPostsFromRSSFeedAndExportData(
           @applyField(
             name: "_strToTime",
             arguments: {
-              value: {
-                string: $dateAsString
-              }
+              string: $dateAsString
             },
             passOnwardsAs: "date"
           )
           @applyField(
             name: "_greaterThanOrEquals",
             arguments: {
-              value: {
-                value1: $date,
-                value2: $newPostsStartTime
-              }
+              value1: $date,
+              value2: $newPostsStartTime
             },
             passOnwardsAs: "isNewPost"
           )
