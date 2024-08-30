@@ -41,13 +41,6 @@ query GetPostsFromRSSFeedAndExportData(
     )
       @export(as: "authorUsername")
 
-    # categorySlugs: _objectProperty(
-    #   object: $__rssJSON,
-    #   by: {
-    #     path: "rss.channel.item.category"
-    #   }
-    # )
-
     content:  _objectProperty(
       object: $__rssJSON,
       by: {
