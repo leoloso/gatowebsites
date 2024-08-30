@@ -120,14 +120,12 @@ query CreatePostInputsFromRSSFeed
           name: "_echo",
           arguments: {
             value: {
-              input: {
-                status: draft,
-                contentAs: {
-                  html: $content
-                },
-                excerpt: $excerpt
-                title: $title
-              }
+              status: draft,
+              contentAs: {
+                html: $content
+              },
+              excerpt: $excerpt
+              title: $title
             }
           },
           setResultInResponse: true
