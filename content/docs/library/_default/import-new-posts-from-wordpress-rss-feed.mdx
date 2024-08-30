@@ -15,9 +15,23 @@ https://wordpress.com/blog/feed/rss/?withoutcomments=1
 ```
 
 ```graphql
+query GetTime(
+  $deltaTime: Int! = 86400
+) {
+  now: _time
+  
+  newPostsStartTime: _intSubtract(
+    from: $__now
+    subtract: $deltaTime,
+  )
+    @export(as: "newPostsStartTime")
+}
+
 query GetPostsFromRSSFeedAndExportData(
   $url: URL!
-) {
+)
+  @depends(on: "GetTime")
+{
   _sendHTTPRequest(input: {
     url: $url,
     method: GET
@@ -35,6 +49,33 @@ query GetPostsFromRSSFeedAndExportData(
           passValueOnwardsAs: "item"
           affectDirectivesUnderPos: [1, 2]
         )
+          @applyField(
+            name: "_objectProperty"
+            arguments: {
+              object: $item
+              by: { key: "pubDate" }
+            }
+            passOnwardsAs: "dateAsString"
+          )
+          @applyField(
+            name: "_strToTime",
+            arguments: {
+              value: {
+                string: $dateAsString
+              }
+            },
+            passOnwardsAs: "date"
+          )
+          @applyField(
+            name: "_greaterThanOrEquals",
+            arguments: {
+              value: {
+                value1: $date,
+                value2: $newPostsStartTime
+              }
+            },
+            passOnwardsAs: "isNewPost"
+          )
           @applyField(
             name: "_objectProperty"
             arguments: {
