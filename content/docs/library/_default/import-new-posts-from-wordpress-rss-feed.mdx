@@ -47,7 +47,7 @@ query GetPostsFromRSSFeedAndExportData(
       @underJSONObjectProperty(by: { path: "rss.channel.item" })
         @underEachArrayItem(
           passValueOnwardsAs: "item"
-          affectDirectivesUnderPos: [1, 2]
+          affectDirectivesUnderPos: [1, 2, 3, 4, 6]
         )
           @applyField(
             name: "_objectProperty"
@@ -76,46 +76,55 @@ query GetPostsFromRSSFeedAndExportData(
             },
             passOnwardsAs: "isNewPost"
           )
-          @applyField(
-            name: "_objectProperty"
-            arguments: {
-              object: $item
-              by: { key: "title" }
-            }
-            passOnwardsAs: "title"
+          @unless(
+            condition: $isNewPost
           )
-          @applyField(
-            name: "_objectProperty"
-            arguments: {
-              object: $item
-              by: { key: "content:encoded" }
-            }
-            passOnwardsAs: "content"
+            @setNull
+          @if(
+            condition: $isNewPost
+            affectDirectivesUnderPos: [1, 2, 3, 4]
           )
-          @applyField(
-            name: "_objectProperty"
-            arguments: {
-              object: $item
-              by: { key: "description" }
-            }
-            passOnwardsAs: "excerpt"
-          )
-          @applyField(
-            name: "_echo",
-            arguments: {
-              value: {
-                input: {
-                  status: draft,
-                  contentAs: {
-                    html: $content
-                  },
-                  excerpt: $excerpt
-                  title: $title
-                }
+            @applyField(
+              name: "_objectProperty"
+              arguments: {
+                object: $item
+                by: { key: "title" }
               }
-            },
-            setResultInResponse: true
-          )
+              passOnwardsAs: "title"
+            )
+            @applyField(
+              name: "_objectProperty"
+              arguments: {
+                object: $item
+                by: { key: "content:encoded" }
+              }
+              passOnwardsAs: "content"
+            )
+            @applyField(
+              name: "_objectProperty"
+              arguments: {
+                object: $item
+                by: { key: "description" }
+              }
+              passOnwardsAs: "excerpt"
+            )
+            @applyField(
+              name: "_echo",
+              arguments: {
+                value: {
+                  input: {
+                    status: draft,
+                    contentAs: {
+                      html: $content
+                    },
+                    excerpt: $excerpt
+                    title: $title
+                  }
+                }
+              },
+              setResultInResponse: true
+            )
+      @arrayFilter
       @export(as: "inputs")
   }
 }
@@ -123,14 +132,7 @@ query GetPostsFromRSSFeedAndExportData(
 mutation ImportPostFromWPRSSFeed
   @depends(on: "GetPostsFromRSSFeedAndExportData")
 {
-  createPost(input: {
-    status: draft,
-    contentAs: {
-      html: $content
-    },
-    excerpt: $excerpt
-    title: $title
-  }) {
+  createPosts(inputs: $inputs) {
     status
     errors {
       __typename
