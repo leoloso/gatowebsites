@@ -376,6 +376,21 @@
   to = "/"
   status = 301
 
+[[redirects]]
+  from = "/library/import-post-from-wp-rss-feed"
+  to = "/library/import-post-from-wordpress-rss-feed"
+  status = 301
+
+[[redirects]]
+  from = "/library/import-post-from-wp-site"
+  to = "/library/import-post-from-wordpress-site"
+  status = 301
+
+[[redirects]]
+  from = "/library/export-post-to-wp-site"
+  to = "/library/export-post-to-wordpress-site"
+  status = 301
+
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
