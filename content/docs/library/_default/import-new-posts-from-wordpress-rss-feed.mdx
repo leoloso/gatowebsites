@@ -127,7 +127,7 @@ query GetPostsFromRSSFeedAndExportData(
   }
 }
 
-mutation ImportPostFromWPRSSFeed
+mutation ImportNewPostsFromWordPressRSSFeed
   @depends(on: "GetPostsFromRSSFeedAndExportData")
 {
   createPosts(inputs: $inputs) {
