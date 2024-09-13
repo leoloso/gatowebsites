@@ -701,7 +701,7 @@ With all the programming language features we've just covered, we are now able t
 
 - Create a webhook to be invoked by a service whenever a new user signs up to that service; the user may have subscribed to the newsletter (indicated by field `marketing_optin` in the webhook's payload); in that case, the webook must register the user's email (in field `email` in the webhook's payload) in a Mailchimp list.
 
-The solution is to use a [GraphQL persisted query](/features/persisted-queries) as a webhook, with this query:
+The solution is to use a [GraphQL persisted query](/extensions/persisted-queries) as a webhook, with this query:
 
 ```graphql
 query HasSubscribedToNewsletter {
