@@ -20,7 +20,7 @@ Developers need not be concerned about the "n+1" query problem: Due to the archi
 
 ## Security
 
-When using [persisted queries](/features/persisted-queries) to expose predefined data, you can completely disable the GraphQL single endpoint, so that it is not accessible even to authenticated users.
+When using [persisted queries](/extensions/persisted-queries) to expose predefined data, you can completely disable the GraphQL single endpoint, so that it is not accessible even to authenticated users.
 
 <Image
   src="/assets/guides/upstream/persisted-query.png"
@@ -50,7 +50,7 @@ When caching the GraphQL response using standard [HTTP caching](/features/http-c
 
 ## Endpoint customization and management
 
-You can provide multiple [custom endpoints](/features/custom-endpoints), each of them customized to a specific customer or application, [protecting them via a password](/features/public-private-and-password-protected-endpoints).
+You can provide multiple [custom endpoints](/extensions/custom-endpoints), each of them customized to a specific customer or application, [protecting them via a password](/features/public-private-and-password-protected-endpoints).
 
 And you can [add custom categories](/features/endpoint-management) to them, and [give them a hierarchy](/features/api-hierarchy) (such as `/graphql/customers/some-customer` and `/graphql/customers/another-customer`).
 
