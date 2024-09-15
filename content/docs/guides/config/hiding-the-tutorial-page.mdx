@@ -1,27 +1,29 @@
 ---
-title: "Hiding the Schema tutorial page"
-description: Hide the Tutorial page from the menu navigation
+title: "Enabling the Schema tutorial"
+description: Adding a Schema Tutorial page on the menu navigation
 order: 1888
 ---
 
 The Tutorial section explains how to achieve many objectives, exploring all the elements from the GraphQL schema.
 
-After taking the tutorial, and having learnt about all the distinctive features of Gato GraphQL, you can decide to hide this page from the menu navigation.
+By taking the tutorial, you will learn about all the distinctive features of Gato GraphQL.
 
-## Settings to hide the Tutorial page
+The tutorial is disabled by default, and you need to enable it on the Settings.
 
-An option to hide the Tutorial section has been added to the Settings page, under "Plugin Configuration > General > Hide Tutorial page?":
+## Settings to enable the Schema Tutorial page
+
+An option to enable the Tutorial section is on the Settings page, under "Plugin Configuration > General > Enable Schema Tutorial?":
 
 <Image
   src="/assets/guides/upstream/settings-hide-tutorial-page.png"
   width="1024"
   height="940"
-  alt="Hiding the Schema tutorial page in the Settings"
-  caption="Hiding the Schema tutorial page in the Settings"
+  alt="Enabling the Schema tutorial page in the Settings"
+  caption="Enabling the Schema tutorial page in the Settings"
 />
 
 Alternatively, we can define this value in `wp-config.php`:
 
 ```php
-define( 'GATOGRAPHQL_HIDE_TUTORIAL_PAGE', true );
+define( 'GATOGRAPHQL_ENABLE_SCHEMA_TUTORIAL', true );
 ```
