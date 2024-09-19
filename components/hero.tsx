@@ -32,7 +32,7 @@ export default function Hero() {
                 <Image src={LogoPic} width={250} height={175} alt="Gato GraphQL logo" />
               </div>
             </div> */}
-            <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4" data-aos="fade-down">The most powerful GraphQL server for WordPress</h1>
+            <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4" data-aos="fade-down">Powerful and flexible GraphQL server for WordPress</h1>
             <p className="text-lg text-slate-300 mb-8" data-aos="fade-down" data-aos-delay="200">Use <strong>Gato GraphQL</strong> to interact with all your data, and manage your <strong>WordPress</strong> site.</p>
 
             <div className="mx-auto space-y-4" data-aos="fade-down" data-aos-delay="200">

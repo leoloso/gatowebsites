@@ -13,7 +13,7 @@ import Cta from '@/components/cta'
 
 export const metadata = {
   title: 'Gato GraphQL',
-  description: 'The most powerful GraphQL server for WordPress',
+  description: 'Powerful and flexible GraphQL server for WordPress',
 }
 
 export default function Home() {
