@@ -24,20 +24,20 @@ module.exports = {
     shopClientOrders: "https://app.lemonsqueezy.com/my-orders",
     shopCustomerPortal: "https://shop.gatographql.com/billing",
     shopPurchase: isProd
-      ? "https://shop.gatographql.com/checkout/buy/24018c6f-1fd2-4c95-a22b-cce5844eb910"
-      : "@todo",
+      ? "@todo"
+      : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
     shopPurchaseTier1: isProd
-      ? "https://shop.gatographql.com/checkout/buy/24018c6f-1fd2-4c95-a22b-cce5844eb910"
-      : "@todo",
+      ? "@todo"
+      : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
     shopPurchaseTier2: isProd
-      ? "https://shop.gatographql.com/checkout/buy/afaff3a7-b2d4-4eaa-bf57-c8f600216aec"
-      : "@todo",
+      ? "@todo"
+      : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
     shopPurchaseTier3: isProd
-      ? "https://shop.gatographql.com/checkout/buy/37565248-d898-4ab7-832d-cddb0fba1d87"
-      : "@todo",
+      ? "@todo"
+      : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
     shopPurchaseTier4: isProd
-      ? "https://shop.gatographql.com/checkout/buy/37565248-d898-4ab7-832d-cddb0fba1d87"
-      : "@todo",
+      ? "@todo"
+      : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
     wpDirectory: "https://wordpress.org/plugins/gatographql/",
     wpDownload: "https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip",
   },
