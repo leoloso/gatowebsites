@@ -189,10 +189,12 @@ module.exports = {
   },
   shop: {
     prices: {
-      tier1: 99,
-      tier2: 199,
-      tier3: 299,
-      tier4: 399,
+      allExtensionsBundle: {
+        tier1: 99,
+        tier2: 199,
+        tier3: 299,
+        tier4: 399,
+      }
     }
   },
   services: {

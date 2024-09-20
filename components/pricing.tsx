@@ -33,7 +33,7 @@ export default function Pricing() {
         {/* Personal price */}
         <PricingTier
           name='Personal'
-          price={AppConfig.shop.prices.tier1}
+          price={AppConfig.shop.prices.allExtensionsBundle.tier1}
           description='5 domains'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier1)}
@@ -42,7 +42,7 @@ export default function Pricing() {
         {/* Organization price */}
         <PricingTier
           name='Organization'
-          price={AppConfig.shop.prices.tier2}
+          price={AppConfig.shop.prices.allExtensionsBundle.tier2}
           description='25 domains'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier2)}
@@ -51,7 +51,7 @@ export default function Pricing() {
         {/* Professional price */}
         <PricingTier
           name='Professional'
-          price={AppConfig.shop.prices.tier3}
+          price={AppConfig.shop.prices.allExtensionsBundle.tier3}
           description='100 domains'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier3)}
@@ -61,7 +61,7 @@ export default function Pricing() {
         {/* Agency price */}
         <PricingTier
           name='Agency'
-          price={AppConfig.shop.prices.tier4}
+          price={AppConfig.shop.prices.allExtensionsBundle.tier4}
           description='500 domains'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier4)}
