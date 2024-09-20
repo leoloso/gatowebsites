@@ -71,6 +71,22 @@ module.exports = {
       cachingExtensionTier4: isProd
         ? "@todo"
         : "https://shop.gatographql.com/checkout/buy/808f5132-0e79-4cbb-be4d-e40b78b5b99e",
+
+      customEndpointsExtensionDefaultTier: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/035d58dd-7f45-4c30-afe2-c01df0141cad",
+      customEndpointsExtensionTier1: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/035d58dd-7f45-4c30-afe2-c01df0141cad",
+      customEndpointsExtensionTier2: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/035d58dd-7f45-4c30-afe2-c01df0141cad",
+      customEndpointsExtensionTier3: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/035d58dd-7f45-4c30-afe2-c01df0141cad",
+      customEndpointsExtensionTier4: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/035d58dd-7f45-4c30-afe2-c01df0141cad",
     },
     wpDirectory: "https://wordpress.org/plugins/gatographql/",
     wpDownload: "https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip",
