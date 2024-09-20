@@ -7,6 +7,7 @@ import DownloadFreePluginButton from './download-free-button'
 import ModalVideo from './mdx/components/modal-video'
 import VideoThumb from '@/public/assets/GatoGraphQL-intro-video-background.png'
 import BrowseHighlightsButton from './browse-highlights-button'
+import TryPROPluginButton from './try-pro-plugin-button'
 
 export default function Hero() {
   return (
@@ -49,15 +50,18 @@ export default function Hero() {
             </div> */}
             
             <div className="mt-4 max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-down" data-aos-delay="400">
-              <div>
+              {/* <div>
                 <BrowseHighlightsButton btnClassName='btn' />
               </div>
               <div>
                 <DownloadFreePluginButton btnClassName='btn' />
-              </div>
-              {/* <div>
-                <PurchasePROPluginButton btnClassName='btn' />
               </div> */}
+              <div>
+                <TryPROPluginButton btnClassName='btn' />
+              </div>
+              <div>
+                <PurchasePROPluginButton btnClassName='btn' />
+              </div>
             </div>
 
           </div>
