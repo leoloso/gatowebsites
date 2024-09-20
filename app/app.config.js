@@ -23,21 +23,23 @@ module.exports = {
     shopAffiliateProgram: "https://shop.gatographql.com/affiliates",
     shopClientOrders: "https://app.lemonsqueezy.com/my-orders",
     shopCustomerPortal: "https://shop.gatographql.com/billing",
-    shopPurchase: isProd
-      ? "@todo"
-      : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
-    shopPurchaseTier1: isProd
-      ? "@todo"
-      : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
-    shopPurchaseTier2: isProd
-      ? "@todo"
-      : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
-    shopPurchaseTier3: isProd
-      ? "@todo"
-      : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
-    shopPurchaseTier4: isProd
-      ? "@todo"
-      : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
+    shopProducts: {
+      shopPurchase: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
+      shopPurchaseTier1: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
+      shopPurchaseTier2: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
+      shopPurchaseTier3: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
+      shopPurchaseTier4: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
+    },
     wpDirectory: "https://wordpress.org/plugins/gatographql/",
     wpDownload: "https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip",
   },
