@@ -24,19 +24,19 @@ module.exports = {
     shopClientOrders: "https://app.lemonsqueezy.com/my-orders",
     shopCustomerPortal: "https://shop.gatographql.com/billing",
     shopProducts: {
-      shopPurchase: isProd
+      allExtensionsBundleDefaultTier: isProd
         ? "@todo"
         : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
-      shopPurchaseTier1: isProd
+      allExtensionsBundleTier1: isProd
         ? "@todo"
         : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
-      shopPurchaseTier2: isProd
+      allExtensionsBundleTier2: isProd
         ? "@todo"
         : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
-      shopPurchaseTier3: isProd
+      allExtensionsBundleTier3: isProd
         ? "@todo"
         : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
-      shopPurchaseTier4: isProd
+      allExtensionsBundleTier4: isProd
         ? "@todo"
         : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
     },
