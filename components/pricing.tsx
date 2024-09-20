@@ -32,18 +32,18 @@ export default function Pricing() {
         </div>
         {/* Free plugin */}
         <PricingTier
-          name='Free'
-          price={0}
-          description='Gato GraphQL plugin'
-          buttonLabel="Download"
-          buttonURL={AppConfig.urls.wpDirectory}
-          buttonTarget="_blank"
+          name='Personal'
+          price={AppConfig.shop.prices.tier1}
+          description='5 domains'
+          buttonLabel="Purchase"
+          buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier1)}
+          buttonClassname={getShopAnchorClassname()}
         />
         {/* Personal price */}
         <PricingTier
-          name='Personal'
-          price={AppConfig.shop.prices.tier1}
-          description='1 domain'
+          name='Organization'
+          price={AppConfig.shop.prices.tier2}
+          description='25 domains'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier1)}
           buttonClassname={getShopAnchorClassname()}
@@ -51,8 +51,8 @@ export default function Pricing() {
         {/* Professional price */}
         <PricingTier
           name='Professional'
-          price={AppConfig.shop.prices.tier2}
-          description='10 domains'
+          price={AppConfig.shop.prices.tier3}
+          description='100 domains'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier2)}
           buttonClassname={getShopAnchorClassname()}
@@ -61,8 +61,8 @@ export default function Pricing() {
         {/* Agency price */}
         <PricingTier
           name='Agency'
-          price={AppConfig.shop.prices.tier3}
-          description='50 domains'
+          price={AppConfig.shop.prices.tier4}
+          description='500 domains'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier3)}
           buttonClassname={getShopAnchorClassname()}
