@@ -122,7 +122,7 @@ export default function Pricing() {
         <PricingItem
           columns={4}
           name="Premium Support"
-          ticks={[false, true, true, true]}
+          ticks={[true, true, true, true]}
           contents={[
             <span><span className="md:hidden">Premium Support</span></span>,
             <span><span className="md:hidden">Premium Support</span></span>,
