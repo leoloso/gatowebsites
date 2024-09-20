@@ -30,7 +30,7 @@ export default function Pricing() {
         <div className="px-6 flex flex-col justify-end sticky top-16 hidden md:block">
           &nbsp;
         </div>
-        {/* Free plugin */}
+        {/* Personal price */}
         <PricingTier
           name='Personal'
           price={AppConfig.shop.prices.tier1}
@@ -39,7 +39,7 @@ export default function Pricing() {
           buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier1)}
           buttonClassname={getShopAnchorClassname()}
         />
-        {/* Personal price */}
+        {/* Organization price */}
         <PricingTier
           name='Organization'
           price={AppConfig.shop.prices.tier2}
