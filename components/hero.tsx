@@ -27,15 +27,15 @@ export default function Hero() {
 
           {/* Hero content */}
           <div className="max-w-3xl mx-auto text-center">
-            {/* <div className="-mb-12">
+            <div className="-mb-12">
               <div className="flex w-full items-center justify-center pb-1">
                 <Image src={LogoPic} width={250} height={175} alt="Gato GraphQL logo" />
               </div>
-            </div> */}
+            </div>
             <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4" data-aos="fade-down">Powerful and flexible GraphQL server for WordPress</h1>
             <p className="text-lg text-slate-300 mb-8" data-aos="fade-down" data-aos-delay="200">Use <strong>Gato GraphQL</strong> to interact with all your data, and manage your <strong>WordPress</strong> site.</p>
 
-            <div className="mx-auto space-y-4" data-aos="fade-down" data-aos-delay="200">
+            {/* <div className="mx-auto space-y-4" data-aos="fade-down" data-aos-delay="200">
               <ModalVideo
                 title="Click Play to learn what you can do with Gato GraphQL"
                 thumb={VideoThumb}
@@ -46,7 +46,7 @@ export default function Hero() {
                 videoWidth={1920}
                 videoHeight={1080}
               />
-            </div>
+            </div> */}
             
             <div className="mt-4 max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-down" data-aos-delay="400">
               <div>
