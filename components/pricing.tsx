@@ -45,7 +45,7 @@ export default function Pricing() {
           price={AppConfig.shop.prices.tier2}
           description='25 domains'
           buttonLabel="Purchase"
-          buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier1)}
+          buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier2)}
           buttonClassname={getShopAnchorClassname()}
         />
         {/* Professional price */}
@@ -54,7 +54,7 @@ export default function Pricing() {
           price={AppConfig.shop.prices.tier3}
           description='100 domains'
           buttonLabel="Purchase"
-          buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier2)}
+          buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier3)}
           buttonClassname={getShopAnchorClassname()}
           highlight={true}
         />
@@ -64,7 +64,7 @@ export default function Pricing() {
           price={AppConfig.shop.prices.tier4}
           description='500 domains'
           buttonLabel="Purchase"
-          buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier3)}
+          buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier4)}
           buttonClassname={getShopAnchorClassname()}
         />
         
