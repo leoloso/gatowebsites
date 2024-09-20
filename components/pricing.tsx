@@ -30,20 +30,20 @@ export default function Pricing() {
         <div className="px-6 flex flex-col justify-end sticky top-16 hidden md:block">
           &nbsp;
         </div>
-        {/* Free plugin */}
-        <PricingTier
-          name='Free'
-          price={0}
-          description='Gato GraphQL plugin'
-          buttonLabel="Download"
-          buttonURL={AppConfig.urls.wpDirectory}
-          buttonTarget="_blank"
-        />
         {/* Personal price */}
         <PricingTier
           name='Personal'
           price={AppConfig.shop.prices.tier1}
-          description='1 domain'
+          description='5 domains'
+          buttonLabel="Purchase"
+          buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier1)}
+          buttonClassname={getShopAnchorClassname()}
+        />
+        {/* Organization price */}
+        <PricingTier
+          name='Organization'
+          price={AppConfig.shop.prices.tier2}
+          description='25 domains'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier1)}
           buttonClassname={getShopAnchorClassname()}
@@ -51,8 +51,8 @@ export default function Pricing() {
         {/* Professional price */}
         <PricingTier
           name='Professional'
-          price={AppConfig.shop.prices.tier2}
-          description='10 domains'
+          price={AppConfig.shop.prices.tier3}
+          description='100 domains'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier2)}
           buttonClassname={getShopAnchorClassname()}
@@ -61,8 +61,8 @@ export default function Pricing() {
         {/* Agency price */}
         <PricingTier
           name='Agency'
-          price={AppConfig.shop.prices.tier3}
-          description='50 domains'
+          price={AppConfig.shop.prices.tier4}
+          description='500 domains'
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopPurchaseTier3)}
           buttonClassname={getShopAnchorClassname()}
@@ -76,10 +76,10 @@ export default function Pricing() {
           name="Domains"
           ticks={[true, true, true, true]}
           contents={[
-            <span>Unlimited <span className="md:hidden">Domains</span></span>,
-            <span>1 <span className="md:hidden">Domain</span></span>,
-            <span>10 <span className="md:hidden">Domains</span></span>,
-            <span>50 <span className="md:hidden">Domains</span></span>,
+            <span>5 <span className="md:hidden">Domains</span></span>,
+            <span>25 <span className="md:hidden">Domain</span></span>,
+            <span>100 <span className="md:hidden">Domains</span></span>,
+            <span>500 <span className="md:hidden">Domains</span></span>,
           ]}
         />
         
@@ -122,7 +122,7 @@ export default function Pricing() {
         <PricingItem
           columns={4}
           name="Premium Support"
-          ticks={[false, true, true, true]}
+          ticks={[true, true, true, true]}
           contents={[
             <span><span className="md:hidden">Premium Support</span></span>,
             <span><span className="md:hidden">Premium Support</span></span>,
