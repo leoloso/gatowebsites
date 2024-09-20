@@ -103,6 +103,86 @@ module.exports = {
       deprecationExtensionTier4: isProd
         ? "@todo"
         : "https://shop.gatographql.com/checkout/buy/6bf6e511-8c8a-4524-a382-62f5b43463b4",
+
+      multipleQueryExecutionExtensionDefaultTier: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/1d70d151-8b83-46e9-9ffa-888b6b1285e6",
+      multipleQueryExecutionExtensionTier1: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/1d70d151-8b83-46e9-9ffa-888b6b1285e6",
+      multipleQueryExecutionExtensionTier2: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/1d70d151-8b83-46e9-9ffa-888b6b1285e6",
+      multipleQueryExecutionExtensionTier3: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/1d70d151-8b83-46e9-9ffa-888b6b1285e6",
+      multipleQueryExecutionExtensionTier4: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/1d70d151-8b83-46e9-9ffa-888b6b1285e6",
+
+      persistedQueriesExtensionDefaultTier: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/6b8f6a1e-4474-486f-9214-2cdb649c0bab",
+      persistedQueriesExtensionTier1: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/6b8f6a1e-4474-486f-9214-2cdb649c0bab",
+      persistedQueriesExtensionTier2: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/6b8f6a1e-4474-486f-9214-2cdb649c0bab",
+      persistedQueriesExtensionTier3: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/6b8f6a1e-4474-486f-9214-2cdb649c0bab",
+      persistedQueriesExtensionTier4: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/6b8f6a1e-4474-486f-9214-2cdb649c0bab",
+
+      polylangIntegrationExtensionDefaultTier: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/897b9058-2385-48e7-b69e-3e237812d24b",
+      polylangIntegrationExtensionTier1: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/897b9058-2385-48e7-b69e-3e237812d24b",
+      polylangIntegrationExtensionTier2: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/897b9058-2385-48e7-b69e-3e237812d24b",
+      polylangIntegrationExtensionTier3: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/897b9058-2385-48e7-b69e-3e237812d24b",
+      polylangIntegrationExtensionTier4: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/897b9058-2385-48e7-b69e-3e237812d24b",
+
+      queryFunctionsExtensionDefaultTier: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/eed12f49-83ba-4e01-958b-04b957a8074a",
+      queryFunctionsExtensionTier1: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/eed12f49-83ba-4e01-958b-04b957a8074a",
+      queryFunctionsExtensionTier2: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/eed12f49-83ba-4e01-958b-04b957a8074a",
+      queryFunctionsExtensionTier3: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/eed12f49-83ba-4e01-958b-04b957a8074a",
+      queryFunctionsExtensionTier4: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/eed12f49-83ba-4e01-958b-04b957a8074a",
+
+      schemaFunctionsExtensionDefaultTier: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/bc18bb56-b22c-47e0-829f-22e400530c5c",
+      schemaFunctionsExtensionTier1: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/bc18bb56-b22c-47e0-829f-22e400530c5c",
+      schemaFunctionsExtensionTier2: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/bc18bb56-b22c-47e0-829f-22e400530c5c",
+      schemaFunctionsExtensionTier3: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/bc18bb56-b22c-47e0-829f-22e400530c5c",
+      schemaFunctionsExtensionTier4: isProd
+        ? "@todo"
+        : "https://shop.gatographql.com/checkout/buy/bc18bb56-b22c-47e0-829f-22e400530c5c",
     },
     wpDirectory: "https://wordpress.org/plugins/gatographql/",
     wpDownload: "https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip",
