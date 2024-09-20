@@ -76,10 +76,10 @@ export default function Pricing() {
           name="Domains"
           ticks={[true, true, true, true]}
           contents={[
-            <span>Unlimited <span className="md:hidden">Domains</span></span>,
-            <span>1 <span className="md:hidden">Domain</span></span>,
-            <span>10 <span className="md:hidden">Domains</span></span>,
-            <span>50 <span className="md:hidden">Domains</span></span>,
+            <span>5 <span className="md:hidden">Domains</span></span>,
+            <span>25 <span className="md:hidden">Domain</span></span>,
+            <span>100 <span className="md:hidden">Domains</span></span>,
+            <span>500 <span className="md:hidden">Domains</span></span>,
           ]}
         />
         
