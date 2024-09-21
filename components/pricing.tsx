@@ -3,13 +3,12 @@ import PricingTier from "./pricing-tier"
 import PricingGroup from "./pricing-group"
 import PricingItem from "./pricing-item"
 import { getShopURL, getShopAnchorClassname } from "@/utils/shop/shop"
-import { allFeatures } from "@/.contentlayer/generated"
+import { allExtensions } from "@/.contentlayer/generated"
 import { sortByOrderAndTitle } from "@/utils/content/sort"
 
 export default function Pricing() {
-  const features = allFeatures.sort(sortByOrderAndTitle)
-  const freePluginFeatures = features.filter((feature) => feature.category === 'Free plugin')
-  const proPluginFeatures = features.filter((feature) => feature.category === 'PRO plugin')
+  const extensions = allExtensions.sort(sortByOrderAndTitle)
+
   return (
     <div className="relative">
       {/* Blurred shape */}
@@ -83,34 +82,19 @@ export default function Pricing() {
           ]}
         />
         
-        {/* # Features */}
-        <PricingGroup columns={4} name="Features" />
-        {/* Free features (collection) */}
-        {freePluginFeatures.map((feature, index) => (
+        {/* # Extensions */}
+        <PricingGroup columns={4} name="Extensions" />
+        {/* Extensions */}
+        {extensions.map((extension, index) => (
           <PricingItem
             columns={4}
-            name={feature.title}
+            name={extension.title}
             ticks={[true, true, true, true]}
             contents={[
-              <span><span className="md:hidden">{feature.title}</span></span>,
-              <span><span className="md:hidden">{feature.title}</span></span>,
-              <span><span className="md:hidden">{feature.title}</span></span>,
-              <span><span className="md:hidden">{feature.title}</span></span>,
-            ]}
-            key={index}
-          />
-        ))}
-        {/* PRO features (collection) */}
-        {proPluginFeatures.map((feature, index) => (
-          <PricingItem
-            columns={4}
-            name={feature.title}
-            ticks={[false, true, true, true]}
-            contents={[
-              <span><span className="md:hidden">{feature.title}</span></span>,
-              <span><span className="md:hidden">{feature.title}</span></span>,
-              <span><span className="md:hidden">{feature.title}</span></span>,
-              <span><span className="md:hidden">{feature.title}</span></span>,
+              <span><span className="md:hidden">{extension.title}</span></span>,
+              <span><span className="md:hidden">{extension.title}</span></span>,
+              <span><span className="md:hidden">{extension.title}</span></span>,
+              <span><span className="md:hidden">{extension.title}</span></span>,
             ]}
             key={index}
           />
