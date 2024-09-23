@@ -60,10 +60,10 @@ export default async function SingleFeature({ params }: {
 
   const feature = features[featureIndex]
   
-  {/* Page navigation */}
+  {/* Page navigation (with looping to first/last item) */}
   const paginationFeatures = getPrevNextArticles(features, featureIndex)
-  const prevFeature = paginationFeatures.prev as Feature
-  const nextFeature = paginationFeatures.next as Feature
+  const prevFeature = paginationFeatures.prev ? paginationFeatures.prev as Feature : features[features.length - 1]
+  const nextFeature = paginationFeatures.next ? paginationFeatures.next as Feature : features[0]
 
   const relatedGuide = feature.relatedGuide ? getGuideDocument(feature.relatedGuide) : null
 
