@@ -411,6 +411,11 @@
   to = "/features"
   status = 301
 
+[[redirects]]
+  from = "/features/sensitive-data"
+  to = "/features/security"
+  status = 301
+
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
