@@ -149,7 +149,7 @@ export default function FeaturesCarousel() {
                       <Image className="mb-3" src={itemPics[itemPics.length - 1]} width={56} height={56} alt="Carousel Icon" />
                       <div className="grow">
                         <div className="font-bold text-lg mb-1">And much more!</div>
-                        <div className="text-slate-400 mb-3">Disable the single endpoint, disable modules to remove accessing data in your API, execute HTTP requests to fetch external data, and more</div>
+                        <div className="text-slate-400 mb-3">Execute HTTP requests to fetch external data, browse the GraphQL schema via interactive clients, namespace the schema, and more.</div>
                       </div>
                       <div className="text-right">
                         <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={`/${AppConfig.paths.features}`}>View all features <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
