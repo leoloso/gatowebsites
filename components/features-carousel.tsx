@@ -69,7 +69,7 @@ export default function FeaturesCarousel() {
     'persisted-queries',
     'nested-mutations',
   ]
-  const features = allFeatures.sort(sortByOrder).filter((feature) => featureSlugs.includes(feature.slug))
+  const features = allFeatures.filter((feature) => featureSlugs.includes(feature.slug)).sort(sortByOrder)
 
   return (
     <section className='relative'>
