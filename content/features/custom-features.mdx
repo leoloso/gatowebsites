@@ -114,21 +114,6 @@ query {
 }
 ```
 
-The number of fields to add is not limited. In this query, the `dateStr` is also being translated:
-
-```graphql
-query {
-  posts {
-    dateStr
-    excerpt
-    content
-      @strTranslate(
-        affectAdditionalFieldsUnderPos: [1, 2]
-      )
-  }
-}
-```
-
 ## Field and directive-based versioning
 
 Version fields and directives independently from the schema.
