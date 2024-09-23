@@ -1,8 +1,9 @@
 ---
-title: Security
-description: Several mechanisms are provided to help protect your data.
-category: Free plugin
-order: 40
+title: Multiple levels of security
+description: Keep your data safe using the multiple mechanisms offered by Gato GraphQL to protect your public APIs.
+# category: Free plugin
+category: Standard
+order: 25
 relatedGuide: {
   topic: config,
   slug: querying-by-meta-values
@@ -12,6 +13,10 @@ relatedGuide: {
 Several mechanisms to help protect your data:
 
 👉🏽 Data that needs not be exposed can be **removed from the GraphQL schema**. For instance, if there's no need to expose user data, then disabling the Users module will remove the `User` type from the schema.
+
+👉🏽 The **single endpoint can be disabled**, either by exposing pre-defined data via **persisted queries**.
+
+👉🏽 All **public endpoints can be disabled**, forcing the user to first log-in to be able to access the GraphQL clients and endpoint.
 
 👉🏽 Which settings (from table `wp_options`) and meta values (from tables `wp_postmeta`, `wp_usermeta`, `wp_commentmeta` and `wp_taxonomymeta`) can be queried must be **explicitly defined in the configuration**.
 

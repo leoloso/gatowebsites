@@ -17,7 +17,8 @@ import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
 import SectionHeader from './section-header'
 import { getFeatureURLPath } from '@/utils/content/application-urls'
-import { sortByOrder, sortByOrderAndTitle } from '@/utils/content/sort'
+import { sortByOrder } from '@/utils/content/sort'
+import AppConfig from '@/app/app.config'
 Swiper.use([Navigation])
 
 export default function FeaturesCarousel() {
@@ -37,14 +38,17 @@ export default function FeaturesCarousel() {
           slidesPerView: 3
         }
       },
-      grabCursor: true,
-      loop: false,
+      grabCursor: false,
+      loop: true,
       centeredSlides: false,
       initialSlide: 0,
       spaceBetween: 24,
       navigation: {
         nextEl: '.carousel-next',
         prevEl: '.carousel-prev',
+      },
+      autoplay: {
+        delay: 3500,
       },
     })
     setSwiperInitialized(true)
@@ -56,20 +60,20 @@ export default function FeaturesCarousel() {
     CarouselImg03,
     CarouselImg04,
     CarouselImg05,
-    CarouselImg01,
-    CarouselImg02,
   ]
 
-  const featureSlugs = [
-    'schema-namespacing',
-    'global-fields',
-    'composable-directives',
-    'multifield-directives',
-    'oneof-input-object',
-    'multiple-query-execution',
-    'field-to-input',
-  ]
-  const features = allFeatures.sort(sortByOrder).filter((feature) => featureSlugs.includes(feature.slug))
+  // const featureSlugs = [
+  //   'oneof-input-object',
+  //   'multiple-query-execution',
+  //   'security',
+  //   'access-control',
+  //   'http-caching',
+  //   'custom-endpoints',
+  //   'persisted-queries',
+  //   'nested-mutations',
+  // ]
+  // const features = allFeatures.filter((feature) => featureSlugs.includes(feature.slug)).sort(sortByOrder)
+  const features = allFeatures.sort(sortByOrder)
 
   return (
     <section className='relative'>
@@ -97,9 +101,9 @@ export default function FeaturesCarousel() {
 
           {/* Section header */}
           <SectionHeader
-            leading='Forward-looking server'
-            title='Advanced GraphQL features'
-            description='Gato GraphQL includes novel custom features that build on top of the GraphQL spec, delivering more versatility and power.'
+            leading='Features'
+            title='The GraphQL server that you expect, and then some more'
+            description='Gato GraphQL delivers features designed to empower and protect your application.'
           />
 
           {/* Carousel built with Swiper.js [https://swiperjs.com/] */}
@@ -118,7 +122,7 @@ export default function FeaturesCarousel() {
                         <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-purple-500 transition-colors duration-500 ease-in-out blur-[60px]" />
                       </div>
                       <div className="flex flex-col p-6 h-full">
-                        <Image className="mb-3" src={itemPics[index]} width={56} height={56} alt="Carousel Icon" />
+                        <Image className="mb-3" src={itemPics[index % itemPics.length]} width={56} height={56} alt="Carousel Icon" />
                         <div className="grow">
                           <div className="font-bold text-lg mb-1">{feature.title}</div>
                           <div className="text-slate-400 mb-3">{feature.description}</div>
@@ -130,6 +134,27 @@ export default function FeaturesCarousel() {
                     </div>
                   </HighlighterItem>
                 ))}
+                { /* Add one final slide */}
+                <HighlighterItem className="swiper-slide h-auto group/slide">
+                  <div className="relative h-full bg-slate-800 rounded-[inherit] z-20 overflow-hidden">
+                    {/* Particles animation */}
+                    <Particles className="absolute inset-0 -z-10 opacity-0 group-[.swiper-slide-active]/slide:opacity-100 group-hover/slide:opacity-100 transition-opacity duration-500 ease-in-out" quantity={3} refresh={swiperInitialized} /> 
+                    {/* Radial gradient */}
+                    <div className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/3 aspect-square" aria-hidden="true">
+                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-700 group-[.swiper-slide-active]/slide:bg-purple-500 transition-colors duration-500 ease-in-out blur-[60px]" />
+                    </div>
+                    <div className="flex flex-col p-6 h-full">
+                      <Image className="mb-3" src={itemPics[itemPics.length - 1]} width={56} height={56} alt="Carousel Icon" />
+                      <div className="grow">
+                        <div className="font-bold text-lg mb-1">And much more!</div>
+                        <div className="text-slate-400 mb-3">Browse the list of all features, discover how Gato GraphQL can empower and protect your application.</div>
+                      </div>
+                      <div className="text-right">
+                        <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={`/${AppConfig.paths.features}`}>Browse all features <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
+                      </div>
+                    </div>
+                  </div>
+                </HighlighterItem>
               </Highlighter>
             </div>
           </div>

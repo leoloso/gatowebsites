@@ -1,14 +1,16 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { allFeatures } from 'contentlayer/generated'
+import { allFeatures, Feature } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import AppConfig from '@/app/app.config'
 import ArtifactSection from '@/components/sections/artifact'
 import DefaultArtifactIcon02 from '@/public/assets/theme/default/artifact-icon-02.png'
 import DefaultArtifactIcon04 from '@/public/assets/theme/default/artifact-icon-04.png'
-import { getGuideDocument } from '@/utils/content/document'
+import { getGuideDocument, getPrevNextArticles } from '@/utils/content/document'
 import { getDocURLPath } from '@/utils/content/application-urls'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import clsx from 'clsx'
+import ArticleNavigation from '@/components/ui/article-navigation'
+import { sortByOrderAndTitle } from '@/utils/content/sort'
 
 export async function generateStaticParams() {
   return allFeatures.map((feature) => ({
@@ -50,29 +52,38 @@ export default async function SingleFeature({ params }: {
   params: { slug: string }
 }) {
 
-  const feature = allFeatures.find((feature) => feature.slug === params.slug)
+  // Sort posts. Needed to find the prev/next items below
+  const features = allFeatures.sort(sortByOrderAndTitle)
+  const featureIndex = features.findIndex((feature) => feature.slug === params.slug)
 
-  if (!feature) notFound()
+  if (featureIndex === -1) notFound()
+
+  const feature = features[featureIndex]
+  
+  {/* Page navigation */}
+  const paginationFeatures = getPrevNextArticles(features, featureIndex)
+  const prevFeature = paginationFeatures.prev as Feature
+  const nextFeature = paginationFeatures.next as Feature
 
   const relatedGuide = feature.relatedGuide ? getGuideDocument(feature.relatedGuide) : null
 
   return (
     <ArtifactSection
       artifact={feature}
-      sectionURL={`/${AppConfig.paths.features}${feature.category === 'Free plugin' ? '' : '#pro'}`}
-      testimonialIndex={feature.category === 'Free plugin' ? 1 : 4}
-      defaultArtifactIcon={feature.category === 'Free plugin' ? DefaultArtifactIcon02 : DefaultArtifactIcon04}
-      bgClassname={clsx("bg-gradient-to-tr", feature.category === 'Free plugin' && "from-slate-900 to-brown-900", feature.category !== 'Free plugin' && "from-slate-900 to-fuchsia-900")}
+      sectionURL={`/${AppConfig.paths.features}`/*+`${feature.category === 'Free plugin' ? '' : '#pro'}`*/}
+      testimonialIndex={1/*feature.category === 'Free plugin' ? 1 : 4*/}
+      defaultArtifactIcon={DefaultArtifactIcon02/*feature.category === 'Free plugin' ? DefaultArtifactIcon02 : DefaultArtifactIcon04*/}
+      bgClassname={clsx("bg-gradient-to-tr", "from-slate-900 to-fuchsia-900"/*feature.category === 'Free plugin' && "from-slate-900 to-brown-900", feature.category !== 'Free plugin' && "from-slate-900 to-fuchsia-900"*/)}
     >
       <ul className="text-sm">
         <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
           <span className="text-slate-400">Feature</span>
-          <span className="text-slate-300 font-medium">{feature.title}</span>
+          <span className="text-slate-300 font-medium"><strong>{feature.title}</strong></span>
         </li>
-        <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
+        {/* <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
           <span className="text-slate-400">Category</span>
           <span className="text-slate-300 font-medium">{feature.category}</span>
-        </li>
+        </li> */}
         {!! relatedGuide && (
           <li className="py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
             <div className="text-slate-400">Related guide:</div>
@@ -83,6 +94,12 @@ export default async function SingleFeature({ params }: {
             </div>
           </li>
         )}
+        <li className="py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
+          {/* Page navigation */}
+          <div className="pt-6 space-y-3 sm:space-y-0 sm:space-x-2">
+            <ArticleNavigation prevArticle={prevFeature} nextArticle={nextFeature} />
+          </div>
+        </li>
       </ul>
     </ArtifactSection>
   )

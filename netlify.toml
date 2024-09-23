@@ -391,6 +391,126 @@
   to = "/library/export-post-to-wordpress-site"
   status = 301
 
+[[redirects]]
+  from = "/features/graphical-clients"
+  to = "/features/interactive-clients-and-interface"
+  status = 301
+
+[[redirects]]
+  from = "/features/graphiql-client"
+  to = "/features/interactive-clients-and-interface"
+  status = 301
+
+[[redirects]]
+  from = "/features/voyager-client"
+  to = "/features/interactive-clients-and-interface"
+  status = 301
+
+[[redirects]]
+  from = "/features/predefined-persisted-queries"
+  to = "/features"
+  status = 301
+
+[[redirects]]
+  from = "/features/sensitive-data"
+  to = "/features/security"
+  status = 301
+
+[[redirects]]
+  from = "/features/enhanced-security"
+  to = "/features/security"
+  status = 301
+
+[[redirects]]
+  from = "/features/api-hierarchy"
+  to = "/features/api-hierarchy-and-endpoint-management"
+  status = 301
+
+[[redirects]]
+  from = "/features/endpoint-management"
+  to = "/features/api-hierarchy-and-endpoint-management"
+  status = 301
+
+[[redirects]]
+  from = "/features/schema-namespacing"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/global-fields"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/field-to-input"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/composable-directives"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/multifield-directives"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/field-and-directive-based-versioning"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/proactive-feedback"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/public-private-schema"
+  to = "/features/access-control"
+  status = 301
+
+[[redirects]]
+  from = "/features/function-fields"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/function-directives"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/http-client"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/helper-fields"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/environment-fields"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/mutation-return-type"
+  to = "/features"
+  status = 301
+
+[[redirects]]
+  from = "/features/automation"
+  to = "/features"
+  status = 301
+
+[[redirects]]
+  from = "/features/integrations-with-3rdparty-plugins"
+  to = "/features"
+  status = 301
+
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
