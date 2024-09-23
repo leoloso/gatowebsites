@@ -1,10 +1,31 @@
 ---
-title: Endpoint Management
-description: "Organize custom endpoint and persisted queries by assigning them custom categories, similar to posts in WordPress."
+title: API Hierarchy & Endpoint Management
+description: "Manage custom endpoints and persisted queries hierarchically, to group and expose related endpoints under a logical structure, and organize them via categories."
 # category: PRO plugin
 category: Standard
 order: 170
+relatedGuide: {
+  topic: use,
+  slug: creating-an-api-hierarchy
+}
 ---
+
+Manage custom endpoints and persisted queries hierarchically, to group and expose related endpoints under a logical structure, and organize them via categories.
+
+## API Hierarchy
+
+An API may expose several endpoints which are somehow related to each other, and which may execute a similar query. This is the case, for instance, when creating endpoints that exposes the data in one language or another.
+
+Through the **API Hierarchy** we can define a structure for endpoints, so that we can produce:
+
+- `/graphql/posts/english/`
+- `/graphql/posts/french/`
+
+In this case, a parent query `posts` can provide the GraphQL query, and its descendant queries `english` and `french` provide the variables to customize the query.
+
+![API inheritance](/assets/guides/upstream/api-inheritance.png "API inheritance")
+
+## Endpoint Management
 
 When creating a Custom Endpoint or Persisted Query, we can add a "GraphQL endpoint category" to it, to organize all of our endpoints:
 

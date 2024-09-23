@@ -421,6 +421,16 @@
   to = "/features/security"
   status = 301
 
+[[redirects]]
+  from = "/features/api-hierarchy"
+  to = "/features/api-hierarchy-and-endpoint-management"
+  status = 301
+
+[[redirects]]
+  from = "/features/endpoint-management"
+  to = "/features/api-hierarchy-and-endpoint-management"
+  status = 301
+
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
