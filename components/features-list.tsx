@@ -8,17 +8,14 @@ export default function FeaturesList() {
   const features = allFeatures.sort(sortByOrderAndTitle)
   
   return (
-    <>
-      {/* Free plugin features */}
-      <ArtifactsList
-        artifacts={features}
-        showTopbar={false}
-        showSearch={false}
-        showHeading={false}
-        defaultArtifactIcon={DefaultArtifactIcon02}
-        bgClassname="bg-gradient-to-tr from-slate-800 to-purple-800/25"
-      />
-    </>
+    <ArtifactsList
+      artifacts={features}
+      showTopbar={false}
+      showSearch={false}
+      showHeading={false}
+      defaultArtifactIcon={DefaultArtifactIcon02}
+      bgClassname="bg-gradient-to-tr from-slate-800 to-purple-800/25"
+    />
   )
 }
 
