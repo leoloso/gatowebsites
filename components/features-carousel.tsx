@@ -19,6 +19,7 @@ import SectionHeader from './section-header'
 import { getFeatureURLPath } from '@/utils/content/application-urls'
 import { sortByOrder } from '@/utils/content/sort'
 import AppConfig from '@/app/app.config'
+import BrowseFeaturesButton from './browse-features-button'
 Swiper.use([Navigation])
 
 export default function FeaturesCarousel() {
@@ -162,19 +163,24 @@ export default function FeaturesCarousel() {
           </div>
 
           {/* Arrows */}
-          <div className="flex mt-8 justify-end">
-            <button className="carousel-prev relative z-20 w-12 h-12 flex items-center justify-center group">
-              <span className="sr-only">Previous</span>
-              <svg className="w-4 h-4 fill-slate-500 group-hover:fill-purple-500 transition duration-150 ease-in-out" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.7 14.7l1.4-1.4L3.8 9H16V7H3.8l4.3-4.3-1.4-1.4L0 8z" />
-              </svg>
-            </button>
-            <button className="carousel-next relative z-20 w-12 h-12 flex items-center justify-center group">
-              <span className="sr-only">Next</span>
-              <svg className="w-4 h-4 fill-slate-500 group-hover:fill-purple-500 transition duration-150 ease-in-out" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.3 14.7l-1.4-1.4L12.2 9H0V7h12.2L7.9 2.7l1.4-1.4L16 8z" />
-              </svg>
-            </button>
+          <div className="flex mt-4 justify-end">
+            <div className="relative z-20 flex items-center justify-center group mr-6">
+              <BrowseFeaturesButton />
+            </div>
+            <div className="flex justify-end">
+              <button className="carousel-prev relative z-20 w-12 h-12 flex items-center justify-center group">
+                <span className="sr-only">Previous</span>
+                <svg className="w-4 h-4 fill-slate-500 group-hover:fill-purple-500 transition duration-150 ease-in-out" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.7 14.7l1.4-1.4L3.8 9H16V7H3.8l4.3-4.3-1.4-1.4L0 8z" />
+                </svg>
+              </button>
+              <button className="carousel-next relative z-20 w-12 h-12 flex items-center justify-center group">
+                <span className="sr-only">Next</span>
+                <svg className="w-4 h-4 fill-slate-500 group-hover:fill-purple-500 transition duration-150 ease-in-out" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.3 14.7l-1.4-1.4L12.2 9H0V7h12.2L7.9 2.7l1.4-1.4L16 8z" />
+                </svg>
+              </button>
+            </div>
           </div>
 
         </div>
