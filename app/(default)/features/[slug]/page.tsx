@@ -69,10 +69,10 @@ export default async function SingleFeature({ params }: {
           <span className="text-slate-400">Feature</span>
           <span className="text-slate-300 font-medium">{feature.title}</span>
         </li>
-        <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
+        {/* <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
           <span className="text-slate-400">Category</span>
           <span className="text-slate-300 font-medium">{feature.category}</span>
-        </li>
+        </li> */}
         {!! relatedGuide && (
           <li className="py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
             <div className="text-slate-400">Related guide:</div>
