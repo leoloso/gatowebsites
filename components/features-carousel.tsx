@@ -38,14 +38,17 @@ export default function FeaturesCarousel() {
           slidesPerView: 3
         }
       },
-      grabCursor: true,
-      loop: false,
+      grabCursor: false,
+      loop: true,
       centeredSlides: false,
       initialSlide: 0,
       spaceBetween: 24,
       navigation: {
         nextEl: '.carousel-next',
         prevEl: '.carousel-prev',
+      },
+      autoplay: {
+        delay: 3500,
       },
     })
     setSwiperInitialized(true)
