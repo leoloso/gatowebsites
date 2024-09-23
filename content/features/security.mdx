@@ -16,6 +16,8 @@ Several mechanisms to help protect your data:
 
 👉🏽 The **single endpoint can be disabled**, either by exposing pre-defined data via **persisted queries**.
 
+👉🏽 All **public endpoints can be disabled**, forcing the user to first log-in to be able to access the GraphQL clients and endpoint.
+
 👉🏽 Which settings (from table `wp_options`) and meta values (from tables `wp_postmeta`, `wp_usermeta`, `wp_commentmeta` and `wp_taxonomymeta`) can be queried must be **explicitly defined in the configuration**.
 
 👉🏽 Some fields and input fields are exposed as **“sensitive” data elements"**, as to provide access to private data, but have it disabled by default: public data (eg: `posts`) is accessible by default, private data from the user (`myPosts`) is available to the logged-in user, and input `status` in field `posts(filter:)` (to retrieve non-published posts) is accessible only if explicitly enabled.
