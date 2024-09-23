@@ -393,17 +393,17 @@
 
 [[redirects]]
   from = "/features/graphical-clients"
-  to = "/features/user-friendly-clients-and-interface"
+  to = "/features/interactive-clients-and-interface"
   status = 301
 
 [[redirects]]
   from = "/features/graphiql-client"
-  to = "/features/user-friendly-clients-and-interface"
+  to = "/features/interactive-clients-and-interface"
   status = 301
 
 [[redirects]]
   from = "/features/voyager-client"
-  to = "/features/user-friendly-clients-and-interface"
+  to = "/features/interactive-clients-and-interface"
   status = 301
 
 [[redirects]]
