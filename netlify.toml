@@ -406,6 +406,11 @@
   to = "/features/user-friendly-clients-and-interface"
   status = 301
 
+[[redirects]]
+  from = "/features/predefined-persisted-queries"
+  to = "/features"
+  status = 301
+
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
