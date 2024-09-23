@@ -466,6 +466,11 @@
   to = "/features/custom-features"
   status = 301
 
+[[redirects]]
+  from = "/features/public-private-schema"
+  to = "/features/access-control"
+  status = 301
+
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
