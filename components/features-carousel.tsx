@@ -68,6 +68,7 @@ export default function FeaturesCarousel() {
   const featureSlugs = [
     'oneof-input-object',
     'multiple-query-execution',
+    'security',
     'access-control',
     'http-caching',
     'custom-endpoints',
