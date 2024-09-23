@@ -471,6 +471,31 @@
   to = "/features/access-control"
   status = 301
 
+[[redirects]]
+  from = "/features/function-fields"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/function-directives"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/http-client"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/helper-fields"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/environment-fields"
+  to = "/features/schema-functions"
+  status = 301
+
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
