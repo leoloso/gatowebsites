@@ -128,6 +128,9 @@ Instead of evolving the whole schema (which requires to modify the name of the m
 
 Use the top-level entry `extensions` to send data concerning deprecations and warnings in the response to the query.
 
+- **Deprecations:** Deprecations are returned in the same query involving deprecated fields, and not only when doing introspection.
+- **Warnings:** Warning are issues which can be considered non-blocking, i.e. they enhance the query but do not break it.
+
 For instance, the following query exports two fields using the same dynamic variable name `"prop"`, which generates a warning:
 
 ```graphql
@@ -164,11 +167,3 @@ The response will include section `warnings` (under `extensions`) with a corresp
   }
 }
 ```
-
-### Deprecations
-
-Deprecations are returned in the same query involving deprecated fields, and not only when doing introspection.
-
-### Warnings
-
-Warning are issues which can be considered non-blocking, i.e. they enhance the query but do not break it.
