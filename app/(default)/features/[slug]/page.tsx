@@ -1,14 +1,16 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { allFeatures } from 'contentlayer/generated'
+import { allFeatures, Feature } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import AppConfig from '@/app/app.config'
 import ArtifactSection from '@/components/sections/artifact'
 import DefaultArtifactIcon02 from '@/public/assets/theme/default/artifact-icon-02.png'
 import DefaultArtifactIcon04 from '@/public/assets/theme/default/artifact-icon-04.png'
-import { getGuideDocument } from '@/utils/content/document'
+import { getGuideDocument, getPrevNextArticles } from '@/utils/content/document'
 import { getDocURLPath } from '@/utils/content/application-urls'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import clsx from 'clsx'
+import ArticleNavigation from '@/components/ui/article-navigation'
+import { sortByOrderAndTitle } from '@/utils/content/sort'
 
 export async function generateStaticParams() {
   return allFeatures.map((feature) => ({
@@ -50,9 +52,18 @@ export default async function SingleFeature({ params }: {
   params: { slug: string }
 }) {
 
-  const feature = allFeatures.find((feature) => feature.slug === params.slug)
+  // Sort posts. Needed to find the prev/next items below
+  const features = allFeatures.sort(sortByOrderAndTitle)
+  const featureIndex = features.findIndex((feature) => feature.slug === params.slug)
 
-  if (!feature) notFound()
+  if (featureIndex === -1) notFound()
+
+  const feature = features[featureIndex]
+  
+  {/* Page navigation */}
+  const paginationFeatures = getPrevNextArticles(features, featureIndex)
+  const prevFeature = paginationFeatures.prev as Feature
+  const nextFeature = paginationFeatures.next as Feature
 
   const relatedGuide = feature.relatedGuide ? getGuideDocument(feature.relatedGuide) : null
 
@@ -84,6 +95,13 @@ export default async function SingleFeature({ params }: {
           </li>
         )}
       </ul>
+
+      {/* <hr className="w-full h-px pt-px mt-16 bg-gray-200 border-0" /> */}
+
+      {/* Page navigation */}
+      <div className="py-8 space-y-6 sm:space-y-0 sm:space-x-4">
+        <ArticleNavigation prevArticle={prevFeature} nextArticle={nextFeature} />
+      </div>
     </ArtifactSection>
   )
 }
