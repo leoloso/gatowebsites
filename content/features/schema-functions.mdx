@@ -17,8 +17,6 @@ The GraphQL schema is provided with fields and directives which expose functiona
 
 The GraphQL schema is provided with global fields to execute HTTP requests against a webserver and fetch their response.
 
-Due to security reasons, the URLs that can be connected to must be explicitly configured (explained in [Configuring what URLs can be HTTP-requested](/guides/config/configuring-what-urls-can-be-http-requested)).
-
 This query:
 
 ```graphql
@@ -135,8 +133,6 @@ The GraphQL schema is added fields which provide commonly-used helper functional
 
 Helper fields are **Global Fields**, hence they are added to every single type in the GraphQL schema: in `QueryRoot`, but also in `Post`, `User`, etc.
 
-For instance, in combination with the **Inspect HTTP Request Fields** and **Field to Input** modules, we can retrieve the currently-requested URL when executing a GraphQL custom endpoint or persisted query, add extra parameters, and send another HTTP request to the new URL.
-
 In this query, we retrieve the IDs of the users in the website and execute a new GraphQL query passing their ID as parameter:
 
 ```graphql
@@ -171,15 +167,7 @@ query {
 
 The GraphQL schema is provided with global field `_env`, which allows to obtain a value from an environment variable, or from a PHP constant (most commonly defined in `wp-config.php`, but can also be defined elsewhere).
 
-Due to security reasons, the name of the environment variable and constants that can be accessed must be explicitly configured (explained in [Configuring what environment variables and PHP constants can be queried](/guides/config/configuring-what-environment-variables-and-php-constants-can-be-queried)).
-
-Field `_env` receives the name of the environment variable or constant under parameter `"name"`, and is resolved like this:
-
-- If there is an environment variable with that name, it returns it
-- Otherwise, if there is a constant with that name, it returns it
-- Otherwise, it returns `null` and adds an error to the GraphQL output.
-
-For instance, this query retrieves the environment constant `GITHUB_ACCESS_TOKEN` which we might set-up to access a private repository in GitHub:
+This query retrieves the environment constant `GITHUB_ACCESS_TOKEN` which we might set-up to access a private repository in GitHub:
 
 ```graphql
 query {
