@@ -52,7 +52,7 @@ export default async function SingleExtension({ params }: {
 
   if (!extension) notFound()
 
-  const relatedGuide = extension.relatedGuide ? getGuideDocument(extension.relatedGuide) : null
+  const relatedGuides = extension.relatedGuides ? extension.relatedGuides.map((guide) => getGuideDocument(guide)) : null
 
   return (
     <ArtifactSection
@@ -89,14 +89,21 @@ export default async function SingleExtension({ params }: {
           <span className="text-slate-400">Category</span>
           <span className="text-slate-300 font-medium">{extension.category}</span>
         </li>
-        {!! relatedGuide && (
+        {!! relatedGuides && (
           <li className="py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
-            <div className="text-slate-400">Related guide:</div>
-            <div className="mt-1">
-              <a className="text-purple-500 font-medium" href={getDocURLPath(relatedGuide)}>
-                <span>{relatedGuide.title}</span>
-              </a>
-            </div>
+            <div className="text-slate-400">{ relatedGuides.length === 1 ? `Related guide:` : `Related guides:` }</div>
+            <ul className="mt-1 ml-1">
+              {relatedGuides.map((relatedGuide, index) => (
+                <li key={index} className="mb-1 md:mb-2">
+                  <a className="text-purple-500 font-medium flex items-center" href={getDocURLPath(relatedGuide)}>
+                    <svg className="fill-slate-400 shrink-0 mr-2 dark:fill-slate-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                      <path d="M7.3 9.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM7.3 15.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM.3 10.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0Z" />
+                    </svg>
+                    <span>{relatedGuide.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </li>
         )}
       </ul>

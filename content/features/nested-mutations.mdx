@@ -4,10 +4,12 @@ description: Execute a mutation within a queried entity (similar to accessing a 
 # category: Free plugin
 category: Standard
 order: 70
-relatedGuide: {
-  topic: schema,
-  slug: using-nested-mutations
-}
+relatedGuides: [
+  {
+    topic: schema,
+    slug: using-nested-mutations
+  },
+]
 ---
 
 Mutations are only exposed in the root type in GraphQL. As a consequence, the root type becomes heavily bloated, containing fields with nothing in common among themselves other than being mutations (which is a technical matter, not an interface design decision).
