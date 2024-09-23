@@ -431,6 +431,41 @@
   to = "/features/api-hierarchy-and-endpoint-management"
   status = 301
 
+[[redirects]]
+  from = "/features/schema-namespacing"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/global-fields"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/field-to-input"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/composable-directives"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/multifield-directives"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/field-and-directive-based-versioning"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/proactive-feedback"
+  to = "/features/custom-features"
+  status = 301
+
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
