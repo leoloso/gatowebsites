@@ -97,9 +97,9 @@ export default function FeaturesCarousel() {
 
           {/* Section header */}
           <SectionHeader
-            leading='Forward-looking server'
-            title='Advanced GraphQL features'
-            description='Gato GraphQL includes novel custom features that build on top of the GraphQL spec, delivering more versatility and power.'
+            leading='Unleash your capabilities'
+            title='The GraphQL features that you expect, and then some more'
+            description='Gato GraphQL delivers custom features designed to empower and protect your application.'
           />
 
           {/* Carousel built with Swiper.js [https://swiperjs.com/] */}
