@@ -53,16 +53,10 @@ export default function FeaturesCarousel() {
 
   const itemPics = [
     CarouselImg01,
-    // CarouselImg02,
-    CarouselImg03,
-    CarouselImg04,
-    CarouselImg05,
-    CarouselImg01,
-    CarouselImg03,
-    CarouselImg04,
-    CarouselImg05,
-    
     CarouselImg02,
+    CarouselImg03,
+    CarouselImg04,
+    CarouselImg05,
   ]
 
   const featureSlugs = [
@@ -124,7 +118,7 @@ export default function FeaturesCarousel() {
                         <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-purple-500 transition-colors duration-500 ease-in-out blur-[60px]" />
                       </div>
                       <div className="flex flex-col p-6 h-full">
-                        <Image className="mb-3" src={itemPics[index]} width={56} height={56} alt="Carousel Icon" />
+                        <Image className="mb-3" src={itemPics[index % itemPics.length]} width={56} height={56} alt="Carousel Icon" />
                         <div className="grow">
                           <div className="font-bold text-lg mb-1">{feature.title}</div>
                           <div className="text-slate-400 mb-3">{feature.description}</div>
