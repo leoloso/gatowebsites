@@ -164,9 +164,6 @@ export default function FeaturesCarousel() {
 
           {/* Arrows */}
           <div className="flex mt-8 justify-end">
-            <div className="relative z-20 flex items-center justify-center group mr-6">
-              <BrowseFeaturesButton />
-            </div>
             <div className="flex justify-end">
               <button className="carousel-prev relative z-20 w-12 h-12 flex items-center justify-center group">
                 <span className="sr-only">Previous</span>
@@ -180,6 +177,9 @@ export default function FeaturesCarousel() {
                   <path d="M9.3 14.7l-1.4-1.4L12.2 9H0V7h12.2L7.9 2.7l1.4-1.4L16 8z" />
                 </svg>
               </button>
+            </div>
+            <div className="relative z-20 flex items-center justify-center group ml-6">
+              <BrowseFeaturesButton />
             </div>
           </div>
 
