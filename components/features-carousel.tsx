@@ -49,6 +49,8 @@ export default function FeaturesCarousel() {
       },
       autoplay: {
         delay: 3500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
       },
     })
     setSwiperInitialized(true)
