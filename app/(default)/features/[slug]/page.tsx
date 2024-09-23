@@ -65,7 +65,7 @@ export default async function SingleFeature({ params }: {
   const prevFeature = paginationFeatures.prev ? paginationFeatures.prev as Feature : features[features.length - 1]
   const nextFeature = paginationFeatures.next ? paginationFeatures.next as Feature : features[0]
 
-  const relatedGuide = feature.relatedGuide ? getGuideDocument(feature.relatedGuide) : null
+  const relatedGuides = feature.relatedGuides ? feature.relatedGuides.map((guide) => getGuideDocument(guide)) : null
 
   return (
     <ArtifactSection
@@ -84,13 +84,15 @@ export default async function SingleFeature({ params }: {
           <span className="text-slate-400">Category</span>
           <span className="text-slate-300 font-medium">{feature.category}</span>
         </li> */}
-        {!! relatedGuide && (
+        {!! relatedGuides && (
           <li className="py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
             <div className="text-slate-400">Related guide:</div>
             <div className="mt-1">
-              <a className="text-purple-500 font-medium" href={getDocURLPath(relatedGuide)}>
+              {relatedGuides.map((relatedGuide, index) => (
+                <a className="text-purple-500 font-medium" href={getDocURLPath(relatedGuide)}>
                 <span>{relatedGuide.title}</span>
               </a>
+              ))}
             </div>
           </li>
         )}

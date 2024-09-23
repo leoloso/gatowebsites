@@ -52,7 +52,7 @@ export default async function SingleExtension({ params }: {
 
   if (!extension) notFound()
 
-  const relatedGuide = extension.relatedGuide ? getGuideDocument(extension.relatedGuide) : null
+  const relatedGuides = extension.relatedGuides ? extension.relatedGuides.map((guide) => getGuideDocument(guide)) : null
 
   return (
     <ArtifactSection
@@ -89,13 +89,15 @@ export default async function SingleExtension({ params }: {
           <span className="text-slate-400">Category</span>
           <span className="text-slate-300 font-medium">{extension.category}</span>
         </li>
-        {!! relatedGuide && (
+        {!! relatedGuides && (
           <li className="py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
-            <div className="text-slate-400">Related guide:</div>
+            <div className="text-slate-400">Related guides:</div>
             <div className="mt-1">
-              <a className="text-purple-500 font-medium" href={getDocURLPath(relatedGuide)}>
+              {relatedGuides.map((relatedGuide, index) => (
+                <a className="text-purple-500 font-medium" href={getDocURLPath(relatedGuide)}>
                 <span>{relatedGuide.title}</span>
               </a>
+              ))}
             </div>
           </li>
         )}

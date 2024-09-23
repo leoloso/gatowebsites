@@ -354,8 +354,8 @@ const Extension = defineDocumentType(() => ({
     featured: {
       type: 'boolean',
     },
-    relatedGuide: {
-      type: 'nested',
+    relatedGuides: {
+      type: 'list',
       of: RelatedGuide,
     },
     category: {
@@ -430,8 +430,8 @@ const Feature = defineDocumentType(() => ({
     featured: {
       type: 'boolean',
     },
-    relatedGuide: {
-      type: 'nested',
+    relatedGuides: {
+      type: 'list',
       of: RelatedGuide,
     },
     category: {
