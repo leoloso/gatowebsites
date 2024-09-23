@@ -163,7 +163,7 @@ export default function FeaturesCarousel() {
           </div>
 
           {/* Arrows */}
-          <div className="flex mt-4 justify-end">
+          <div className="flex mt-8 justify-end">
             <div className="relative z-20 flex items-center justify-center group mr-6">
               <BrowseFeaturesButton />
             </div>
