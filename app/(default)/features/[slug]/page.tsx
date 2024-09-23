@@ -89,7 +89,7 @@ export default async function SingleFeature({ params }: {
             <div className="text-slate-400">{ relatedGuides.length === 1 ? `Related guide:` : `Related guides:` }</div>
             <ul className="mt-1 ml-1">
               {relatedGuides.map((relatedGuide, index) => (
-                <li key={index} className="mb-3">
+                <li key={index} className="mb-1 md:mb-2">
                   <a className="text-purple-500 font-medium flex items-center" href={getDocURLPath(relatedGuide)}>
                     <svg className="fill-slate-400 shrink-0 mr-2 dark:fill-slate-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
                       <path d="M7.3 9.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM7.3 15.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM.3 10.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0Z" />
