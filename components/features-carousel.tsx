@@ -61,13 +61,13 @@ export default function FeaturesCarousel() {
   ]
 
   const featureSlugs = [
-    'schema-namespacing',
-    'global-fields',
-    'composable-directives',
-    'multifield-directives',
     'oneof-input-object',
     'multiple-query-execution',
-    'field-to-input',
+    'access-control',
+    'http-caching',
+    'custom-endpoints',
+    'persisted-queries',
+    'nested-mutations',
   ]
   const features = allFeatures.sort(sortByOrder).filter((feature) => featureSlugs.includes(feature.slug))
 
