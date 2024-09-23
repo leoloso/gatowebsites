@@ -391,6 +391,21 @@
   to = "/library/export-post-to-wordpress-site"
   status = 301
 
+[[redirects]]
+  from = "/features/graphical-clients"
+  to = "/features/user-friendly-clients-and-interface"
+  status = 301
+
+[[redirects]]
+  from = "/features/graphiql-client"
+  to = "/features/user-friendly-clients-and-interface"
+  status = 301
+
+[[redirects]]
+  from = "/features/voyager-client"
+  to = "/features/user-friendly-clients-and-interface"
+  status = 301
+
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
