@@ -186,20 +186,3 @@ query {
   githubAccessToken: _env(name: "GITHUB_ACCESS_TOKEN")
 }
 ```
-
-## Security: Not exposing credentials
-
-Please read guide [Security: Avoid exposing credentials used in the query](/guides/interact/security-avoid-exposing-credentials-used-in-the-query).
-
-## Further examples
-
-This query retrieves the DB configuration defined in the `wp-config.php` file:
-
-```graphql
-query {
-  dbName: _env(name: "DB_NAME")
-  dbUser: _env(name: "DB_USER")
-  dbPassword: _env(name: "DB_PASSWORD")
-  dbHost: _env(name: "DB_HOST")
-}
-```
