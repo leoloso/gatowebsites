@@ -59,17 +59,18 @@ export default function FeaturesCarousel() {
     CarouselImg05,
   ]
 
-  const featureSlugs = [
-    'oneof-input-object',
-    'multiple-query-execution',
-    'security',
-    'access-control',
-    'http-caching',
-    'custom-endpoints',
-    'persisted-queries',
-    'nested-mutations',
-  ]
-  const features = allFeatures.filter((feature) => featureSlugs.includes(feature.slug)).sort(sortByOrder)
+  // const featureSlugs = [
+  //   'oneof-input-object',
+  //   'multiple-query-execution',
+  //   'security',
+  //   'access-control',
+  //   'http-caching',
+  //   'custom-endpoints',
+  //   'persisted-queries',
+  //   'nested-mutations',
+  // ]
+  // const features = allFeatures.filter((feature) => featureSlugs.includes(feature.slug)).sort(sortByOrder)
+  const features = allFeatures.sort(sortByOrder)
 
   return (
     <section className='relative'>
@@ -146,7 +147,7 @@ export default function FeaturesCarousel() {
                         <div className="text-slate-400 mb-3">Execute HTTP requests to fetch external data, browse the GraphQL schema via interactive clients, namespace the schema, and more.</div>
                       </div>
                       <div className="text-right">
-                        <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={`/${AppConfig.paths.features}`}>View all features <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
+                        <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={`/${AppConfig.paths.features}`}>Browse all features <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
                       </div>
                     </div>
                   </div>
