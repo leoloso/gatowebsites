@@ -91,7 +91,7 @@ export default async function SingleExtension({ params }: {
         </li>
         {!! relatedGuides && (
           <li className="py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
-            <div className="text-slate-400">Related guides:</div>
+            <div className="text-slate-400">{ relatedGuides.length === 1 ? `Related guide:` : `Related guides:` }</div>
             <div className="mt-1">
               {relatedGuides.map((relatedGuide, index) => (
                 <a className="text-purple-500 font-medium" href={getDocURLPath(relatedGuide)}>
