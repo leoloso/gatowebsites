@@ -479,6 +479,11 @@ const NameURLPair = defineNestedType(() => ({
 export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Highlight, BlogPost, Page, Snippet, DemoPost, ComparisonPost, Doc, DocTopic, Extension, Feature],
+  contentDirExclude: [
+    'features/_automation.mdx',
+    'features/_integrations-with-3rdparty-plugins.mdx',
+    'features/_mutation-return-type.mdx',
+  ],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
