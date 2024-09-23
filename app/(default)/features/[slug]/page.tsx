@@ -78,7 +78,7 @@ export default async function SingleFeature({ params }: {
       <ul className="text-sm">
         <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
           <span className="text-slate-400">Feature</span>
-          <span className="text-slate-300 font-medium">{feature.title}</span>
+          <span className="text-slate-300 font-medium"><strong>{feature.title}</strong></span>
         </li>
         {/* <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
           <span className="text-slate-400">Category</span>
@@ -94,14 +94,13 @@ export default async function SingleFeature({ params }: {
             </div>
           </li>
         )}
+        <li className="py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
+          {/* Page navigation */}
+          <div className="pt-6 space-y-3 sm:space-y-0 sm:space-x-2">
+            <ArticleNavigation prevArticle={prevFeature} nextArticle={nextFeature} />
+          </div>
+        </li>
       </ul>
-
-      {/* <hr className="w-full h-px pt-px mt-16 bg-gray-200 border-0" /> */}
-
-      {/* Page navigation */}
-      <div className="py-8 space-y-6 sm:space-y-0 sm:space-x-4">
-        <ArticleNavigation prevArticle={prevFeature} nextArticle={nextFeature} />
-      </div>
     </ArtifactSection>
   )
 }
