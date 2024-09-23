@@ -102,9 +102,9 @@ export default function FeaturesCarousel() {
 
           {/* Section header */}
           <SectionHeader
-            leading='Unleash your capabilities'
-            title='The GraphQL features that you expect, and then some more'
-            description='Gato GraphQL delivers custom features designed to empower and protect your application.'
+            leading='Features'
+            title='The GraphQL server that you expect, and then some more'
+            description='Gato GraphQL delivers features designed to empower and protect your application.'
           />
 
           {/* Carousel built with Swiper.js [https://swiperjs.com/] */}
@@ -151,7 +151,7 @@ export default function FeaturesCarousel() {
                         <div className="text-slate-400 mb-3">Disable the single endpoint, disable modules to remove accessing data in your API, execute HTTP requests to fetch external data, and more</div>
                       </div>
                       <div className="text-right">
-                        <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={`/${AppConfig.paths.features}`}><strong>View all the features <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></strong></a>
+                        <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={`/${AppConfig.paths.features}`}>View all features <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
                       </div>
                     </div>
                   </div>
