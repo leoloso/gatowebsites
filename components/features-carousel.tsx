@@ -137,12 +137,12 @@ export default function FeaturesCarousel() {
                 ))}
                 { /* Add one final slide */}
                 <HighlighterItem className="swiper-slide h-auto group/slide">
-                  <div className="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
+                  <div className="relative h-full bg-slate-800 rounded-[inherit] z-20 overflow-hidden">
                     {/* Particles animation */}
                     <Particles className="absolute inset-0 -z-10 opacity-0 group-[.swiper-slide-active]/slide:opacity-100 group-hover/slide:opacity-100 transition-opacity duration-500 ease-in-out" quantity={3} refresh={swiperInitialized} /> 
                     {/* Radial gradient */}
                     <div className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/3 aspect-square" aria-hidden="true">
-                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-purple-500 transition-colors duration-500 ease-in-out blur-[60px]" />
+                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-700 group-[.swiper-slide-active]/slide:bg-purple-500 transition-colors duration-500 ease-in-out blur-[60px]" />
                     </div>
                     <div className="flex flex-col p-6 h-full">
                       <Image className="mb-3" src={itemPics[itemPics.length - 1]} width={56} height={56} alt="Carousel Icon" />
