@@ -124,7 +124,7 @@ export default function FeaturesCarousel() {
                       <div className="flex flex-col p-6 h-full">
                         <Image className="mb-3" src={itemPics[index % itemPics.length]} width={56} height={56} alt="Carousel Icon" />
                         <div className="grow">
-                          <div className="font-bold text-lg mb-1">{feature.title}</div>
+                          <div className="font-bold text-lg mb-1"><a className="group-hover:before:absolute group-hover:before:inset-0" href={getFeatureURLPath(feature)}>{feature.title}</a></div>
                           <div className="text-slate-400 mb-3">{feature.description}</div>
                         </div>
                         <div className="text-right">
