@@ -45,7 +45,7 @@ export default function Header({
                 <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-3 lg:mx-5 transition duration-150 ease-in-out" href={`/${AppConfig.paths.demoPosts}`}>Demos</Link>
               </li> */}
               {/* 1st level: hover */}
-              <Dropdown title="Docs">
+              <Dropdown title="Documentation">
                 {/* 2nd level: hover */}
                 <li>
                   <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-3 lg:mx-5 transition duration-150 ease-in-out py-0.5" href={`/${AppConfig.paths.docs.guides}`}>Guides</Link>
