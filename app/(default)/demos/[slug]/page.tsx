@@ -12,7 +12,7 @@ import { getPrevNextArticles } from '@/utils/content/document'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import DemoPostThumb from '@/components/demo-post-thumb'
 import PageHeader from '@/components/page-header'
-import DemoPostItemIntegration from '@/components/demo-post-item-integration'
+import PostItemIntegration from '@/components/post-item-integration'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import AppConfig from '@/app/app.config'
 
@@ -125,7 +125,7 @@ export default async function SingleDemoPost({ params }: {
                     {/* List container */}
                     <div className="flex flex-col border-t border-gray-200">
                       {demoPost.integrations.map((integration, index) => (
-                        <DemoPostItemIntegration key={index} {...integration} />
+                        <PostItemIntegration key={index} {...integration} />
                       ))}
                     </div>
                   </div>
