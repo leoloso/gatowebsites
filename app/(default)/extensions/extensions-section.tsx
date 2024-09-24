@@ -27,7 +27,11 @@ export default function ExtensionsSection() {
         {extensions.map((extension, index) => (
           <div className="pb-12 md:pb-20" key={index}>
             <article className="max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
-              <Link href={getExtensionURLPath(extension)} className={clsx("relative block group", index % 2 === 1 ? 'md:order-last' : '')} data-aos="fade-right" data-aos-delay="200">
+              <Link
+                href={getExtensionURLPath(extension)}
+                className={clsx("relative block group", index % 2 === 1 ? 'md:order-last' : '')}
+                // data-aos="fade-right" data-aos-delay="200"
+              >
                 <div className="absolute inset-0 bg-gray-700 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
                 {/* {extension.image &&
                   <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[56.25%] overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
