@@ -119,7 +119,7 @@ export default function SupportSidebar() {
 
   const sidebarDocTopicSVGs = [
     sidebarDocTopicSVG1,
-    sidebarDocTopicSVG2,
+    // sidebarDocTopicSVG2,
     sidebarDocTopicSVG3,
   ]
 
