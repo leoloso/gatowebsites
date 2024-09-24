@@ -81,14 +81,12 @@ export default async function SingleExtension({ params }: {
 
               <article>
 
-                <header className="mb-8">
-                  {/* Title and excerpt */}
-                  <PageHeader
-                    {...extension}
-                    // headerClassname="md:text-left"
-                    leading='Extension'
-                  />
-                </header>
+                {/* Title and excerpt */}
+                <PageHeader
+                  {...extension}
+                  // headerClassname="md:text-left"
+                  leading='Extension'
+                />
 
                 <div className="mb-8 lg:-ml-32 lg:-mr-32">
                   <ExtensionThumb extension={extension} />
