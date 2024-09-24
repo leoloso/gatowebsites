@@ -31,7 +31,9 @@ export default function ExtensionThumb({
       // @todo Use images from extension
       // targetImageSources={extension.targetImages}
       targetImageSources={[WordPressLogo, GatoGraphQLLogo]}
-      
+
+      skipGatoGraphQLLogo={true}
+
       paddingClassname={paddingClassname}
       bgClassname={bgClassname}
       isLandscape={isLandscape}
