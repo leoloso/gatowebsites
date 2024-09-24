@@ -3,10 +3,6 @@ import { Extension } from '@/.contentlayer/generated';
 import { StaticImageData } from 'next/image'
 import WithLogoThumb from './thumbnails/with-logo-thumb';
 
-// @todo Use images from extension
-import WordPressLogo from '@/public/assets/external-logos/wordpress-logo.svg'
-import GraphQLLogo from '@/public/assets/external-logos/graphql-logo.svg'
-
 export default function ExtensionThumb({
   extension,
   paddingClassname,
@@ -28,16 +24,10 @@ export default function ExtensionThumb({
 }) {
   return (
     <WithLogoThumb
-      // @todo Use images from extension
-      // targetImageSources={extension.targetImages}
-      targetImageSources={[
-        // WordPressLogo,
-        GraphQLLogo
-      ]}
-
       // skipGatoGraphQLLogo={true}
       skipPlusImage={true}
 
+      targetImageSources={extension.targetImages}
       paddingClassname={paddingClassname}
       bgClassname={bgClassname}
       isLandscape={isLandscape}
