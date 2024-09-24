@@ -1,18 +1,13 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { allExtensions, Extension } from 'contentlayer/generated'
+import { allExtensions } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
-import PostDate from '@/components/post-date'
-import PostTags from '@/components/post-tags'
 import { PostMdx } from '@/components/mdx/post-mdx'
 import StunningBackground from '@/components/stunning-background'
-import Newsletter from '@/components/newsletter'
-import ArticleNavigation from '@/components/ui/article-navigation'
 import { getPrevNextArticles } from '@/utils/content/document'
 import { sortByOrderAndTitle } from '@/utils/content/sort'
 import ExtensionThumb from '@/components/extension-thumb'
 import PageHeader from '@/components/page-header'
-import ExtensionItemIntegration from '@/components/demo-post-item-integration'
+import PostItemIntegration from '@/components/post-item-integration'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import Cta from '@/components/cta-02'
 
@@ -95,18 +90,17 @@ export default async function SingleExtension({ params }: {
                   />
                 </div>
 
-                {/* @todo Incorporate integrations */}
-                {/* {!! extension.integrations && (
+                {!! extension.integrations && (
                   <div className="mb-8">
-                    <h4 className="text-2xl font-bold font-inter mb-8">Integrations</h4> */}
+                    <h4 className="text-2xl font-bold font-inter mb-8">Integrations</h4>
                     {/* List container */}
-                    {/* <div className="flex flex-col border-t border-gray-200">
+                    <div className="flex flex-col border-t border-gray-200">
                       {extension.integrations.map((integration, index) => (
-                        <ExtensionItemIntegration key={index} {...integration} />
+                        <PostItemIntegration key={index} {...integration} />
                       ))}
                     </div>
                   </div>
-                )} */}
+                )}
 
                 {/* Article content */}
                 <PostMdx code={extension.body.code} />
