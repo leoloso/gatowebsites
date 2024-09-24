@@ -39,6 +39,7 @@ export default function ExtensionsSection({
                   <ExtensionThumb
                     extension={extension}
                     paddingClassname="py-5 px-4 md:py-8 md:px-6"
+                    isLandscape={true}
                   />
                 </div>
               </Link>
