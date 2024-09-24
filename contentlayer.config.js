@@ -190,7 +190,7 @@ const DemoPost = defineDocumentType(() => ({
     },   
     integrations: {
       type: 'list',
-      of: DemoPostIntegration,
+      of: PostIntegration,
     },  
   },
   computedFields: {
@@ -201,8 +201,8 @@ const DemoPost = defineDocumentType(() => ({
   },
 }))
 
-const DemoPostIntegration = defineNestedType(() => ({
-  name: 'DemoPostIntegration',
+const PostIntegration = defineNestedType(() => ({
+  name: 'PostIntegration',
   fields: {
     name: {
       type: 'string',
