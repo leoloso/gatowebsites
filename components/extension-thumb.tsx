@@ -5,7 +5,7 @@ import WithLogoThumb from './thumbnails/with-logo-thumb';
 
 // @todo Use images from extension
 import WordPressLogo from '@/public/assets/external-logos/wordpress-logo.svg'
-import GatoGraphQLLogo from '@/public/assets/external-logos/graphql-logo.svg'
+import GraphQLLogo from '@/public/assets/external-logos/graphql-logo.svg'
 
 export default function ExtensionThumb({
   extension,
@@ -30,7 +30,10 @@ export default function ExtensionThumb({
     <WithLogoThumb
       // @todo Use images from extension
       // targetImageSources={extension.targetImages}
-      targetImageSources={[WordPressLogo, GatoGraphQLLogo]}
+      targetImageSources={[
+        WordPressLogo,
+        GraphQLLogo
+      ]}
 
       skipGatoGraphQLLogo={true}
 
