@@ -31,7 +31,7 @@ export default function ExtensionThumb({
       // @todo Use images from extension
       // targetImageSources={extension.targetImages}
       targetImageSources={[
-        WordPressLogo,
+        // WordPressLogo,
         GraphQLLogo
       ]}
 
