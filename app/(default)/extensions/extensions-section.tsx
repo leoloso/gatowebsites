@@ -16,11 +16,14 @@ export default function ExtensionsSection({
 
   const bgClassnames = [
     "bg-purple-900",
-    "bg-sky-700",
+    "bg-sky-900",
     "bg-blue-900",
-    "bg-cyan-700",
+    "bg-cyan-900",
     "bg-indigo-900",
-    "bg-violet-700",
+    "bg-violet-900",
+    "bg-fuchsia-900",
+    "bg-pink-900",
+    "bg-rose-900",
   ]
 
   return (        
