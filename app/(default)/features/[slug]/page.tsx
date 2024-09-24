@@ -88,10 +88,10 @@ export default async function SingleFeature({ params }: {
         {!! relatedGuides && (
           <li className="py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
             <div className="text-slate-400">{ relatedGuides.length === 1 ? `Related guide:` : `Related guides:` }</div>
-            <ul className="mt-1 ml-1">
+            <ul className="mt-1">
               {relatedGuides.map((relatedGuide, index) => (
-                <li key={index} className="mb-1 md:mb-2">
-                  <a className="text-purple-500 font-medium flex items-center" href={getDocURLPath(relatedGuide)}>
+                <li key={index}>
+                  <a className="text-purple-500 font-medium flex items-center pl-2 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5" href={getDocURLPath(relatedGuide)}>
                     <svg className="fill-slate-400 shrink-0 mr-2 dark:fill-slate-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
                       <path d="M7.3 9.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM7.3 15.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM.3 10.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0Z" />
                     </svg>
