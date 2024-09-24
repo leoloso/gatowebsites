@@ -483,6 +483,12 @@ export default makeSource({
     'features/_automation.mdx',
     'features/_integrations-with-3rdparty-plugins.mdx',
     'features/_mutation-return-type.mdx',
+    'doc-topics/extensions-reference/_unmapped.mdx',
+    'docs/extensions-reference/_unmapped/automation.mdx',
+    'docs/extensions-reference/_unmapped/events-manager.mdx',
+    'docs/extensions-reference/_unmapped/google-translate.mdx',
+    'docs/extensions-reference/_unmapped/internal-graphql-server.mdx',
+    'docs/extensions-reference/_unmapped/multilingualpress.mdx',
   ],
   mdx: {
     remarkPlugins: [remarkGfm],

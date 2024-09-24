@@ -186,25 +186,21 @@
 
 [[redirects]]
   from = "/bundles/content-translation"
-  # to = "/bundles/simplest-wordpress-content-translation"
   to = "/"
   status = 301
 
 [[redirects]]
   from = "/bundles/public-api"
-  # to = "/bundles/responsible-wordpress-public-api"
   to = "/"
   status = 301
 
 [[redirects]]
   from = "/bundles/application-glue-and-automator"
-  # to = "/bundles/tailored-wordpress-automator"
   to = "/"
   status = 301
 
 [[redirects]]
   from = "/bundles/all-extensions"
-  # to = "/bundles/all-in-one-toolbox-for-wordpress"
   to = "/"
   status = 301
 
@@ -225,7 +221,6 @@
   status = 301
 
 # Docs migrated from graphql-by-pop.com
-
 [[redirects]]
   from = "/docs/dynamic-schema/ifttt-through-directives.html"
   to = "/architecture/ifttt-through-directives"
@@ -376,6 +371,7 @@
   to = "/"
   status = 301
 
+# Renamed library pages
 [[redirects]]
   from = "/library/import-post-from-wp-rss-feed"
   to = "/library/import-post-from-wordpress-rss-feed"
@@ -391,6 +387,7 @@
   to = "/library/export-post-to-wordpress-site"
   status = 301
 
+# Converged features on v6.0
 [[redirects]]
   from = "/features/graphical-clients"
   to = "/features/interactive-clients-and-interface"
@@ -511,6 +508,153 @@
   to = "/features"
   status = 301
 
+# Unmapped extensions
+[[redirects]]
+  from = "/extensions-reference/automation"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/events-manager"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/google-translate"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/internal-graphql-server"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/multilingualpress"
+  to = "/"
+  status = 301
+
+# Extensions Reference topic organized by extensions starting from v6.0
+[[redirects]]
+  from = "/extensions-reference/access-control-visitor-ip"
+  to = "/extensions-reference/access-control/access-control-visitor-ip"
+  status = 301
+
+# [[redirects]]
+#   from = "/extensions-reference/access-control"
+#   to = "/extensions-reference/access-control/access-control"
+#   status = 301
+
+[[redirects]]
+  from = "/extensions-reference/cache-control"
+  to = "/extensions-reference/caching/cache-control"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-resolution-caching"
+  to = "/extensions-reference/caching/field-resolution-caching"
+  status = 301
+
+# [[redirects]]
+#   from = "/extensions-references/custom-endpoints"
+#   to = "/extensions-reference/custom-endpoints/custom-endpoints"
+#   status = 301
+
+[[redirects]]
+  from = "/extensions-reference/deprecation-notifier"
+  to = "/extensions-reference/deprecation/deprecation-notifier"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-deprecation"
+  to = "/extensions-reference/deprecation/field-deprecation"
+  status = 301
+
+# [[redirects]]
+#   from = "/extensions-reference/multiple-query-execution"
+#   to = "/extensions-reference/multiple-query-execution/multiple-query-execution"
+#   status = 301
+
+[[redirects]]
+  from = "/extensions-reference/low-level-persisted-query-editing"
+  to = "/extensions-reference/persisted-queries/low-level-persisted-query-editing"
+  status = 301
+
+# [[redirects]]
+#   from = "/extensions-reference/persisted-queries"
+#   to = "/extensions-reference/persisted-queries/persisted-queries"
+#   status = 301
+
+[[redirects]]
+  from = "/extensions-reference/polylang"
+  to = "/extensions-reference/polylang-integration/polylang"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/conditional-field-manipulation"
+  to = "/extensions-reference/query-functions/conditional-field-manipulation"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-default-value"
+  to = "/extensions-reference/query-functions/field-default-value"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-on-field"
+  to = "/extensions-reference/query-functions/field-on-field"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-response-removal"
+  to = "/extensions-reference/query-functions/field-response-removal"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-to-input"
+  to = "/extensions-reference/query-functions/field-to-input"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-value-iteration-and-manipulation"
+  to = "/extensions-reference/query-functions/field-value-iteration-and-manipulation"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/response-error-trigger"
+  to = "/extensions-reference/query-functions/response-error-trigger"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/email-sender"
+  to = "/extensions-reference/schema-functions/email-sender"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/helper-function-collection"
+  to = "/extensions-reference/schema-functions/helper-function-collection"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/http-client"
+  to = "/extensions-reference/schema-functions/http-client"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/http-request-via-schema"
+  to = "/extensions-reference/schema-functions/http-request-via-schema"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/php-constants-and-environment-variables-via-schema"
+  to = "/extensions-reference/schema-functions/php-constants-and-environment-variables-via-schema"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/php-functions-via-schema"
+  to = "/extensions-reference/schema-functions/php-functions-via-schema"
+  status = 301
+  
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
