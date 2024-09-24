@@ -14,8 +14,9 @@ import {
 } from '@/utils/content/document'
 import { getDocURLPath } from '@/utils/content/application-urls'
 import AppConstants from '@/app/app.constants'
+import SidebarDocTopicSVG, { sidebarDocTopicSVG1, sidebarDocTopicSVG2, sidebarDocTopicSVG3 } from './sidebar-doctopic-svg'
 
-function getDocTopicSVG1() {
+function getDocTopicSidebarSVG1() {
   return (
     <svg className="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -34,7 +35,7 @@ function getDocTopicSVG1() {
   )
 }
 
-function getDocTopicSVG2() {
+function getDocTopicSidebarSVG2() {
   return (
     <svg className="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -53,7 +54,7 @@ function getDocTopicSVG2() {
   )
 }
 
-function getDocTopicSVG3() {
+function getDocTopicSidebarSVG3() {
   return (
     <svg className="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -176,8 +177,10 @@ export default function SupportSidebar() {
                                     handleClick();
                                   }}
                                 >
-                                  { getDocTopicSVG1() }
-                                  <span>{docTopic.name}</span>
+                                  <SidebarDocTopicSVG
+                                    name={docTopic.name}
+                                    svgOption={sidebarDocTopicSVG2}
+                                  />
                                 </a>
                                 <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
                                   {docsByTopic.map((doc, docIndex) => (
