@@ -6,7 +6,11 @@ import PageHeader from '@/components/page-header'
 import ExtensionThumb from '@/components/extension-thumb'
 import clsx from 'clsx'
 
-export default function ExtensionsSection() {
+export default function ExtensionsSection({
+  alternateColumns = false
+}: {
+  alternateColumns?: boolean,
+}) {
 
   allExtensions.sort(sortByOrder)
   const extensions = allExtensions
@@ -28,7 +32,7 @@ export default function ExtensionsSection() {
             <article className="max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16">
               <Link
                 href={getExtensionURLPath(extension)}
-                className={clsx("relative block group", index % 2 === 1 ? 'md:order-last' : '')}
+                className={clsx("relative block group", alternateColumns && index % 2 === 1 ? 'md:order-last' : '')}
                 // data-aos="fade-right" data-aos-delay="200"
               >
                 <div className="absolute inset-0 bg-gray-700 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
