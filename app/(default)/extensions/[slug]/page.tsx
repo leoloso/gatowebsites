@@ -89,7 +89,10 @@ export default async function SingleExtension({ params }: {
                 />
 
                 <div className="mb-8 lg:-ml-32 lg:-mr-32">
-                  <ExtensionThumb extension={extension} />
+                  <ExtensionThumb
+                    extension={extension}
+                    isLandscape={true}
+                  />
                 </div>
 
                 {/* @todo Incorporate integrations */}
