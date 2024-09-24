@@ -1,13 +1,7 @@
-import { allExtensions } from 'contentlayer/generated'
-
-import ExtensionsSection from '@/components/extensions-section'
-import ExtensionsList from '@/components/extensions-list'
-import {
-  getFeaturedExtensions,
-} from '@/utils/content/extension'
-import { sortByOrderAndTitle } from '@/utils/content/sort'
 import Cta from '@/components/cta-02'
-import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import StunningBackground from '@/components/stunning-background'
+import { createSEOPageTitle } from '@/utils/content/metadata'
+import ExtensionsSection from './extensions-section'
 
 const pageTitle = 'Extensions'
 export const metadata = {
@@ -22,17 +16,15 @@ export const metadata = {
 }
 
 export default function Extensions() {
-  // Sort extensions
-  const extensions = allExtensions.sort(sortByOrderAndTitle)  
-  const featuredExtensions = getFeaturedExtensions(extensions).sort(sortByOrderAndTitle)
+
   return (
     <>
-      <ExtensionsSection
-        extensions={ featuredExtensions }
-      />
-      <ExtensionsList
-        extensions={ extensions }
-      />
+      <section className="relative">
+
+        <StunningBackground />
+
+        <ExtensionsSection />
+      </section>  
       <Cta />
     </>
   )

@@ -1,12 +1,20 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { allExtensions } from 'contentlayer/generated'
+import { allExtensions, Extension } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
-import AppConfig from '@/app/app.config'
-import ArtifactSection from '@/components/sections/artifact'
-import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon-01.png'
-import { getDocURLPath, getExtensionDocumentationURLPath } from '@/utils/content/application-urls'
-import { getGuideDocument } from '@/utils/content/document'
+import Image from 'next/image'
+import PostDate from '@/components/post-date'
+import PostTags from '@/components/post-tags'
+import { PostMdx } from '@/components/mdx/post-mdx'
+import StunningBackground from '@/components/stunning-background'
+import Newsletter from '@/components/newsletter'
+import ArticleNavigation from '@/components/ui/article-navigation'
+import { getPrevNextArticles } from '@/utils/content/document'
+import { sortByOrderAndTitle } from '@/utils/content/sort'
+import ExtensionThumb from '@/components/extension-thumb'
+import PageHeader from '@/components/page-header'
+import ExtensionItemIntegration from '@/components/demo-post-item-integration'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import Cta from '@/components/cta-02'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
@@ -34,12 +42,12 @@ export async function generateMetadata(
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,
-      images: previousImages,
+      images: extension.image ? [extension.image] : previousImages,
     },
     twitter: {
       title: createOpenGraphPageTitle(title),
       description,
-      images: previousImages,
+      images: extension.image ? [extension.image] : previousImages,
     },
   }
 }
@@ -48,66 +56,72 @@ export default async function SingleExtension({ params }: {
   params: { slug: string }
 }) {
 
-  const extension = allExtensions.find((extension) => extension.slug === params.slug)
+  // Sort posts. Needed to find the prev/next items below
+  const extensions = allExtensions.sort(sortByOrderAndTitle)
+  const extensionIndex = extensions.findIndex((extension) => extension.slug === params.slug)
 
-  if (!extension) notFound()
+  if (extensionIndex === -1) notFound()
 
-  const relatedGuides = extension.relatedGuides ? extension.relatedGuides.map((guide) => getGuideDocument(guide)) : null
+  const extension = extensions[extensionIndex]
+  
+  {/* Page navigation */}
+  // const paginationArticles = getPrevNextArticles(extensions, extensionIndex)
+  // const prevArticle = paginationArticles.prev as Extension
+  // const nextArticle = paginationArticles.next as Extension
 
   return (
-    <ArtifactSection
-      artifact={extension}
-      sectionURL={`/${AppConfig.paths.extensions}`}
-      testimonialIndex={0}
-      defaultArtifactIcon={DefaultArtifactIcon}
-      bgClassname="bg-gradient-to-tr from-slate-900 to-blue-900"
-      thumbLeading='Extension:'
-      widgetChildren={
-        <a className="btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/70 before:rounded-full before:pointer-events-none" href={getExtensionDocumentationURLPath(extension)}>
-          <span className="relative inline-flex items-center">
-            Open reference doc <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
-          </span>
-        </a>
-      }
-    >
-      <ul className="text-sm">
-        <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
-          <span className="text-slate-400">Extension</span>
-          <span className="text-slate-300 font-medium">{extension.title}</span>
-        </li>
-        {!! extension.integration && (
-          <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
-            <span className="text-slate-400">Integration for</span>
-            <a className="text-purple-500 font-medium flex items-center space-x-1" href={extension.integration.url} target="_blank">
-              <span>{extension.integration.name}</span>
-              <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="9" height="9">
-                <path d="m1.285 8.514-.909-.915 5.513-5.523H1.663l.01-1.258h6.389v6.394H6.794l.01-4.226z" />
-              </svg>
-            </a>
-          </li>
-        )}
-        <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
-          <span className="text-slate-400">Category</span>
-          <span className="text-slate-300 font-medium">{extension.category}</span>
-        </li>
-        {!! relatedGuides && (
-          <li className="py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
-            <div className="text-slate-400">{ relatedGuides.length === 1 ? `Related guide:` : `Related guides:` }</div>
-            <ul className="mt-1">
-              {relatedGuides.map((relatedGuide, index) => (
-                <li key={index}>
-                  <a className="text-purple-500 font-medium flex items-center pl-2 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5" href={getDocURLPath(relatedGuide)}>
-                    <svg className="fill-slate-400 shrink-0 mr-2 dark:fill-slate-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                      <path d="M7.3 9.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM7.3 15.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM.3 10.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0Z" />
-                    </svg>
-                    <span>{relatedGuide.title}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </li>
-        )}
-      </ul>
-    </ArtifactSection>
+    <>
+      <section className="relative">
+
+        <StunningBackground />
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+            <div className="max-w-3xl mx-auto">
+
+              <article>
+
+                {/* Title and excerpt */}
+                <PageHeader
+                  {...extension}
+                  // headerClassname="md:text-left"
+                  leading='Extension'
+                />
+
+                <div className="mb-8 lg:-ml-32 lg:-mr-32">
+                  <ExtensionThumb extension={extension} />
+                </div>
+
+                {/* @todo Incorporate integrations */}
+                {/* {!! extension.integrations && (
+                  <div className="mb-8">
+                    <h4 className="text-2xl font-bold font-inter mb-8">Integrations</h4> */}
+                    {/* List container */}
+                    {/* <div className="flex flex-col border-t border-gray-200">
+                      {extension.integrations.map((integration, index) => (
+                        <ExtensionItemIntegration key={index} {...integration} />
+                      ))}
+                    </div>
+                  </div>
+                )} */}
+
+                {/* Article content */}
+                <PostMdx code={extension.body.code} />
+
+                {/* <hr className="w-full h-px pt-px mt-16 bg-gray-200 border-0" /> */}
+
+                {/* Page navigation */}
+                {/* <div className="py-8 space-y-6 sm:space-y-0 sm:space-x-4">
+                  <ArticleNavigation prevArticle={prevArticle} nextArticle={nextArticle} />
+                </div> */}
+              </article>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <Cta />
+    </>
   )
 }
