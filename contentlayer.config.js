@@ -351,26 +351,6 @@ const Extension = defineDocumentType(() => ({
     seoDescription: {
       type: 'string',
     },
-    featured: {
-      type: 'boolean',
-    },
-    relatedGuides: {
-      type: 'list',
-      of: RelatedGuide,
-    },
-    category: {
-      type: 'enum',
-      options: [
-        'Performance',
-        'Plugin integration',
-        'Productivity',
-        'Schema evolution',
-        'Schema extension',
-        'Schema functionality',
-        'Security',
-      ],
-      required: true,
-    },
     order: {
       type: 'number',
       required: true,
@@ -378,12 +358,6 @@ const Extension = defineDocumentType(() => ({
     integrations: {
       type: 'list',
       of: PostIntegration,
-    },
-    image: {
-      type: 'string',
-    },
-    icon: {
-      type: 'string',
     },
     targetImages: {
       type: 'list',
