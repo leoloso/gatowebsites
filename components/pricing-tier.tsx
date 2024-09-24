@@ -27,7 +27,7 @@ export default function PricingTier({
           {/* <span className="text-sm text-slate-600 font-medium">/y</span> */}
         </div>
         {isPRO && (
-          <div className="text-slate-400"><span className="text-slate-200">“All Extensions” Bundle</span> - License for <span className="text-slate-200">{description}</span></div>
+          <div className="text-slate-400"><span className="text-slate-200">“All Extensions” Bundle</span> - License for <span className="text-slate-200"><strong>{description}</strong></span></div>
         )}
         {!isPRO && (
           <div className="text-slate-200">{description}</div>
