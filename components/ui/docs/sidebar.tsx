@@ -117,6 +117,12 @@ export default function SupportSidebar() {
   // Filter by section, sort docs and doc topics by order
   const docTopics = getDocumentTopicsBySection(requestedDocSection).sort(sortDocumentTopics)
 
+  const sidebarDocTopicSVGs = [
+    sidebarDocTopicSVG1,
+    sidebarDocTopicSVG2,
+    sidebarDocTopicSVG3,
+  ]
+
   return (
     <>
       {/* Backdrop */}
@@ -179,7 +185,7 @@ export default function SupportSidebar() {
                                 >
                                   <SidebarDocTopicSVG
                                     name={docTopic.name}
-                                    svgOption={sidebarDocTopicSVG2}
+                                    svgOption={sidebarDocTopicSVGs[docTopicIndex % sidebarDocTopicSVGs.length]}
                                   />
                                 </a>
                                 <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
