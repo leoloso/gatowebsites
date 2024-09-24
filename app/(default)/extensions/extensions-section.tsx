@@ -39,7 +39,9 @@ export default function ExtensionsSection() {
                   />
                 </div>
               </Link>
-              <div data-aos="fade-left" data-aos-delay="200">
+              <div
+                // data-aos="fade-left" data-aos-delay="200"
+              >
                 <header>
                   <h3 className="h3 text-2xl lg:text-3xl mb-2">
                     <Link href={getExtensionURLPath(extension)} className="hover:text-purple-300 transition duration-150 ease-in-out">{extension.title}</Link>
