@@ -7,7 +7,8 @@ import ExtensionThumb from '@/components/extension-thumb'
 
 export default function ExtensionsSection() {
 
-  const extensions = allExtensions.sort(sortByOrder)
+  allExtensions.sort(sortByOrder)
+  const extensions = allExtensions
   
   return (        
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
