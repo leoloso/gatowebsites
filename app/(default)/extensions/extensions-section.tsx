@@ -23,7 +23,7 @@ export default function ExtensionsSection({
     "bg-violet-900",
     "bg-fuchsia-900",
     "bg-pink-900",
-    "bg-rose-900",
+    "bg-orange-900",
   ]
 
   return (        
