@@ -1,7 +1,7 @@
 import Cta from '@/components/cta-02'
 import StunningBackground from '@/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
-import ExtensionsSection from './extensions-section'
+import ExtensionsSection, { svgEffect2 } from './extensions-section'
 
 const pageTitle = 'Extensions'
 export const metadata = {
@@ -23,7 +23,7 @@ export default function Extensions() {
 
         <StunningBackground />
 
-        <ExtensionsSection useThumbEffect={false} />
+        <ExtensionsSection useThumbEffect={svgEffect2} />
       </section>  
       <Cta />
     </>
