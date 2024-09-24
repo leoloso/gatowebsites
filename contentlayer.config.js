@@ -374,10 +374,10 @@ const Extension = defineDocumentType(() => ({
     order: {
       type: 'number',
       required: true,
-    },
-    integration: {
-      type: 'nested',
-      of: NameURLPair,
+    },  
+    integrations: {
+      type: 'list',
+      of: PostIntegration,
     },
     image: {
       type: 'string',
@@ -458,20 +458,6 @@ const Feature = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.features + '/?'), ''),
-    },    
-  },
-}))
-
-const NameURLPair = defineNestedType(() => ({
-  name: 'NameURLPair',
-  fields: {
-    name: {
-      type: 'string',
-      required: true
-    },
-    url: {
-      type: 'string',
-      required: true
     },    
   },
 }))
