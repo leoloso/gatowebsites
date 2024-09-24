@@ -3,7 +3,7 @@ import { getExtensionReferenceDocuments, sortDocuments } from '@/utils/content/d
 import { getDocURLPath } from '@/utils/content/application-urls'
 
 // Redirect to the first item on the docs collection
-export default function Home() {
+export default function RedirectToFirstDocItem() {
 
   // Sort docs (this already takes into account the DocTopic)
   const docs = getExtensionReferenceDocuments().sort(sortDocuments);
