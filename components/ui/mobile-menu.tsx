@@ -9,6 +9,7 @@ import Search from './search'
 import ThemeToggle from './theme-toggle'
 // import DownloadFreePluginButton from '../download-free-button'
 import { usePathname } from 'next/navigation'
+import TryPROPluginButton from '../try-pro-plugin-button'
 
 export default function MobileMenu({
   enableLightDarkThemeModeToggle = false,
@@ -88,9 +89,9 @@ export default function MobileMenu({
           <li>
             <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href="/pricing">Pricing</Link>
           </li>
-          <li>
+          {/* <li>
             <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.features}`}>Features</Link>
-          </li>
+          </li> */}
           <li>
             <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.extensions}`}>Extensions</Link>
           </li>
@@ -114,12 +115,12 @@ export default function MobileMenu({
               </li>
             </ul>
           </li>
-          <li>
+          {/* <li className="py-2 my-2 border-b border-slate-300 dark:border-gray-700">
             <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.blog}`}>Blog</Link>
-          </li>
-          {/* <li className="py-1">
-            <DownloadFreePluginButton btnClassName="btn" />
           </li> */}
+          <li className="py-1">
+            <TryPROPluginButton btnClassName="btn" />
+          </li>
           <li className="py-1">
             <PurchasePROPluginButton btnClassName="btn" />
           </li>

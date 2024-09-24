@@ -7,6 +7,7 @@ import Link from 'next/link'
 import Dropdown from '@/components/utils/dropdown'
 import AppConfig from '@/app/app.config'
 import AppSettings from '@/app/app.settings'
+import TryPROPluginButton from '../try-pro-plugin-button'
 // import DownloadFreePluginButton from '../download-free-button'
 
 export default function Header({
@@ -78,9 +79,9 @@ export default function Header({
                 enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
               />
             </li>
-            {/* <li className="ml-2 hidden lg:block">
-              <DownloadFreePluginButton />
-            </li> */}
+            <li className="ml-2 hidden lg:block">
+              <TryPROPluginButton />
+            </li>
             <li className="ml-2 hidden lg:block">
               <PurchasePROPluginButton />
             </li>
