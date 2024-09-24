@@ -14,6 +14,18 @@ export default function ExtensionsSection({
 
   const extensions = allExtensions.sort(sortByOrderAndTitle)
 
+  const bgClassnames = [
+    "bg-purple-900",
+    "bg-sky-900",
+    "bg-blue-900",
+    "bg-cyan-900",
+    "bg-indigo-900",
+    "bg-violet-900",
+    "bg-fuchsia-900",
+    "bg-pink-900",
+    "bg-orange-900",
+  ]
+
   return (        
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
       <div className="pt-32 pb-12 md:pt-40 md:pb-20">
@@ -40,6 +52,7 @@ export default function ExtensionsSection({
                     extension={extension}
                     paddingClassname="py-5 px-4 md:py-8 md:px-6"
                     isLandscape={true}
+                    bgClassname={bgClassnames[index % bgClassnames.length]}
                   />
                 </div>
               </Link>
