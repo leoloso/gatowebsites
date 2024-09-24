@@ -7,6 +7,7 @@ export default function ExtensionThumb({
   extension,
   paddingClassname,
   bgClassname,
+  extraThumbClassname,
   isLandscape,
   svgImage,
   logoImage,
@@ -16,6 +17,7 @@ export default function ExtensionThumb({
   extension: Extension,
   paddingClassname?: string,
   bgClassname?: string,
+  extraThumbClassname?: string,
   isLandscape?: boolean,
   svgImage?: StaticImageData,
   logoImage?: StaticImageData,
@@ -30,6 +32,7 @@ export default function ExtensionThumb({
       targetImageSources={extension.targetImages}
       paddingClassname={paddingClassname}
       bgClassname={bgClassname}
+      extraThumbClassname={extraThumbClassname}
       isLandscape={isLandscape}
       svgImage={svgImage}
       logoImage={logoImage}

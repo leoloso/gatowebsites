@@ -8,6 +8,7 @@ export default function WithLogoThumb({
   targetImageSources,
   paddingClassname,
   bgClassname,
+  extraThumbClassname,
   isLandscape = false,
   svgImage,
   logoImage,
@@ -20,6 +21,7 @@ export default function WithLogoThumb({
   targetImageSources: Array<string>,
   paddingClassname?: string,
   bgClassname?: string,
+  extraThumbClassname?: string,
   isLandscape?: boolean,
   svgImage?: StaticImageData,
   logoImage?: StaticImageData,
@@ -33,6 +35,7 @@ export default function WithLogoThumb({
     <Thumb
       paddingClassname={paddingClassname}
       bgClassname={bgClassname}
+      extraThumbClassname={extraThumbClassname}
       numberParticles={numberParticles}
     >
       <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && reverseItems && "flex-row-reverse", !isLandscape && reverseItems && "flex-col-reverse", isLandscape && "aspect-video")}>
