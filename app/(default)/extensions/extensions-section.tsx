@@ -15,9 +15,9 @@ export default function ExtensionsSection() {
 
         {/*  Page header */}
         <PageHeader
-          leading='Extensions'
-          title='Superpower your WordPress site'
-          description='Gato GraphQL PRO extensions enhance the GraphQL server, and expand the GraphQL schema. As new extensions are created, they will be included in Gato GraphQL PRO.'
+          leading='Empower and protect your application'
+          title='Extensions'
+          description='Purchase and install extensions to provide additional functionality to the GraphQL server and expand the GraphQL schema'
           // headerClassname="md:text-left mx-0"
         />
 
