@@ -21,11 +21,11 @@ export default function ExtensionsSection({
     "bg-sky-900",
     "bg-blue-900",
     "bg-cyan-900",
-    "bg-indigo-900",
     "bg-violet-900",
-    "bg-fuchsia-900",
-    "bg-pink-900",
-    "bg-orange-900",
+    "bg-indigo-900",
+    // "bg-fuchsia-900",
+    // "bg-pink-900",
+    // "bg-orange-900",
   ]
 
   return (        
