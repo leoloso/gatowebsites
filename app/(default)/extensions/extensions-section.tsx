@@ -1,7 +1,7 @@
 import { allExtensions } from 'contentlayer/generated'
 import Link from 'next/link'
 import { getExtensionURLPath } from '@/utils/content/application-urls'
-import { sortByOrder } from '@/utils/content/sort'
+import { sortByOrderAndTitle } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
 import ExtensionThumb from '@/components/extension-thumb'
 import clsx from 'clsx'
@@ -12,8 +12,7 @@ export default function ExtensionsSection({
   alternateColumns?: boolean,
 }) {
 
-  allExtensions.sort(sortByOrder)
-  const extensions = allExtensions
+  const extensions = allExtensions.sort(sortByOrderAndTitle)
 
   return (        
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
