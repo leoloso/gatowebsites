@@ -35,7 +35,8 @@ export default function ExtensionThumb({
         GraphQLLogo
       ]}
 
-      skipGatoGraphQLLogo={true}
+      // skipGatoGraphQLLogo={true}
+      skipPlusImage={true}
 
       paddingClassname={paddingClassname}
       bgClassname={bgClassname}
