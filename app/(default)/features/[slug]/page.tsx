@@ -74,6 +74,7 @@ export default async function SingleFeature({ params }: {
       testimonialIndex={1/*feature.category === 'Free plugin' ? 1 : 4*/}
       defaultArtifactIcon={DefaultArtifactIcon02/*feature.category === 'Free plugin' ? DefaultArtifactIcon02 : DefaultArtifactIcon04*/}
       bgClassname={clsx("bg-gradient-to-tr", "from-slate-900 to-fuchsia-900"/*feature.category === 'Free plugin' && "from-slate-900 to-brown-900", feature.category !== 'Free plugin' && "from-slate-900 to-fuchsia-900"*/)}
+      thumbLeading='Feature:'
     >
       <ul className="text-sm">
         <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
