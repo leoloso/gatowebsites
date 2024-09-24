@@ -508,33 +508,160 @@
   to = "/features"
   status = 301
 
-# Unmapped extensions
+# Unmapped extensions starting from v6.0
+[[redirects]]
+  from = "/extensions/automation"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/extensions/events-manager"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/extensions/google-translate"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/extensions/internal-graphql-server"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/extensions/multilingualpress"
+  to = "/"
+  status = 302
+
+# Extensions starting from v6.0
+[[redirects]]
+  from = "/extensions/access-control-visitor-ip"
+  to = "/extensions/access-control"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/cache-control"
+  to = "/extensions/caching"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-resolution-caching"
+  to = "/extensions/caching"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/deprecation-notifier"
+  to = "/extensions/deprecation"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-deprecation"
+  to = "/extensions/deprecation"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/low-level-persisted-query-editing"
+  to = "/extensions/persisted-queries"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/polylang"
+  to = "/extensions/polylang-integration"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/conditional-field-manipulation"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-default-value"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-on-field"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-response-removal"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-to-input"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-value-iteration-and-manipulation"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/response-error-trigger"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/email-sender"
+  to = "/extensions/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/helper-function-collection"
+  to = "/extensions/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/http-client"
+  to = "/extensions/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/http-request-via-schema"
+  to = "/extensions/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/php-constants-and-environment-variables-via-schema"
+  to = "/extensions/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/php-functions-via-schema"
+  to = "/extensions/schema-functions"
+  status = 301
+
+# Unmapped extensions reference starting from v6.0
 [[redirects]]
   from = "/extensions-reference/automation"
   to = "/"
-  status = 301
+  status = 302
 
 [[redirects]]
   from = "/extensions-reference/events-manager"
   to = "/"
-  status = 301
+  status = 302
 
 [[redirects]]
   from = "/extensions-reference/google-translate"
   to = "/"
-  status = 301
+  status = 302
 
 [[redirects]]
   from = "/extensions-reference/internal-graphql-server"
   to = "/"
-  status = 301
+  status = 302
 
 [[redirects]]
   from = "/extensions-reference/multilingualpress"
   to = "/"
-  status = 301
+  status = 302
 
-# Extensions Reference topic organized by extensions starting from v6.0
+# Extensions reference (topic organized by extensions) starting from v6.0
 [[redirects]]
   from = "/extensions-reference/access-control-visitor-ip"
   to = "/extensions-reference/access-control/access-control-visitor-ip"
