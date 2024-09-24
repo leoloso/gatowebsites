@@ -385,6 +385,11 @@ const Extension = defineDocumentType(() => ({
     icon: {
       type: 'string',
     },
+    targetImages: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
   },
   computedFields: {
     slug: {
