@@ -7,9 +7,11 @@ import ExtensionThumb from '@/components/extension-thumb'
 import clsx from 'clsx'
 
 export default function ExtensionsSection({
-  alternateColumns = false
+  alternateColumns = false,
+  useThumbEffect = true,
 }: {
   alternateColumns?: boolean,
+  useThumbEffect?: boolean,
 }) {
 
   const extensions = allExtensions.sort(sortByOrderAndTitle)
@@ -46,8 +48,10 @@ export default function ExtensionsSection({
                 className={clsx("relative block group", alternateColumns && index % 2 === 1 ? 'md:order-last' : '')}
                 // data-aos="fade-right" data-aos-delay="200"
               >
-                <div className="absolute inset-0 bg-gray-700 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
-                <div className="relative overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
+                { useThumbEffect && (
+                  <div className="absolute inset-0 bg-gray-700 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
+                )}
+                <div className={clsx("relative", useThumbEffect && "overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out")}>
                   <ExtensionThumb
                     extension={extension}
                     paddingClassname="py-5 px-4 md:py-8 md:px-6"

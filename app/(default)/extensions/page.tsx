@@ -23,7 +23,7 @@ export default function Extensions() {
 
         <StunningBackground />
 
-        <ExtensionsSection />
+        <ExtensionsSection useThumbEffect={false} />
       </section>  
       <Cta />
     </>
