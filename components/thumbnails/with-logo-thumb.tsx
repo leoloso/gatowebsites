@@ -18,7 +18,9 @@ export default function WithLogoThumb({
   skipGatoGraphQLLogo=false,
   skipPlusImage=false,
   title,
-  titleClassname="h1 leading-[5rem] text-[4.5rem] mb-8"
+  titleClassname="h1 leading-[5rem] text-[4.5rem] mb-8",
+  subtitle,
+  subtitleClassname="h2 leading-[3rem] text-[2.5rem] mb-4"
 }: {
   targetImageSources: Array<string>,
   paddingClassname?: string,
@@ -34,6 +36,8 @@ export default function WithLogoThumb({
   skipPlusImage?: boolean,
   title?: string,
   titleClassname?: string,
+  subtitle?: string,
+  subtitleClassname?: string,
 }) {
   return (
     <Thumb
@@ -43,11 +47,20 @@ export default function WithLogoThumb({
       numberParticles={numberParticles}
     >
       <div className={clsx(title && "flex items-center justify-center flex-col")}>
-      { title && (
-        <h1 className={clsx("text-center max-w-5xl", titleClassname)}>
-          {title}
-        </h1>
-      )}
+        <div>
+          { title && (
+            <>
+              { subtitle && (
+                <h2 className={clsx("text-center max-w-5xl", subtitleClassname)}>
+                  {subtitle}
+                </h2>
+              )}
+              <h1 className={clsx("text-center max-w-5xl", titleClassname)}>
+                {title}
+              </h1>
+            </>
+          )}
+        </div>
       <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && reverseItems && "flex-row-reverse", !isLandscape && reverseItems && "flex-col-reverse", isLandscape && "aspect-video")}>
         { !skipGatoGraphQLLogo && (
           <>
