@@ -7,8 +7,10 @@ import ModalVideo from '@/components/mdx/components/modal-video'
 
 export default function SingleExtension({
   extension,
+  printIntegrations=true,
 }: {
   extension: Extension,
+  printIntegrations?: boolean,
 }) {
 
   return (
@@ -32,7 +34,7 @@ export default function SingleExtension({
               />
             </div>
 
-            {!! extension.integrations && (
+            { printIntegrations && !! extension.integrations && (
               <div className="mb-8">
                 <h4 className="text-2xl font-bold font-inter mb-8">Integrations</h4>
                 <div className="flex flex-col border-t border-gray-200">

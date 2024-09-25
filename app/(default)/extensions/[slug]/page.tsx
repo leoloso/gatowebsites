@@ -66,7 +66,10 @@ export default async function SingleExtensionPage({ params }: {
 
         <StunningBackground />
 
-        <SingleExtension extension={extension}/>
+        <SingleExtension
+          extension={extension}
+          printIntegrations={false}
+        />
       </section>
       <Cta />
     </>
