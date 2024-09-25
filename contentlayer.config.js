@@ -357,7 +357,8 @@ const Extension = defineDocumentType(() => ({
     }, 
     image: {
       type: 'string',
-    }, 
+      required: true,
+    },
     integrations: {
       type: 'list',
       of: PostIntegration,
