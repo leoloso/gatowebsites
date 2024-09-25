@@ -4,7 +4,7 @@ import Illustration from '@/public/assets/theme/glow-bottom.svg'
 import LogoPic from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
 import PurchasePROPluginButton from './purchase-pro-plugin-button'
 import DownloadFreePluginButton from './download-free-button'
-import ModalVideo from './mdx/components/modal-video'
+import ThumbModalVideo from './mdx/components/modal-video-thumb'
 import VideoThumb from '@/public/assets/GatoGraphQL-intro-video-background.png'
 import BrowseHighlightsButton from './browse-highlights-button'
 import TryPROPluginButton from './try-pro-plugin-button'
@@ -41,7 +41,7 @@ export default function Hero() {
             <p className="text-lg text-slate-300 mb-8" data-aos="fade-down" data-aos-delay="200">Use <strong>Gato GraphQL</strong> to interact with all your data in your <strong>WordPress</strong> site.</p>
 
             {/* <div className="mx-auto space-y-4" data-aos="fade-down" data-aos-delay="200">
-              <ModalVideo
+              <ThumbModalVideo
                 title="Click Play to learn what you can do with Gato GraphQL"
                 thumb={VideoThumb}
                 thumbWidth={768}

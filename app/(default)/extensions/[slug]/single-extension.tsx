@@ -3,7 +3,7 @@ import { PostMdx } from '@/components/mdx/post-mdx'
 import ExtensionThumb from '@/components/extension-thumb'
 import PageHeader from '@/components/page-header'
 import PostItemIntegration from '@/components/post-item-integration'
-import ModalVideo from '@/components/mdx/components/modal-video'
+import ThumbModalVideo from '@/components/mdx/components/modal-video-thumb'
 
 export default function SingleExtension({
   extension,
@@ -35,7 +35,7 @@ export default function SingleExtension({
                 />
               )}
               {!! extension.video && (
-                <ModalVideo
+                <ThumbModalVideo
                   title={`Click Play to watch a demo of the ${extension.title} extension`}
                   thumb={extension.image}
                   thumbWidth={1024}

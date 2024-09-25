@@ -5,6 +5,7 @@ import { sortByOrderAndTitle } from '@/utils/content/sort'
 import PageHeader from '@/components/page-header'
 import ExtensionThumb from '@/components/extension-thumb'
 import clsx from 'clsx'
+import LinkModalVideo from '@/components/mdx/components/modal-video-link'
 
 export const svgEffect1 = 1;
 export const svgEffect2 = 2;
@@ -45,7 +46,7 @@ export default function ExtensionsSection({
         {/* Extensions */}
         {extensions.map((extension, index) => (
           <div className="pb-12 md:pb-20" key={index}>
-            <article className="max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16">
+            <article className="max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
               <Link
                 href={getExtensionURLPath(extension)}
                 className={clsx("relative block group", alternateColumns && index % 2 === 1 ? 'md:order-last' : '')}
@@ -72,6 +73,16 @@ export default function ExtensionsSection({
                   </h3>
                 </header>
                 <p className="text-lg text-gray-400 grow">{extension.description}</p>
+                { !! extension.video && (
+                  <div>
+                    <LinkModalVideo
+                      // title="Watch video"
+                      video={extension.video}
+                      videoWidth={1920}
+                      videoHeight={1080}
+                    />
+                  </div>
+                )}
               </div>
             </article>
           </div>
