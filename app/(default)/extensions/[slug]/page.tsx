@@ -104,7 +104,7 @@ export default async function SingleExtension({ params }: {
                   </div>
                 )}
 
-                {!! extension.integrations && (
+                {!! extension.video && (
                   <div className="mb-8">
                     <ModalVideo
                       title={`Click Play to watch a demo of the ${extension.title} extension`}
@@ -112,7 +112,7 @@ export default async function SingleExtension({ params }: {
                       thumbWidth={1024}
                       thumbHeight={576}
                       thumbAlt={`Demo of the ${extension.title} extension`}
-                      video="/videos/GatoGraphQL-intro.mp4"
+                      video={extension.video}
                       videoWidth={1920}
                       videoHeight={1080}
                     />
