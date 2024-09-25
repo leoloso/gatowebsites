@@ -18,6 +18,7 @@ export default function WithLogoThumb({
   skipGatoGraphQLLogo=false,
   skipPlusImage=false,
   title,
+  titleClassname="h1 text-center leading-[5rem] text-[4.5rem] mb-16 max-w-5xl"
 }: {
   targetImageSources: Array<string>,
   paddingClassname?: string,
@@ -32,6 +33,7 @@ export default function WithLogoThumb({
   skipGatoGraphQLLogo?: boolean,
   skipPlusImage?: boolean,
   title?: string,
+  titleClassname?: string,
 }) {
   return (
     <Thumb
@@ -42,7 +44,7 @@ export default function WithLogoThumb({
     >
       <div className={clsx(title && "flex items-center justify-center flex-col")}>
       { title && (
-        <h1 className='h1 text-center leading-[5rem] text-[4.5rem] mb-16 max-w-5xl'>
+        <h1 className={titleClassname}>
           {title}
         </h1>
       )}
