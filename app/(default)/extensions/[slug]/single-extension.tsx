@@ -3,7 +3,7 @@ import { PostMdx } from '@/components/mdx/post-mdx'
 import ExtensionThumb from '@/components/extension-thumb'
 import PageHeader from '@/components/page-header'
 import PostItemIntegration from '@/components/post-item-integration'
-import ThumbModalVideo from '@/components/mdx/components/modal-video'
+import ThumbModalVideo from '@/components/mdx/components/modal-video-thumb'
 
 export default function SingleExtension({
   extension,
