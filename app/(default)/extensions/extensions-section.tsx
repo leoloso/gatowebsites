@@ -46,7 +46,7 @@ export default function ExtensionsSection({
         {/* Extensions */}
         {extensions.map((extension, index) => (
           <div className="pb-12 md:pb-20" key={index}>
-            <article className="max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16">
+            <article className="max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
               <Link
                 href={getExtensionURLPath(extension)}
                 className={clsx("relative block group", alternateColumns && index % 2 === 1 ? 'md:order-last' : '')}
