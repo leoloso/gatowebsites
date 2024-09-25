@@ -1,13 +1,14 @@
+import { Extension } from '@/.contentlayer/generated'
 import Thumb from '@/components/thumbnails/thumb'
 import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
 import Image from 'next/image'
 
 export default function ExtensionCoverItem({
-  title,
+  extension,
   thumbClassname,
 }: {
   thumbClassname?: string,
-  title: string,
+  extension: Extension,
 }) {
   const logoClassname = 'flex items-center justify-center h-full'
   return (
@@ -20,7 +21,7 @@ export default function ExtensionCoverItem({
       >
         <div className={thumbClassname}>
           <h1 className='h1 text-center leading-[5rem] text-[4.5rem] mb-16 max-w-5xl'>
-            {title}
+            {extension.title}
           </h1>
           <div className={logoClassname}>
             <Image src={Logo} alt="Gato GraphQL logo" width={375} height={375} />

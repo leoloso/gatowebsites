@@ -18,15 +18,13 @@ export default function ExtensionCover({ params }: {
 
   if (!extension) notFound()
 
-  const { title } = extension
-
   return (
     <>
 
       {/* Content */}
       <section className="relative">
 
-        <ExtensionCoverItem title={title} />
+        <ExtensionCoverItem extension={extension} />
 
       </section>
 
