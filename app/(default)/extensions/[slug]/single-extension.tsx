@@ -28,15 +28,14 @@ export default function SingleExtension({
             />
 
             <div className="mb-8 lg:-ml-32 lg:-mr-32">
-              <ExtensionThumb
-                extension={extension}
-                isLandscape={true}
-                bgClassname="bg-slate-900"
-              />
-            </div>
-
-            {!! extension.video && (
-              <div className="mb-8 lg:-ml-32 lg:-mr-32">
+              {! extension.video && (
+                <ExtensionThumb
+                  extension={extension}
+                  isLandscape={true}
+                  bgClassname="bg-slate-900"
+                />
+              )}
+              {!! extension.video && (
                 <ModalVideo
                   title={`Click Play to watch a demo of the ${extension.title} extension`}
                   thumb={extension.image}
@@ -47,8 +46,8 @@ export default function SingleExtension({
                   videoWidth={1920}
                   videoHeight={1080}
                 />
-              </div>
-            )}
+              )}
+            </div>
 
             { printIntegrations && !! extension.integrations && (
               <div className="mb-8">
