@@ -7,7 +7,7 @@ import ModalVideo from '@/components/mdx/components/modal-video'
 
 export default function SingleExtension({
   extension,
-  printIntegrations=true,
+  printIntegrations = true,
 }: {
   extension: Extension,
   printIntegrations?: boolean,
@@ -35,17 +35,6 @@ export default function SingleExtension({
               />
             </div>
 
-            { printIntegrations && !! extension.integrations && (
-              <div className="mb-8">
-                <h4 className="text-2xl font-bold font-inter mb-8">Integrations</h4>
-                <div className="flex flex-col border-t border-gray-200">
-                  {extension.integrations.map((integration, index) => (
-                    <PostItemIntegration key={index} {...integration} />
-                  ))}
-                </div>
-              </div>
-            )}
-
             {!! extension.video && (
               <div className="mb-8 lg:-ml-32 lg:-mr-32">
                 <ModalVideo
@@ -58,6 +47,17 @@ export default function SingleExtension({
                   videoWidth={1920}
                   videoHeight={1080}
                 />
+              </div>
+            )}
+
+            { printIntegrations && !! extension.integrations && (
+              <div className="mb-8">
+                <h4 className="text-2xl font-bold font-inter mb-8">Integrations</h4>
+                <div className="flex flex-col border-t border-gray-200">
+                  {extension.integrations.map((integration, index) => (
+                    <PostItemIntegration key={index} {...integration} />
+                  ))}
+                </div>
               </div>
             )}
 
