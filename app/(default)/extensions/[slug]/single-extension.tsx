@@ -32,7 +32,6 @@ export default function SingleExtension({
                 <ExtensionThumb
                   extension={extension}
                   isLandscape={true}
-                  bgClassname="bg-slate-900"
                 />
               )}
               {!! extension.video && (
