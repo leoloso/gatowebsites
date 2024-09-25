@@ -23,7 +23,7 @@ export default function LinkModalVideo({
 
       {/* Video thumbnail */}
       {/* <div className="relative inline-flex justify-center items-center my-2 group hover:cursor-pointer" onClick={() => { setModalOpen(true) }}> */}
-        <button className="group" onClick={() => { setModalOpen(true) }} aria-label="Watch video">
+        <button className="group" onClick={() => { setModalOpen(true) }} aria-label={title}>
           {/* Play icon */}
           <span className="absolute p-2.5 before:absolute before:inset-0 before:rounded-full before:bg-gray-950 before:duration-300 group-hover:before:scale-110">
             <span className="relative flex items-center gap-3">
