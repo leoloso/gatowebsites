@@ -13,6 +13,7 @@ export default function ExtensionThumb({
   logoImage,
   reverseItems,
   svgClassname,
+  printExtensionTitle=false,
 }: {
   extension: Extension,
   paddingClassname?: string,
@@ -23,12 +24,16 @@ export default function ExtensionThumb({
   logoImage?: StaticImageData,
   reverseItems?: boolean,
   svgClassname?: string,
+  printExtensionTitle?: boolean,
 }) {
   return (
     <WithLogoThumb
       // skipGatoGraphQLLogo={true}
       skipPlusImage={true}
 
+      leadingTitle="Extension:"
+      extraLeadingTitleClassname="text-slate-300"
+      title={printExtensionTitle ? extension.title : ''}
       targetImageSources={extension.targetImages}
       paddingClassname={paddingClassname}
       bgClassname={bgClassname}
