@@ -95,7 +95,6 @@ export default async function SingleExtension({ params }: {
                 {!! extension.integrations && (
                   <div className="mb-8">
                     <h4 className="text-2xl font-bold font-inter mb-8">Integrations</h4>
-                    {/* List container */}
                     <div className="flex flex-col border-t border-gray-200">
                       {extension.integrations.map((integration, index) => (
                         <PostItemIntegration key={index} {...integration} />
