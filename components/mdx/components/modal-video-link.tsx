@@ -55,8 +55,6 @@ export default function LinkModalVideo({
               </svg>
               <span className="text-sm font-medium leading-tight text-gray-300">
                 { title }
-                <span className="text-gray-600"> - </span>
-                3:47
               </span>
             </span>
           </span>
