@@ -1,4 +1,3 @@
-// import { Suspense } from 'react'
 import { allExtensions } from '@/.contentlayer/generated'
 import ExtensionCoverItem from './extension-cover-item'
 import { createSEOPageTitle } from '@/utils/content/metadata'
@@ -27,16 +26,7 @@ export default function ExtensionCover({ params }: {
       {/* Content */}
       <section className="relative">
 
-        <div
-          // className="max-w-6xl mx-auto px-4 sm:px-6"
-        >
-          <div className="relative">
-            {/* <Suspense> */}
-              <ExtensionCoverItem title={title} />
-            {/* </Suspense> */}
-          </div>
-
-        </div>
+        <ExtensionCoverItem title={title} />
 
       </section>
 
