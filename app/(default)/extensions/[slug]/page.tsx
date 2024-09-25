@@ -10,6 +10,8 @@ import PageHeader from '@/components/page-header'
 import PostItemIntegration from '@/components/post-item-integration'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import Cta from '@/components/cta-02'
+import ModalVideo from '@/components/mdx/components/modal-video'
+import VideoThumb from '@/public/assets/GatoGraphQL-intro-video-background.png'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
@@ -99,6 +101,21 @@ export default async function SingleExtension({ params }: {
                         <PostItemIntegration key={index} {...integration} />
                       ))}
                     </div>
+                  </div>
+                )}
+
+                {!! extension.integrations && (
+                  <div className="mb-8">
+                    <ModalVideo
+                      title={`Click Play to watch a demo of the ${extension.title} extension`}
+                      thumb={extension.image}
+                      thumbWidth={1024}
+                      thumbHeight={576}
+                      thumbAlt={`Demo of the ${extension.title} extension`}
+                      video="/videos/GatoGraphQL-intro.mp4"
+                      videoWidth={1920}
+                      videoHeight={1080}
+                    />
                   </div>
                 )}
 
