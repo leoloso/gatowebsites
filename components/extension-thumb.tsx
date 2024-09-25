@@ -32,6 +32,7 @@ export default function ExtensionThumb({
       skipPlusImage={true}
 
       leadingTitle="Extension:"
+      extraLeadingTitleClassname="text-slate-300"
       title={printExtensionTitle ? extension.title : ''}
       targetImageSources={extension.targetImages}
       paddingClassname={paddingClassname}
