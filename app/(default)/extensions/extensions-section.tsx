@@ -74,14 +74,12 @@ export default function ExtensionsSection({
                 </header>
                 <p className="text-lg text-gray-400 grow">{extension.description}</p>
                 { !! extension.video && (
-                  <div>
-                    <LinkModalVideo
-                      // title="Watch video"
-                      video={extension.video}
-                      videoWidth={1920}
-                      videoHeight={1080}
-                    />
-                  </div>
+                  <LinkModalVideo
+                    // title="Watch video"
+                    video={extension.video}
+                    videoWidth={1920}
+                    videoHeight={1080}
+                  />
                 )}
               </div>
             </article>
