@@ -31,8 +31,8 @@ export default function ExtensionThumb({
       // skipGatoGraphQLLogo={true}
       skipPlusImage={true}
 
+      leadingTitle="Extension:"
       title={printExtensionTitle ? extension.title : ''}
-      subtitle="Extension:"
       targetImageSources={extension.targetImages}
       paddingClassname={paddingClassname}
       bgClassname={bgClassname}

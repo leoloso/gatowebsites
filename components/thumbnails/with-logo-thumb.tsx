@@ -19,8 +19,8 @@ export default function WithLogoThumb({
   skipPlusImage=false,
   title,
   titleClassname="h1 leading-[5rem] text-[4.5rem] mb-8",
-  subtitle,
-  subtitleClassname="h2 leading-[3rem] text-[2.5rem] mb-4"
+  leadingTitle,
+  leadingTitleClassname="h2 leading-[3rem] text-[2.5rem] mb-4"
 }: {
   targetImageSources: Array<string>,
   paddingClassname?: string,
@@ -36,8 +36,8 @@ export default function WithLogoThumb({
   skipPlusImage?: boolean,
   title?: string,
   titleClassname?: string,
-  subtitle?: string,
-  subtitleClassname?: string,
+  leadingTitle?: string,
+  leadingTitleClassname?: string,
 }) {
   return (
     <Thumb
@@ -50,9 +50,9 @@ export default function WithLogoThumb({
         <div>
           { title && (
             <>
-              { subtitle && (
-                <h2 className={clsx("text-center max-w-5xl", subtitleClassname)}>
-                  {subtitle}
+              { leadingTitle && (
+                <h2 className={clsx("text-center max-w-5xl", leadingTitleClassname)}>
+                  {leadingTitle}
                 </h2>
               )}
               <h1 className={clsx("text-center max-w-5xl", titleClassname)}>
