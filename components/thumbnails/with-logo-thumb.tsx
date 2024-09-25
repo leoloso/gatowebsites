@@ -17,6 +17,7 @@ export default function WithLogoThumb({
   numberParticles,
   skipGatoGraphQLLogo=false,
   skipPlusImage=false,
+  title,
 }: {
   targetImageSources: Array<string>,
   paddingClassname?: string,
@@ -30,6 +31,7 @@ export default function WithLogoThumb({
   numberParticles?: number,
   skipGatoGraphQLLogo?: boolean,
   skipPlusImage?: boolean,
+  title?: string,
 }) {
   return (
     <Thumb
@@ -38,6 +40,12 @@ export default function WithLogoThumb({
       extraThumbClassname={extraThumbClassname}
       numberParticles={numberParticles}
     >
+      <div className={clsx(title && "flex items-center justify-center flex-col")}>
+      { title && (
+        <h1 className='h1 text-center leading-[5rem] text-[4.5rem] mb-16 max-w-5xl'>
+          {title}
+        </h1>
+      )}
       <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && reverseItems && "flex-row-reverse", !isLandscape && reverseItems && "flex-col-reverse", isLandscape && "aspect-video")}>
         { !skipGatoGraphQLLogo && (
           <>
@@ -58,6 +66,7 @@ export default function WithLogoThumb({
             </div>
           ))}
         </div>
+      </div>
       </div>
     </Thumb>
   )

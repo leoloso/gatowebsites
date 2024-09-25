@@ -1,33 +1,22 @@
 import { Extension } from '@/.contentlayer/generated'
-import Thumb from '@/components/thumbnails/thumb'
-import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
-import Image from 'next/image'
+import ExtensionThumb from '@/components/extension-thumb'
 
 export default function ExtensionCoverItem({
   extension,
-  thumbClassname,
 }: {
-  thumbClassname?: string,
   extension: Extension,
 }) {
-  const logoClassname = 'flex items-center justify-center h-full'
   return (
     <header
       className='aspect-video'
     >
-      <Thumb
+      <ExtensionThumb
         bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
-        numberParticles={20}
-      >
-        <div className={thumbClassname}>
-          <h1 className='h1 text-center leading-[5rem] text-[4.5rem] mb-16 max-w-5xl'>
-            {extension.title}
-          </h1>
-          <div className={logoClassname}>
-            <Image src={Logo} alt="Gato GraphQL logo" width={375} height={375} />
-          </div>
-        </div>
-      </Thumb>
+        // numberParticles={20}
+        extension={extension}
+        isLandscape={true}
+        printExtensionTitle={true}
+      />
     </header>
   )
 }
