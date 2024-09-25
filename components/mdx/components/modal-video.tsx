@@ -35,12 +35,12 @@ export default function ModalVideo({
     <div>
 
       {/* Video thumbnail */}
-      <div className="relative inline-flex justify-center items-center my-2">
+      <div className="relative inline-flex justify-center items-center my-2 group hover:cursor-pointer" onClick={() => { setModalOpen(true) }}>
         <Image src={thumb} width={thumbWidth} height={thumbHeight} alt={thumbAlt} />
         {!! title && (
           <p className="absolute bottom-0 text-slate-300 mb-4 sm:text-lg sm:mb-12" data-aos="fade-down" data-aos-delay="400">{title}</p>
         )}
-        <button className="absolute group" onClick={() => { setModalOpen(true) }} aria-label="Watch the video">
+        <button className="absolute group" aria-label="Watch the video">
           <svg className="w-16 h-16 fill-current sm:w-20 sm:h-20 group" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
             <circle className="text-white opacity-90 group-hover:opacity-100 transition duration-150 ease-in-out" cx="44" cy="44" r="44" />
             <path
