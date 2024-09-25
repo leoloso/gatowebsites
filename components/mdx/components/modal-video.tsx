@@ -17,7 +17,7 @@ interface ModalVideoProps {
   title?: string
 }
 
-export default function ModalVideo({
+export default function ThumbModalVideo({
   thumb,
   thumbWidth,
   thumbHeight,
