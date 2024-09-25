@@ -105,7 +105,7 @@ export default async function SingleExtension({ params }: {
                 )}
 
                 {!! extension.video && (
-                  <div className="mb-8">
+                  <div className="mb-8 lg:-ml-32 lg:-mr-32">
                     <ModalVideo
                       title={`Click Play to watch a demo of the ${extension.title} extension`}
                       thumb={extension.image}
