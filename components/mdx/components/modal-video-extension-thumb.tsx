@@ -27,7 +27,7 @@ export default function ExtensionThumbModalVideo({
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
   return (
-    <div>
+    <>
 
       {/* Video thumbnail */}
       <div className="relative flex justify-center items-center my-2 group hover:cursor-pointer" onClick={() => { setModalOpen(true) }}>
@@ -50,6 +50,6 @@ export default function ExtensionThumbModalVideo({
         setModalOpen={setModalOpen}
       />
 
-    </div>
+    </>
   )
 }
