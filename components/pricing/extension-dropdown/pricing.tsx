@@ -39,7 +39,6 @@ export default function ExtensionDropdownPricing() {
         </div>
         {/* Pricing toggle */}
         <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
-          {/* <span className="flex-1 text-right" aria-hidden="true"> */}
           <span className="text-right" aria-hidden="true">
             Pick extension
           </span>
