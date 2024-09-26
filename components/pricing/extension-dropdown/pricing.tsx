@@ -9,6 +9,7 @@ import { allExtensions } from "@/.contentlayer/generated"
 import { sortByOrderAndTitle } from "@/utils/content/sort"
 
 import { useState } from "react";
+import ExtensionDropdown from "./extension-dropdown";
 
 export default function ExtensionDropdownPricing() {
   const extensions = allExtensions.sort(sortByOrderAndTitle)
@@ -16,27 +17,32 @@ export default function ExtensionDropdownPricing() {
 
   return (
     <div className="relative">
-      {/* Pricing toggle */}
-      <label className="mb-16 flex cursor-pointer items-center justify-center gap-4 text-indigo-200/65">
-        <span className="flex-1 text-right" aria-hidden="true">
-          Billed Annually
-        </span>
-        <span className="sr-only">Billed Annually</span>
-        <input
-          role="switch"
-          type="checkbox"
-          className="peer sr-only"
-          checked={annual}
-          onChange={() => setAnnual(!annual)}
-        />
-        <div
-          className="peer relative h-6 w-11 rounded-full bg-gray-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-gray-200 after:transition-all peer-checked:bg-indigo-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-indigo-200"
-          aria-hidden="true"
-        />
-        <span className="flex-1 text-left" aria-hidden="true">
-          Billed Monthly
-        </span>
-      </label>
+      <div className="mb-16 flex items-center justify-center">
+        <div>
+          <ExtensionDropdown />
+        </div>
+        {/* Pricing toggle */}
+        <label className="flex cursor-pointer items-center justify-center gap-4 text-indigo-200/65">
+          <span className="flex-1 text-right" aria-hidden="true">
+            Pick your extension
+          </span>
+          <span className="sr-only">Pick your extension</span>
+          <input
+            role="switch"
+            type="checkbox"
+            className="peer sr-only"
+            checked={annual}
+            onChange={() => setAnnual(!annual)}
+          />
+          <div
+            className="peer relative h-6 w-11 rounded-full bg-gray-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-gray-200 after:transition-all peer-checked:bg-indigo-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-indigo-200"
+            aria-hidden="true"
+          />
+          <span className="flex-1 text-left" aria-hidden="true">
+            Billed Monthly
+          </span>
+        </label>
+      </div>
       <div className="mx-auto grid max-w-xs items-start gap-8 md:max-w-2xl md:grid-cols-2 xl:max-w-none xl:grid-cols-4 xl:gap-6">
         {/* Pricing table 1 */}
         <div className="relative flex h-full flex-col rounded-2xl bg-gradient-to-br from-gray-900/50 via-gray-800/25 to-gray-900/50 p-5 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_right,theme(colors.gray.800),theme(colors.gray.700),theme(colors.gray.800))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]">
