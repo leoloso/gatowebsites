@@ -48,13 +48,10 @@ export default function PricingTier({
           {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-purple-500' : (isFree ? 'text-purple-500' : 'text-purple-300')}`}>-&gt;</span>
         </a>
       </div>
-      <p className="mb-4 text-sm italic text-gray-200">
-        Everything in Freelancer, plus:
-      </p>
       <ul className="grow space-y-2 text-sm text-slate-400">
         <li className="flex items-center">
           <svg
-            className="mr-2 h-3 w-3 shrink-0 fill-current text-indigo-500"
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
             viewBox="0 0 12 12"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -64,7 +61,7 @@ export default function PricingTier({
         </li>
         <li className="flex items-center">
           <svg
-            className="mr-2 h-3 w-3 shrink-0 fill-current text-indigo-500"
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
             viewBox="0 0 12 12"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -74,7 +71,7 @@ export default function PricingTier({
         </li>
         <li className="flex items-center">
           <svg
-            className="mr-2 h-3 w-3 shrink-0 fill-current text-indigo-500"
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
             viewBox="0 0 12 12"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -84,7 +81,7 @@ export default function PricingTier({
         </li>
         <li className="flex items-center">
           <svg
-            className="mr-2 h-3 w-3 shrink-0 fill-current text-indigo-500"
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
             viewBox="0 0 12 12"
             xmlns="http://www.w3.org/2000/svg"
           >
