@@ -21,7 +21,7 @@ export default function PricingTier({
   buttonTarget?: string,
   buttonClassname?: string,
 }) {
-  const isPRO = price !== 0
+  const isFree = price === 0
   return (
     <div className={clsx("relative flex h-full flex-col rounded-2xl bg-gradient-to-br from-gray-900/50 via-gray-800/25 to-gray-900/50 p-5 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]", !highlight && "before:[background:linear-gradient(to_right,theme(colors.gray.800),theme(colors.gray.700),theme(colors.gray.800))_border-box]", highlight && "before:[background:linear-gradient(to_right,theme(colors.indigo.500/.5),theme(colors.indigo.500),theme(colors.indigo.500/.5))_border-box]")}>
       <div className="relative mb-4 border-b pb-5 [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1]">
@@ -44,8 +44,8 @@ export default function PricingTier({
             <strong>{description}</strong>
           </span>
         </div>
-        <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-purple-700 hover:bg-purple-800' : (isPRO ? 'text-white bg-purple-500 hover:bg-purple-600' : 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white')} ${buttonClassname}`} href={buttonURL} target={buttonTarget}>
-          {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-purple-500' : (isPRO ? 'text-purple-300' : 'text-purple-500')}`}>-&gt;</span>
+        <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-purple-700 hover:bg-purple-800' : (isFree ? 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white' : 'text-white bg-purple-500 hover:bg-purple-600')} ${buttonClassname}`} href={buttonURL} target={buttonTarget}>
+          {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-purple-500' : (isFree ? 'text-purple-500' : 'text-purple-300')}`}>-&gt;</span>
         </a>
       </div>
       <p className="mb-4 text-sm italic text-gray-200">
