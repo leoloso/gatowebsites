@@ -392,23 +392,23 @@ const ShopURLs = defineNestedType(() => ({
       type: 'string',
       required: true
     },
-    prodDefaultTier: {
+    defaultTier: {
       type: 'string',
       required: true
     }, 
-    prodTier1: {
+    tier1: {
       type: 'string',
       required: true
     }, 
-    prodTier2: {
+    tier2: {
       type: 'string',
       required: true
     }, 
-    prodTier3: {
+    tier3: {
       type: 'string',
       required: true
     }, 
-    prodTier4: {
+    tier4: {
       type: 'string',
       required: true
     }, 
