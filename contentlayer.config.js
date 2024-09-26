@@ -371,6 +371,11 @@ const Extension = defineDocumentType(() => ({
       of: { type: 'string' },
       required: true,
     },
+    shopURLs: {
+      type: 'nested',
+      of: ShopURLs,
+      required: true
+    },
   },
   computedFields: {
     slug: {
@@ -380,17 +385,33 @@ const Extension = defineDocumentType(() => ({
   },
 }))
 
-const RelatedGuide = defineNestedType(() => ({
-  name: 'RelatedGuide',
+const ShopURLs = defineNestedType(() => ({
+  name: 'ShopURLs',
   fields: {
-    topic: {
+    dev: {
       type: 'string',
       required: true
     },
-    slug: {
+    defaultTier: {
       type: 'string',
       required: true
-    },  
+    }, 
+    tier1: {
+      type: 'string',
+      required: true
+    }, 
+    tier2: {
+      type: 'string',
+      required: true
+    }, 
+    tier3: {
+      type: 'string',
+      required: true
+    }, 
+    tier4: {
+      type: 'string',
+      required: true
+    }, 
   },
 }))
 
@@ -445,6 +466,20 @@ const Feature = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.features + '/?'), ''),
     },    
+  },
+}))
+
+const RelatedGuide = defineNestedType(() => ({
+  name: 'RelatedGuide',
+  fields: {
+    topic: {
+      type: 'string',
+      required: true
+    },
+    slug: {
+      type: 'string',
+      required: true
+    },  
   },
 }))
 
