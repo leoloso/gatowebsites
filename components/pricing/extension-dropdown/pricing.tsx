@@ -58,7 +58,7 @@ export default function ExtensionDropdownPricing() {
         <PricingTier
           tierName='Personal'
           extensionName="“All Extensions” Bundle"
-          price={AppConfig.shop.prices.allExtensionsBundle.tier1}
+          price={ selectBundle ? AppConfig.shop.prices.allExtensionsBundle.tier1 : AppConfig.shop.prices.extensions.tier1}
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier1}
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier1)}
           buttonClassname={getShopAnchorClassname()}
@@ -67,7 +67,7 @@ export default function ExtensionDropdownPricing() {
         <PricingTier
           tierName='Organization'
           extensionName="“All Extensions” Bundle"
-          price={AppConfig.shop.prices.allExtensionsBundle.tier2}
+          price={ selectBundle ? AppConfig.shop.prices.allExtensionsBundle.tier2 : AppConfig.shop.prices.extensions.tier2}
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier2}
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier2)}
           buttonClassname={getShopAnchorClassname()}
@@ -76,7 +76,7 @@ export default function ExtensionDropdownPricing() {
         <PricingTier
           tierName='Professional'
           extensionName="“All Extensions” Bundle"
-          price={AppConfig.shop.prices.allExtensionsBundle.tier3}
+          price={ selectBundle ? AppConfig.shop.prices.allExtensionsBundle.tier3 : AppConfig.shop.prices.extensions.tier3}
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier3}
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier3)}
           buttonClassname={getShopAnchorClassname()}
@@ -86,7 +86,7 @@ export default function ExtensionDropdownPricing() {
         <PricingTier
           tierName='Agency'
           extensionName="“All Extensions” Bundle"
-          price={AppConfig.shop.prices.allExtensionsBundle.tier4}
+          price={ selectBundle ? AppConfig.shop.prices.allExtensionsBundle.tier4 : AppConfig.shop.prices.extensions.tier4}
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier4}
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier4)}
           buttonClassname={getShopAnchorClassname()}
