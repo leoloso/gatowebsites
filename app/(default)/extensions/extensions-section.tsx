@@ -44,8 +44,7 @@ export default function ExtensionsSection({
           description='Provide additional functionality to the GraphQL server, and expand the GraphQL schema'
         />
 
-        {/* <div className="pb-12 md:pb-20"> */}
-        <div className="mb-4 md:mb-8">
+        <div className="pb-12 md:pb-20">
           {/* <div className="mb-8 text-center">
             <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
               Extensions
@@ -96,20 +95,16 @@ export default function ExtensionsSection({
           ))}
         </div>
 
-        <div className="pb-12 md:pb-20">
+        <div className="">
           <div className="mb-8 text-center">
-            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
+            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-2 md:pb-4">
               Pick your extension
             </h2>
-            {/* <p className="text-lg text-slate-400">Purchase the extension you need, or get a bundle with all of them with a big discount.</p> */}
-          </div>
-          <ExtensionDropdownPricing />
-        </div>
-
-        <div className="pb-12 md:pb-20">
-          <div className="mb-8 text-center">
-            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
-              Pick all extensions, with a big discount
+            <p className="h4 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-2 md:pb-4">
+              or
+            </p>
+            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-2 md:pb-4">
+              Get all {extensions.length} extensions, with a big discount
             </h2>
             {/* <p className="text-lg text-slate-400">Purchase the extension you need, or get a bundle with all of them with a big discount.</p> */}
           </div>
