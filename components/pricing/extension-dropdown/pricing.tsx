@@ -17,6 +17,11 @@ export default function ExtensionDropdownPricing() {
   const extensions = allExtensions.sort(sortByOrderAndTitle)
   const [annual, setAnnual] = useState<boolean>(true);
 
+  const allExtensionsBundlePrice = AppConfig.shop.prices.allExtensionsBundle.tier1
+  const aggregatedExtensionsPrice = AppConfig.shop.prices.extensions.tier1 * extensions.length
+  const allExtensionsBundleDiscount = 100 * (1 - allExtensionsBundlePrice / aggregatedExtensionsPrice)
+
+
   return (
     <div className="relative">
       <div className="mb-16 flex items-center justify-center gap-2">
@@ -44,7 +49,7 @@ export default function ExtensionDropdownPricing() {
           {/* <span className="flex-1 text-left" aria-hidden="true"> */}
           <span className="text-left" aria-hidden="true">
             Get bundle (all { extensions.length } extensions)
-            <span className="m-1.5"><span className="text-sm font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-55%</span></span>
+            <span className="m-1.5"><span className="text-sm font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-{ Math.floor(allExtensionsBundleDiscount) }%</span></span>
           </span>
         </label>
       </div>
