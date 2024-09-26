@@ -14,8 +14,10 @@ import PricingTier from "./pricing-tier";
 import AppConfig from "@/app/app.config"
 
 export default function ExtensionDropdownPricing() {
-  const extensions = allExtensions.sort(sortByOrderAndTitle)
   const [selectBundle, setSelectBundle] = useState<boolean>(true);
+  const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(0)
+
+  const extensions = allExtensions.sort(sortByOrderAndTitle)
 
   const allExtensionsBundlePrice = AppConfig.shop.prices.allExtensionsBundle.tier1
   const aggregatedExtensionsPrice = AppConfig.shop.prices.extensions.tier1 * extensions.length
@@ -23,7 +25,6 @@ export default function ExtensionDropdownPricing() {
 
   const allExtensionsBundleName = "“All Extensions” Bundle"
 
-  const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(0)
   const selectedExtension = extensions[selectedExtensionIndex]
 
   return (
@@ -33,6 +34,7 @@ export default function ExtensionDropdownPricing() {
           <ExtensionDropdown
             extensions={extensions}
             state={[selectedExtensionIndex, setSelectedExtensionIndex]}
+            isDisabled={selectBundle}
           />
         </div>
         {/* Pricing toggle */}
