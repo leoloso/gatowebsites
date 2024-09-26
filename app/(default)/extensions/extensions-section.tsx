@@ -99,7 +99,7 @@ export default function ExtensionsSection({
               or
             </p>
             <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-2 md:pb-4">
-              Get all {extensions.length} extensions, with a big discount
+              Get all extensions, with a big discount
             </h2>
             {/* <p className="text-lg text-slate-400">Purchase the extension you need, or get a bundle with all of them with a big discount.</p> */}
           </div>
