@@ -44,7 +44,7 @@ export default function ExtensionDropdownPricing() {
           {/* <span className="flex-1 text-left" aria-hidden="true"> */}
           <span className="text-left" aria-hidden="true">
             Get bundle (all { extensions.length } extensions)
-            <span className="m-1.5"><span className="text-sm font-medium text-red-200 px-1.5 bg-red-500/90 rounded-full">-55%</span></span>
+            <span className="m-1.5"><span className="text-sm font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-55%</span></span>
           </span>
         </label>
       </div>
