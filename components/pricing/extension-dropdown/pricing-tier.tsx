@@ -39,8 +39,10 @@ export default function PricingTier({
             {price}
           </span>
         </div>
-        <div className="mb-4 grow text-xs text-slate-400">
-          <span className="text-slate-200">{ extensionName }</span><br/>
+        <div className="grow text-sm text-slate-200 font-bold">
+          { extensionName }
+        </div>
+        <div className="mb-4 grow text-sm text-slate-400">
           License for <span className="text-slate-200 font-bold">{tierDomainNumber} domains</span>
         </div>
         <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-purple-700 hover:bg-purple-800' : (isFree ? 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white' : 'text-white bg-purple-500 hover:bg-purple-600')} ${buttonClassname}`} href={buttonURL} target={buttonTarget}>
