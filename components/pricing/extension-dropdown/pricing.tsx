@@ -5,16 +5,17 @@ import { allExtensions } from "@/.contentlayer/generated"
 import { sortByOrderAndTitle } from "@/utils/content/sort"
 
 import { useState } from "react";
-import ExtensionDropdown from "./extension-dropdown";
 import PricingTier from "./pricing-tier";
 import AppConfig from "@/app/app.config"
 import clsx from "clsx";
+import FullWidthDropdown from "@/components/standard/dropdown-full-width";
 
 export default function ExtensionDropdownPricing() {
   const [selectBundle, setSelectBundle] = useState<boolean>(true);
   const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(0)
 
   const extensions = allExtensions.sort(sortByOrderAndTitle)
+  const extensionNames = extensions.map((extension) => extension.title)
 
   const allExtensionsBundlePrice = AppConfig.shop.prices.bundles.allExtensions.tier1
   const aggregatedExtensionsPrice = AppConfig.shop.prices.extensions._shared.tier1 * extensions.length
@@ -55,8 +56,8 @@ export default function ExtensionDropdownPricing() {
               Pick extension:
             </span>
             <span className="sr-only">Pick extension</span>
-            <ExtensionDropdown
-              extensions={extensions}
+            <FullWidthDropdown
+              values={extensionNames}
               state={[selectedExtensionIndex, setSelectedExtensionIndex]}
               isDisabled={selectBundle}
             />
