@@ -21,7 +21,10 @@ export default function ExtensionDropdownPricing() {
   const aggregatedExtensionsPrice = AppConfig.shop.prices.extensions.tier1 * extensions.length
   const allExtensionsBundleDiscount = 100 * (1 - allExtensionsBundlePrice / aggregatedExtensionsPrice)
 
-  const [selectedExtension, setSelectedExtension] = useState<number>(0)
+  const allExtensionsBundleName = "“All Extensions” Bundle"
+
+  const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(0)
+  const selectedExtension = extensions[selectedExtensionIndex]
 
   return (
     <div className="relative">
@@ -29,7 +32,7 @@ export default function ExtensionDropdownPricing() {
         <div className="flex-none">
           <ExtensionDropdown
             extensions={extensions}
-            state={[selectedExtension, setSelectedExtension]}
+            state={[selectedExtensionIndex, setSelectedExtensionIndex]}
           />
         </div>
         {/* Pricing toggle */}
@@ -61,7 +64,7 @@ export default function ExtensionDropdownPricing() {
         {/* Pricing table 1 */}
         <PricingTier
           tierName='Personal'
-          extensionName="“All Extensions” Bundle"
+          extensionName={ selectBundle ? allExtensionsBundleName : selectedExtension.title }
           price={ selectBundle ? AppConfig.shop.prices.allExtensionsBundle.tier1 : AppConfig.shop.prices.extensions.tier1}
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier1}
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier1)}
@@ -70,7 +73,7 @@ export default function ExtensionDropdownPricing() {
         {/* Pricing table 2 */}
         <PricingTier
           tierName='Organization'
-          extensionName="“All Extensions” Bundle"
+          extensionName={ selectBundle ? allExtensionsBundleName : selectedExtension.title }
           price={ selectBundle ? AppConfig.shop.prices.allExtensionsBundle.tier2 : AppConfig.shop.prices.extensions.tier2}
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier2}
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier2)}
@@ -79,7 +82,7 @@ export default function ExtensionDropdownPricing() {
         {/* Pricing table 3 */}
         <PricingTier
           tierName='Professional'
-          extensionName="“All Extensions” Bundle"
+          extensionName={ selectBundle ? allExtensionsBundleName : selectedExtension.title }
           price={ selectBundle ? AppConfig.shop.prices.allExtensionsBundle.tier3 : AppConfig.shop.prices.extensions.tier3}
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier3}
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier3)}
@@ -89,7 +92,7 @@ export default function ExtensionDropdownPricing() {
         {/* Pricing table 4 */}
         <PricingTier
           tierName='Agency'
-          extensionName="“All Extensions” Bundle"
+          extensionName={ selectBundle ? allExtensionsBundleName : selectedExtension.title }
           price={ selectBundle ? AppConfig.shop.prices.allExtensionsBundle.tier4 : AppConfig.shop.prices.extensions.tier4}
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier4}
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier4)}
