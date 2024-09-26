@@ -1,4 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production'
+const allExtensionsDevShopURL = "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619"
 module.exports = {
   paths: {
     blog: "blog",
@@ -28,19 +29,19 @@ module.exports = {
         allExtensions: {
           defaultTier: isProd
             ? "@todo"
-            : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
+            : allExtensionsDevShopURL,
           tier1: isProd
             ? "@todo"
-            : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
+            : allExtensionsDevShopURL,
           tier2: isProd
             ? "@todo"
-            : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
+            : allExtensionsDevShopURL,
           tier3: isProd
             ? "@todo"
-            : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
+            : allExtensionsDevShopURL,
           tier4: isProd
             ? "@todo"
-            : "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619",
+            : allExtensionsDevShopURL,
         },
       },
     },
