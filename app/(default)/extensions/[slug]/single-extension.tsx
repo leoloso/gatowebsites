@@ -4,6 +4,7 @@ import ExtensionThumb from '@/components/extension-thumb'
 import PageHeader from '@/components/page-header'
 import PostItemIntegration from '@/components/post-item-integration'
 import ThumbModalVideo from '@/components/mdx/components/modal-video-thumb'
+import ExtensionThumbModalVideo from '@/components/mdx/components/modal-video-extension-thumb'
 
 export default function SingleExtension({
   extension,
@@ -35,12 +36,10 @@ export default function SingleExtension({
                 />
               )}
               {!! extension.video && (
-                <ThumbModalVideo
-                  title={`Click Play to watch a demo of the ${extension.title} extension`}
-                  thumb={extension.image}
-                  thumbWidth={1024}
-                  thumbHeight={576}
-                  thumbAlt={`Demo of the ${extension.title} extension`}
+                <ExtensionThumbModalVideo
+                  // title={`Click Play to watch a demo of the ${extension.title} extension`}
+                  title="Click to watch video"
+                  extension={extension}
                   video={extension.video}
                   videoWidth={1920}
                   videoHeight={1080}
