@@ -24,9 +24,9 @@ export default function ExtensionDropdownPricing() {
         {/* Pricing toggle */}
         <label className="flex cursor-pointer items-center justify-center gap-4 text-indigo-200/65">
           <span className="flex-1 text-right" aria-hidden="true">
-            Pick your extension
+            Pick extension
           </span>
-          <span className="sr-only">Pick your extension</span>
+          <span className="sr-only">Pick extension</span>
           <input
             role="switch"
             type="checkbox"
@@ -39,7 +39,8 @@ export default function ExtensionDropdownPricing() {
             aria-hidden="true"
           />
           <span className="flex-1 text-left" aria-hidden="true">
-            Billed Monthly
+            Get bundle with all extensions
+            <span className="m-1.5"><span className="text-sm font-medium text-red-200 px-1.5 bg-red-500/90 rounded-full">-55%</span></span>
           </span>
         </label>
       </div>
