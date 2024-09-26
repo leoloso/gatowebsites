@@ -15,7 +15,7 @@ import AppConfig from "@/app/app.config"
 
 export default function ExtensionDropdownPricing() {
   const extensions = allExtensions.sort(sortByOrderAndTitle)
-  const [annual, setAnnual] = useState<boolean>(true);
+  const [selectBundle, setSelectBundle] = useState<boolean>(true);
 
   const allExtensionsBundlePrice = AppConfig.shop.prices.allExtensionsBundle.tier1
   const aggregatedExtensionsPrice = AppConfig.shop.prices.extensions.tier1 * extensions.length
@@ -39,8 +39,8 @@ export default function ExtensionDropdownPricing() {
             role="switch"
             type="checkbox"
             className="peer sr-only"
-            checked={annual}
-            onChange={() => setAnnual(!annual)}
+            checked={selectBundle}
+            onChange={() => setSelectBundle(!selectBundle)}
           />
           <div
             className="peer relative h-6 w-11 rounded-full bg-gray-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-gray-200 after:transition-all peer-checked:bg-blue-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-blue-200"
