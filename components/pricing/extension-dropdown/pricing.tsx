@@ -61,7 +61,7 @@ export default function ExtensionDropdownPricing() {
 
   const selectedExtension = extensions[selectedExtensionIndex]
   const selectedExtensionEnumSlug = convertExtensionSlugStringToEnum(selectedExtension.slug);
-  const selectedExtensionURLObject = AppConfig.urls.shopProducts.extensions[selectedExtensionEnumSlug]
+  const selectedExtensionURLObject = selectedExtension.shopURLs || AppConfig.urls.shopProducts.extensions[selectedExtensionEnumSlug]
 
   return (
     <div className="relative">
