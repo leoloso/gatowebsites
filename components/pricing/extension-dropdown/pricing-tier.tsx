@@ -1,0 +1,98 @@
+import clsx from "clsx"
+
+export default function PricingTier({
+  tierName,
+  extensionName,
+  price,
+  description,
+  highlight,
+  buttonLabel,
+  buttonURL,
+  buttonTarget,
+  buttonClassname = '',
+}: {
+  tierName: string,
+  extensionName: string,
+  price: number,
+  description: string,
+  highlight?: boolean,
+  buttonLabel: string,
+  buttonURL: string,
+  buttonTarget?: string,
+  buttonClassname?: string,
+}) {
+  const isPRO = price !== 0
+  return (
+    <div className={clsx("relative flex h-full flex-col rounded-2xl bg-gradient-to-br from-gray-900/50 via-gray-800/25 to-gray-900/50 p-5 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]", !highlight && "before:[background:linear-gradient(to_right,theme(colors.gray.800),theme(colors.gray.700),theme(colors.gray.800))_border-box]", highlight && "before:[background:linear-gradient(to_right,theme(colors.indigo.500/.5),theme(colors.indigo.500),theme(colors.indigo.500/.5))_border-box]")}>
+      <div className="relative mb-4 border-b pb-5 [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1]">
+        { highlight && (
+          <div className="absolute right-0 top-0 inline-flex items-center rounded-full bg-indigo-500/[.15] px-2 py-0.5 text-xs font-medium text-indigo-200/85 shadow-sm">
+            Popular
+          </div>
+        )}
+        <div className="mb-2 font-nacelle text-[1rem] text-gray-200">
+          {tierName}
+        </div>
+        <div className="mb-1.5 flex items-baseline font-nacelle">
+          <span className="text-2xl text-indigo-200/65">$</span>
+          <span className="text-4xl font-semibold tabular-nums text-gray-200">
+            {price}
+          </span>
+        </div>
+        <div className="mb-4 grow text-xs text-indigo-200/65">
+          <span className="text-slate-200">{ extensionName }</span> - License for <span className="text-slate-200">
+            <strong>{description}</strong>
+          </span>
+        </div>
+        <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-purple-700 hover:bg-purple-800' : (isPRO ? 'text-white bg-purple-500 hover:bg-purple-600' : 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white')} ${buttonClassname}`} href={buttonURL} target={buttonTarget}>
+          {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-purple-500' : (isPRO ? 'text-purple-300' : 'text-purple-500')}`}>-&gt;</span>
+        </a>
+      </div>
+      <p className="mb-4 text-sm italic text-gray-200">
+        Everything in Freelancer, plus:
+      </p>
+      <ul className="grow space-y-2 text-sm text-indigo-200/65">
+        <li className="flex items-center">
+          <svg
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-indigo-500"
+            viewBox="0 0 12 12"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+          </svg>
+          <span>No seat limits</span>
+        </li>
+        <li className="flex items-center">
+          <svg
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-indigo-500"
+            viewBox="0 0 12 12"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+          </svg>
+          <span>Real-time space syncing</span>
+        </li>
+        <li className="flex items-center">
+          <svg
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-indigo-500"
+            viewBox="0 0 12 12"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+          </svg>
+          <span>Automatic data enrichment</span>
+        </li>
+        <li className="flex items-center">
+          <svg
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-indigo-500"
+            viewBox="0 0 12 12"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+          </svg>
+          <span>Custom billing</span>
+        </li>
+      </ul>
+    </div>
+  )
+}
