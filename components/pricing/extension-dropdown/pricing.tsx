@@ -21,7 +21,7 @@ export default function ExtensionDropdownPricing() {
   const aggregatedExtensionsPrice = AppConfig.shop.prices.extensions.tier1 * extensions.length
   const allExtensionsBundleDiscount = 100 * (1 - allExtensionsBundlePrice / aggregatedExtensionsPrice)
 
-  const [selected, setSelected] = useState<number>(0)
+  const [selectedExtension, setSelectedExtension] = useState<number>(0)
 
   return (
     <div className="relative">
@@ -29,7 +29,7 @@ export default function ExtensionDropdownPricing() {
         <div className="flex-none">
           <ExtensionDropdown
             extensions={extensions}
-            state={[selected, setSelected]}
+            state={[selectedExtension, setSelectedExtension]}
           />
         </div>
         {/* Pricing toggle */}
