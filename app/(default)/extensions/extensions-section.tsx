@@ -45,11 +45,6 @@ export default function ExtensionsSection({
         />
 
         <div className="pb-12 md:pb-20">
-          {/* <div className="mb-8 text-center">
-            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
-              Extensions
-            </h2>
-          </div> */}
 
           {/* Extensions */}
           {extensions.map((extension, index) => (
