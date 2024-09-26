@@ -374,6 +374,7 @@ const Extension = defineDocumentType(() => ({
     shopURLs: {
       type: 'nested',
       of: ShopURLs,
+      required: true
     },
   },
   computedFields: {
