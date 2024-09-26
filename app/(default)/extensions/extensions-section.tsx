@@ -75,7 +75,7 @@ export default function ExtensionsSection({
                       <Link href={getExtensionURLPath(extension)} className="hover:text-purple-300 transition duration-150 ease-in-out">{extension.title}</Link>
                     </h3>
                   </header>
-                  <p className="text-lg text-gray-400 grow">{extension.description}</p>
+                  <p className="text-lg text-gray-300 grow">{extension.description}</p>
                   { !! extension.video && (
                     <LinkModalVideo
                       // title="Watch video"
