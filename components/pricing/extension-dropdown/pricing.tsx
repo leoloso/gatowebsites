@@ -34,10 +34,11 @@ export default function ExtensionDropdownPricing() {
       <div className="mb-16 flex items-center justify-center gap-2">
         {/* Pricing toggle */}
         <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
-          <div className="flex items-center justify-center">
+          <div className="flex flex-col items-center justify-center">
             <span className={clsx(selectBundle && "text-gray-100")} aria-hidden="true">
               Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
             </span>
+            <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-{ Math.floor(allExtensionsBundleDiscount) }%</span></span>            
             {/* <span className="m-1.5">
               <span className="flex items-center space-x-2">
                 <Tooltip size="md" bg="dark">
@@ -45,7 +46,6 @@ export default function ExtensionDropdownPricing() {
                 </Tooltip>
               </span>
             </span> */}
-            <span className="m-1.5"><span className="text-sm font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-{ Math.floor(allExtensionsBundleDiscount) }%</span></span>            
           </div>
           <input
             role="switch"
