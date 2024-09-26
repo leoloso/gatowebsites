@@ -4,7 +4,7 @@ export default function PricingTier({
   tierName,
   extensionName,
   price,
-  description,
+  tierDomainNumber,
   highlight,
   buttonLabel,
   buttonURL,
@@ -14,7 +14,7 @@ export default function PricingTier({
   tierName: string,
   extensionName: string,
   price: number,
-  description: string,
+  tierDomainNumber: number,
   highlight?: boolean,
   buttonLabel: string,
   buttonURL: string,
@@ -41,7 +41,7 @@ export default function PricingTier({
         </div>
         <div className="mb-4 grow text-xs text-slate-400">
           <span className="text-slate-200">{ extensionName }</span><br/>
-          License for <span className="text-slate-200 font-bold">{description}</span>
+          License for <span className="text-slate-200 font-bold">{tierDomainNumber} domains</span>
         </div>
         <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-purple-700 hover:bg-purple-800' : (isFree ? 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white' : 'text-white bg-purple-500 hover:bg-purple-600')} ${buttonClassname}`} href={buttonURL} target={buttonTarget}>
           {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-purple-500' : (isFree ? 'text-purple-500' : 'text-purple-300')}`}>-&gt;</span>
@@ -56,7 +56,7 @@ export default function PricingTier({
           >
             <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
           </svg>
-          <span>{description}</span>
+          <span>{tierDomainNumber} domains</span>
         </li>
         <li className="flex items-center">
           <svg

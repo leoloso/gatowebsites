@@ -54,7 +54,7 @@ export default function ExtensionDropdownPricing() {
           tierName='Personal'
           extensionName="“All Extensions” Bundle"
           price={AppConfig.shop.prices.allExtensionsBundle.tier1}
-          description='5 domains'
+          tierDomainNumber={5}
           buttonLabel="Purchase"
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier1)}
           buttonClassname={getShopAnchorClassname()}
