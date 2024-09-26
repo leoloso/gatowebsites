@@ -47,7 +47,7 @@ export default function Dropdown({options}: DropdownInterface) {
                 <MenuItem key={optionIndex}>
                   {({ active }) => (
                     <button
-                      className={`flex items-center w-full py-1 px-3 cursor-pointer ${active ? 'bg-gray-50 dark:bg-gray-700/20' : ''} ${option.id === selected && 'text-violet-500'}`}
+                      className={`flex text-left items-center w-full py-1 px-3 cursor-pointer ${active ? 'bg-gray-50 dark:bg-gray-700/20' : ''} ${option.id === selected && 'text-violet-500'}`}
                       onClick={() => { setSelected(option.id) }}
                     >
                       <svg className={`shrink-0 mr-2 fill-current text-violet-500 ${option.id !== selected && 'invisible'}`} width="12" height="9" viewBox="0 0 12 9">
