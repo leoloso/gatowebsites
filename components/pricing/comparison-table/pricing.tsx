@@ -6,7 +6,7 @@ import { getShopURL, getShopAnchorClassname } from "@/utils/shop/shop"
 import { allExtensions } from "@/.contentlayer/generated"
 import { sortByOrderAndTitle } from "@/utils/content/sort"
 
-export default function Pricing() {
+export default function ComparisonTablePricing() {
   const extensions = allExtensions.sort(sortByOrderAndTitle)
 
   return (
