@@ -10,43 +10,6 @@ import PricingTier from "./pricing-tier";
 import AppConfig from "@/app/app.config"
 import clsx from "clsx";
 
-const convertExtensionSlugStringToEnum = (extensionSlug: string) => {
-  switch (extensionSlug) {
-    case 'access-control': {
-      return 'access-control'
-    }
-    case 'caching': {
-      return 'caching'
-    }
-    case 'custom-endpoints': {
-      return 'custom-endpoints'
-    }
-    case 'deprecation': {
-      return 'deprecation'
-    }
-    case 'multiple-query-execution': {
-      return 'multiple-query-execution'
-    }
-    case 'persisted-queries': {
-      return 'persisted-queries'
-    }
-    case 'polylang-integration': {
-      return 'polylang-integration'
-    }
-    case 'query-functions': {
-      return 'query-functions'
-    }
-    case 'schema-functions': {
-      return 'schema-functions'
-    }
-    
-    default:
-      // Return any value, doesn't matter which one
-      return 'access-control';
-  }
-};
-
-
 export default function ExtensionDropdownPricing() {
   const [selectBundle, setSelectBundle] = useState<boolean>(true);
   const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(0)
@@ -60,8 +23,7 @@ export default function ExtensionDropdownPricing() {
   const allExtensionsBundleName = "“All Extensions” Bundle"
 
   const selectedExtension = extensions[selectedExtensionIndex]
-  const selectedExtensionEnumSlug = convertExtensionSlugStringToEnum(selectedExtension.slug);
-  const selectedExtensionURLObject = selectedExtension.shopURLs || AppConfig.urls.shopProducts.extensions[selectedExtensionEnumSlug]
+  
 
   return (
     <div className="relative">
