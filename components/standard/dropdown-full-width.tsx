@@ -20,7 +20,7 @@ export default function FullWidthDropdown({options}: DropdownInterface) {
     <Menu as="div" className="relative inline-flex w-full">
       {({ open }) => (
         <>
-          <MenuButton className="btn w-full justify-between min-w-[11rem] bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600 text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100" aria-label="Select option">
+          <MenuButton className="btn w-full justify-between min-w-[11rem] bg-white dark:bg-gray-800 border-blue-200 dark:border-blue-700/60 hover:border-blue-300 dark:hover:border-blue-600 text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100" aria-label="Select option">
             <span className="flex items-center">
               <span>{options[selected].value}</span>
             </span>
@@ -30,7 +30,7 @@ export default function FullWidthDropdown({options}: DropdownInterface) {
           </MenuButton>
           <Transition
             as="div"
-            className="z-10 absolute top-full left-0 w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/60 py-1.5 rounded-lg shadow-lg overflow-hidden mt-1"
+            className="z-10 absolute top-full left-0 w-full bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-700/60 py-1.5 rounded-lg shadow-lg overflow-hidden mt-1"
             enter="transition ease-out duration-100 transform"
             enterFrom="opacity-0 -translate-y-2"
             enterTo="opacity-100 translate-y-0"
