@@ -26,7 +26,7 @@ export default function PricingTier({
     <div className={clsx("relative flex h-full flex-col rounded-2xl bg-gradient-to-br from-gray-900/50 via-gray-800/25 to-gray-900/50 p-5 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]", !highlight && "before:[background:linear-gradient(to_right,theme(colors.gray.800),theme(colors.gray.700),theme(colors.gray.800))_border-box]", highlight && "before:[background:linear-gradient(to_right,theme(colors.purple.500/.8),theme(colors.purple.500),theme(colors.purple.500/.8))_border-box]")}>
       <div className="relative mb-4 border-b pb-5 [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1]">
         { highlight && (
-          <div className="absolute right-0 top-0 inline-flex items-center rounded-full bg-purple-500/[.15] px-2 py-0.5 text-xs font-medium text-purple-200/85 shadow-sm">
+          <div className="absolute right-0 top-0 inline-flex items-center rounded-full bg-slate-500/[.5] px-2 py-0.5 text-xs font-medium text-slate-100 shadow-sm">
             Popular
           </div>
         )}
