@@ -27,11 +27,11 @@ export default function FullWidthDropdown({
     <Menu as="div" className="relative inline-flex w-full">
       {({ open }) => (
         <>
-          <MenuButton className={clsx("btn w-full justify-between min-w-[11rem] bg-white dark:bg-gray-800 border-blue-200 dark:border-blue-700/80 text-gray-600 dark:text-gray-300", !isDisabled && "hover:border-blue-300 dark:hover:border-blue-600 hover:text-gray-800 dark:hover:text-gray-100")} aria-label="Select option" disabled={isDisabled}>
+          <MenuButton className={clsx("btn w-full justify-between min-w-[11rem] bg-white dark:bg-gray-800", isDisabled && "text-gray-600 dark:text-gray-500", !isDisabled && "text-gray-600 dark:text-gray-300 border-blue-200 dark:border-blue-700/80 hover:border-blue-300 dark:hover:border-blue-600 hover:text-gray-800 dark:hover:text-gray-100")} aria-label="Select option" disabled={isDisabled}>
             <span className="flex items-center">
               <span>{options[selected].value}</span>
             </span>
-            <svg className="shrink-0 ml-1 fill-current text-blue-400 dark:text-blue-500" width="11" height="7" viewBox="0 0 11 7">
+            <svg className={clsx("shrink-0 ml-1 fill-current", !isDisabled && "text-blue-400 dark:text-blue-500")} width="11" height="7" viewBox="0 0 11 7">
               <path d="M5.4 6.8L0 1.4 1.4 0l4 4 4-4 1.4 1.4z" />
             </svg>
           </MenuButton>
