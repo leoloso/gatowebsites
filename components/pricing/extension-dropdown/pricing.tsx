@@ -32,10 +32,13 @@ export default function ExtensionDropdownPricing() {
       <div className="mb-16 flex items-center justify-center gap-2">
         {/* Pricing toggle */}
         <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
-          <span className="text-left" aria-hidden="true">
-            Get bundle (all { extensions.length } extensions)
-            <span className="m-1.5"><span className="text-sm font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-{ Math.floor(allExtensionsBundleDiscount) }%</span></span>
-          </span>
+          <div className="">
+            <p className="text-left mb-2" aria-hidden="true">
+              Get all extensions
+              <span className="m-1.5"><span className="text-sm font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-{ Math.floor(allExtensionsBundleDiscount) }%</span></span>
+            </p>
+            <p className="text-left text-sm text-slate-300">Bundle with all { extensions.length } extensions</p>
+          </div>
           <input
             role="switch"
             type="checkbox"
@@ -47,18 +50,18 @@ export default function ExtensionDropdownPricing() {
             className="peer relative h-6 w-11 rounded-full bg-violet-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-violet-200 after:transition-all peer-checked:bg-blue-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-blue-200"
             aria-hidden="true"
           />
-          <span className="text-right" aria-hidden="true">
-            Pick extension:
-          </span>
-          <span className="sr-only">Pick extension</span>
+          <div className="">
+            <span className="text-right" aria-hidden="true">
+              Pick extension:
+            </span>
+            <span className="sr-only">Pick extension</span>
+            <ExtensionDropdown
+              extensions={extensions}
+              state={[selectedExtensionIndex, setSelectedExtensionIndex]}
+              isDisabled={selectBundle}
+            />
+          </div>
         </label>
-        <div className="flex-none">
-          <ExtensionDropdown
-            extensions={extensions}
-            state={[selectedExtensionIndex, setSelectedExtensionIndex]}
-            isDisabled={selectBundle}
-          />
-        </div>
       </div>
       <div className="mx-auto grid max-w-xs items-start gap-8 md:max-w-2xl md:grid-cols-2 xl:max-w-none xl:grid-cols-4 xl:gap-6">
         {/* Pricing table 1 */}
