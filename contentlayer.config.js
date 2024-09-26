@@ -387,11 +387,43 @@ const Extension = defineDocumentType(() => ({
 const ShopURLs = defineNestedType(() => ({
   name: 'ShopURLs',
   fields: {
-    dev: {
+    devDefaultTier: {
       type: 'string',
       required: true
     },
-    prod: {
+    prodDefaultTier: {
+      type: 'string',
+      required: true
+    }, 
+    devTier1: {
+      type: 'string',
+      required: true
+    },
+    prodTier1: {
+      type: 'string',
+      required: true
+    }, 
+    devTier2: {
+      type: 'string',
+      required: true
+    },
+    prodTier2: {
+      type: 'string',
+      required: true
+    }, 
+    devTier3: {
+      type: 'string',
+      required: true
+    },
+    prodTier3: {
+      type: 'string',
+      required: true
+    }, 
+    devTier4: {
+      type: 'string',
+      required: true
+    },
+    prodTier4: {
       type: 'string',
       required: true
     }, 
