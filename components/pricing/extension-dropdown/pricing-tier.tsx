@@ -40,9 +40,8 @@ export default function PricingTier({
           </span>
         </div>
         <div className="mb-4 grow text-xs text-slate-400">
-          <span className="text-slate-200">{ extensionName }</span><br/>License for <span className="text-slate-200">
-            <strong>{description}</strong>
-          </span>
+          <span className="text-slate-200">{ extensionName }</span><br/>
+          License for <span className="text-slate-200 font-bold">{description}</span>
         </div>
         <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-purple-700 hover:bg-purple-800' : (isFree ? 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white' : 'text-white bg-purple-500 hover:bg-purple-600')} ${buttonClassname}`} href={buttonURL} target={buttonTarget}>
           {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-purple-500' : (isFree ? 'text-purple-500' : 'text-purple-300')}`}>-&gt;</span>
@@ -57,7 +56,7 @@ export default function PricingTier({
           >
             <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
           </svg>
-          <span>No seat limits</span>
+          <span>{description}</span>
         </li>
         <li className="flex items-center">
           <svg
@@ -67,7 +66,7 @@ export default function PricingTier({
           >
             <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
           </svg>
-          <span>Real-time space syncing</span>
+          <span>Premium support</span>
         </li>
         <li className="flex items-center">
           <svg
@@ -77,17 +76,7 @@ export default function PricingTier({
           >
             <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
           </svg>
-          <span>Automatic data enrichment</span>
-        </li>
-        <li className="flex items-center">
-          <svg
-            className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
-            viewBox="0 0 12 12"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
-          </svg>
-          <span>Custom billing</span>
+          <span>Product updates</span>
         </li>
       </ul>
     </div>
