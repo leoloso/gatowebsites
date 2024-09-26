@@ -34,13 +34,13 @@ export default function PricingTier({
           {tierName}
         </div>
         <div className="mb-1.5 flex items-baseline font-nacelle">
-          <span className="text-2xl text-indigo-200/65">$</span>
+          <span className="text-2xl text-slate-400">$</span>
           <span className="text-4xl font-semibold tabular-nums text-gray-200">
             {price}
           </span>
         </div>
-        <div className="mb-4 grow text-xs text-indigo-200/65">
-          <span className="text-slate-200">{ extensionName }</span> - License for <span className="text-slate-200">
+        <div className="mb-4 grow text-xs text-slate-400">
+          <span className="text-slate-200">{ extensionName }</span><br/>License for <span className="text-slate-200">
             <strong>{description}</strong>
           </span>
         </div>
@@ -51,7 +51,7 @@ export default function PricingTier({
       <p className="mb-4 text-sm italic text-gray-200">
         Everything in Freelancer, plus:
       </p>
-      <ul className="grow space-y-2 text-sm text-indigo-200/65">
+      <ul className="grow space-y-2 text-sm text-slate-400">
         <li className="flex items-center">
           <svg
             className="mr-2 h-3 w-3 shrink-0 fill-current text-indigo-500"
