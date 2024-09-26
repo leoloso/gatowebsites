@@ -41,9 +41,9 @@ export default function FullWidthDropdown({options}: DropdownInterface) {
             <MenuItems className="font-medium text-sm text-gray-600 dark:text-gray-300 divide-y divide-gray-200 dark:divide-gray-700/60 focus:outline-none">
               {options.map((option, optionIndex) => (
                 <MenuItem key={optionIndex}>
-                  {({ active }) => (
+                  {({ focus }) => (
                     <button
-                      className={`flex items-center text-left justify-between w-full py-2 px-3 cursor-pointer ${active ? 'bg-gray-50 dark:bg-gray-700/20' : ''} ${option.id === selected && 'text-blue-300'}`}
+                      className={`flex items-center text-left justify-between w-full py-2 px-3 cursor-pointer ${focus ? 'bg-gray-50 dark:bg-gray-700/20' : ''} ${option.id === selected && 'text-blue-300'}`}
                       onClick={() => { setSelected(option.id) }}
                     >
                       <span>{option.value}</span>
