@@ -1,7 +1,7 @@
 'use client'
 
 import { Extension } from '@/.contentlayer/generated'
-import Dropdown from '@/components/standard/dropdown'
+import FullWidthDropdown from '@/components/standard/dropdown-full-width'
 
 export default function ExtensionDropdown({
   extensions,
@@ -12,11 +12,11 @@ export default function ExtensionDropdown({
   const options = extensions.map((extension, index) => (
     {
       id: index,
-      period: extension.title
+      value: extension.title
     }
   ))
   
   return (
-    <Dropdown options={options} />
+    <FullWidthDropdown options={options} />
   )
 }
