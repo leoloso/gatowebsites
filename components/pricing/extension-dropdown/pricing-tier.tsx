@@ -30,7 +30,7 @@ export default function PricingTier({
             Popular
           </div>
         )}
-        <div className="mb-2 font-nacelle text-[1rem] text-gray-200">
+        <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">
           {tierName}
         </div>
         <div className="mb-1.5 flex items-baseline font-nacelle">
