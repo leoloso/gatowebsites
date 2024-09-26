@@ -1,15 +1,17 @@
 'use client'
 
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { Menu, MenuButton, MenuItems, MenuItem, Transition } from '@headlessui/react'
 
 export default function FullWidthDropdown({
   values,
+  state,
 }: {
   values: string[]
+  state?: [number, Dispatch<SetStateAction<number>>],
 }) {
 
-  const [selected, setSelected] = useState<number>(0)
+  const [selected, setSelected] = state ? state : useState<number>(0)
 
   const options = values.map((value, index) => (
     {
