@@ -36,7 +36,7 @@ export default function ExtensionDropdownPricing() {
         <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
           <div className="flex items-center justify-center">
             <span className={clsx(selectBundle && "text-gray-100")} aria-hidden="true">
-              Get bundle with all extensions
+              Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
             </span>
             {/* <span className="m-1.5">
               <span className="flex items-center space-x-2">
