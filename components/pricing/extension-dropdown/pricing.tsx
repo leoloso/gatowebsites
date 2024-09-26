@@ -17,13 +17,14 @@ export default function ExtensionDropdownPricing() {
 
   return (
     <div className="relative">
-      <div className="mb-16 flex items-center justify-center">
-        <div>
+      <div className="mb-16 flex items-center justify-center gap-2">
+        <div className="flex-none">
           <ExtensionDropdown />
         </div>
         {/* Pricing toggle */}
         <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
-          <span className="flex-1 text-right" aria-hidden="true">
+          {/* <span className="flex-1 text-right" aria-hidden="true"> */}
+          <span className="text-right" aria-hidden="true">
             Pick extension
           </span>
           <span className="sr-only">Pick extension</span>
@@ -38,7 +39,8 @@ export default function ExtensionDropdownPricing() {
             className="peer relative h-6 w-11 rounded-full bg-gray-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-gray-200 after:transition-all peer-checked:bg-indigo-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-indigo-200"
             aria-hidden="true"
           />
-          <span className="flex-1 text-left" aria-hidden="true">
+          {/* <span className="flex-1 text-left" aria-hidden="true"> */}
+          <span className="text-left" aria-hidden="true">
             Get bundle, with all extensions
             <span className="m-1.5"><span className="text-sm font-medium text-red-200 px-1.5 bg-red-500/90 rounded-full">-55%</span></span>
           </span>
