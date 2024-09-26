@@ -13,6 +13,7 @@ import ExtensionDropdown from "./extension-dropdown";
 import PricingTier from "./pricing-tier";
 import AppConfig from "@/app/app.config"
 import Tooltip from "@/components/standard/tooltip";
+import clsx from "clsx";
 
 export default function ExtensionDropdownPricing() {
   const [selectBundle, setSelectBundle] = useState<boolean>(true);
@@ -34,18 +35,16 @@ export default function ExtensionDropdownPricing() {
         {/* Pricing toggle */}
         <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
           <div className="flex items-center justify-center">
-            <span className="" aria-hidden="true">
-              Get all extensions
+            <span className={clsx(selectBundle && "text-gray-100")} aria-hidden="true">
+              Get bundle with all extensions
             </span>
-            <span className="m-1.5">
+            {/* <span className="m-1.5">
               <span className="flex items-center space-x-2">
-                {/* Start */}
                 <Tooltip size="md" bg="dark">
                   <span className="text-xs text-gray-200">Bundle including all { extensions.length } extensions</span>
                 </Tooltip>
-                {/* End */}
               </span>
-            </span>
+            </span> */}
             <span className="m-1.5"><span className="text-sm font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-{ Math.floor(allExtensionsBundleDiscount) }%</span></span>            
           </div>
           <input
@@ -60,7 +59,7 @@ export default function ExtensionDropdownPricing() {
             aria-hidden="true"
           />
           <div className="">
-            <span className="text-right" aria-hidden="true">
+            <span className={clsx(!selectBundle && "text-gray-100")} aria-hidden="true">
               Pick extension:
             </span>
             <span className="sr-only">Pick extension</span>
