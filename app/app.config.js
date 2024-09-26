@@ -188,6 +188,12 @@ module.exports = {
     wpDownload: "https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip",
   },
   shop: {
+    licenseDomainNumber: {
+      tier1: 5,
+      tier2: 25,
+      tier3: 100,
+      tier4: 500,
+    },
     prices: {
       allExtensionsBundle: {
         tier1: 99,

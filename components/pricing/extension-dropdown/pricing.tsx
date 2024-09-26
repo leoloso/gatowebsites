@@ -54,7 +54,7 @@ export default function ExtensionDropdownPricing() {
           tierName='Personal'
           extensionName="“All Extensions” Bundle"
           price={AppConfig.shop.prices.allExtensionsBundle.tier1}
-          tierDomainNumber={5}
+          tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier1}
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier1)}
           buttonClassname={getShopAnchorClassname()}
         />
@@ -63,7 +63,7 @@ export default function ExtensionDropdownPricing() {
           tierName='Organization'
           extensionName="“All Extensions” Bundle"
           price={AppConfig.shop.prices.allExtensionsBundle.tier2}
-          tierDomainNumber={25}
+          tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier2}
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier2)}
           buttonClassname={getShopAnchorClassname()}
         />
@@ -72,7 +72,7 @@ export default function ExtensionDropdownPricing() {
           tierName='Professional'
           extensionName="“All Extensions” Bundle"
           price={AppConfig.shop.prices.allExtensionsBundle.tier3}
-          tierDomainNumber={100}
+          tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier3}
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier3)}
           buttonClassname={getShopAnchorClassname()}
           highlight={true}
@@ -82,7 +82,7 @@ export default function ExtensionDropdownPricing() {
           tierName='Agency'
           extensionName="“All Extensions” Bundle"
           price={AppConfig.shop.prices.allExtensionsBundle.tier4}
-          tierDomainNumber={500}
+          tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier4}
           buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier4)}
           buttonClassname={getShopAnchorClassname()}
         />
