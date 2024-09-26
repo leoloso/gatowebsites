@@ -48,7 +48,7 @@ export default function ExtensionDropdownPricing() {
             aria-hidden="true"
           />
           <span className="text-right" aria-hidden="true">
-            Pick extension
+            Pick extension:
           </span>
           <span className="sr-only">Pick extension</span>
         </label>
