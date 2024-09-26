@@ -34,6 +34,7 @@ export default function ExtensionThumbModalVideo({
         <ExtensionThumb
           extension={extension}
           isLandscape={true}
+          printExtensionTitle={true}
         />
         <ModalVideoTitle title={title} extraClassname='z-30' />
         <ModalVideoButton title={title} extraClassname='z-30' />
