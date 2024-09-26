@@ -29,24 +29,26 @@ export default function ExtensionDropdownPricing() {
       <div className="mb-16 flex items-center justify-center gap-2">
         {/* Pricing toggle */}
         <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex-1 flex flex-col items-center justify-center">
             <span className={clsx("text-center", selectBundle && "text-gray-100")} aria-hidden="true">
               Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
             </span>
             <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-{ Math.floor(allExtensionsBundleDiscount) }%</span></span>            
           </div>
-          <input
-            role="switch"
-            type="checkbox"
-            className="peer sr-only"
-            checked={!selectBundle}
-            onChange={() => setSelectBundle(!selectBundle)}
-          />
-          <div
-            className="peer relative h-6 w-11 rounded-full bg-teal-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-teal-200 after:transition-all peer-checked:bg-blue-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-blue-200"
-            aria-hidden="true"
-          />
-          <div className="">
+          <div className="flex-none">
+            <input
+              role="switch"
+              type="checkbox"
+              className="peer sr-only"
+              checked={!selectBundle}
+              onChange={() => setSelectBundle(!selectBundle)}
+            />
+            <div
+              className="peer relative h-6 w-11 rounded-full bg-teal-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-teal-200 after:transition-all peer-checked:bg-blue-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-blue-200"
+              aria-hidden="true"
+            />
+          </div>
+          <div className="flex-1">
             <span className={clsx(!selectBundle && "text-gray-100")} aria-hidden="true">
               Pick extension:
             </span>
