@@ -30,6 +30,28 @@ export default function ExtensionDropdownPricing() {
   return (
     <div className="relative">
       <div className="mb-16 flex items-center justify-center gap-2">
+        {/* Pricing toggle */}
+        <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
+          <span className="text-left" aria-hidden="true">
+            Get bundle (all { extensions.length } extensions)
+            <span className="m-1.5"><span className="text-sm font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-{ Math.floor(allExtensionsBundleDiscount) }%</span></span>
+          </span>
+          <input
+            role="switch"
+            type="checkbox"
+            className="peer sr-only"
+            checked={!selectBundle}
+            onChange={() => setSelectBundle(!selectBundle)}
+          />
+          <div
+            className="peer relative h-6 w-11 rounded-full bg-orange-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-orange-200 after:transition-all peer-checked:bg-blue-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-blue-200"
+            aria-hidden="true"
+          />
+          <span className="text-right" aria-hidden="true">
+            Pick extension
+          </span>
+          <span className="sr-only">Pick extension</span>
+        </label>
         <div className="flex-none">
           <ExtensionDropdown
             extensions={extensions}
@@ -37,28 +59,6 @@ export default function ExtensionDropdownPricing() {
             isDisabled={selectBundle}
           />
         </div>
-        {/* Pricing toggle */}
-        <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
-          <span className="text-right" aria-hidden="true">
-            Pick extension
-          </span>
-          <span className="sr-only">Pick extension</span>
-          <input
-            role="switch"
-            type="checkbox"
-            className="peer sr-only"
-            checked={selectBundle}
-            onChange={() => setSelectBundle(!selectBundle)}
-          />
-          <div
-            className="peer relative h-6 w-11 rounded-full bg-blue-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-blue-200 after:transition-all peer-checked:bg-violet-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-violet-200"
-            aria-hidden="true"
-          />
-          <span className="text-left" aria-hidden="true">
-            Get bundle (all { extensions.length } extensions)
-            <span className="m-1.5"><span className="text-sm font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-{ Math.floor(allExtensionsBundleDiscount) }%</span></span>
-          </span>
-        </label>
       </div>
       <div className="mx-auto grid max-w-xs items-start gap-8 md:max-w-2xl md:grid-cols-2 xl:max-w-none xl:grid-cols-4 xl:gap-6">
         {/* Pricing table 1 */}
