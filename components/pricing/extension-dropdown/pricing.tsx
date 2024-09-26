@@ -21,12 +21,16 @@ export default function ExtensionDropdownPricing() {
   const aggregatedExtensionsPrice = AppConfig.shop.prices.extensions.tier1 * extensions.length
   const allExtensionsBundleDiscount = 100 * (1 - allExtensionsBundlePrice / aggregatedExtensionsPrice)
 
+  const [selected, setSelected] = useState<number>(0)
 
   return (
     <div className="relative">
       <div className="mb-16 flex items-center justify-center gap-2">
         <div className="flex-none">
-          <ExtensionDropdown extensions={extensions} />
+          <ExtensionDropdown
+            extensions={extensions}
+            state={[selected, setSelected]}
+          />
         </div>
         {/* Pricing toggle */}
         <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
