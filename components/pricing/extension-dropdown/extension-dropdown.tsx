@@ -9,14 +9,9 @@ export default function ExtensionDropdown({
   extensions: Extension[]
 }) {
 
-  const options = extensions.map((extension, index) => (
-    {
-      id: index,
-      value: extension.title
-    }
-  ))
+  const extensionNames = extensions.map((extension, index) => extension.title)
   
   return (
-    <FullWidthDropdown options={options} />
+    <FullWidthDropdown values={extensionNames} />
   )
 }

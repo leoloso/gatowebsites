@@ -3,18 +3,20 @@
 import { useState } from 'react'
 import { Menu, MenuButton, MenuItems, MenuItem, Transition } from '@headlessui/react'
 
-export interface DropdownInterface {
-  options: Array<
-    {
-      id: number,
-      value: string
-    }
-  >
-}
-
-export default function FullWidthDropdown({options}: DropdownInterface) {
+export default function FullWidthDropdown({
+  values,
+}: {
+  values: string[]
+}) {
 
   const [selected, setSelected] = useState<number>(0)
+
+  const options = values.map((value, index) => (
+    {
+      id: index,
+      value: value
+    }
+  ))
 
   return (
     <Menu as="div" className="relative inline-flex w-full">
