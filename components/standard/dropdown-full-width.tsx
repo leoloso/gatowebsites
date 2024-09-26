@@ -20,7 +20,7 @@ export default function FullWidthDropdown({options}: DropdownInterface) {
     <Menu as="div" className="relative inline-flex w-full">
       {({ open }) => (
         <>
-          <MenuButton className="btn w-full justify-between min-w-[11rem] bg-white dark:bg-gray-800 border-blue-200 dark:border-blue-700/60 hover:border-blue-300 dark:hover:border-blue-600 text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100" aria-label="Select option">
+          <MenuButton className="btn w-full justify-between min-w-[11rem] bg-white dark:bg-gray-800 border-blue-200 dark:border-blue-700/80 hover:border-blue-300 dark:hover:border-blue-600 text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100" aria-label="Select option">
             <span className="flex items-center">
               <span>{options[selected].value}</span>
             </span>
