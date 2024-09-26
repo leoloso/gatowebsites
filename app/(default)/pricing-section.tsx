@@ -1,4 +1,4 @@
-import Pricing from '@/components/pricing/comparison-table/pricing'
+import ComparisonTablePricing from '@/components/pricing/comparison-table/pricing'
 import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
 import RadiantGradient from '@/components/radial-gradient'
 import SectionHeader from '@/components/section-header'
@@ -17,7 +17,7 @@ export default function PricingSection() {
               title='Simple plans for everyone'
               description='Unleash your capabilities with Gato GraphQL PRO.'
             />
-            <Pricing />
+            <ComparisonTablePricing />
           </div>
         </div>
 
