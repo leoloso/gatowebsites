@@ -32,38 +32,38 @@ export default function ComparisonTablePricing() {
         {/* Personal price */}
         <PricingTier
           name='Personal'
-          price={AppConfig.shop.prices.allExtensionsBundle.tier1}
+          price={AppConfig.shop.prices.bundles.allExtensions.tier1}
           description='5 domains'
           buttonLabel="Purchase"
-          buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier1)}
+          buttonURL={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.tier1)}
           buttonClassname={getShopAnchorClassname()}
         />
         {/* Organization price */}
         <PricingTier
           name='Organization'
-          price={AppConfig.shop.prices.allExtensionsBundle.tier2}
+          price={AppConfig.shop.prices.bundles.allExtensions.tier2}
           description='25 domains'
           buttonLabel="Purchase"
-          buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier2)}
+          buttonURL={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.tier2)}
           buttonClassname={getShopAnchorClassname()}
         />
         {/* Professional price */}
         <PricingTier
           name='Professional'
-          price={AppConfig.shop.prices.allExtensionsBundle.tier3}
+          price={AppConfig.shop.prices.bundles.allExtensions.tier3}
           description='100 domains'
           buttonLabel="Purchase"
-          buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier3)}
+          buttonURL={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.tier3)}
           buttonClassname={getShopAnchorClassname()}
           highlight={true}
         />
         {/* Agency price */}
         <PricingTier
           name='Agency'
-          price={AppConfig.shop.prices.allExtensionsBundle.tier4}
+          price={AppConfig.shop.prices.bundles.allExtensions.tier4}
           description='500 domains'
           buttonLabel="Purchase"
-          buttonURL={getShopURL(AppConfig.urls.shopProducts.allExtensionsBundleTier4)}
+          buttonURL={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.tier4)}
           buttonClassname={getShopAnchorClassname()}
         />
         
