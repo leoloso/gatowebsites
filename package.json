@@ -21,8 +21,8 @@
     }
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.18",
-    "@heroicons/react": "^2.1.1",
+    "@headlessui/react": "^2.1.8",
+    "@heroicons/react": "^2.1.5",
     "@sindresorhus/slugify": "^2.2.1",
     "@types/node": "^20.10.4",
     "@types/react": "^18.2.42",
