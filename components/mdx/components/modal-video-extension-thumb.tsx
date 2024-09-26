@@ -28,15 +28,15 @@ export default function ExtensionThumbModalVideo({
     <div>
 
       {/* Video thumbnail */}
-      <div className="relative inline-flex justify-center items-center my-2 group hover:cursor-pointer" onClick={() => { setModalOpen(true) }}>
+      <div className="relative flex justify-center items-center my-2 group hover:cursor-pointer" onClick={() => { setModalOpen(true) }}>
         <ExtensionThumb
           extension={extension}
           isLandscape={true}
         />
         {!! title && (
-          <p className="absolute bottom-0 text-slate-300 mb-4 sm:text-lg sm:mb-12" data-aos="fade-down" data-aos-delay="400">{title}</p>
+          <p className="absolute z-30 bottom-0 text-slate-300 mb-4 sm:text-lg sm:mb-12" data-aos="fade-down" data-aos-delay="400">{title}</p>
         )}
-        <button className="absolute group" aria-label="Watch the video">
+        <button className="absolute z-30 group" aria-label="Watch the video">
           <svg className="w-16 h-16 fill-current sm:w-20 sm:h-20 group" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
             <circle className="text-white opacity-90 group-hover:opacity-100 transition duration-150 ease-in-out" cx="44" cy="44" r="44" />
             <path

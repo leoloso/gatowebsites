@@ -18,7 +18,7 @@ export default function Thumb({
 }) {
   return (
     <div
-      className={clsx("relative h-full z-20 overflow-hidden", bgClassname, paddingClassname, extraThumbClassname)}
+      className={clsx("relative w-full h-full z-20 overflow-hidden", bgClassname, paddingClassname, extraThumbClassname)}
     >
       <Particles className="absolute inset-0 -z-10" quantity={numberParticles} />
       <div className="flex items-center justify-center h-full">
