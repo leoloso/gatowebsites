@@ -4,6 +4,8 @@ import { useState } from 'react'
 import ModalVideoTransition from './modal-video-transition'
 import ExtensionThumb from '@/components/extension-thumb'
 import { Extension } from '@/.contentlayer/generated'
+import ModalVideoTitle from './modal-video-title'
+import ModalVideoButton from './modal-video-button'
 
 interface ModalVideoProps {
   extension: Extension
@@ -33,18 +35,8 @@ export default function ExtensionThumbModalVideo({
           extension={extension}
           isLandscape={true}
         />
-        {!! title && (
-          <p className="absolute z-30 bottom-0 text-slate-300 mb-4 sm:text-lg sm:mb-12" data-aos="fade-down" data-aos-delay="400">{title}</p>
-        )}
-        <button className="absolute z-30 group" aria-label="Watch the video">
-          <svg className="w-16 h-16 fill-current sm:w-20 sm:h-20 group" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
-            <circle className="text-white opacity-90 group-hover:opacity-100 transition duration-150 ease-in-out" cx="44" cy="44" r="44" />
-            <path
-              className="text-blue-600"
-              d="M52 44a.999.999 0 00-.427-.82l-10-7A1 1 0 0040 37V51a.999.999 0 001.573.82l10-7A.995.995 0 0052 44V44c0 .001 0 .001 0 0z"
-            />
-          </svg>
-        </button>
+        <ModalVideoTitle title={title} extraClassname='z-30' />
+        <ModalVideoButton title={title} extraClassname='z-30' />
         {children}
       </div>
       {/* End: Video thumbnail */}
