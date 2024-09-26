@@ -1,5 +1,5 @@
 import PageHeader from '@/components/page-header'
-import Pricing from '@/components/pricing'
+import Pricing from '@/components/pricing/comparison-table/pricing'
 import StunningBackground from '@/components/stunning-background'
 
 export default function PricingSection() {

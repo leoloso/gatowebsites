@@ -1,4 +1,4 @@
-import Pricing from '@/components/pricing'
+import Pricing from '@/components/pricing/comparison-table/pricing'
 import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
 import RadiantGradient from '@/components/radial-gradient'
 import SectionHeader from '@/components/section-header'
