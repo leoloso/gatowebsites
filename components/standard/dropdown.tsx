@@ -3,13 +3,13 @@
 import { useState } from 'react'
 import { Menu, MenuButton, MenuItems, MenuItem, Transition } from '@headlessui/react'
 
-interface DropdownOptionsInterface {
-  id: number,
-  period: string
-}
-
-interface DropdownInterface {
-  options: DropdownOptionsInterface[]
+export interface DropdownInterface {
+  options: Array<
+    {
+      id: number,
+      period: string
+    }
+  >
 }
 
 export default function Dropdown({options}: DropdownInterface) {

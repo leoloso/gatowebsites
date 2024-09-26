@@ -1,32 +1,20 @@
 'use client'
 
+import { Extension } from '@/.contentlayer/generated'
 import Dropdown from '@/components/standard/dropdown'
 
-export default function ExtensionDropdown() {
+export default function ExtensionDropdown({
+  extensions,
+}: {
+  extensions: Extension[]
+}) {
 
-  const options = [
+  const options = extensions.map((extension, index) => (
     {
-      id: 0,
-      period: 'Today'
-    },
-    {
-      id: 1,
-      period: 'Last 7 Days'
-    },
-    {
-      id: 2,
-      period: 'Last Month'
-    },
-    {
-      id: 3,
-      period: 'Last 12 Months'
-    },
-    {
-      id: 4,
-      period: 'All Time'
+      id: index,
+      period: extension.title
     }
-  ]
-
+  ))
   
   return (
     <Dropdown options={options} />

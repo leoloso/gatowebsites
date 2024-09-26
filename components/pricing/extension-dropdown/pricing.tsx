@@ -19,7 +19,7 @@ export default function ExtensionDropdownPricing() {
     <div className="relative">
       <div className="mb-16 flex items-center justify-center gap-2">
         <div className="flex-none">
-          <ExtensionDropdown />
+          <ExtensionDropdown extensions={extensions} />
         </div>
         {/* Pricing toggle */}
         <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
