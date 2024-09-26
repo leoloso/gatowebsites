@@ -1,9 +1,5 @@
 "use client";
 
-// import AppConfig from "@/app/app.config"
-// import PricingTier from "./pricing-tier"
-// import PricingGroup from "./pricing-group"
-// import PricingItem from "./pricing-item"
 import { getShopURL, getShopAnchorClassname } from "@/utils/shop/shop"
 import { allExtensions } from "@/.contentlayer/generated"
 import { sortByOrderAndTitle } from "@/utils/content/sort"
@@ -12,7 +8,6 @@ import { useState } from "react";
 import ExtensionDropdown from "./extension-dropdown";
 import PricingTier from "./pricing-tier";
 import AppConfig from "@/app/app.config"
-import Tooltip from "@/components/standard/tooltip";
 import clsx from "clsx";
 
 export default function ExtensionDropdownPricing() {
@@ -39,13 +34,6 @@ export default function ExtensionDropdownPricing() {
               Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
             </span>
             <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-{ Math.floor(allExtensionsBundleDiscount) }%</span></span>            
-            {/* <span className="m-1.5">
-              <span className="flex items-center space-x-2">
-                <Tooltip size="md" bg="dark">
-                  <span className="text-xs text-gray-200">Bundle including all { extensions.length } extensions</span>
-                </Tooltip>
-              </span>
-            </span> */}
           </div>
           <input
             role="switch"
