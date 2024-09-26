@@ -39,9 +39,9 @@ export default function ExtensionsSection({
 
         {/*  Page header */}
         <PageHeader
-          leading='Empower and protect your application'
+          leading='Empower your application'
           title='Extensions'
-          description='Purchase and install extensions to provide additional functionality to the GraphQL server and expand the GraphQL schema'
+          description='Provide additional functionality to the GraphQL server, and expand the GraphQL schema'
         />
 
         <div className="pb-12 md:pb-20">
@@ -55,7 +55,7 @@ export default function ExtensionsSection({
         </div>
 
         <div className="pb-12 md:pb-20">
-          <div className="text-center">
+          <div className="mb-8 text-center">
             <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
               Extensions
             </h2>
