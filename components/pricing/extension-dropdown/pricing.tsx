@@ -72,7 +72,7 @@ export default function ExtensionDropdownPricing() {
             <span className={clsx("text-center", selectBundle && "text-gray-100")} aria-hidden="true">
               Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
             </span>
-            <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full">-{ Math.floor(allExtensionsBundleDiscount) }%</span></span>            
+            <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full"><span className="font-bold">{ Math.floor(allExtensionsBundleDiscount) }%</span> discount!</span></span>            
           </div>
           <div className="flex-none">
             <input
