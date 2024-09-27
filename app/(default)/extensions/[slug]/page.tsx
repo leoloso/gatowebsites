@@ -7,6 +7,8 @@ import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/me
 import Cta from '@/components/cta-02'
 import SingleExtension from './single-extension'
 import SingleExtensionPricing from './single-extension-pricing-section'
+import ExtensionsSection from '../extensions-section'
+import SectionHeader from '@/components/section-header'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
@@ -67,19 +69,39 @@ export default async function SingleExtensionPage({ params }: {
 
         <StunningBackground />
 
-        <SingleExtension
-          extension={extension}
-          printIntegrations={false}
-        />
+        <div className="pb-12 md:pb-20">  
 
-        <div className="pb-12 md:pb-20"></div>
+          <SingleExtension
+            extension={extension}
+            printIntegrations={false}
+          />
+
+        </div>
         
-        <SingleExtensionPricing
-          extension={extension}
-        />
+        <div className="pb-12 md:pb-20">  
+
+          <SingleExtensionPricing
+            extension={extension}
+          />
+        </div>
         
       </section>
-      <Cta />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="pb-12 md:pb-20">
+
+          {/*  Page header */}
+          <SectionHeader
+            // leading='Extensions'
+            title='Keep browsing extensions'
+            // description='Provide additional functionality to the GraphQL server, and expand the GraphQL schema'
+          />
+
+          <ExtensionsSection
+            // useThumbEffect={svgEffect2}
+          />
+        </div>
+      </div>
     </>
   )
 }
