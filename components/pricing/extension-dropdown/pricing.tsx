@@ -40,7 +40,7 @@ export default function ExtensionDropdownPricing({
           <div className="flex-1">
             { fixedExtension === undefined && (
               <div className="flex flex-col items-center justify-center">
-                <div className={clsx("cursor-pointer text-center w-full", !selectBundle && "text-gray-100")} aria-hidden="true" onClick={() => setSelectBundle(false)}>
+                <div className={clsx("cursor-pointer text-center w-full", !selectBundle && "text-blue-300")} aria-hidden="true" onClick={() => setSelectBundle(false)}>
                   Pick extension:
                 </div>
                 <div className="sr-only">Pick extension</div>
@@ -52,7 +52,7 @@ export default function ExtensionDropdownPricing({
               </div>
             )}
             { fixedExtension !== undefined && (
-              <div className={clsx("cursor-pointer text-center w-full", !selectBundle && "text-gray-100")} aria-hidden="true" onClick={() => setSelectBundle(false)}>
+              <div className={clsx("cursor-pointer text-center w-full", !selectBundle && "text-blue-300")} aria-hidden="true" onClick={() => setSelectBundle(false)}>
                 Get the <span className="font-bold">{ fixedExtension.title }</span> extension
               </div>
             )}
@@ -73,7 +73,7 @@ export default function ExtensionDropdownPricing({
             </div>
           </label>
           <div className="flex-1 sm:w-80 flex flex-col items-center justify-center cursor-pointer" onClick={() => setSelectBundle(true)}>
-            <span className={clsx("text-center", selectBundle && "text-gray-100")} aria-hidden="true">
+            <span className={clsx("text-center", selectBundle && "text-teal-300")} aria-hidden="true">
               Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
             </span>
             <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full"><span className="font-bold">{ Math.floor(allExtensionsBundleDiscount) }%</span> discount!</span></span>            
