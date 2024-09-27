@@ -14,7 +14,7 @@ export default function PricingSection() {
           {/* Section header */}
           <PageHeader
             leading='Extensions'
-            title='Pricing plans'
+            title='Pricing'
           >
             <div className="max-w-3xl mx-auto">
               <p className="text-lg text-slate-400">
