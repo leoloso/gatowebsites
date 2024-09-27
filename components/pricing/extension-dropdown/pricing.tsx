@@ -155,6 +155,9 @@ export default function ExtensionDropdownPricing({
           extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
         />
       </div>
+      <p className="text-sm text-slate-500 pt-4 pb-4">
+        <strong>The license is for 1 year (renewable every year). Prices are in USD.</strong>
+      </p>
     </div>
   );
 }
