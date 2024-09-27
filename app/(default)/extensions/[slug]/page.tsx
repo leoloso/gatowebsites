@@ -76,12 +76,12 @@ export default async function SingleExtensionPage({ params }: {
 
         </div>
         
-        <div className="pb-12 md:pb-20">  
+        {/* <div className="pb-12 md:pb-20">   */}
 
           <SingleExtensionPricing
             extension={extension}
           />
-        </div>
+        {/* </div> */}
         
       </section>
 
