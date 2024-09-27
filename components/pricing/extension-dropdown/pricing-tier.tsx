@@ -37,18 +37,20 @@ export default function PricingTier({
         <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">
           {tierName}
         </div>
-        <div className="mb-1.5 flex items-baseline font-nacelle">
-          <span className="text-2xl text-slate-400">$</span>
-          <span className="text-4xl font-semibold tabular-nums text-gray-200">
-            {price}
-          </span>
+        <div className="flex items-baseline gap-2">
+          <div className="mb-1.5 flex items-baseline font-nacelle">
+            <span className="text-2xl text-slate-400">$</span>
+            <span className="text-4xl font-semibold tabular-nums text-gray-200">
+              {price}
+            </span>
+          </div>
           { originalPrice && (
-            <span className="ml-2">
+            <div className="mb-1.5 flex items-baseline font-nacelle">
               <span className="text text-slate-400">$</span>
               <span className="text-xl font-semibold tabular-nums text-red-400 line-through">
                 { originalPrice }
               </span>
-            </span>
+            </div>
           )}
         </div>
         <div className={clsx("grow text-sm font-bold", extensionNameClassname)}>
