@@ -7,7 +7,7 @@ import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/me
 import Cta from '@/components/cta-02'
 import SingleExtension from './single-extension'
 import SingleExtensionPricing from './single-extension-pricing-section'
-import ExtensionsSection from '../extensions-section'
+import ExtensionsSection, { svgEffect2 } from '../extensions-section'
 import SectionHeader from '@/components/section-header'
 
 export async function generateStaticParams() {
@@ -98,7 +98,7 @@ export default async function SingleExtensionPage({ params }: {
           />
 
           <ExtensionsSection
-            // useThumbEffect={svgEffect2}
+            useThumbEffect={svgEffect2}
           />
         </div>
       </div>

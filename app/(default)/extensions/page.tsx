@@ -1,7 +1,7 @@
 import Cta from '@/components/cta-02'
 import StunningBackground from '@/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
-import ExtensionsSection, { svgEffect2 } from './extensions-section'
+import ExtensionsSection from './extensions-section'
 import ExtensionsPricingSection from './extensions-pricing-section'
 import PageHeader from '@/components/page-header'
 
@@ -35,7 +35,7 @@ export default function Extensions() {
               description='Provide additional functionality to the GraphQL server, and expand the GraphQL schema'
             />
 
-            <ExtensionsSection useThumbEffect={svgEffect2} />
+            <ExtensionsSection />
           </div>
 
           <div className="pb-12 md:pb-20">
