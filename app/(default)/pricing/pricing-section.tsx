@@ -1,5 +1,5 @@
 import PageHeader from '@/components/page-header'
-import ComparisonTablePricing from '@/components/pricing/comparison-table/pricing'
+import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 import StunningBackground from '@/components/stunning-background'
 
 export default function PricingSection() {
@@ -17,7 +17,7 @@ export default function PricingSection() {
             title='Simple plans for everyone'
             description='Unleash your capabilities with Gato GraphQL PRO.'
           />
-          <ComparisonTablePricing />
+          <ExtensionDropdownPricing />
         </div>
       </div>
 
