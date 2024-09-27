@@ -25,7 +25,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="pt-32 pb-16 md:pt-32 md:pb-32">
+        <div className="pt-32 pb-16 md:pt-32 md:pb-24">
 
           {/* Hero content */}
           <div className="max-w-3xl mx-auto text-center">
@@ -53,20 +53,14 @@ export default function Hero() {
               />
             </div> */}
             
-            <div className="mt-4 max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-down" data-aos-delay="400">
-              {/* <div>
-                <BrowseHighlightsButton btnClassName='btn' />
-              </div>
-              <div>
-                <DownloadFreePluginButton btnClassName='btn' />
-              </div> */}
+            {/* <div className="mt-4 max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-down" data-aos-delay="400">
               <div>
                 <TryPROPluginButton btnClassName='btn' />
               </div>
               <div>
                 <PurchasePROPluginButton btnClassName='btn' />
               </div>
-            </div>
+            </div> */}
 
           </div>
 
