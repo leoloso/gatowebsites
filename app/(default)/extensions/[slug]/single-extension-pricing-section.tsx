@@ -3,6 +3,7 @@ import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pr
 import Particles from '@/components/particles'
 import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
 import RadiantGradient from '@/components/radial-gradient'
+import Testimonial from '@/components/testimonial'
 
 export default function SingleExtensionPricing({
   extension,
@@ -35,6 +36,9 @@ export default function SingleExtensionPricing({
 
       </div>
       <PricingMoneyBackGuarantee />
+
+      <Testimonial />
+
     </div>
   )
 }
