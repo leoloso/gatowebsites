@@ -19,11 +19,9 @@ export default function LinkModalVideo({
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
   return (
-    <div>
-
+    <>
       {/* Video thumbnail */}
-      {/* <div className="relative inline-flex justify-center items-center my-2 group hover:cursor-pointer" onClick={() => { setModalOpen(true) }}> */}
-      <button className="group p-2.5 my-2 btn inset-0 rounded-full bg-slate-950 hover:bg-slate-950/50 duration-300 hover:scale-105" onClick={() => { setModalOpen(true) }} aria-label={title}>
+      <button className="group p-2.5 my-4 btn inset-0 rounded-full bg-slate-950 hover:bg-slate-950/50 duration-300 hover:scale-105" onClick={() => { setModalOpen(true) }} aria-label={title}>
         {/* Play icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -66,6 +64,6 @@ export default function LinkModalVideo({
         setModalOpen={setModalOpen}
       />
 
-    </div>
+    </>
   )
 }
