@@ -89,7 +89,7 @@ export default function ExtensionDropdownPricing({
                 <Tooltip size="lg" bg="dark">
                   <ul className="grow space-y-1 text-sm text-slate-400">
                     { extensionNames.map((extensionName, index) => (
-                      <li className="flex items-center" key={ index }>
+                      <li className={clsx("flex items-center", fixedExtension !== undefined && fixedExtension.title === extensionName && "font-bold text-purple-400")} key={ index }>
                         <svg
                           className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
                           viewBox="0 0 12 12"
