@@ -79,12 +79,12 @@ export default function Header({
                 enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
               />
             </li>
-            <li className="ml-2 hidden lg:block">
+            {/* <li className="ml-2 hidden lg:block">
               <TryPROPluginButton />
             </li>
             <li className="ml-2 hidden lg:block">
               <PurchasePROPluginButton />
-            </li>
+            </li> */}
           </ul>
 
           <MobileMenu

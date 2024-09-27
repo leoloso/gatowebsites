@@ -121,9 +121,9 @@ export default function MobileMenu({
           <li className="py-1">
             <TryPROPluginButton btnClassName="btn" />
           </li>
-          <li className="py-1">
+          {/* <li className="py-1">
             <PurchasePROPluginButton btnClassName="btn" />
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>
