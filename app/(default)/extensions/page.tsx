@@ -37,10 +37,14 @@ export default function Extensions() {
 
             <ExtensionsSection useThumbEffect={svgEffect2} />
           </div>
+
+          <div className="pb-12 md:pb-20">
+
+            <ExtensionsPricingSection />
+
+          </div>
         </div>
 
-
-        <ExtensionsPricingSection />
       </section>  
       <Cta />
     </>
