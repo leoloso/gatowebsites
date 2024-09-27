@@ -38,7 +38,7 @@ export default function PricingMoneyBackGuarantee() {
           />
 
           {/* Rings illustration */}
-          <div className="text-center pb-8">
+          <div className="text-center">
             <div className="inline-flex items-center justify-center relative">
               {/* Particles animation */}
               <Particles className="absolute inset-0 -z-10" quantity={10} />
