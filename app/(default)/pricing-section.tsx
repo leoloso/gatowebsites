@@ -1,7 +1,7 @@
-import ComparisonTablePricing from '@/components/pricing/comparison-table/pricing'
 import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
 import RadiantGradient from '@/components/radial-gradient'
 import SectionHeader from '@/components/section-header'
+import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 
 export default function PricingSection() {
   return (
@@ -17,7 +17,9 @@ export default function PricingSection() {
               title='Simple plans for everyone'
               description='Unleash your capabilities with Gato GraphQL PRO.'
             />
-            <ComparisonTablePricing />
+            <ExtensionDropdownPricing
+              preselectBundle={true}
+            />
           </div>
         </div>
 
