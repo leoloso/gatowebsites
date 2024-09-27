@@ -88,13 +88,11 @@ export default async function SingleExtensionPage({ params }: {
       </section>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pb-12 md:pb-20">
+        <div className="py-12 md:py-20 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
           {/*  Page header */}
           <SectionHeader
-            // leading='Extensions'
             title='More extensions'
-            // description='Provide additional functionality to the GraphQL server, and expand the GraphQL schema'
           />
 
           <ExtensionsSection
