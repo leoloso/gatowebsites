@@ -14,6 +14,7 @@ export default function ExtensionThumb({
   reverseItems,
   svgClassname,
   printExtensionTitle=false,
+  skipGatoGraphQLLogo=false,
 }: {
   extension: Extension,
   paddingClassname?: string,
@@ -25,10 +26,11 @@ export default function ExtensionThumb({
   reverseItems?: boolean,
   svgClassname?: string,
   printExtensionTitle?: boolean,
+  skipGatoGraphQLLogo?: boolean,
 }) {
   return (
     <WithLogoThumb
-      // skipGatoGraphQLLogo={true}
+      skipGatoGraphQLLogo={skipGatoGraphQLLogo}
       skipPlusImage={true}
 
       leadingTitle="Extension:"
