@@ -97,7 +97,7 @@ export default function ExtensionDropdownPricing({
                 </Tooltip>
               </span>
             </span>
-            <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full"><span className="font-bold">{ Math.floor(allExtensionsBundleDiscount) }%</span> discount!</span></span>            
+            <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full"><span className="font-bold">{ Math.floor(allExtensionsBundleDiscount) }%</span> Off!</span></span>            
           </div>
         </div>
       </div>
