@@ -40,7 +40,7 @@ export default function ExtensionDropdownPricing({
           <div className="flex-1">
             { fixedExtension === undefined && (
               <div className="flex flex-col items-center justify-center">
-                <span className={clsx(!selectBundle && "text-gray-100")} aria-hidden="true">
+                <span className={clsx("cursor-pointer", !selectBundle && "text-gray-100")} aria-hidden="true" onClick={() => setSelectBundle(false)}>
                   Pick extension:
                 </span>
                 <span className="sr-only">Pick extension</span>
@@ -72,7 +72,7 @@ export default function ExtensionDropdownPricing({
               />
             </div>
           </label>
-          <div className="flex-1 sm:w-80 flex flex-col items-center justify-center">
+          <div className="flex-1 sm:w-80 flex flex-col items-center justify-center cursor-pointer" onClick={() => setSelectBundle(true)}>
             <span className={clsx("text-center", selectBundle && "text-gray-100")} aria-hidden="true">
               Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
             </span>
