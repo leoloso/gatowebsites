@@ -31,7 +31,7 @@ export default function Home() {
       <Features04 /> */}
       <HomeExtensionsSection />
       <Pricing />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Cta />
     </>
   )
