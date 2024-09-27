@@ -1,14 +1,19 @@
 import Image from 'next/image'
 import { getTestimonials } from './data/testimonials'
 
+function randomNumber(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
+
 export default function Testimonial({
-  testimonialIndex = 0,
+  testimonialIndex,
 }: {
   testimonialIndex?: number,
 }) {
 
   const testimonials = getTestimonials()
-  const testimonial = testimonials[testimonialIndex]
+  const index = testimonialIndex !== undefined ? testimonialIndex : randomNumber(0, testimonials.length - 1 )
+  const testimonial = testimonials[index]
 
   return (
     <div className="mx-auto max-w-3xl">
