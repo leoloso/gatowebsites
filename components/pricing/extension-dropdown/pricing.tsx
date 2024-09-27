@@ -85,7 +85,7 @@ export default function ExtensionDropdownPricing({
               </span>
               <span className="m-1.5">
                 <Tooltip size="lg" bg="dark">
-                  <ul className="grow space-y-2 text-sm text-slate-400">
+                  <ul className="grow space-y-1 text-sm text-slate-400">
                     { extensionNames.map((extensionName, index) => (
                       <li className="flex items-center" key={ index }>
                         <svg
