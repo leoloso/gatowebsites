@@ -10,6 +10,7 @@ import Features04 from '@/components/features-04'
 import Pricing from './pricing-section'
 import Testimonials from '@/components/testimonials'
 import Cta from '@/components/cta'
+import HomeExtensionsSection from '@/components/home-extensions-section'
 
 export const metadata = {
   title: 'Gato GraphQL',
@@ -28,6 +29,7 @@ export default function Home() {
       <Features03 />
       <Features07 />
       <Features04 />
+      <HomeExtensionsSection />
       <Pricing />
       <Testimonials />
       <Cta />
