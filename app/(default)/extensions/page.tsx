@@ -3,6 +3,7 @@ import StunningBackground from '@/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import ExtensionsSection, { svgEffect2 } from './extensions-section'
 import ExtensionsPricingSection from './extensions-pricing-section'
+import PageHeader from '@/components/page-header'
 
 const pageTitle = 'Extensions'
 export const metadata = {
@@ -23,8 +24,21 @@ export default function Extensions() {
       <section className="relative">
 
         <StunningBackground />
+    
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
-        <ExtensionsSection useThumbEffect={svgEffect2} />
+            {/*  Page header */}
+            <PageHeader
+              leading='Empower your application'
+              title='Extensions'
+              description='Provide additional functionality to the GraphQL server, and expand the GraphQL schema'
+            />
+
+            <ExtensionsSection useThumbEffect={svgEffect2} />
+          </div>
+        </div>
+
 
         <ExtensionsPricingSection />
       </section>  
