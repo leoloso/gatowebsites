@@ -6,7 +6,7 @@ import { sortByOrderAndTitle } from '@/utils/content/sort'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import Cta from '@/components/cta-02'
 import SingleExtension from './single-extension'
-import SingleExtensionPricing from './single-extension-pricing'
+import SingleExtensionPricing from './single-extension-pricing-section'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
