@@ -7,8 +7,6 @@ import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/me
 import Cta from '@/components/cta-02'
 import SingleExtension from './single-extension'
 import SingleExtensionPricing from './single-extension-pricing-section'
-import ExtensionsSection, { style2, svgEffect2 } from '../extensions-section'
-import SectionHeader from '@/components/section-header'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
@@ -87,20 +85,7 @@ export default async function SingleExtensionPage({ params }: {
         
       </section>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="py-12 md:py-20 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
-
-          {/*  Page header */}
-          <SectionHeader
-            title='More extensions'
-          />
-
-          <ExtensionsSection
-            useThumbEffect={svgEffect2}
-            applyStyle={style2}
-          />
-        </div>
-      </div>
+      <Cta />
     </>
   )
 }
