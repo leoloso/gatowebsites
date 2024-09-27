@@ -40,10 +40,10 @@ export default function ExtensionDropdownPricing({
           <div className="flex-1">
             { fixedExtension === undefined && (
               <div className="flex flex-col items-center justify-center">
-                <span className={clsx("cursor-pointer", !selectBundle && "text-gray-100")} aria-hidden="true" onClick={() => setSelectBundle(false)}>
+                <div className={clsx("cursor-pointer text-center w-full", !selectBundle && "text-gray-100")} aria-hidden="true" onClick={() => setSelectBundle(false)}>
                   Pick extension:
-                </span>
-                <span className="sr-only">Pick extension</span>
+                </div>
+                <div className="sr-only">Pick extension</div>
                 <FullWidthDropdown
                   values={extensionNames}
                   state={[selectedExtensionIndex, setSelectedExtensionIndex]}
