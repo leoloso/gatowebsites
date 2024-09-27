@@ -21,7 +21,7 @@ export default function Extensions() {
 
   return (
     <>
-      <section className="relative">
+      <section className="relative pb-12 md:pb-20">
 
         <StunningBackground />
     
@@ -45,7 +45,8 @@ export default function Extensions() {
           </div>
         </div>
 
-      </section>  
+      </section>
+
       <Cta />
     </>
   )
