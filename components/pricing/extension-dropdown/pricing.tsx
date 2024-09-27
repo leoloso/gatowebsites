@@ -1,7 +1,7 @@
 "use client";
 
 import { getShopURL, getShopAnchorClassname } from "@/utils/shop/shop"
-import { allExtensions } from "@/.contentlayer/generated"
+import { allExtensions, Extension } from "@/.contentlayer/generated"
 import { sortByOrderAndTitle } from "@/utils/content/sort"
 
 import { useState } from "react";
@@ -10,11 +10,16 @@ import AppConfig from "@/app/app.config"
 import clsx from "clsx";
 import FullWidthDropdown from "@/components/standard/dropdown-full-width";
 
-export default function ExtensionDropdownPricing() {
-  const [selectBundle, setSelectBundle] = useState<boolean>(true);
-  const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(0)
-
+export default function ExtensionDropdownPricing({
+  extension,
+}: {
+  extension?: Extension
+}) {
   const extensions = allExtensions.sort(sortByOrderAndTitle)
+
+  const [selectBundle, setSelectBundle] = useState<boolean>(extension === undefined);
+  const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(extension === undefined ? 0 : extensions.findIndex((ext) => ext.slug === extension.slug))
+
   const extensionNames = extensions.map((extension) => extension.title)
 
   const allExtensionsBundlePrice = AppConfig.shop.prices.bundles.allExtensions.tier1
