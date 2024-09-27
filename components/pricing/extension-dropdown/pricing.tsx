@@ -17,7 +17,7 @@ export default function ExtensionDropdownPricing({
 }) {
   const extensions = allExtensions.sort(sortByOrderAndTitle)
 
-  const [selectBundle, setSelectBundle] = useState<boolean>(fixedExtension === undefined);
+  const [selectBundle, setSelectBundle] = useState<boolean>(false);
   const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(fixedExtension === undefined ? 0 : extensions.findIndex((ext) => ext.slug === fixedExtension.slug))
 
   const extensionNames = extensions.map((extension) => extension.title)
@@ -36,33 +36,14 @@ export default function ExtensionDropdownPricing({
     <div className="relative">
       <div className="mb-16 flex items-center justify-center gap-2">
         {/* Pricing toggle */}
-        <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
-          <div className="flex-1 sm:w-80 flex flex-col items-center justify-center">
-            <span className={clsx("text-center", selectBundle && "text-gray-100")} aria-hidden="true">
-              Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
-            </span>
-            <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full"><span className="font-bold">{ Math.floor(allExtensionsBundleDiscount) }%</span> discount!</span></span>            
-          </div>
-          <div className="flex-none">
-            <input
-              role="switch"
-              type="checkbox"
-              className="peer sr-only"
-              checked={!selectBundle}
-              onChange={() => setSelectBundle(!selectBundle)}
-            />
-            <div
-              className="peer relative h-6 w-11 rounded-full bg-teal-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-teal-200 after:transition-all peer-checked:bg-blue-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-blue-200"
-              aria-hidden="true"
-            />
-          </div>
+        <div className="flex items-center justify-center gap-4 text-gray-300">
           <div className="flex-1">
             { fixedExtension === undefined && (
               <div className="flex flex-col items-center justify-center">
-                <span className={clsx(!selectBundle && "text-gray-100")} aria-hidden="true">
+                <div className={clsx("cursor-pointer text-center w-full", !selectBundle && "text-gray-100")} aria-hidden="true" onClick={() => setSelectBundle(false)}>
                   Pick extension:
-                </span>
-                <span className="sr-only">Pick extension</span>
+                </div>
+                <div className="sr-only">Pick extension</div>
                 <FullWidthDropdown
                   values={extensionNames}
                   state={[selectedExtensionIndex, setSelectedExtensionIndex]}
@@ -71,12 +52,33 @@ export default function ExtensionDropdownPricing({
               </div>
             )}
             { fixedExtension !== undefined && (
-              <div className={clsx("text-center", !selectBundle && "text-gray-100")} aria-hidden="true">
+              <div className={clsx("cursor-pointer text-center w-full", !selectBundle && "text-gray-100")} aria-hidden="true" onClick={() => setSelectBundle(false)}>
                 Get the <span className="font-bold">{ fixedExtension.title } extension</span>
               </div>
             )}
           </div>
-        </label>
+          <label className="cursor-pointer">
+            <div className="flex-none">
+              <input
+                role="switch"
+                type="checkbox"
+                className="peer sr-only"
+                checked={selectBundle}
+                onChange={() => setSelectBundle(!selectBundle)}
+              />
+              <div
+                className="peer relative h-6 w-11 rounded-full bg-blue-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-blue-200 after:transition-all peer-checked:bg-teal-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-teal-200"
+                aria-hidden="true"
+              />
+            </div>
+          </label>
+          <div className="flex-1 sm:w-80 flex flex-col items-center justify-center cursor-pointer" onClick={() => setSelectBundle(true)}>
+            <span className={clsx("text-center", selectBundle && "text-gray-100")} aria-hidden="true">
+              Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
+            </span>
+            <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full"><span className="font-bold">{ Math.floor(allExtensionsBundleDiscount) }%</span> discount!</span></span>            
+          </div>
+        </div>
       </div>
       <div className="mx-auto grid max-w-xs items-start gap-8 md:max-w-2xl md:grid-cols-2 xl:max-w-none xl:grid-cols-4 xl:gap-6">
         {/* Pricing table 1 */}
