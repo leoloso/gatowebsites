@@ -41,7 +41,7 @@ export default function ExtensionsSection({
 
       {/* Extensions */}
       {extensions.map((extension, index) => (
-        <div className="pb-12 md:pb-20" key={index}>
+        <div className={clsx(applyStyle === style1 && "pb-12 md:pb-20", applyStyle === style2 && "pb-8 md:pb-12")} key={index}>
           <article className="max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
             <Link
               href={getExtensionURLPath(extension)}
@@ -66,7 +66,7 @@ export default function ExtensionsSection({
               // data-aos="fade-left" data-aos-delay="200"
             >
               <header>
-                <h3 className="h3 text-2xl lg:text-3xl mb-2">
+                <h3 className={clsx(applyStyle === style1 && "h3 mb-2 text-2xl lg:text-3xl", applyStyle === style2 && "h3 mb-2 text-2xl")}>
                   <Link href={getExtensionURLPath(extension)} className="hover:text-purple-300 transition duration-150 ease-in-out">{extension.title}</Link>
                 </h3>
               </header>
