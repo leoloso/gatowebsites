@@ -3,8 +3,8 @@ import { PostMdx } from '@/components/mdx/post-mdx'
 import ExtensionThumb from '@/components/extension-thumb'
 import PageHeader from '@/components/page-header'
 import PostItemIntegration from '@/components/post-item-integration'
-import ThumbModalVideo from '@/components/mdx/components/modal-video-thumb'
 import ExtensionThumbModalVideo from '@/components/mdx/components/modal-video-extension-thumb'
+import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 
 export default function SingleExtension({
   extension,
@@ -64,6 +64,18 @@ export default function SingleExtension({
 
         </div>
 
+      </div>
+
+      <div className="pb-12 md:pb-20">
+        <div className="mb-8 text-center">
+          <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-2 md:pb-4">
+            Get the extension
+          </h2>
+          <p className="text-lg text-slate-400">Purchase the <span className='font-bold'>{ extension.title }</span> extension, or a <span className='font-bold'>bundle with all the extensions</span> with a big discount.</p>
+        </div>
+        <ExtensionDropdownPricing
+          extension={ extension }
+        />
       </div>
     </div>
   )
