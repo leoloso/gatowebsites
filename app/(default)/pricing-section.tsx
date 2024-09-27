@@ -2,6 +2,7 @@ import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
 import SectionHeader from '@/components/section-header'
 import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 import Particles from '@/components/particles'
+import Testimonial from '@/components/testimonial'
 
 export default function PricingSection() {
   return (
@@ -45,6 +46,9 @@ export default function PricingSection() {
       </section>
 
       <PricingMoneyBackGuarantee />
+
+      <Testimonial />
+
     </>
   )
 }

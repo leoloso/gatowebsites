@@ -8,7 +8,6 @@ import Features03 from '@/components/features-03'
 import FeaturesCarousel from '@/components/features-carousel'
 import Features04 from '@/components/features-04'
 import Pricing from './pricing-section'
-import Testimonial from '@/components/testimonial'
 import Cta from '@/components/cta'
 import HomeExtensionsSection from '@/components/home-extensions-section'
 
@@ -31,7 +30,6 @@ export default function Home() {
       <Features04 /> */}
       <HomeExtensionsSection />
       <Pricing />
-      <Testimonial />
       <Cta />
     </>
   )
