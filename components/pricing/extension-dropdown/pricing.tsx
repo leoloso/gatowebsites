@@ -58,7 +58,7 @@ export default function ExtensionDropdownPricing({
           </div>
           <div className="flex-1">
             { fixedExtension === undefined && (
-              <>
+              <div className="flex flex-col items-center justify-center">
                 <span className={clsx(!selectBundle && "text-gray-100")} aria-hidden="true">
                   Pick extension:
                 </span>
@@ -68,7 +68,7 @@ export default function ExtensionDropdownPricing({
                   state={[selectedExtensionIndex, setSelectedExtensionIndex]}
                   isDisabled={selectBundle}
                 />
-              </>
+              </div>
             )}
             { fixedExtension !== undefined && (
               <div className={clsx("text-center", !selectBundle && "text-gray-100")} aria-hidden="true">
