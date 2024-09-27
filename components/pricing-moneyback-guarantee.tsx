@@ -3,6 +3,7 @@ import Illustration from '@/public/assets/theme/pricing-illustration.svg'
 import IllustrationTop from '@/public/assets/theme/pricing-illustration-top.svg'
 import Particles from '@/components/particles'
 import MoneyBackGuaranteePic from '@/public/assets/money-back-guarantee.svg'
+import SectionHeader from './section-header'
 
 export default function PricingMoneyBackGuarantee() {
   return (
@@ -30,10 +31,11 @@ export default function PricingMoneyBackGuarantee() {
         <div className="py-12 md:py-20">
 
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12">
-            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">30-day money back guarantee</h2>
-            <p className="text-lg text-slate-400">Purchase Gato GraphQL PRO with the confidence that, if it does not satisfy your needs, you can request a refund.</p>
-          </div>
+          <SectionHeader
+            title='30-day money back guarantee'
+            description='Purchase any extensions with the confidence that you can request a refund.'
+            paddingClassname="pb-8"
+          />
 
           {/* Rings illustration */}
           <div className="text-center pb-8">
