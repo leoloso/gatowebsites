@@ -22,8 +22,8 @@ export default function Faqs() {
 
         {/* Section header */}
         <SectionHeader
-          leading='Getting started with Gato GraphQL'
-          title='Everything you need to know'
+          leading="Purchasing extensions"
+          title='Frequently Asked Questions'
         />
 
         {/* Columns */}
