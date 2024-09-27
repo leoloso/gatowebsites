@@ -57,15 +57,26 @@ export default function ExtensionDropdownPricing({
             />
           </div>
           <div className="flex-1">
-            <span className={clsx(!selectBundle && "text-gray-100")} aria-hidden="true">
-              Pick extension:
-            </span>
-            <span className="sr-only">Pick extension</span>
-            <FullWidthDropdown
-              values={extensionNames}
-              state={[selectedExtensionIndex, setSelectedExtensionIndex]}
-              isDisabled={selectBundle}
-            />
+            { fixedExtension === undefined && (
+              <>
+                <span className={clsx(!selectBundle && "text-gray-100")} aria-hidden="true">
+                  Pick extension:
+                </span>
+                <span className="sr-only">Pick extension</span>
+                <FullWidthDropdown
+                  values={extensionNames}
+                  state={[selectedExtensionIndex, setSelectedExtensionIndex]}
+                  isDisabled={selectBundle}
+                />
+              </>
+            )}
+            { fixedExtension !== undefined && (
+              <>
+                <span className={clsx("text-center", !selectBundle && "text-gray-100")} aria-hidden="true">
+                  Get the <span className="font-bold">{ fixedExtension.title } extension</span>
+                </span>
+              </>
+            )}
           </div>
         </label>
       </div>
