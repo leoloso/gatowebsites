@@ -4,6 +4,7 @@ export default function PricingTier({
   tierName,
   extensionName,
   price,
+  originalPrice,
   tierDomainNumber,
   highlight,
   buttonLabel="Purchase",
@@ -15,6 +16,7 @@ export default function PricingTier({
   tierName: string,
   extensionName: string,
   price: number,
+  originalPrice?: number,
   tierDomainNumber: number,
   highlight?: boolean,
   buttonLabel?: string,
@@ -40,6 +42,14 @@ export default function PricingTier({
           <span className="text-4xl font-semibold tabular-nums text-gray-200">
             {price}
           </span>
+          { originalPrice && (
+            <span className="ml-2">
+              <span className="text text-slate-400">$</span>
+              <span className="text-xl font-semibold tabular-nums text-red-400 line-through">
+                { originalPrice }
+              </span>
+            </span>
+          )}
         </div>
         <div className={clsx("grow text-sm font-bold", extensionNameClassname)}>
           { extensionName }
