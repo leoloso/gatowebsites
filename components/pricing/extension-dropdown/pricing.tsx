@@ -37,7 +37,7 @@ export default function ExtensionDropdownPricing({
       <div className="mb-16 flex items-center justify-center gap-2">
         {/* Pricing toggle */}
         <label className="flex cursor-pointer items-center justify-center gap-4 text-gray-300">
-          <div className="flex-1 flex flex-col items-center justify-center">
+          <div className="flex-1 sm:w-80 flex flex-col items-center justify-center">
             <span className={clsx("text-center", selectBundle && "text-gray-100")} aria-hidden="true">
               Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
             </span>
@@ -57,15 +57,24 @@ export default function ExtensionDropdownPricing({
             />
           </div>
           <div className="flex-1">
-            <span className={clsx(!selectBundle && "text-gray-100")} aria-hidden="true">
-              Pick extension:
-            </span>
-            <span className="sr-only">Pick extension</span>
-            <FullWidthDropdown
-              values={extensionNames}
-              state={[selectedExtensionIndex, setSelectedExtensionIndex]}
-              isDisabled={selectBundle}
-            />
+            { fixedExtension === undefined && (
+              <div className="flex flex-col items-center justify-center">
+                <span className={clsx(!selectBundle && "text-gray-100")} aria-hidden="true">
+                  Pick extension:
+                </span>
+                <span className="sr-only">Pick extension</span>
+                <FullWidthDropdown
+                  values={extensionNames}
+                  state={[selectedExtensionIndex, setSelectedExtensionIndex]}
+                  isDisabled={selectBundle}
+                />
+              </div>
+            )}
+            { fixedExtension !== undefined && (
+              <div className={clsx("text-center", !selectBundle && "text-gray-100")} aria-hidden="true">
+                Get the <span className="font-bold">{ fixedExtension.title } extension</span>
+              </div>
+            )}
           </div>
         </label>
       </div>
