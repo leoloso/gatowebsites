@@ -71,11 +71,9 @@ export default function ExtensionDropdownPricing({
               </>
             )}
             { fixedExtension !== undefined && (
-              <>
-                <span className={clsx("text-center", !selectBundle && "text-gray-100")} aria-hidden="true">
-                  Get the <span className="font-bold">{ fixedExtension.title } extension</span>
-                </span>
-              </>
+              <div className={clsx("text-center", !selectBundle && "text-gray-100")} aria-hidden="true">
+                Get the <span className="font-bold">{ fixedExtension.title } extension</span>
+              </div>
             )}
           </div>
         </label>
