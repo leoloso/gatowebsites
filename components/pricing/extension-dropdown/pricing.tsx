@@ -9,6 +9,7 @@ import PricingTier from "./pricing-tier";
 import AppConfig from "@/app/app.config"
 import clsx from "clsx";
 import FullWidthDropdown from "@/components/standard/dropdown-full-width";
+import Tooltip from "@/components/standard/tooltip";
 
 export default function ExtensionDropdownPricing({
   fixedExtension,
@@ -72,9 +73,29 @@ export default function ExtensionDropdownPricing({
               />
             </div>
           </label>
-          <div className="flex-1 sm:w-80 flex flex-col items-center justify-center cursor-pointer" onClick={() => setSelectBundle(true)}>
-            <span className={clsx("text-center", selectBundle && "text-cyan-300")} aria-hidden="true">
-              Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
+          <div className="flex-1 sm:w-96 flex flex-col items-center justify-center cursor-pointer" onClick={() => setSelectBundle(true)}>
+            <span className="flex items-center justify-center">
+              <span className={clsx("text-center", selectBundle && "text-cyan-300")} aria-hidden="true">
+                Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
+              </span>
+              <span className="m-1.5">
+                <Tooltip size="lg" bg="dark">
+                  <ul className="grow space-y-2 text-sm text-slate-400">
+                    { extensionNames.map((extensionName, index) => (
+                      <li className="flex items-center" key={ index }>
+                        <svg
+                          className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
+                          viewBox="0 0 12 12"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+                        </svg>
+                        <span>{ extensionName }</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Tooltip>
+              </span>
             </span>
             <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full"><span className="font-bold">{ Math.floor(allExtensionsBundleDiscount) }%</span> discount!</span></span>            
           </div>
