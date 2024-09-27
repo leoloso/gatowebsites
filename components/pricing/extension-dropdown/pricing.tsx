@@ -53,7 +53,7 @@ export default function ExtensionDropdownPricing({
             )}
             { fixedExtension !== undefined && (
               <div className={clsx("cursor-pointer text-center w-full", !selectBundle && "text-gray-100")} aria-hidden="true" onClick={() => setSelectBundle(false)}>
-                Get the <span className="font-bold">{ fixedExtension.title } extension</span>
+                Get the <span className="font-bold">{ fixedExtension.title }</span> extension
               </div>
             )}
           </div>
