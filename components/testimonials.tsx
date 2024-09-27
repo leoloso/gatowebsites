@@ -62,6 +62,7 @@ export default function Testimonials() {
 
                 {items.map((item, index) => (
                   <Transition
+                    as="div"
                     key={index}
                     show={active === index}
                     className="absolute inset-0 h-full -z-10"

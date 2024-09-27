@@ -89,6 +89,7 @@ export default function Features() {
                       </div>
                       {/* Icons */}
                       <Transition
+                        as="div"
                         show={tab === 1}
                         className="absolute"
                         enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 order-first"
@@ -106,6 +107,7 @@ export default function Features() {
                         </div>
                       </Transition>
                       <Transition
+                        as="div"
                         show={tab === 2}
                         className="absolute"
                         enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 order-first"
@@ -123,6 +125,7 @@ export default function Features() {
                         </div>
                       </Transition>
                       <Transition
+                        as="div"
                         show={tab === 3}
                         className="absolute"
                         enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 order-first"
