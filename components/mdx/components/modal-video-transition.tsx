@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, Fragment, Dispatch, SetStateAction } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 
 interface ModalVideoProps {
   video: string
@@ -25,7 +25,8 @@ export default function ModalVideoTransition({
       <Dialog initialFocus={videoRef} onClose={() => setModalOpen(false)}>
 
         {/* Modal backdrop */}
-        <Transition.Child
+        <TransitionChild
+          as="div"
           className="fixed inset-0 z-[99999] bg-slate-900 bg-opacity-20 transition-opacity"
           enter="transition ease-out duration-200"
           enterFrom="opacity-0"
@@ -38,7 +39,8 @@ export default function ModalVideoTransition({
         {/* End: Modal backdrop */}
 
         {/* Modal dialog */}
-        <Transition.Child
+        <TransitionChild
+          as="div"
           className="fixed inset-0 z-[99999] overflow-hidden flex items-center justify-center px-4 sm:px-6"
           enter="transition ease-out duration-200"
           enterFrom="opacity-0 scale-95"
@@ -48,14 +50,14 @@ export default function ModalVideoTransition({
           leaveTo="opacity-0 scale-95"
         >
           <div className="max-w-4xl mx-auto h-full flex items-center">
-            <Dialog.Panel className="w-full max-h-full aspect-video bg-black overflow-hidden">
+            <DialogPanel className="w-full max-h-full aspect-video bg-black overflow-hidden">
               <video ref={videoRef} width={videoWidth} height={videoHeight} controls>
                 <source src={video} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-            </Dialog.Panel>
+            </DialogPanel>
           </div>
-        </Transition.Child>
+        </TransitionChild>
         {/* End: Modal dialog */}
 
       </Dialog>

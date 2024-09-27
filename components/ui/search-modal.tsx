@@ -2,7 +2,7 @@
 
 import AppConfig from '@/app/app.config'
 import Link from 'next/link'
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import AppSettings from '@/app/app.settings'
 
 // import algoliasearch and InstantSearch
@@ -332,7 +332,8 @@ export default function SearchModal({
   return (
     <Transition appear show={isOpen}>
       <Dialog as="div" onClose={() => setIsOpen(false)}>
-        <Transition.Child
+        <TransitionChild
+          as="div"
           className="fixed inset-0 bg-slate-900 bg-opacity-30 z-50 transition-opacity"
           enter="transition ease-out duration-200"
           enterFrom="opacity-0"
@@ -342,7 +343,8 @@ export default function SearchModal({
           leaveTo="opacity-0"
           aria-hidden="true"
         />
-        <Transition.Child
+        <TransitionChild
+          as="div"
           className={`${AppSettings.enableLightDarkThemeMode && enableLightDarkThemeModeToggle ? '' : 'dark' } fixed inset-0 z-50 overflow-hidden flex items-start top-20 mb-4 justify-center px-4 sm:px-6`}
           enter="transition ease-in-out duration-200"
           enterFrom="opacity-0 translate-y-4"
@@ -351,7 +353,7 @@ export default function SearchModal({
           leaveFrom="opacity-100 translate-y-0"
           leaveTo="opacity-0 translate-y-4"
         >
-          <Dialog.Panel className="bg-white dark:bg-slate-800 overflow-auto max-w-2xl w-full max-h-full rounded shadow-lg">
+          <DialogPanel className="bg-white dark:bg-slate-800 overflow-auto max-w-2xl w-full max-h-full rounded shadow-lg">
             <InstantSearchNext
               indexName={ALGOLIA_API_CREDENTIALS.indexName}
               searchClient={searchClient}
@@ -380,8 +382,8 @@ export default function SearchModal({
                 }}
               />
             </InstantSearchNext>
-          </Dialog.Panel>
-        </Transition.Child>
+          </DialogPanel>
+        </TransitionChild>
       </Dialog>
     </Transition>
   )
