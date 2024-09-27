@@ -47,7 +47,7 @@ export default function Testimonial({
             <div className="text-sm font-medium text-slate-200">
               <span>{ testimonial.name }</span>
               <span className="text-slate-600"> - </span>
-              <span className="text-purple-400">{ testimonial.role }</span>
+              <span className="text-slate-400">{ testimonial.role }</span>
             </div>
           </div>
 
