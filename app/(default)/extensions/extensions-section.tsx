@@ -9,12 +9,17 @@ import LinkModalVideo from '@/components/mdx/components/modal-video-link'
 export const svgEffect1 = 1;
 export const svgEffect2 = 2;
 
+export const style1 = 1;
+export const style2 = 2;
+
 export default function ExtensionsSection({
   alternateColumns = false,
   useThumbEffect = svgEffect1,
+  applyStyle = style1,
 }: {
   alternateColumns?: boolean,
   useThumbEffect?: number,
+  applyStyle?: number,
 }) {
 
   const extensions = allExtensions.sort(sortByOrderAndTitle)
@@ -49,7 +54,7 @@ export default function ExtensionsSection({
               <div className={clsx("relative", useThumbEffect === svgEffect1 && "overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out", useThumbEffect === svgEffect2 && "transform hover:scale-105 transition duration-700 ease-out")}>
                 <ExtensionThumb
                   extension={extension}
-                  paddingClassname="py-5 px-4 md:py-8 md:px-6"
+                  paddingClassname={clsx(applyStyle === style1 && "py-5 px-4 md:py-8 md:px-6", applyStyle === style2 && "py-0 px-4 md:px-6")}
                   isLandscape={true}
                   bgClassname={bgClassnames[index % bgClassnames.length]}
                 />
