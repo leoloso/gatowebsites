@@ -1,4 +1,4 @@
-import Cta from '@/components/cta-02'
+import Cta from '@/components/cta'
 import StunningBackground from '@/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import ExtensionsSection from './extensions-section'
