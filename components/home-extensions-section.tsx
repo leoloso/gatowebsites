@@ -25,7 +25,7 @@ export default function HomeExtensionsSection() {
           />
 
           <ExtensionsSection
-            useThumbEffect={svgEffect2}
+            applyThumbEffect={svgEffect2}
             applyStyle={style2}
           />
 

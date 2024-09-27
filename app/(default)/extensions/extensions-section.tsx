@@ -14,11 +14,11 @@ export const style2 = 2;
 
 export default function ExtensionsSection({
   alternateColumns = false,
-  useThumbEffect = svgEffect1,
+  applyThumbEffect = svgEffect1,
   applyStyle = style1,
 }: {
   alternateColumns?: boolean,
-  useThumbEffect?: number,
+  applyThumbEffect?: number,
   applyStyle?: number,
 }) {
 
@@ -48,10 +48,10 @@ export default function ExtensionsSection({
               className={clsx("relative block group", alternateColumns && index % 2 === 1 ? 'md:order-last' : '')}
               // data-aos="fade-right" data-aos-delay="200"
             >
-              { useThumbEffect === svgEffect1 && (
+              { applyThumbEffect === svgEffect1 && (
                 <div className="absolute inset-0 bg-gray-700 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
               )}
-              <div className={clsx("relative", useThumbEffect === svgEffect1 && "overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out", useThumbEffect === svgEffect2 && "transform hover:scale-105 transition duration-700 ease-out")}>
+              <div className={clsx("relative", applyThumbEffect === svgEffect1 && "overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out", applyThumbEffect === svgEffect2 && "transform hover:scale-105 transition duration-700 ease-out")}>
                 <ExtensionThumb
                   extension={extension}
                   // paddingClassname={clsx(applyStyle === style1 && "py-5 px-4 md:py-8 md:px-6", applyStyle === style2 && "py-0 px-4 md:px-6")}
