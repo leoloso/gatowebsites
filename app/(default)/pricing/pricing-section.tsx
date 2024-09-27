@@ -13,10 +13,16 @@ export default function PricingSection() {
 
           {/* Section header */}
           <PageHeader
-            leading='Pricing plans'
-            title='Simple plans for everyone'
-            description='Unleash your capabilities with Gato GraphQL PRO.'
-          />
+            leading='Extensions'
+            title='Pricing plans'
+          >
+            <div className="max-w-3xl mx-auto">
+              <p className="text-lg text-slate-400">
+                Purchase the <span className='font-bold'>extension you need</span>, or get a <span className='font-bold'>bundle with all extensions</span>, with a big discount.
+              </p>
+            </div>
+          </PageHeader>
+
           <ExtensionDropdownPricing
             preselectBundle={true}
           />
