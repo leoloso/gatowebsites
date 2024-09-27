@@ -25,7 +25,7 @@ export default function HomeExtensionsSection() {
           </svg>
         </div>
 
-        <div className="pt-16 pb-12 md:pt-32 md:pb-20">
+        <div className="pt-16 md:pt-32">
 
           {/* Section header */}
           <SectionHeader
