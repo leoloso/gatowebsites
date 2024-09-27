@@ -1,12 +1,14 @@
-'use client'
-
 import Image from 'next/image'
 import { getTestimonials } from './data/testimonials'
 
-export default function Testimonial() {
+export default function Testimonial({
+  testimonialIndex = 0,
+}: {
+  testimonialIndex?: number,
+}) {
 
   const testimonials = getTestimonials()
-  const testimonial = testimonials[0]
+  const testimonial = testimonials[testimonialIndex]
 
   return (
     <div className="mx-auto max-w-3xl">
