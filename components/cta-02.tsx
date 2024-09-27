@@ -29,7 +29,7 @@ export default function Cta02() {
           <SectionHeader
             leading='Discover the power'
             title="Try demo now!"
-            description="Play with Gato GraphQL PRO in your own sandbox site, for free."
+            description="Play with Gato GraphQL PRO in your own sandbox site, for free"
             paddingClassname=''
           >
             <div className="mt-8">
