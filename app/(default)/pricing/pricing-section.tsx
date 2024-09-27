@@ -17,7 +17,9 @@ export default function PricingSection() {
             title='Simple plans for everyone'
             description='Unleash your capabilities with Gato GraphQL PRO.'
           />
-          <ExtensionDropdownPricing />
+          <ExtensionDropdownPricing
+            preselectBundle={true}
+          />
         </div>
       </div>
 

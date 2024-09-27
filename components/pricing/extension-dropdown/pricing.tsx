@@ -13,12 +13,14 @@ import Tooltip from "@/components/standard/tooltip";
 
 export default function ExtensionDropdownPricing({
   fixedExtension,
+  preselectBundle = false,
 }: {
-  fixedExtension?: Extension
+  fixedExtension?: Extension,
+  preselectBundle?: boolean
 }) {
   const extensions = allExtensions.sort(sortByOrderAndTitle)
 
-  const [selectBundle, setSelectBundle] = useState<boolean>(false);
+  const [selectBundle, setSelectBundle] = useState<boolean>(preselectBundle);
   const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(fixedExtension === undefined ? 0 : extensions.findIndex((ext) => ext.slug === fixedExtension.slug))
 
   const extensionNames = extensions.map((extension) => extension.title)
