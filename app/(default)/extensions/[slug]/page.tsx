@@ -6,6 +6,7 @@ import { sortByOrderAndTitle } from '@/utils/content/sort'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import Cta from '@/components/cta-02'
 import SingleExtension from './single-extension'
+import SingleExtensionPricing from './single-extension-pricing'
 
 export async function generateStaticParams() {
   return allExtensions.map((extension) => ({
@@ -70,6 +71,13 @@ export default async function SingleExtensionPage({ params }: {
           extension={extension}
           printIntegrations={false}
         />
+
+        <div className="pb-12 md:pb-20"></div>
+        
+        <SingleExtensionPricing
+          extension={extension}
+        />
+        
       </section>
       <Cta />
     </>
