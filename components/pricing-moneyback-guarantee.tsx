@@ -8,18 +8,18 @@ export default function PricingMoneyBackGuarantee() {
   return (
     <section className="relative">
 
-    {/* Blurred shape */}
-    <div className="absolute top-0 -translate-y-1/3 left-1/2 -translate-x-1/2 ml-24 blur-2xl opacity-50 pointer-events-none -z-10" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" width="434" height="427">
-        <defs>
-          <linearGradient id="bs3-a" x1="19.609%" x2="50%" y1="14.544%" y2="100%">
-            <stop offset="0%" stopColor="#6366F1" />
-            <stop offset="100%" stopColor="#6366F1" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        <path fill="url(#bs3-a)" fillRule="evenodd" d="m410 0 461 369-284 58z" transform="matrix(1 0 0 -1 -410 427)" />
-      </svg>
-    </div>
+      {/* Blurred shape */}
+      <div className="absolute top-0 -translate-y-1/3 left-1/2 -translate-x-1/2 ml-24 blur-2xl opacity-50 pointer-events-none -z-10" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="434" height="427">
+          <defs>
+            <linearGradient id="bs3-a" x1="19.609%" x2="50%" y1="14.544%" y2="100%">
+              <stop offset="0%" stopColor="#6366F1" />
+              <stop offset="100%" stopColor="#6366F1" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#bs3-a)" fillRule="evenodd" d="m410 0 461 369-284 58z" transform="matrix(1 0 0 -1 -410 427)" />
+        </svg>
+      </div>
 
       {/* Particles animation */}
       <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 w-64 h-64 -mt-24">
