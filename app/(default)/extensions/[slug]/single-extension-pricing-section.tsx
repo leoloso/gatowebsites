@@ -1,6 +1,7 @@
 import { Extension } from 'contentlayer/generated'
 import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 import Particles from '@/components/particles'
+import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
 
 export default function SingleExtensionPricing({
   extension,
@@ -39,7 +40,9 @@ export default function SingleExtensionPricing({
         <ExtensionDropdownPricing
           fixedExtension={ extension }
         />
+
       </div>
+      <PricingMoneyBackGuarantee />
     </div>
   )
 }
