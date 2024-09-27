@@ -1,4 +1,4 @@
-import Cta from '@/components/cta-02'
+import Cta from '@/components/cta'
 import StunningBackground from '@/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import ExtensionsSection from './extensions-section'
@@ -21,7 +21,7 @@ export default function Extensions() {
 
   return (
     <>
-      <section className="relative pb-12 md:pb-20">
+      <section className="relative">
 
         <StunningBackground />
     
@@ -38,11 +38,8 @@ export default function Extensions() {
             <ExtensionsSection />
           </div>
 
-          <div className="pb-12 md:pb-20">
-
-            <ExtensionsPricingSection />
-
-          </div>
+          <ExtensionsPricingSection />
+          
         </div>
 
       </section>

@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import StunningBackground from '@/components/stunning-background'
 import { sortByOrderAndTitle } from '@/utils/content/sort'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
-import Cta from '@/components/cta-02'
+import Cta from '@/components/cta'
 import SingleExtension from './single-extension'
 import SingleExtensionPricing from './single-extension-pricing-section'
 
@@ -76,12 +76,12 @@ export default async function SingleExtensionPage({ params }: {
 
         </div>
         
-        <div className="pb-12 md:pb-20">  
+        {/* <div className="pb-12 md:pb-20">   */}
 
           <SingleExtensionPricing
             extension={extension}
           />
-        </div>
+        {/* </div> */}
         
       </section>
 

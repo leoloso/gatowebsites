@@ -33,7 +33,7 @@ export default function PricingMoneyBackGuarantee() {
           {/* Section header */}
           <SectionHeader
             title='30-day money back guarantee'
-            description='Purchase any extensions with the confidence that you can request a refund.'
+            description='Purchase any extensions with the confidence that you can request a refund'
             paddingClassname="pb-8"
           />
 

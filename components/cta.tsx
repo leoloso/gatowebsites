@@ -5,7 +5,7 @@ export default function Cta() {
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="relative px-8 py-12 md:py-20 rounded-[3rem] overflow-hidden">
+        <div className="relative px-8 py-12 md:py-20 pt-16 md:pt-32 rounded-[3rem] overflow-hidden">
           {/* Radial gradient */}
           <div className="absolute flex items-center justify-center top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/3 aspect-square" aria-hidden="true">
             <div className="absolute inset-0 translate-z-0 bg-purple-500 rounded-full blur-[120px] opacity-70" />
@@ -27,7 +27,7 @@ export default function Cta() {
           <SectionHeader
             leading='Discover the power'
             title="Try demo now!"
-            description="Play with Gato GraphQL PRO in your own sandbox site, for free."
+            description="Play with Gato GraphQL PRO in your own sandbox site, for free"
           >
             <div className="mt-8">
               <a className="btn text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group" href={AppConfig.urls.instawpSandboxDemo} target='_blank'>
