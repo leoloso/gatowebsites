@@ -93,7 +93,7 @@ export default async function SingleExtensionPage({ params }: {
           {/*  Page header */}
           <SectionHeader
             // leading='Extensions'
-            title='Keep browsing extensions'
+            title='More extensions'
             // description='Provide additional functionality to the GraphQL server, and expand the GraphQL schema'
           />
 
