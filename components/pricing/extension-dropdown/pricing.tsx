@@ -67,13 +67,13 @@ export default function ExtensionDropdownPricing({
                 onChange={() => setSelectBundle(!selectBundle)}
               />
               <div
-                className="peer relative h-6 w-11 rounded-full bg-blue-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-blue-200 after:transition-all peer-checked:bg-teal-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-teal-200"
+                className="peer relative h-6 w-11 rounded-full bg-blue-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-blue-200 after:transition-all peer-checked:bg-cyan-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-cyan-200"
                 aria-hidden="true"
               />
             </div>
           </label>
           <div className="flex-1 sm:w-80 flex flex-col items-center justify-center cursor-pointer" onClick={() => setSelectBundle(true)}>
-            <span className={clsx("text-center", selectBundle && "text-teal-300")} aria-hidden="true">
+            <span className={clsx("text-center", selectBundle && "text-cyan-300")} aria-hidden="true">
               Get bundle with <span className="font-bold">all { extensions.length } extensions</span>
             </span>
             <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full"><span className="font-bold">{ Math.floor(allExtensionsBundleDiscount) }%</span> discount!</span></span>            
@@ -89,7 +89,7 @@ export default function ExtensionDropdownPricing({
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier1}
           buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier1 : ( isProd ? selectedExtension.shopURLs.tier1 : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
-          extensionNameClassname={selectBundle ? "text-teal-300" : "text-blue-300" }
+          extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
         />
         {/* Pricing table 2 */}
         <PricingTier
@@ -99,7 +99,7 @@ export default function ExtensionDropdownPricing({
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier2}
           buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier2 : ( isProd ? selectedExtension.shopURLs.tier2 : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
-          extensionNameClassname={selectBundle ? "text-teal-300" : "text-blue-300" }
+          extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
         />
         {/* Pricing table 3 */}
         <PricingTier
@@ -109,7 +109,7 @@ export default function ExtensionDropdownPricing({
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier3}
           buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier3 : ( isProd ? selectedExtension.shopURLs.tier3 : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
-          extensionNameClassname={selectBundle ? "text-teal-300" : "text-blue-300" }
+          extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
           highlight={true}
         />
         {/* Pricing table 4 */}
@@ -120,7 +120,7 @@ export default function ExtensionDropdownPricing({
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier4}
           buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier4 : ( isProd ? selectedExtension.shopURLs.tier4 : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
-          extensionNameClassname={selectBundle ? "text-teal-300" : "text-blue-300" }
+          extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
         />
       </div>
     </div>
