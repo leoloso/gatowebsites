@@ -2,7 +2,9 @@ import Image from 'next/image'
 import { getTestimonials } from './data/testimonials'
 
 function randomNumber(min: number, max: number) {
-  return Math.random() * (max - min) + min;
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 export default function Testimonial({
