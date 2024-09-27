@@ -9,8 +9,7 @@ export default function Testimonial({
 }) {
 
   const testimonials = getTestimonials()
-  const index = testimonialIndex !== undefined ? testimonialIndex : Math.floor(Math.random() * testimonials.length)
-  const testimonial = testimonials[index]
+  const testimonial = testimonialIndex !== undefined ? testimonials[testimonialIndex] : testimonials[Math.floor(Math.random() * testimonials.length)]
 
   return (
     <section>
