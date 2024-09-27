@@ -29,9 +29,9 @@ export default function HomeExtensionsSection() {
 
           {/* Section header */}
           <SectionHeader
-            leading='Empower your application'
-            title="Extensions"
-            description='Provide additional functionality to the GraphQL server, and expand the GraphQL schema'
+            leading='Extensions'
+            title="Extend your server"
+            description='Provide additional functionality to the GraphQL server, and extend the GraphQL schema'
           />
 
           <ExtensionsSection

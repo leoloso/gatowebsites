@@ -8,7 +8,7 @@ import PageHeader from '@/components/page-header'
 const pageTitle = 'Extensions'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
-  description: 'Provide additional functionality to Gato GraphQL, and expand the GraphQL schema',
+  description: 'Provide additional functionality to Gato GraphQL, and extend the GraphQL schema',
   // openGraph: {
   //   title: createOpenGraphPageTitle(pageTitle),
   // },
@@ -32,7 +32,7 @@ export default function Extensions() {
             <PageHeader
               leading='Empower your application'
               title='Extensions'
-              description='Provide additional functionality to the GraphQL server, and expand the GraphQL schema'
+              description='Provide additional functionality to the GraphQL server, and extend the GraphQL schema'
             />
 
             <ExtensionsSection />
