@@ -41,13 +41,13 @@ export default function Testimonial({
               height={40}
               alt="Testimonial image"
             />
-            <p className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text pb-3 font-nacelle text-xl font-semibold text-gray-200 text-transparent">
+            <p className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.slate.200),theme(colors.blue.200),theme(colors.slate.50),theme(colors.blue.300),theme(colors.slate.200))] bg-[length:200%_auto] bg-clip-text pb-3 font-nacelle text-xl font-semibold text-slate-200 text-transparent">
               “{ testimonial.quote }”
             </p>
-            <div className="text-sm font-medium text-gray-200">
+            <div className="text-sm font-medium text-slate-200">
               <span>{ testimonial.name }</span>
-              <span className="text-gray-700"> - </span>
-              <span className="text-indigo-200/65 transition-colors hover:text-indigo-500">{ testimonial.role }</span>
+              <span className="text-slate-600"> - </span>
+              <span className="text-purple-400">{ testimonial.role }</span>
             </div>
           </div>
 
