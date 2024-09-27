@@ -89,6 +89,7 @@ export default function ExtensionDropdownPricing({
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier1}
           buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier1 : ( isProd ? selectedExtension.shopURLs.tier1 : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
+          extensionNameClassname={selectBundle ? "text-teal-300" : "text-blue-300" }
         />
         {/* Pricing table 2 */}
         <PricingTier
@@ -98,6 +99,7 @@ export default function ExtensionDropdownPricing({
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier2}
           buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier2 : ( isProd ? selectedExtension.shopURLs.tier2 : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
+          extensionNameClassname={selectBundle ? "text-teal-300" : "text-blue-300" }
         />
         {/* Pricing table 3 */}
         <PricingTier
@@ -107,6 +109,7 @@ export default function ExtensionDropdownPricing({
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier3}
           buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier3 : ( isProd ? selectedExtension.shopURLs.tier3 : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
+          extensionNameClassname={selectBundle ? "text-teal-300" : "text-blue-300" }
           highlight={true}
         />
         {/* Pricing table 4 */}
@@ -117,6 +120,7 @@ export default function ExtensionDropdownPricing({
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier4}
           buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier4 : ( isProd ? selectedExtension.shopURLs.tier4 : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
+          extensionNameClassname={selectBundle ? "text-teal-300" : "text-blue-300" }
         />
       </div>
     </div>

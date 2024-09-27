@@ -9,7 +9,8 @@ export default function PricingTier({
   buttonLabel="Purchase",
   buttonURL,
   buttonTarget,
-  buttonClassname = '',
+  buttonClassname,
+  extensionNameClassname="text-slate-200",
 }: {
   tierName: string,
   extensionName: string,
@@ -20,6 +21,7 @@ export default function PricingTier({
   buttonURL: string,
   buttonTarget?: string,
   buttonClassname?: string,
+  extensionNameClassname?: string,
 }) {
   const isFree = price === 0
   return (
@@ -39,7 +41,7 @@ export default function PricingTier({
             {price}
           </span>
         </div>
-        <div className="grow text-sm text-slate-200 font-bold">
+        <div className={clsx("grow text-sm font-bold", extensionNameClassname)}>
           { extensionName }
         </div>
         <div className="mb-4 grow text-sm text-slate-400">
