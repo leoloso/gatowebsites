@@ -74,7 +74,7 @@ export default function SingleExtension({
           <p className="text-lg text-slate-400">Purchase the <span className='font-bold'>{ extension.title }</span> extension, or a <span className='font-bold'>bundle with all the extensions</span> with a big discount.</p>
         </div>
         <ExtensionDropdownPricing
-          extension={ extension }
+          fixedExtension={ extension }
         />
       </div>
     </div>

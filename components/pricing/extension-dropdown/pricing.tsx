@@ -11,14 +11,14 @@ import clsx from "clsx";
 import FullWidthDropdown from "@/components/standard/dropdown-full-width";
 
 export default function ExtensionDropdownPricing({
-  extension,
+  fixedExtension,
 }: {
-  extension?: Extension
+  fixedExtension?: Extension
 }) {
   const extensions = allExtensions.sort(sortByOrderAndTitle)
 
-  const [selectBundle, setSelectBundle] = useState<boolean>(extension === undefined);
-  const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(extension === undefined ? 0 : extensions.findIndex((ext) => ext.slug === extension.slug))
+  const [selectBundle, setSelectBundle] = useState<boolean>(fixedExtension === undefined);
+  const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(fixedExtension === undefined ? 0 : extensions.findIndex((ext) => ext.slug === fixedExtension.slug))
 
   const extensionNames = extensions.map((extension) => extension.title)
 
