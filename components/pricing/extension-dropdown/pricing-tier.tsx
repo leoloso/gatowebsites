@@ -45,9 +45,9 @@ export default function PricingTier({
             </span>
           </div>
           { originalPrice && (
-            <div className="mb-1.5 flex items-baseline font-nacelle">
-              <span className="text text-slate-400">$</span>
-              <span className="text-xl font-semibold tabular-nums text-red-400 line-through">
+            <div className="mb-1.5 flex items-baseline font-nacelle text-red-400 line-through">
+              <span className="text-red-300">$</span>
+              <span className="text-xl font-semibold tabular-nums">
                 { originalPrice }
               </span>
             </div>
