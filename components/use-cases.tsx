@@ -11,15 +11,15 @@ import CarouselImg03 from "@/public/assets/client-logos/grayscale/pop-logo-horiz
 
 const tabs = [
   {
-    title: "Build headless sites",
-    description: "Use your JavaScript framework of choice to render your site.",
-    img: CarouselImg01,
-    imgAlt: "Gato GraphQL use case image",
-  },
-  {
     title: "Consume your data via apps",
     description: "Expose a public GraphQL API to feed data to external applications.",
     img: CarouselImg03,
+    imgAlt: "Gato GraphQL use case image",
+  },
+  {
+    title: "Build headless sites",
+    description: "Use your JavaScript framework of choice to render your site.",
+    img: CarouselImg01,
     imgAlt: "Gato GraphQL use case image",
   },
   {
