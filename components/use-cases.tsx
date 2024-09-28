@@ -55,7 +55,7 @@ export default function UseCases() {
                 <span className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">
                   Software Standard
                 </span>
-                <div className="relative mb-6 border-l overflow-hidden [border-image:linear-gradient(to_bottom,transparent,theme(colors.slate.400/.25),transparent)1] after:absolute after:left-0 after:top-0 after:h-4 after:w-px after:origin-bottom after:-translate-y-full after:animate-shine after:bg-[linear-gradient(180deg,_transparent,_theme(colors.indigo.500/.5)_25%,_theme(colors.indigo.500)_50%,_theme(colors.indigo.500/.5)_75%,_transparent)] after:opacity-0">
+                <div className="relative mb-6 border-l overflow-hidden [border-image:linear-gradient(to_bottom,transparent,theme(colors.slate.400/.25),transparent)1] after:absolute after:left-0 after:top-0 after:h-4 after:w-px after:origin-bottom after:-translate-y-full after:animate-shine after:bg-[linear-gradient(180deg,_transparent,_theme(colors.purple.500/.5)_25%,_theme(colors.purple.500)_50%,_theme(colors.purple.500/.5)_75%,_transparent)] after:opacity-0">
                   <div className="mb-4">
                     <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
                       Improve efficiency & global coverage
@@ -72,10 +72,10 @@ export default function UseCases() {
                     {tabs.map((tab, index) => (
                       <Tab key={index} as={Fragment}>
                         <button
-                          className={`-mx-2 flex gap-2 p-2 text-left transition-opacity focus-visible:outline-none ui-focus-visible:outline-none ui-focus-visible:ring ui-focus-visible:ring-indigo-300 ${selectedTab !== index ? "opacity-50 hover:opacity-70" : ""}}`}
+                          className={`-mx-2 flex gap-2 p-2 text-left transition-opacity focus-visible:outline-none ui-focus-visible:outline-none ui-focus-visible:ring ui-focus-visible:ring-purple-300 ${selectedTab !== index ? "opacity-50 hover:opacity-70" : ""}}`}
                         >
                           <svg
-                            className={`shrink-0 ${selectedTab !== index ? "fill-gray-600" : "fill-indigo-500"}`}
+                            className={`shrink-0 ${selectedTab !== index ? "fill-gray-600" : "fill-purple-500"}`}
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
                             height="16"
