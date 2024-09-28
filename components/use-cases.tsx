@@ -19,7 +19,7 @@ const tabs = [
   },
   {
     title: "Build headless sites",
-    description: "Use your JavaScript framework of choice to render your site.",
+    description: "Use WordPress as the CMS to manage data, and the JavaScript framework of choice to render your site.",
     img: CarouselImg01,
     imgAlt: "Gato GraphQL use case image",
   },
