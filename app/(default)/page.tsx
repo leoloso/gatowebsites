@@ -1,4 +1,5 @@
 import Hero from '@/components/hero'
+import UseCases from '@/components/use-cases'
 import Clients from '@/components/clients'
 import Features from '@/components/features'
 import Features02 from '@/components/features-02'
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <UseCases />
       {/* <Clients />
       <Features06 />
       <Features02 />
