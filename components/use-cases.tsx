@@ -8,7 +8,6 @@ import { Transition } from "@headlessui/react";
 import CarouselImg01 from "@/public/assets/client-logos/grayscale/agendaurbana-logo.png";
 import CarouselImg02 from "@/public/assets/client-logos/grayscale/mesym-logo-inverse.png";
 import CarouselImg03 from "@/public/assets/client-logos/grayscale/pop-logo-horizontal.png";
-import SmallTestimonialImg from "@/public/images/small-testimonial.jpg";
 
 const tabs = [
   {
@@ -106,25 +105,6 @@ export default function UseCases() {
                     using this tool! Within a few hours, I had a
                     professional-looking flow up and running.”
                   </p>
-                  <div className="flex items-center gap-3">
-                    <Image
-                      className="inline-flex shrink-0 rounded-full"
-                      src={SmallTestimonialImg}
-                      width={24}
-                      height={24}
-                      alt="Small testimonial"
-                    />
-                    <div className="text-sm font-medium text-gray-200">
-                      <span>Chris Pick</span>
-                      <span className="text-gray-700"> - </span>
-                      <a
-                        className="text-indigo-200/65 transition-colors hover:text-indigo-500"
-                        href="#0"
-                      >
-                        Notion Circle
-                      </a>
-                    </div>
-                  </div>
                 </div>
               </div>
 
