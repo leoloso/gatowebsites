@@ -5,7 +5,6 @@ import { SnippetMdx } from "./mdx/snippet-mdx";
 import { getSnippet } from "@/utils/content/snippet";
 
 export default function UseCasesSlide1() {
-  const codeASnippet = getSnippet('describe-your-data')
   const codeBSnippet = getSnippet('ask-for-what-you-want')
   const codeCSnippet = getSnippet('get-predictable-results')
   return (
@@ -22,11 +21,6 @@ export default function UseCasesSlide1() {
         {/* <GraphQLLogo className="w-24" /> */}
         <Image className="w-24" src={GraphQLLogo} width={150} height={150} alt="GraphQL logo" />
         <h1 className="text-primary text-3xl">GraphQL</h1>
-      </div>
-
-      <div>
-        <h3>Describe your data</h3>
-        <SnippetMdx code={codeASnippet.body.code} />
       </div>
 
       <div>
