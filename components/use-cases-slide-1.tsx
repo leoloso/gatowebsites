@@ -20,7 +20,7 @@ export default function UseCasesSlide1() {
       <div className="max-md:grow max-xl:w-full flex flex-col items-center gap-2">
         {/* <GraphQLLogo className="w-24" /> */}
         <Image className="w-24" src={GraphQLLogo} width={150} height={150} alt="GraphQL logo" />
-        <h1 className="text-primary text-3xl">GraphQL</h1>
+        <h1 className="text-[#E10098] text-3xl">GraphQL</h1>
       </div>
 
       <div>
