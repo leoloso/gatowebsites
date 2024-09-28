@@ -31,16 +31,18 @@ const mdxComponents = {
 interface MdxProps {
   code: string,
   mdxClassName?: string,
+  preAddCopyButton?: boolean,
 }
 
 export function Mdx({
   code,
   mdxClassName = "text-slate-700 dark:text-slate-200 max-w-none prose-p:leading-normal prose-headings:text-slate-800 dark:prose-headings:text-slate-200 prose-strong:text-slate-800 dark:prose-strong:text-slate-100 prose-blockquote:italic prose-blockquote:pl-4 prose-blockquote:border-l-2 prose-blockquote:border-gray-200 prose-blockquote:font-normal prose-blockquote:text-gray-500 dark:prose-blockquote:text-gray-300 prose-figcaption:text-slate-500 prose-figcaption:dark:text-slate-300",
+  preAddCopyButton,
 }: MdxProps) {
   const Component = useMDXComponent(code)
 
   const custom = {
-    pre: ({ ...props }) => <Pre>{ props.children }</Pre>,
+    pre: ({ ...props }) => <Pre addCopyButton={preAddCopyButton}>{ props.children }</Pre>,
     h1: H1,
     h2: H2,
     h3: H3,
