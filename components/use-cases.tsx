@@ -43,7 +43,7 @@ export default function UseCases() {
 
         {/* Particles animation */}
         <div className="absolute inset-0 max-w-6xl mx-auto px-4 sm:px-6">
-          <Particles className="absolute inset-0 -z-10" quantity={5} />
+          <Particles className="absolute inset-0 -z-10" quantity={10} />
         </div>
 
         <TabGroup selectedIndex={selectedTab} onChange={setSelectedTab} vertical>
