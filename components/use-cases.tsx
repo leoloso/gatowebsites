@@ -18,7 +18,7 @@ const tabs = [
   },
   {
     title: "Consume your data via apps",
-    description: "Expose a public GraphQL API to feed data to external apps.",
+    description: "Expose a public GraphQL API to feed data to external applications.",
     img: CarouselImg03,
     imgAlt: "Gato GraphQL use case image",
   },
