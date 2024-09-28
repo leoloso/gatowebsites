@@ -11,7 +11,7 @@ import CarouselImg03 from "@/public/assets/client-logos/grayscale/pop-logo-horiz
 
 const tabs = [
   {
-    title: "Build performant apps",
+    title: "Code performant apps",
     description: "Specify exactly what data you need, and the GraphQL server will retrieve only that.",
     img: CarouselImg03,
     imgAlt: "Gato GraphQL use case image",
@@ -23,7 +23,7 @@ const tabs = [
     imgAlt: "Gato GraphQL use case image",
   },
   {
-    title: "Power your Gutenberg blocks",
+    title: "Speed up creating Gutenberg blocks",
     description: "Simplify coding Gutenberg blocks, without creating REST controllers.",
     img: CarouselImg02,
     imgAlt: "Gato GraphQL use case image",
