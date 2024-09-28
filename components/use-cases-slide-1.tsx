@@ -5,8 +5,8 @@ import { SnippetMdx } from "./mdx/snippet-mdx";
 import { getSnippet } from "@/utils/content/snippet";
 
 export default function UseCasesSlide1() {
-  const codeBSnippet = getSnippet('ask-for-what-you-want')
-  const codeCSnippet = getSnippet('get-predictable-results')
+  const codeBSnippet = getSnippet('use-cases/ask-for-what-you-want')
+  const codeCSnippet = getSnippet('use-cases/get-predictable-results')
   return (
     <div
       className={clsx(
