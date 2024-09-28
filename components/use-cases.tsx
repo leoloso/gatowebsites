@@ -13,7 +13,7 @@ import UseCasesSlide1 from './use-cases-slide-1';
 const tabs = [
   {
     title: "Code performant apps",
-    description: "Specify exactly what data you need, and the GraphQL server will retrieve only that.",
+    description: "Send a GraphQL query to your API and get exactly what you need, nothing more and nothing less.",
     img: CarouselImg03,
     imgAlt: "Gato GraphQL use case image",
   },
