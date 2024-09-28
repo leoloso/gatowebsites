@@ -38,7 +38,7 @@ export default function UseCases() {
   const [selectedTab, setSelectedTab] = useState<number>(0);
 
   return (
-    <section>
+    <section className="relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
 
         {/* Particles animation */}
