@@ -57,7 +57,7 @@ export default function UseCases() {
                     <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
                       Expose WordPress data via GraphQL
                     </h2>
-                    <p className="text-indigo-200/65">
+                    <p className="text-purple-200/65">
                       Gato GraphQL provides a GraphQL server for WordPress, enabling applications to specify exactly what data they need, and the server will retrieve exactly that.
                     </p>
                   </div>
@@ -81,8 +81,8 @@ export default function UseCases() {
                             <span className="font-medium text-gray-200">
                               {tab.title}
                             </span>
-                            <span className="text-gray-700"> - </span>
-                            <span className="text-indigo-200/65">
+                            <span className="text-gray-600"> - </span>
+                            <span className="text-slate-400">
                               {tab.description}
                             </span>
                           </span>
