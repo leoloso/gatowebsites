@@ -99,13 +99,6 @@ export default function UseCases() {
                     ))}
                   </TabList>
                 </div>
-                <div>
-                  <p className="mb-4 font-nacelle text-gray-200">
-                    “I was blown away by how easy it was to create my content
-                    using this tool! Within a few hours, I had a
-                    professional-looking flow up and running.”
-                  </p>
-                </div>
               </div>
 
               {/* Right content */}
