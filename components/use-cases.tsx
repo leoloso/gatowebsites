@@ -5,7 +5,7 @@ import Particles from './particles'
 import { useState, Fragment } from "react";
 import { TabGroup, Tab, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { Transition } from "@headlessui/react";
-import CarouselImg01 from "@/public/assets/client-logos/grayscale/agendaurbana-logo.png";
+import CarouselImg01 from "@/public/assets/client-logos/grayscale/tppdebate-logo-inverse.png";
 import CarouselImg02 from "@/public/assets/client-logos/grayscale/mesym-logo-inverse.png";
 import CarouselImg03 from "@/public/assets/client-logos/grayscale/pop-logo-horizontal.png";
 
