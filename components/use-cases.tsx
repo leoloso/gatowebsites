@@ -50,12 +50,12 @@ export default function UseCases() {
               {/* Left content */}
               <div className="shrink-0 md:w-[500px] [&_>*]:pl-7">
                 <span className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">
-                  Software Standard
+                  Standard use cases
                 </span>
                 <div className="relative mb-6 border-l overflow-hidden [border-image:linear-gradient(to_bottom,transparent,theme(colors.slate.400/.25),transparent)1] after:absolute after:left-0 after:top-0 after:h-4 after:w-px after:-translate-y-full after:animate-shine after:bg-[linear-gradient(180deg,_transparent,_theme(colors.purple.500/.5)_25%,_theme(colors.purple.500)_50%,_theme(colors.purple.500/.5)_75%,_transparent)] after:opacity-0">
                   <div className="mb-4">
                     <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
-                      Improve efficiency & global coverage
+                      Expose WordPress data via GraphQL
                     </h2>
                     <p className="text-indigo-200/65">
                       Open is so simple to use, it's easy to overlook the wealth
