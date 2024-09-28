@@ -11,8 +11,8 @@ import CarouselImg03 from "@/public/assets/client-logos/grayscale/pop-logo-horiz
 
 const tabs = [
   {
-    title: "Consume your data via apps",
-    description: "Expose a public GraphQL API to feed data to external applications.",
+    title: "Build performant apps",
+    description: "Specify exactly what data you need, and the GraphQL server will retrieve only that.",
     img: CarouselImg03,
     imgAlt: "Gato GraphQL use case image",
   },
@@ -58,7 +58,7 @@ export default function UseCases() {
                       Expose WordPress data via GraphQL
                     </h2>
                     <p className="text-purple-200/65">
-                      Gato GraphQL provides a GraphQL server for WordPress, enabling applications to specify exactly what data they need, and the server will retrieve exactly that.
+                      Gato GraphQL is a plugin for WordPress, that implements the GraphQL specification.
                     </p>
                   </div>
 
