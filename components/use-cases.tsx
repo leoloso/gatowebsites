@@ -11,23 +11,20 @@ import CarouselImg03 from "@/public/assets/client-logos/grayscale/pop-logo-horiz
 
 const tabs = [
   {
-    title: "Strategic Sync",
-    description:
-      "Remove corners from the avatars and transform the way your team work.",
+    title: "Build headless sites",
+    description: "Use your JavaScript framework of choice to render your site.",
     img: CarouselImg01,
     imgAlt: "Carousel image 01",
   },
   {
-    title: "Feedback Loop",
-    description:
-      "Best-in-class design practices to keep your work safe and secure.",
+    title: "Power your Gutenberg blocks",
+    description: "Simplify coding Gutenberg blocks, without creating REST controllers.",
     img: CarouselImg02,
     imgAlt: "Carousel image 02",
   },
   {
-    title: "Enterprise-Ready",
-    description:
-      "Built for teams of all sizes. From early-stage startups to global enterprises.",
+    title: "Consume your data via apps",
+    description: "Expose a public GraphQL API to feed data to external apps.",
     img: CarouselImg03,
     imgAlt: "Carousel image 03",
   },
