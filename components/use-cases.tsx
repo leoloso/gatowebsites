@@ -58,9 +58,7 @@ export default function UseCases() {
                       Expose WordPress data via GraphQL
                     </h2>
                     <p className="text-indigo-200/65">
-                      Open is so simple to use, it's easy to overlook the wealth
-                      of complex technologies packed under the hood that keep
-                      Open robust, safe, and blazing fast.
+                      Gato GraphQL provides a GraphQL server for WordPress, enabling applications to specify exactly what data they need, and the server will retrieve exactly that.
                     </p>
                   </div>
 
