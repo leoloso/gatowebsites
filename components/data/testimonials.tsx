@@ -39,7 +39,7 @@ export function getTestimonials(): TestimonialItem[] {
       img: CustomerImg06,
       quote: "This plugin is extraordinary, it unlocks a new world of possibilities within WordPress.",
       name: 'Nathan W.',
-      role: 'Tech journalist',
+      role: 'Tech writer',
       // twitter: {
       //   handle: '@jessiem9',
       //   link: '#0'
