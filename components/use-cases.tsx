@@ -39,17 +39,16 @@ export default function UseCases() {
 
   return (
     <section>
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
 
         {/* Particles animation */}
         <div className="absolute inset-0 max-w-6xl mx-auto px-4 sm:px-6">
           <Particles className="absolute inset-0 -z-10" quantity={5} />
         </div>
 
-        <div className="py-12 md:py-16">
         <TabGroup selectedIndex={selectedTab} onChange={setSelectedTab} vertical>
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="border-t py-12 [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1] md:py-20">
+          {/* <div className="border-t py-12 [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1] md:py-20"> */}
+          <div className="py-12 md:py-20">
             <div className="flex flex-col items-center justify-between pb-12 md:flex-row md:gap-8 md:pb-20 lg:gap-16">
               {/* Left content */}
               <div className="shrink-0 md:w-[500px] [&_>*]:pl-7">
@@ -125,9 +124,7 @@ export default function UseCases() {
               </TabPanels>
             </div>
           </div>
-        </div>
-      </TabGroup>
-        </div>
+        </TabGroup>
       </div>
     </section>
   )
