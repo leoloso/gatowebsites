@@ -48,8 +48,8 @@ export default function UseCases() {
 
         <TabGroup selectedIndex={selectedTab} onChange={setSelectedTab} vertical>
           {/* <div className="border-t py-12 [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1] md:py-20"> */}
-          <div className="py-12 md:py-20">
-            <div className="flex flex-col items-center justify-between pb-12 md:flex-row md:gap-8 md:pb-20 lg:gap-16">
+          <div className="pt-16 pb-12 md:pt-32 md:pb-20 border-b border-slate-800">
+            <div className="flex flex-col items-center justify-between md:flex-row md:gap-8 lg:gap-16 pb-8">
               {/* Left content */}
               <div className="shrink-0 md:w-[500px] [&_>*]:pl-7">
                 <span className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">
