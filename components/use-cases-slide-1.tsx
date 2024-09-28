@@ -10,7 +10,7 @@ export default function UseCasesSlide1() {
   return (
     <div
       className={clsx(
-        "flex-wrap gap-14 justify-center items-center flex max-sm:flex-col",
+        "flex-wrap gap-7 justify-center items-center flex max-sm:flex-col",
         "[&_h3]:text-white [&_h3]:text-2xl max-lg:[&_h3]:text-center",
         "[&_pre]:!bg-transparent [&_pre]:ring-0 [&_pre_span]:text-[--shiki-dark]",
         "[&_h3]:font-extralight",
@@ -22,14 +22,24 @@ export default function UseCasesSlide1() {
         <h1 className="text-[#E10098] text-3xl">GraphQL</h1>
       </div>
 
-      <div>
-        <h3>Ask for what you want</h3>
-        <SnippetMdx code={codeBSnippet.body.code} />
-      </div>
+      <div
+        className={clsx(
+          "flex-wrap gap-7 justify-center items-center flex",
+          "[&_h3]:text-white [&_h3]:text-2xl max-lg:[&_h3]:text-center",
+          "[&_pre]:!bg-transparent [&_pre]:ring-0 [&_pre_span]:text-[--shiki-dark]",
+          "[&_h3]:font-extralight",
+          "[&_code]:whitespace-pre-wrap" /* fix scroll on mobile for code-blocks */,
+        )}
+      >
+        <div>
+          <h3>Ask for what you want</h3>
+          <SnippetMdx code={codeBSnippet.body.code} />
+        </div>
 
-      <div>
-        <h3>Get predictable results</h3>
-        <SnippetMdx code={codeCSnippet.body.code} />
+        <div>
+          <h3>Get predictable results</h3>
+          <SnippetMdx code={codeCSnippet.body.code} />
+        </div>
       </div>
     </div>
   )
