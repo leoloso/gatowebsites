@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import clsx from "clsx";
 import GraphQLLogo from '@/public/assets/external-logos/graphql-logo.svg'
 import { SnippetMdx } from "./mdx/snippet-mdx";
@@ -19,6 +20,7 @@ export default function UseCasesSlide1() {
     >
       <div className="max-md:grow max-xl:w-full flex flex-col items-center gap-2">
         {/* <GraphQLLogo className="w-24" /> */}
+        <Image className="w-24" src={GraphQLLogo} width={150} height={150} alt="GraphQL logo" />
         <h1 className="text-primary text-3xl">GraphQL</h1>
       </div>
 
