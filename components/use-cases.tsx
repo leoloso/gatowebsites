@@ -19,13 +19,13 @@ const tabs = [
   },
   {
     title: "Build headless sites",
-    description: "Use WordPress as the CMS to manage data, and the JavaScript framework of choice to render your site.",
+    description: "Use WordPress as the CMS to manage data, and your JavaScript framework of choice to render the site.",
     img: CarouselImg01,
     imgAlt: "Gato GraphQL use case image",
   },
   {
     title: "Speed up creating Gutenberg blocks",
-    description: "Simplify coding Gutenberg blocks, without creating REST controllers.",
+    description: "Ship Gutenberg blocks faster, by avoiding creating REST controllers to feed them data.",
     img: CarouselImg02,
     imgAlt: "Gato GraphQL use case image",
   },
