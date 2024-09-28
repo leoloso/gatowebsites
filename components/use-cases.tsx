@@ -8,6 +8,7 @@ import { Transition } from "@headlessui/react";
 import CarouselImg01 from "@/public/assets/client-logos/grayscale/tppdebate-logo-inverse.png";
 import CarouselImg02 from "@/public/assets/client-logos/grayscale/mesym-logo-inverse.png";
 import CarouselImg03 from "@/public/assets/client-logos/grayscale/pop-logo-horizontal.png";
+import UseCasesSlide1 from './use-cases-slide-1';
 
 const tabs = [
   {
@@ -105,14 +106,21 @@ export default function UseCases() {
                       unmount={false}
                       appear={true}
                     >
-                      <TabPanel as={Fragment} static={true}>
-                        <Image
-                          width={540}
-                          height={520}
-                          src={tab.img}
-                          alt={tab.imgAlt}
-                        />
-                      </TabPanel>
+                        { index === 0 && (
+                          <TabPanel static={true}>
+                            <UseCasesSlide1 />
+                          </TabPanel>
+                        )}
+                        { index !== 0 && (
+                          <TabPanel as={Fragment} static={true}>
+                            <Image
+                              width={540}
+                              height={520}
+                              src={tab.img}
+                              alt={tab.imgAlt}
+                            />
+                          </TabPanel>
+                        )}
                     </Transition>
                   ))}
                 </div>
