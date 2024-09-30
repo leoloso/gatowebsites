@@ -35,10 +35,10 @@ export default function ExtensionThumbModalVideo({
           extension={extension}
           isLandscape={true}
           printExtensionTitle={true}
-          bgClassname="bg-gradient-to-tr from-slate-900 to-violet-900 group-hover:to-violet-800 duration-700 ease-out"
+          bgClassname="bg-gradient-to-tr from-slate-900 to-violet-900 transition group-hover:to-violet-800 duration-700 ease-out"
         />
         <ModalVideoTitle title={title} extraClassname='z-30' />
-        <ModalVideoButton title={title} extraClassname='z-30' />
+        <ModalVideoButton title={title} extraClassname='z-30 group-hover:scale-110 transition duration-700 ease-out' />
         {children}
       </div>
       {/* End: Video thumbnail */}
