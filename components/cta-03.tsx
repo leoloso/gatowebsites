@@ -5,7 +5,7 @@ export default function Cta03() {
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="relative px-8 py-12 md:py-20 rounded-[3rem] overflow-hidden">
+        <div className="relative px-8 py-12 md:py-20 pt-16 md:pt-32 rounded-[3rem] overflow-hidden">
           {/* Radial gradient */}
           <div className="absolute flex items-center justify-center top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/3 aspect-square" aria-hidden="true">
             <div className="absolute inset-0 translate-z-0 bg-purple-500 rounded-full blur-[120px] opacity-70"></div>
@@ -28,7 +28,6 @@ export default function Cta03() {
             leading='Never miss an update'
             title='Stay connected with us'
             description='Find out about our latest product updates as we continue improving Gato GraphQL.'
-            paddingClassname=''
           >
             <NewsletterForm />
           </SectionHeader>

@@ -19,7 +19,7 @@ export default function Support() {
 
           {/* Page header */}
           <PageHeader
-            leading='Premium Support for PRO users'
+            leading='Support for our customers'
             title="Request for Support"
             description="Send us your request, and we'll work on it."
           />

@@ -9,7 +9,7 @@ import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/me
 const pageTitle = 'Pricing'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
-  description: 'Pricing plans to unleash your capabilities with Gato GraphQL PRO',
+  description: 'Pricing plans for Gato GraphQL',
   // openGraph: {
   //   title: createOpenGraphPageTitle(pageTitle),
   // },

@@ -32,9 +32,9 @@ export default function BlogSection() {
 
         {/* Page header */}
         <PageHeader
-          leading="Our blog"
-          title="query { posts { content } }"
-          description='Stay up to date on the latest from Gato GraphQL and our engineering practices.'
+          leading="query { posts { content } }"
+          title="Blog"
+          description='Stay up to date on the latest from Gato GraphQL'
         />
         {/* Main content */}
         <div className="md:flex md:justify-between">

@@ -40,7 +40,7 @@ export default function Story({
 
             <div className="md:flex justify-between space-x-6 md:space-x-8 lg:space-x-14">
               <figure className="min-w-[240px]">
-                <Image className="sticky top-24 mx-auto mb-12 md:mb-0 rounded-lg -rotate-[2deg]" src={FounderPic} width={400} height={533} alt="Founder pic" />
+                <Image className="sticky top-24 mx-auto mb-12 md:mb-0 rounded-lg -rotate-[1deg]" src={FounderPic} width={400} height={533} alt="Founder pic" />
               </figure>
               <div className="max-w-[548px] mx-auto">
                 <SnippetMdx code={snippet.body.code} />
