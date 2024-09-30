@@ -27,7 +27,7 @@ export default function Cta() {
           <SectionHeader
             leading='Discover the power'
             title="Try demo now!"
-            description="Play with Gato GraphQL PRO in your own sandbox site, for free"
+            description="Play with Gato GraphQL + all extensions in your own sandbox site, for free"
           >
             <div className="mt-8">
               <a className="btn text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group" href={AppConfig.urls.instawpSandboxDemo} target='_blank'>
