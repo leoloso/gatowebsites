@@ -8,6 +8,7 @@ import Logo06 from "@/public/assets/libraries/svelte.svg";
 import Logo07 from "@/public/assets/libraries/react.svg";
 import Logo08 from "@/public/assets/libraries/hugo.svg";
 import Logo09 from "@/public/assets/libraries/vitepress.svg";
+import clsx from "clsx";
 
 export default function UseCasesSlide2() {
   return (
@@ -172,7 +173,7 @@ export default function UseCasesSlide2() {
         {/* <div className="absolute inset-y-0 left-1/2 -z-10 w-px -translate-x-[216px] bg-gradient-to-b from-gray-200 to-transparent mix-blend-multiply"></div>
         <div className="absolute inset-y-0 left-1/2 -z-10 w-px translate-x-[216px] bg-gradient-to-t from-gray-200 to-transparent mix-blend-multiply"></div> */}
         {/* Logos */}
-        <div className="absolute before:absolute before:-inset-3 before:animate-[spin_3s_linear_infinite] before:rounded-full before:border before:border-transparent before:[background:conic-gradient(from_180deg,transparent,theme(colors.purple.500))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]">
+        <div className={clsx("absolute", false && "before:absolute before:-inset-3 before:animate-[spin_3s_linear_infinite] before:rounded-full before:border before:border-transparent before:[background:conic-gradient(from_180deg,transparent,theme(colors.gray.500))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]")}>
           <div className="animate-[breath_8s_ease-in-out_infinite_both]">
             <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-lg shadow-black/[0.03] before:absolute before:inset-0 before:m-[8.334%] before:rounded-[inherit] before:border before:border-gray-700/5 before:bg-gray-200/60 before:[mask-image:linear-gradient(to_bottom,black,transparent)]">
               <Image
