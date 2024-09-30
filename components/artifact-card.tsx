@@ -24,9 +24,9 @@ export default function ArtifactCard({
         <div className="flex items-center space-x-3 mb-3">
           <div className="relative">
             <Image src={artifactIcon} width="40" height="40" alt={artifact.title} />
-            {artifact.featured && (
+            {/* {artifact.featured && (
               <Image className="absolute top-0 -right-1" src={Star} width={16} height={16} alt="Star" aria-hidden="true" />
-            )}
+            )} */}
           </div>
           <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href={getArtifactURLPath(artifact)}>{artifact.title}</Link>
         </div>

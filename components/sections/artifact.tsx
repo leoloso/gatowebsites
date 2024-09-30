@@ -107,9 +107,9 @@ export default function ArtifactSection({
                         <div className="mb-4">
                           <div className="relative inline-flex">
                             <Image src={artifact.icon || defaultArtifactIcon || DefaultArtifactIcon} width={80} height={80} alt="Artifact icon" />
-                            {!! artifact.featured && (
+                            {/* {!! artifact.featured && (
                               <Image className="absolute top-0 -right-1" src={Star} width={24} height={24} alt="Star" aria-hidden="true" />
-                            )}
+                            )} */}
                           </div>
                         </div>
                         {widgetChildren}
