@@ -14,8 +14,8 @@ const tabs = [
     description: "Send a GraphQL query to your API and get exactly what you need, nothing more and nothing less.",
   },
   {
-    title: "Build headless sites",
-    description: "Use WordPress as the CMS to manage data, and your JavaScript framework of choice to render the site.",
+    title: "Build dynamic/headless sites",
+    description: "Use WordPress as the CMS to manage data, and your framework of choice to render the site.",
   },
   {
     title: "Speed up creating Gutenberg blocks",
