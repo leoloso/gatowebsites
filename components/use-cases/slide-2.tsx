@@ -13,7 +13,7 @@ export default function UseCasesSlide2() {
   return (
     <>
       {/* Tab panels */}
-      <div className="relative flex h-[324px] items-center justify-center">
+      <div className="flex h-[324px] items-center justify-center">
         {/* Small purple dots */}
         <div className="absolute -z-10">
           <svg
