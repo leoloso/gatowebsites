@@ -1,5 +1,5 @@
 import Image from "next/image";
-import LogoMain from "@/public/assets/external-logos/graphql-logo.svg"
+import LogoMain from "@/public/assets/libraries/wordpress.svg";
 import Logo02 from "@/public/assets/libraries/nextjs.svg";
 import Logo03 from "@/public/assets/libraries/vue.svg";
 import Logo04 from "@/public/assets/libraries/astro.svg";
