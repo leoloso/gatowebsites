@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import clsx from "clsx";
 import GraphQLLogo from '@/public/assets/external-logos/graphql-logo.svg'
-import { SnippetMdx } from "./mdx/snippet-mdx";
+import { SnippetMdx } from "../mdx/snippet-mdx";
 import { getSnippet } from "@/utils/content/snippet";
 
 export default function UseCasesSlide1() {

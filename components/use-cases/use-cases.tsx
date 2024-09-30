@@ -1,7 +1,7 @@
 "use client";
 
 import Image from 'next/image'
-import Particles from './particles'
+import Particles from '../particles'
 import { useState, Fragment } from "react";
 import { TabGroup, Tab, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { Transition } from "@headlessui/react";
