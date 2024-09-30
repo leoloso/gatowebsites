@@ -7,7 +7,7 @@ import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/me
 const pageTitle = 'Comparisons'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
-  description: 'How is Gato GraphQL different than many other WordPress plugins?',
+  description: 'How is Gato GraphQL different than other WordPress plugins?',
   // openGraph: {
   //   title: createOpenGraphPageTitle(pageTitle),
   // },
@@ -31,7 +31,7 @@ export default function ComparisonsPage() {
             <PageHeader
               leading='Comparing against plugins for WordPress'
               title='Gato GraphQL vs [...]'
-              description='How is Gato GraphQL different than many other WordPress plugins?'
+              description='How is Gato GraphQL different than other WordPress plugins?'
             />
 
             <ComparisonList />
