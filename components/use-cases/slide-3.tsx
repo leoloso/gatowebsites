@@ -6,7 +6,7 @@ export default function UseCasesSlide3() {
   return (
     <div className="">
       {/* Logo animation */}
-      <div className="relative flex flex-col items-center pb-16">
+      <div className="relative flex flex-col items-center pb-12">
         {/* Blurred dots */}
         {/* <svg className="absolute top-1/2 -translate-y-1/2" width="557" height="93" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -102,7 +102,7 @@ export default function UseCasesSlide3() {
               <path fill="url(#b)" d="M16 0 0 9.25l16 9.25 15.999-9.25z" />
             </g>
           </svg> */}
-          <Image src={GraphQLLogo} width={150} height={150} alt="GraphQL logo" />
+          <Image src={GraphQLLogo} width={112} height={112} alt="GraphQL logo" />
         </div>
       </div>
       {/* Integration boxes */}
