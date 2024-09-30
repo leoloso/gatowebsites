@@ -4,9 +4,6 @@ import Particles from '../particles'
 import { useState, Fragment } from "react";
 import { TabGroup, Tab, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { Transition } from "@headlessui/react";
-import CarouselImg01 from "@/public/assets/client-logos/grayscale/tppdebate-logo-inverse.png";
-import CarouselImg02 from "@/public/assets/client-logos/grayscale/mesym-logo-inverse.png";
-import CarouselImg03 from "@/public/assets/client-logos/grayscale/pop-logo-horizontal.png";
 import UseCasesSlide1 from './slide-1';
 import UseCasesSlide2 from './slide-2';
 import UseCasesSlide3 from './slide-3';
@@ -15,20 +12,14 @@ const tabs = [
   {
     title: "Code performant apps",
     description: "Send a GraphQL query to your API and get exactly what you need, nothing more and nothing less.",
-    img: CarouselImg03,
-    imgAlt: "Gato GraphQL use case image",
   },
   {
     title: "Build headless sites",
     description: "Use WordPress as the CMS to manage data, and your JavaScript framework of choice to render the site.",
-    img: CarouselImg01,
-    imgAlt: "Gato GraphQL use case image",
   },
   {
     title: "Speed up creating Gutenberg blocks",
     description: "Ship Gutenberg blocks faster, by avoiding creating REST controllers to feed them data.",
-    img: CarouselImg02,
-    imgAlt: "Gato GraphQL use case image",
   },
 ];
 
