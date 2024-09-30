@@ -41,14 +41,14 @@ export default function Faqs() {
             {/* Item */}
             <div className="space-y-2">
               <h4 className="font-semibold">Is Gato GraphQL free?</h4>
-              <p className="text-slate-400">The Gato GraphQL plugin for WordPress is free, while Gato GraphQL PRO is the commercial extension, that supports additional use cases.</p>
+              <p className="text-slate-400">The Gato GraphQL plugin for WordPress is free. The Gato GraphQL extensions are commercial.</p>
             </div>
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">What's the difference between free and PRO?</h4>
+              <h4 className="font-semibold">Why do I need extensions?</h4>
               <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API, such as for building headless sites.</p>
-              <p className="text-slate-400">Gato GraphQL PRO is needed for enhanced security for public APIs, adding HTTP caching, sending emails, executing updates in bulk, connecting to external services, and automating tasks (among others).</p>
+              <p className="text-slate-400">Gato GraphQL extensions are needed for enhanced security for public APIs, adding HTTP caching, sending emails, executing updates in bulk, and connecting to external services (among others).</p>
             </div>
 
           </div>
@@ -59,7 +59,7 @@ export default function Faqs() {
             {/* Item */}
             <div className="space-y-2">
               <h4 className="font-semibold">How is Gato GraphQL different than the WP REST API?</h4>
-              <p className="text-slate-400">Gato GraphQL supports “Persisted Queries”, which are similar to REST endpoints as they expose pre-defined data, however these are created and published directly within the wp-admin, using GraphQL.</p>
+              <p className="text-slate-400">With the “Persisted Queries” extension, you can publish REST-like endpoints using GraphQL, created and published directly within the wp-admin.</p>
             </div>
 
             {/* Item */}
@@ -69,7 +69,7 @@ export default function Faqs() {
             </div> */}
             <div className="space-y-2">
               <h4 className="font-semibold">Can I ask for a refund?</h4>
-              <p className="text-slate-400">If Gato GraphQL PRO does not solve your problem, you have 30 days to request a refund.</p>
+              <p className="text-slate-400">If you purchased a Gato GraphQL product and it does not solve your problem, you have 30 days to request a refund.</p>
             </div>
 
             {/* Item */}
