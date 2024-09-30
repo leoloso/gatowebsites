@@ -40,15 +40,14 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Is Gato GraphQL free?</h4>
-              <p className="text-slate-400">The Gato GraphQL plugin for WordPress is free. The Gato GraphQL extensions are commercial.</p>
+              <h4 className="font-semibold">Can I ask for a refund?</h4>
+              <p className="text-slate-400">If you purchased a Gato GraphQL product and it does not solve your problem, you have 30 days to request a refund.</p>
             </div>
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">What do I need extensions for?</h4>
-              {/* <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API, such as for building headless sites.</p> */}
-              <p className="text-slate-400">Gato GraphQL extensions are needed for enhanced security for public APIs, adding HTTP caching, sending emails, executing updates in bulk, connecting to external services, and other use cases.</p>
+              <h4 className="font-semibold">Can Gato GraphQL replace the WP REST API?</h4>
+              <p className="text-slate-400">With the “Persisted Queries” extension, you can publish REST-like endpoints using GraphQL, created and published directly within the wp-admin.</p>
             </div>
 
           </div>
@@ -58,21 +57,21 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Can Gato GraphQL replace the WP REST API?</h4>
-              <p className="text-slate-400">With the “Persisted Queries” extension, you can publish REST-like endpoints using GraphQL, created and published directly within the wp-admin.</p>
+              <h4 className="font-semibold">What do I need extensions for?</h4>
+              {/* <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API, such as for building headless sites.</p> */}
+              <p className="text-slate-400">Gato GraphQL extensions are needed for enhanced security for public APIs, adding HTTP caching, sending emails, executing updates in bulk, connecting to external services, and other use cases.</p>
             </div>
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Can I ask for a refund?</h4>
-              <p className="text-slate-400">If you purchased a Gato GraphQL product and it does not solve your problem, you have 30 days to request a refund.</p>
+              <h4 className="font-semibold">What happens if I don't renew the yearly license?</h4>
+              <p className="text-slate-400">The license provides access to: Support, and downloads of all updates for the purchased product. If you decide to not renew the license, you can still use the plugin, but you won't be able to get support or updates.</p>
             </div>
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">What use cases does Gato GraphQL PRO handle?</h4>
-              <p className="text-slate-400">As a single product, Gato GraphQL PRO can handle the functionality from multiple plugins.</p>
-              <p className="text-slate-400">These include: APIs, automators, bulk editing, code snippets, content distribution, email notifications, HTTP client, import/export, search & replace, translation, and webhooks.</p>
+              <h4 className="font-semibold">Is Gato GraphQL plug'n play with WPGraphQL?</h4>
+              <p className="text-slate-400">Because the GraphQL schema or both plugins are different, the GraphQL queries will need to be adapted.</p>
             </div>
 
           </div>
