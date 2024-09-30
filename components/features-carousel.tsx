@@ -100,7 +100,7 @@ export default function FeaturesCarousel() {
           </svg>
         </div>
 
-        <div className="pt-16 pb-12 md:pt-32 md:pb-20 border-b border-t border-slate-800">
+        <div className="pt-16 pb-12 md:pt-32 md:pb-20 border-t border-slate-800">
 
           {/* Section header */}
           <SectionHeader
