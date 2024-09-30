@@ -6,7 +6,7 @@ export default function UseCasesSlide3() {
   return (
     <div className="">
       {/* Logo animation */}
-      <div className="relative flex flex-col items-center p-16">
+      <div className="relative flex flex-col items-center pb-16">
         {/* Blurred dots */}
         {/* <svg className="absolute top-1/2 -translate-y-1/2" width="557" height="93" xmlns="http://www.w3.org/2000/svg">
           <defs>
