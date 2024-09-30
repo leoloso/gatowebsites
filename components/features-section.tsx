@@ -12,9 +12,9 @@ export default function FeaturesSection() {
 
           {/* Section header */}
           <PageHeader
-            leading='Unleash your capabilities'
+            leading='Flexibility, versatility, and power'
             title='Features'
-            description='Empower and protect your application with these features by Gato GraphQL.'
+            description='The server offers ways to augment, protect, and speed up your application'
           />
 
         </div>
