@@ -58,7 +58,7 @@ export default function ExtensionsSection({
                   isLandscape={true}
                   bgClassname={clsx(bgClassnames[index % bgClassnames.length], "transition duration-700 ease-out")}
                   skipGatoGraphQLLogo={ applyStyle === style2 }
-                  logoClassname={ clsx(applyThumbEffect === svgEffect2 && "transform group-hover:scale-105 transition duration-700 ease-out") }
+                  logoClassname={ clsx(applyThumbEffect === svgEffect2 && "transform group-hover:scale-110 transition duration-700 ease-out") }
                 />
               </div>
             </Link>
