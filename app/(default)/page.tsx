@@ -1,5 +1,5 @@
 import Hero from '@/components/hero'
-import UseCases from '@/components/use-cases'
+import UseCases from '@/components/use-cases/use-cases'
 import Clients from '@/components/clients'
 import Features from '@/components/features'
 import Features02 from '@/components/features-02'
