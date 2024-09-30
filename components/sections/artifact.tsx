@@ -7,6 +7,7 @@ import StunningBackground from '@/components/stunning-background'
 import { Artifact } from '@/utils/content/types'
 import { getTestimonials } from '../data/testimonials'
 import WithTitleThumb from '../thumbnails/with-title-thumb'
+import clsx from 'clsx'
 
 export default function ArtifactSection({
   artifact,
@@ -60,7 +61,7 @@ export default function ArtifactSection({
 
                   {/* Content */}
                   <div>
-                    <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
+                    <article className={clsx("pb-12 mb-12", showTestimonial && "border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]")}>
 
                       <div className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
                         <WithTitleThumb
