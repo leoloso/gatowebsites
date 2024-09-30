@@ -17,7 +17,7 @@ export default function ArtifactCard({
   defaultArtifactIcon,
   bgClassname = "bg-gradient-to-tr from-slate-800 to-slate-800/25"
 }: ArtifactCardProps) {
-  const artifactIcon = artifact.icon || defaultArtifactIcon || DefaultArtifactIcon
+  const artifactIcon = /*artifact.icon || */defaultArtifactIcon || DefaultArtifactIcon
   return (
     <div className={clsx(bgClassname, "rounded-3xl border border-slate-800 hover:border-slate-700/60 transition-colors group relative")}>
       <div className="flex flex-col p-5 h-full">
