@@ -46,9 +46,9 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Why do I need extensions?</h4>
-              <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API, such as for building headless sites.</p>
-              <p className="text-slate-400">Gato GraphQL extensions are needed for enhanced security for public APIs, adding HTTP caching, sending emails, executing updates in bulk, and connecting to external services (among others).</p>
+              <h4 className="font-semibold">What do I need extensions for?</h4>
+              {/* <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API, such as for building headless sites.</p> */}
+              <p className="text-slate-400">Gato GraphQL extensions are needed for enhanced security for public APIs, adding HTTP caching, sending emails, executing updates in bulk, connecting to external services, and other use cases.</p>
             </div>
 
           </div>
@@ -58,7 +58,7 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">How is Gato GraphQL different than the WP REST API?</h4>
+              <h4 className="font-semibold">Can Gato GraphQL replace the WP REST API?</h4>
               <p className="text-slate-400">With the “Persisted Queries” extension, you can publish REST-like endpoints using GraphQL, created and published directly within the wp-admin.</p>
             </div>
 
