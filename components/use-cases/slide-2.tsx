@@ -178,9 +178,9 @@ export default function UseCasesSlide2() {
               <Image
                 className="relative"
                 src={LogoMain}
-                width={32}
-                height={32}
-                alt="Logo 01"
+                width={40}
+                height={40}
+                alt="Logo GraphQL"
               />
             </div>
           </div>
