@@ -30,9 +30,9 @@ export default function Extensions() {
 
             {/*  Page header */}
             <PageHeader
-              leading='Empower your application'
+              leading='Satisfy your requirements'
               title='Extensions'
-              description='Provide additional functionality to the GraphQL server, and extend the GraphQL schema'
+              description='Augment the server functionality, and extend the schema'
             />
 
             <ExtensionsSection />
