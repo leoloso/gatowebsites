@@ -25,12 +25,12 @@ export default function ExtensionsSection({
   const extensions = allExtensions.sort(sortByOrderAndTitle)
 
   const bgClassnames = [
-    "bg-purple-900",
-    "bg-sky-900",
-    "bg-blue-900",
-    "bg-cyan-900",
-    "bg-violet-900",
-    "bg-indigo-900",
+    "bg-purple-900 group-hover:bg-purple-700",
+    "bg-sky-900 group-hover:bg-sky-700",
+    "bg-blue-900 group-hover:bg-blue-700",
+    "bg-cyan-900 group-hover:bg-cyan-700",
+    "bg-violet-900 group-hover:bg-violet-700",
+    "bg-indigo-900 group-hover:bg-indigo-700",
     // "bg-fuchsia-900",
     // "bg-pink-900",
     // "bg-orange-900",
@@ -56,7 +56,7 @@ export default function ExtensionsSection({
                   extension={extension}
                   paddingClassname={clsx("py-5 px-4", applyStyle === style1 && "md:py-8 md:px-6", applyStyle === style2 && "md:py-6 md:px-5")}
                   isLandscape={true}
-                  bgClassname={bgClassnames[index % bgClassnames.length]}
+                  bgClassname={clsx(bgClassnames[index % bgClassnames.length], "transition duration-700 ease-out")}
                   skipGatoGraphQLLogo={ applyStyle === style2 }
                   logoClassname={ clsx(applyThumbEffect === svgEffect2 && "transform group-hover:scale-105 transition duration-700 ease-out") }
                 />
