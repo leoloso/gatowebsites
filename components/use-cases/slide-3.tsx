@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import LogoMain from "@/public/assets/libraries/wordpress.svg";
-import Icon01 from '@/public/assets/libraries/gutenberg.jpg'
-import Icon02 from '@/public/assets/libraries/gutenberg.jpg'
-import Icon03 from '@/public/assets/libraries/gutenberg.jpg'
-import Icon04 from '@/public/assets/libraries/gutenberg.jpg'
-import Icon05 from '@/public/assets/libraries/gutenberg.jpg'
-import Icon06 from '@/public/assets/libraries/gutenberg.jpg'
+import Icon01 from '@/public/assets/libraries/gutenberg.svg'
+import Icon02 from '@/public/assets/libraries/gutenberg.svg'
+import Icon03 from '@/public/assets/libraries/gutenberg.svg'
+import Icon04 from '@/public/assets/libraries/gutenberg.svg'
+import Icon05 from '@/public/assets/libraries/gutenberg.svg'
+import Icon06 from '@/public/assets/libraries/gutenberg.svg'
 
 export default function UseCasesSlide3() {
   return (
@@ -120,9 +120,9 @@ export default function UseCasesSlide3() {
             <div className="absolute w-1/2 h-0.5 bg-purple-200/35 right-0" />
           </div>
           {/* Circle */}
-          <div className="bg-gradient-to-t from-slate-800 to-slate-900 w-20 h-20 rounded-full flex justify-center items-center">
+          <div className="bg-slate-200 w-20 h-20 rounded-full flex justify-center items-center">
             {/* Icon */}
-            <Image src={Icon01} width={36} height={46} alt="Icon 01" />
+            <Image src={Icon01} width={48} height={48} alt="Icon 01" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-purple-200/35 aspect-square p-2" data-aos="fade-up" data-aos-delay="100">
@@ -132,9 +132,9 @@ export default function UseCasesSlide3() {
             <div className="absolute w-full h-0.5 bg-purple-200/35" />
           </div>
           {/* Circle */}
-          <div className="bg-gradient-to-t from-slate-800 to-slate-900 w-20 h-20 rounded-full flex justify-center items-center">
+          <div className="bg-slate-200 w-20 h-20 rounded-full flex justify-center items-center">
             {/* Icon */}
-            <Image src={Icon02} width={46} height={46} alt="Icon 02" />
+            <Image src={Icon02} width={48} height={48} alt="Icon 02" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-purple-200/35 aspect-square p-2" data-aos="fade-up" data-aos-delay="200">
@@ -144,9 +144,9 @@ export default function UseCasesSlide3() {
             <div className="absolute w-full h-0.5 bg-purple-200/35" />
           </div>
           {/* Circle */}
-          <div className="bg-gradient-to-t from-slate-800 to-slate-900 w-20 h-20 rounded-full flex justify-center items-center">
+          <div className="bg-slate-200 w-20 h-20 rounded-full flex justify-center items-center">
             {/* Icon */}
-            <Image src={Icon03} width={53} height={45} alt="Icon 03" />
+            <Image src={Icon03} width={48} height={48} alt="Icon 03" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-purple-200/35 aspect-square p-2" data-aos="fade-up" data-aos-delay="300">
@@ -156,9 +156,9 @@ export default function UseCasesSlide3() {
             <div className="absolute w-full h-0.5 bg-purple-200/35" />
           </div>
           {/* Circle */}
-          <div className="bg-gradient-to-t from-slate-800 to-slate-900 w-20 h-20 rounded-full flex justify-center items-center">
+          <div className="bg-slate-200 w-20 h-20 rounded-full flex justify-center items-center">
             {/* Icon */}
-            <Image src={Icon04} width={48} height={46} alt="Icon 04" />
+            <Image src={Icon04} width={48} height={48} alt="Icon 04" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-purple-200/35 aspect-square p-2" data-aos="fade-up" data-aos-delay="400">
@@ -168,9 +168,9 @@ export default function UseCasesSlide3() {
             <div className="absolute w-full h-0.5 bg-purple-200/35" />
           </div>
           {/* Circle */}
-          <div className="bg-gradient-to-t from-slate-800 to-slate-900 w-20 h-20 rounded-full flex justify-center items-center">
+          <div className="bg-slate-200 w-20 h-20 rounded-full flex justify-center items-center">
             {/* Icon */}
-            <Image src={Icon05} width={49} height={48} alt="Icon 05" />
+            <Image src={Icon05} width={48} height={48} alt="Icon 05" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-purple-200/35 aspect-square p-2" data-aos="fade-up" data-aos-delay="500">
@@ -180,9 +180,9 @@ export default function UseCasesSlide3() {
             <div className="absolute w-1/2 h-0.5 bg-purple-200/35 left-0" />
           </div>
           {/* Circle */}
-          <div className="bg-gradient-to-t from-slate-800 to-slate-900 w-20 h-20 rounded-full flex justify-center items-center">
+          <div className="bg-slate-200 w-20 h-20 rounded-full flex justify-center items-center">
             {/* Icon */}
-            <Image src={Icon06} width={48} height={44} alt="Icon 06" />
+            <Image src={Icon06} width={48} height={48} alt="Icon 06" />
           </div>
         </div>
       </div>
