@@ -43,7 +43,7 @@ However, this workflow does not fully satisfy my needs, as I don't want to depen
 
 ## Using InstaWP + Gato GraphQL to forward webhook data
 
-The solution jumped right in front of my eyes: I can directly use InstaWP to host a reserved site, and install the Gato GraphQL plugin with the [“All in One Toolbox for WordPress” bundle](/bundles/all-in-one-toolbox-for-wordpress) (that includes the [HTTP Client](/extensions/http-client) and all other required extensions).
+The solution jumped right in front of my eyes: I can directly use InstaWP to host a reserved site, and install the Gato GraphQL plugin with the **“All Extensions” bundle**.
 
 This combination gives me an "API Gateway" instance on the cheap. I can now use this instance to receive the webhook payload, extract the data, and send it over to Mailchimp, coding this logic in a GraphQL query.
 
