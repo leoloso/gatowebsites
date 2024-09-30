@@ -68,7 +68,7 @@ function CustomHits({...props}) {
             <div>
               <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
               <ul role='listbox'>
-                <li role='option'>
+                {/* <li role='option'>
                   <HitLink
                     href='/guides/manage/automating-tasks'
                   >
@@ -85,7 +85,7 @@ function CustomHits({...props}) {
                       <span>Automation</span>
                     </>
                   </HitLink>
-                </li>
+                </li> */}
                 <li role='option'>
                   <HitLink
                     href='/guides/schema/executing-multiple-queries-concurrently'
@@ -140,7 +140,7 @@ function CustomHits({...props}) {
                     </>
                   </HitLink>
                 </li>
-                <li role='option'>
+                {/* <li role='option'>
                   <HitLink
                     href='/guides/schema/namespacing-the-schema'
                   >
@@ -157,7 +157,7 @@ function CustomHits({...props}) {
                       <span>Schema namespacing</span>
                     </>
                   </HitLink>
-                </li>
+                </li> */}
                 <li role='option'>
                   <HitLink
                     href='/guides/use/creating-a-persisted-query'
@@ -197,7 +197,7 @@ function CustomHits({...props}) {
                   >
                     <path d="M6 0a6 6 0 1 0 0 12A6 6 0 0 0 6 0Zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
                   </svg>
-                  <span className="font-medium">Try out Gato GraphQL PRO</span>
+                  <span className="font-medium">Try out Gato GraphQL + all extensions</span>
                 </HitLink>
               </li>
               <li role='option'>
