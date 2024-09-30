@@ -22,6 +22,7 @@ export default function WithLogoThumb({
   leadingTitle,
   leadingTitleClassname="h2 leading-[3rem] text-[2.5rem] mb-4",
   extraLeadingTitleClassname,
+  logoClassname,
 }: {
   targetImageSources: Array<string>,
   paddingClassname?: string,
@@ -40,6 +41,7 @@ export default function WithLogoThumb({
   leadingTitle?: string,
   leadingTitleClassname?: string,
   extraLeadingTitleClassname?: string,
+  logoClassname?: string,
 }) {
   return (
     <Thumb
@@ -63,7 +65,7 @@ export default function WithLogoThumb({
             </>
           )}
         </div>
-      <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && reverseItems && "flex-row-reverse", !isLandscape && reverseItems && "flex-col-reverse", isLandscape && "aspect-video")}>
+      <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && reverseItems && "flex-row-reverse", !isLandscape && reverseItems && "flex-col-reverse", isLandscape && "aspect-video", logoClassname)}>
         { !skipGatoGraphQLLogo && (
           <>
             <div className={clsx(!isLandscape && "mb-2 md:mb-4", isLandscape &&  'mx-2')}>

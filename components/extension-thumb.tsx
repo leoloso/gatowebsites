@@ -15,6 +15,7 @@ export default function ExtensionThumb({
   svgClassname,
   printExtensionTitle=false,
   skipGatoGraphQLLogo=false,
+  logoClassname,
 }: {
   extension: Extension,
   paddingClassname?: string,
@@ -27,6 +28,7 @@ export default function ExtensionThumb({
   svgClassname?: string,
   printExtensionTitle?: boolean,
   skipGatoGraphQLLogo?: boolean,
+  logoClassname?: string,
 }) {
   return (
     <WithLogoThumb
@@ -45,6 +47,7 @@ export default function ExtensionThumb({
       logoImage={logoImage}
       reverseItems={reverseItems}
       svgClassname={svgClassname}
+      logoClassname={logoClassname}
     />
   )
 }
