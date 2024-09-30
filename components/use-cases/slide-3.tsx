@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import LogoMain from "@/public/assets/libraries/wordpress.svg";
+import GraphQLLogo from '@/public/assets/external-logos/graphql-logo.svg'
 import IconGutenberg from '@/public/assets/libraries/gutenberg.svg'
 
 export default function UseCasesSlide3() {
@@ -8,7 +8,7 @@ export default function UseCasesSlide3() {
       {/* Logo animation */}
       <div className="relative flex flex-col items-center p-16">
         {/* Blurred dots */}
-        <svg className="absolute top-1/2 -translate-y-1/2" width="557" height="93" xmlns="http://www.w3.org/2000/svg">
+        {/* <svg className="absolute top-1/2 -translate-y-1/2" width="557" height="93" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="hlogo-blurreddots-a">
               <feGaussianBlur stdDeviation="2" in="SourceGraphic" />
@@ -65,10 +65,10 @@ export default function UseCasesSlide3() {
               <circle fillOpacity=".32" cx="118" cy="50" r="2" />
             </g>
           </g>
-        </svg>
+        </svg> */}
         <div className="relative w-32 h-32 flex justify-center items-center">
           {/* Halo effect */}
-          <svg className="absolute inset-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none h-auto max-w-[200%]" width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+          {/* <svg className="absolute inset-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none h-auto max-w-[200%]" width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="lg-1">
                 <stop stopColor="#0F172A" stopOpacity="0%" offset="0%" />
@@ -82,9 +82,9 @@ export default function UseCasesSlide3() {
               <circle className="pulse pulse-3" cx="400" cy="400" r="200" />
               <rect fill="url(#lg-1)" width="800" height="800" />
             </g>
-          </svg>
+          </svg> */}
           {/* Logo */}
-          <svg className="w-16 h-16" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          {/* <svg className="w-16 h-16" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient x1="0%" y1="32.443%" x2="104.18%" y2="50%" id="a">
                 <stop stopColor="#FFF" stopOpacity=".299" offset="0%" />
@@ -101,7 +101,8 @@ export default function UseCasesSlide3() {
               <path fillOpacity=".64" fill="url(#a)" d="M16 13 0 23l16 9 16-9z" />
               <path fill="url(#b)" d="M16 0 0 9.25l16 9.25 15.999-9.25z" />
             </g>
-          </svg>
+          </svg> */}
+          <Image src={GraphQLLogo} width={150} height={150} alt="GraphQL logo" />
         </div>
       </div>
       {/* Integration boxes */}
@@ -117,7 +118,7 @@ export default function UseCasesSlide3() {
           {/* Circle */}
           <div className="">
             {/* Icon */}
-            <Image src={IconGutenberg} width={48} height={48} alt="Icon 01" />
+            <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="100">
@@ -129,7 +130,7 @@ export default function UseCasesSlide3() {
           {/* Circle */}
           <div className="">
             {/* Icon */}
-            <Image src={IconGutenberg} width={48} height={48} alt="Icon 02" />
+            <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="200">
@@ -141,7 +142,7 @@ export default function UseCasesSlide3() {
           {/* Circle */}
           <div className="">
             {/* Icon */}
-            <Image src={IconGutenberg} width={48} height={48} alt="Icon 03" />
+            <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="300">
@@ -153,7 +154,7 @@ export default function UseCasesSlide3() {
           {/* Circle */}
           <div className="">
             {/* Icon */}
-            <Image src={IconGutenberg} width={48} height={48} alt="Icon 04" />
+            <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="400">
@@ -165,7 +166,7 @@ export default function UseCasesSlide3() {
           {/* Circle */}
           <div className="">
             {/* Icon */}
-            <Image src={IconGutenberg} width={48} height={48} alt="Icon 05" />
+            <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="500">
@@ -177,7 +178,7 @@ export default function UseCasesSlide3() {
           {/* Circle */}
           <div className="">
             {/* Icon */}
-            <Image src={IconGutenberg} width={48} height={48} alt="Icon 06" />
+            <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
         </div>
       </div>
