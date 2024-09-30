@@ -181,7 +181,7 @@ export default function UseCasesSlide2() {
                 src={LogoMain}
                 width={48}
                 height={48}
-                alt="Logo GraphQL"
+                alt="Logo WordPress"
               />
             </div>
           </div>
