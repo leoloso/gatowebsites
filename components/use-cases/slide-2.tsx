@@ -188,7 +188,7 @@ export default function UseCasesSlide2() {
         </div>
 
         <div className="relative flex flex-col">
-          <div className="flex h-full w-full items-center justify-center focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300">
+          <div className="flex h-full w-full items-center justify-center focus-visible:outline-none focus-visible:ring focus-visible:ring-purple-300">
             <div className="absolute -translate-x-[136px]">
               <div className="animate-[breath_7s_ease-in-out_3s_infinite_both]">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg shadow-black/[0.03] before:absolute before:inset-0 before:m-[8.334%] before:rounded-[inherit] before:border before:border-gray-700/5 before:bg-gray-200/60 before:[mask-image:linear-gradient(to_bottom,black,transparent)]">
