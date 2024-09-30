@@ -116,7 +116,7 @@ export default function UseCasesSlide3() {
             <div className="absolute w-1/2 h-0.5 bg-gray-200 right-0" />
           </div>
           {/* Circle */}
-          <div className="">
+          <div className="w-20 h-20 rounded-full flex justify-center items-center">
             {/* Icon */}
             <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
@@ -128,7 +128,7 @@ export default function UseCasesSlide3() {
             <div className="absolute w-full h-0.5 bg-gray-200" />
           </div>
           {/* Circle */}
-          <div className="">
+          <div className="w-20 h-20 rounded-full flex justify-center items-center">
             {/* Icon */}
             <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
@@ -140,7 +140,7 @@ export default function UseCasesSlide3() {
             <div className="absolute w-full h-0.5 bg-gray-200" />
           </div>
           {/* Circle */}
-          <div className="">
+          <div className="w-20 h-20 rounded-full flex justify-center items-center">
             {/* Icon */}
             <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
@@ -152,7 +152,7 @@ export default function UseCasesSlide3() {
             <div className="absolute w-full h-0.5 bg-gray-200" />
           </div>
           {/* Circle */}
-          <div className="">
+          <div className="w-20 h-20 rounded-full flex justify-center items-center">
             {/* Icon */}
             <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
@@ -164,7 +164,7 @@ export default function UseCasesSlide3() {
             <div className="absolute w-full h-0.5 bg-gray-200" />
           </div>
           {/* Circle */}
-          <div className="">
+          <div className="w-20 h-20 rounded-full flex justify-center items-center">
             {/* Icon */}
             <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
@@ -176,7 +176,7 @@ export default function UseCasesSlide3() {
             <div className="absolute w-1/2 h-0.5 bg-gray-200 left-0" />
           </div>
           {/* Circle */}
-          <div className="">
+          <div className="w-20 h-20 rounded-full flex justify-center items-center">
             {/* Icon */}
             <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
