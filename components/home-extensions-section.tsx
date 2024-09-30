@@ -21,7 +21,7 @@ export default function HomeExtensionsSection() {
           <SectionHeader
             leading='Extensions'
             title="Satisfy your requirements"
-            description='Extensions allow adapting the server for specific needs'
+            description='With extensions you can augment the server functionality, and extend the schema'
           />
 
           <ExtensionsSection
