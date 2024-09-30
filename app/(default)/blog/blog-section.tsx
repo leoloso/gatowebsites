@@ -32,8 +32,8 @@ export default function BlogSection() {
 
         {/* Page header */}
         <PageHeader
-          leading="Our blog"
-          title="query { posts { content } }"
+          leading="query { posts { content } }"
+          title="Blog"
           description='Stay up to date on the latest from Gato GraphQL'
         />
         {/* Main content */}
