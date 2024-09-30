@@ -20,7 +20,7 @@ export default function FooterMenu({
 
       {/* 2nd block */}
       <div className={columnClassname}>
-        <h6 className="text-sm text-slate-50 font-medium mb-2">Gato GraphQL</h6>
+        <h6 className="text-sm text-slate-50 font-medium mb-2">Product</h6>
         <ul className="text-sm space-y-2">
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/pricing">Pricing</a>
@@ -39,6 +39,12 @@ export default function FooterMenu({
           </li> */}
           {/* <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/changelog">Changelog</a>
+          </li> */}
+          <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Try out</a>
+          </li>
+          {/* <li>
+            <a className={`text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out ${getShopAnchorClassname()}`} href={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.defaultTier)}>Purchase</a>
           </li> */}
         </ul>
         <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Documentation</h6>
@@ -137,19 +143,7 @@ export default function FooterMenu({
 
       {/* 5th block */}
       <div className={columnClassname}>
-        <h6 className="text-sm text-slate-50 font-medium mb-2">Product</h6>
-        <ul className="text-sm space-y-2">
-          <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Try out</a>
-          </li>
-          {/* <li>
-            <a className={`text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out ${getShopAnchorClassname()}`} href={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.defaultTier)}>Purchase</a>
-          </li> */}
-          <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/refund-policy">Refund policy</a>
-          </li>
-        </ul>
-        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Support</h6>
+        <h6 className="text-sm text-slate-50 font-medium mb-2">Support</h6>
         <ul className="text-sm space-y-2">
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/shop/my-orders">My orders</a>
@@ -159,6 +153,9 @@ export default function FooterMenu({
           </li>
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/support">Support request</a>
+          </li>
+          <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/refund-policy">Refund policy</a>
           </li>
         </ul>
       </div>
