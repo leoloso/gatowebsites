@@ -64,8 +64,8 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">What happens if I don't renew the yearly license?</h4>
-              <p className="text-slate-400">The license provides access to: Support, and downloads of all updates for the purchased product. If you decide to not renew the license, you can still use the plugin, but you won't be able to get support or updates.</p>
+              <h4 className="font-semibold">What happens if I don't renew the license?</h4>
+              <p className="text-slate-400">If you decide to not renew the yearly license, you can keep using the plugin, however you won't be able to request support, or download/install updates.</p>
             </div>
 
             {/* Item */}
