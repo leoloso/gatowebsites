@@ -1,11 +1,6 @@
 import Image from 'next/image'
 import LogoMain from "@/public/assets/libraries/wordpress.svg";
-import Icon01 from '@/public/assets/libraries/gutenberg.svg'
-import Icon02 from '@/public/assets/libraries/gutenberg.svg'
-import Icon03 from '@/public/assets/libraries/gutenberg.svg'
-import Icon04 from '@/public/assets/libraries/gutenberg.svg'
-import Icon05 from '@/public/assets/libraries/gutenberg.svg'
-import Icon06 from '@/public/assets/libraries/gutenberg.svg'
+import IconGutenberg from '@/public/assets/libraries/gutenberg.svg'
 
 export default function UseCasesSlide3() {
   return (
@@ -122,7 +117,7 @@ export default function UseCasesSlide3() {
           {/* Circle */}
           <div className="">
             {/* Icon */}
-            <Image src={Icon01} width={48} height={48} alt="Icon 01" />
+            <Image src={IconGutenberg} width={48} height={48} alt="Icon 01" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="100">
@@ -134,7 +129,7 @@ export default function UseCasesSlide3() {
           {/* Circle */}
           <div className="">
             {/* Icon */}
-            <Image src={Icon02} width={48} height={48} alt="Icon 02" />
+            <Image src={IconGutenberg} width={48} height={48} alt="Icon 02" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="200">
@@ -146,7 +141,7 @@ export default function UseCasesSlide3() {
           {/* Circle */}
           <div className="">
             {/* Icon */}
-            <Image src={Icon03} width={48} height={48} alt="Icon 03" />
+            <Image src={IconGutenberg} width={48} height={48} alt="Icon 03" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="300">
@@ -158,7 +153,7 @@ export default function UseCasesSlide3() {
           {/* Circle */}
           <div className="">
             {/* Icon */}
-            <Image src={Icon04} width={48} height={48} alt="Icon 04" />
+            <Image src={IconGutenberg} width={48} height={48} alt="Icon 04" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="400">
@@ -170,7 +165,7 @@ export default function UseCasesSlide3() {
           {/* Circle */}
           <div className="">
             {/* Icon */}
-            <Image src={Icon05} width={48} height={48} alt="Icon 05" />
+            <Image src={IconGutenberg} width={48} height={48} alt="Icon 05" />
           </div>
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="500">
@@ -182,7 +177,7 @@ export default function UseCasesSlide3() {
           {/* Circle */}
           <div className="">
             {/* Icon */}
-            <Image src={Icon06} width={48} height={48} alt="Icon 06" />
+            <Image src={IconGutenberg} width={48} height={48} alt="Icon 06" />
           </div>
         </div>
       </div>
