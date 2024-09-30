@@ -105,7 +105,7 @@ export default function FeaturesCarousel() {
           {/* Section header */}
           <SectionHeader
             leading='Features'
-            title='Interact with your data'
+            title='Adaptable to your needs'
             description='Gato GraphQL has been designed to empower, speed up, and protect your application'
           />
 
