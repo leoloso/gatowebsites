@@ -1,13 +1,13 @@
 import Image from "next/image";
-import Logo01 from "@/public/assets/libraries/react.svg";
+import LogoMain from "@/public/assets/external-logos/graphql-logo.svg"
 import Logo02 from "@/public/assets/libraries/nextjs.svg";
 import Logo03 from "@/public/assets/libraries/vue.svg";
 import Logo04 from "@/public/assets/libraries/astro.svg";
 import Logo05 from "@/public/assets/libraries/nuxt.svg";
 import Logo06 from "@/public/assets/libraries/svelte.svg";
-import Logo07 from "@/public/assets/libraries/vitepress.svg";
+import Logo07 from "@/public/assets/libraries/react.svg";
 import Logo08 from "@/public/assets/libraries/hugo.svg";
-import Logo09 from "@/public/assets/external-logos/graphql-logo.svg"
+import Logo09 from "@/public/assets/libraries/vitepress.svg";
 
 export default function UseCasesSlide2() {
   return (
@@ -177,7 +177,7 @@ export default function UseCasesSlide2() {
             <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-lg shadow-black/[0.03] before:absolute before:inset-0 before:m-[8.334%] before:rounded-[inherit] before:border before:border-gray-700/5 before:bg-gray-200/60 before:[mask-image:linear-gradient(to_bottom,black,transparent)]">
               <Image
                 className="relative"
-                src={Logo01}
+                src={LogoMain}
                 width={32}
                 height={32}
                 alt="Logo 01"
