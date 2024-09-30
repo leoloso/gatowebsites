@@ -106,7 +106,7 @@ export default function FeaturesCarousel() {
           <SectionHeader
             leading='Features'
             title='Flexibility, versatility, and power'
-            description='Augment, protect, and speed up your application'
+            description='The server offers ways to augment, protect, and speed up your application'
           />
 
           {/* Carousel built with Swiper.js [https://swiperjs.com/] */}

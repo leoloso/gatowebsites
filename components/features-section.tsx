@@ -14,7 +14,7 @@ export default function FeaturesSection() {
           <PageHeader
             leading='Flexibility, versatility, and power'
             title='Features'
-            description='The server offers ways to augment, protect, and speed up your application'
+            description='GraphQL offers ways to augment, protect, and speed up your application'
           />
 
         </div>
