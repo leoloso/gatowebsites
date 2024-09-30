@@ -15,7 +15,7 @@ export default function UseCasesSlide2() {
       {/* Tab panels */}
       <div className="relative flex h-[324px] items-center justify-center">
         {/* Small purple dots */}
-        {/* <div className="absolute -z-10">
+        <div className="absolute -z-10">
           <svg
             className="fill-purple-500"
             xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@ export default function UseCasesSlide2() {
               transform="matrix(-1 0 0 1 164 39)"
             />
           </svg>
-        </div> */}
+        </div>
         {/* Blue glow */}
         <div className="absolute -z-10">
           <svg
