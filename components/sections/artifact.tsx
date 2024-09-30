@@ -8,6 +8,7 @@ import { Artifact } from '@/utils/content/types'
 import { getTestimonials } from '../data/testimonials'
 import WithTitleThumb from '../thumbnails/with-title-thumb'
 import clsx from 'clsx'
+import Cta from '../cta-02'
 
 export default function ArtifactSection({
   artifact,
@@ -132,6 +133,8 @@ export default function ArtifactSection({
 
         </div>
       </div>
+
+      <Cta />
     </section>
   )
 }
