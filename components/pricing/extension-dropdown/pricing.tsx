@@ -34,7 +34,7 @@ export default function ExtensionDropdownPricing({
 
   const allExtensionsBundleDiscount = 100 * (1 - allExtensionsBundlePriceTier1 / aggregatedExtensionsPriceTier1)
 
-  const allExtensionsBundleName = "“All Extensions” Bundle"
+  const allExtensionsBundleName = "“All Extensions” bundle"
 
   const selectedExtension = extensions[selectedExtensionIndex]
 
