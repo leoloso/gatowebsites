@@ -175,12 +175,12 @@ export default function UseCasesSlide2() {
         {/* Logos */}
         <div className={clsx("absolute", false && "before:absolute before:-inset-3 before:animate-[spin_3s_linear_infinite] before:rounded-full before:border before:border-transparent before:[background:conic-gradient(from_180deg,transparent,theme(colors.gray.500))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]")}>
           <div className="animate-[breath_8s_ease-in-out_infinite_both]">
-            <div className="flex h-32 w-32 items-center justify-center rounded-full bg-white shadow-lg shadow-black/[0.03] before:absolute before:inset-0 before:m-[8.334%] before:rounded-[inherit] before:border before:border-gray-700/5 before:bg-gray-200/60 before:[mask-image:linear-gradient(to_bottom,black,transparent)]">
+            <div className="flex h-28 w-28 items-center justify-center rounded-full bg-blue-100 shadow-lg shadow-black/[0.03] before:absolute before:inset-0 before:m-[8.334%] before:rounded-[inherit] before:border before:border-gray-700/5 before:bg-gray-200/60 before:[mask-image:linear-gradient(to_bottom,black,transparent)]">
               <Image
                 className="relative"
                 src={LogoMain}
-                width={60}
-                height={60}
+                width={54}
+                height={54}
                 alt="Logo WordPress"
               />
             </div>
