@@ -72,6 +72,7 @@ export default async function SingleFeature({ params }: {
       artifact={feature}
       sectionURL={`/${AppConfig.paths.features}`/*+`${feature.category === 'Free plugin' ? '' : '#pro'}`*/}
       testimonialIndex={1/*feature.category === 'Free plugin' ? 1 : 4*/}
+      showTestimonial={false}
       defaultArtifactIcon={DefaultArtifactIcon02/*feature.category === 'Free plugin' ? DefaultArtifactIcon02 : DefaultArtifactIcon04*/}
       bgClassname={clsx("bg-gradient-to-tr", "from-slate-900 to-fuchsia-900"/*feature.category === 'Free plugin' && "from-slate-900 to-brown-900", feature.category !== 'Free plugin' && "from-slate-900 to-fuchsia-900"*/)}
       thumbLeading='Feature:'
