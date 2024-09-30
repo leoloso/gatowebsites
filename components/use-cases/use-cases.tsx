@@ -8,7 +8,7 @@ import { Transition } from "@headlessui/react";
 import CarouselImg01 from "@/public/assets/client-logos/grayscale/tppdebate-logo-inverse.png";
 import CarouselImg02 from "@/public/assets/client-logos/grayscale/mesym-logo-inverse.png";
 import CarouselImg03 from "@/public/assets/client-logos/grayscale/pop-logo-horizontal.png";
-import UseCasesSlide1 from './use-cases-slide-1';
+import UseCasesSlide1 from './slide-1';
 
 const tabs = [
   {
