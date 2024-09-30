@@ -88,24 +88,6 @@ function CustomHits({...props}) {
                 </li> */}
                 <li role='option'>
                   <HitLink
-                    href='/guides/schema/executing-multiple-queries-concurrently'
-                  >
-                    <>
-                      <svg
-                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                      </svg>
-                      <span>Multiple Query Execution</span>
-                    </>
-                  </HitLink>
-                </li>
-                <li role='option'>
-                  <HitLink
                     href='/guides/augment/oneof-input-object'
                   >
                     <>
@@ -119,6 +101,24 @@ function CustomHits({...props}) {
                         <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
                       </svg>
                       <span>'oneOf' Input Object</span>
+                    </>
+                  </HitLink>
+                </li>
+                <li role='option'>
+                  <HitLink
+                    href='/guides/schema/executing-multiple-queries-concurrently'
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>Multiple Query Execution</span>
                     </>
                   </HitLink>
                 </li>
