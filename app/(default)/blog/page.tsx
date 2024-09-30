@@ -9,7 +9,7 @@ import AppConfig from '@/app/app.config'
 const pageTitle = 'Blog'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
-  description: 'Stay up to date on the latest from Gato GraphQL and our engineering practices',
+  description: 'Stay up to date on the latest from Gato GraphQL',
   // openGraph: {
   //   title: createOpenGraphPageTitle(pageTitle),
   // },
