@@ -67,9 +67,9 @@ export default function FooterMenu({
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Try out</a>
           </li>
-          <li>
+          {/* <li>
             <a className={`text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out ${getShopAnchorClassname()}`} href={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.defaultTier)}>Purchase</a>
-          </li>
+          </li> */}
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/refund-policy">Refund policy</a>
           </li>
