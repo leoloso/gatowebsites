@@ -99,15 +99,17 @@ export default function UseCases() {
                       appear={true}
                     >
                       <TabPanel static={true}>
-                        { index === 0 && (
-                          <UseCasesSlide1 />
-                        )}
-                        { index === 1 && (
-                          <UseCasesSlide2 />
-                        )}
-                        { index === 2 && (
-                          <UseCasesSlide3 />
-                        )}
+                        <div className='w-[540px] h-[520px]'>
+                          { index === 0 && (
+                            <UseCasesSlide1 />
+                          )}
+                          { index === 1 && (
+                            <UseCasesSlide2 />
+                          )}
+                          { index === 2 && (
+                            <UseCasesSlide3 />
+                          )}
+                        </div>
                       </TabPanel>
                     </Transition>
                   ))}
