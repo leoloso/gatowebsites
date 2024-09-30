@@ -20,7 +20,7 @@ export default function FooterMenu({
 
       {/* 2nd block */}
       <div className={columnClassname}>
-        <h6 className="text-sm text-slate-50 font-medium mb-2">Product</h6>
+        <h6 className="text-sm text-slate-50 font-medium mb-2">Gato GraphQL</h6>
         <ul className="text-sm space-y-2">
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/pricing">Pricing</a>
@@ -37,6 +37,12 @@ export default function FooterMenu({
           {/* <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.demoPosts}`}>Demos</a>
           </li> */}
+          {/* <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/changelog">Changelog</a>
+          </li> */}
+        </ul>
+        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Documentation</h6>
+        <ul className="text-sm space-y-2">
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.guides}`}>Guides</a>
           </li>
@@ -49,9 +55,6 @@ export default function FooterMenu({
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.tutorial}`}>Schema tutorial</a>
           </li>
-          {/* <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/changelog">Changelog</a>
-          </li> */}
         </ul>
         <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">WordPress.org</h6>
         <ul className="text-sm space-y-2">
@@ -62,7 +65,7 @@ export default function FooterMenu({
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDirectory} target="_blank">Gato GraphQL plugin</a>
           </li>
         </ul>
-        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Shop</h6>
+        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Product</h6>
         <ul className="text-sm space-y-2">
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Try out</a>
