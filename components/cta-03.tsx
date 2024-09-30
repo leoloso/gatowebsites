@@ -28,7 +28,6 @@ export default function Cta03() {
             leading='Never miss an update'
             title='Stay connected with us'
             description='Find out about our latest product updates as we continue improving Gato GraphQL.'
-            paddingClassname=''
           >
             <NewsletterForm />
           </SectionHeader>
