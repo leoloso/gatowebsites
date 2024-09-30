@@ -100,13 +100,13 @@ export default function FeaturesCarousel() {
           </svg>
         </div>
 
-        <div className="pt-16 pb-12 md:pt-32 md:pb-20 border-b border-slate-800">
+        <div className="pt-16 pb-12 md:pt-32 md:pb-20 border-t border-slate-800">
 
           {/* Section header */}
           <SectionHeader
             leading='Features'
-            title='The GraphQL server that you expect, and then some more'
-            description='Gato GraphQL delivers features designed to empower and protect your application'
+            title='Interact with your data'
+            description='Gato GraphQL has been designed to empower, speed up, and protect your application'
           />
 
           {/* Carousel built with Swiper.js [https://swiperjs.com/] */}
