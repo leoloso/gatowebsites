@@ -4,7 +4,7 @@ import IconGutenberg from '@/public/assets/libraries/gutenberg.svg'
 
 export default function UseCasesSlide3() {
   return (
-    <div className="py-12 md:py-20 border-t border-slate-800">
+    <div className="">
       {/* Logo animation */}
       <div className="relative flex flex-col items-center p-16">
         {/* Blurred dots */}
@@ -106,12 +106,12 @@ export default function UseCasesSlide3() {
         </div>
       </div>
       {/* Integration boxes */}
-      <div className="relative max-w-xs sm:max-w-md mx-auto md:max-w-6xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 mt-5 md:mt-10">
+      <div className="relative max-w-6xl grid grid-cols-2 grid-cols-6 gap-6 mt-10">
         {/* Top vertical line */}
-        <div className="hidden md:block absolute w-0.5 h-8 -top-16 -mt-2 bg-gray-200 left-1/2 -translate-x-1/2" aria-hidden="true" />
+        <div className="absolute w-0.5 h-8 -top-16 -mt-2 bg-gray-200 left-1/2 -translate-x-1/2" aria-hidden="true" />
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up">
           {/* Inner lines */}
-          <div className="hidden md:block absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
+          <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
             <div className="absolute w-0.5 h-full bg-gray-200 left-1/2 -translate-x-1/2" />
             <div className="absolute w-1/2 h-0.5 bg-gray-200 right-0" />
           </div>
@@ -123,7 +123,7 @@ export default function UseCasesSlide3() {
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="100">
           {/* Inner lines */}
-          <div className="hidden md:block absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
+          <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
             <div className="absolute w-0.5 h-full bg-gray-200 left-1/2 -translate-x-1/2" />
             <div className="absolute w-full h-0.5 bg-gray-200" />
           </div>
@@ -135,7 +135,7 @@ export default function UseCasesSlide3() {
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="200">
           {/* Inner lines */}
-          <div className="hidden md:block absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
+          <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
             <div className="absolute w-0.5 h-full bg-gray-200 left-1/2 -translate-x-1/2" />
             <div className="absolute w-full h-0.5 bg-gray-200" />
           </div>
@@ -147,7 +147,7 @@ export default function UseCasesSlide3() {
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="300">
           {/* Inner lines */}
-          <div className="hidden md:block absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
+          <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
             <div className="absolute w-0.5 h-full bg-gray-200 left-1/2 -translate-x-1/2" />
             <div className="absolute w-full h-0.5 bg-gray-200" />
           </div>
@@ -159,7 +159,7 @@ export default function UseCasesSlide3() {
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="400">
           {/* Inner lines */}
-          <div className="hidden md:block absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
+          <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
             <div className="absolute w-0.5 h-full bg-gray-200 left-1/2 -translate-x-1/2" />
             <div className="absolute w-full h-0.5 bg-gray-200" />
           </div>
@@ -171,7 +171,7 @@ export default function UseCasesSlide3() {
         </div>
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="500">
           {/* Inner lines */}
-          <div className="hidden md:block absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
+          <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
             <div className="absolute w-0.5 h-full bg-gray-200 left-1/2 -translate-x-1/2" />
             <div className="absolute w-1/2 h-0.5 bg-gray-200 left-0" />
           </div>
