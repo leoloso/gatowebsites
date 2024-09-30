@@ -108,12 +108,12 @@ export default function UseCasesSlide3() {
       {/* Integration boxes */}
       <div className="relative max-w-6xl grid grid-cols-6 gap-6 mt-10">
         {/* Top vertical line */}
-        <div className="absolute w-0.5 h-8 -top-16 -mt-2 bg-gray-200 left-1/2 -translate-x-1/2" aria-hidden="true" />
+        <div className="absolute w-0.5 h-8 -top-16 -mt-2 bg-purple-300 left-1/2 -translate-x-1/2" aria-hidden="true" />
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up">
           {/* Inner lines */}
           <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
-            <div className="absolute w-0.5 h-full bg-gray-200 left-1/2 -translate-x-1/2" />
-            <div className="absolute w-1/2 h-0.5 bg-gray-200 right-0" />
+            <div className="absolute w-0.5 h-full bg-purple-300 left-1/2 -translate-x-1/2" />
+            <div className="absolute w-1/2 h-0.5 bg-purple-300 right-0" />
           </div>
           {/* Circle */}
           <div className="w-20 h-20 rounded-full flex justify-center items-center">
@@ -124,8 +124,8 @@ export default function UseCasesSlide3() {
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="100">
           {/* Inner lines */}
           <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
-            <div className="absolute w-0.5 h-full bg-gray-200 left-1/2 -translate-x-1/2" />
-            <div className="absolute w-full h-0.5 bg-gray-200" />
+            <div className="absolute w-0.5 h-full bg-purple-300 left-1/2 -translate-x-1/2" />
+            <div className="absolute w-full h-0.5 bg-purple-300" />
           </div>
           {/* Circle */}
           <div className="w-20 h-20 rounded-full flex justify-center items-center">
@@ -136,8 +136,8 @@ export default function UseCasesSlide3() {
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="200">
           {/* Inner lines */}
           <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
-            <div className="absolute w-0.5 h-full bg-gray-200 left-1/2 -translate-x-1/2" />
-            <div className="absolute w-full h-0.5 bg-gray-200" />
+            <div className="absolute w-0.5 h-full bg-purple-300 left-1/2 -translate-x-1/2" />
+            <div className="absolute w-full h-0.5 bg-purple-300" />
           </div>
           {/* Circle */}
           <div className="w-20 h-20 rounded-full flex justify-center items-center">
@@ -148,8 +148,8 @@ export default function UseCasesSlide3() {
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="300">
           {/* Inner lines */}
           <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
-            <div className="absolute w-0.5 h-full bg-gray-200 left-1/2 -translate-x-1/2" />
-            <div className="absolute w-full h-0.5 bg-gray-200" />
+            <div className="absolute w-0.5 h-full bg-purple-300 left-1/2 -translate-x-1/2" />
+            <div className="absolute w-full h-0.5 bg-purple-300" />
           </div>
           {/* Circle */}
           <div className="w-20 h-20 rounded-full flex justify-center items-center">
@@ -160,8 +160,8 @@ export default function UseCasesSlide3() {
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="400">
           {/* Inner lines */}
           <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
-            <div className="absolute w-0.5 h-full bg-gray-200 left-1/2 -translate-x-1/2" />
-            <div className="absolute w-full h-0.5 bg-gray-200" />
+            <div className="absolute w-0.5 h-full bg-purple-300 left-1/2 -translate-x-1/2" />
+            <div className="absolute w-full h-0.5 bg-purple-300" />
           </div>
           {/* Circle */}
           <div className="w-20 h-20 rounded-full flex justify-center items-center">
@@ -172,8 +172,8 @@ export default function UseCasesSlide3() {
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="500">
           {/* Inner lines */}
           <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
-            <div className="absolute w-0.5 h-full bg-gray-200 left-1/2 -translate-x-1/2" />
-            <div className="absolute w-1/2 h-0.5 bg-gray-200 left-0" />
+            <div className="absolute w-0.5 h-full bg-purple-300 left-1/2 -translate-x-1/2" />
+            <div className="absolute w-1/2 h-0.5 bg-purple-300 left-0" />
           </div>
           {/* Circle */}
           <div className="w-20 h-20 rounded-full flex justify-center items-center">
