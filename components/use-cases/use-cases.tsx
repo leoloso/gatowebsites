@@ -1,6 +1,5 @@
 "use client";
 
-import Image from 'next/image'
 import Particles from '../particles'
 import { useState, Fragment } from "react";
 import { TabGroup, Tab, TabList, TabPanel, TabPanels } from "@headlessui/react";
@@ -108,21 +107,17 @@ export default function UseCases() {
                       unmount={false}
                       appear={true}
                     >
+                      <TabPanel static={true}>
                         { index === 0 && (
-                          <TabPanel static={true}>
-                            <UseCasesSlide1 />
-                          </TabPanel>
+                          <UseCasesSlide1 />
                         )}
                         { index === 1 && (
-                          <TabPanel static={true}>
-                            <UseCasesSlide2 />
-                          </TabPanel>
+                          <UseCasesSlide2 />
                         )}
                         { index === 2 && (
-                          <TabPanel static={true}>
-                            <UseCasesSlide3 />
-                          </TabPanel>
+                          <UseCasesSlide3 />
                         )}
+                      </TabPanel>
                     </Transition>
                   ))}
                 </div>
