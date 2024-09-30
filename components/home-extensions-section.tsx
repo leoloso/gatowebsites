@@ -20,8 +20,8 @@ export default function HomeExtensionsSection() {
           {/* Section header */}
           <SectionHeader
             leading='Extensions'
-            title="Expand your capabilities"
-            description='Provide additional functionality to the GraphQL server via extensions'
+            title="Satisfy your requirements"
+            description='Extensions allow adapting the server for specific needs'
           />
 
           <ExtensionsSection
