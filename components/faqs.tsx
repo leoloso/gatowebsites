@@ -63,10 +63,6 @@ export default function Faqs() {
             </div>
 
             {/* Item */}
-            {/* <div className="space-y-2">
-              <h4 className="font-semibold">Does Gato GraphQL replace the WP REST API?</h4>
-              <p className="text-slate-400">There is no need for that. Both GraphQL and REST accomplish the objective of exposing data. GraphQL, however, can be used for more advanced use cases.</p>
-            </div> */}
             <div className="space-y-2">
               <h4 className="font-semibold">Can I ask for a refund?</h4>
               <p className="text-slate-400">If you purchased a Gato GraphQL product and it does not solve your problem, you have 30 days to request a refund.</p>
