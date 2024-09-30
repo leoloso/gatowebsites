@@ -106,7 +106,7 @@ export default function UseCasesSlide3() {
         </div>
       </div>
       {/* Integration boxes */}
-      <div className="relative max-w-xs sm:max-w-md mx-auto md:max-w-6xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 mt-10 md:mt-20">
+      <div className="relative max-w-xs sm:max-w-md mx-auto md:max-w-6xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 mt-5 md:mt-10">
         {/* Top vertical line */}
         <div className="hidden md:block absolute w-0.5 h-8 -top-16 -mt-2 bg-gray-200 left-1/2 -translate-x-1/2" aria-hidden="true" />
         <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up">
