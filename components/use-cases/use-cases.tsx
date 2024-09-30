@@ -99,7 +99,7 @@ export default function UseCases() {
                       appear={true}
                     >
                       <TabPanel static={true}>
-                        <div className='w-[540px] h-[500px] flex items-center justify-center'>
+                        <div className='w-[540px] min-h-[360px] flex items-center justify-center'>
                           { index === 0 && (
                             <UseCasesSlide1 />
                           )}
