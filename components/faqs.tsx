@@ -46,8 +46,8 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Can Gato GraphQL replace the WP REST API?</h4>
-              <p className="text-slate-400">With the “Persisted Queries” extension, you can publish REST-like endpoints using GraphQL, created and published directly within the wp-admin.</p>
+              <h4 className="font-semibold">Can Gato GraphQL create and publish REST endpoints?</h4>
+              <p className="text-slate-400">With the “Persisted Queries” extension, you can create and publish REST-like endpoints, which are composed using GraphQL, and created and published directly within the wp-admin.</p>
             </div>
 
           </div>
@@ -57,9 +57,9 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">What do I need extensions for?</h4>
+              <h4 className="font-semibold">What are extensions needed for?</h4>
               {/* <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API, such as for building headless sites.</p> */}
-              <p className="text-slate-400">Gato GraphQL extensions are needed for enhanced security for public APIs, adding HTTP caching, sending emails, executing updates in bulk, connecting to external services, and other use cases.</p>
+              <p className="text-slate-400">Extensions are needed for enhanced security for public APIs, adding HTTP caching, executing multiple queries in a single request, connecting to external services, sending emails, and several others.</p>
             </div>
 
             {/* Item */}
@@ -70,8 +70,8 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Is Gato GraphQL plug'n play with WPGraphQL?</h4>
-              <p className="text-slate-400">Because the GraphQL schema or both plugins are different, the GraphQL queries will need to be adapted.</p>
+              <h4 className="font-semibold">Can Gato GraphQL replace WPGraphQL?</h4>
+              <p className="text-slate-400">Yes, it can. However, because the GraphQL schema provided by both plugins are different, the GraphQL queries will need to be adapted.</p>
             </div>
 
           </div>
