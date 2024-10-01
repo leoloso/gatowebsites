@@ -16,44 +16,9 @@ shopURLs:
   tier4: "@todo"
 ---
 
-Multiple features suggested for the GraphQL spec have already been implemented on Gato GraphQL, so we don't need to wait.
+Manipulate the values of fields within the GraphQL query, via a collection of utilities and special directives providing meta-programming capabilities.
 
-## Schema namespacing
-
-If plugins WooCommerce and Easy Digital Downloads both implemented a `Product` type for the GraphQL API, then we could not install both plugins at the same time, since their types would conflict.
-
-**Schema namespacing** enables to avoid conflicts in the schema, by having all type names namespaced. Hence, type `Product` would become `Woo_Product` and `EDD_Product` respectively, and these types could be added to the same schema.
-
-This images shows a namespaced schema, in which types `Event` and `Location` were added the prefix `EM_` to avoid name collision:
-
-![Namespaced schema](/assets/guides/upstream/namespaced-interactive-schema.png "Namespaced schema")
-
-## Global fields
-
-Global fields are fields that are accessible under every single type in the GraphQL schema (while being defined only once).
-
-The GraphQL schema exposes types, such as `Post`, `User` and `Comment`, and the fields available for every type, such as `Post.title`, `User.name` and `Comment.responses`. These fields deal with "data", as they retrieve some specific piece of data from an entity.
-
-Gato GraphQL, in addition, also offers a different kind of fields: those providing "functionality" instead of data.
-
-Some example global fields are:
-
-- `_not`
-- `_if`
-- `_equals`
-- `_isEmpty`
-- `_echo`
-- `_sprintf`
-- `_arrayItem`
-- `_arrayAddItem`
-- `_arrayUnique`
-- many more
-
-Functionality fields are useful for obtaining data that is stored outside of WordPress, and for manipulating the data once it has been retrieved, allowing us to transform a field value in whatever way it is required, and granting us powerful data import/export capabilities.
-
-Functionality fields belong not to a specific type, such as `Post` or `User`, but to all the types in the schema. That's why these are handled in a distinctive way in Gato GraphQL, under the name of "global fields".
-
-## Field to input
+## Field to Input
 
 Obtain the value of a field, manipulate it, and input it into another field, all within the same query.
 
@@ -71,105 +36,249 @@ query {
 }
 ```
 
-## Composable directives
+## Field Value Iteration and Manipulation
 
-Oftentimes, a directive cannot be applied on a field, because it has an input which is different than the field's output. For instance, directive `@strUpperCase` receives a string as input, so it can't be applied on field `User.capabilities`, which returns an array of strings.
+Addition of meta directives to the GraphQL schema, for iterating and manipulating the value elements of array and object fields:
 
-With **composable directives**, a directive can augment another directive to modify its behavior or fill a gap. This removes the need to duplicate fields or directives just to change their input or return types, avoiding bloat.
+1. `@underArrayItem`
+2. `@underJSONObjectProperty`
+3. `@underEachArrayItem`
+4. `@underEachJSONObjectProperty`
+5. `@objectClone`
 
-In this query, directive `@underEachArrayItem` iterates over an array of strings, and applies its nested directive `@strUpperCase` on each of them, fixing the type mismatch:
+`@underArrayItem` makes the nested directive be applied on a specific item from the array.
+
+In the query below, only the first item in the array with the category names is transformed to uppercase:
 
 ```graphql
 query {
-  users {
-    capabilities
-      @underEachArrayItem
+  posts {
+    categoryNames
+      @underArrayItem(index: 0)
         @strUpperCase
   }
 }
 ```
 
-## Mulfi-field directives
+...producing:
 
-Have directives applied to multiple fields (instead of only one), for performance and extended use cases.
-
-When enabled, an argument `affectAdditionalFieldsUnderPos` is added to all directives, where the relative positions of additional fields to apply the directive to can be specified.
-
-For instance, in the following query, directive `@strTranslate` is applied only to field `content`:
-
-```graphql
-query {
-  posts {
-    excerpt
-    content @strTranslate
+```json
+{
+  "data": {
+    "posts": {
+      "categoryNames": [
+        "NEWS",
+        "sports"
+      ]
+    }
   }
 }
 ```
 
-Field `excerpt` can also be applied directive `@strTranslate`, by adding the directive argument `affectAdditionalFieldsUnderPos` with value `[1]` (as `1` is the relative position of field `excerpt` from directive `@strTranslate`):
+## Field on Field
+
+Addition of the `@applyField` directive, to execute a certain field on the resolved field's value.
+
+Applied to some field, the `@applyField` directive allows to execute another field (which is available on the same type and is applied on the same object), and either pass that resulting value along to another directive, or override the value of the field.
+
+In the query below, the `Post.title` field for the object has value `"Hello world!"`. By adding `@applyField` to execute the field `_strUpperCase`:
 
 ```graphql
-query {
-  posts {
-    excerpt
-    content
-      @strTranslate(
-        affectAdditionalFieldsUnderPos: [1]
+{
+  post(by: { id: 1 }) {
+    title
+      @passOnwards(as: "input")
+      @applyField(
+        name: "_strUpperCase"
+        arguments: {
+          text: $input
+        },
+        setResultInResponse: true
       )
   }
 }
 ```
 
-## Field and directive-based versioning
+...the field value is transformed to upper case, producing:
 
-Version fields and directives independently from the schema.
-
-Instead of evolving the whole schema (which requires to modify the name of the modified field or directive), we can:
-
-- Keep different implementations under the same field or directive name
-- Expose the legacy implementation under a tag, using semantic versioning
-- Access a specific version through field/directive argument `versionConstraint`
-
-## Proactive feedback
-
-Use the top-level entry `extensions` to send data concerning deprecations and warnings in the response to the query.
-
-- **Deprecations:** Deprecations are returned in the same query involving deprecated fields, and not only when doing introspection.
-- **Warnings:** Warning are issues which can be considered non-blocking, i.e. they enhance the query but do not break it.
-
-For instance, the following query exports two fields using the same dynamic variable name `"prop"`, which generates a warning:
-
-```graphql
-query {
-  posts {
-    excerpt @export(as: "prop")
-    content @export(as: "prop")
+```json
+{
+  "data": {
+    "post": {
+      "title": "HELLO WORLD!"
+    }
   }
 }
 ```
 
-The response will include section `warnings` (under `extensions`) with a corresponding message:
+## Conditional Field Manipulation
+
+Addition of meta directives `@if` and `@unless` to the GraphQL schema, to conditionally execute a nested directive on the field.
+
+`@if` executes its nested directives only if a condition has value `true`.
+
+In this query, users `"Leo"` and `"Peter"` get their names converted to upper case, since they are in the "special user" array, while `"Martin"` does not:
+
+```graphql
+query {
+  users {
+    name
+      @passOnwards(as: "userName")
+      @applyField(
+        name: "_inArray"
+        arguments: {
+          value: $userName
+          array: ["Leo", "John", "Peter"]
+        }
+        passOnwardsAs: "isSpecialUser"
+      )
+      @if(
+        condition: $isSpecialUser
+      )
+        @strUpperCase
+  }
+}
+```
+
+...producing:
 
 ```json
 {
-  "extensions": {
-    "warnings": [
+  "data": {
+    "users": [
       {
-        "message": "Dynamic variable with name 'props' had already been set, had its value overridden",
-        "locations": [
-          {
-            "line": 4,
-            "column": 25
-          }
-        ]
+        "name": "LEO"
+      },
+      {
+        "name": "Martin"
+      },
+      {
+        "name": "PETER"
       }
     ]
-  },
-  "data": {
-    "posts": {
-      "excerpt": "Hello world!",
-      "Content": "<p>Hello world!</p>"
+  }
+}
+```
+
+## Field Default Value
+
+Addition of the `@default` directive, to set a value to null or empty fields.
+
+In the example below, when a post does not have a featured image, field `featuredImage` returns `null`:
+
+```graphql
+{
+  post(by: { id: 1 }) {
+    featuredImage {
+      id
+      src
     }
+  }
+}
+```
+
+```json
+{
+  "data": {
+    "post": {
+      "featuredImage": null
+    }
+  }
+}
+```
+
+By using `@default`, we can then retrieve some default image:
+
+```graphql
+{
+  post(by: { id: 1 }) {
+    featuredImage @default(value: 55) {
+      id
+      src
+    }
+  }
+}
+```
+
+```json
+{
+  "data": {
+    "post": {
+      "featuredImage": {
+        "id": 55,
+        "src": "http://mysite.com/wp-content/uploads/my-default-image.png"
+      }
+    }
+  }
+}
+```
+
+## Field Response Removal
+
+Addition of the `@remove` directive to the GraphQL schema, which removes the output of a field from the response.
+
+In the query below, we generate the URL to send an HTTP request to, by concatenating the site domain and the REST API endpoint. As the values of these components are not of interest to us, there is no need to print them in the response, and we can `@remove` them:
+
+```graphql
+query {
+  siteURL: optionValue(name: "siteurl")
+    @remove
+
+  requestURL: _sprintf(
+    string: "%s/wp-json/wp/v2/comments/11/?_fields=id,content,date",
+    values: [$__siteURL]
+  )
+    @remove
+
+  _sendJSONObjectItemHTTPRequest(
+    input: {
+      url: $__requestURL
+    }
+  )
+}
+```
+
+...producing this response (notice that fields `siteURL` and `requestURL` have been removed):
+
+```json
+{
+  "data": {
+    "_sendJSONObjectItemHTTPRequest": {
+      "id": 11,
+      "date": "2020-12-12T04:07:36",
+      "content": {
+        "rendered": "<p>Btw, I really like this stuff<\/p>\n"
+      }
+    }
+  }
+}
+```
+
+## Response Error Trigger
+
+Addition of global field `_fail` and directive `@fail` to the GraphQL schema, to explicitly add an entry to the `errors` property in the response.
+
+Field `_fail` adds the error always, and directive `@fail` whenever the condition under argument `condition` is met:
+
+```graphql
+query {
+  _fail(message: "Some error")
+  
+  posts {
+    featuredImage @fail(
+      condition: IS_NULL,
+      message: "The post does not have a featured image"
+    ) {
+      id
+      src
+    }
+  }
+  
+  users {
+    name @fail(
+      condition: IS_EMPTY,
+      message: "The retrieved user does not have a name"
+    )
   }
 }
 ```

@@ -16,9 +16,9 @@ shopURLs:
   tier4: "@todo"
 ---
 
-In a **REST** API, we create multiple endpoints, each returning a pre-defined set of data. In a **GraphQL** API, in contrast, we provide any query to a single endpoint, which returns exactly the requested data.
+In a REST API, we create multiple endpoints, each returning a pre-defined set of data. In a GraphQL API, in contrast, we provide any query to a single endpoint, which returns exactly the requested data.
 
-**Persisted queries** are normal GraphQL queries, however they are stored in the server and accessed under their own URL, thus emulating a REST endpoint. They provide the advantages from these two APIs, while avoiding their disadvantages:
+Persisted queries are normal GraphQL queries, however they are stored in the server and accessed under their own URL, thus emulating a REST endpoint. They provide the advantages from these two APIs, while avoiding their disadvantages:
 
 | Advantages | Disadvantages |
 | --- | --- |
@@ -31,9 +31,31 @@ In a **REST** API, we create multiple endpoints, each returning a pre-defined se
 | ✅ It provides clients to create and publish the query | ~~❌ Publishing endpoints is done via code~~ |
 
 <Image
+  src="/assets/guides/upstream/persisted-query.png"
+  width="1024"
+  height="1850"
+  alt="Persisted query editor"
+  caption="Persisted query editor"
+/>
+
+Once the persisted query is published, we can execute it via its permalink.
+
+The persisted query can be executed via the GraphiQL client, or also directly in the browser (since it is accessed via `GET`), and we will obtain the requested data, in JSON format:
+
+<Image
+  src="/assets/guides/upstream/persisted-query-execution.png"
+  width="1024"
+  height="940"
+  alt="Executing a persisted in the browser"
+  caption="Executing a persisted in the browser"
+/>
+
+The persisted queries can be managed via categories and hierarchies.
+
+<Image
   src="/assets/guides/upstream/persisted-queries-page.png"
   width="1024"
   height="940"
-  alt="Persisted queries with description"
-  caption="Persisted queries with description"
+  alt="Persisted queries page"
+  caption="Persisted queries page"
 />
