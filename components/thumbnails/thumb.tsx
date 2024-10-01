@@ -25,7 +25,7 @@ export default function Thumb({
         {/* <div className="absolute right-0 top-1/2 -translate-y-1/2 mt-8 -z-10" aria-hidden="true">
           <Image src={Illustration} className="max-w-none" alt="Illustration" />
         </div> */}
-        <div className="absolute -top-16 left-1/2 -translate-x-1/2 pointer-events-none -z-10 blur-3xl">
+        <div className="absolute -top-16 left-1/3 -translate-x-1/2 pointer-events-none -z-10 blur-3xl">
           <svg xmlns="http://www.w3.org/2000/svg" width="2106" height="1327">
             <defs>
               <filter id="hi-a" width="133.3%" height="131.3%" x="-16.7%" y="-15.6%" filterUnits="objectBoundingBox">
