@@ -38,6 +38,43 @@ query {
 
 ## Field Value Iteration and Manipulation
 
+Addition of meta directives to the GraphQL schema, for iterating and manipulating the value elements of array and object fields:
+
+1. `@underArrayItem`
+2. `@underJSONObjectProperty`
+3. `@underEachArrayItem`
+4. `@underEachJSONObjectProperty`
+5. `@objectClone`
+
+For instance, `@underArrayItem` makes the nested directive be applied on a specific item from the array.
+
+In the query below, only the first item in the array with the category names is transformed to uppercase:
+
+```graphql
+query {
+  posts {
+    categoryNames
+      @underArrayItem(index: 0)
+        @strUpperCase
+  }
+}
+```
+
+...producing:
+
+```json
+{
+  "data": {
+    "posts": {
+      "categoryNames": [
+        "NEWS",
+        "sports"
+      ]
+    }
+  }
+}
+```
+
 ## Field on Field
 
 ## Conditional Field Manipulation
