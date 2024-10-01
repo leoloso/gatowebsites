@@ -81,7 +81,7 @@ export default function WithLogoThumb({
         <div className={clsx("flex items-center justify-center", !isLandscape &&  "gap-6 sm:gap-12 mt-2 md:mt-4", isLandscape &&  "gap-3 sm:gap-6 flex-col mx-2")}>
           {targetImageSources.map((targetImageSrc, index) => (
             <div key={index}>
-              <Image src={targetImageSrc} alt="Target Image" width={175} height={175} />
+              <Image src={targetImageSrc} alt="Target Image" width={200} height={200} />
             </div>
           ))}
         </div>
