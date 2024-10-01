@@ -20,100 +20,50 @@ shopURLs:
 
 Integration with the **Polylang** plugin (and also **Polylang PRO**).
 
-The GraphQL schema is provided the fields to query multilingual data.
+When Polylang is installed in the WordPress site, fetching data using GraphQL would retrieve results for all languages. For instance, field `posts` might fetch posts in English, Spanish and French.
+
+With the Polylang integration, fields get an extra argument `polylangLanguagesBy:`, to fetch data for some specific language only:
 
 ```graphql
-query {
-  polylangDefaultLanguage {
-    name
-    code
-    locale
-  }
-  polylangLanguages {
-    name
-    code
-    locale
+{
+  posts(
+    filter: {
+      polylangLanguagesBy: {
+        codes: ["en"]
+      }
+    }
+  ) {
+    title
+    polylangLanguage {
+      code
+    }
   }
 
-  posts {
+  pages(
+    filter: {
+      polylangLanguagesBy: {
+        locales: ["en_US"]
+      }
+    }
+  ) {
+    title
     polylangLanguage {
-      name
-      code
       locale
     }
-    polylangTranslationLanguageIDs
-
-    categories {
-      polylangLanguage {
-        name
-        code
-        locale
-      }
-      polylangTranslationLanguageIDs
-    }
-    
-    tags {
-      polylangLanguage {
-        name
-        code
-        locale
-      }
-      polylangTranslationLanguageIDs
-    }
   }
 
-  pages {
+  customPosts(
+    filter: {
+      polylangLanguagesBy: {
+        predefined: DEFAULT
+      }
+      customPostTypes: "some-cpt"
+    }
+  ) {
+    title
     polylangLanguage {
-      name
       code
-      locale
     }
-    polylangTranslationLanguageIDs
-  }
-
-  customPosts(filter: { customPostTypes: ["some-cpt"] }) {
-    ...on GenericCustomPost {
-      polylangIsTranslatable
-      polylangLanguage {
-        name
-        code
-        locale
-      }
-      polylangTranslationLanguageIDs
-      
-      categories(taxonomy: "some-category") {
-        ...on GenericCategory {
-          polylangIsTranslatable
-          polylangLanguage {
-            name
-            code
-            locale
-          }
-          polylangTranslationLanguageIDs
-        }
-      }
-      
-      tags(taxonomy: "some-tag") {
-        ...on GenericTag {
-          polylangIsTranslatable
-          polylangLanguage {
-            name
-            code
-            locale
-          }
-          polylangTranslationLanguageIDs
-        }
-      }
-    }
-  }
-
-  mediaItems {
-    polylangLanguage {
-      name
-      code
-      locale
-    }
-    polylangTranslationLanguageIDs
   }
 }
 ```
