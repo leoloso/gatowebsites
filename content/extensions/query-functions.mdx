@@ -217,4 +217,43 @@ By using `@default`, we can then retrieve some default image:
 
 ## Field Response Removal
 
+Addition of the `@remove` directive to the GraphQL schema, which removes the output of a field from the response.
+
+In the query below, we generate the URL to send an HTTP request to, by concatenating the site domain and the REST API endpoint. As the values of these components are not of interest to us, there is no need to print them in the response, and we can `@remove` them:
+
+```graphql
+query {
+  siteURL: optionValue(name: "siteurl")
+    @remove
+
+  requestURL: _sprintf(
+    string: "%s/wp-json/wp/v2/comments/11/?_fields=id,content,date",
+    values: [$__siteURL]
+  )
+    @remove
+
+  _sendJSONObjectItemHTTPRequest(
+    input: {
+      url: $__requestURL
+    }
+  )
+}
+```
+
+...producing this response (notice that fields `siteURL` and `requestURL` have been removed):
+
+```json
+{
+  "data": {
+    "_sendJSONObjectItemHTTPRequest": {
+      "id": 11,
+      "date": "2020-12-12T04:07:36",
+      "content": {
+        "rendered": "<p>Btw, I really like this stuff<\/p>\n"
+      }
+    }
+  }
+}
+```
+
 ## Response Error Trigger
