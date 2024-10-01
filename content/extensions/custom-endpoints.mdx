@@ -18,23 +18,15 @@ shopURLs:
 
 A GraphQL server normally exposes a single endpoint for retrieving and posting data, providing a unique behavior for all users and applications.
 
-With custom endpoints, we can create and expose a custom GraphQL schema under its own URL, and grant access to this endpoint to a specific target:
+With custom endpoints, we can create and expose custom GraphQL schemas under their own URL, and grant access to each endpoint to some specific target:
 
-- Some client or user
+- A client or user
 - A group of users with more access to features (such as PRO users)
-- One of the several applications, like mobile app or website
+- An application, like mobile app, newsletter, or website
 - 3rd-party APIs
 - Any other
 
-<Image
-  src="/assets/guides/upstream/custom-endpoints-page.png"
-  width="1024"
-  height="940"
-  alt="Custom Endpoints in the admin"
-  caption="Custom Endpoints in the admin"
-/>
-
-Each custom endpoint can expose its own GraphQL schema, customized to some specific configuration, and is accessed via its own GraphiQL and Voyager clients.
+Each custom endpoint is customized to some specific configuration, and is accessed via its own GraphiQL and Voyager clients.
 
 <Image
   src="/assets/guides/upstream/custom-endpoint.png"
@@ -42,4 +34,14 @@ Each custom endpoint can expose its own GraphQL schema, customized to some speci
   height="1178"
   alt="Custom Endpoint in the editor"
   caption="Custom Endpoint in the editor"
+/>
+
+The custom endpoints can be managed via categories and hierarchies.
+
+<Image
+  src="/assets/guides/upstream/custom-endpoints-page.png"
+  width="1024"
+  height="940"
+  alt="Custom Endpoints page"
+  caption="Custom Endpoints page"
 />
