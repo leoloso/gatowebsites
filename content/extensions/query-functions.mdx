@@ -46,7 +46,7 @@ Addition of meta directives to the GraphQL schema, for iterating and manipulatin
 4. `@underEachJSONObjectProperty`
 5. `@objectClone`
 
-For instance, `@underArrayItem` makes the nested directive be applied on a specific item from the array.
+`@underArrayItem` makes the nested directive be applied on a specific item from the array.
 
 In the query below, only the first item in the array with the category names is transformed to uppercase:
 
@@ -114,6 +114,53 @@ In the query below, the `Post.title` field for the object has value `"Hello worl
 ```
 
 ## Conditional Field Manipulation
+
+Addition of meta directives `@if` and `@unless` to the GraphQL schema, to conditionally execute a nested directive on the field.
+
+`@if` executes its nested directives only if a condition has value `true`.
+
+In this query, users `"Leo"` and `"Peter"` get their names converted to upper case, since they are in the "special user" array, while `"Martin"` does not:
+
+```graphql
+query {
+  users {
+    name
+      @passOnwards(as: "userName")
+      @applyField(
+        name: "_inArray"
+        arguments: {
+          value: $userName
+          array: ["Leo", "John", "Peter"]
+        }
+        passOnwardsAs: "isSpecialUser"
+      )
+      @if(
+        condition: $isSpecialUser
+      )
+        @strUpperCase
+  }
+}
+```
+
+...producing:
+
+```json
+{
+  "data": {
+    "users": [
+      {
+        "name": "LEO"
+      },
+      {
+        "name": "Martin"
+      },
+      {
+        "name": "PETER"
+      }
+    ]
+  }
+}
+```
 
 ## Field Default Value
 
