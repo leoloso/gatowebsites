@@ -81,9 +81,7 @@ Addition of the `@applyField` directive, to execute a certain field on the resol
 
 Applied to some field, the `@applyField` directive allows to execute another field (which is available on the same type and is applied on the same object), and either pass that resulting value along to another directive, or override the value of the field.
 
-This allows us to manipulate the field's value in multiple ways, applying some functionality as provided via the **PHP Functions via Schema** extension, and storing the new result in the response.
-
-In the query below, the `Post.title` field for the object has value `"Hello world!"`. By adding `@applyField` to execute the field `_strUpperCase` (and preceding it with `@passOnwards`, which exports the field value under dynamic `$input`):
+In the query below, the `Post.title` field for the object has value `"Hello world!"`. By adding `@applyField` to execute the field `_strUpperCase`:
 
 ```graphql
 {
