@@ -31,6 +31,28 @@ Persisted queries are normal GraphQL queries, however they are stored in the ser
 | ✅ It provides clients to create and publish the query | ~~❌ Publishing endpoints is done via code~~ |
 
 <Image
+  src="/assets/guides/upstream/persisted-query.png"
+  width="1024"
+  height="1850"
+  alt="Persisted query editor"
+  caption="Persisted query editor"
+/>
+
+Once the persisted query is published, we can execute it via its permalink.
+
+The persisted query can be executed via the GraphiQL client, or also directly in the browser (since it is accessed via `GET`), and we will obtain the requested data, in JSON format:
+
+<Image
+  src="/assets/guides/upstream/persisted-query-execution.png"
+  width="1024"
+  height="940"
+  alt="Executing a persisted in the browser"
+  caption="Executing a persisted in the browser"
+/>
+
+The persisted queries can be managed via categories and hierarchies.
+
+<Image
   src="/assets/guides/upstream/persisted-queries-page.png"
   width="1024"
   height="940"
