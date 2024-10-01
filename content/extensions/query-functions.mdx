@@ -257,3 +257,30 @@ query {
 ```
 
 ## Response Error Trigger
+
+Addition of global field `_fail` and directive `@fail` to the GraphQL schema, to explicitly add an entry to the `errors` property in the response.
+
+Field `_fail` adds the error always, and directive `@fail` whenever the condition under argument `condition` is met:
+
+```graphql
+query {
+  _fail(message: "Some error")
+  
+  posts {
+    featuredImage @fail(
+      condition: IS_NULL,
+      message: "The post does not have a featured image"
+    ) {
+      id
+      src
+    }
+  }
+  
+  users {
+    name @fail(
+      condition: IS_EMPTY,
+      message: "The retrieved user does not have a name"
+    )
+  }
+}
+```
