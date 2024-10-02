@@ -549,6 +549,7 @@ export default makeSource({
     'docs/guides/manage/_automating-tasks.mdx',
     // Ignore Internal GraphQL Server guides
     'docs/guides/code/_dry-code-for-blocks-in-javascript-and-php.mdx',
+    'docs/guides/config/_defining-the-schema-configuration-for-the-internal-graphql-server.mdx',
   ],
   mdx: {
     remarkPlugins: [remarkGfm],

@@ -918,6 +918,11 @@
   to = "/"
   status = 302
 
+[[redirects]]
+  from = "/guides/config/defining-the-schema-configuration-for-the-internal-graphql-server"
+  to = "/"
+  status = 302
+
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
 [[redirects]]
