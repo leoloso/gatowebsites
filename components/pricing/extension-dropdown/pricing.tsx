@@ -108,31 +108,17 @@ export default function ExtensionDropdownPricing({
           </div>
         </div>
         <div className="flex items-center justify-center gap-4 text-gray-300">
-          <div className="flex-1">
-            <div className={clsx("cursor-pointer text-center w-full", !selectBundle && "text-blue-300")} aria-hidden="true" onClick={() => setSelectBundle(false)}>
-              Yearly license
-            </div>
-          </div>
-          <label className="cursor-pointer">
-            <div className="flex-none">
-              <input
-                role="switch"
-                type="checkbox"
-                className="peer sr-only"
-                checked={selectBundle}
-                onChange={() => setSelectBundle(!selectBundle)}
-              />
-              <div
-                className="peer relative h-6 w-11 rounded-full bg-blue-800 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-blue-200 after:transition-all peer-checked:bg-cyan-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus-visible:ring-4 peer-focus-visible:ring-cyan-200"
-                aria-hidden="true"
-              />
-            </div>
-          </label>
-          <div className="flex-1 sm:w-96 flex flex-col items-center justify-center cursor-pointer" onClick={() => setSelectBundle(true)}>
+          <div className="flex-1 flex flex-col items-center justify-center cursor-pointer" onClick={() => setSelectBundle(true)}>
             <span className="flex items-center justify-center">
-              <span className={clsx("text-center", selectBundle && "text-cyan-300")} aria-hidden="true">
-                Lifetime deal
-              </span>
+              {/* Start */}
+              <label className="flex items-center">
+                <input type="checkbox" className="form-checkbox" />
+                <span className="text-sm ml-2">
+                  <span className={clsx("text-center", selectBundle && "text-cyan-300")} aria-hidden="true">
+                    Make it a Life Time Deal!
+                  </span>
+                </span>
+              </label>
               <span className="m-1.5">
                 <Tooltip size="lg" bg="dark">
                   <ul className="grow space-y-1 text-sm text-slate-400">
