@@ -115,7 +115,7 @@ export default function ExtensionDropdownPricing({
           <div className="flex items-center justify-center">
             <label className="flex items-center cursor-pointer">
               <input type="checkbox" className="form-checkbox bg-slate-300 cursor-pointer" checked={selectLTD} onChange={() => setLTD(!selectLTD)} />
-              <span className={clsx("ml-2", selectLTD && "text-purple-300")} aria-hidden="true">
+              <span className={clsx("ml-2", selectLTD && "text-purple-400")} aria-hidden="true">
                 Make it a <span className="font-bold">Life Time Deal</span>
               </span>
             </label>
@@ -138,6 +138,7 @@ export default function ExtensionDropdownPricing({
           buttonURL={ getShopURL(selectBundle ? ( selectLTD ? AppConfig.urls.shopProducts.bundles.allExtensions.tier1.ltd : AppConfig.urls.shopProducts.bundles.allExtensions.tier1.yearly ) : ( isProd ? ( selectLTD ? selectedExtension.shopURLs.tier1.ltd : selectedExtension.shopURLs.tier1.yearly ) : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
           extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
+          isLTD={ selectLTD }
         />
         {/* Pricing table 2 */}
         <PricingTier
@@ -149,6 +150,7 @@ export default function ExtensionDropdownPricing({
           buttonURL={ getShopURL(selectBundle ? ( selectLTD ? AppConfig.urls.shopProducts.bundles.allExtensions.tier2.ltd : AppConfig.urls.shopProducts.bundles.allExtensions.tier2.yearly ) : ( isProd ? ( selectLTD ? selectedExtension.shopURLs.tier2.ltd : selectedExtension.shopURLs.tier2.yearly ) : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
           extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
+          isLTD={ selectLTD }
         />
         {/* Pricing table 3 */}
         <PricingTier
@@ -160,6 +162,7 @@ export default function ExtensionDropdownPricing({
           buttonURL={ getShopURL(selectBundle ? ( selectLTD ? AppConfig.urls.shopProducts.bundles.allExtensions.tier3.ltd : AppConfig.urls.shopProducts.bundles.allExtensions.tier3.yearly ) : ( isProd ? ( selectLTD ? selectedExtension.shopURLs.tier3.ltd : selectedExtension.shopURLs.tier3.yearly ) : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
           extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
+          isLTD={ selectLTD }
           highlight={true}
         />
         {/* Pricing table 4 */}
@@ -172,6 +175,7 @@ export default function ExtensionDropdownPricing({
           buttonURL={ getShopURL(selectBundle ? ( selectLTD ? AppConfig.urls.shopProducts.bundles.allExtensions.tier4.ltd : AppConfig.urls.shopProducts.bundles.allExtensions.tier4.yearly ) : ( isProd ? ( selectLTD ? selectedExtension.shopURLs.tier4.ltd : selectedExtension.shopURLs.tier4.yearly ) : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
           extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
+          isLTD={ selectLTD }
         />
       </div>
       <p className="text-sm text-slate-500 pt-4 pb-4">
