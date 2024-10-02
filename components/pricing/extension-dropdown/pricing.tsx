@@ -28,12 +28,12 @@ export default function ExtensionDropdownPricing({
 
   const allExtensionsBundlePriceTier1 = AppConfig.shop.prices.bundles.allExtensions.tier1.yearly
   const aggregatedExtensionsPriceTier1 = AppConfig.shop.prices.extensions._shared.tier1.yearly * extensions.length
+  const allExtensionsBundleDiscount = 100 * (1 - allExtensionsBundlePriceTier1 / aggregatedExtensionsPriceTier1)
 
   const aggregatedExtensionsPriceTier2 = AppConfig.shop.prices.extensions._shared.tier2.yearly * extensions.length
   const aggregatedExtensionsPriceTier3 = AppConfig.shop.prices.extensions._shared.tier3.yearly * extensions.length
   const aggregatedExtensionsPriceTier4 = AppConfig.shop.prices.extensions._shared.tier4.yearly * extensions.length
 
-  const allExtensionsBundleDiscount = 100 * (1 - allExtensionsBundlePriceTier1 / aggregatedExtensionsPriceTier1)
 
   const allExtensionsBundleName = "“All Extensions” bundle"
 
