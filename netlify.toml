@@ -390,17 +390,17 @@
 # Converged features on v6.0
 [[redirects]]
   from = "/features/graphical-clients"
-  to = "/features/interactive-clients-and-interface"
+  to = "/features/interactive-clients-and-user-interface"
   status = 301
 
 [[redirects]]
   from = "/features/graphiql-client"
-  to = "/features/interactive-clients-and-interface"
+  to = "/features/interactive-clients-and-user-interface"
   status = 301
 
 [[redirects]]
   from = "/features/voyager-client"
-  to = "/features/interactive-clients-and-interface"
+  to = "/features/interactive-clients-and-user-interface"
   status = 301
 
 [[redirects]]
