@@ -121,7 +121,7 @@ export default function ExtensionDropdownPricing({
             </label>
             <span className="m-1.5">
               <Tooltip size="lg" bg="dark">
-                Pay only once (at 2.5x the price), and enjoy <span className="font-bold">Support</span> and <span className="font-bold">Product updates</span> forever
+                Pay only once, and enjoy <span className="font-bold">Support</span> and <span className="font-bold">Product updates</span> forever
               </Tooltip>
             </span>
           </div>
