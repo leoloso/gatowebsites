@@ -132,7 +132,7 @@ export default function ExtensionDropdownPricing({
           price={ selectBundle ? AppConfig.shop.prices.bundles.allExtensions.tier1.yearly : AppConfig.shop.prices.extensions._shared.tier1.yearly}
           originalPrice={ selectBundle ? aggregatedExtensionsPriceTier1 : undefined }
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier1}
-          buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier1.yearly : ( isProd ? selectedExtension.shopURLs.tier1 : selectedExtension.shopURLs.dev ) )}
+          buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier1.yearly : ( isProd ? selectedExtension.shopURLs.tier1.yearly : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
           extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
         />
@@ -143,7 +143,7 @@ export default function ExtensionDropdownPricing({
           price={ selectBundle ? AppConfig.shop.prices.bundles.allExtensions.tier2.yearly : AppConfig.shop.prices.extensions._shared.tier2.yearly}
           originalPrice={ selectBundle ? aggregatedExtensionsPriceTier2 : undefined }
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier2}
-          buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier2.yearly : ( isProd ? selectedExtension.shopURLs.tier2 : selectedExtension.shopURLs.dev ) )}
+          buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier2.yearly : ( isProd ? selectedExtension.shopURLs.tier2.yearly : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
           extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
         />
@@ -154,7 +154,7 @@ export default function ExtensionDropdownPricing({
           price={ selectBundle ? AppConfig.shop.prices.bundles.allExtensions.tier3.yearly : AppConfig.shop.prices.extensions._shared.tier3.yearly}
           originalPrice={ selectBundle ? aggregatedExtensionsPriceTier3 : undefined }
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier3}
-          buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier3.yearly : ( isProd ? selectedExtension.shopURLs.tier3 : selectedExtension.shopURLs.dev ) )}
+          buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier3.yearly : ( isProd ? selectedExtension.shopURLs.tier3.yearly : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
           extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
           highlight={true}
@@ -166,7 +166,7 @@ export default function ExtensionDropdownPricing({
           price={ selectBundle ? AppConfig.shop.prices.bundles.allExtensions.tier4.yearly : AppConfig.shop.prices.extensions._shared.tier4.yearly}
           originalPrice={ selectBundle ? aggregatedExtensionsPriceTier4 : undefined }
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier4}
-          buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier4.yearly : ( isProd ? selectedExtension.shopURLs.tier4 : selectedExtension.shopURLs.dev ) )}
+          buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier4.yearly : ( isProd ? selectedExtension.shopURLs.tier4.yearly : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
           extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
         />
