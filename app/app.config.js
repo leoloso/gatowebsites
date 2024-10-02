@@ -64,6 +64,12 @@ module.exports = {
             tier3: 299,
             tier4: 399,
           },
+          ltd: {
+            tier1: 249,
+            tier2: 499,
+            tier3: 749,
+            tier4: 999,
+          },
         },
       },
       extensions: {
