@@ -26,10 +26,7 @@ export default function ExtensionDropdownPricing({
 
   const extensionNames = extensions.map((extension) => extension.title)
 
-  const allExtensionsBundlePriceTier1 = AppConfig.shop.prices.bundles.allExtensions.tier1.yearly
   const aggregatedExtensionsPriceTier1Yearly = AppConfig.shop.prices.extensions._shared.tier1.yearly * extensions.length
-  const allExtensionsBundleDiscount = 100 * (1 - allExtensionsBundlePriceTier1 / aggregatedExtensionsPriceTier1Yearly)
-
   const aggregatedExtensionsPriceTier2Yearly = AppConfig.shop.prices.extensions._shared.tier2.yearly * extensions.length
   const aggregatedExtensionsPriceTier3Yearly = AppConfig.shop.prices.extensions._shared.tier3.yearly * extensions.length
   const aggregatedExtensionsPriceTier4Yearly = AppConfig.shop.prices.extensions._shared.tier4.yearly * extensions.length
@@ -38,6 +35,8 @@ export default function ExtensionDropdownPricing({
   const aggregatedExtensionsPriceTier2LTD = AppConfig.shop.prices.extensions._shared.tier2.ltd * extensions.length
   const aggregatedExtensionsPriceTier3LTD = AppConfig.shop.prices.extensions._shared.tier3.ltd * extensions.length
   const aggregatedExtensionsPriceTier4LTD = AppConfig.shop.prices.extensions._shared.tier4.ltd * extensions.length
+
+  const allExtensionsBundleDiscount = 100 * (1 - AppConfig.shop.prices.bundles.allExtensions.tier1.yearly / aggregatedExtensionsPriceTier1Yearly)
 
   const allExtensionsBundleName = "“All Extensions” bundle"
 
