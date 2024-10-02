@@ -48,7 +48,7 @@ export default function PricingTier({
             <div className="mb-1.5 flex items-baseline font-nacelle text-gray-400 line-through">
               <span className="text-gray-400">$</span>
               <span className="text-xl font-semibold tabular-nums">
-                { originalPrice }
+                { originalPrice.toFixed(2) }
               </span>
             </div>
           )}
