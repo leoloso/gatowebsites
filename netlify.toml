@@ -782,6 +782,146 @@
   to = "/extensions-reference/schema-functions/php-functions-via-schema"
   status = 301
   
+# Ignore Polylang library docs
+[[redirects]]
+  from = "/library/create-missing-translation-categories-for-polylang"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/create-missing-translation-posts-for-polylang"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/create-missing-translation-tags-for-polylang"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/sync-post-featuredimage-for-polylang"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/sync-tags-and-categories-for-polylang"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-categories-for-polylang"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-posts-for-polylang-classic-editor"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-posts-for-polylang-gutenberg"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-tags-for-polylang"
+  to = "/"
+  status = 302
+
+# Ignore MultilingualPress library docs
+[[redirects]]
+  from = "/library/translate-categories-for-multilingualpress"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-posts-for-multilingualpress-classic-editor"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-posts-for-multilingualpress-gutenberg"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-tags-for-multilingualpress"
+  to = "/"
+  status = 302
+  
+# Ignore `@strTranslate` library docs
+[[redirects]]
+  from = "/library/translate-content-from-url"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-pages-for-multilingual-wordpress-site-classic-editor"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-pages-for-multilingual-wordpress-site-gutenberg"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-poedit-file-content"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-post-classic-editor"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-post-gutenberg"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-posts-classic-editor"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-posts-gutenberg"
+  to = "/"
+  status = 302
+
+# Ignore `@strTranslate` tutorial docs
+[[redirects]]
+  from = "/tutorial/bulk-translating-block-content-in-multiple-posts-to-a-different-language"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/tutorial/translating-block-content-in-a-post-to-a-different-language"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/tutorial/translating-content-from-url"
+  to = "/"
+  status = 302
+
+# Ignore Automation guides
+[[redirects]]
+  from = "/guides/manage/automating-tasks"
+  to = "/"
+  status = 302
+
+# Ignore Internal GraphQL Server guides
+[[redirects]]
+  from = "/guides/code/dry-code-for-blocks-in-javascript-and-php"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/guides/config/defining-the-schema-configuration-for-the-internal-graphql-server"
+  to = "/"
+  status = 302
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify

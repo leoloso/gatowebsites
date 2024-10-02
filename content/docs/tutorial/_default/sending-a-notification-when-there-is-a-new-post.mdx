@@ -1,5 +1,5 @@
 ---
-title: "Lesson 16: Sending a notification when there is a new post"
+title: "Lesson 14: Sending a notification when there is a new post"
 description: Examples on automating tasks in the application, such as sending a notification email to the admin when there is a new post.
 order: 1800
 # referencedExtensionSlugs:
@@ -78,7 +78,8 @@ To send the email in plain text:
 
 </Banner>
 
-Let's see next how to trigger the execution of the GraphQL query.
+{/* Ignore Automation guides */}
+{/* Let's see next how to trigger the execution of the GraphQL query.
 
 ## Option 1: Trigger always by reacting to WordPress hooks
 
@@ -169,9 +170,9 @@ This PHP code executes the `SendEmail` operation (GraphQL query defined above), 
 add_action(
   "gatographql__executed_query:CreatePost",
   function (Response $response) use ($query) {
-    /** @var string */
+    // @var string
     $responseContent = $response->getContent();
-    /** @var array<string,mixed> */
+    // @var array<string,mixed>
     $responseJSON = json_decode($responseContent, true);
     $postID = $responseJSON['data']['createPost']['postID'] ?? null;
     if ($postID === null) {
@@ -225,4 +226,4 @@ Depending on our strategy, we can trigger the execution of one or multiple addit
 
 <br/>
 
-</Banner>
+</Banner> */}

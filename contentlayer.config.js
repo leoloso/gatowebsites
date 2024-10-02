@@ -509,12 +509,47 @@ export default makeSource({
     'features/_automation.mdx',
     'features/_integrations-with-3rdparty-plugins.mdx',
     'features/_mutation-return-type.mdx',
+    // Extensions not included in any bundle plugin
     'doc-topics/extensions-reference/_unmapped.mdx',
     'docs/extensions-reference/_unmapped/automation.mdx',
     'docs/extensions-reference/_unmapped/events-manager.mdx',
     'docs/extensions-reference/_unmapped/google-translate.mdx',
     'docs/extensions-reference/_unmapped/internal-graphql-server.mdx',
     'docs/extensions-reference/_unmapped/multilingualpress.mdx',
+    // Ignore Polylang library docs
+    'docs/library/_default/_create-missing-translation-categories-for-polylang.mdx',
+    'docs/library/_default/_create-missing-translation-posts-for-polylang.mdx',
+    'docs/library/_default/_create-missing-translation-tags-for-polylang.mdx',
+    'docs/library/_default/_sync-post-featuredimage-for-polylang.mdx',
+    'docs/library/_default/_sync-tags-and-categories-for-polylang.mdx',
+    'docs/library/_default/_translate-categories-for-polylang.mdx',
+    'docs/library/_default/_translate-posts-for-polylang-classic-editor.mdx',
+    'docs/library/_default/_translate-posts-for-polylang-gutenberg.mdx',
+    'docs/library/_default/_translate-tags-for-polylang.mdx',
+    // Ignore MultilingualPress library docs
+    'docs/library/_default/_translate-categories-for-multilingualpress.mdx',
+    'docs/library/_default/_translate-posts-for-multilingualpress-classic-editor.mdx',
+    'docs/library/_default/_translate-posts-for-multilingualpress-gutenberg.mdx',
+    'docs/library/_default/_translate-tags-for-multilingualpress.mdx',
+    // Ignore `@strTranslate` library docs
+    'docs/library/_default/_translate-content-from-url.mdx',
+    'docs/library/_default/_translate-pages-for-multilingual-wordpress-site-classic-editor.mdx',
+    'docs/library/_default/_translate-pages-for-multilingual-wordpress-site-gutenberg.mdx',
+    'docs/library/_default/_translate-poedit-file-content.mdx',
+    'docs/library/_default/_translate-post-classic-editor.mdx',
+    'docs/library/_default/_translate-post-gutenberg.mdx',
+    'docs/library/_default/_translate-posts-classic-editor.mdx',
+    'docs/library/_default/_translate-posts-gutenberg.mdx',
+    // Ignore `@strTranslate` tutorial docs
+    'docs/tutorial/_default/_bulk-translating-block-content-in-multiple-posts-to-a-different-language.mdx',
+    'docs/tutorial/_default/_translating-block-content-in-a-post-to-a-different-language.mdx',
+    'docs/tutorial/_default/_translating-content-from-url.mdx',
+    // Ignore Automation guides
+    'doc-topics/guides/_manage.mdx',
+    'docs/guides/manage/_automating-tasks.mdx',
+    // Ignore Internal GraphQL Server guides
+    'docs/guides/code/_dry-code-for-blocks-in-javascript-and-php.mdx',
+    'docs/guides/config/_defining-the-schema-configuration-for-the-internal-graphql-server.mdx',
   ],
   mdx: {
     remarkPlugins: [remarkGfm],
