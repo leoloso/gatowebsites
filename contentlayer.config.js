@@ -545,6 +545,7 @@ export default makeSource({
     'docs/tutorial/_default/_translating-block-content-in-a-post-to-a-different-language.mdx',
     'docs/tutorial/_default/_translating-content-from-url.mdx',
     // Ignore Automation guides
+    'doc-topics/guides/_manage.mdx',
     'docs/guides/manage/_automating-tasks.mdx',
   ],
   mdx: {
