@@ -540,6 +540,10 @@ export default makeSource({
     'docs/library/_default/_translate-post-gutenberg.mdx',
     'docs/library/_default/_translate-posts-classic-editor.mdx',
     'docs/library/_default/_translate-posts-gutenberg.mdx',
+    // Ignore `@strTranslate` tutorial docs
+    'docs/tutorial/_default/_bulk-translating-block-content-in-multiple-posts-to-a-different-language.mdx',
+    'docs/tutorial/_default/_translating-block-content-in-a-post-to-a-different-language.mdx',
+    'docs/tutorial/_default/_translating-content-from-url.mdx',
   ],
   mdx: {
     remarkPlugins: [remarkGfm],
