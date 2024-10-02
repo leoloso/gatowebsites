@@ -27,12 +27,12 @@ export default function ExtensionDropdownPricing({
   const extensionNames = extensions.map((extension) => extension.title)
 
   const allExtensionsBundlePriceTier1 = AppConfig.shop.prices.bundles.allExtensions.tier1.yearly
-  const aggregatedExtensionsPriceTier1 = AppConfig.shop.prices.extensions._shared.tier1.yearly * extensions.length
-  const allExtensionsBundleDiscount = 100 * (1 - allExtensionsBundlePriceTier1 / aggregatedExtensionsPriceTier1)
+  const aggregatedExtensionsPriceTier1Yearly = AppConfig.shop.prices.extensions._shared.tier1.yearly * extensions.length
+  const allExtensionsBundleDiscount = 100 * (1 - allExtensionsBundlePriceTier1 / aggregatedExtensionsPriceTier1Yearly)
 
-  const aggregatedExtensionsPriceTier2 = AppConfig.shop.prices.extensions._shared.tier2.yearly * extensions.length
-  const aggregatedExtensionsPriceTier3 = AppConfig.shop.prices.extensions._shared.tier3.yearly * extensions.length
-  const aggregatedExtensionsPriceTier4 = AppConfig.shop.prices.extensions._shared.tier4.yearly * extensions.length
+  const aggregatedExtensionsPriceTier2Yearly = AppConfig.shop.prices.extensions._shared.tier2.yearly * extensions.length
+  const aggregatedExtensionsPriceTier3Yearly = AppConfig.shop.prices.extensions._shared.tier3.yearly * extensions.length
+  const aggregatedExtensionsPriceTier4Yearly = AppConfig.shop.prices.extensions._shared.tier4.yearly * extensions.length
 
   const allExtensionsBundleName = "“All Extensions” bundle"
 
@@ -129,7 +129,7 @@ export default function ExtensionDropdownPricing({
           tierName='Personal'
           extensionName={ selectBundle ? allExtensionsBundleName : selectedExtension.title }
           price={ selectBundle ? AppConfig.shop.prices.bundles.allExtensions.tier1.yearly : AppConfig.shop.prices.extensions._shared.tier1.yearly}
-          originalPrice={ selectBundle ? aggregatedExtensionsPriceTier1 : undefined }
+          originalPrice={ selectBundle ? aggregatedExtensionsPriceTier1Yearly : undefined }
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier1}
           buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier1.yearly : ( isProd ? selectedExtension.shopURLs.tier1.yearly : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
@@ -140,7 +140,7 @@ export default function ExtensionDropdownPricing({
           tierName='Organization'
           extensionName={ selectBundle ? allExtensionsBundleName : selectedExtension.title }
           price={ selectBundle ? AppConfig.shop.prices.bundles.allExtensions.tier2.yearly : AppConfig.shop.prices.extensions._shared.tier2.yearly}
-          originalPrice={ selectBundle ? aggregatedExtensionsPriceTier2 : undefined }
+          originalPrice={ selectBundle ? aggregatedExtensionsPriceTier2Yearly : undefined }
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier2}
           buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier2.yearly : ( isProd ? selectedExtension.shopURLs.tier2.yearly : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
@@ -151,7 +151,7 @@ export default function ExtensionDropdownPricing({
           tierName='Professional'
           extensionName={ selectBundle ? allExtensionsBundleName : selectedExtension.title }
           price={ selectBundle ? AppConfig.shop.prices.bundles.allExtensions.tier3.yearly : AppConfig.shop.prices.extensions._shared.tier3.yearly}
-          originalPrice={ selectBundle ? aggregatedExtensionsPriceTier3 : undefined }
+          originalPrice={ selectBundle ? aggregatedExtensionsPriceTier3Yearly : undefined }
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier3}
           buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier3.yearly : ( isProd ? selectedExtension.shopURLs.tier3.yearly : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
@@ -163,7 +163,7 @@ export default function ExtensionDropdownPricing({
           tierName='Agency'
           extensionName={ selectBundle ? allExtensionsBundleName : selectedExtension.title }
           price={ selectBundle ? AppConfig.shop.prices.bundles.allExtensions.tier4.yearly : AppConfig.shop.prices.extensions._shared.tier4.yearly}
-          originalPrice={ selectBundle ? aggregatedExtensionsPriceTier4 : undefined }
+          originalPrice={ selectBundle ? aggregatedExtensionsPriceTier4Yearly : undefined }
           tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier4}
           buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier4.yearly : ( isProd ? selectedExtension.shopURLs.tier4.yearly : selectedExtension.shopURLs.dev ) )}
           buttonClassname={getShopAnchorClassname()}
