@@ -515,6 +515,7 @@ export default makeSource({
     'docs/extensions-reference/_unmapped/google-translate.mdx',
     'docs/extensions-reference/_unmapped/internal-graphql-server.mdx',
     'docs/extensions-reference/_unmapped/multilingualpress.mdx',
+    // Ignore Polylang library docs
     'docs/library/_default/_create-missing-translation-categories-for-polylang.mdx',
     'docs/library/_default/_create-missing-translation-posts-for-polylang.mdx',
     'docs/library/_default/_create-missing-translation-tags-for-polylang.mdx',
@@ -524,6 +525,7 @@ export default makeSource({
     'docs/library/_default/_translate-posts-for-polylang-classic-editor.mdx',
     'docs/library/_default/_translate-posts-for-polylang-gutenberg.mdx',
     'docs/library/_default/_translate-tags-for-polylang.mdx',
+    // Ignore MultilingualPress library docs
     'docs/library/_default/_translate-categories-for-multilingualpress.mdx',
     'docs/library/_default/_translate-posts-for-multilingualpress-classic-editor.mdx',
     'docs/library/_default/_translate-posts-for-multilingualpress-gutenberg.mdx',
