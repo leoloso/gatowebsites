@@ -6,7 +6,9 @@ order: 0
 
 This query imports all the new posts from a WordPress RSS feed, using the title, content and excerpt of the post.
 
-The new posts are those created in the last 24 hs (configurable via variable). Execute this persisted query with a daily [WP-Cron automation task](/extensions-reference/automation#wp-cron) to automatically import all new posts from the other site.
+The new posts are those created in the last 24 hs (configurable via variable). Execute this persisted query with a daily automation task to automatically import all new posts from the other site.
+
+{/* The new posts are those created in the last 24 hs (configurable via variable). Execute this persisted query with a daily [WP-Cron automation task](/extensions-reference/automation#wp-cron) to automatically import all new posts from the other site. */}
 
 Variable `$url` receives the URL of the WordPress post archive's RSS feed. It usually is the post archive URL + `"/feed/rss/?withoutcomments=1"`. Eg:
 
