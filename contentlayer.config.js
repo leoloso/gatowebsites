@@ -547,6 +547,8 @@ export default makeSource({
     // Ignore Automation guides
     'doc-topics/guides/_manage.mdx',
     'docs/guides/manage/_automating-tasks.mdx',
+    // Ignore Internal GraphQL Server guides
+    'docs/guides/code/_dry-code-for-blocks-in-javascript-and-php.mdx',
   ],
   mdx: {
     remarkPlugins: [remarkGfm],
