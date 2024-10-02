@@ -41,7 +41,7 @@ export default function Faqs() {
             {/* Item */}
             <div className="space-y-2">
               <h4 className="font-semibold">Can I ask for a refund?</h4>
-              <p className="text-slate-400">If you purchased a Gato GraphQL product and it does not solve your problem, you have 30 days to request a refund.</p>
+              <p className="text-slate-400">If you purchased a Gato GraphQL product and it does not solve your problem, you have 30 days to <a className="text-purple-500 font-medium hover:underline" href="/refund-policy">request a refund</a>.</p>
             </div>
 
             {/* Item */}
@@ -52,8 +52,8 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Can Gato GraphQL replace the WP REST API?</h4>
-              <p className="text-slate-400">With the “Persisted Queries” extension, you can use GraphQL to publish endpoints that expose predefined data, as in REST. These endpoints can replace WP REST API endpoints.</p>
+              <h4 className="font-semibold">How does Gato GraphQL compare against the WP REST API?</h4>
+              <p className="text-slate-400">Check out the <a className="text-purple-500 font-medium hover:underline" href="/comparisons/gatographql-vs-wp-rest-api">Gato GraphQL vs WP REST API comparison</a>.</p>
             </div>
 
           </div>
@@ -76,8 +76,8 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Can Gato GraphQL replace WPGraphQL?</h4>
-              <p className="text-slate-400">Yes, it can. However, because the GraphQL schema provided by both plugins are different, the GraphQL queries will need to be adapted.</p>
+              <h4 className="font-semibold">How does Gato GraphQL compare against WPGraphQL?</h4>
+              <p className="text-slate-400">Check out the <a className="text-purple-500 font-medium hover:underline" href="/comparisons/gatographql-vs-wpgraphql">Gato GraphQL vs WPGraphQL comparison</a>.</p>
             </div>
 
           </div>
