@@ -35,7 +35,7 @@ export default function ComparisonTablePricing() {
           price={AppConfig.shop.prices.bundles.allExtensions.tier1.yearly}
           description='5 domains'
           buttonLabel="Purchase"
-          buttonURL={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.tier1)}
+          buttonURL={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.tier1.yearly)}
           buttonClassname={getShopAnchorClassname()}
         />
         {/* Organization price */}
@@ -44,7 +44,7 @@ export default function ComparisonTablePricing() {
           price={AppConfig.shop.prices.bundles.allExtensions.tier2.yearly}
           description='25 domains'
           buttonLabel="Purchase"
-          buttonURL={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.tier2)}
+          buttonURL={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.tier2.yearly)}
           buttonClassname={getShopAnchorClassname()}
         />
         {/* Professional price */}
@@ -53,7 +53,7 @@ export default function ComparisonTablePricing() {
           price={AppConfig.shop.prices.bundles.allExtensions.tier3.yearly}
           description='100 domains'
           buttonLabel="Purchase"
-          buttonURL={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.tier3)}
+          buttonURL={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.tier3.yearly)}
           buttonClassname={getShopAnchorClassname()}
           highlight={true}
         />
@@ -63,7 +63,7 @@ export default function ComparisonTablePricing() {
           price={AppConfig.shop.prices.bundles.allExtensions.tier4.yearly}
           description='500 domains'
           buttonLabel="Purchase"
-          buttonURL={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.tier4)}
+          buttonURL={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.tier4.yearly)}
           buttonClassname={getShopAnchorClassname()}
         />
         

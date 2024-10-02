@@ -27,21 +27,46 @@ module.exports = {
     shopProducts: {
       bundles: {
         allExtensions: {
-          defaultTier: isProd
-            ? "@todo"
-            : allExtensionsDevShopURL,
-          tier1: isProd
-            ? "@todo"
-            : allExtensionsDevShopURL,
-          tier2: isProd
-            ? "@todo"
-            : allExtensionsDevShopURL,
-          tier3: isProd
-            ? "@todo"
-            : allExtensionsDevShopURL,
-          tier4: isProd
-            ? "@todo"
-            : allExtensionsDevShopURL,
+          defaultTier: {
+            yearly: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+            ltd: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+          },
+          tier1: {
+            yearly: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+            ltd: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+          },
+          tier2: {
+            yearly: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+            ltd: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+          },
+          tier3: {
+            yearly: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+            ltd: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+          },
+          tier4: {
+            yearly: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+            ltd: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+          },
         },
       },
     },
