@@ -509,6 +509,7 @@ export default makeSource({
     'features/_automation.mdx',
     'features/_integrations-with-3rdparty-plugins.mdx',
     'features/_mutation-return-type.mdx',
+    // Extensions not included in any bundle plugin
     'doc-topics/extensions-reference/_unmapped.mdx',
     'docs/extensions-reference/_unmapped/automation.mdx',
     'docs/extensions-reference/_unmapped/events-manager.mdx',
