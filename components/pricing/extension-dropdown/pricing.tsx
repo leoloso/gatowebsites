@@ -178,8 +178,17 @@ export default function ExtensionDropdownPricing({
           isLTD={ selectLTD }
         />
       </div>
-      <p className="text-sm text-slate-500 pt-4 pb-4">
-        <strong>The license is for 1 year (renewable every year). Prices are in USD.</strong>
+      <p className="text-sm text-slate-500 pt-4 pb-4 font-bold">
+        { selectLTD && (
+          <span>
+            The license never expires. Prices are in USD.
+          </span>
+        )}
+        { !selectLTD && (
+          <span>
+            The license is for 1 year (renewable every year). Prices are in USD.
+          </span>
+        )}
       </p>
     </div>
   );
