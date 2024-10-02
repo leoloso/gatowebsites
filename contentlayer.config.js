@@ -544,6 +544,8 @@ export default makeSource({
     'docs/tutorial/_default/_bulk-translating-block-content-in-multiple-posts-to-a-different-language.mdx',
     'docs/tutorial/_default/_translating-block-content-in-a-post-to-a-different-language.mdx',
     'docs/tutorial/_default/_translating-content-from-url.mdx',
+    // Ignore Automation guides
+    'docs/guides/manage/_automating-tasks.mdx',
   ],
   mdx: {
     remarkPlugins: [remarkGfm],

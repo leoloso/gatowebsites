@@ -906,6 +906,12 @@
   to = "/"
   status = 302
 
+# Ignore Automation guides
+[[redirects]]
+  from = "/guides/manage/automating-tasks"
+  to = "/"
+  status = 302
+
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
 [[redirects]]
