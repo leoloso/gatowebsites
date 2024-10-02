@@ -21,6 +21,7 @@ export default function ExtensionDropdownPricing({
   const extensions = allExtensions.sort(sortByOrderAndTitle)
 
   const [selectBundle, setSelectBundle] = useState<boolean>(preselectBundle);
+  const [selectLTD, setLTD] = useState<boolean>(false);
   const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(fixedExtension === undefined ? 0 : extensions.findIndex((ext) => ext.slug === fixedExtension.slug))
 
   const extensionNames = extensions.map((extension) => extension.title)
@@ -112,9 +113,9 @@ export default function ExtensionDropdownPricing({
             <span className="flex items-center justify-center">
               {/* Start */}
               <label className="flex items-center cursor-pointer">
-                <input type="checkbox" className="form-checkbox cursor-pointer" onSelect={() => setSelectBundle(true)} />
+                <input type="checkbox" className="form-checkbox cursor-pointer" checked={selectLTD} onChange={() => setLTD(!selectLTD)} />
                 <span className="text ml-2">
-                  <span className={clsx("text-center", selectBundle && "text-purple-300")} aria-hidden="true">
+                  <span className={clsx("text-center", selectLTD && "text-purple-300")} aria-hidden="true">
                     Make it a <span className="font-bold">Life Time Deal</span>
                   </span>
                 </span>
