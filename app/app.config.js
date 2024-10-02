@@ -27,21 +27,46 @@ module.exports = {
     shopProducts: {
       bundles: {
         allExtensions: {
-          defaultTier: isProd
-            ? "@todo"
-            : allExtensionsDevShopURL,
-          tier1: isProd
-            ? "@todo"
-            : allExtensionsDevShopURL,
-          tier2: isProd
-            ? "@todo"
-            : allExtensionsDevShopURL,
-          tier3: isProd
-            ? "@todo"
-            : allExtensionsDevShopURL,
-          tier4: isProd
-            ? "@todo"
-            : allExtensionsDevShopURL,
+          defaultTier: {
+            yearly: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+            ltd: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+          },
+          tier1: {
+            yearly: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+            ltd: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+          },
+          tier2: {
+            yearly: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+            ltd: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+          },
+          tier3: {
+            yearly: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+            ltd: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+          },
+          tier4: {
+            yearly: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+            ltd: isProd
+              ? "@todo"
+              : allExtensionsDevShopURL,
+          },
         },
       },
     },
@@ -58,18 +83,42 @@ module.exports = {
     prices: {
       bundles: {
         allExtensions: {
-          tier1: 99,
-          tier2: 199,
-          tier3: 299,
-          tier4: 399,
-        }
+          tier1: {
+            yearly: 99,
+            ltd: 249,
+          },
+          tier2: {
+            yearly: 199,
+            ltd: 499,
+          },
+          tier3: {
+            yearly: 299,
+            ltd: 749,
+          },
+          tier4: {
+            yearly: 399,
+            ltd: 999,
+          },
+        },
       },
       extensions: {
         _shared: {
-          tier1: 24.99,
-          tier2: 49.99,
-          tier3: 74.99,
-          tier4: 99.99,
+          tier1: {
+            yearly: 24.99,
+            ltd: 62.49,
+          },
+          tier2: {
+            yearly: 49.99,
+            ltd: 124.99,
+          },
+          tier3: {
+            yearly: 74.99,
+            ltd: 187.49,
+          },
+          tier4: {
+            yearly: 99.99,
+            ltd: 249.99,
+          },
         },
       },
     }

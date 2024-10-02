@@ -21,18 +21,22 @@ export default function ExtensionDropdownPricing({
   const extensions = allExtensions.sort(sortByOrderAndTitle)
 
   const [selectBundle, setSelectBundle] = useState<boolean>(preselectBundle);
+  const [selectLTD, setLTD] = useState<boolean>(false);
   const [selectedExtensionIndex, setSelectedExtensionIndex] = useState<number>(fixedExtension === undefined ? 0 : extensions.findIndex((ext) => ext.slug === fixedExtension.slug))
 
   const extensionNames = extensions.map((extension) => extension.title)
 
-  const allExtensionsBundlePriceTier1 = AppConfig.shop.prices.bundles.allExtensions.tier1
-  const aggregatedExtensionsPriceTier1 = AppConfig.shop.prices.extensions._shared.tier1 * extensions.length
+  const aggregatedExtensionsPriceTier1Yearly = AppConfig.shop.prices.extensions._shared.tier1.yearly * extensions.length
+  const aggregatedExtensionsPriceTier2Yearly = AppConfig.shop.prices.extensions._shared.tier2.yearly * extensions.length
+  const aggregatedExtensionsPriceTier3Yearly = AppConfig.shop.prices.extensions._shared.tier3.yearly * extensions.length
+  const aggregatedExtensionsPriceTier4Yearly = AppConfig.shop.prices.extensions._shared.tier4.yearly * extensions.length
 
-  const aggregatedExtensionsPriceTier2 = AppConfig.shop.prices.extensions._shared.tier2 * extensions.length
-  const aggregatedExtensionsPriceTier3 = AppConfig.shop.prices.extensions._shared.tier3 * extensions.length
-  const aggregatedExtensionsPriceTier4 = AppConfig.shop.prices.extensions._shared.tier4 * extensions.length
+  const aggregatedExtensionsPriceTier1LTD = AppConfig.shop.prices.extensions._shared.tier1.ltd * extensions.length
+  const aggregatedExtensionsPriceTier2LTD = AppConfig.shop.prices.extensions._shared.tier2.ltd * extensions.length
+  const aggregatedExtensionsPriceTier3LTD = AppConfig.shop.prices.extensions._shared.tier3.ltd * extensions.length
+  const aggregatedExtensionsPriceTier4LTD = AppConfig.shop.prices.extensions._shared.tier4.ltd * extensions.length
 
-  const allExtensionsBundleDiscount = 100 * (1 - allExtensionsBundlePriceTier1 / aggregatedExtensionsPriceTier1)
+  const allExtensionsBundleDiscount = 100 * (1 - AppConfig.shop.prices.bundles.allExtensions.tier1.yearly / aggregatedExtensionsPriceTier1Yearly)
 
   const allExtensionsBundleName = "“All Extensions” bundle"
 
@@ -42,7 +46,7 @@ export default function ExtensionDropdownPricing({
 
   return (
     <div className="relative">
-      <div className="mb-16 flex items-center justify-center gap-2">
+      <div className="mb-16 flex flex-col items-center justify-center gap-8">
         {/* Pricing toggle */}
         <div className="flex items-center justify-center gap-4 text-gray-300">
           <div className="flex-1">
@@ -55,7 +59,7 @@ export default function ExtensionDropdownPricing({
                 <FullWidthDropdown
                   values={extensionNames}
                   state={[selectedExtensionIndex, setSelectedExtensionIndex]}
-                  isDisabled={selectBundle}
+                  isDisabled={ selectBundle}
                 />
               </div>
             )}
@@ -71,7 +75,7 @@ export default function ExtensionDropdownPricing({
                 role="switch"
                 type="checkbox"
                 className="peer sr-only"
-                checked={selectBundle}
+                checked={ selectBundle}
                 onChange={() => setSelectBundle(!selectBundle)}
               />
               <div
@@ -107,56 +111,84 @@ export default function ExtensionDropdownPricing({
             <span className="m-1.5"><span className="text font-medium text-red-100 px-1.5 bg-red-500/90 rounded-full"><span className="font-bold">{ Math.floor(allExtensionsBundleDiscount) }%</span> Off!</span></span>            
           </div>
         </div>
+        <div className="flex items-center justify-center gap-4 text-gray-300">
+          <div className="flex items-center justify-center">
+            <label className="flex items-center cursor-pointer">
+              <input type="checkbox" className="form-checkbox bg-slate-300 cursor-pointer" checked={selectLTD} onChange={() => setLTD(!selectLTD)} />
+              <span className={clsx("ml-2", selectLTD && "text-purple-400")} aria-hidden="true">
+                Upgrade to <span className="font-bold">Life Time Deal</span>
+              </span>
+            </label>
+            <span className="m-1.5">
+              <Tooltip size="lg" bg="dark">
+                Pay only once (at 2.5x the price), and enjoy <span className="font-bold">Support</span> and <span className="font-bold">Product updates</span> forever
+              </Tooltip>
+            </span>
+          </div>
+        </div>
       </div>
       <div className="mx-auto grid max-w-xs items-start gap-8 md:max-w-2xl md:grid-cols-2 xl:max-w-none xl:grid-cols-4 xl:gap-6">
         {/* Pricing table 1 */}
         <PricingTier
           tierName='Personal'
           extensionName={ selectBundle ? allExtensionsBundleName : selectedExtension.title }
-          price={ selectBundle ? AppConfig.shop.prices.bundles.allExtensions.tier1 : AppConfig.shop.prices.extensions._shared.tier1}
-          originalPrice={ selectBundle ? aggregatedExtensionsPriceTier1 : undefined }
-          tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier1}
-          buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier1 : ( isProd ? selectedExtension.shopURLs.tier1 : selectedExtension.shopURLs.dev ) )}
-          buttonClassname={getShopAnchorClassname()}
-          extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
+          price={ selectBundle ? ( selectLTD ? AppConfig.shop.prices.bundles.allExtensions.tier1.ltd : AppConfig.shop.prices.bundles.allExtensions.tier1.yearly ) : ( selectLTD ? AppConfig.shop.prices.extensions._shared.tier1.ltd : AppConfig.shop.prices.extensions._shared.tier1.yearly )}
+          originalPrice={ selectBundle ? ( selectLTD ? aggregatedExtensionsPriceTier1LTD : aggregatedExtensionsPriceTier1Yearly ) : undefined }
+          tierDomainNumber={ AppConfig.shop.licenseDomainNumber.tier1 }
+          buttonURL={ getShopURL(selectBundle ? ( selectLTD ? AppConfig.urls.shopProducts.bundles.allExtensions.tier1.ltd : AppConfig.urls.shopProducts.bundles.allExtensions.tier1.yearly ) : ( isProd ? ( selectLTD ? selectedExtension.shopURLs.tier1.ltd : selectedExtension.shopURLs.tier1.yearly ) : selectedExtension.shopURLs.dev ) )}
+          buttonClassname={ getShopAnchorClassname() }
+          extensionNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
+          isLTD={ selectLTD }
         />
         {/* Pricing table 2 */}
         <PricingTier
           tierName='Organization'
           extensionName={ selectBundle ? allExtensionsBundleName : selectedExtension.title }
-          price={ selectBundle ? AppConfig.shop.prices.bundles.allExtensions.tier2 : AppConfig.shop.prices.extensions._shared.tier2}
-          originalPrice={ selectBundle ? aggregatedExtensionsPriceTier2 : undefined }
-          tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier2}
-          buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier2 : ( isProd ? selectedExtension.shopURLs.tier2 : selectedExtension.shopURLs.dev ) )}
-          buttonClassname={getShopAnchorClassname()}
-          extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
+          price={ selectBundle ? ( selectLTD ? AppConfig.shop.prices.bundles.allExtensions.tier2.ltd : AppConfig.shop.prices.bundles.allExtensions.tier2.yearly ) : ( selectLTD ? AppConfig.shop.prices.extensions._shared.tier2.ltd : AppConfig.shop.prices.extensions._shared.tier2.yearly )}
+          originalPrice={ selectBundle ? ( selectLTD ? aggregatedExtensionsPriceTier2LTD : aggregatedExtensionsPriceTier2Yearly ) : undefined }
+          tierDomainNumber={ AppConfig.shop.licenseDomainNumber.tier2 }
+          buttonURL={ getShopURL(selectBundle ? ( selectLTD ? AppConfig.urls.shopProducts.bundles.allExtensions.tier2.ltd : AppConfig.urls.shopProducts.bundles.allExtensions.tier2.yearly ) : ( isProd ? ( selectLTD ? selectedExtension.shopURLs.tier2.ltd : selectedExtension.shopURLs.tier2.yearly ) : selectedExtension.shopURLs.dev ) )}
+          buttonClassname={ getShopAnchorClassname() }
+          extensionNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
+          isLTD={ selectLTD }
         />
         {/* Pricing table 3 */}
         <PricingTier
           tierName='Professional'
           extensionName={ selectBundle ? allExtensionsBundleName : selectedExtension.title }
-          price={ selectBundle ? AppConfig.shop.prices.bundles.allExtensions.tier3 : AppConfig.shop.prices.extensions._shared.tier3}
-          originalPrice={ selectBundle ? aggregatedExtensionsPriceTier3 : undefined }
-          tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier3}
-          buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier3 : ( isProd ? selectedExtension.shopURLs.tier3 : selectedExtension.shopURLs.dev ) )}
-          buttonClassname={getShopAnchorClassname()}
-          extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
+          price={ selectBundle ? ( selectLTD ? AppConfig.shop.prices.bundles.allExtensions.tier3.ltd : AppConfig.shop.prices.bundles.allExtensions.tier3.yearly ) : ( selectLTD ? AppConfig.shop.prices.extensions._shared.tier3.ltd : AppConfig.shop.prices.extensions._shared.tier3.yearly )}
+          originalPrice={ selectBundle ? ( selectLTD ? aggregatedExtensionsPriceTier3LTD : aggregatedExtensionsPriceTier3Yearly ) : undefined }
+          tierDomainNumber={ AppConfig.shop.licenseDomainNumber.tier3 }
+          buttonURL={ getShopURL(selectBundle ? ( selectLTD ? AppConfig.urls.shopProducts.bundles.allExtensions.tier3.ltd : AppConfig.urls.shopProducts.bundles.allExtensions.tier3.yearly ) : ( isProd ? ( selectLTD ? selectedExtension.shopURLs.tier3.ltd : selectedExtension.shopURLs.tier3.yearly ) : selectedExtension.shopURLs.dev ) )}
+          buttonClassname={ getShopAnchorClassname() }
+          extensionNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
+          isLTD={ selectLTD }
           highlight={true}
         />
         {/* Pricing table 4 */}
         <PricingTier
           tierName='Agency'
           extensionName={ selectBundle ? allExtensionsBundleName : selectedExtension.title }
-          price={ selectBundle ? AppConfig.shop.prices.bundles.allExtensions.tier4 : AppConfig.shop.prices.extensions._shared.tier4}
-          originalPrice={ selectBundle ? aggregatedExtensionsPriceTier4 : undefined }
-          tierDomainNumber={AppConfig.shop.licenseDomainNumber.tier4}
-          buttonURL={ getShopURL(selectBundle ? AppConfig.urls.shopProducts.bundles.allExtensions.tier4 : ( isProd ? selectedExtension.shopURLs.tier4 : selectedExtension.shopURLs.dev ) )}
-          buttonClassname={getShopAnchorClassname()}
-          extensionNameClassname={selectBundle ? "text-cyan-300" : "text-blue-300" }
+          price={ selectBundle ? ( selectLTD ? AppConfig.shop.prices.bundles.allExtensions.tier4.ltd : AppConfig.shop.prices.bundles.allExtensions.tier4.yearly ) : ( selectLTD ? AppConfig.shop.prices.extensions._shared.tier4.ltd : AppConfig.shop.prices.extensions._shared.tier4.yearly )}
+          originalPrice={ selectBundle ? ( selectLTD ? aggregatedExtensionsPriceTier4LTD : aggregatedExtensionsPriceTier4Yearly ) : undefined }
+          tierDomainNumber={ AppConfig.shop.licenseDomainNumber.tier4 }
+          buttonURL={ getShopURL(selectBundle ? ( selectLTD ? AppConfig.urls.shopProducts.bundles.allExtensions.tier4.ltd : AppConfig.urls.shopProducts.bundles.allExtensions.tier4.yearly ) : ( isProd ? ( selectLTD ? selectedExtension.shopURLs.tier4.ltd : selectedExtension.shopURLs.tier4.yearly ) : selectedExtension.shopURLs.dev ) )}
+          buttonClassname={ getShopAnchorClassname() }
+          extensionNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
+          isLTD={ selectLTD }
         />
       </div>
-      <p className="text-sm text-slate-500 pt-4 pb-4">
-        <strong>The license is for 1 year (renewable every year). Prices are in USD.</strong>
+      <p className="text-sm text-slate-500 pt-4 pb-4 font-bold text-center">
+        { selectLTD && (
+          <span>
+            The license never expires. Prices are in USD.
+          </span>
+        )}
+        { !selectLTD && (
+          <span>
+            The license is for 1 year (renewable every year). Prices are in USD.
+          </span>
+        )}
       </p>
     </div>
   );

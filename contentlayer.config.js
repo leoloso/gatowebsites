@@ -393,22 +393,41 @@ const ShopURLs = defineNestedType(() => ({
       required: true
     },
     defaultTier: {
-      type: 'string',
+      type: 'nested',
+      of: ShopURLByLicense,
       required: true
     }, 
     tier1: {
-      type: 'string',
+      type: 'nested',
+      of: ShopURLByLicense,
       required: true
     }, 
     tier2: {
-      type: 'string',
+      type: 'nested',
+      of: ShopURLByLicense,
       required: true
     }, 
     tier3: {
-      type: 'string',
+      type: 'nested',
+      of: ShopURLByLicense,
       required: true
     }, 
     tier4: {
+      type: 'nested',
+      of: ShopURLByLicense,
+      required: true
+    }, 
+  },
+}))
+
+const ShopURLByLicense = defineNestedType(() => ({
+  name: 'ShopURLByLicense',
+  fields: {
+    yearly: {
+      type: 'string',
+      required: true
+    },
+    ltd: {
       type: 'string',
       required: true
     }, 
