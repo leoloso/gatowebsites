@@ -523,7 +523,11 @@ export default makeSource({
     'docs/library/_default/_translate-categories-for-polylang.mdx',
     'docs/library/_default/_translate-posts-for-polylang-classic-editor.mdx',
     'docs/library/_default/_translate-posts-for-polylang-gutenberg.mdx',
-    'docs/library/_default/_translate-tags-for-polylang.mdx    ',
+    'docs/library/_default/_translate-tags-for-polylang.mdx',
+    'docs/library/_default/_translate-categories-for-multilingualpress.mdx',
+    'docs/library/_default/_translate-posts-for-multilingualpress-classic-editor.mdx',
+    'docs/library/_default/_translate-posts-for-multilingualpress-gutenberg.mdx',
+    'docs/library/_default/_translate-tags-for-multilingualpress.mdx',
   ],
   mdx: {
     remarkPlugins: [remarkGfm],
