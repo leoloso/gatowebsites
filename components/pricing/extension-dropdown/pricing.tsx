@@ -114,10 +114,8 @@ export default function ExtensionDropdownPricing({
               {/* Start */}
               <label className="flex items-center cursor-pointer">
                 <input type="checkbox" className="form-checkbox cursor-pointer" checked={selectLTD} onChange={() => setLTD(!selectLTD)} />
-                <span className="text ml-2">
-                  <span className={clsx("text-center", selectLTD && "text-purple-300")} aria-hidden="true">
-                    Make it a <span className="font-bold">Life Time Deal</span>
-                  </span>
+                <span className={clsx("ml-2", selectLTD && "text-purple-300")} aria-hidden="true">
+                  Make it a <span className="font-bold">Life Time Deal</span>
                 </span>
               </label>
               <span className="m-1.5">
