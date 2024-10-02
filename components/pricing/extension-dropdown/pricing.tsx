@@ -108,11 +108,11 @@ export default function ExtensionDropdownPricing({
           </div>
         </div>
         <div className="flex items-center justify-center gap-4 text-gray-300">
-          <div className="flex-1 flex flex-col items-center justify-center" onClick={() => setSelectBundle(true)}>
+          <div className="flex-1 flex flex-col items-center justify-center">
             <span className="flex items-center justify-center">
               {/* Start */}
               <label className="flex items-center cursor-pointer">
-                <input type="checkbox" className="form-checkbox cursor-pointer" />
+                <input type="checkbox" className="form-checkbox cursor-pointer" onSelect={() => setSelectBundle(true)} />
                 <span className="text ml-2">
                   <span className={clsx("text-center", selectBundle && "text-purple-300")} aria-hidden="true">
                     Make it a Life Time Deal!
