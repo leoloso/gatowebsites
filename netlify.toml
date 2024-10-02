@@ -890,6 +890,21 @@
   to = "/"
   status = 302
 
+# Ignore `@strTranslate` tutorial docs
+[[redirects]]
+  from = "/tutorial/bulk-translating-block-content-in-multiple-posts-to-a-different-language"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/tutorial/translating-block-content-in-a-post-to-a-different-language"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/tutorial/translating-content-from-url"
+  to = "/"
+  status = 302
 
 # Proxying Plausible through Netlify
 # @see https://plausible.io/docs/proxy/guides/netlify
