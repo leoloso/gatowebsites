@@ -66,10 +66,12 @@ module.exports = {
       },
       extensions: {
         _shared: {
-          tier1: 24.99,
-          tier2: 49.99,
-          tier3: 74.99,
-          tier4: 99.99,
+          yearly: {
+            tier1: 24.99,
+            tier2: 49.99,
+            tier3: 74.99,
+            tier4: 99.99,
+          },
         },
       },
     }
