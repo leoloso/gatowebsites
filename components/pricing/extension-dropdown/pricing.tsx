@@ -115,7 +115,7 @@ export default function ExtensionDropdownPricing({
                 <input type="checkbox" className="form-checkbox cursor-pointer" onSelect={() => setSelectBundle(true)} />
                 <span className="text ml-2">
                   <span className={clsx("text-center", selectBundle && "text-purple-300")} aria-hidden="true">
-                    Make it a Life Time Deal!
+                    Make it a <span className="font-bold">Life Time Deal</span>
                   </span>
                 </span>
               </label>
