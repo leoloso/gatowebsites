@@ -118,20 +118,7 @@ export default function ExtensionDropdownPricing({
             </label>
             <span className="m-1.5">
               <Tooltip size="lg" bg="dark">
-                <ul className="grow space-y-1 text-sm text-slate-400">
-                  { extensionNames.map((extensionName, index) => (
-                    <li className={clsx("flex items-center", fixedExtension !== undefined && fixedExtension.title === extensionName && "font-bold text-purple-400")} key={ index }>
-                      <svg
-                        className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
-                      </svg>
-                      <span>{ extensionName }</span>
-                    </li>
-                  ))}
-                </ul>
+                Pay only once, and enjoy <span className="font-bold">Support</span> and <span className="font-bold">Product updates</span> forever
               </Tooltip>
             </span>
           </div>
