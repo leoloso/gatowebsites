@@ -14,6 +14,7 @@ interface ModalVideoProps {
   videoHeight: number,
   children?: React.ReactNode,
   title?: string
+  printExtensionTitle?: boolean,
 }
 
 export default function ExtensionThumbModalVideo({
@@ -23,6 +24,7 @@ export default function ExtensionThumbModalVideo({
   videoHeight,
   children,
   title,
+  printExtensionTitle,
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
@@ -30,16 +32,18 @@ export default function ExtensionThumbModalVideo({
     <>
 
       {/* Video thumbnail */}
-      <div className="relative flex justify-center items-center my-2 group hover:cursor-pointer" onClick={() => { setModalOpen(true) }}>
-        <ExtensionThumb
-          extension={extension}
-          isLandscape={true}
-          printExtensionTitle={true}
-          // bgClassname="bg-purple-900 group-hover:bg-blue-900 transition duration-700 ease-out"
-        />
-        <ModalVideoTitle title={title} extraClassname='z-30' />
-        <ModalVideoButton title={title} extraClassname='z-30 group-hover:scale-110 transition duration-700 ease-out' />
-        {children}
+      <div className=''>
+        <div className="w-full h-full aspect-video object-cover relative flex justify-center items-center my-2 group hover:cursor-pointer" onClick={() => { setModalOpen(true) }}>
+          <ExtensionThumb
+            extension={extension}
+            isLandscape={true}
+            printExtensionTitle={printExtensionTitle}
+            // bgClassname="bg-purple-900 group-hover:bg-blue-900 transition duration-700 ease-out"
+          />
+          <ModalVideoTitle title={title} extraClassname='z-30' />
+          <ModalVideoButton title={title} extraClassname='z-30 group-hover:scale-110 transition duration-700 ease-out' />
+          {children}
+        </div>
       </div>
       {/* End: Video thumbnail */}
 
