@@ -34,7 +34,6 @@ export default function ExtensionDropdownPricing({
   const aggregatedExtensionsPriceTier3 = AppConfig.shop.prices.extensions._shared.tier3.yearly * extensions.length
   const aggregatedExtensionsPriceTier4 = AppConfig.shop.prices.extensions._shared.tier4.yearly * extensions.length
 
-
   const allExtensionsBundleName = "“All Extensions” bundle"
 
   const selectedExtension = extensions[selectedExtensionIndex]
