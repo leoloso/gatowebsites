@@ -72,6 +72,12 @@ module.exports = {
             tier3: 74.99,
             tier4: 99.99,
           },
+          ltd: {
+            tier1: 62.49,
+            tier2: 124.99,
+            tier3: 187.49,
+            tier4: 249.99,
+          },
         },
       },
     }
