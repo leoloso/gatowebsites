@@ -46,8 +46,14 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Can Gato GraphQL create and publish REST endpoints?</h4>
-              <p className="text-slate-400">With the “Persisted Queries” extension, you can create and publish REST-like endpoints, which are composed using GraphQL, and created and published directly within the wp-admin.</p>
+              <h4 className="font-semibold">What's the Life Time Deal?</h4>
+              <p className="text-slate-400">If you purchase the Life Time Deal license, you can request support and download/install product updates forever.</p>
+            </div>
+
+            {/* Item */}
+            <div className="space-y-2">
+              <h4 className="font-semibold">Can Gato GraphQL replace the WP REST API?</h4>
+              <p className="text-slate-400">With the “Persisted Queries” extension, you can use GraphQL to publish endpoints that expose predefined data, as in REST. These endpoints can replace WP REST API endpoints.</p>
             </div>
 
           </div>
@@ -59,13 +65,13 @@ export default function Faqs() {
             <div className="space-y-2">
               <h4 className="font-semibold">What are extensions needed for?</h4>
               {/* <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API, such as for building headless sites.</p> */}
-              <p className="text-slate-400">Extensions are needed for enhanced security for public APIs, adding HTTP caching, executing multiple queries in a single request, connecting to external services, sending emails, and several others.</p>
+              <p className="text-slate-400">Extensions are needed to enhance the security of public APIs, add HTTP caching to speed up the application, execute multiple queries in a single request, connect to external services, send emails, and others.</p>
             </div>
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">What happens if I don't renew the license?</h4>
-              <p className="text-slate-400">If you decide to not renew the yearly license, you can keep using the plugin, however you won't be able to request support, or download/install updates.</p>
+              <h4 className="font-semibold">What happens if I don't renew the yearly license?</h4>
+              <p className="text-slate-400">If you do not renew the yearly license, you can keep using the plugin, however you won't be able to request support, or download/install product updates.</p>
             </div>
 
             {/* Item */}
