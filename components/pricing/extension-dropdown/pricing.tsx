@@ -178,7 +178,7 @@ export default function ExtensionDropdownPricing({
           isLTD={ selectLTD }
         />
       </div>
-      <p className="text-sm text-slate-500 pt-4 pb-4 font-bold">
+      <p className="text-sm text-slate-500 pt-4 pb-4 font-bold text-center">
         { selectLTD && (
           <span>
             The license never expires. Prices are in USD.
