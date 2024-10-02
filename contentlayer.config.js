@@ -531,6 +531,15 @@ export default makeSource({
     'docs/library/_default/_translate-posts-for-multilingualpress-classic-editor.mdx',
     'docs/library/_default/_translate-posts-for-multilingualpress-gutenberg.mdx',
     'docs/library/_default/_translate-tags-for-multilingualpress.mdx',
+    // Ignore `@strTranslate` library docs
+    'docs/library/_default/_translate-content-from-url.mdx',
+    'docs/library/_default/_translate-pages-for-multilingual-wordpress-site-classic-editor.mdx',
+    'docs/library/_default/_translate-pages-for-multilingual-wordpress-site-gutenberg.mdx',
+    'docs/library/_default/_translate-poedit-file-content.mdx',
+    'docs/library/_default/_translate-post-classic-editor.mdx',
+    'docs/library/_default/_translate-post-gutenberg.mdx',
+    'docs/library/_default/_translate-posts-classic-editor.mdx',
+    'docs/library/_default/_translate-posts-gutenberg.mdx',
   ],
   mdx: {
     remarkPlugins: [remarkGfm],
