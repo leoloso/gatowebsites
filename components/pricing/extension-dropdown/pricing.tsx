@@ -113,7 +113,7 @@ export default function ExtensionDropdownPricing({
               {/* Start */}
               <label className="flex items-center cursor-pointer">
                 <input type="checkbox" className="form-checkbox cursor-pointer" />
-                <span className="text-sm ml-2">
+                <span className="text ml-2">
                   <span className={clsx("text-center", selectBundle && "text-purple-300")} aria-hidden="true">
                     Make it a Life Time Deal!
                   </span>
