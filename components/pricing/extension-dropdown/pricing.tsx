@@ -42,7 +42,7 @@ export default function ExtensionDropdownPricing({
 
   return (
     <div className="relative">
-      <div className="mb-16 flex flex-col items-center justify-center gap-2">
+      <div className="mb-16 flex flex-col items-center justify-center gap-4">
         {/* Pricing toggle */}
         <div className="flex items-center justify-center gap-4 text-gray-300">
           <div className="flex-1">
