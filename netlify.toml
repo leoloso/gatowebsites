@@ -688,6 +688,11 @@
   status = 301
 
 # [[redirects]]
+#   from = "/extensions-reference/internal-graphql-server"
+#   to = "/extensions-reference/internal-graphql-server/internal-graphql-server"
+#   status = 301
+
+# [[redirects]]
 #   from = "/extensions-reference/multiple-query-execution"
 #   to = "/extensions-reference/multiple-query-execution/multiple-query-execution"
 #   status = 301
