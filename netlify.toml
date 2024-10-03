@@ -652,11 +652,6 @@
   status = 302
 
 [[redirects]]
-  from = "/extensions-reference/internal-graphql-server"
-  to = "/"
-  status = 302
-
-[[redirects]]
   from = "/extensions-reference/multilingualpress"
   to = "/"
   status = 302
