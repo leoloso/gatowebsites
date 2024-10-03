@@ -525,11 +525,6 @@
   status = 302
 
 [[redirects]]
-  from = "/extensions/internal-graphql-server"
-  to = "/"
-  status = 302
-
-[[redirects]]
   from = "/extensions/multilingualpress"
   to = "/"
   status = 302
@@ -652,11 +647,6 @@
   status = 302
 
 [[redirects]]
-  from = "/extensions-reference/internal-graphql-server"
-  to = "/"
-  status = 302
-
-[[redirects]]
   from = "/extensions-reference/multilingualpress"
   to = "/"
   status = 302
@@ -696,6 +686,11 @@
   from = "/extensions-reference/field-deprecation"
   to = "/extensions-reference/deprecation/field-deprecation"
   status = 301
+
+# [[redirects]]
+#   from = "/extensions-reference/internal-graphql-server"
+#   to = "/extensions-reference/internal-graphql-server/internal-graphql-server"
+#   status = 301
 
 # [[redirects]]
 #   from = "/extensions-reference/multiple-query-execution"
@@ -909,17 +904,6 @@
 # Ignore Automation guides
 [[redirects]]
   from = "/guides/manage/automating-tasks"
-  to = "/"
-  status = 302
-
-# Ignore Internal GraphQL Server guides
-[[redirects]]
-  from = "/guides/code/dry-code-for-blocks-in-javascript-and-php"
-  to = "/"
-  status = 302
-
-[[redirects]]
-  from = "/guides/config/defining-the-schema-configuration-for-the-internal-graphql-server"
   to = "/"
   status = 302
 

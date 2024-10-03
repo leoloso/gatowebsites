@@ -514,7 +514,6 @@ export default makeSource({
     'docs/extensions-reference/_unmapped/automation.mdx',
     'docs/extensions-reference/_unmapped/events-manager.mdx',
     'docs/extensions-reference/_unmapped/google-translate.mdx',
-    'docs/extensions-reference/_unmapped/internal-graphql-server.mdx',
     'docs/extensions-reference/_unmapped/multilingualpress.mdx',
     // Ignore Polylang library docs
     'docs/library/_default/_create-missing-translation-categories-for-polylang.mdx',
@@ -547,9 +546,6 @@ export default makeSource({
     // Ignore Automation guides
     'doc-topics/guides/_manage.mdx',
     'docs/guides/manage/_automating-tasks.mdx',
-    // Ignore Internal GraphQL Server guides
-    'docs/guides/code/_dry-code-for-blocks-in-javascript-and-php.mdx',
-    'docs/guides/config/_defining-the-schema-configuration-for-the-internal-graphql-server.mdx',
   ],
   mdx: {
     remarkPlugins: [remarkGfm],
