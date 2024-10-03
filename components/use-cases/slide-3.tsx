@@ -157,7 +157,7 @@ export default function UseCasesSlide3() {
             <Image src={IconGutenberg} width={48} height={48} alt="Gutenberg logo" />
           </div>
         </div>
-        <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="400">
+        <div className="relative flex justify-center items-center bg-gray-200 aspect-square p-2" data-aos="fade-up" data-aos-delay="200">
           {/* Inner lines */}
           <div className="absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">
             <div className="absolute w-0.5 h-full bg-purple-300 left-1/2 -translate-x-1/2" />
