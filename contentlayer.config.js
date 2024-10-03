@@ -514,7 +514,6 @@ export default makeSource({
     'docs/extensions-reference/_unmapped/automation.mdx',
     'docs/extensions-reference/_unmapped/events-manager.mdx',
     'docs/extensions-reference/_unmapped/google-translate.mdx',
-    'docs/extensions-reference/_unmapped/internal-graphql-server.mdx',
     'docs/extensions-reference/_unmapped/multilingualpress.mdx',
     // Ignore Polylang library docs
     'docs/library/_default/_create-missing-translation-categories-for-polylang.mdx',
