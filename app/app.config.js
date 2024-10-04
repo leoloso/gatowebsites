@@ -29,10 +29,10 @@ module.exports = {
         allExtensions: {
           defaultTier: {
             yearly: isProd
-              ? "https://shop.gatographql.com/buy/ad364899-4a2e-4b72-b615-4a83d546c95c"
+              ? "https://shop.gatographql.com/buy/78d3e6b8-0e4a-47e6-8ccc-e23244bbf3d0"
               : allExtensionsDevShopURL,
             ltd: isProd
-              ? "@todo"
+              ? "https://shop.gatographql.com/buy/cb7ef719-0bfa-44ab-bfed-2f9092b188cf"
               : allExtensionsDevShopURL,
           },
           tier1: {
