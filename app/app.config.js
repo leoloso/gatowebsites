@@ -1,5 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production'
-const allExtensionsDevShopURL = "https://shop.gatographql.com/checkout/buy/5ae830bc-93c5-475c-9370-b3d13bf12619"
+const allExtensionsDevShopURL = "https://shop.gatographql.com/buy/5ae830bc-93c5-475c-9370-b3d13bf12619"
 module.exports = {
   paths: {
     blog: "blog",
