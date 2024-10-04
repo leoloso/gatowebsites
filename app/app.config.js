@@ -29,7 +29,7 @@ module.exports = {
         allExtensions: {
           defaultTier: {
             yearly: isProd
-              ? "@todo"
+              ? "https://shop.gatographql.com/buy/ad364899-4a2e-4b72-b615-4a83d546c95c"
               : allExtensionsDevShopURL,
             ltd: isProd
               ? "@todo"
@@ -37,34 +37,34 @@ module.exports = {
           },
           tier1: {
             yearly: isProd
-              ? "@todo"
+              ? "https://shop.gatographql.com/buy/ad364899-4a2e-4b72-b615-4a83d546c95c"
               : allExtensionsDevShopURL,
             ltd: isProd
-              ? "@todo"
+              ? "https://shop.gatographql.com/buy/570ed7a0-9ef6-44b1-a4bd-0ce3bad5682c"
               : allExtensionsDevShopURL,
           },
           tier2: {
             yearly: isProd
-              ? "@todo"
+              ? "https://shop.gatographql.com/buy/41d53168-1bdd-497c-9cc6-477a21a25911"
               : allExtensionsDevShopURL,
             ltd: isProd
-              ? "@todo"
+              ? "https://shop.gatographql.com/buy/68e3559e-67b1-4b55-82be-69cd5aef903f"
               : allExtensionsDevShopURL,
           },
           tier3: {
             yearly: isProd
-              ? "@todo"
+              ? "https://shop.gatographql.com/buy/78d3e6b8-0e4a-47e6-8ccc-e23244bbf3d0"
               : allExtensionsDevShopURL,
             ltd: isProd
-              ? "@todo"
+              ? "https://shop.gatographql.com/buy/cb7ef719-0bfa-44ab-bfed-2f9092b188cf"
               : allExtensionsDevShopURL,
           },
           tier4: {
             yearly: isProd
-              ? "@todo"
+              ? "https://shop.gatographql.com/buy/570ed7a0-9ef6-44b1-a4bd-0ce3bad5682c"
               : allExtensionsDevShopURL,
             ltd: isProd
-              ? "@todo"
+              ? "https://shop.gatographql.com/buy/2d1ede11-4afa-41f7-802f-36b1926a43b3"
               : allExtensionsDevShopURL,
           },
         },
