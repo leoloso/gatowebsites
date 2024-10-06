@@ -34,11 +34,6 @@ query {
 
 ## Meta directives
 
-This module introduces two "meta directives":
-
-1. `@underEachArrayItem` iterates over a list of elements from the queried entity, and passes a reference to the iterated element to the next directive.
-2. `@advancePointersInArray` makes the next directive receive an element from under some path within the queried array/object.
-
 Every meta directive can affect (or "nest") multiple directives at once. Which directives are affected is indicated via argument `affectDirectivesUnderPos`, which receives an array of positive integers, each of them defining the affected directive's relative position.
 
 By default, argument `affectDirectivesUnderPos` has default value `[1]`, meaning that it will affect the directive right next to it.
@@ -73,16 +68,44 @@ Meta directives can also be nested within meta directives.
 
 In the example below, we have:
 
-- `@underEachArrayItem` is the topmost composing directive
-- `@strTranslate` and `@advancePointersInArray` are added under `@underEachArrayItem`
-- `@strUpperCase` is added under `@advancePointersInArray`:
+- `@underEachArrayItem` is the topmost meta directive
+- `@underJSONObjectProperty` is nested under `@underEachArrayItem`
+- `@strUpperCase` is nested under `@underJSONObjectProperty`
 
 ```graphql
-{
-  someField
-    @underEachArrayItem(affectDirectivesUnderPos: [1, 2])
-      @strTranslate
-      @advancePointersInArray(path: 0) # Only 1st element in list
+query UppercaseEntriesInsideObject {
+  entries: _echo(value: [
+    {
+      text: "Hello my friends"
+    },
+    {
+      text: "How do you like this software so far?"
+    }
+  ])
+   @underEachArrayItem
+      @underJSONObjectProperty(by: { key: "text" })
         @strUpperCase
-}
+  }
 ```
+
+## Configuration
+
+To enable or disable composable directives in the GraphQL schema, go to the "Composable Directives" module on the Settings page, and tick/untick the checkbox for `Enable composable directives?`:
+
+<Image
+  src="/assets/guides/upstream/settings-composable-directives.png"
+  width="1024"
+  height="940"
+  alt="Settings for Composable Directives"
+  caption="Settings for Composable Directives"
+/>
+
+To enable or disable composable directives on a specific endpoint, select the desired option in block "Composable Directives" from the corresponding Schema Configuration:
+
+<Image
+  src="/assets/guides/upstream/schema-config-composable-directives.png"
+  width="610"
+  height="411"
+  alt="Composable Directives in the Schema Configuration"
+  caption="Composable Directives in the Schema Configuration"
+/>

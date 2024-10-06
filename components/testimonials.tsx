@@ -35,7 +35,7 @@ export default function Testimonials() {
   return (
     <section>
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <div className="relative px-8 py-12 md:py-20 border-t border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
+        <div className="relative px-8 py-12 md:py-20 mb-12 md:mb-20 border-t border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
           {/* Blurred shape */}
           <div className="absolute top-0 -mt-24 left-1/2 -translate-x-1/2 ml-24 blur-2xl opacity-70 pointer-events-none -z-10" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="434" height="427">
@@ -62,6 +62,7 @@ export default function Testimonials() {
 
                 {items.map((item, index) => (
                   <Transition
+                    as="div"
                     key={index}
                     show={active === index}
                     className="absolute inset-0 h-full -z-10"

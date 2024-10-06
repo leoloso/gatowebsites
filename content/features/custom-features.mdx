@@ -1,0 +1,187 @@
+---
+title: Custom Features for the Schema
+description: Multiple features suggested for the GraphQL spec have already been implemented on Gato GraphQL, so we don't need to wait.
+# category: Free plugin
+category: Standard
+order: 1100
+relatedGuides: [
+  {
+    topic: schema,
+    slug: namespacing-the-schema
+  },
+  {
+    topic: schema,
+    slug: using-field-to-input
+  },
+  {
+    topic: schema,
+    slug: using-composable-directives
+  },
+  {
+    topic: schema,
+    slug: namespacing-the-schema
+  },
+  {
+    topic: schema,
+    slug: using-multi-field-directives
+  },
+]
+---
+
+Multiple features suggested for the GraphQL spec have already been implemented on Gato GraphQL, so we don't need to wait.
+
+## Schema namespacing
+
+If plugins WooCommerce and Easy Digital Downloads both implemented a `Product` type for the GraphQL API, then we could not install both plugins at the same time, since their types would conflict.
+
+**Schema namespacing** enables to avoid conflicts in the schema, by having all type names namespaced. Hence, type `Product` would become `Woo_Product` and `EDD_Product` respectively, and these types could be added to the same schema.
+
+This images shows a namespaced schema, in which types `Event` and `Location` were added the prefix `EM_` to avoid name collision:
+
+![Namespaced schema](/assets/guides/upstream/namespaced-interactive-schema.png "Namespaced schema")
+
+## Global fields
+
+Global fields are fields that are accessible under every single type in the GraphQL schema (while being defined only once).
+
+The GraphQL schema exposes types, such as `Post`, `User` and `Comment`, and the fields available for every type, such as `Post.title`, `User.name` and `Comment.responses`. These fields deal with "data", as they retrieve some specific piece of data from an entity.
+
+Gato GraphQL, in addition, also offers a different kind of fields: those providing "functionality" instead of data.
+
+Some example global fields are:
+
+- `_not`
+- `_if`
+- `_equals`
+- `_isEmpty`
+- `_echo`
+- `_sprintf`
+- `_arrayItem`
+- `_arrayAddItem`
+- `_arrayUnique`
+- many more
+
+Functionality fields are useful for obtaining data that is stored outside of WordPress, and for manipulating the data once it has been retrieved, allowing us to transform a field value in whatever way it is required, and granting us powerful data import/export capabilities.
+
+Functionality fields belong not to a specific type, such as `Post` or `User`, but to all the types in the schema. That's why these are handled in a distinctive way in Gato GraphQL, under the name of "global fields".
+
+## Field to input
+
+Obtain the value of a field, manipulate it, and input it into another field, all within the same query.
+
+```graphql
+query {
+  posts {
+    excerpt
+
+    # Referencing previous field with name "excerpt"
+    isEmptyExcerpt: _isEmpty(value: $__excerpt)
+
+    # Referencing previous field with alias "isEmptyExcerpt"
+    isNotEmptyExcerpt: _not(value: $__isEmptyExcerpt)
+  }
+}
+```
+
+## Composable directives
+
+Oftentimes, a directive cannot be applied on a field, because it has an input which is different than the field's output. For instance, directive `@strUpperCase` receives a string as input, so it can't be applied on field `User.capabilities`, which returns an array of strings.
+
+With **composable directives**, a directive can augment another directive to modify its behavior or fill a gap. This removes the need to duplicate fields or directives just to change their input or return types, avoiding bloat.
+
+In this query, directive `@underEachArrayItem` iterates over an array of strings, and applies its nested directive `@strUpperCase` on each of them, fixing the type mismatch:
+
+```graphql
+query {
+  users {
+    capabilities
+      @underEachArrayItem
+        @strUpperCase
+  }
+}
+```
+
+## Mulfi-field directives
+
+Have directives applied to multiple fields (instead of only one), for performance and extended use cases.
+
+When enabled, an argument `affectAdditionalFieldsUnderPos` is added to all directives, where the relative positions of additional fields to apply the directive to can be specified.
+
+For instance, in the following query, directive `@strTranslate` is applied only to field `content`:
+
+```graphql
+query {
+  posts {
+    excerpt
+    content @strTranslate
+  }
+}
+```
+
+Field `excerpt` can also be applied directive `@strTranslate`, by adding the directive argument `affectAdditionalFieldsUnderPos` with value `[1]` (as `1` is the relative position of field `excerpt` from directive `@strTranslate`):
+
+```graphql
+query {
+  posts {
+    excerpt
+    content
+      @strTranslate(
+        affectAdditionalFieldsUnderPos: [1]
+      )
+  }
+}
+```
+
+## Field and directive-based versioning
+
+Version fields and directives independently from the schema.
+
+Instead of evolving the whole schema (which requires to modify the name of the modified field or directive), we can:
+
+- Keep different implementations under the same field or directive name
+- Expose the legacy implementation under a tag, using semantic versioning
+- Access a specific version through field/directive argument `versionConstraint`
+
+## Proactive feedback
+
+Use the top-level entry `extensions` to send data concerning deprecations and warnings in the response to the query.
+
+- **Deprecations:** Deprecations are returned in the same query involving deprecated fields, and not only when doing introspection.
+- **Warnings:** Warning are issues which can be considered non-blocking, i.e. they enhance the query but do not break it.
+
+For instance, the following query exports two fields using the same dynamic variable name `"prop"`, which generates a warning:
+
+```graphql
+query {
+  posts {
+    excerpt @export(as: "prop")
+    content @export(as: "prop")
+  }
+}
+```
+
+The response will include section `warnings` (under `extensions`) with a corresponding message:
+
+```json
+{
+  "extensions": {
+    "warnings": [
+      {
+        "message": "Dynamic variable with name 'props' had already been set, had its value overridden",
+        "locations": [
+          {
+            "line": 4,
+            "column": 25
+          }
+        ]
+      }
+    ]
+  },
+  "data": {
+    "posts": {
+      "excerpt": "Hello world!",
+      "Content": "<p>Hello world!</p>"
+    }
+  }
+}
+```

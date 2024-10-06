@@ -12,7 +12,7 @@ export default function Cta02() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="relative px-8 py-12 md:py-20 border-t border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
+        <div className="relative px-8 py-12 md:py-20 pt-16 md:pt-32 border-t border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
           {/* Blurred shape */}
           <div className="absolute top-0 -mt-24 left-1/2 -translate-x-1/2 ml-24 blur-2xl opacity-70 pointer-events-none -z-10" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="434" height="427">
@@ -29,12 +29,12 @@ export default function Cta02() {
           <SectionHeader
             leading='Discover the power'
             title="Try demo now!"
-            description="Play with Gato GraphQL PRO in your own sandbox site, for free."
+            description="Play with Gato GraphQL + all extensions in your own sandbox site, for free"
             paddingClassname=''
           >
             <div className="mt-8">
               <a className="btn text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group" href={AppConfig.urls.instawpSandboxDemo} target='_blank'>
-                Try Gato GraphQL PRO <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+                Try for free <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
               </a>
             </div>
           </SectionHeader>

@@ -1,5 +1,6 @@
 ---
-title: Using DRY code to render blocks for server (PHP) and client (JS) sides [PRO]
+title: Using DRY code to render blocks for server (PHP) and client (JS) sides
+# isPRO: true
 description: Have a single source of truth to fetch data for both the client and server-sides when rendering dynamic Gutenberg blocks.
 order: 1100
 # referencedExtensionSlugs:
@@ -98,7 +99,7 @@ the Internal GraphQL Server provides the following static methods, via class `Gr
 
 - `executeQuery`: Execute a GraphQL query
 - `executeQueryInFile`: Execute a GraphQL query contained in a (`.gql`) file
-- `executePersistedQuery`: Execute a persisted GraphQL query (providing its ID as an int, or slug as a string)
+- `executePersistedQuery`: Execute a persisted GraphQL query (providing its ID as an int, or slug as a string) (the **Persisted Queries** extension is required)
 
 </Banner>
 

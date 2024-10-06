@@ -1,0 +1,74 @@
+---
+title: Deprecation
+description: Deprecate fields on the GraphQL schema by using a user interface, without the need to deploy any code.
+order: 0
+image: /images/thumbnails/extensions/deprecation.png
+targetImages:
+  - /images/icons/extensions/deprecation.svg
+# @todo Replace the extension video!
+# video: /videos/GatoGraphQL-intro.mp4
+shopURLs:
+  dev: https://shop.gatographql.com/buy/6bf6e511-8c8a-4524-a382-62f5b43463b4
+  defaultTier:
+    yearly: "https://shop.gatographql.com/buy/4fd05810-bdc0-4783-9c80-4adfcb85d910"
+    ltd: "https://shop.gatographql.com/buy/35f5ab8f-b5e2-4b11-b4cc-8f30a795ca54"
+  tier1:
+    yearly: "https://shop.gatographql.com/buy/ba528bfe-4383-4269-8a62-a7be7c1d239a"
+    ltd: "https://shop.gatographql.com/buy/dd0c65f9-481c-4684-aef3-9739f4a15bc4"
+  tier2:
+    yearly: "https://shop.gatographql.com/buy/933328ce-f309-45cf-b728-fe627efa4d60"
+    ltd: "https://shop.gatographql.com/buy/af952070-a981-496f-ae8b-0c133510d313"
+  tier3:
+    yearly: "https://shop.gatographql.com/buy/4fd05810-bdc0-4783-9c80-4adfcb85d910"
+    ltd: "https://shop.gatographql.com/buy/35f5ab8f-b5e2-4b11-b4cc-8f30a795ca54"
+  tier4:
+    yearly: "https://shop.gatographql.com/buy/3d8af373-759d-454e-89b4-015a68bb54b6"
+    ltd: "https://shop.gatographql.com/buy/91effef4-1273-4b59-9622-914fdeefa966"
+---
+
+Evolve the GraphQL schema by deprecating fields, and explaining how to replace them, through a user interface.
+
+## Field Deprecation
+
+User interface to deprecate fields from the GraphQL schema.
+
+![Field Deprecation List editor](/assets/extensions/upstream-pro/field-deprecation-list.png "Field Deprecation List editor")
+
+## Deprecation Notifier
+
+Whenever a deprecated field is queried, a deprecation message is returned in that same GraphQL response, under the top-level entry `extensions`.
+
+This alerts users of our APIs to upgrade their use of the schema, even when they are not paying attention to the introspection query.
+
+For instance, running this query, where field `isPublished` is deprecated:
+
+```graphql
+query {
+  posts {
+    title
+    isPublished
+  }
+}
+```
+
+...will produce this response:
+
+```json
+{
+  "extensions": {
+    "deprecations": [
+      {
+        "message": "Use 'isStatus(status:published)' instead of 'isPublished'",
+        "extensions": {
+          ...
+        }
+      }
+    ]
+  },
+  "data": {
+    "posts": [
+      ...
+    ]
+  }
+}
+```

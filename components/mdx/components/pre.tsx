@@ -7,17 +7,21 @@ import Children from 'react-children-utilities'
 export function Pre({
   children,
   buttonClasses = 'absolute top-3 right-3 bg-slate-900 hover:bg-amber-900',
+  addCopyButton = true,
   ...props
 }: {
   children: React.ReactNode,
   buttonClasses?: string,
   className?: string,
+  addCopyButton?: boolean,
 }) {
   const raw = Children.onlyText(children)
   return (
     <pre {...props} className={clsx('relative group', props.className)}>
       {children}
-      <CopyButton text={raw} className={buttonClasses} />
+      {addCopyButton && (
+        <CopyButton text={raw} className={buttonClasses} />
+      )}
     </pre>
   )
 }

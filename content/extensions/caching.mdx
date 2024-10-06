@@ -1,0 +1,56 @@
+---
+title: Caching
+description: "Cache the GraphQL response on the client-side or intermediate stages between client and server (such as a CDN) via standard HTTP caching."
+order: 0
+image: /images/thumbnails/extensions/caching.png
+targetImages:
+  - /images/icons/extensions/caching.svg
+# @todo Replace the extension video!
+# video: /videos/GatoGraphQL-intro.mp4
+shopURLs:
+  dev: https://shop.gatographql.com/buy/808f5132-0e79-4cbb-be4d-e40b78b5b99e
+  defaultTier:
+    yearly: "https://shop.gatographql.com/buy/f5a589a2-c44b-4eab-b1bf-bd168f7c3058"
+    ltd: "https://shop.gatographql.com/buy/8cebeb52-04bd-4645-b908-f2e8188d8d5d"
+  tier1:
+    yearly: "https://shop.gatographql.com/buy/ca1d0ef8-84f1-4b29-808b-b2bd4fb27acf"
+    ltd: "https://shop.gatographql.com/buy/00154600-9a9e-4971-8a04-4c4e6c543ca9"
+  tier2:
+    yearly: "https://shop.gatographql.com/buy/b3e67947-bf17-4e52-83ec-6e89d68130d1"
+    ltd: "https://shop.gatographql.com/buy/deca4a7f-24de-489d-9fc7-40137d44be49"
+  tier3:
+    yearly: "https://shop.gatographql.com/buy/f5a589a2-c44b-4eab-b1bf-bd168f7c3058"
+    ltd: "https://shop.gatographql.com/buy/8cebeb52-04bd-4645-b908-f2e8188d8d5d"
+  tier4:
+    yearly: "https://shop.gatographql.com/buy/1c3a9e06-6847-48e8-abb1-968d75773978"
+    ltd: "https://shop.gatographql.com/buy/4a261901-1f9b-4961-be0b-8fd9e1645d2a"
+---
+
+Make your application faster by providing HTTP Caching for the GraphQL response, and by caching the results of expensive operations.
+
+## Cache Control
+
+Use HTTP caching to send a `Cache-Control` header with a `max-age` value in the response of the GraphQL query, indicating for how long the response must be cached.
+
+The Cache Control extension offers Cache Control Lists, where custom `max-age` values are defined for fields and directives.
+
+The response's `max-age` value is automatically calculated by the GraphQL engine, from the fields and directives present in the query.
+
+![Cache Control entry](/assets/extensions/upstream-pro/cache-control-entry.png "Cache Control entry")
+
+## Field Resolution Caching
+
+Addition of the `@cache` directive to the GraphQL schema, which stores the result from a field in disk for a requested amount of time. When executing the same field within that time span, the cached value is returned.
+
+This directive can boost performance when executing expensive operations (such as when interacting with external APIs), as we can cache and reuse their response.
+
+```graphql
+query {
+  posts {
+    id
+    title
+      @strTranslate(from: "en", to: "es")
+      @cache(time: 10)
+  }
+}
+```

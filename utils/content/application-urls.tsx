@@ -8,7 +8,7 @@ import {
 } from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
 import AppConstants from "@/app/app.constants";
-import { Article, Artifact, isDemoPost, isExtension, isBlogPost } from "./types";
+import { Article, Artifact, isDemoPost, isExtension, isBlogPost, isFeature } from "./types";
 import { DOMAIN } from '@/data/env/domain'
 
 export function getExtensionURLPath(extension: Extension) {
@@ -79,7 +79,17 @@ export function getBlogPostURL(post: BlogPost) {
 }
 
 export function getArticleURLPath(article: Article) {
-  return isBlogPost(article) ? getBlogPostURLPath(article) : (isDemoPost(article) ? getDemoPostURLPath(article) : getDocURLPath(article))
+  return isBlogPost(article)
+    ? getBlogPostURLPath(article)
+    : (
+      isDemoPost(article)
+      ? getDemoPostURLPath(article)
+      : (
+        isFeature(article)
+        ? getFeatureURLPath(article)
+        : getDocURLPath(article)
+    )
+  )
 }
 
 export function getArticleURL(article: Article) {

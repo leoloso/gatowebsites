@@ -1,5 +1,5 @@
 import PageHeader from '@/components/page-header'
-import Pricing from '@/components/pricing'
+import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 import StunningBackground from '@/components/stunning-background'
 
 export default function PricingSection() {
@@ -13,11 +13,19 @@ export default function PricingSection() {
 
           {/* Section header */}
           <PageHeader
-            leading='Pricing plans'
-            title='Simple plans for everyone'
-            description='Unleash your capabilities with Gato GraphQL PRO.'
+            leading='Extensions'
+            title='Pricing'
+          >
+            <div className="max-w-3xl mx-auto">
+              <p className="text-lg text-slate-400">
+                Purchase the <span className='font-bold'>extension you need</span>, or get a <span className='font-bold'>bundle with all extensions</span>
+              </p>
+            </div>
+          </PageHeader>
+
+          <ExtensionDropdownPricing
+            preselectBundle={true}
           />
-          <Pricing />
         </div>
       </div>
 

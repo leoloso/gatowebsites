@@ -1,0 +1,71 @@
+---
+title: Persisted Queries
+description: "Use GraphQL queries to create pre-defined endpoints as in REST, obtaining the benefits from both APIs."
+order: 0
+image: /images/thumbnails/extensions/persisted-queries.png
+targetImages:
+  - /images/icons/extensions/persisted-queries.svg
+# @todo Replace the extension video!
+# video: /videos/GatoGraphQL-intro.mp4
+shopURLs:
+  dev: https://shop.gatographql.com/buy/6b8f6a1e-4474-486f-9214-2cdb649c0bab
+  defaultTier:
+    yearly: "https://shop.gatographql.com/buy/75cd1282-d291-4a3d-8853-93c23ece6d89"
+    ltd: "https://shop.gatographql.com/buy/940b63a0-7dc4-454a-a832-759045028087"
+  tier1:
+    yearly: "https://shop.gatographql.com/buy/f1c5d875-7104-4b9f-9eb4-7649c4da0144"
+    ltd: "https://shop.gatographql.com/buy/f1c5d875-7104-4b9f-9eb4-7649c4da0144"
+  tier2:
+    yearly: "https://shop.gatographql.com/buy/933e4f4a-0337-4d2e-bb18-a88bac297741"
+    ltd: "https://shop.gatographql.com/buy/380ecbe6-7623-4de0-aa70-20038296294b"
+  tier3:
+    yearly: "https://shop.gatographql.com/buy/75cd1282-d291-4a3d-8853-93c23ece6d89"
+    ltd: "https://shop.gatographql.com/buy/940b63a0-7dc4-454a-a832-759045028087"
+  tier4:
+    yearly: "https://shop.gatographql.com/buy/97daee4d-3147-48cd-bd95-ba59671cbc2f"
+    ltd: "https://shop.gatographql.com/buy/557c4c81-1eea-4d4d-825d-c5fa731821e1"
+---
+
+In a REST API, we create multiple endpoints, each returning a pre-defined set of data. In a GraphQL API, in contrast, we provide any query to a single endpoint, which returns exactly the requested data.
+
+Persisted queries are normal GraphQL queries, however they are stored in the server and accessed under their own URL, thus emulating a REST endpoint. They provide the advantages from these two APIs, while avoiding their disadvantages:
+
+| Advantages | Disadvantages |
+| --- | --- |
+| ✅ Accessed via `GET` or `POST` | ~~❌ Accessed only via `POST`~~ |
+| ✅ Can be cached on the server or CDN | ~~❌ Needs to provide an extra layer in client-side just for caching~~ |
+| ✅ It's secure: only intended data is exposed | ~~❌ Data is exposed to anyone, including malicious actors~~ |
+| ✅ No under/over fetching of data, all data is retrieved in a single request | ~~❌ It can be slow, since the application may need several requests to retrieve all the data~~ |
+| ✅ It enables rapid iteration of the project | ~~❌ It's tedious to create all the endpoints~~ |
+| ✅ It can be self-documented | ~~❌ Producing documentation is mandatory~~ |
+| ✅ It provides clients to create and publish the query | ~~❌ Publishing endpoints is done via code~~ |
+
+<Image
+  src="/assets/guides/upstream/persisted-query.png"
+  width="1024"
+  height="1850"
+  alt="Persisted query editor"
+  caption="Persisted query editor"
+/>
+
+Once the persisted query is published, we can execute it via its permalink.
+
+The persisted query can be executed via the GraphiQL client, or also directly in the browser (since it is accessed via `GET`), and we will obtain the requested data, in JSON format:
+
+<Image
+  src="/assets/guides/upstream/persisted-query-execution.png"
+  width="1024"
+  height="940"
+  alt="Executing a persisted in the browser"
+  caption="Executing a persisted in the browser"
+/>
+
+The persisted queries can be managed via categories and hierarchies.
+
+<Image
+  src="/assets/guides/upstream/persisted-queries-page.png"
+  width="1024"
+  height="940"
+  alt="Persisted queries page"
+  caption="Persisted queries page"
+/>

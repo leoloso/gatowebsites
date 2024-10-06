@@ -32,9 +32,9 @@ export default function Contact() {
 
             {/* Page header */}
             <PageHeader
-              leading='Contact us'
-              title="How can we help you?"
-              description="Tell us your needs, and we'll contact you shortly."
+              leading="How can we help you?"
+              title='Contact us'
+              description="Send us a message, and we'll contact you shortly."
             />
 
             <ContactForm />

@@ -18,12 +18,12 @@ export default function Faqs() {
     </div>
 
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
-      <div className="py-12 md:py-20 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
+      <div className="py-12 md:py-20 mb-8 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
         {/* Section header */}
         <SectionHeader
-          leading='Getting started with Gato GraphQL'
-          title='Everything you need to know'
+          leading="Purchasing extensions"
+          title='Frequently Asked Questions'
         />
 
         {/* Columns */}
@@ -35,20 +35,25 @@ export default function Faqs() {
             {/* Item */}
             <div className="space-y-2">
               <h4 className="font-semibold">What is Gato GraphQL?</h4>
-              <p className="text-slate-400">Gato GraphQL is a plugin for WordPress that converts the site into a GraphQL server, allowing you to fetch and modify data from the WordPress site using the GraphQL language.</p>
+              <p className="text-slate-400">Gato GraphQL is a plugin for WordPress that converts the site into a GraphQL server, allowing you to fetch and modify data from WordPress via a GraphQL API.</p>
             </div>
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">Is Gato GraphQL free?</h4>
-              <p className="text-slate-400">The Gato GraphQL plugin for WordPress is free, while Gato GraphQL PRO is the commercial extension, that supports additional use cases.</p>
+              <h4 className="font-semibold">Can I ask for a refund?</h4>
+              <p className="text-slate-400">If you purchased a Gato GraphQL product and it does not solve your problem, you have 30 days to <a className="text-purple-500 font-medium hover:underline" href="/refund-policy">request a refund</a>.</p>
             </div>
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">What's the difference between free and PRO?</h4>
-              <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API, such as for building headless sites.</p>
-              <p className="text-slate-400">Gato GraphQL PRO is needed for enhanced security for public APIs, adding HTTP caching, sending emails, executing updates in bulk, connecting to external services, and automating tasks (among others).</p>
+              <h4 className="font-semibold">What's the Life Time Deal?</h4>
+              <p className="text-slate-400">If you purchase the Life Time Deal license, you can request support and download/install product updates forever.</p>
+            </div>
+
+            {/* Item */}
+            <div className="space-y-2">
+              <h4 className="font-semibold">How does Gato GraphQL compare against the WP REST API?</h4>
+              <p className="text-slate-400">Check out the <a className="text-purple-500 font-medium hover:underline" href="/comparisons/gatographql-vs-wp-rest-api">Gato GraphQL vs WP REST API comparison</a>.</p>
             </div>
 
           </div>
@@ -58,25 +63,21 @@ export default function Faqs() {
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">How is Gato GraphQL different than the WP REST API?</h4>
-              <p className="text-slate-400">Gato GraphQL supports “Persisted Queries”, which are similar to REST endpoints as they expose pre-defined data, however these are created and published directly within the wp-admin, using GraphQL.</p>
-            </div>
-
-            {/* Item */}
-            {/* <div className="space-y-2">
-              <h4 className="font-semibold">Does Gato GraphQL replace the WP REST API?</h4>
-              <p className="text-slate-400">There is no need for that. Both GraphQL and REST accomplish the objective of exposing data. GraphQL, however, can be used for more advanced use cases.</p>
-            </div> */}
-            <div className="space-y-2">
-              <h4 className="font-semibold">Can I ask for a refund?</h4>
-              <p className="text-slate-400">If Gato GraphQL PRO does not solve your problem, you have 30 days to request a refund.</p>
+              <h4 className="font-semibold">What are extensions needed for?</h4>
+              {/* <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API, such as for building headless sites.</p> */}
+              <p className="text-slate-400">Extensions are needed to enhance the security of public APIs, add HTTP caching to speed up the application, execute multiple queries in a single request, connect to external services, send emails, and others.</p>
             </div>
 
             {/* Item */}
             <div className="space-y-2">
-              <h4 className="font-semibold">What use cases does Gato GraphQL PRO handle?</h4>
-              <p className="text-slate-400">As a single product, Gato GraphQL PRO can handle the functionality from multiple plugins.</p>
-              <p className="text-slate-400">These include: APIs, automators, bulk editing, code snippets, content distribution, email notifications, HTTP client, import/export, search & replace, translation, and webhooks.</p>
+              <h4 className="font-semibold">What happens if I don't renew the yearly license?</h4>
+              <p className="text-slate-400">If you do not renew the yearly license, you can keep using the plugin, however you won't be able to request support, or download/install product updates.</p>
+            </div>
+
+            {/* Item */}
+            <div className="space-y-2">
+              <h4 className="font-semibold">How does Gato GraphQL compare against WPGraphQL?</h4>
+              <p className="text-slate-400">Check out the <a className="text-purple-500 font-medium hover:underline" href="/comparisons/gatographql-vs-wpgraphql">Gato GraphQL vs WPGraphQL comparison</a>.</p>
             </div>
 
           </div>

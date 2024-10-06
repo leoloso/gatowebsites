@@ -7,6 +7,8 @@ import StunningBackground from '@/components/stunning-background'
 import { Artifact } from '@/utils/content/types'
 import { getTestimonials } from '../data/testimonials'
 import WithTitleThumb from '../thumbnails/with-title-thumb'
+import clsx from 'clsx'
+import Cta from '../cta-02'
 
 export default function ArtifactSection({
   artifact,
@@ -16,6 +18,8 @@ export default function ArtifactSection({
   testimonialIndex = 0,
   defaultArtifactIcon,
   bgClassname,
+  thumbLeading,
+  showTestimonial=true,
 }: {
   artifact: Artifact,
   sectionURL: string,
@@ -23,7 +27,9 @@ export default function ArtifactSection({
   widgetChildren?: React.ReactNode,
   testimonialIndex?: number,
   defaultArtifactIcon?: StaticImageData,
-  bgClassname?: string
+  bgClassname?: string,
+  thumbLeading?: string,
+  showTestimonial?: boolean,
 }) {
   const testimonial = getTestimonials()[testimonialIndex]
   return (
@@ -56,11 +62,12 @@ export default function ArtifactSection({
 
                   {/* Content */}
                   <div>
-                    <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
+                    <article className={clsx("pb-12 mb-12", showTestimonial && "border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]")}>
 
                       <div className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
                         <WithTitleThumb
                           title={artifact.title}
+                          leading={thumbLeading}
                           // titleClassname="h1"
                           extraThumbClassname="rounded-2xl"
                           bgClassname={bgClassname}
@@ -73,16 +80,18 @@ export default function ArtifactSection({
                       <ArtifactMdx code={artifact.body.code} />
                     </article>
 
-                    <aside className="pl-6 border-l-2 border-purple-500">
-                      <p className="inline-flex font-medium italic text-lg bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">“ {testimonial.quote} ”</p>
-                      <footer className="flex items-center space-x-4">
-                        <Image className="shrink-0 rounded-full" src={testimonial.img} width={32} height={32} alt="Testimonial author picture" />
-                        <div className="text-sm font-medium text-slate-300">
-                          {testimonial.name} <span className="text-slate-700">-</span> <span className="text-slate-400">{testimonial.role}</span>
-                          {/* <span className="text-slate-700">-</span> <a className="text-purple-500 hover:underline" href="#0">Thunderbolt</a> */}
-                        </div>
-                      </footer>
-                    </aside>
+                    { showTestimonial && (
+                      <aside className="pl-6 border-l-2 border-purple-500">
+                        <p className="inline-flex font-medium italic text-lg bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">“ {testimonial.quote} ”</p>
+                        <footer className="flex items-center space-x-4">
+                          <Image className="shrink-0 rounded-full" src={testimonial.img} width={32} height={32} alt="Testimonial author picture" />
+                          <div className="text-sm font-medium text-slate-300">
+                            {testimonial.name} <span className="text-slate-700">-</span> <span className="text-slate-400">{testimonial.role}</span>
+                            {/* <span className="text-slate-700">-</span> <a className="text-purple-500 hover:underline" href="#0">Thunderbolt</a> */}
+                          </div>
+                        </footer>
+                      </aside>
+                    )}
                   </div>
 
                 </div>
@@ -103,10 +112,10 @@ export default function ArtifactSection({
                       <div className="text-center mb-5">
                         <div className="mb-4">
                           <div className="relative inline-flex">
-                            <Image src={artifact.icon || defaultArtifactIcon || DefaultArtifactIcon} width={80} height={80} alt="Artifact icon" />
-                            {!! artifact.featured && (
+                            <Image src={/*artifact.icon || */defaultArtifactIcon || DefaultArtifactIcon} width={80} height={80} alt="Artifact icon" />
+                            {/* {!! artifact.featured && (
                               <Image className="absolute top-0 -right-1" src={Star} width={24} height={24} alt="Star" aria-hidden="true" />
-                            )}
+                            )} */}
                           </div>
                         </div>
                         {widgetChildren}
@@ -124,6 +133,8 @@ export default function ArtifactSection({
 
         </div>
       </div>
+
+      <Cta />
     </section>
   )
 }

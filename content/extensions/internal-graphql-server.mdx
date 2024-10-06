@@ -2,44 +2,100 @@
 title: Internal GraphQL Server
 description: "Execute GraphQL queries directly within your application, using PHP code."
 order: 0
-# order: 2000
-featured: true
-category: 'Productivity'
-# shopProductTestModeURL: https://shop.gatographql.com/checkout/buy/a4f45a5c-d318-442a-929e-0feb2109cb33
-# shopProductURL: https://shop.gatographql.com/checkout/buy/ca6a4ed8-78e8-4d29-bb59-1b93471f9b1e
-# productPrices:
-# - 24.99
-# - 49.99
-# - 99.99
-# bundles:
-# - automated-content-translation-and-sync-for-wordpress-multisite
-# - private-graphql-server-for-wordpress
-# - tailored-wordpress-automator
+image: /images/thumbnails/extensions/internal-graphql-server.png
+targetImages:
+  - /images/icons/extensions/internal-graphql-server.svg
+# @todo Replace the extension video!
+# video: /videos/GatoGraphQL-intro.mp4
+shopURLs:
+  dev: https://shop.gatographql.com/buy/4bcfb660-0346-4cb3-98d1-f2a1962a79c1
+  defaultTier:
+    yearly: "https://shop.gatographql.com/buy/11c8b802-d982-4054-8bf7-8d6ab27bf1ec"
+    ltd: "https://shop.gatographql.com/buy/c2e37e39-e7e3-4738-aea3-e01e7de2288e"
+  tier1:
+    yearly: "https://shop.gatographql.com/buy/c1e165e8-eae0-4c8e-b45e-5c840791942c"
+    ltd: "https://shop.gatographql.com/buy/4cc1b499-2573-4f7b-9a7b-8b01f4620fd1"
+  tier2:
+    yearly: "https://shop.gatographql.com/buy/78fec0d0-4d36-46bc-b600-ad096b278ced"
+    ltd: "https://shop.gatographql.com/buy/11c8b802-d982-4054-8bf7-8d6ab27bf1ec"
+  tier3:
+    yearly: "https://shop.gatographql.com/buy/11c8b802-d982-4054-8bf7-8d6ab27bf1ec"
+    ltd: "https://shop.gatographql.com/buy/c2e37e39-e7e3-4738-aea3-e01e7de2288e"
+  tier4:
+    yearly: "https://shop.gatographql.com/buy/cdf64f8f-a028-4cb7-970c-fc56a9a8dac2"
+    ltd: "https://shop.gatographql.com/buy/098cc951-a25c-4438-b565-e8899f2db50b"
 ---
 
 This extension installs an internal GraphQL Server, that can be invoked within your application, using PHP code.
 
-The internal GraphQL server provides class `GraphQLServer` with three methods:
+The internal GraphQL server is accessed via class `GatoGraphQL\InternalGraphQLServer\GraphQLServer`, through these three methods:
 
 - `executeQuery`: Execute a GraphQL query
 - `executeQueryInFile`: Execute a GraphQL query contained in a (`.gql`) file
-- `executePersistedQuery`: Execute a persisted GraphQL query (providing its ID as an int, or slug as a string)
+- `executePersistedQuery`: Execute a persisted GraphQL query (providing its ID as an int, or slug as a string) (the **Persisted Queries** extension is required)
 
-For instance, we can hook into an action hook, and call `GraphQLServer::executeQuery` passing the hook values to the query:
+These are the method signatures:
 
 ```php
-add_action(
-  'new_to_publish',
-  function (WP_Post $post) {
-    if ($post->post_type !== 'post') {
-      return;
-    }
-    $query = ' { ... } ';
-    $variables = [
-      'postTitle' => $post->post_title,
-      'postContent' => $post->post_content,
-    ]
-    GraphQLServer::executeQuery($query, $variables);
+namespace GatoGraphQL\InternalGraphQLServer;
+
+use PoP\Root\HttpFoundation\Response;
+
+class GraphQLServer {
+  /**
+   * Execute a GraphQL query
+   */
+  public static function executeQuery(
+    string $query,
+    array $variables = [],
+    ?string $operationName = null,
+    int|string|null $schemaConfigurationIDOrSlug = null,
+  ): Response {
+    // ...
   }
-);
+
+
+  /**
+   * Execute a GraphQL query contained in a (`.gql`) file
+   */
+  public static function executeQueryInFile(
+    string $file,
+    array $variables = [],
+    ?string $operationName = null,
+    int|string|null $schemaConfigurationIDOrSlug = null,
+  ): Response {
+    // ...
+  }
+
+
+  /**
+   * Execute a persisted GraphQL query (providing its ID as an int, or slug as a string)
+   */
+  public static function executePersistedQuery(
+    string|int $persistedQueryIDOrSlug,
+    array $variables = [],
+    ?string $operationName = null
+  ): Response {
+    // ...
+  }
+}
+```
+
+To execute a GraphQL query and obtain the response content:
+
+```php
+use GatoGraphQL\InternalGraphQLServer\GraphQLServer;
+
+// Provide the GraphQL query
+$query = "{ ... }";
+
+// Execute the query against the internal server
+$response = GraphQLServer::executeQuery($query);
+
+// Get the content and decode it
+$responseContent = json_decode($response->getContent(), true);
+
+// Access the data and errors from the response
+$responseData = $responseContent["data"] ?? [];
+$responseErrors = $responseContent["errors"] ?? [];
 ```

@@ -1,0 +1,44 @@
+---
+title: API Hierarchy & Endpoint Management
+description: "Manage custom endpoints and persisted queries hierarchically, to group and expose related endpoints under a logical structure, and organize them via categories."
+# category: PRO plugin
+category: Standard
+order: 170
+relatedGuides: [
+  {
+    topic: use,
+    slug: creating-an-api-hierarchy
+  },
+]
+---
+
+Manage custom endpoints and persisted queries hierarchically, to group and expose related endpoints under a logical structure, and organize them via categories.
+
+## API Hierarchy
+
+An API may expose several endpoints which are somehow related to each other, and which may execute a similar query. This is the case, for instance, when creating endpoints that exposes the data in one language or another.
+
+Through the **API Hierarchy** we can define a structure for endpoints, so that we can produce:
+
+- `/graphql/posts/english/`
+- `/graphql/posts/french/`
+
+In this case, a parent query `posts` can provide the GraphQL query, and its descendant queries `english` and `french` provide the variables to customize the query.
+
+![API inheritance](/assets/guides/upstream/api-inheritance.png "API inheritance")
+
+## Endpoint Management
+
+When creating a Custom Endpoint or Persisted Query, we can add a "GraphQL endpoint category" to it, to organize all of our endpoints:
+
+![Endpoint categories when editing a Custom Endpoint](/assets/guides/upstream/graphql-custom-endpoint-editor-with-categories.png "Endpoint categories when editing a Custom Endpoint")
+
+For instance, we can create categories to manage endpoints by client, application, or any other required piece of information:
+
+![List of endpoint categories](/assets/guides/upstream/graphql-endpoint-categories.png "List of endpoint categories")
+
+On the list of Custom Endpoints and Persisted Queries, we can visualize their categories and, clicking on any category link, or using the filter at the top, will only display all entries for that category:
+
+![List of Custom Endpoints with their categories](/assets/guides/upstream/graphql-custom-endpoints-with-categories.png "List of Custom Endpoints with their categories")
+
+![Filtering Custom Endpoints by category](/assets/guides/upstream/graphql-custom-endpoints-filtering-by-category.png "Filtering Custom Endpoints by category")

@@ -1,0 +1,29 @@
+---
+title: "Enabling the Schema Tutorial page"
+description: Adding a tutorial page explaining all elements of the GraphQL schema offered by Gato GraphQL
+order: 1888
+---
+
+The Tutorial section explains how to achieve many objectives, exploring all the elements from the GraphQL schema.
+
+By taking the tutorial, you will learn about all the distinctive features of Gato GraphQL.
+
+The tutorial is disabled by default, and you need to enable it on the Settings.
+
+## Settings to enable the Schema Tutorial page
+
+An option to enable the Tutorial section is on the Settings page, under "Plugin Configuration > General > Enable Schema Tutorial?":
+
+<Image
+  src="/assets/guides/upstream/settings-enable-schema-tutorial-page.png"
+  width="1024"
+  height="820"
+  alt="Enabling the Schema tutorial page in the Settings"
+  caption="Enabling the Schema tutorial page in the Settings"
+/>
+
+Alternatively, we can define this value in `wp-config.php`:
+
+```php
+define( 'GATOGRAPHQL_ENABLE_SCHEMA_TUTORIAL_PAGE', true );
+```

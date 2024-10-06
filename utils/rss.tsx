@@ -12,7 +12,7 @@ export default async function generateRssFeed() {
 
   const feedOptions = {
     title: 'Gato GraphQL Blog | RSS Feed',
-    description: 'Stay up to date on the latest from Gato GraphQL and our engineering practices.',
+    description: 'Stay up to date on the latest from Gato GraphQL',
     id: DOMAIN,
     link: DOMAIN,
     image: `${DOMAIN}/assets/GatoGraphQL-logo-suki.png`,

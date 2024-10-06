@@ -15,7 +15,7 @@ const inter = Inter({
 
 export const metadata = {
   title: 'Gato GraphQL',
-  description: 'The most powerful GraphQL server for WordPress',
+  description: 'Powerful and flexible GraphQL server for WordPress',
   
   // metadataBase: first check if env var from Netlify is defined. If not, from Vercel.
   // If not, fallback to default (explicit so that there's no warning in console)

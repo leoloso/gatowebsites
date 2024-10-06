@@ -17,7 +17,9 @@ import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
 import SectionHeader from './section-header'
 import { getFeatureURLPath } from '@/utils/content/application-urls'
-import { sortByOrder, sortByOrderAndTitle } from '@/utils/content/sort'
+import { sortByOrder } from '@/utils/content/sort'
+import AppConfig from '@/app/app.config'
+import BrowseFeaturesButton from './browse-features-button'
 Swiper.use([Navigation])
 
 export default function FeaturesCarousel() {
@@ -37,14 +39,19 @@ export default function FeaturesCarousel() {
           slidesPerView: 3
         }
       },
-      grabCursor: true,
-      loop: false,
+      grabCursor: false,
+      loop: true,
       centeredSlides: false,
       initialSlide: 0,
       spaceBetween: 24,
       navigation: {
         nextEl: '.carousel-next',
         prevEl: '.carousel-prev',
+      },
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
       },
     })
     setSwiperInitialized(true)
@@ -56,20 +63,20 @@ export default function FeaturesCarousel() {
     CarouselImg03,
     CarouselImg04,
     CarouselImg05,
-    CarouselImg01,
-    CarouselImg02,
   ]
 
-  const featureSlugs = [
-    'schema-namespacing',
-    'global-fields',
-    'composable-directives',
-    'multifield-directives',
-    'oneof-input-object',
-    'multiple-query-execution',
-    'field-to-input',
-  ]
-  const features = allFeatures.sort(sortByOrder).filter((feature) => featureSlugs.includes(feature.slug))
+  // const featureSlugs = [
+  //   'oneof-input-object',
+  //   'multiple-query-execution',
+  //   'security',
+  //   'access-control',
+  //   'http-caching',
+  //   'custom-endpoints',
+  //   'persisted-queries',
+  //   'nested-mutations',
+  // ]
+  // const features = allFeatures.filter((feature) => featureSlugs.includes(feature.slug)).sort(sortByOrder)
+  const features = allFeatures.sort(sortByOrder)
 
   return (
     <section className='relative'>
@@ -93,13 +100,13 @@ export default function FeaturesCarousel() {
           </svg>
         </div>
 
-        <div className="pt-16 pb-12 md:pt-32 md:pb-20 border-b border-slate-800">
+        <div className="pt-16 pb-12 md:pt-32 md:pb-20 border-t border-slate-800">
 
           {/* Section header */}
           <SectionHeader
-            leading='Forward-looking server'
-            title='Advanced GraphQL features'
-            description='Gato GraphQL includes novel custom features that build on top of the GraphQL spec, delivering more versatility and power.'
+            leading='Features'
+            title='Flexibility, versatility, and power'
+            description='The server offers ways to augment, protect, and speed up your application'
           />
 
           {/* Carousel built with Swiper.js [https://swiperjs.com/] */}
@@ -118,9 +125,9 @@ export default function FeaturesCarousel() {
                         <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-purple-500 transition-colors duration-500 ease-in-out blur-[60px]" />
                       </div>
                       <div className="flex flex-col p-6 h-full">
-                        <Image className="mb-3" src={itemPics[index]} width={56} height={56} alt="Carousel Icon" />
+                        <Image className="mb-3" src={itemPics[index % itemPics.length]} width={56} height={56} alt="Carousel Icon" />
                         <div className="grow">
-                          <div className="font-bold text-lg mb-1">{feature.title}</div>
+                          <div className="font-bold text-lg mb-1"><a className="group-hover:before:absolute group-hover:before:inset-0" href={getFeatureURLPath(feature)}>{feature.title}</a></div>
                           <div className="text-slate-400 mb-3">{feature.description}</div>
                         </div>
                         <div className="text-right">
@@ -130,24 +137,50 @@ export default function FeaturesCarousel() {
                     </div>
                   </HighlighterItem>
                 ))}
+                { /* Add one final slide */}
+                <HighlighterItem className="swiper-slide h-auto group/slide">
+                  <div className="relative h-full bg-slate-800 rounded-[inherit] z-20 overflow-hidden">
+                    {/* Particles animation */}
+                    <Particles className="absolute inset-0 -z-10 opacity-0 group-[.swiper-slide-active]/slide:opacity-100 group-hover/slide:opacity-100 transition-opacity duration-500 ease-in-out" quantity={3} refresh={swiperInitialized} /> 
+                    {/* Radial gradient */}
+                    <div className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/3 aspect-square" aria-hidden="true">
+                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-700 group-[.swiper-slide-active]/slide:bg-purple-500 transition-colors duration-500 ease-in-out blur-[60px]" />
+                    </div>
+                    <div className="flex flex-col p-6 h-full">
+                      <Image className="mb-3" src={itemPics[itemPics.length - 1]} width={56} height={56} alt="Carousel Icon" />
+                      <div className="grow">
+                        <div className="font-bold text-lg mb-1">And much more!</div>
+                        <div className="text-slate-400 mb-3">Browse the list of all features, discover how Gato GraphQL can empower and protect your application.</div>
+                      </div>
+                      <div className="text-right">
+                        <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={`/${AppConfig.paths.features}`}>Browse all features <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
+                      </div>
+                    </div>
+                  </div>
+                </HighlighterItem>
               </Highlighter>
             </div>
           </div>
 
           {/* Arrows */}
           <div className="flex mt-8 justify-end">
-            <button className="carousel-prev relative z-20 w-12 h-12 flex items-center justify-center group">
-              <span className="sr-only">Previous</span>
-              <svg className="w-4 h-4 fill-slate-500 group-hover:fill-purple-500 transition duration-150 ease-in-out" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.7 14.7l1.4-1.4L3.8 9H16V7H3.8l4.3-4.3-1.4-1.4L0 8z" />
-              </svg>
-            </button>
-            <button className="carousel-next relative z-20 w-12 h-12 flex items-center justify-center group">
-              <span className="sr-only">Next</span>
-              <svg className="w-4 h-4 fill-slate-500 group-hover:fill-purple-500 transition duration-150 ease-in-out" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.3 14.7l-1.4-1.4L12.2 9H0V7h12.2L7.9 2.7l1.4-1.4L16 8z" />
-              </svg>
-            </button>
+            <div className="flex justify-end">
+              <button className="carousel-prev relative z-20 w-12 h-12 flex items-center justify-center group">
+                <span className="sr-only">Previous</span>
+                <svg className="w-4 h-4 fill-slate-500 group-hover:fill-purple-500 transition duration-150 ease-in-out" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.7 14.7l1.4-1.4L3.8 9H16V7H3.8l4.3-4.3-1.4-1.4L0 8z" />
+                </svg>
+              </button>
+              <button className="carousel-next relative z-20 w-12 h-12 flex items-center justify-center group">
+                <span className="sr-only">Next</span>
+                <svg className="w-4 h-4 fill-slate-500 group-hover:fill-purple-500 transition duration-150 ease-in-out" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.3 14.7l-1.4-1.4L12.2 9H0V7h12.2L7.9 2.7l1.4-1.4L16 8z" />
+                </svg>
+              </button>
+            </div>
+            <div className="relative z-20 flex items-center justify-center group ml-6">
+              <BrowseFeaturesButton />
+            </div>
           </div>
 
         </div>

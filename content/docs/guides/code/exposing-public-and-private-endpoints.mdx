@@ -1,7 +1,8 @@
 ---
 title: Exposing public and private endpoints
+# isPRO: true
 description: Gato GraphQL expands enables exposing multiple custom endpoints, each of them tailored to some specific need, and these can be made private and public. When should we use each?
-order: 270
+order: 1050
 # referencedExtensionSlugs:
 # - 'access-control'
 # - 'access-control-visitor-ip'
@@ -20,7 +21,7 @@ Gato GraphQL expands this notion, allowing us to expose multiple custom endpoint
 - `/clients/A`, `/clients/B` and `clients/Z`
 - any combination of them
 
-Gato GraphQL also natively supports Persisted Queries, which are endpoints where the GraphQL query is predefined and stored in the server.
+Gato GraphQL also supports Persisted Queries, which are endpoints where the GraphQL query is predefined and stored in the server.
 
 This guide presents suggestions on how and when to use each endpoint.
 
@@ -43,7 +44,7 @@ If we have a configuration that we want to apply to all or most endpoints, we ca
 
 ## When to use the single endpoint
 
-The [single endpoint](/guides/config/enabling-and-configuring-the-single-endpoint) is always public, exposed by default under `/graphql`, and disabled by default (so the "Single Endpoint" module must be enabled).
+The [single endpoint](/guides/config/enabling-and-configuring-the-single-endpoint) is always public, exposed by default under `/graphql`.
 
 <Banner type="info">
 

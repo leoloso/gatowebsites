@@ -25,18 +25,30 @@ export default function FooterMenu({
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/pricing">Pricing</a>
           </li>
-          <li>
+          {/* <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.highlights}`}>Highlights</a>
-          </li>
+          </li> */}
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.features}`}>Features</a>
           </li>
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.extensions}`}>Extensions</a>
           </li>
-          <li>
+          {/* <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.demoPosts}`}>Demos</a>
+          </li> */}
+          {/* <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/changelog">Changelog</a>
+          </li> */}
+          <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Try out</a>
           </li>
+          {/* <li>
+            <a className={`text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out ${getShopAnchorClassname()}`} href={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.defaultTier)}>Purchase</a>
+          </li> */}
+        </ul>
+        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Documentation</h6>
+        <ul className="text-sm space-y-2">
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.guides}`}>Guides</a>
           </li>
@@ -49,36 +61,8 @@ export default function FooterMenu({
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.tutorial}`}>Schema tutorial</a>
           </li>
-          <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.blog}`}>Blog</a>
-          </li>
-          {/* <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/changelog">Changelog</a>
-          </li> */}
         </ul>
-        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Shop</h6>
-        <ul className="text-sm space-y-2">
-          {/* <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDownload}>Download free plugin</a>
-          </li> */}
-          <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDirectory} target="_blank">Plugin in WordPress.org</a>
-          </li>
-          <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Try out</a>
-          </li>
-          <li>
-            <a className={`text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out ${getShopAnchorClassname()}`} href={getShopURL(AppConfig.urls.shopPurchase)}>Purchase</a>
-          </li>
-          <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/refund-policy">Refund policy</a>
-          </li>
-        </ul>
-      </div>
-
-      {/* 3rd block */}
-      <div className={columnClassname}>
-        <h6 className="text-sm text-slate-50 font-medium mb-2">Comparisons</h6>
+        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Comparisons</h6>
         <ul className="text-sm space-y-2">
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/comparisons">Overview</a>
@@ -89,22 +73,14 @@ export default function FooterMenu({
             </li>
           ))}
         </ul>
-        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Resources</h6>
+      </div>
+
+      {/* 3rd block */}
+      <div className={columnClassname}>
+        <h6 className="text-sm text-slate-50 font-medium mb-2">GitHub</h6>
         <ul className="text-sm space-y-2">
           <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.architecture}`}>Architecture docs</a>
-          </li>
-          <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/specials/wpbuilds">WPBuilds series</a>
-          </li>
-          <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="https://www.youtube.com/@GatoGraphQL" target="_blank">@GatoGraphQL YouTube channel</a>
-          </li>
-        </ul>
-        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">GitHub</h6>
-        <ul className="text-sm space-y-2">
-          <li>
-            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.githubRepo} target="_blank">Gato GraphQL repo</a>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.githubRepo} target="_blank">Gato GraphQL open source code</a>
           </li>
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.githubExtensionStarter} target="_blank">Gato GraphQL extension starter</a>
@@ -113,12 +89,36 @@ export default function FooterMenu({
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.nextjsWordPressStarter} target="_blank">Next.js + Gato GraphQL WordPress starter</a>
           </li>
         </ul>
+        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">WordPress.org</h6>
+        <ul className="text-sm space-y-2">
+          {/* <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDownload}>Download free plugin</a>
+          </li> */}
+          <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.wpDirectory} target="_blank">Gato GraphQL plugin</a>
+          </li>
+        </ul>
+        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Resources</h6>
+        <ul className="text-sm space-y-2">
+          <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs.architecture}`}>Architecture docs</a>
+          </li>
+          <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/specials/wpbuilds">WPBuilds series</a>
+          </li>
+          {/* <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="https://www.youtube.com/@GatoGraphQL" target="_blank">@GatoGraphQL YouTube channel</a>
+          </li> */}
+        </ul>
       </div>
 
       {/* 4th block */}
       <div className={columnClassname}>
         <h6 className="text-sm text-slate-50 font-medium mb-2">Company</h6>
         <ul className="text-sm space-y-2">
+          <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.blog}`}>Blog</a>
+          </li>
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/about">About us</a>
           </li>
@@ -153,6 +153,9 @@ export default function FooterMenu({
           </li>
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/support">Support request</a>
+          </li>
+          <li>
+            <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/refund-policy">Refund policy</a>
           </li>
         </ul>
       </div>

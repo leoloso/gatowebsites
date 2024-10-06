@@ -1,18 +1,14 @@
-import { allExtensions } from 'contentlayer/generated'
-
-import ExtensionsSection from '@/components/extensions-section'
-import ExtensionsList from '@/components/extensions-list'
-import {
-  getFeaturedExtensions,
-} from '@/utils/content/extension'
-import { sortByOrderAndTitle } from '@/utils/content/sort'
-import Cta from '@/components/cta-02'
-import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import Cta from '@/components/cta'
+import StunningBackground from '@/components/stunning-background'
+import { createSEOPageTitle } from '@/utils/content/metadata'
+import ExtensionsSection from './extensions-section'
+import ExtensionsPricingSection from './extensions-pricing-section'
+import PageHeader from '@/components/page-header'
 
 const pageTitle = 'Extensions'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
-  description: 'Provide additional functionality to Gato GraphQL, and expand the GraphQL schema',
+  description: 'Provide additional functionality to Gato GraphQL, and extend the GraphQL schema',
   // openGraph: {
   //   title: createOpenGraphPageTitle(pageTitle),
   // },
@@ -22,17 +18,32 @@ export const metadata = {
 }
 
 export default function Extensions() {
-  // Sort extensions
-  const extensions = allExtensions.sort(sortByOrderAndTitle)  
-  const featuredExtensions = getFeaturedExtensions(extensions).sort(sortByOrderAndTitle)
+
   return (
     <>
-      <ExtensionsSection
-        extensions={ featuredExtensions }
-      />
-      <ExtensionsList
-        extensions={ extensions }
-      />
+      <section className="relative">
+
+        <StunningBackground />
+    
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+
+            {/*  Page header */}
+            <PageHeader
+              leading='Satisfy your requirements'
+              title='Extensions'
+              description='Augment the server functionality, and extend the schema'
+            />
+
+            <ExtensionsSection />
+          </div>
+
+          <ExtensionsPricingSection />
+          
+        </div>
+
+      </section>
+
       <Cta />
     </>
   )

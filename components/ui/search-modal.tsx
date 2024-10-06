@@ -2,7 +2,7 @@
 
 import AppConfig from '@/app/app.config'
 import Link from 'next/link'
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import AppSettings from '@/app/app.settings'
 
 // import algoliasearch and InstantSearch
@@ -68,7 +68,7 @@ function CustomHits({...props}) {
             <div>
               <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
               <ul role='listbox'>
-                <li role='option'>
+                {/* <li role='option'>
                   <HitLink
                     href='/guides/manage/automating-tasks'
                   >
@@ -83,6 +83,24 @@ function CustomHits({...props}) {
                         <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
                       </svg>
                       <span>Automation</span>
+                    </>
+                  </HitLink>
+                </li> */}
+                <li role='option'>
+                  <HitLink
+                    href='/guides/augment/oneof-input-object'
+                  >
+                    <>
+                      <svg
+                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                      </svg>
+                      <span>'oneOf' Input Object</span>
                     </>
                   </HitLink>
                 </li>
@@ -106,24 +124,6 @@ function CustomHits({...props}) {
                 </li>
                 <li role='option'>
                   <HitLink
-                    href='/guides/augment/oneof-input-object'
-                  >
-                    <>
-                      <svg
-                        className="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                      </svg>
-                      <span>'oneOf' Input Object</span>
-                    </>
-                  </HitLink>
-                </li>
-                <li role='option'>
-                  <HitLink
                     href='/guides/schema/using-nested-mutations'
                   >
                     <>
@@ -140,7 +140,7 @@ function CustomHits({...props}) {
                     </>
                   </HitLink>
                 </li>
-                <li role='option'>
+                {/* <li role='option'>
                   <HitLink
                     href='/guides/schema/namespacing-the-schema'
                   >
@@ -157,7 +157,7 @@ function CustomHits({...props}) {
                       <span>Schema namespacing</span>
                     </>
                   </HitLink>
-                </li>
+                </li> */}
                 <li role='option'>
                   <HitLink
                     href='/guides/use/creating-a-persisted-query'
@@ -197,7 +197,7 @@ function CustomHits({...props}) {
                   >
                     <path d="M6 0a6 6 0 1 0 0 12A6 6 0 0 0 6 0Zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
                   </svg>
-                  <span className="font-medium">Try out Gato GraphQL PRO</span>
+                  <span className="font-medium">Try out Gato GraphQL + all extensions</span>
                 </HitLink>
               </li>
               <li role='option'>
@@ -332,7 +332,8 @@ export default function SearchModal({
   return (
     <Transition appear show={isOpen}>
       <Dialog as="div" onClose={() => setIsOpen(false)}>
-        <Transition.Child
+        <TransitionChild
+          as="div"
           className="fixed inset-0 bg-slate-900 bg-opacity-30 z-50 transition-opacity"
           enter="transition ease-out duration-200"
           enterFrom="opacity-0"
@@ -342,7 +343,8 @@ export default function SearchModal({
           leaveTo="opacity-0"
           aria-hidden="true"
         />
-        <Transition.Child
+        <TransitionChild
+          as="div"
           className={`${AppSettings.enableLightDarkThemeMode && enableLightDarkThemeModeToggle ? '' : 'dark' } fixed inset-0 z-50 overflow-hidden flex items-start top-20 mb-4 justify-center px-4 sm:px-6`}
           enter="transition ease-in-out duration-200"
           enterFrom="opacity-0 translate-y-4"
@@ -351,7 +353,7 @@ export default function SearchModal({
           leaveFrom="opacity-100 translate-y-0"
           leaveTo="opacity-0 translate-y-4"
         >
-          <Dialog.Panel className="bg-white dark:bg-slate-800 overflow-auto max-w-2xl w-full max-h-full rounded shadow-lg">
+          <DialogPanel className="bg-white dark:bg-slate-800 overflow-auto max-w-2xl w-full max-h-full rounded shadow-lg">
             <InstantSearchNext
               indexName={ALGOLIA_API_CREDENTIALS.indexName}
               searchClient={searchClient}
@@ -380,8 +382,8 @@ export default function SearchModal({
                 }}
               />
             </InstantSearchNext>
-          </Dialog.Panel>
-        </Transition.Child>
+          </DialogPanel>
+        </TransitionChild>
       </Dialog>
     </Transition>
   )
