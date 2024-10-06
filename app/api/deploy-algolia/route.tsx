@@ -177,14 +177,13 @@ export async function GET(request: Request) {
   if (!apiKey || typeof apiKey !== 'string' || !isAdminUser(apiKey)) {
     return new Response(`⛔️ You are not allowed here`, { status: 500 })
   }
-  const searchFeaturesAndExtensions = AppSettings.searchFeaturesAndExtensions
   try {
     const posts = await getAllPostsTransformed()
     const demoPosts = await getAllDemoPostsTransformed()
     const comparisonPosts = await getAllComparisonPostsTransformed()
     const docs = await getAllDocsTransformed()
-    const extensions = searchFeaturesAndExtensions ? await getAllExtensionsTransformed() : []
-    const features = searchFeaturesAndExtensions ? await getAllFeaturesTransformed() : []
+    const extensions = await getAllExtensionsTransformed()
+    const features = await getAllFeaturesTransformed()
     const client = algoliaSearch(
       ALGOLIA_API_CREDENTIALS.appId,
       ALGOLIA_API_CREDENTIALS.searchAdminKey
