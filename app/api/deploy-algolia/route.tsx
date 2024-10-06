@@ -177,9 +177,10 @@ export async function GET(request: Request) {
   if (!apiKey || typeof apiKey !== 'string' || !isAdminUser(apiKey)) {
     return new Response(`⛔️ You are not allowed here`, { status: 500 })
   }
+  const searchDemoPosts = AppSettings.searchDemoPosts
   try {
     const posts = await getAllPostsTransformed()
-    const demoPosts = await getAllDemoPostsTransformed()
+    const demoPosts = searchDemoPosts ? await getAllDemoPostsTransformed() : []
     const comparisonPosts = await getAllComparisonPostsTransformed()
     const docs = await getAllDocsTransformed()
     const extensions = await getAllExtensionsTransformed()
