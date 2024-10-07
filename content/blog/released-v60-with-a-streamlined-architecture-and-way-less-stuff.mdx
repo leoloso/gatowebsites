@@ -1,0 +1,166 @@
+---
+title: "⭐️ Released v6.0 with a streamlined architecture and way less stuff"
+seoTitle: "⭐️ Released the Gato GraphQL plugin for WordPress v6.0, with a streamlined architecture and way less stuff"
+description: 'The latest release of Gato GraphQL simplifies the experience, by focusing on shipping a GraphQL server and nothing else'
+seoDescription: 'The latest release of the Gato GraphQL plugin for WordPress simplifies the experience, by focusing on shipping a GraphQL server and nothing else'
+publishedAt: '2024-10-07 08:00:00'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - news
+  - release
+---
+
+Gato GraphQL `v6.0` has been released. Check out the [release notes in GitHub](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/6.0.0) for the complete list of changes.
+
+<Banner type="warning">
+
+**Important:** After updating the plugin (i.e. not installing anew), you need to deactivate and then re-activate the plugin, otherwise the "GraphiQL" and "Schema" items won't appear on the menu.
+
+</Banner>
+
+Below are the most important updates.
+
+## Breaking changes
+
+- Bumped minimum WordPress version to 6.1.
+
+### Return no results when filtering data by an empty array
+
+This GraphQL query filter posts by ID:
+
+```graphql
+query FilterPostsByIDs(
+  $ids: [ID!]
+) {
+  posts(filter: { ids: $ids }) {
+    title
+  }
+}
+```
+
+Previously, when passing an empty array in variable `$ids`:
+
+```json
+{
+  "ids": []
+}
+```
+
+...input `filter.ids` would be ignored, and the field would then return all results.
+
+Now, passing an empty array means "retrieve no results".
+
+To ignore the filter input, pass `null` instead.
+
+The same behavior applies for all fields that accept the `filter.ids` input:
+
+- `categories`
+- `comments`
+- `customPosts`
+- `tags`
+- `users`
+- etc
+
+## Improvements
+
+- Added field `isGutenbergEditorEnabled`
+- Support additional taxonomies for mutations on post tags/categories (not only `post_tag` and `category`)
+- Added taxonomy field also to `PostTag` and `PostCategory` types
+- Added `featuredImage` field on `GenericCustomPost`
+
+### Added mutations to assign custom tags/categories to custom posts
+
+You can now execute mutations to assign tags and categories on custom posts:
+
+```graphql
+mutation SetTagsAndCategoriesOnCustomPost(
+  $customPostId: ID!
+  $tagIDs: [ID!]!
+  $categoryIDs: [ID!]!
+  $append: Boolean
+) {
+  setTagsOnCustomPost(input: {
+    id: $customPostId
+    tagsBy: {
+      ids: $tagIDs
+    }
+    taxonomy: "some-tag-taxonomy"
+    append: $append
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    customPost {
+      tags(taxonomy: "some-tag-taxonomy") {
+        id
+      }
+      tagNames(taxonomy: "some-tag-taxonomy")
+    }
+  }
+
+  setCategoriesOnCustomPost(input: {
+    id: $customPostId
+    categoriesBy: {
+      ids: $categoryIDs
+    }
+    taxonomy: "some-category-taxonomy"
+    append: $append
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    customPost {
+      categories(taxonomy: "some-category-taxonomy") {
+        id
+      }
+      categoryNames(taxonomy: "some-category-taxonomy")
+    }
+  }
+}
+```
+
+### Added Settings option to enable/disable logs
+
+The complete GraphQL response for specific items (eg: when doing automation in PRO) can be logged under file `wp-content/gatographql/logs/info.log`.
+
+A new option **Enable Logs?** in **Settings > Plugin Configuration > General** has been added, to enable printing these logs (it is `false` by default):
+
+![Enable Logs? option in Settings](/assets/extensions/upstream-pro/settings-enable-logs.png "Enable Logs? option in Settings")
+
+### Application password failed authentication: Show error in GraphQL response
+
+If using Application passwords to authenticate the user against the GraphQL endpoint, and the authentication fails, the error message is now shown in the GraphQL response:
+
+```json
+{
+  "errors": [
+    {
+      "message": "Application Password authentication error: The provided password is an invalid application password."
+    }
+  ],
+  "data": {
+    "me": null
+  }
+}
+```
+
+### Added predefined persisted queries
+
+Several persisted queries have been added:
+
+- [PRO] Import post from WordPress RSS feed and rewrite its content with ChatGPT
+- [PRO] Import new posts from WordPress RSS feed
+- [PRO] Import HTML from URLs as new posts in WordPress
+
+## Bug fixes
+
+- On fields `blocks`, `blockDataItems`, and `blockFlattenedDataItems`, avoid error when post has no content
