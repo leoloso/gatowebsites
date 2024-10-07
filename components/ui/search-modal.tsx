@@ -12,12 +12,98 @@ import {
   SearchBox,
   useHits,
   PoweredBy,
+  UseSearchBoxProps,
+  useInstantSearch,
 } from 'react-instantsearch';
 import type { Hit } from 'instantsearch.js';
 
 import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
 import { SearchObject } from '../search/algolia'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { useSearchBox } from 'react-instantsearch';
+
+function CustomSearchBox(props: UseSearchBoxProps) {
+  const { query, refine } = useSearchBox(props);
+  const { status } = useInstantSearch();
+  const [inputValue, setInputValue] = useState(query);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const isSearchStalled = status === 'stalled';
+
+  function setQuery(newQuery: string) {
+    setInputValue(newQuery);
+
+    refine(newQuery);
+  }
+
+  return (
+    <div>
+      <form
+        className="relative flex justify-center border-b border-slate-200 dark:border-slate-700"
+        action=""
+        role="search"
+        noValidate
+        onSubmit={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (inputRef.current) {
+            inputRef.current.blur();
+          }
+        }}
+        onReset={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          setQuery('');
+
+          if (inputRef.current) {
+            inputRef.current.focus();
+          }
+        }}
+      >
+        <input
+          data-autofocus
+          className='text-sm text-slate-700 dark:text-slate-200 w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500'
+
+          ref={inputRef}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          placeholder="Search in all docs…"
+          spellCheck={false}
+          maxLength={512}
+          type="search"
+          value={inputValue}
+          onChange={(event) => {
+            setQuery(event.currentTarget.value);
+          }}
+          // autoFocus
+        />
+        <div
+          className='relative top-0 right-0 mt-4'
+        >
+          <button
+            type="submit"
+            className='w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400'
+          >
+            <svg className="shrink-0 fill-current text-gray-400 dark:text-gray-500 group-hover:text-gray-500 dark:group-hover:text-gray-400 ml-4 mr-2" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 14c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zM7 2C4.243 2 2 4.243 2 7s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5z" />
+              <path d="M15.707 14.293L13.314 11.9a8.019 8.019 0 01-1.414 1.414l2.393 2.393a.997.997 0 001.414 0 .999.999 0 000-1.414z" />
+            </svg>
+          </button>
+        </div>
+        {/* <button
+          type="reset"
+          hidden={inputValue.length === 0 || isSearchStalled}
+        >
+          Reset
+        </button>
+        <span hidden={!isSearchStalled}>Searching…</span> */}
+      </form>
+    </div>
+  );
+}
 
 function CustomHits({...props}) {
   const { hits, results } = useHits<SearchObject>(props);
@@ -361,17 +447,17 @@ export default function SearchModal({
               initialUiState={initialUiState}
               onStateChange={onStateChange}
             >
-              <SearchBox
-                placeholder={placeholder}
-                autoFocus
-                classNames={{
-                  form: 'relative flex justify-center border-b border-slate-200 dark:border-slate-700',
-                  input: 'text-sm text-slate-700 dark:text-slate-200 w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500',
-                  loadingIndicator: 'relative top-0 right-0 mt-4',
-                  submitIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
-                  resetIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
-                  loadingIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
-                }}
+              <CustomSearchBox
+                // placeholder={placeholder}
+                // autoFocus
+                // classNames={{
+                //   form: 'relative flex justify-center border-b border-slate-200 dark:border-slate-700',
+                //   input: 'text-sm text-slate-700 dark:text-slate-200 w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500',
+                //   loadingIndicator: 'relative top-0 right-0 mt-4',
+                //   submitIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
+                //   resetIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
+                //   loadingIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
+                // }}
               />
               <CustomHits />
               <PoweredBy
