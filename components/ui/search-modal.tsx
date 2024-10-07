@@ -506,14 +506,13 @@ export default function SearchModal({
               /> */}
               <CustomSearchBox />
               <CustomHits />
-              <PoweredBy
+              {/* <PoweredBy
                 theme='dark'
                 classNames={{
                   root: 'flex justify-center',
                   logo: 'h-4 my-2',
                 }}
-                tabIndex={1000}
-              />
+              /> */}
             </InstantSearchNext>
           </DialogPanel>
         </TransitionChild>
