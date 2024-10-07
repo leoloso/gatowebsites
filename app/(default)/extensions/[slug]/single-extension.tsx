@@ -4,6 +4,7 @@ import ExtensionThumb from '@/components/extension-thumb'
 import PageHeader from '@/components/page-header'
 import PostItemIntegration from '@/components/post-item-integration'
 import ExtensionThumbModalVideo from '@/components/mdx/components/modal-video-extension-thumb'
+import BrowseExtensionReferenceDocButton from '@/components/browse-extension-reference-doc-button'
 
 export default function SingleExtension({
   extension,
@@ -60,6 +61,14 @@ export default function SingleExtension({
             {/* Article content */}
             <PostMdx code={extension.body.code} />
           </article>
+
+          <div className="sm:mt-12 mt-24 flex items-center">
+            <div className="max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+              <BrowseExtensionReferenceDocButton
+                extension={extension}
+              />
+            </div>
+          </div>
 
         </div>
 
