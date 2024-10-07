@@ -21,6 +21,7 @@ import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
 import { SearchObject } from '../search/algolia'
 import { useRef, useState } from 'react'
 import { useSearchBox } from 'react-instantsearch';
+import clsx from 'clsx'
 
 function CustomSearchBox(props: UseSearchBoxProps) {
   const { query, refine } = useSearchBox(props);
@@ -200,6 +201,7 @@ function CustomHits({...props}) {
               <ul role='listbox'>
                 {/* <li role='option'>
                   <TabbedHitLink
+                    spacious={false}
                     href='/guides/manage/automating-tasks'
                   >
                     <>
@@ -218,6 +220,7 @@ function CustomHits({...props}) {
                 </li> */}
                 <li role='option'>
                   <TabbedHitLink
+                    spacious={false}
                     href='/guides/augment/oneof-input-object'
                   >
                     <>
@@ -236,6 +239,7 @@ function CustomHits({...props}) {
                 </li>
                 <li role='option'>
                   <TabbedHitLink
+                    spacious={false}
                     href='/guides/schema/executing-multiple-queries-concurrently'
                   >
                     <>
@@ -254,6 +258,7 @@ function CustomHits({...props}) {
                 </li>
                 <li role='option'>
                   <TabbedHitLink
+                    spacious={false}
                     href='/guides/schema/using-nested-mutations'
                   >
                     <>
@@ -272,6 +277,7 @@ function CustomHits({...props}) {
                 </li>
                 {/* <li role='option'>
                   <TabbedHitLink
+                    spacious={false}
                     href='/guides/schema/namespacing-the-schema'
                   >
                     <>
@@ -290,6 +296,7 @@ function CustomHits({...props}) {
                 </li> */}
                 <li role='option'>
                   <TabbedHitLink
+                    spacious={false}
                     href='/guides/use/creating-a-persisted-query'
                   >
                     <>
@@ -315,6 +322,7 @@ function CustomHits({...props}) {
             <ul role='listbox'>
               <li role='option'>
                 <TabbedHitLink
+                  spacious={false}
                   href={AppConfig.urls.instawpSandboxDemo}
                   target='_blank'
                 >
@@ -332,6 +340,7 @@ function CustomHits({...props}) {
               </li>
               <li role='option'>
                 <TabbedHitLink
+                  spacious={false}
                   href="/contact"
                 >
                   <svg
@@ -348,6 +357,7 @@ function CustomHits({...props}) {
               </li>
               <li role='option'>
                 <TabbedHitLink
+                  spacious={false}
                   href="/support"
                 >
                   <svg
@@ -373,6 +383,7 @@ function CustomHits({...props}) {
 function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
   return (
     <TabbedHitLink
+      spacious={true}
       href={hit.urlPath}
     >
       <>
@@ -411,7 +422,7 @@ function HitLink({ ...props }) {
 function TabbedHitLink({ ...props }) {
   return (
     <Link
-      className="flex items-center px-2 py-4 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+      className={clsx("flex items-center px-2 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none", props.spacious ? "py-4" : "py-1")}
       href={props.href}
       // There's a bug with @headlessui: It only tabs to 2 elements (even if all of them have the `tabIndex` prop set)
       // Workaround hack: when focused increase their tabIndex, so the ones below are then reachable
