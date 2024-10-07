@@ -21,15 +21,15 @@ The latest version of Gato GraphQL has been released. Check out the [release not
 
 This version greatly simplifies the plugin, streamlining its architecture and shipping way less stuff.
 
-Previously, Gato GraphQL was meant to be a Swiss-Army Knife, to be used for all data-related tasks in the WordPress site. Its objective was not just to fetch data, but also to manage the WordPress site via GraphQL.
+Previously, Gato GraphQL was meant to be a Swiss-Army Knife, to be used for all data-related tasks in the WordPress site. Its objective was not just to fetch data, but to also manage the WordPress site via GraphQL.
 
-But this proposition has proved difficult to communicate, as anybody looking for a plugin to solve a certain problem would search for a tool to specifically resolve that problem, and not for a tool that could resolve that problem among 150 others, plus having a higher cost and greater complexity to implement.
+But this proposition has proved difficult to get buy-in from the community, as anybody looking for a plugin to solve a certain problem would search for a tool to specifically resolve that problem, and not for a tool that could resolve that problem among 150 others, while having a higher cost and greater complexity to implement.
 
 That's why, from now on, Gato GraphQL will simply be a GraphQL server, providing what is expected: The GraphQL single endpoint to fetch and mutate data.
 
-This version introduces these changes (among others):
+This new version introduces these important changes:
 
-- The single endpoint is enabled by default (its GraphiQL and Voyager clients, to access data from outside the wp-admin, are disabled by default)
+- The single endpoint is enabled by default (its GraphiQL and Voyager clients, to access data from outside the wp-admin, are disabled by default though)
 - Custom endpoints and persisted queries have been removed
 
 <Image
@@ -40,7 +40,15 @@ This version introduces these changes (among others):
   caption="Gato GraphQL has been simplified"
 />
 
+In addition, Gato GraphQL PRO previously included plenty of modules to augment the functionality and expand the GraphQL schema, all of them in a single bundle.
 
+However, once again, people needing only access control to provide security for their public GraphQL APIs might not be encouraged to get the bundle with everything, as that meant having to pay a bigger price than just what they needed.
+
+That's why, from now on, the PRO offerings have been thoroughly streamlined and decoupled from each other. You can now purchase and install only the extension(s) that you need.
+
+There are now 10 [extensions](/extensions) available, which can be installed independently of each other.
+
+Documentation for these can also be accessed from within the plugin:
 
 <Image
   src="/images/releases/v60/gatographql-v6.0-extensions.png"
@@ -49,3 +57,6 @@ This version introduces these changes (among others):
   alt="Standalone extensions"
   caption="Standalone extensions"
 />
+
+This way you can save money. If you need only access control for your public APIs, you can purchase the [Access Control extension](/extensions/access-control) (at u$d 24.99 for 5 sites) and nothing else.
+
