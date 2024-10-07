@@ -199,7 +199,7 @@ function CustomHits({...props}) {
               <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
               <ul role='listbox'>
                 {/* <li role='option'>
-                  <HitLink
+                  <TabbedHitLink
                     href='/guides/manage/automating-tasks'
                   >
                     <>
@@ -214,10 +214,10 @@ function CustomHits({...props}) {
                       </svg>
                       <span>Automation</span>
                     </>
-                  </HitLink>
+                  </TabbedHitLink>
                 </li> */}
                 <li role='option'>
-                  <HitLink
+                  <TabbedHitLink
                     href='/guides/augment/oneof-input-object'
                   >
                     <>
@@ -232,10 +232,10 @@ function CustomHits({...props}) {
                       </svg>
                       <span>'oneOf' Input Object</span>
                     </>
-                  </HitLink>
+                  </TabbedHitLink>
                 </li>
                 <li role='option'>
-                  <HitLink
+                  <TabbedHitLink
                     href='/guides/schema/executing-multiple-queries-concurrently'
                   >
                     <>
@@ -250,10 +250,10 @@ function CustomHits({...props}) {
                       </svg>
                       <span>Multiple Query Execution</span>
                     </>
-                  </HitLink>
+                  </TabbedHitLink>
                 </li>
                 <li role='option'>
-                  <HitLink
+                  <TabbedHitLink
                     href='/guides/schema/using-nested-mutations'
                   >
                     <>
@@ -268,10 +268,10 @@ function CustomHits({...props}) {
                       </svg>
                       <span>Nested mutations</span>
                     </>
-                  </HitLink>
+                  </TabbedHitLink>
                 </li>
                 {/* <li role='option'>
-                  <HitLink
+                  <TabbedHitLink
                     href='/guides/schema/namespacing-the-schema'
                   >
                     <>
@@ -286,10 +286,10 @@ function CustomHits({...props}) {
                       </svg>
                       <span>Schema namespacing</span>
                     </>
-                  </HitLink>
+                  </TabbedHitLink>
                 </li> */}
                 <li role='option'>
-                  <HitLink
+                  <TabbedHitLink
                     href='/guides/use/creating-a-persisted-query'
                   >
                     <>
@@ -304,7 +304,7 @@ function CustomHits({...props}) {
                       </svg>
                       <span>Persisted queries</span>
                     </>
-                  </HitLink>
+                  </TabbedHitLink>
                 </li>
               </ul>
             </div>
@@ -314,7 +314,7 @@ function CustomHits({...props}) {
             <div className="text-sm font-medium text-slate-500 px-2 mb-2">Actions</div>
             <ul role='listbox'>
               <li role='option'>
-                <HitLink
+                <TabbedHitLink
                   href={AppConfig.urls.instawpSandboxDemo}
                   target='_blank'
                 >
@@ -328,10 +328,10 @@ function CustomHits({...props}) {
                     <path d="M6 0a6 6 0 1 0 0 12A6 6 0 0 0 6 0Zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
                   </svg>
                   <span className="font-medium">Try out Gato GraphQL + all extensions</span>
-                </HitLink>
+                </TabbedHitLink>
               </li>
               <li role='option'>
-                <HitLink
+                <TabbedHitLink
                   href="/contact"
                 >
                   <svg
@@ -344,10 +344,10 @@ function CustomHits({...props}) {
                     <path d="M6 0C2.691 0 0 2.362 0 5.267c0 2.905 2.691 5.266 6 5.266a6.8 6.8 0 0 0 1.036-.079l2.725 1.485a.5.5 0 0 0 .739-.439V8.711A4.893 4.893 0 0 0 12 5.267C12 2.362 9.309 0 6 0Z" />
                   </svg>
                   <span className="font-medium">Contact us</span>
-                </HitLink>
+                </TabbedHitLink>
               </li>
               <li role='option'>
-                <HitLink
+                <TabbedHitLink
                   href="/support"
                 >
                   <svg
@@ -360,7 +360,7 @@ function CustomHits({...props}) {
                     <path d="M11.854.146a.5.5 0 0 0-.525-.116l-11 4a.5.5 0 0 0-.015.934l4.8 1.921 1.921 4.8A.5.5 0 0 0 7.5 12h.008a.5.5 0 0 0 .462-.329l4-11a.5.5 0 0 0-.116-.525Z" />
                   </svg>
                   <span className="font-medium">Support request</span>
-                </HitLink>
+                </TabbedHitLink>
               </li>
             </ul>
           </div>
@@ -511,6 +511,7 @@ export default function SearchModal({
                   root: 'flex justify-center',
                   logo: 'h-4 my-2',
                 }}
+                tabIndex={1000}
               />
             </InstantSearchNext>
           </DialogPanel>
