@@ -2,7 +2,7 @@ import { allComparisonPosts } from '@/.contentlayer/generated'
 import AppConfig from '@/app/app.config'
 import { getShopAnchorClassname, getShopURL } from '@/utils/shop/shop'
 import {
-  getComparisonPostURL,
+  getComparisonPostURLPath,
 } from '@/utils/content/application-urls'
 
 export default function FooterMenu({
@@ -69,7 +69,7 @@ export default function FooterMenu({
           </li>
           {allComparisonPosts.map((comparisonPost, index) => (
             <li key={index}>
-              <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={getComparisonPostURL(comparisonPost)}>{comparisonPost.title}</a>
+              <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={getComparisonPostURLPath(comparisonPost)}>{comparisonPost.title}</a>
             </li>
           ))}
         </ul>
