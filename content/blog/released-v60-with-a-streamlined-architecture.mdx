@@ -1,0 +1,65 @@
+---
+title: "⭐️ Released v6.0 with a streamlined architecture"
+seoTitle: "⭐️ Released the Gato GraphQL plugin for WordPress v6.0, with a streamlined architecture"
+description: 'The latest release of Gato GraphQL simplifies the experience, by focusing on shipping a GraphQL server and nothing else'
+seoDescription: 'The latest release of the Gato GraphQL plugin for WordPress simplifies the experience, by focusing on shipping a GraphQL server and nothing else'
+publishedAt: '2024-10-07 08:00:00'
+author: 'Leonardo Losoviz'
+authorImg: '/images/leo-avatar.jpg'
+tags:
+  - news
+  - release
+---
+
+Gato GraphQL `v6.0` has been released. Check out the [release notes in GitHub](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/6.0.0) for the complete list of changes.
+
+**Important:** After updating the plugin (i.e. not installing anew), you need to deactivate and then re-activate the plugin, otherwise the "GraphiQL" and "Schema" items won't appear on the menu.
+
+Below are the most important updates.
+
+## Breaking changes
+
+<Banner type="info">
+
+Read blog post [👨🏻‍🔧 Gato GraphQL gets streamlined](/blog/gatographql-gets-streamlined) for an explanation of the changes
+
+</Banner>
+
+- Removed custom endpoints and persisted queries
+- The single endpoint is enabled by default
+- The single endpoint GraphiQL/Voyager clients are disabled default
+- The Schema Configuration module is disabled by default
+- The schema tutorial page is hidden by default
+- On the settings page, the configuration for items under "Schema Elements Configuration" need to be set again
+
+## Improvements
+
+- Tested up to WordPress 6.7
+- Do not display Endpoint Categories if there are no endpoint CPTs enabled
+- Hide "API Hierarchy" module if there are no endpoint CPTs enabled
+- Hide "Excerpt as description" module if there are no CPTs enabled
+- Display the "Enable Logs?" settings only when some extension is using it
+- Reorganized the Settings, splitting "Schema Configuration" into 2 elements: "Schema Configuration" and  "Schema Elements Configuration"
+- Improved documentation for extensions
+- Added links to online docs on the Settings page
+
+### Added "Schema Editing Access" module
+
+Grant non-admin users access to create and manage endpoints.
+
+Decide which users can access the GraphiQL and Interactive schema clients in the admin, and are able to edit the GraphQL schema, by selecting the appropriate configuration from the dropdown in the "Plugin Configuration > Schema Editing Access" tab on the Settings page:
+
+- `Users with capability: "gatogql_manage_graphql_schema"`
+- `Users with role: "administrator"`
+- `Users with any role: "administrator", "editor"`
+- `Users with any role: "administrator", "editor", "author"`
+
+The first option (`Users with capability: "gatogql_manage_graphql_schema"`) is selected by default, granting access to users with the `administrator` role only.
+
+<Image
+  src="/assets/guides/upstream/settings-schema-editing-access.png"
+  width="1024"
+  height="940"
+  alt="Configuring the schema editing access in the Settings"
+  caption="Configuring the schema editing access in the Settings"
+/>
