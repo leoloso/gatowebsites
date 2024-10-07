@@ -19,18 +19,17 @@ The latest version of Gato GraphQL has been released. Check out the [release not
 
 </Banner>
 
-This version greatly simplifies the plugin, streamlining its architecture, and shipping way less stuff.
+This version greatly simplifies the plugin, streamlining its architecture and shipping way less stuff.
 
 Previously, Gato GraphQL was meant to be a Swiss-Army Knife, to be used for all data-related tasks in the WordPress site. Its objective was not just to fetch data, but also to manage the WordPress site via GraphQL.
 
-But this proposition proved difficult to get across, as anybody with a problem would search for a tool to specifically resolve that problem, and not for a tool that could resolve that problem among 150 others, but at a bigger price and bigger complexity.
+But this proposition has proved difficult to communicate, as anybody looking for a plugin to solve a certain problem would search for a tool to specifically resolve that problem, and not for a tool that could resolve that problem among 150 others, plus having a higher cost and greater complexity to implement.
 
-From now on, Gato GraphQL will be a GraphQL server
+That's why, from now on, Gato GraphQL will simply be a GraphQL server, providing what is expected: The GraphQL single endpoint to fetch and mutate data.
 
-Some changes are:
+This version introduces these changes (among others):
 
-- The single endpoint is enabled by default
-- The single endpoint's clients (GraphiQL and Voyager) are disabled default
+- The single endpoint is enabled by default (its GraphiQL and Voyager clients, to access data from outside the wp-admin, are disabled by default)
 - Custom endpoints and persisted queries have been removed
 
 <Image
