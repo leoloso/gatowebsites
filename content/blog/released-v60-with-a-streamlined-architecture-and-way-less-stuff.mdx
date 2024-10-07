@@ -23,144 +23,42 @@ Below are the most important updates.
 
 ## Breaking changes
 
-- Bumped minimum WordPress version to 6.1.
-
-### Return no results when filtering data by an empty array
-
-This GraphQL query filter posts by ID:
-
-```graphql
-query FilterPostsByIDs(
-  $ids: [ID!]
-) {
-  posts(filter: { ids: $ids }) {
-    title
-  }
-}
-```
-
-Previously, when passing an empty array in variable `$ids`:
-
-```json
-{
-  "ids": []
-}
-```
-
-...input `filter.ids` would be ignored, and the field would then return all results.
-
-Now, passing an empty array means "retrieve no results".
-
-To ignore the filter input, pass `null` instead.
-
-The same behavior applies for all fields that accept the `filter.ids` input:
-
-- `categories`
-- `comments`
-- `customPosts`
-- `tags`
-- `users`
-- etc
+- Removed custom endpoints and persisted queries
+- The single endpoint is enabled by default
+- The single endpoint GraphiQL/Voyager clients are disabled default
+- The Schema Configuration module is disabled by default
+- The schema tutorial page is hidden by default
+- On the settings page, the configuration for items under "Schema Elements Configuration" need to be set again
 
 ## Improvements
 
-- Added field `isGutenbergEditorEnabled`
-- Support additional taxonomies for mutations on post tags/categories (not only `post_tag` and `category`)
-- Added taxonomy field also to `PostTag` and `PostCategory` types
-- Added `featuredImage` field on `GenericCustomPost`
+- Tested up to WordPress 6.7
+- Do not display Endpoint Categories if there are no endpoint CPTs enabled
+- Hide "API Hierarchy" module if there are no endpoint CPTs enabled
+- Hide "Excerpt as description" module if there are no CPTs enabled
+- Display the "Enable Logs?" settings only when some extension is using it
+- Hide the Schema tutorial page by default
+- Reorganized the Settings, splitting "Schema Configuration" into 2 elements: "Schema Configuration" and  "Schema Elements Configuration"
+- Improved documentation for extensions
+- Added links to online docs on the Settings page
 
-### Added mutations to assign custom tags/categories to custom posts
+### Added "Schema Editing Access" module
 
-You can now execute mutations to assign tags and categories on custom posts:
+Grant non-admin users access to create and manage endpoints.
 
-```graphql
-mutation SetTagsAndCategoriesOnCustomPost(
-  $customPostId: ID!
-  $tagIDs: [ID!]!
-  $categoryIDs: [ID!]!
-  $append: Boolean
-) {
-  setTagsOnCustomPost(input: {
-    id: $customPostId
-    tagsBy: {
-      ids: $tagIDs
-    }
-    taxonomy: "some-tag-taxonomy"
-    append: $append
-  }) {
-    status
-    errors {
-      __typename
-      ...on ErrorPayload {
-        message
-      }
-    }
-    customPost {
-      tags(taxonomy: "some-tag-taxonomy") {
-        id
-      }
-      tagNames(taxonomy: "some-tag-taxonomy")
-    }
-  }
+Decide which users can access the GraphiQL and Interactive schema clients in the admin, and are able to edit the GraphQL schema, by selecting the appropriate configuration from the dropdown in the "Plugin Configuration > Schema Editing Access" tab on the Settings page:
 
-  setCategoriesOnCustomPost(input: {
-    id: $customPostId
-    categoriesBy: {
-      ids: $categoryIDs
-    }
-    taxonomy: "some-category-taxonomy"
-    append: $append
-  }) {
-    status
-    errors {
-      __typename
-      ...on ErrorPayload {
-        message
-      }
-    }
-    customPost {
-      categories(taxonomy: "some-category-taxonomy") {
-        id
-      }
-      categoryNames(taxonomy: "some-category-taxonomy")
-    }
-  }
-}
-```
+- `Users with capability: "gatogql_manage_graphql_schema"`
+- `Users with role: "administrator"`
+- `Users with any role: "administrator", "editor"`
+- `Users with any role: "administrator", "editor", "author"`
 
-### Added Settings option to enable/disable logs
+The first option (`Users with capability: "gatogql_manage_graphql_schema"`) is selected by default, granting access to users with the `administrator` role only.
 
-The complete GraphQL response for specific items (eg: when doing automation in PRO) can be logged under file `wp-content/gatographql/logs/info.log`.
-
-A new option **Enable Logs?** in **Settings > Plugin Configuration > General** has been added, to enable printing these logs (it is `false` by default):
-
-![Enable Logs? option in Settings](/assets/extensions/upstream-pro/settings-enable-logs.png "Enable Logs? option in Settings")
-
-### Application password failed authentication: Show error in GraphQL response
-
-If using Application passwords to authenticate the user against the GraphQL endpoint, and the authentication fails, the error message is now shown in the GraphQL response:
-
-```json
-{
-  "errors": [
-    {
-      "message": "Application Password authentication error: The provided password is an invalid application password."
-    }
-  ],
-  "data": {
-    "me": null
-  }
-}
-```
-
-### Added predefined persisted queries
-
-Several persisted queries have been added:
-
-- [PRO] Import post from WordPress RSS feed and rewrite its content with ChatGPT
-- [PRO] Import new posts from WordPress RSS feed
-- [PRO] Import HTML from URLs as new posts in WordPress
-
-## Bug fixes
-
-- On fields `blocks`, `blockDataItems`, and `blockFlattenedDataItems`, avoid error when post has no content
+<Image
+  src="/assets/guides/upstream/settings-schema-editing-access.png"
+  width="1024"
+  height="940"
+  alt="Configuring the schema editing access in the Settings"
+  caption="Configuring the schema editing access in the Settings"
+/>
