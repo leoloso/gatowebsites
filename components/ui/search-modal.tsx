@@ -80,26 +80,70 @@ function CustomSearchBox(props: UseSearchBoxProps) {
           }}
           // autoFocus
         />
-        <div
-          className='relative top-0 right-0 mt-4'
+        <button
+          className="ais-SearchBox-submit"
+          type="submit"
+          title="Submit the search query"
         >
-          <button
-            type="submit"
-            className='w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400'
+          <svg
+            className="ais-SearchBox-submitIcon w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400"
+            width="10"
+            height="10"
+            viewBox="0 0 40 40"
+            aria-hidden="true"
           >
-            <svg className="shrink-0 fill-current text-gray-400 dark:text-gray-500 group-hover:text-gray-500 dark:group-hover:text-gray-400 ml-4 mr-2" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 14c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zM7 2C4.243 2 2 4.243 2 7s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5z" />
-              <path d="M15.707 14.293L13.314 11.9a8.019 8.019 0 01-1.414 1.414l2.393 2.393a.997.997 0 001.414 0 .999.999 0 000-1.414z" />
-            </svg>
-          </button>
-        </div>
-        {/* <button
-          type="reset"
-          hidden={inputValue.length === 0 || isSearchStalled}
-        >
-          Reset
+            <path
+              d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"
+            ></path>
+          </svg>
         </button>
-        <span hidden={!isSearchStalled}>Searching…</span> */}
+        <button
+          className="ais-SearchBox-reset"
+          type="reset"
+          title="Clear the search query"
+        >
+          <svg
+            className="ais-SearchBox-resetIcon w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400"
+            viewBox="0 0 20 20"
+            width="10"
+            height="10"
+            aria-hidden="true"
+          >
+            <path
+              d="M8.114 10L.944 2.83 0 1.885 1.886 0l.943.943L10 8.113l7.17-7.17.944-.943L20 1.886l-.943.943-7.17 7.17 7.17 7.17.943.944L18.114 20l-.943-.943-7.17-7.17-7.17 7.17-.944.943L0 18.114l.943-.943L8.113 10z"
+            ></path>
+          </svg>
+        </button>
+        <span
+          className="ais-SearchBox-loadingIndicator relative top-0 right-0 mt-4"
+          hidden={true}
+        >
+          <svg
+            aria-label="Results are loading"
+            width="16"
+            height="16"
+            viewBox="0 0 38 38"
+            stroke="#444"
+            className="ais-SearchBox-loadingIcon w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400"
+            aria-hidden="true"
+          >
+            <g fill="none" fill-rule="evenodd">
+              <g transform="translate(1 1)" stroke-width="2">
+                <circle stroke-opacity=".5" cx="18" cy="18" r="18"></circle>
+                <path d="M36 18c0-9.94-8.06-18-18-18">
+                  <animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 18 18"
+                    to="360 18 18"
+                    dur="1s"
+                    repeatCount="indefinite"
+                  ></animateTransform>
+                </path>
+              </g>
+            </g>
+          </svg>
+        </span>
       </form>
     </div>
   );
@@ -447,18 +491,19 @@ export default function SearchModal({
               initialUiState={initialUiState}
               onStateChange={onStateChange}
             >
-              <CustomSearchBox
-                // placeholder={placeholder}
-                // autoFocus
-                // classNames={{
-                //   form: 'relative flex justify-center border-b border-slate-200 dark:border-slate-700',
-                //   input: 'text-sm text-slate-700 dark:text-slate-200 w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500',
-                //   loadingIndicator: 'relative top-0 right-0 mt-4',
-                //   submitIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
-                //   resetIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
-                //   loadingIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
-                // }}
-              />
+              {/* <SearchBox
+                placeholder={placeholder}
+                autoFocus
+                classNames={{
+                  form: 'relative flex justify-center border-b border-slate-200 dark:border-slate-700',
+                  input: 'text-sm text-slate-700 dark:text-slate-200 w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500',
+                  loadingIndicator: 'relative top-0 right-0 mt-4',
+                  submitIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
+                  resetIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
+                  loadingIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
+                }}
+              /> */}
+              <CustomSearchBox />
               <CustomHits />
               <PoweredBy
                 theme='dark'
