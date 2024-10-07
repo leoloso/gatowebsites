@@ -416,7 +416,8 @@ function TabbedHitLink({ ...props }) {
       // There's a bug with @headlessui: It only tabs to 2 elements (even if all of them have the `tabIndex` prop set)
       // Workaround hack: when focused increase their tabIndex, so the ones below are then reachable
       // This works on Firefox. Pressing tab does not work on Safari.
-      onFocus={(e) => {e.target.tabIndex = (e.target.tabIndex || 1) + 10}}
+      // onFocus={(e) => {e.target.tabIndex = (e.target.tabIndex || 1) + 10}}
+      // // onFocus={(e) => {console.log(e.target.tabIndex)}}
       tabIndex={10}
       {...props}
     >
