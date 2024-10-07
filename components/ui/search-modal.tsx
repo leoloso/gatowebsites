@@ -85,6 +85,7 @@ function CustomSearchBox(props: UseSearchBoxProps) {
           className="ais-SearchBox-submit"
           type="submit"
           title="Submit the search query"
+          tabIndex={100}
         >
           <svg
             className="ais-SearchBox-submitIcon w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400"
@@ -102,6 +103,7 @@ function CustomSearchBox(props: UseSearchBoxProps) {
           className="ais-SearchBox-reset"
           type="reset"
           title="Clear the search query"
+          tabIndex={100}
         >
           <svg
             className="ais-SearchBox-resetIcon w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400"
