@@ -12,12 +12,145 @@ import {
   SearchBox,
   useHits,
   PoweredBy,
+  UseSearchBoxProps,
+  useInstantSearch,
 } from 'react-instantsearch';
 import type { Hit } from 'instantsearch.js';
 
 import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
 import { SearchObject } from '../search/algolia'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { useSearchBox } from 'react-instantsearch';
+import clsx from 'clsx'
+
+function CustomSearchBox(props: UseSearchBoxProps) {
+  const { query, refine } = useSearchBox(props);
+  const { status } = useInstantSearch();
+  const [inputValue, setInputValue] = useState(query);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const isSearchStalled = status === 'stalled';
+
+  function setQuery(newQuery: string) {
+    setInputValue(newQuery);
+
+    refine(newQuery);
+  }
+
+  return (
+    <div>
+      <form
+        className="relative flex justify-center border-b border-slate-200 dark:border-slate-700"
+        action=""
+        role="search"
+        noValidate
+        onSubmit={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (inputRef.current) {
+            inputRef.current.blur();
+          }
+        }}
+        onReset={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          setQuery('');
+
+          if (inputRef.current) {
+            inputRef.current.focus();
+          }
+        }}
+      >
+        <input
+          data-autofocus
+          className='text-sm text-slate-700 dark:text-slate-200 w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500'
+
+          ref={inputRef}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          placeholder="Search in all docs…"
+          spellCheck={false}
+          maxLength={512}
+          type="search"
+          value={inputValue}
+          onChange={(event) => {
+            setQuery(event.currentTarget.value);
+          }}
+          // autoFocus
+        />
+        <button
+          className="ais-SearchBox-submit"
+          type="submit"
+          title="Submit the search query"
+          tabIndex={100}
+        >
+          <svg
+            className="ais-SearchBox-submitIcon w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400"
+            width="10"
+            height="10"
+            viewBox="0 0 40 40"
+            aria-hidden="true"
+          >
+            <path
+              d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"
+            ></path>
+          </svg>
+        </button>
+        <button
+          className="ais-SearchBox-reset"
+          type="reset"
+          title="Clear the search query"
+          tabIndex={100}
+        >
+          <svg
+            className="ais-SearchBox-resetIcon w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400"
+            viewBox="0 0 20 20"
+            width="10"
+            height="10"
+            aria-hidden="true"
+          >
+            <path
+              d="M8.114 10L.944 2.83 0 1.885 1.886 0l.943.943L10 8.113l7.17-7.17.944-.943L20 1.886l-.943.943-7.17 7.17 7.17 7.17.943.944L18.114 20l-.943-.943-7.17-7.17-7.17 7.17-.944.943L0 18.114l.943-.943L8.113 10z"
+            ></path>
+          </svg>
+        </button>
+        <span
+          className="ais-SearchBox-loadingIndicator relative top-0 right-0 mt-4"
+          hidden={true}
+        >
+          <svg
+            aria-label="Results are loading"
+            width="16"
+            height="16"
+            viewBox="0 0 38 38"
+            stroke="#444"
+            className="ais-SearchBox-loadingIcon w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400"
+            aria-hidden="true"
+          >
+            <g fill="none" fill-rule="evenodd">
+              <g transform="translate(1 1)" stroke-width="2">
+                <circle stroke-opacity=".5" cx="18" cy="18" r="18"></circle>
+                <path d="M36 18c0-9.94-8.06-18-18-18">
+                  <animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 18 18"
+                    to="360 18 18"
+                    dur="1s"
+                    repeatCount="indefinite"
+                  ></animateTransform>
+                </path>
+              </g>
+            </g>
+          </svg>
+        </span>
+      </form>
+    </div>
+  );
+}
 
 function CustomHits({...props}) {
   const { hits, results } = useHits<SearchObject>(props);
@@ -69,7 +202,8 @@ function CustomHits({...props}) {
               <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
               <ul role='listbox'>
                 {/* <li role='option'>
-                  <HitLink
+                  <TabbedHitLink
+                    spacious={false}
                     href='/guides/manage/automating-tasks'
                   >
                     <>
@@ -84,10 +218,11 @@ function CustomHits({...props}) {
                       </svg>
                       <span>Automation</span>
                     </>
-                  </HitLink>
+                  </TabbedHitLink>
                 </li> */}
                 <li role='option'>
-                  <HitLink
+                  <TabbedHitLink
+                    spacious={false}
                     href='/guides/augment/oneof-input-object'
                   >
                     <>
@@ -102,10 +237,11 @@ function CustomHits({...props}) {
                       </svg>
                       <span>'oneOf' Input Object</span>
                     </>
-                  </HitLink>
+                  </TabbedHitLink>
                 </li>
                 <li role='option'>
-                  <HitLink
+                  <TabbedHitLink
+                    spacious={false}
                     href='/guides/schema/executing-multiple-queries-concurrently'
                   >
                     <>
@@ -120,10 +256,11 @@ function CustomHits({...props}) {
                       </svg>
                       <span>Multiple Query Execution</span>
                     </>
-                  </HitLink>
+                  </TabbedHitLink>
                 </li>
                 <li role='option'>
-                  <HitLink
+                  <TabbedHitLink
+                    spacious={false}
                     href='/guides/schema/using-nested-mutations'
                   >
                     <>
@@ -138,10 +275,11 @@ function CustomHits({...props}) {
                       </svg>
                       <span>Nested mutations</span>
                     </>
-                  </HitLink>
+                  </TabbedHitLink>
                 </li>
                 {/* <li role='option'>
-                  <HitLink
+                  <TabbedHitLink
+                    spacious={false}
                     href='/guides/schema/namespacing-the-schema'
                   >
                     <>
@@ -156,10 +294,11 @@ function CustomHits({...props}) {
                       </svg>
                       <span>Schema namespacing</span>
                     </>
-                  </HitLink>
+                  </TabbedHitLink>
                 </li> */}
                 <li role='option'>
-                  <HitLink
+                  <TabbedHitLink
+                    spacious={false}
                     href='/guides/use/creating-a-persisted-query'
                   >
                     <>
@@ -174,7 +313,7 @@ function CustomHits({...props}) {
                       </svg>
                       <span>Persisted queries</span>
                     </>
-                  </HitLink>
+                  </TabbedHitLink>
                 </li>
               </ul>
             </div>
@@ -184,7 +323,8 @@ function CustomHits({...props}) {
             <div className="text-sm font-medium text-slate-500 px-2 mb-2">Actions</div>
             <ul role='listbox'>
               <li role='option'>
-                <HitLink
+                <TabbedHitLink
+                  spacious={false}
                   href={AppConfig.urls.instawpSandboxDemo}
                   target='_blank'
                 >
@@ -198,10 +338,11 @@ function CustomHits({...props}) {
                     <path d="M6 0a6 6 0 1 0 0 12A6 6 0 0 0 6 0Zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
                   </svg>
                   <span className="font-medium">Try out Gato GraphQL + all extensions</span>
-                </HitLink>
+                </TabbedHitLink>
               </li>
               <li role='option'>
-                <HitLink
+                <TabbedHitLink
+                  spacious={false}
                   href="/contact"
                 >
                   <svg
@@ -214,10 +355,11 @@ function CustomHits({...props}) {
                     <path d="M6 0C2.691 0 0 2.362 0 5.267c0 2.905 2.691 5.266 6 5.266a6.8 6.8 0 0 0 1.036-.079l2.725 1.485a.5.5 0 0 0 .739-.439V8.711A4.893 4.893 0 0 0 12 5.267C12 2.362 9.309 0 6 0Z" />
                   </svg>
                   <span className="font-medium">Contact us</span>
-                </HitLink>
+                </TabbedHitLink>
               </li>
               <li role='option'>
-                <HitLink
+                <TabbedHitLink
+                  spacious={false}
                   href="/support"
                 >
                   <svg
@@ -230,7 +372,7 @@ function CustomHits({...props}) {
                     <path d="M11.854.146a.5.5 0 0 0-.525-.116l-11 4a.5.5 0 0 0-.015.934l4.8 1.921 1.921 4.8A.5.5 0 0 0 7.5 12h.008a.5.5 0 0 0 .462-.329l4-11a.5.5 0 0 0-.116-.525Z" />
                   </svg>
                   <span className="font-medium">Support request</span>
-                </HitLink>
+                </TabbedHitLink>
               </li>
             </ul>
           </div>
@@ -243,6 +385,7 @@ function CustomHits({...props}) {
 function CustomHit({ hit }: { hit: Hit<SearchObject> }) {
   return (
     <TabbedHitLink
+      spacious={true}
       href={hit.urlPath}
     >
       <>
@@ -281,12 +424,13 @@ function HitLink({ ...props }) {
 function TabbedHitLink({ ...props }) {
   return (
     <Link
-      className="flex items-center px-2 py-4 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none"
+      className={clsx("flex items-center px-2 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-none", props.spacious ? "py-4" : "py-1")}
       href={props.href}
       // There's a bug with @headlessui: It only tabs to 2 elements (even if all of them have the `tabIndex` prop set)
       // Workaround hack: when focused increase their tabIndex, so the ones below are then reachable
       // This works on Firefox. Pressing tab does not work on Safari.
-      onFocus={(e) => {e.target.tabIndex = (e.target.tabIndex || 1) + 10}}
+      // onFocus={(e) => {e.target.tabIndex = (e.target.tabIndex || 1) + 10}}
+      // // onFocus={(e) => {console.log(e.target.tabIndex)}}
       tabIndex={10}
       {...props}
     >
@@ -361,7 +505,7 @@ export default function SearchModal({
               initialUiState={initialUiState}
               onStateChange={onStateChange}
             >
-              <SearchBox
+              {/* <SearchBox
                 placeholder={placeholder}
                 autoFocus
                 classNames={{
@@ -372,15 +516,16 @@ export default function SearchModal({
                   resetIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
                   loadingIcon: 'w-4 h-4 fill-slate-500 shrink-0 mx-4 dark:fill-slate-400',
                 }}
-              />
+              /> */}
+              <CustomSearchBox />
               <CustomHits />
-              <PoweredBy
+              {/* <PoweredBy
                 theme='dark'
                 classNames={{
                   root: 'flex justify-center',
                   logo: 'h-4 my-2',
                 }}
-              />
+              /> */}
             </InstantSearchNext>
           </DialogPanel>
         </TransitionChild>
