@@ -14,7 +14,7 @@ export default function BrowseExtensionReferenceDocButton({
   return (
     <Link className={`${btnClassName} ${styleClassname}`} href={getExtensionDocumentationURLPath(extension)}>
       <span className="relative inline-flex items-center">
-        Browse the Extension Reference doc
+        Browse the Extension Reference docs
       </span>
     </Link>
   )
