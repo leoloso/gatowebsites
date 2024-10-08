@@ -14,7 +14,7 @@ export default function LinkModalVideo({
   video,
   videoWidth,
   videoHeight,
-  title = "Watch tutorial video",
+  title = "Tutorial video",
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
