@@ -46,6 +46,7 @@ export default function ExtensionsSection({
           video="/videos/GatoGraphQL-extensions.mp4"
           videoWidth={1920}
           videoHeight={1080}
+          bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
         />
       </div>
 

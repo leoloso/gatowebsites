@@ -16,6 +16,7 @@ interface ModalVideoProps {
   children?: React.ReactNode,
   title?: string
   printExtensionTitle?: boolean,
+  bgClassname?: string,
 }
 
 export default function ExtensionThumbModalVideo({
@@ -26,6 +27,7 @@ export default function ExtensionThumbModalVideo({
   children,
   title,
   printExtensionTitle,
+  bgClassname,
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
@@ -38,6 +40,7 @@ export default function ExtensionThumbModalVideo({
             extension={extension}
             isLandscape={true}
             printExtensionTitle={printExtensionTitle}
+            bgClassname={bgClassname}
           />
         )}
         { ! extension && (
@@ -45,6 +48,7 @@ export default function ExtensionThumbModalVideo({
             isLandscape={true}
             targetImageSources={[]}
             skipPlusImage={true}
+            bgClassname={bgClassname}
           />
         )}
         <ModalVideoTitle title={title} extraClassname='z-30' />
