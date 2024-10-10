@@ -18,9 +18,9 @@ export default function WithLogoThumb({
   skipGatoGraphQLLogo=false,
   skipPlusImage=false,
   title,
-  titleClassname="h1 leading-[5rem] text-[4.5rem] mb-8",
+  titleClassname="h1 lg:leading-[5rem] lg:text-[4.5rem] mb-8",
   leadingTitle,
-  leadingTitleClassname="h2 leading-[3rem] text-[2.5rem] mb-4",
+  leadingTitleClassname="h2 lg:leading-[3rem] lg:text-[2.5rem] mb-4",
   extraLeadingTitleClassname,
   logoClassname,
 }: {
