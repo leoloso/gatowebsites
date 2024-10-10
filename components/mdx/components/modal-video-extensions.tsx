@@ -36,7 +36,6 @@ export default function ExtensionsModalVideo({
           skipPlusImage={true}
           bgClassname={bgClassname}
 
-          // @todo: Fix: Move these out
           leadingTitle="Gato GraphQL"
           extraLeadingTitleClassname="text-slate-300"
           title="Extensions"
