@@ -21,6 +21,7 @@ export default function WithLogoThumb({
   titleClassname="h1 lg:leading-[5rem] lg:text-[4.5rem] mb-8",
   leadingTitle,
   leadingTitleClassname="h2 lg:leading-[3rem] lg:text-[2.5rem] mb-4",
+  extraTitleClassname,
   extraLeadingTitleClassname,
   logoClassname,
 }: {
@@ -40,6 +41,7 @@ export default function WithLogoThumb({
   titleClassname?: string,
   leadingTitle?: string,
   leadingTitleClassname?: string,
+  extraTitleClassname?: string,
   extraLeadingTitleClassname?: string,
   logoClassname?: string,
 }) {
@@ -59,7 +61,7 @@ export default function WithLogoThumb({
                   {leadingTitle}
                 </h2>
               )}
-              <h1 className={clsx("text-center max-w-5xl", titleClassname)}>
+              <h1 className={clsx("text-center max-w-5xl", titleClassname, extraTitleClassname)}>
                 {title}
               </h1>
             </>

@@ -37,8 +37,9 @@ export default function ExtensionsModalVideo({
           bgClassname={bgClassname}
 
           leadingTitle="Gato GraphQL"
-          extraLeadingTitleClassname="text-slate-300"
           title="Extensions"
+          extraTitleClassname="hidden md:block"
+          extraLeadingTitleClassname="text-slate-300 hidden md:block"
         />
         <ModalVideoTitle title={title} extraClassname='z-30' />
         <ModalVideoButton title={title} extraClassname='z-30 group-hover:scale-110 transition duration-700 ease-out' />
