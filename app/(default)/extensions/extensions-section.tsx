@@ -5,6 +5,8 @@ import { sortByOrderAndTitle } from '@/utils/content/sort'
 import ExtensionThumb from '@/components/extension-thumb'
 import clsx from 'clsx'
 import LinkModalVideo from '@/components/mdx/components/modal-video-link'
+import ExtensionsModalVideo from '@/components/mdx/components/modal-video-extensions'
+import { getCDNURL } from '@/utils/domain'
 
 export const svgEffect1 = 1;
 export const svgEffect2 = 2;
@@ -38,6 +40,16 @@ export default function ExtensionsSection({
 
   return (
     <div className="pb-12 md:pb-20">
+
+      <div className="pb-12 md:pb-20 mb-12 md:mb-20 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
+        <ExtensionsModalVideo
+          title="Click to watch a clip of Gato GraphQL extensions"
+          video={getCDNURL("/videos/GatoGraphQL-extensions.mp4")}
+          videoWidth={1920}
+          videoHeight={1080}
+          bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
+        />
+      </div>
 
       {/* Extensions */}
       {extensions.map((extension, index) => (
