@@ -73,6 +73,9 @@ module.exports = {
     wpDirectory: "https://wordpress.org/plugins/gatographql/",
     wpDownload: "https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip",
   },
+  domains: {
+    cdn: '',
+  },
   shop: {
     licenseDomainNumber: {
       tier1: 5,

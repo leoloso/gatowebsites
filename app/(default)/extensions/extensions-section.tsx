@@ -6,6 +6,7 @@ import ExtensionThumb from '@/components/extension-thumb'
 import clsx from 'clsx'
 import LinkModalVideo from '@/components/mdx/components/modal-video-link'
 import ExtensionsModalVideo from '@/components/mdx/components/modal-video-extensions'
+import { getCDNURL } from '@/utils/domain'
 
 export const svgEffect1 = 1;
 export const svgEffect2 = 2;
@@ -43,7 +44,7 @@ export default function ExtensionsSection({
       <div className="pb-20 md:pb-24">
         <ExtensionsModalVideo
           title="Click to watch a clip of Gato GraphQL extensions"
-          video="/videos/GatoGraphQL-extensions.mp4"
+          video={getCDNURL("/videos/GatoGraphQL-extensions.mp4")}
           videoWidth={1920}
           videoHeight={1080}
           bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
