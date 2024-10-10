@@ -38,7 +38,6 @@ export default function ExtensionThumbModalVideo({
             extension={extension}
             isLandscape={true}
             printExtensionTitle={printExtensionTitle}
-            // bgClassname="bg-purple-900 group-hover:bg-blue-900 transition duration-700 ease-out"
           />
         )}
         { ! extension && (
@@ -46,7 +45,6 @@ export default function ExtensionThumbModalVideo({
             isLandscape={true}
             targetImageSources={[]}
             skipPlusImage={true}
-            // bgClassname="bg-purple-900 group-hover:bg-blue-900 transition duration-700 ease-out"
           />
         )}
         <ModalVideoTitle title={title} extraClassname='z-30' />
