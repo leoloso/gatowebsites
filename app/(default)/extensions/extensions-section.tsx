@@ -5,7 +5,7 @@ import { sortByOrderAndTitle } from '@/utils/content/sort'
 import ExtensionThumb from '@/components/extension-thumb'
 import clsx from 'clsx'
 import LinkModalVideo from '@/components/mdx/components/modal-video-link'
-import ExtensionThumbModalVideo from '@/components/mdx/components/modal-video-extension-thumb'
+import ExtensionsModalVideo from '@/components/mdx/components/modal-video-extensions'
 
 export const svgEffect1 = 1;
 export const svgEffect2 = 2;
@@ -41,7 +41,7 @@ export default function ExtensionsSection({
     <div className="pb-12 md:pb-20">
 
       <div className="pb-20 md:pb-24">
-        <ExtensionThumbModalVideo
+        <ExtensionsModalVideo
           title="Click to watch a clip of Gato GraphQL extensions"
           video="/videos/GatoGraphQL-extensions.mp4"
           videoWidth={1920}
