@@ -74,7 +74,7 @@ module.exports = {
     wpDownload: "https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip",
   },
   domains: {
-    cdn: '',
+    cdn: 'https://d2nmpy6pnude6z.cloudfront.net',
   },
   shop: {
     licenseDomainNumber: {
