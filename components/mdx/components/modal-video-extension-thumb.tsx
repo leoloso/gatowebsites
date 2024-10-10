@@ -49,6 +49,11 @@ export default function ExtensionThumbModalVideo({
             targetImageSources={[]}
             skipPlusImage={true}
             bgClassname={bgClassname}
+
+            // @todo: Fix: Move these out
+            leadingTitle="Gato GraphQL"
+            extraLeadingTitleClassname="text-slate-300"
+            title="Extensions"
           />
         )}
         <ModalVideoTitle title={title} extraClassname='z-30' />
