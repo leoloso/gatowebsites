@@ -41,7 +41,7 @@ export default function ExtensionsSection({
   return (
     <div className="pb-12 md:pb-20">
 
-      <div className="pb-20 md:pb-24">
+      <div className="pb-12 md:pb-20 mb-12 md:mb-20 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
         <ExtensionsModalVideo
           title="Click to watch a clip of Gato GraphQL extensions"
           video={getCDNURL("/videos/GatoGraphQL-extensions.mp4")}
