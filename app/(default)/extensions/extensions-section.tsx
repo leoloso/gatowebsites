@@ -84,10 +84,11 @@ export default function ExtensionsSection({
               <p className="text-lg text-gray-300 grow">{extension.description}</p>
               { !! extension.video && (
                 <LinkModalVideo
-                  // title="Watch video"
+                  title="Tutorial video"
                   video={extension.video}
                   videoWidth={1920}
                   videoHeight={1080}
+                  duration={extension.videoDuration}
                 />
               )}
             </div>

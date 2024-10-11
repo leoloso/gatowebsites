@@ -7,14 +7,16 @@ interface ModalVideoProps {
   video: string
   videoWidth: number
   videoHeight: number,
-  title?: string
+  title?: string,
+  duration?: string,
 }
 
 export default function LinkModalVideo({
   video,
   videoWidth,
   videoHeight,
-  title = "Tutorial video",
+  title = "Watch video",
+  duration,
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
@@ -51,6 +53,12 @@ export default function LinkModalVideo({
         </svg>
         <span className="text-sm font-medium leading-tight text-gray-300 ml-2">
           { title }
+          { !! duration && (
+            <>
+              <span className="text-gray-600"> - </span>
+              { duration }
+            </>
+          )}
         </span>
       </button>
       {/* </div> */}
