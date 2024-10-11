@@ -361,6 +361,9 @@ const Extension = defineDocumentType(() => ({
     }, 
     video: {
       type: 'string',
+    }, 
+    videoDuration: {
+      type: 'string',
     },
     integrations: {
       type: 'list',
