@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import ModalVideoTransition from './modal-video-transition'
-import { Extension } from '@/.contentlayer/generated'
 import ModalVideoTitle from './modal-video-title'
 import ModalVideoButton from './modal-video-button'
 import WithLogoThumb from '@/components/thumbnails/with-logo-thumb'
