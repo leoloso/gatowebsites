@@ -1,4 +1,5 @@
 module.exports = {
+  useCDNForMovies: true,
   enableLightDarkThemeMode: false,
   useLemonSqueezyOverlay: true,
   searchDemoPosts: false,
