@@ -4,6 +4,8 @@ import { HighlightMdx } from '@/components/mdx/highlight-mdx'
 import WithTitleThumb from '@/components/thumbnails/with-title-thumb'
 import { useRef } from 'react'
 import slugify from '@sindresorhus/slugify';
+import AppSettings from '@/app/app.settings'
+import { getCDNURL } from '@/utils/domain';
 
 export default function HighlightItem({ ...props }) {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -29,7 +31,7 @@ export default function HighlightItem({ ...props }) {
           </div>
           <figure className="bg-gradient-to-b from-slate-300/20 to-transparent rounded mb-4">
             <video className="w-full rounded-[inherit]" ref={videoRef} width={768} height={432} loop controls>
-              <source src={props.video} type="video/mp4" />
+              <source src={AppSettings.useCDNForMovies ? getCDNURL(props.video) : props.video} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <figcaption className="text-sm text-center font-bold text-slate-400 mt-4">{props.videoDesc}</figcaption>
