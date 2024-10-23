@@ -17,10 +17,10 @@ We can define a new location for the cache folder, such as when:
 
 Indicate the full path to the new cache folder, via either (in order of priority):
 
-1. An environment variable `CACHE_DIR`
-2. Defining constant `GATOGRAPHQL_CACHE_DIR` in `wp-config.php`:
+1. An environment variable `CONTAINER_CACHE_DIR`
+2. Defining constant `GATOGRAPHQL_CONTAINER_CACHE_DIR` in `wp-config.php`:
 
 ```php
 // File wp-config.php
-define( 'GATOGRAPHQL_CACHE_DIR', '/path/to/cache' );
+define( 'GATOGRAPHQL_CONTAINER_CACHE_DIR', '/path/to/cache' );
 ```
