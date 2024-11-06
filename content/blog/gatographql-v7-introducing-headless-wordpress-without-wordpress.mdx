@@ -10,11 +10,15 @@ tags:
   - product update
 ---
 
-Ever since the Matt Mullenweg vs WPEngine debacle, I've noticed more and more people (in Reddit and elsewhere) asking for alternatives to WordPress, not necessarily to switch away from WordPress (at least not immediately), but to understand what options they have, and how painful would a potential migration be. They want to hedge their bets.
+Ever since the Matt Mullenweg vs WPEngine debacle, I've noticed more and more people (in Reddit and elsewhere) asking for alternatives to WordPress, not necessarily to switch away from WordPress (at least not immediately), but to understand what options they have, and how painful would a potential migration be. They want to know how to hedge their bets.
 
-For this folks who are working with Headless WordPress, Gato GraphQL has a cool new feature: **Headless WordPress without WordPress**.
+For these folks who are working with headless WordPress, Gato GraphQL has a cool new feature: **Headless WordPress without WordPress**.
 
-Basically, Gato GraphQL has been built using standalone PHP components, managed via Composer. **All the PHP components making up the GraphQL server do not depend on WordPress!**
+This post explains all about it, describes the architecture that makes it possible, and shows a video demonstrating it.
+
+## Idea behind "Headless WordPress without WordPress"
+
+Gato GraphQL has been built using standalone PHP components, managed via Composer, in such a way that **all the PHP components making up the GraphQL server do not depend on WordPress!**
 
 This gives us the first benefit:
 
@@ -22,7 +26,12 @@ This gives us the first benefit:
 
 Only PHP resolvers's code fetching WordPress data (posts, users, comments, etc) depend on WordPress, and that code will not run on a non-WordPress app.
 
-However, Gato GraphQL has these resolvers implemented via 2 packages: a non-WordPress one, containing all generic code, and a WordPress-specific one, containing the actual invocations to WordPress methods that satisfy that resolver (such as `get_posts` to fetch posts).
+However, Gato GraphQL has these resolvers implemented via 2 packages: a non-WordPress one, containing all generic code, and a WordPress-specific one, containing the actual invocations to WordPress methods that satisfy that resolver.
+
+For instance, the logic for fetching posts is composed of:
+
+- The [`Root.posts` field](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts/src/FieldResolvers/ObjectType/AbstractPostObjectTypeFieldResolver.php#L200), which lives on the generic [posts package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts)
+- Its resolution for WordPress via the [`get_posts` method](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/customposts-wp/src/TypeAPIs/AbstractCustomPostTypeAPI.php#L108), which lives on the WordPress-specific [posts-wp package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts-wp).
 
 The code split between WordPress/non-WordPress packages is something around 20%/80%, meaning that only 80% of the code is reusable with another framework/CMS, and only 20% of the could would actually need to be reimplemented.
 
