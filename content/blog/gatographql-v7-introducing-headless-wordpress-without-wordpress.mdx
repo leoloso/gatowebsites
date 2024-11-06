@@ -12,11 +12,26 @@ tags:
 
 Ever since the Matt Mullenweg vs WPEngine debacle, I've noticed more and more people (in Reddit and elsewhere) asking for alternatives to WordPress, not necessarily to switch away from WordPress (at least not immediately), but to understand what options they have, and how painful would a potential migration be. They want to hedge their bets.
 
-It is to address this concern that Gato GraphQL now provides a cool new feature: **Headless WordPress without WordPress**.
+For this folks who are working with Headless WordPress, Gato GraphQL has a cool new feature: **Headless WordPress without WordPress**.
 
+Basically, Gato GraphQL has been built using standalone PHP components, managed via Composer. **All the PHP components making up the GraphQL server do not depend on WordPress!**
 
+This gives us the first benefit:
 
-With Gato GraphQL, you also have the flexibility to migrate your application from WordPress to another framework or CMS (if ever needed) with minimal effort: The GraphQL server can run via its standalone PHP component (which doesn't depend on WordPress), and only those resolvers fetching WordPress data (posts, users, comments, etc) used by your application would need to be coded again.
+**1. The GraphQL server can run as a standalone PHP application**, and you can include it within PHP application, WordPress or else.
+
+Only PHP resolvers's code fetching WordPress data (posts, users, comments, etc) depend on WordPress, and that code will not run on a non-WordPress app.
+
+However, Gato GraphQL has these resolvers implemented via 2 packages: a non-WordPress one, containing all generic code, and a WordPress-specific one, containing the actual invocations to WordPress methods that satisfy that resolver (such as `get_posts` to fetch posts).
+
+The code split between WordPress/non-WordPress packages is something around 20%/80%, meaning that only 80% of the code is reusable with another framework/CMS, and only 20% of the could would actually need to be reimplemented.
+
+This gives us the second benefit:
+
+**2. You can use headless WordPress today**, knowing that down the road you can **migrate your application to another framework or CMS with minimal effort**.
+
+(we'll see more later on).
+
 
 We call this, **Headless WordPress without WordPress**.
 
