@@ -251,7 +251,7 @@ fragment PostFields on Post {
 
 ## In detail: Running Gato GraphQL as a standalone PHP app
 
-Here is the explanation of the process from the demo video.
+Here is the in-detail explanation of the demo video from earlier on.
 
 We provide the GraphQL query to run under file `retrieve-github-artifacts.gql`.
 
@@ -259,7 +259,7 @@ The query connects to the GitHub API by getting the access token from env var `G
 
 From the response, it then extracts the "download URL" from within each artifact item, and sends asynchronous HTTP requests against them. From the `Location` header of each of these "download URLs", we obtain the actual URL of the downloadable file.
 
-Finally, it prints all URLs together, separated by a space, to make it convenient to inject into WP-CLI.
+Finally, it prints all URLs together separated by a space, to make it convenient to inject into WP-CLI.
 
 ```graphql
 # File retrieve-github-artifacts.gql
@@ -357,11 +357,11 @@ query PrintSpaceSeparatedArtifactDownloadURLs
 }
 ```
 
-The PHP logic directly loads the code from the Gato GraphQL plugin (that's the actual plugin!), and from the “All Extensions” bundle (needed for the HTTP Client, and other functionality).
+The PHP logic directly loads the code from the Gato GraphQL plugin, and from the “All Extensions” bundle (needed to send HTTP requests, and other functionality).
 
 As a standalone PHP app, we must explicitly indicate what modules are initialized, and provide any non-default configuration.
 
-For instance, we tell module **SendHTTPRequests** (which contains the HTTP Client) to allow connecting to `https://api.github.com/repos`.
+For instance, we tell module **SendHTTPRequests** to allow connecting to `https://api.github.com/repos`, and module **EnvironmentFields** to allow accessing environment variable `GITHUB_ACCESS_TOKEN`.
 
 Notice that the GraphQL schema is generated the first time the GraphQL query is executed, and cached to disk. This way, from the 2nd time onwards, none of the code to compute the schema is executed, making the execution faster.
 
@@ -445,7 +445,7 @@ $response = $graphQLServer->execute(
 echo $response->getContent();
 ```
 
-To execute the GraphQL query, we run in the terminal (`jq` is to color the output):
+To execute the GraphQL query, we run in the terminal (using `jq` to pretty print the JSON output):
 
 ```bash
 php retrieve-github-artifacts.php | jq
@@ -460,3 +460,5 @@ GITHUB_ARTIFACT_URLS=$(php retrieve-github-artifacts.php \
   | sed 's/\\\//\//g')
 wp plugin install ${GITHUB_ARTIFACT_URLS} --force --activate
 ```
+
+As shown in the video, we are able to execute Gato GraphQL without WordPress.
