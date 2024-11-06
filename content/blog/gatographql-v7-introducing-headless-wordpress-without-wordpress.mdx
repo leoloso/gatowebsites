@@ -116,7 +116,9 @@ Thanks to the [API hierarchy](/guides/use/creating-an-api-hierarchy), the persis
 
 The GraphQL schema from WPGraphQL and Gato GraphQL are similar but slightly different, so they need to be adapted.
 
-There are several examples of adapting queries in [`leoloso/next-wordpress-starter`](https://github.com/leoloso/next-wordpress-starter). For instance, [this WPGraphQL query](https://github.com/leoloso/next-wordpress-starter/blob/main/src/data/providers/wpgraphql/posts.js#L3):
+The Next.js WordPress starter [`leoloso/next-wordpress-starter`](https://github.com/leoloso/next-wordpress-starter) contains several examples of adapting queries between the two servers, in such a way that only the GraphQL query is adapted, while the JS logic remains the same. (This is accomplished by using GraphQL aliases, printing the response of the fields using with the same name as before.)
+
+For instance, [this WPGraphQL query](https://github.com/leoloso/next-wordpress-starter/blob/main/src/data/providers/wpgraphql/posts.js#L3):
 
 ```graphql
 fragment PostFields on Post {
@@ -140,7 +142,7 @@ fragment PostFields on Post {
 }
 ```
 
-can be adapted [like this for Gato GraphQL](https://github.com/leoloso/next-wordpress-starter/blob/main/src/data/providers/gatographql/posts.js#L3):
+...can be adapted [like this for Gato GraphQL](https://github.com/leoloso/next-wordpress-starter/blob/main/src/data/providers/gatographql/posts.js#L3):
 
 ```graphql
 fragment PostFields on Post {
