@@ -110,18 +110,22 @@ query PrintSpaceSeparatedArtifactDownloadURLs
 }
 ```
 
-```php
+```bash
 <?php
-// File headless-wp-without-wp.php
+// File retrieve-github-artifacts.php
 
 declare(strict_types=1);
 
 use GraphQLByPoP\GraphQLServer\Server\StandaloneGraphQLServer;
 use PoP\Root\Container\ContainerCacheConfiguration;
 
+// Load the GraphQL server via the standalone PHP components
 require_once (__DIR__ . '/wordpress/wp-content/plugins/gatographql/vendor/scoper-autoload.php');
+
+// Load the PRO extensions via the standalone PHP components
 require_once (__DIR__ . '/wordpress/wp-content/plugins/gatographql-all-extensions-bundle/vendor/scoper-autoload.php');
 
+// Modules required in the GraphQL query
 $moduleClasses = [
   \PoPSchema\EnvironmentFields\Module::class,
   \PoPSchema\FunctionFields\Module::class,
@@ -134,6 +138,7 @@ $moduleClasses = [
   \PoPSchema\DataIterationMetaDirectives\Module::class,
 ];
 
+// Configure the modules
 $moduleClassConfiguration = [
   \PoP\GraphQLParser\Module::class => [
     \PoP\GraphQLParser\Environment::ENABLE_MULTIPLE_QUERY_EXECUTION => true,
@@ -153,31 +158,32 @@ $moduleClassConfiguration = [
   ],
 ];
 
-$graphQLServer = new StandaloneGraphQLServer(
-  $moduleClasses,
-  $moduleClassConfiguration,
-  [],
-  [],
-  new ContainerCacheConfiguration(
-    'MyGraphQLServer',
-    true,
-    'retrieve-github-artifacts',
-    __DIR__ . '/tmp'
-  )
-);
+// Cache the schema to disk, to speed-up execution from the 2nd time onwards
+$containerCacheConfiguration = new ContainerCacheConfiguration('MyGraphQLServer', true, 'retrieve-github-artifacts', __DIR__ . '/tmp');
 
-/** @var string */
+// Initialize the server
+$graphQLServer = new StandaloneGraphQLServer($moduleClasses, $moduleClassConfiguration, [], [], $containerCacheConfiguration);
+
+/**
+ * GraphQL query to execute, stored in its own .gql file
+ *
+ * @var string
+ */
 $query = file_get_contents(__DIR__ . '/retrieve-github-artifacts.gql');
+
+// GraphQL variables
 $variables = [
   'repoOwner' => 'GatoGraphQL',
   'repoProject' => 'GatoGraphQL',
   'perPage' => 3
 ];
 
+// Execute the query
 $response = $graphQLServer->execute(
   $query,
   $variables,
 );
-echo $response->getContent();
 
+// Print the response
+echo $response->getContent();
 ```
