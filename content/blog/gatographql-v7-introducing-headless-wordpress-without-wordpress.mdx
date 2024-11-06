@@ -26,7 +26,7 @@ This gives us the following benefit:
 
 If for some use case your application doesn't need to access WordPress data, then, at least for that use case, you are ready to go!
 
-This video demonstrates using GraphQL to interact with GitHub's API:
+This video demonstrates such a use case: Interacting with GitHub's API, to download/install artifacts during development:
 
 <div className="aspect-video">
   <iframe
@@ -41,13 +41,13 @@ This video demonstrates using GraphQL to interact with GitHub's API:
   </iframe>
 </div>
 
-In the video, the GraphQL query executes an HTTP request to fetch the latest Gato GraphQL plugins generated in GitHub Actions during development, uploaded as artifacts when merging a pull request.
+In the video, the GraphQL query executes an HTTP request to fetch the latest Gato GraphQL plugins generated in GitHub Actions during development, which are uploaded as artifacts when merging a pull request.
 
-The GraphQL response can then be injected with WP-CLI, as to have the DEV plugins automatically installed in my local DEV webserver, for testing them.
+The locations of the artifacts from the GraphQL response are then injected into WP-CLI, as to have the plugins automatically installed in my local DEV webserver, to run tests.
 
-In this use case, as there is no WordPress data accessed, the GraphQL server can run as a standalone PHP app. (It could even be invoked within GitHub Actions!)
+In this use case, as there is no WordPress data accessed at all, the GraphQL server can already run as a standalone PHP app. (If needed, it could even be invoked within GitHub Actions!)
 
-I'll explain in more detail how that GraphQL query works later on in this post.
+I'll explain a bit more in detail how that GraphQL query works later on in this post.
 
 ## Migrating a headless WordPress app
 
