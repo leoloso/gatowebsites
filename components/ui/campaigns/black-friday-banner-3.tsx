@@ -2,7 +2,7 @@
 
 export default function BlackFridayBanner3() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex items-center justify-center">
         <div>
             <div
               role="alert"

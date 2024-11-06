@@ -2,7 +2,7 @@
 
 export default function BlackFridayBanner2() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex items-center justify-center">
         <div>
             <div className="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
                 <div role="alert" className="relative block w-full text-base font-regular px-4 py-4 rounded-lg bg-red-500 text-white flex">
