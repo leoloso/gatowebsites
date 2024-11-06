@@ -65,19 +65,19 @@ Moreover, all functionality in Gato GraphQL is shipped via modules, and modules 
 
 <Banner type="info">
 
-This feature was implemented for security purposes: If you don't need to expose user data in your public API, then you can disable the Users module, and the corresponding fields (such as `Root.users`) will never be added to the schema.
+**Modules** is a feature implemented for security purposes: If you don't need to expose user data in your public API, then you can disable the Users module, and the corresponding fields (such as `Root.users`) will never be added to the schema.
 
 </Banner>
 
 **Modules are directly mapped to underlying PHP packages.** When running Gato GraphQL as a standalone app, we can then selectively load those modules/packages that we need.
 
-If you application exposes data for posts, categories and tags only, only the `posts-wp`, `categories-wp`, and `tags-wp` packages need to be loaded.
+If you application exposes data for posts, categories and tags only, only the `posts-wp`, `categories-wp`, and `tags-wp` packages (along with their dependencies) need to be loaded.
 
-Then, when migrating away from WordPress, only those 3 packages would need to be reimplemented for the new framework/CMS, and nothing else.
+Then, when migrating away from WordPress, only those 3 WordPress-specific packages would need to be reimplemented for the new framework/CMS, and nothing else.
 
-This gives us the second benefit:
+This gives us another benefit:
 
-**2. You can use headless WordPress today**, knowing that down the road you can **migrate your application to another framework or CMS with minimal effort**.
+**You can use headless WordPress today**, knowing that down the road you can **migrate your application to another framework or CMS with minimal effort**.
 
 ## Transitioning to Gato GraphQL from another API
 
