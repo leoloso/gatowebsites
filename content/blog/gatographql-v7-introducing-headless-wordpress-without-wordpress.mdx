@@ -111,6 +111,20 @@ query PrintSpaceSeparatedArtifactDownloadURLs
 ```
 
 ```bash
+# I have my GitHub Access token under environment variable ${GITHUB_ACCESS_TOKEN}
+php retrieve-github-artifacts.php \
+  | jq --color-output
+```
+
+```bash
+GITHUB_ARTIFACT_URLS=$(php retrieve-github-artifacts.php \
+  | grep -E -o '"spaceSeparatedArtifactDownloadURLs\":"(.*)"' \
+  | cut -d':' -f2- | cut -d'"' -f2- | rev | cut -d'"' -f2- | rev \
+  | sed 's/\\\//\//g')
+wp plugin install ${GITHUB_ARTIFACT_URLS} --force --activate
+```
+
+```php
 <?php
 // File retrieve-github-artifacts.php
 
