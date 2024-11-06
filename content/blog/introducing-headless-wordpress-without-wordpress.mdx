@@ -355,13 +355,15 @@ query PrintSpaceSeparatedArtifactDownloadURLs
 }
 ```
 
-The PHP logic initializes the GraphQL server, and executes the query against it.
+The PHP logic directly loads the code from the Gato GraphQL plugin (that's the actual plugin!), and from the “All Extensions” bundle (needed for the HTTP Client, and other functionality).
 
 As a standalone PHP app, we must explicitly indicate what modules are initialized, and provide any non-default configuration.
 
 For instance, we tell module **SendHTTPRequests** (which contains the HTTP Client) to allow connecting to `https://api.github.com/repos`.
 
 Notice that the GraphQL schema is generated the first time the GraphQL query is executed, and cached to disk. This way, from the 2nd time onwards, none of the code to compute the schema is executed, making the execution faster.
+
+Finally, the standalone app initializes the GraphQL server, executes the query against it, and prints the response.
 
 ```php
 <?php
