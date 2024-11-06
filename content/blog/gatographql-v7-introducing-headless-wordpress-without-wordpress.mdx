@@ -46,7 +46,11 @@ Moreover, all functionality in Gato GraphQL is shipped via modules, and modules 
 
 ![Schema modules](/assets/guides/downstream/schema-type-modules.png "Schema modules")
 
+<Banner type="info">
+
 This feature was implemented for security purposes: If you don't need to expose user data in your public API, then you can disable the Users module, and the corresponding fields (such as `Root.users`) will never be added to the schema.
+
+</Banner>
 
 **Modules are directly mapped to underlying PHP packages** This means that, when running Gato GraphQL as a standalone, we can selectively load only those modules/packages that we need.
 
@@ -56,10 +60,7 @@ This gives us the second benefit:
 
 **2. You can use headless WordPress today**, knowing that down the road you can **migrate your application to another framework or CMS with minimal effort**.
 
-
-
-
-We call this, **Headless WordPress without WordPress**.
+## Demonstration: Using Gato GraphQL as a standalone PHP app
 
 ```graphql
 # File retrieve-github-artifacts.gql
