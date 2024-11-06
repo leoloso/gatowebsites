@@ -114,6 +114,56 @@ Thanks to the [API hierarchy](/guides/use/creating-an-api-hierarchy), the persis
 
 ### WPGraphQL to Gato GraphQL
 
+The GraphQL schema from WPGraphQL and Gato GraphQL are similar but slightly different, so they need to be adapted.
+
+There are several examples of adapting queries in [`leoloso/next-wordpress-starter`](https://github.com/leoloso/next-wordpress-starter). For instance, [this WPGraphQL query](https://github.com/leoloso/next-wordpress-starter/blob/main/src/data/providers/wpgraphql/posts.js#L3):
+
+```graphql
+fragment PostFields on Post {
+  id
+  categories {
+    edges {
+      node {
+        databaseId
+        id
+        name
+        slug
+      }
+    }
+  }
+  databaseId
+  date
+  isSticky
+  postId
+  slug
+  title
+}
+```
+
+can be adapted [like this for Gato GraphQL](https://github.com/leoloso/next-wordpress-starter/blob/main/src/data/providers/gatographql/posts.js#L3):
+
+```graphql
+fragment PostFields on Post {
+  id
+  categories: self {
+    edges: categories(pagination: { limit: -1 }) {
+      node: self {
+        databaseId: id
+        id
+        name
+        slug
+      }
+    }
+  }
+  databaseId: id
+  date: dateStr
+  isSticky
+  postId: id
+  slug
+  title
+}
+```
+
 ## Demo: Gato GraphQL as a standalone PHP app
 
 ```graphql
