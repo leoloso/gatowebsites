@@ -52,9 +52,11 @@ This feature was implemented for security purposes: If you don't need to expose 
 
 </Banner>
 
-**Modules are directly mapped to underlying PHP packages** This means that, when running Gato GraphQL as a standalone, we can selectively load only those modules/packages that we need.
+**Modules are directly mapped to underlying PHP packages.** When running Gato GraphQL as a standalone app, we can then selectively load those modules/packages that we need.
 
-Then, if you application exposes data for posts, categories and tags only, when migrating away from WordPress only the `posts-wp`, `categories-wp`, and `tags-wp` packages need to be reimplemented, and nothing else.
+If you application exposes data for posts, categories and tags only, only the `posts-wp`, `categories-wp`, and `tags-wp` packages need to be loaded.
+
+Then, when migrating away from WordPress, only those 3 packages would need to be reimplemented for the new framework/CMS, and nothing else.
 
 This gives us the second benefit:
 
