@@ -22,9 +22,9 @@ Gato GraphQL has been built using standalone PHP components, managed via Compose
 
 As such, **the GraphQL server can run as a standalone PHP application**, and you can include it within PHP application, WordPress or else.
 
-If for some use case your application doesn't need to access WordPress data, then, at least for that use case, you are ready to go!
+If for some use case your application doesn't need to access WordPress data, then, at least for that use case, you are ready to go.
 
-This video demonstrates such a use case: Interacting with GitHub's API, to download/install artifacts during development:
+This video demonstrates such a use case: Interacting with GitHub's API, to download/install artifacts from GitHub Actions during development:
 
 <div className="aspect-video">
   <iframe
@@ -39,13 +39,19 @@ This video demonstrates such a use case: Interacting with GitHub's API, to downl
   </iframe>
 </div>
 
-In the video, the GraphQL query executes an HTTP request to fetch the latest Gato GraphQL plugins generated in GitHub Actions during development, which are uploaded as artifacts when merging a pull request.
+In the video, the GraphQL query executes an HTTP request to fetch the latest Gato GraphQL plugins generated in GitHub Actions, which are uploaded as artifacts when merging a pull request.
 
-The locations of the artifacts from the GraphQL response are then injected into WP-CLI, as to have the plugins automatically installed in my local DEV webserver, to run tests. (I'll explain how this process works later on in this post.)
+The URLs of the artifacts from the GraphQL response are then injected into WP-CLI, as to have the plugins automatically installed in a local DEV webserver, to run tests.
 
-In this use case, as there is no WordPress data accessed at all, the GraphQL server can already run as a standalone PHP app. (If needed, it could even be invoked within GitHub Actions!)
+(I'll explain more in detail in the last section of this post.)
+
+In this use case, as there is no WordPress data accessed at all, the GraphQL server can already run as a standalone PHP app.
+
+If I needed to, I could even use it within my GitHub Actions workflow!
 
 ## Migrating a headless WordPress app
+
+Whenever you do access WordPress data, let's see how to run that without WordPress.
 
 The GraphQL schema provided by Gato GraphQL contains fields to fetch WordPress data: posts, users, comments, tags, categories, etc.
 
