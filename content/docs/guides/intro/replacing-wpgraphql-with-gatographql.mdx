@@ -1,0 +1,59 @@
+---
+title: Replacing WPGraphQL
+description: "If your app is using WPGraphQL, you can replace it with Gato GraphQL."
+order: 900
+---
+
+If your application is using WPGraphQL, it is possible to use Gato GraphQL instead.
+
+The GraphQL schema from WPGraphQL and Gato GraphQL are similar but slightly different, so they need to be adapted.
+
+The Next.js WordPress starter [`leoloso/next-wordpress-starter`](https://github.com/leoloso/next-wordpress-starter) runs with either WPGraphQL or Gato GraphQL. The starter uses the same JS logic for either server, only the GraphQL queries are different.
+
+This starter provides several examples of adapting the queries between the two servers. For instance, [this WPGraphQL query](https://github.com/leoloso/next-wordpress-starter/blob/main/src/data/providers/wpgraphql/posts.js#L3):
+
+```graphql
+fragment PostFields on Post {
+  id
+  categories {
+    edges {
+      node {
+        databaseId
+        id
+        name
+        slug
+      }
+    }
+  }
+  databaseId
+  date
+  isSticky
+  postId
+  slug
+  title
+}
+```
+
+...is adapted [like this for Gato GraphQL](https://github.com/leoloso/next-wordpress-starter/blob/main/src/data/providers/gatographql/posts.js#L3):
+
+```graphql
+fragment PostFields on Post {
+  id
+  categories: self {
+    edges: categories(pagination: { limit: -1 }) {
+      node: self {
+        databaseId: id
+        id
+        name
+        slug
+      }
+    }
+  }
+  databaseId: id
+  date: dateStr
+  isSticky
+  postId: id
+  slug
+  title
+}
+```

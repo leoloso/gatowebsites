@@ -1,0 +1,77 @@
+---
+title: Replacing the WP REST API
+description: "If your app is using the WP REST API, you can replace it with Gato GraphQL."
+order: 800
+---
+
+If your application is using the WP REST API, it is possible to use Gato GraphQL instead.
+
+With the [Persisted Queries](/extensions/persisted-queries) extension you can publish REST-like endpoints, composed using GraphQL.
+
+For each of the REST endpoints in your application, you can create a corresponding persisted query endpoint that retrieves the same data, and use that endpoint instead.
+
+For instance, the following GraphQL query can replace REST endpoint `/wp-json/wp/v2/posts/`:
+
+```graphql
+{
+  posts {
+    id
+    date: dateStr(format: "Y-m-d\\TH:i:s")
+    modified: modifiedDateStr(format: "Y-m-d\\TH:i:s")
+    slug
+    status
+    link: url
+    title: self {
+      rendered: title
+    }
+    content: self {
+      rendered: content
+    },
+    excerpt: self {
+      rendered: excerpt
+    }
+    author
+    featured_media: featuredImage
+    sticky: isSticky
+    categories
+    tags
+  }
+}
+```
+
+<Banner type="info">
+
+Thanks to the [API hierarchy](/guides/use/creating-an-api-hierarchy), the persisted query be published under path `/graphql-query/wp/v2/posts/`, making it easy to map endpoints.
+
+</Banner>
+
+To replicate REST endpoint `/wp-json/wp/v2/posts/{id}/`, which retrieves data for the post with given ID, we can provide the post ID under URL param `postId`.
+
+For instance, the following persisted query can be invoked under endpoint `/graphql-query/wp/v2/posts/single/?postId={id}`:
+
+```graphql
+query GetPost($postId: ID!) {
+  post(by: { id: $postId }) {
+    id
+    date: dateStr(format: "Y-m-d\\TH:i:s")
+    modified: modifiedDateStr(format: "Y-m-d\\TH:i:s")
+    slug
+    status
+    link: url
+    title: self {
+      rendered: title
+    }
+    content: self {
+      rendered: content
+    },
+    excerpt: self {
+      rendered: excerpt
+    }
+    author
+    featured_media: featuredImage
+    sticky: isSticky
+    categories
+    tags
+  }
+}
+```
