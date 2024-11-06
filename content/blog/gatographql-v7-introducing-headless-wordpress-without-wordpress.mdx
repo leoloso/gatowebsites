@@ -62,13 +62,32 @@ This gives us the second benefit:
 
 **2. You can use headless WordPress today**, knowing that down the road you can **migrate your application to another framework or CMS with minimal effort**.
 
-## You are doing headless WordPress with another API
+## Transitioning to Gato GraphQL from another API
 
-If you are already doing headless WordPress, chances are that your application is using another API, either the WP REST API or WPGraphQL.
+If you are already doing headless WordPress, chances are that your app is using either the WP REST API or WPGraphQL.
 
-Well, good news is that it is possible to have Gato GraphQL take their place with relatively little pain.
+It is not difficult to have Gato GraphQL take their place. Then, you are still able to migrate your current headless WordPress app away from WordPress.
+
+These 2 steps would then be needed:
+
+1. Transition from WP REST API or WPGraphQL to Gato GraphQL
+2. Reimplement the WordPress-specific packages to load needed data (as explained earlier on)
+
+Let's see how the API transition can be done.
 
 ### WP REST API to Gato GraphQL persisted queries
+
+With the [Persisted Queries](/extensions/persisted-queries) extension you can publish REST-like endpoints, composed using GraphQL.
+
+Then, for each of the REST endpoints in your application, you can create a corresponding persisted query endpoint, and inject those URLs in your app.
+
+For instance, the following GraphQL query can replace REST endpoint `/wp-json/wp/v2/posts/`:
+
+```graphql
+
+```
+
+Thanks to the API hierarchy, the persisted query be published under path `/graphql-query/wp/v2/posts/`, making it easy to replace endpoints.
 
 ### WPGraphQL to Gato GraphQL
 
