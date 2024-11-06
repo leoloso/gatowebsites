@@ -249,7 +249,15 @@ fragment PostFields on Post {
 
 ## Using Gato GraphQL as a standalone PHP app
 
-Here is the description
+Here is the explanation of the process from the demo video.
+
+We provide the GraphQL query to run under file `retrieve-github-artifacts.gql`.
+
+The query connects to the GitHub API by getting the access token from env var `GITHUB_ACCESS_TOKEN`. It dynamically generates the full path for the `actions/artifacts` endpoint from the provided variables, and then it sends an HTTP request against it.
+
+From the response, it then extracts the "download URL" from within each artifact item, and sends asynchronous HTTP requests against them. From the `Location` header of each of these "download URLs", we obtain the actual URL of the downloadable file.
+
+Finally, it prints all URLs together, separated by a space, to make it convenient to inject into WP-CLI.
 
 ```graphql
 # File retrieve-github-artifacts.gql
@@ -347,32 +355,13 @@ query PrintSpaceSeparatedArtifactDownloadURLs
 }
 ```
 
-```bash
-# I have my GitHub Access token under environment variable ${GITHUB_ACCESS_TOKEN}
-php retrieve-github-artifacts.php \
-  | jq --color-output
-```
+The PHP logic initializes the GraphQL server, and executes the query against it.
 
-<div className="aspect-video">
-  <iframe
-    className="w-full h-full"
-    src="https://www.youtube.com/embed/GZt-93oDtQc"
-    title=" Headless WordPress without Wordpress demo: Executing GraphQL query"
-    width="768"
-    height="432"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowFullScreen
-  >
-  </iframe>
-</div>
+As a standalone PHP app, we must explicitly indicate what modules are initialized, and provide any non-default configuration.
 
-```bash
-GITHUB_ARTIFACT_URLS=$(php retrieve-github-artifacts.php \
-  | grep -E -o '"spaceSeparatedArtifactDownloadURLs\":"(.*)"' \
-  | cut -d':' -f2- | cut -d'"' -f2- | rev | cut -d'"' -f2- | rev \
-  | sed 's/\\\//\//g')
-wp plugin install ${GITHUB_ARTIFACT_URLS} --force --activate
-```
+For instance, we tell module **SendHTTPRequests** (which contains the HTTP Client) to allow connecting to `https://api.github.com/repos`.
+
+Notice that the GraphQL schema is generated the first time the GraphQL query is executed, and cached to disk. This way, from the 2nd time onwards, none of the code to compute the schema is executed, making the execution faster.
 
 ```php
 <?php
@@ -450,4 +439,19 @@ $response = $graphQLServer->execute(
 
 // Print the response
 echo $response->getContent();
+```
+
+```bash
+# I have my GitHub Access token under environment variable ${GITHUB_ACCESS_TOKEN}
+php retrieve-github-artifacts.php \
+  | jq --color-output
+```
+
+
+```bash
+GITHUB_ARTIFACT_URLS=$(php retrieve-github-artifacts.php \
+  | grep -E -o '"spaceSeparatedArtifactDownloadURLs\":"(.*)"' \
+  | cut -d':' -f2- | cut -d'"' -f2- | rev | cut -d'"' -f2- | rev \
+  | sed 's/\\\//\//g')
+wp plugin install ${GITHUB_ARTIFACT_URLS} --force --activate
 ```
