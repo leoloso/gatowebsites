@@ -43,11 +43,9 @@ This video demonstrates such a use case: Interacting with GitHub's API, to downl
 
 In the video, the GraphQL query executes an HTTP request to fetch the latest Gato GraphQL plugins generated in GitHub Actions during development, which are uploaded as artifacts when merging a pull request.
 
-The locations of the artifacts from the GraphQL response are then injected into WP-CLI, as to have the plugins automatically installed in my local DEV webserver, to run tests.
+The locations of the artifacts from the GraphQL response are then injected into WP-CLI, as to have the plugins automatically installed in my local DEV webserver, to run tests. (I'll explain how this process works later on in this post.)
 
 In this use case, as there is no WordPress data accessed at all, the GraphQL server can already run as a standalone PHP app. (If needed, it could even be invoked within GitHub Actions!)
-
-I'll explain a bit more in detail how that GraphQL query works later on in this post.
 
 ## Migrating a headless WordPress app
 
@@ -249,7 +247,9 @@ fragment PostFields on Post {
 }
 ```
 
-## Demo: Gato GraphQL as a standalone PHP app
+## Using Gato GraphQL as a standalone PHP app
+
+Here is the description
 
 ```graphql
 # File retrieve-github-artifacts.gql
