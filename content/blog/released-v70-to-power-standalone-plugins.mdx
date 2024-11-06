@@ -15,6 +15,8 @@ Gato GraphQL `v7.0` has been released. Check out the [release notes in GitHub](h
 
 **Important:** The plugin now requires at least PHP 7.4.
 
-This release brings the ability to embed the Gato GraphQL plugin within other plugins. In other words, other plugins can execute GraphQL queries without requesting the WordPress site's admin to also install the Gato GraphQL plugin.
+This release brings the ability to embed the Gato GraphQL plugin within other plugins. In other words, other plugins can execute GraphQL queries without requesting the admin to also install Gato GraphQL on the WordPress site.
 
-This provides the foundation to create standalone plugins that address a specific use case by executing a GraphQL query, without ever exposing the GraphQL server to the user, and greatly simplifying the UI. An example would be a plugin that automatically translates a post when published: As the writer hits the **Publish** button, the query is executed, and the translation done, without the writer knowing anything about GraphQL.
+This provides the foundation to create standalone plugins that address a specific use case by executing a GraphQL query, without ever exposing the GraphQL server to the user, and greatly simplifying the UI.
+
+An example would be a plugin that automatically translates a post when published: As the writer hits the **Publish** button, the query is executed, and the translation done, without the writer knowing anything about GraphQL.
