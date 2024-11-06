@@ -57,7 +57,7 @@ The GraphQL schema provided by Gato GraphQL contains fields to fetch WordPress d
 
 The code in the PHP resolvers' fetching WordPress data depends on WordPress; that code cannot run on a non-WordPress app.
 
-However, Gato GraphQL has these resolvers implemented via 2 packages:
+However, Gato GraphQL has each of these resolvers implemented via 2 packages:
 
 1. A "vanilla" PHP one, containing all generic code
 2. A WordPress-specific one, containing the actual invocations to WordPress methods that satisfy that resolver
@@ -96,19 +96,17 @@ Moreover, all functionality in Gato GraphQL is shipped via modules, and modules 
 
 </Banner>
 
-**Modules are directly mapped to underlying PHP packages.** When running Gato GraphQL as a standalone app, we can then selectively load those modules/packages that we need.
+**Modules are directly mapped to underlying PHP packages.** As such, when running Gato GraphQL as a standalone app, we can selectively load those modules/packages that we need, and none of the other ones.
 
-If you application exposes data for posts, categories and tags only, only the `posts-wp`, `categories-wp`, and `tags-wp` packages (along with their dependencies) need to be loaded.
+For instance, if you application only prints data for posts, categories and tags, then only the `posts-wp`, `categories-wp`, and `tags-wp` packages (along with their dependencies) need to be loaded.
 
-Then, when migrating away from WordPress, only those 3 WordPress-specific packages would need to be reimplemented for the new framework/CMS, and nothing else.
+Then, when migrating away from WordPress (say, to Laravel, or Symfony), only those 3 WordPress-specific packages would need to be reimplemented for the new framework/CMS, and nothing else.
 
-This gives us another benefit:
+In consequence, **you can use headless WordPress today**, knowing that down the road you can **migrate your application** to another framework or CMS **with minimal effort**.
 
-**You can use headless WordPress today**, knowing that down the road you can **migrate your application to another framework or CMS with minimal effort**.
+(This is indeed the question that some folks were asking in Reddit: Can they keep using WordPress today, without being locked in?)
 
-This is indeed the question that some folks were asking in Reddit: Can they keep using WordPress today, without being locked in?
-
-With Gato GraphQL, the answer is yes.
+(With Gato GraphQL, the answer is yes.)
 
 ## Transitioning to Gato GraphQL from another API
 
