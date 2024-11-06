@@ -441,12 +441,13 @@ $response = $graphQLServer->execute(
 echo $response->getContent();
 ```
 
+To execute the GraphQL query, we run in the terminal (`jq` is to color the output):
+
 ```bash
-# I have my GitHub Access token under environment variable ${GITHUB_ACCESS_TOKEN}
-php retrieve-github-artifacts.php \
-  | jq --color-output
+php retrieve-github-artifacts.php | jq
 ```
 
+Finally, to extract the artifact URLs from the GraphQL response, and inject them into WP-CLI, we run:
 
 ```bash
 GITHUB_ARTIFACT_URLS=$(php retrieve-github-artifacts.php \
