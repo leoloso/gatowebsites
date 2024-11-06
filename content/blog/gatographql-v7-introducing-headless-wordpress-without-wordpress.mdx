@@ -16,7 +16,7 @@ For these folks who are working with headless WordPress, Gato GraphQL has a cool
 
 This post explains all about it, describes the architecture that makes it possible, and shows a video demonstrating it.
 
-## Idea behind "Headless WordPress without WordPress"
+## Gato GraphQL as a standalone PHP app
 
 Gato GraphQL has been built using standalone PHP components, managed via Composer, in such a way that **all the PHP components making up the GraphQL server do not depend on WordPress!**
 
@@ -24,22 +24,39 @@ This gives us the first benefit:
 
 **1. The GraphQL server can run as a standalone PHP application**, and you can include it within PHP application, WordPress or else.
 
-Only PHP resolvers's code fetching WordPress data (posts, users, comments, etc) depend on WordPress, and that code will not run on a non-WordPress app.
+## Migrating away from WordPress
 
-However, Gato GraphQL has these resolvers implemented via 2 packages: a non-WordPress one, containing all generic code, and a WordPress-specific one, containing the actual invocations to WordPress methods that satisfy that resolver.
+The GraphQL schema contains fields to fetch WordPress data: posts, users, comments, tags, categories, etc.
+
+The PHP resolvers's code fetching WordPress data depend on WordPress, and that code cannot run on a non-WordPress app.
+
+However, Gato GraphQL has these resolvers implemented via 2 packages:
+
+1. A non-WordPress one, containing all generic code, and
+2. A WordPress-specific one, containing the actual invocations to WordPress methods that satisfy that resolver
 
 For instance, the logic for fetching posts is composed of:
 
-- The [`Root.posts` field](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts/src/FieldResolvers/ObjectType/AbstractPostObjectTypeFieldResolver.php#L200), which lives on the generic [posts package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts)
-- Its resolution for WordPress via the [`get_posts` method](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/customposts-wp/src/TypeAPIs/AbstractCustomPostTypeAPI.php#L108), which lives on the WordPress-specific [posts-wp package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts-wp).
+1. The [`Root.posts` field](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts/src/FieldResolvers/ObjectType/AbstractPostObjectTypeFieldResolver.php#L200), which lives on the generic [posts package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts)
+2. Its resolution for WordPress via the [`get_posts` method](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/customposts-wp/src/TypeAPIs/AbstractCustomPostTypeAPI.php#L108), which lives on the WordPress-specific [posts-wp package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts-wp).
 
-The code split between WordPress/non-WordPress packages is something around 20%/80%, meaning that only 80% of the code is reusable with another framework/CMS, and only 20% of the could would actually need to be reimplemented.
+The code split between non-WordPress/WordPress packages is something around 80/20%%, meaning that **80% of the code is reusable with another framework/CMS**, and only **20% of the code would need to be reimplemented**.
+
+Moreover, all functionality in Gato GraphQL is shipped via modules, and modules can be enabled/disabled at will.
+
+![Schema modules](/assets/guides/downstream/schema-type-modules.png "Schema modules")
+
+This feature was implemented for security purposes: If you don't need to expose user data in your public API, then you can disable the Users module, and the corresponding fields (such as `Root.users`) will never be added to the schema.
+
+**Modules are directly mapped to underlying PHP packages** This means that, when running Gato GraphQL as a standalone, we can selectively load only those modules/packages that we need.
+
+Then, if you application exposes data for posts, categories and tags only, when migrating away from WordPress only the `posts-wp`, `categories-wp`, and `tags-wp` packages need to be reimplemented, and nothing else.
 
 This gives us the second benefit:
 
 **2. You can use headless WordPress today**, knowing that down the road you can **migrate your application to another framework or CMS with minimal effort**.
 
-(we'll see more later on).
+
 
 
 We call this, **Headless WordPress without WordPress**.
