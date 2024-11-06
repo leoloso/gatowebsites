@@ -116,6 +116,19 @@ php retrieve-github-artifacts.php \
   | jq --color-output
 ```
 
+<div className="aspect-video">
+  <iframe
+    className="w-full h-full"
+    src="https://www.youtube.com/embed/GZt-93oDtQc"
+    title=" Headless WordPress without Wordpress demo: Executing GraphQL query"
+    width="768"
+    height="432"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  >
+  </iframe>
+</div>
+
 ```bash
 GITHUB_ARTIFACT_URLS=$(php retrieve-github-artifacts.php \
   | grep -E -o '"spaceSeparatedArtifactDownloadURLs\":"(.*)"' \
