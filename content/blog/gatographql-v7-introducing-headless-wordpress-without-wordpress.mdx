@@ -170,9 +170,9 @@ query GetPost($postId: ID!) {
 
 The GraphQL schema from WPGraphQL and Gato GraphQL are similar but slightly different, so they need to be adapted.
 
-The Next.js WordPress starter [`leoloso/next-wordpress-starter`](https://github.com/leoloso/next-wordpress-starter) contains several examples of adapting queries between the two servers, in such a way that only the GraphQL query is adapted, while the JS logic remains the same. (This is accomplished by using GraphQL aliases, printing the response of the fields using with the same name as before.)
+The Next.js WordPress starter [`leoloso/next-wordpress-starter`](https://github.com/leoloso/next-wordpress-starter) runs with either WPGraphQL or Gato GraphQL, using the same JS logic for the application, only the GraphQL queries are different.
 
-For instance, [this WPGraphQL query](https://github.com/leoloso/next-wordpress-starter/blob/main/src/data/providers/wpgraphql/posts.js#L3):
+This starter provides several examples of adapting the queries between the two servers. For instance, [this WPGraphQL query](https://github.com/leoloso/next-wordpress-starter/blob/main/src/data/providers/wpgraphql/posts.js#L3):
 
 ```graphql
 fragment PostFields on Post {
@@ -196,7 +196,7 @@ fragment PostFields on Post {
 }
 ```
 
-...can be adapted [like this for Gato GraphQL](https://github.com/leoloso/next-wordpress-starter/blob/main/src/data/providers/gatographql/posts.js#L3):
+...is adapted [like this for Gato GraphQL](https://github.com/leoloso/next-wordpress-starter/blob/main/src/data/providers/gatographql/posts.js#L3):
 
 ```graphql
 fragment PostFields on Post {
