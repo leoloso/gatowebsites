@@ -12,35 +12,46 @@ tags:
 
 Ever since the Matt Mullenweg vs WPEngine debacle, I've noticed more and more people (in Reddit and elsewhere) asking for alternatives to WordPress, not necessarily to switch away from WordPress (at least not immediately), but to understand what options they have, and how painful would a potential migration be. They want to know how to hedge their bets.
 
-For these folks who are working with headless WordPress, Gato GraphQL has a cool new feature: **Headless WordPress without WordPress**.
+For folks who are working with headless WordPress, Gato GraphQL now offers a cool new feature: **Headless WordPress without WordPress**.
 
 This post explains all about it, describes the architecture that makes it possible, and shows a video demonstrating it.
 
-## Gato GraphQL as a standalone PHP app
+## Running Gato GraphQL as a standalone PHP app
 
 Gato GraphQL has been built using standalone PHP components, managed via Composer, in such a way that **all the PHP components making up the GraphQL server do not depend on WordPress!**
 
-This gives us the first benefit:
+This gives us the following benefit:
 
-**1. The GraphQL server can run as a standalone PHP application**, and you can include it within PHP application, WordPress or else.
+**The GraphQL server can run as a standalone PHP application**, and you can include it within PHP application, WordPress or else.
 
-## Migrating away from WordPress
+## Migrating a headless WordPress app
 
-The GraphQL schema contains fields to fetch WordPress data: posts, users, comments, tags, categories, etc.
+The GraphQL schema provided by Gato GraphQL contains fields to fetch WordPress data: posts, users, comments, tags, categories, etc.
 
-The PHP resolvers's code fetching WordPress data depend on WordPress, and that code cannot run on a non-WordPress app.
+The code in the PHP resolvers' fetching WordPress data depends on WordPress; that code cannot run on a non-WordPress app.
 
 However, Gato GraphQL has these resolvers implemented via 2 packages:
 
-1. A non-WordPress one, containing all generic code, and
+1. A "vanilla" PHP one, containing all generic code
 2. A WordPress-specific one, containing the actual invocations to WordPress methods that satisfy that resolver
 
-For instance, the logic for fetching posts is composed of:
+For instance, in this GraphQL query:
 
-1. The [`Root.posts` field](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts/src/FieldResolvers/ObjectType/AbstractPostObjectTypeFieldResolver.php#L200), which lives on the generic [posts package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts)
-2. Its resolution for WordPress via the [`get_posts` method](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/customposts-wp/src/TypeAPIs/AbstractCustomPostTypeAPI.php#L108), which lives on the WordPress-specific [posts-wp package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts-wp).
+```graphql
+{
+  posts {
+    id
+    title
+  }
+}
+```
 
-The code split between non-WordPress/WordPress packages is something around 80/20%%, meaning that **80% of the code is reusable with another framework/CMS**, and only **20% of the code would need to be reimplemented**.
+...the logic for fetching posts is composed of:
+
+1. The [`Root.posts` field](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts/src/FieldResolvers/ObjectType/AbstractPostObjectTypeFieldResolver.php#L200): It lives on the generic [`posts` package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts)
+2. Its resolution for WordPress via the [`get_posts` method](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/customposts-wp/src/TypeAPIs/AbstractCustomPostTypeAPI.php#L108): It lives on the WordPress-specific [`posts-wp` package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts-wp).
+
+The code split between non-WordPress/WordPress packages is something around 80/20%, meaning that **80% of the code is reusable with another framework/CMS**, and only **20% of the code would need to be reimplemented**.
 
 Moreover, all functionality in Gato GraphQL is shipped via modules, and modules can be enabled/disabled at will.
 
