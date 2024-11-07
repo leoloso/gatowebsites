@@ -9,6 +9,8 @@ import LogoPic from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
 // import BrowseHighlightsButton from './browse-highlights-button'
 // import TryPROPluginButton from './try-pro-plugin-button'
 // import graphQLImage from '@/public/assets/external-logos/graphql-logo.svg'
+import AppSettings from '@/app/app.settings'
+import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner-1'
 
 export default function Hero() {
   return (
@@ -26,6 +28,12 @@ export default function Hero() {
         </div>
 
         <div className="pt-32 pb-16 md:pt-32 md:pb-24">
+
+          <div className="mb-16 -mt-16">
+            { AppSettings.campaigns.enableBlackFriday && (
+                <BlackFridayBanner />
+            )}
+          </div>
 
           {/* Hero content */}
           <div className="max-w-3xl mx-auto text-center">
