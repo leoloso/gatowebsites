@@ -128,9 +128,9 @@ export default function ExtensionDropdownPricing({
             </span>
           </div>
         </div>
-      { AppSettings.campaigns.enableBlackFriday && (
-          <BlackFridayBanner1 />
-      )}
+        { AppSettings.campaigns.enableBlackFriday && (
+            <BlackFridayBanner1 />
+        )}
       </div>
       <div className="mx-auto grid max-w-xs items-start gap-8 md:max-w-2xl md:grid-cols-2 xl:max-w-none xl:grid-cols-4 xl:gap-6">
         {/* Pricing table 1 */}
