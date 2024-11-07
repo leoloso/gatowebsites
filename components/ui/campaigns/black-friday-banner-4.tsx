@@ -1,4 +1,4 @@
-import BlackFridayImage from '@/public/assets/icons/black-friday/042-sale-4.svg'
+import BlackFridayImage from '@/public/assets/icons/black-friday/048-flash-sale-3.svg'
 import Image from 'next/image'
 
 export default function BlackFridayBanner4() {
