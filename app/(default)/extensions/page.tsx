@@ -4,8 +4,7 @@ import { createSEOPageTitle } from '@/utils/content/metadata'
 import ExtensionsSection from './extensions-section'
 import ExtensionsPricingSection from './extensions-pricing-section'
 import PageHeader from '@/components/page-header'
-import AppSettings from '@/app/app.settings'
-import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner'
+import CampaignBanner from '@/components/ui/campaigns/campaign-banner'
 
 const pageTitle = 'Extensions'
 export const metadata = {
@@ -30,11 +29,7 @@ export default function Extensions() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="pt-32 pb-12 md:pt-40 md:pb-20"> 
 
-            <div className="mb-16 -mt-16">
-              { AppSettings.campaigns.enableBlackFriday && (
-                  <BlackFridayBanner />
-              )}
-            </div>
+            <CampaignBanner />
 
             {/*  Page header */}
             <PageHeader
