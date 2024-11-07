@@ -10,9 +10,8 @@ export default function BlackFridayBanner2() {
                         <p className="font-bold text-black">
                             🌟 Black Friday Sale
                             <span className="text-gray-300"> - </span><span className="text-white">50% off any product!</span>
-                            <span title="" className="inline-flex items-center justify-center text-sm font-bold text-yellow-300 transition-all ml-4 duration-200 rounded-md hover:text-gray-700" role="button">
-                                Get Now <svg className="w-4 h-4 ml-1" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
-                            </span>
+                            <span className="ml-4 text-yellow-300"> Use discount code: <span className="text-white">BF2025</span></span>
+                            <span className="ml-4 text-white font-normal text-sm">Until Nov 29th</span>
                         </p>
                     </div>
                     <button className="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 !absolute top-3 right-3" type="button">
