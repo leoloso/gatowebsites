@@ -15,7 +15,7 @@ export default function BlackFridayBanner({
     <div className="flex items-center justify-center">
         <div>
             <div className="grid w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
-                <div className={clsx("relative block w-full text-base font-regular px-4 py-4 rounded-lg bg-gradient-to-tr flex text-white", applyStyle === style1 && "from-violet-900 to-indigo-600", applyStyle === style2 && "from-orange-500 to-red-500", applyStyle === style3 && "from-red-500 to-red-800")}>
+                <div className={clsx("relative block w-full text-base font-regular px-4 py-4 rounded-lg bg-gradient-to-tr flex text-white", applyStyle === style1 && "from-violet-900 to-indigo-600", applyStyle === style2 && "from-orange-500 to-red-500", applyStyle === style3 && "from-rose-500 to-rose-800")}>
                     <div className="">
                         <p className={clsx("font-bold", applyStyle === style1 && "text-red-500", (applyStyle === style2 || applyStyle === style3) && "text-black")}>
                             <span className="flex items-center justify-center">
