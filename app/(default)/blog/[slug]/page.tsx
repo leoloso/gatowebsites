@@ -20,6 +20,8 @@ import generateRssFeed from '@/utils/rss'
 import { getBlogPostURL } from '@/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from '@/components/schema/blogposting-schema-json-ld';
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import AppSettings from '@/app/app.settings'
+import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner'
 
 export async function generateStaticParams() {
   // Generate the RSS feed
@@ -94,6 +96,13 @@ export default async function SinglePost({ params }: {
         
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+
+<div className="mb-16 -mt-16">
+  { AppSettings.campaigns.enableBlackFriday && (
+      <BlackFridayBanner />
+  )}
+</div>
+
             <div className="max-w-3xl mx-auto lg:max-w-none">
 
               <article>
