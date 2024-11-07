@@ -10,6 +10,8 @@ import AppConfig from "@/app/app.config"
 import clsx from "clsx";
 import FullWidthDropdown from "@/components/standard/dropdown-full-width";
 import Tooltip from "@/components/standard/tooltip";
+import AppSettings from '@/app/app.settings'
+import BlackFridayBanner1 from '@/components/ui/campaigns/black-friday-banner-1'
 
 export default function ExtensionDropdownPricing({
   fixedExtension,
@@ -126,6 +128,9 @@ export default function ExtensionDropdownPricing({
             </span>
           </div>
         </div>
+      { AppSettings.campaigns.enableBlackFriday && (
+          <BlackFridayBanner1 />
+      )}
       </div>
       <div className="mx-auto grid max-w-xs items-start gap-8 md:max-w-2xl md:grid-cols-2 xl:max-w-none xl:grid-cols-4 xl:gap-6">
         {/* Pricing table 1 */}
