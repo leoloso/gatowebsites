@@ -14,7 +14,7 @@ import DemoPostThumb from '@/components/demo-post-thumb'
 import { Suspense } from 'react'
 import AppConfig from '@/app/app.config'
 import { useSearchParams } from 'next/navigation';
-import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner'
+import CampaignBanner from '@/components/ui/campaigns/campaign-banner'
 
 export default function DemoPostsSection() {
 
@@ -37,11 +37,7 @@ export default function DemoPostsSection() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
       <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
-        <div className="mb-16 -mt-16">
-          { AppSettings.campaigns.enableBlackFriday && (
-              <BlackFridayBanner />
-          )}
-        </div>
+        <CampaignBanner />
 
         {/*  Page header */}
         <PageHeader

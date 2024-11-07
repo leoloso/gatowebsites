@@ -9,8 +9,7 @@ import { getTestimonials } from '../data/testimonials'
 import WithTitleThumb from '../thumbnails/with-title-thumb'
 import clsx from 'clsx'
 import Cta from '../cta-02'
-import AppSettings from '@/app/app.settings'
-import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner'
+import CampaignBanner from '@/components/ui/campaigns/campaign-banner'
 
 export default function ArtifactSection({
   artifact,
@@ -42,11 +41,7 @@ export default function ArtifactSection({
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-32 md:pt-40">
 
-          <div className="mb-16 -mt-16">
-            { AppSettings.campaigns.enableBlackFriday && (
-                <BlackFridayBanner />
-            )}
-          </div>
+          <CampaignBanner />
 
           <div className="md:flex md:justify-between">
 
