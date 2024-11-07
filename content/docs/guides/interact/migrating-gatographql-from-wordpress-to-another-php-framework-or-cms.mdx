@@ -1,0 +1,55 @@
+---
+title: Migrating your app from WordPress to another PHP framework or CMS
+# isPRO: true
+description: Keep using your current Gato GraphQL application after migrating from WordPress to another PHP-based framework or CMS
+order: 1800
+---
+
+The GraphQL schema provided by Gato GraphQL contains fields to fetch WordPress data: posts, users, comments, tags, categories, etc.
+
+The code in the PHP resolvers' fetching WordPress data depends on WordPress; that code cannot run on a non-WordPress app.
+
+However, Gato GraphQL has each of these resolvers implemented via 2 packages:
+
+1. A "vanilla" PHP one, containing all generic code
+2. A WordPress-specific one, containing the actual invocations to WordPress methods that satisfy that resolver
+
+For instance, in this GraphQL query:
+
+```graphql
+{
+  posts {
+    id
+    title
+  }
+}
+```
+
+...the logic for fetching posts is composed of:
+
+1. The [`Root.posts` field](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts/src/FieldResolvers/ObjectType/AbstractPostObjectTypeFieldResolver.php#L200): It lives on the generic [`posts` package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts)
+2. Its resolution for WordPress via the [`get_posts` method](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/customposts-wp/src/TypeAPIs/AbstractCustomPostTypeAPI.php#L108): It lives on the WordPress-specific [`posts-wp` package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts-wp).
+
+The code split between non-WordPress/WordPress packages is something around 80/20%, meaning that **80% of the code is reusable with another framework/CMS**, and only **20% of the code would need to be reimplemented**.
+
+Moreover, all functionality in Gato GraphQL is shipped via modules, and modules can be enabled/disabled at will.
+
+<Image
+  src="/assets/guides/downstream/schema-type-modules.png"
+  width="1230"
+  height="855"
+  alt="Schema modules"
+  caption="Schema modules"
+/>
+
+<Banner type="info">
+
+**Modules** is a feature implemented for security purposes: If you don't need to expose user data in your public API, then you can disable the Users module, and the corresponding fields (such as `Root.users`) will never be added to the schema.
+
+</Banner>
+
+**Modules are directly mapped to underlying PHP packages.** As such, when running Gato GraphQL as a standalone app, we can selectively load those modules/packages that we need, and none of the other ones.
+
+For instance, if you application only prints data for posts, categories and tags, then only the `posts-wp`, `categories-wp`, and `tags-wp` packages (along with their dependencies) need to be loaded.
+
+Then, when migrating away from WordPress (say, to Laravel, or Symfony), only those 3 WordPress-specific packages would need to be reimplemented for the new framework/CMS, and nothing else.
