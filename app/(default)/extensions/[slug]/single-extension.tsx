@@ -6,7 +6,7 @@ import PostItemIntegration from '@/components/post-item-integration'
 import ExtensionThumbModalVideo from '@/components/mdx/components/modal-video-extension-thumb'
 import BrowseExtensionReferenceDocButton from '@/components/browse-extension-reference-doc-button'
 import AppSettings from '@/app/app.settings'
-import BlackFridayBanner1 from '@/components/ui/campaigns/black-friday-banner-1'
+import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner-1'
 
 export default function SingleExtension({
   extension,
@@ -22,7 +22,7 @@ export default function SingleExtension({
 
         <div className="mb-16 -mt-16">
           { AppSettings.campaigns.enableBlackFriday && (
-              <BlackFridayBanner1 />
+              <BlackFridayBanner />
           )}
         </div>
 
