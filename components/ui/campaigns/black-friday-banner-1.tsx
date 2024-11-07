@@ -5,7 +5,7 @@ export default function BlackFridayBanner1() {
     <div className="flex items-center justify-center">
         <div>
             <div className="grid w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
-                <div role="alert" className="relative block w-full text-base font-regular px-4 py-4 rounded-lg bg-gray-900 text-white flex">
+                <div role="alert" className="relative block w-full text-base font-regular px-4 py-4 rounded-lg bg-gradient-to-tr from-slate-900 to-violet-900 text-white flex">
                     <div className="">
                         <p className="font-bold text-red-500">
                             🌟 Black Friday Sale
