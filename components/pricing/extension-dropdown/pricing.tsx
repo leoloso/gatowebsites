@@ -48,6 +48,11 @@ export default function ExtensionDropdownPricing({
 
   return (
     <div className="relative">
+      <div className="mb-16 -mt-8">
+        { AppSettings.campaigns.enableBlackFriday && (
+            <BlackFridayBanner1 />
+        )}
+      </div>
       <div className="mb-16 flex flex-col items-center justify-center gap-8">
         {/* Pricing toggle */}
         <div className="flex items-center justify-center gap-4 text-gray-300">
@@ -128,9 +133,6 @@ export default function ExtensionDropdownPricing({
             </span>
           </div>
         </div>
-        { AppSettings.campaigns.enableBlackFriday && (
-            <BlackFridayBanner1 />
-        )}
       </div>
       <div className="mx-auto grid max-w-xs items-start gap-8 md:max-w-2xl md:grid-cols-2 xl:max-w-none xl:grid-cols-4 xl:gap-6">
         {/* Pricing table 1 */}
