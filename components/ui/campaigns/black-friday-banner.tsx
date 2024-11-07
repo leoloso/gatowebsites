@@ -4,9 +4,10 @@ import Image from 'next/image'
 
 export const style1 = 1;
 export const style2 = 2;
+export const style3 = 3;
 
 export default function BlackFridayBanner({
-    applyStyle = style1,
+    applyStyle = style3,
   }: {
     applyStyle?: number,
   }) {
@@ -14,15 +15,15 @@ export default function BlackFridayBanner({
     <div className="flex items-center justify-center">
         <div>
             <div className="grid w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
-                <div className={clsx("relative block w-full text-base font-regular px-4 py-4 rounded-lg bg-gradient-to-tr flex text-white", applyStyle === style1 && "from-violet-900 to-indigo-600", applyStyle === style2 && "from-orange-500 to-red-500")}>
+                <div className={clsx("relative block w-full text-base font-regular px-4 py-4 rounded-lg bg-gradient-to-tr flex text-white", applyStyle === style1 && "from-violet-900 to-indigo-600", applyStyle === style2 && "from-orange-500 to-red-500", applyStyle === style3 && "from-red-500 to-red-900")}>
                     <div className="">
-                        <p className={clsx("font-bold", applyStyle === style1 && "text-red-500", applyStyle === style2 && "text-black")}>
+                        <p className={clsx("font-bold", applyStyle === style1 && "text-red-500", (applyStyle === style2 || applyStyle === style3) && "text-black")}>
                             <span className="flex items-center justify-center">
                                 <Image src={BlackFridayImage} width={26} height={26} alt="label" className='mr-2' />
                                 <span>
                                     <span>Black Friday Sale</span>
                                     <span className="text-gray-300"> - </span><span className="text-white">50% off any product!</span>
-                                    <span className={clsx("ml-4", applyStyle === style1 && "text-yellow-500", applyStyle === style2 && "text-yellow-300")}> Use discount code: <span className={clsx(applyStyle === style1 && "text-yellow-300", applyStyle === style2 && "text-white")}>BF2025</span></span>
+                                    <span className={clsx("ml-4", applyStyle === style1 && "text-yellow-500", (applyStyle === style2 || applyStyle === style3) && "text-yellow-300")}> Use discount code: <span className={clsx(applyStyle === style1 && "text-yellow-300", (applyStyle === style2 || applyStyle === style3) && "text-white")}>BF2025</span></span>
                                     <span className="ml-4 text-gray-300 font-normal text-sm">Until Nov 29th</span>
                                 </span>
                             </span>
