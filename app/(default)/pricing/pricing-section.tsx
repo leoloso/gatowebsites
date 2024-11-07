@@ -1,6 +1,8 @@
 import PageHeader from '@/components/page-header'
 import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 import StunningBackground from '@/components/stunning-background'
+import AppSettings from '@/app/app.settings'
+import BlackFridayBanner1 from '@/components/ui/campaigns/black-friday-banner-1'
 
 export default function PricingSection() {
   return (
@@ -10,6 +12,12 @@ export default function PricingSection() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-32 pb-20 md:pt-40 md:pb-24">
+
+          <div className="mb-16 -mt-16">
+            { AppSettings.campaigns.enableBlackFriday && (
+                <BlackFridayBanner1 />
+            )}
+          </div>
 
           {/* Section header */}
           <PageHeader

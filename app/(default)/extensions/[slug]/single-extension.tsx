@@ -5,6 +5,8 @@ import PageHeader from '@/components/page-header'
 import PostItemIntegration from '@/components/post-item-integration'
 import ExtensionThumbModalVideo from '@/components/mdx/components/modal-video-extension-thumb'
 import BrowseExtensionReferenceDocButton from '@/components/browse-extension-reference-doc-button'
+import AppSettings from '@/app/app.settings'
+import BlackFridayBanner1 from '@/components/ui/campaigns/black-friday-banner-1'
 
 export default function SingleExtension({
   extension,
@@ -16,7 +18,14 @@ export default function SingleExtension({
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
-      <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+      <div className="pt-32 pb-12 md:pt-40 md:pb-20"> 
+
+        <div className="mb-16 -mt-16">
+          { AppSettings.campaigns.enableBlackFriday && (
+              <BlackFridayBanner1 />
+          )}
+        </div>
+
         <div className="max-w-3xl mx-auto">
 
           <article>

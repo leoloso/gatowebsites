@@ -28,7 +28,13 @@ export default function Extensions() {
         <StunningBackground />
     
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+          <div className="pt-32 pb-12 md:pt-40 md:pb-20"> 
+
+            <div className="mb-16 -mt-16">
+              { AppSettings.campaigns.enableBlackFriday && (
+                  <BlackFridayBanner1 />
+              )}
+            </div>
 
             {/*  Page header */}
             <PageHeader
@@ -36,12 +42,6 @@ export default function Extensions() {
               title='Extensions'
               description='Augment the server functionality, and extend the schema'
             />
-
-            <div className="mb-16 -mt-8">
-              { AppSettings.campaigns.enableBlackFriday && (
-                  <BlackFridayBanner1 />
-              )}
-            </div>
 
             <ExtensionsSection />
           </div>
