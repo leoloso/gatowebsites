@@ -31,11 +31,16 @@ export default function DefaultLayout({
   return (
     <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip ${AppSettings.enableLightDarkThemeMode ? 'dark' : '' }`}>
       <Header />
+
+      { AppSettings.campaigns.enableBlackFriday && (
       
-      <BlackFridayBanner1 />
-      <BlackFridayBanner2 />
-      <BlackFridayBanner3 />
-      <BlackFridayBanner4 />
+        <>
+          <BlackFridayBanner1 />
+          <BlackFridayBanner2 />
+          <BlackFridayBanner3 />
+          <BlackFridayBanner4 />
+        </>
+      )}
       
       <main className="grow">
 
