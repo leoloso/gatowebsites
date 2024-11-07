@@ -76,8 +76,8 @@ For instance, in this GraphQL query:
 
 ...the logic for fetching posts is composed of:
 
-1. The [`Root.posts` field](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts/src/FieldResolvers/ObjectType/AbstractPostObjectTypeFieldResolver.php#L200): It lives on the generic [`posts` package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts)
-2. Its resolution for WordPress via the [`get_posts` method](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/customposts-wp/src/TypeAPIs/AbstractCustomPostTypeAPI.php#L108): It lives on the WordPress-specific [`posts-wp` package](https://github.com/GatoGraphQL/GatoGraphQL/blob/6.0.2/layers/CMSSchema/packages/posts-wp).
+1. The [`Root.posts` field](https://github.com/GatoGraphQL/GatoGraphQL/blob/7.0.0/layers/CMSSchema/packages/posts/src/FieldResolvers/ObjectType/AbstractPostObjectTypeFieldResolver.php#L200): It lives on the generic [`posts` package](https://github.com/GatoGraphQL/GatoGraphQL/blob/7.0.0/layers/CMSSchema/packages/posts)
+2. Its resolution for WordPress via the [`get_posts` method](https://github.com/GatoGraphQL/GatoGraphQL/blob/7.0.0/layers/CMSSchema/packages/customposts-wp/src/TypeAPIs/AbstractCustomPostTypeAPI.php#L108): It lives on the WordPress-specific [`posts-wp` package](https://github.com/GatoGraphQL/GatoGraphQL/blob/7.0.0/layers/CMSSchema/packages/posts-wp).
 
 The code split between non-WordPress/WordPress packages is something around 80/20%, meaning that **80% of the code is reusable with another framework/CMS**, and only **20% of the code would need to be reimplemented**.
 
