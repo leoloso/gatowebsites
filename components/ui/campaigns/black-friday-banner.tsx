@@ -22,8 +22,8 @@ export default function BlackFridayBanner({
                                 <Image src={BlackFridayImage} width={26} height={26} alt="label" className='mr-2' />
                                 <span>
                                     <span>Black Friday Sale</span>
-                                    <span className="text-gray-300"> - </span><span className="text-white">50% off any product!</span>
-                                    <span className={clsx("ml-4", applyStyle === style1 && "text-yellow-500", applyStyle === style2 && "text-yellow-300", applyStyle === style3 && "text-amber-300")}> Use discount code: <span className={clsx(applyStyle === style1 && "text-yellow-300", (applyStyle === style2 || applyStyle === style3) && "text-white")}>BF2025</span></span>
+                                    <span className="text-gray-300"> - </span><span className="text-white text-lg">50% off any product!</span>
+                                    <span className={clsx("ml-4", applyStyle === style1 && "text-yellow-500", applyStyle === style2 && "text-yellow-300", applyStyle === style3 && "text-amber-300")}> Use discount code: <span className={clsx("text-lg", applyStyle === style1 && "text-yellow-300", (applyStyle === style2 || applyStyle === style3) && "text-white")}>BF2025</span></span>
                                     <span className="ml-4 text-gray-300 font-normal text-sm">Until Nov 29th</span>
                                 </span>
                             </span>
