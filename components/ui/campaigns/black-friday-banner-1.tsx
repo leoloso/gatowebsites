@@ -8,9 +8,7 @@ export default function BlackFridayBanner1() {
                 <div role="alert" className="relative block w-full text-base font-regular px-4 py-4 rounded-lg bg-gray-900 text-white flex">
                     <div className=" mr-12">
                         <p className="font-bold text-red-500">Black Friday Sale
-                        <span className="text-red-300">
-                            - Up to 50% off on fashion items!
-                        </span>
+                        <span className="text-gray-300"> - </span><span className="text-red-300">50% off any product!</span>
                         <span title="" className="inline-flex items-center justify-center text-sm font-bold text-red-500 transition-all ml-4 duration-200 rounded-md hover:text-red-700" role="button">
                             Get Now<svg className="w-4 h-4 ml-1" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
                         </span>
