@@ -1,4 +1,5 @@
-
+import Logo from '@/public/assets/GatoGraphQL-logo-suki.png'
+import Image from 'next/image'
 
 export default function BlackFridayBanner4() {
   return (
@@ -7,10 +8,11 @@ export default function BlackFridayBanner4() {
             <div className="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
                 <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
                     <div className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
-                        <img
-                        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1471&amp;q=80"
-                        alt="image"
-                        className="object-cover w-full h-full"
+                        <Image
+                            src={Logo}
+                            alt="Gato GraphQL logo"
+                            width={375} height={375}
+                            className="object-cover w-full h-full"
                         />
                         {/* <!-- Black Friday Mega Offer --> */}
                         <div className="absolute inset-0 flex items-center justify-center text-white bg-black bg-opacity-75 rounded-xl">
