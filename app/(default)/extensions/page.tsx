@@ -4,6 +4,8 @@ import { createSEOPageTitle } from '@/utils/content/metadata'
 import ExtensionsSection from './extensions-section'
 import ExtensionsPricingSection from './extensions-pricing-section'
 import PageHeader from '@/components/page-header'
+import AppSettings from '@/app/app.settings'
+import BlackFridayBanner1 from '@/components/ui/campaigns/black-friday-banner-1'
 
 const pageTitle = 'Extensions'
 export const metadata = {
@@ -34,6 +36,12 @@ export default function Extensions() {
               title='Extensions'
               description='Augment the server functionality, and extend the schema'
             />
+
+            <div className="mb-16 -mt-8">
+              { AppSettings.campaigns.enableBlackFriday && (
+                  <BlackFridayBanner1 />
+              )}
+            </div>
 
             <ExtensionsSection />
           </div>
