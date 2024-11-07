@@ -97,11 +97,11 @@ export default async function SinglePost({ params }: {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
-<div className="mb-16 -mt-16">
-  { AppSettings.campaigns.enableBlackFriday && (
-      <BlackFridayBanner />
-  )}
-</div>
+            <div className="mb-16 -mt-16">
+              { AppSettings.campaigns.enableBlackFriday && (
+                  <BlackFridayBanner />
+              )}
+            </div>
 
             <div className="max-w-3xl mx-auto lg:max-w-none">
 
