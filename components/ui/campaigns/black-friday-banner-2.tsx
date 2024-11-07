@@ -10,7 +10,7 @@ export default function BlackFridayBanner2() {
                     <div className="">
                         <p className="font-bold text-black">
                             <span className="flex items-center justify-center">
-                                <Image src={BlackFridayImage} width={24} height={24} alt="label" className='mr-1' />
+                                <Image src={BlackFridayImage} width={26} height={26} alt="label" className='mr-2' />
                                 <span>
                                     <span>Black Friday Sale</span>
                                     <span className="text-gray-300"> - </span><span className="text-white">50% off any product!</span>
