@@ -1,4 +1,4 @@
-import Logo from '@/public/assets/GatoGraphQL-logo-suki.png'
+import BlackFridayImage from '@/public/assets/icons/black-friday/042-sale-4.svg'
 import Image from 'next/image'
 
 export default function BlackFridayBanner4() {
@@ -9,7 +9,7 @@ export default function BlackFridayBanner4() {
                 <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
                     <div className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
                         <Image
-                            src={Logo}
+                            src={BlackFridayImage}
                             alt="Gato GraphQL logo"
                             width={375} height={375}
                             className="object-cover w-full h-full"
