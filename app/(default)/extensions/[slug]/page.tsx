@@ -67,7 +67,7 @@ export default async function SingleExtensionPage({ params }: {
 
         <StunningBackground />
 
-        <div className="pb-12 md:pb-20">  
+        <div className="pb-12 md:pb-20"> 
 
           <SingleExtension
             extension={extension}

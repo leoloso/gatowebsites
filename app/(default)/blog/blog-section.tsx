@@ -12,6 +12,7 @@ import { useSearchParams } from 'next/navigation';
 import PostTags from '@/components/post-tags'
 import Link from 'next/link'
 import AppConfig from '@/app/app.config'
+import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner'
 
 export default function BlogSection() {
 
@@ -29,6 +30,12 @@ export default function BlogSection() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
       <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+
+        <div className="mb-16 -mt-16">
+          { AppSettings.campaigns.enableBlackFriday && (
+              <BlackFridayBanner />
+          )}
+        </div>
 
         {/* Page header */}
         <PageHeader

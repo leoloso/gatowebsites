@@ -3,6 +3,8 @@ import PageHeader from '@/components/page-header'
 import Cta from '@/components/cta-02'
 import ComparisonList from './comparison-list'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import AppSettings from '@/app/app.settings'
+import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner'
 
 const pageTitle = 'Comparisons'
 export const metadata = {
@@ -26,6 +28,12 @@ export default function ComparisonsPage() {
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="pt-32 md:pt-40">
+
+            <div className="mb-16 -mt-16">
+              { AppSettings.campaigns.enableBlackFriday && (
+                  <BlackFridayBanner />
+              )}
+            </div>
 
             {/* Section header */}
             <PageHeader
