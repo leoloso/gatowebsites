@@ -5,7 +5,7 @@ import ExtensionsSection from './extensions-section'
 import ExtensionsPricingSection from './extensions-pricing-section'
 import PageHeader from '@/components/page-header'
 import AppSettings from '@/app/app.settings'
-import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner-1'
+import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner'
 
 const pageTitle = 'Extensions'
 export const metadata = {

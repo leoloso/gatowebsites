@@ -2,7 +2,7 @@ import PageHeader from '@/components/page-header'
 import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 import StunningBackground from '@/components/stunning-background'
 import AppSettings from '@/app/app.settings'
-import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner-1'
+import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner'
 
 export default function PricingSection() {
   return (

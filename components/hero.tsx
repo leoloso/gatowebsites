@@ -10,7 +10,7 @@ import LogoPic from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
 // import TryPROPluginButton from './try-pro-plugin-button'
 // import graphQLImage from '@/public/assets/external-logos/graphql-logo.svg'
 import AppSettings from '@/app/app.settings'
-import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner-1'
+import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner'
 
 export default function Hero() {
   return (
