@@ -25,13 +25,13 @@ export default function BlackFridayBanner4() {
                     </div>
                     <div className="p-6">
                         <h6 className="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-red-500 uppercase">
-                            Deal
+                            Here today deal
                         </h6>
                         <h4 className="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
                             50% off any product!
                         </h4>
                         <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
-                            Get any Gato GraphQL extension for only half the price. That also includes the “All Extensions” bundle, and the Long Term Deals!
+                            Get any Gato GraphQL extension for only half the price. That includes the “All Extensions” bundle, any single extension, and the Long Term Deals (pay once at a discount, and enjoy forever).
                         </p>
                         <span
                             className="font-sans text-xs font-bold text-center text-red-500 uppercase align-middle"
