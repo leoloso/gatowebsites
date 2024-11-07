@@ -16,6 +16,8 @@ import RelatedPosts from './related-posts'
 import Particles from '@/components/particles'
 import VsImage from '@/public/assets/theme/vs.svg'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import AppSettings from '@/app/app.settings'
+import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({
@@ -81,6 +83,13 @@ export default async function SingleComparisonPost({ params }: {
         
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+
+            <div className="mb-16 -mt-16">
+              { AppSettings.campaigns.enableBlackFriday && (
+                  <BlackFridayBanner />
+              )}
+            </div>
+
             <div className="max-w-3xl mx-auto lg:max-w-none">
 
               <article className="pb-12 mb-12 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
