@@ -6,16 +6,16 @@ export default function BlackFridayBanner1() {
     <div className="flex items-center justify-center">
         <div>
             <div className="grid w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
-                <div role="alert" className="relative block w-full text-base font-regular px-4 py-4 rounded-lg bg-gradient-to-tr from-slate-900 to-violet-900 text-white flex">
+                <div role="alert" className="relative block w-full text-base font-regular px-4 py-4 rounded-lg bg-gradient-to-tr from-violet-900 to-indigo-900 text-white flex">
                     <div className="">
                         <p className="font-bold text-red-500">
                             <span className="flex items-center justify-center">
                                 <Image src={BlackFridayImage} width={24} height={24} alt="label" className='mr-1' />
                                 <span>
                                     <span>Black Friday Sale</span>
-                                    <span className="text-gray-300"> - </span><span className="text-red-300">50% off any product!</span>
+                                    <span className="text-gray-300"> - </span><span className="text-red-200">50% off any product!</span>
                                     <span className="ml-4 text-yellow-300"> Use discount code: <span className="text-white">BF2025</span></span>
-                                    <span className="ml-4 text-red-300 font-normal text-sm">Until Nov 29th</span>
+                                    <span className="ml-4 text-red-200 font-normal text-sm">Until Nov 29th</span>
                                 </span>
                             </span>
                         </p>
