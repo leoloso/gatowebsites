@@ -15,7 +15,7 @@ export default function BlackFridayBanner2() {
                                     <span>Black Friday Sale</span>
                                     <span className="text-gray-300"> - </span><span className="text-white">50% off any product!</span>
                                     <span className="ml-4 text-yellow-300"> Use discount code: <span className="text-white">BF2025</span></span>
-                                    <span className="ml-4 text-white font-normal text-sm">Until Nov 29th</span>
+                                    <span className="ml-4 text-gray-300 font-normal text-sm">Until Nov 29th</span>
                                 </span>
                             </span>
                         </p>
