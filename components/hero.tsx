@@ -29,7 +29,7 @@ export default function Hero() {
 
         <div className="pt-32 pb-16 md:pt-32 md:pb-24">
 
-          <div className="mb-16 -mt-16">
+          <div className="mb-16 -mt-8">
             { AppSettings.campaigns.enableBlackFriday && (
                 <BlackFridayBanner />
             )}
