@@ -8,9 +8,6 @@ import 'aos/dist/aos.css'
 import Footer from '@/components/ui/footer'
 import Header from '@/components/ui/header'
 import AppSettings from '@/app/app.settings'
-import BlackFridayBanner1 from '@/components/ui/campaigns/black-friday-banner-1'
-import BlackFridayBanner2 from '@/components/ui/campaigns/black-friday-banner-2'
-import BlackFridayBanner4 from '@/components/ui/campaigns/black-friday-banner-4'
 
 export default function DefaultLayout({
   children,
@@ -30,15 +27,6 @@ export default function DefaultLayout({
   return (
     <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip ${AppSettings.enableLightDarkThemeMode ? 'dark' : '' }`}>
       <Header />
-
-      { AppSettings.campaigns.enableBlackFriday && (
-      
-        <>
-          <BlackFridayBanner2 />
-          <BlackFridayBanner1 />
-          <BlackFridayBanner4 />
-        </>
-      )}
       
       <main className="grow">
 
