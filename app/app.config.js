@@ -132,7 +132,7 @@ module.exports = {
       emailFieldName: "email",
     },
     shop: {
-      affiliateTrackingShopSlug: "gatographql"
+      affiliateTrackingShopSlug: "gato"
     }
   }
 }
