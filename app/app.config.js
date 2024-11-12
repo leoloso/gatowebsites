@@ -19,7 +19,7 @@ module.exports = {
   urls: {
     githubExtensionStarter: "https://github.com/GatoGraphQL/ExtensionStarter",
     githubRepo: "https://github.com/GatoGraphQL/GatoGraphQL",
-    instawpSandboxDemo: "https://app.instawp.io/launch?t=gatographql-demo&d=v2",
+    instawpSandboxDemo: "https://app.instawp.io/launch?t=gatographql-demo&d=v2&via=leonardo",
     nextjsWordPressStarter: "https://github.com/GatoGraphQL/next-wordpress-starter",
     shopAffiliateProgram: "https://shop.gatographql.com/affiliates",
     shopClientOrders: "https://app.lemonsqueezy.com/my-orders",
