@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import ModalVideoTransition from './modal-video-transition'
-import ExtensionThumb from '@gato/components/src/extension-thumb'
+import ExtensionThumb from '@gato/components/extension-thumb'
 import { Extension } from '@/.contentlayer/generated'
 import ModalVideoTitle from './modal-video-title'
 import ModalVideoButton from './modal-video-button'

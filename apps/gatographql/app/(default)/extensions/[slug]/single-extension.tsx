@@ -1,11 +1,11 @@
 import { Extension } from '@/.contentlayer/generated'
-import { PostMdx } from '@gato/components/src/mdx/post-mdx'
-import ExtensionThumb from '@gato/components/src/extension-thumb'
-import PageHeader from '@gato/components/src/page-header'
-import PostItemIntegration from '@gato/components/src/post-item-integration'
-import ExtensionThumbModalVideo from '@gato/components/src/mdx/components/modal-video-extension-thumb'
-import BrowseExtensionReferenceDocButton from '@gato/components/src/browse-extension-reference-doc-button'
-import CampaignBanner from '@gato/components/src/ui/campaigns/campaign-banner'
+import { PostMdx } from '@gato/components/mdx/post-mdx'
+import ExtensionThumb from '@gato/components/extension-thumb'
+import PageHeader from '@gato/components/page-header'
+import PostItemIntegration from '@gato/components/post-item-integration'
+import ExtensionThumbModalVideo from '@gato/components/mdx/components/modal-video-extension-thumb'
+import BrowseExtensionReferenceDocButton from '@gato/components/browse-extension-reference-doc-button'
+import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
 
 export default function SingleExtension({
   extension,

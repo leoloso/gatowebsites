@@ -1,22 +1,22 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
-import { PostMdx } from '@gato/components/src/mdx/post-mdx'
-import PostNav from '@gato/components/src/post-nav'
-import StunningBackground from '@gato/components/src/stunning-background'
+import { PostMdx } from '@gato/components/mdx/post-mdx'
+import PostNav from '@gato/components/post-nav'
+import StunningBackground from '@gato/components/stunning-background'
 import { sortByOrderAndTitle } from '@/utils/content/sort'
 import { getComparisonPostURL } from '@/utils/content/application-urls'
-import ArticleSchemaJsonLdScript from '@gato/components/src/schema/article-schema-json-ld';
-import Cta from '@gato/components/src/cta-02'
-import PageHeader from '@gato/components/src/page-header'
+import ArticleSchemaJsonLdScript from '@gato/components/schema/article-schema-json-ld';
+import Cta from '@gato/components/cta-02'
+import PageHeader from '@gato/components/page-header'
 import { allComparisonPosts } from '@/.contentlayer/generated'
 import Logo from '@/public/assets/GatoGraphQL-logo-suki.png'
 import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
 import RelatedPosts from './related-posts'
-import Particles from '@gato/components/src/particles'
+import Particles from '@gato/components/particles'
 import VsImage from '@/public/assets/theme/vs.svg'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
-import CampaignBanner from '@gato/components/src/ui/campaigns/campaign-banner'
+import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({

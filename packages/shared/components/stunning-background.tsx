@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Particles from '@gato/components/src/particles'
+import Particles from '@gato/components/particles'
 import Illustration from '@/public/assets/theme/page-illustration.svg'
 import Illustration02 from '@/public/assets/theme/page-illustration-02.svg'
 

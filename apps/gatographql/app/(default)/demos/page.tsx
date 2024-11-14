@@ -1,5 +1,5 @@
-import Newsletter from '@gato/components/src/newsletter'
-import StunningBackground from '@gato/components/src/stunning-background'
+import Newsletter from '@gato/components/newsletter'
+import StunningBackground from '@gato/components/stunning-background'
 import { Suspense } from 'react'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import DemoPostsSection from './demo-posts-section'

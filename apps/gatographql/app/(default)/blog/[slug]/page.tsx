@@ -6,21 +6,21 @@ import {
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import PostDate from '@gato/components/src/post-date'
-import { PostMdx } from '@gato/components/src/mdx/post-mdx'
-import PostNav from '@gato/components/src/post-nav'
-import PostTags from '@gato/components/src/post-tags'
+import PostDate from '@gato/components/post-date'
+import { PostMdx } from '@gato/components/mdx/post-mdx'
+import PostNav from '@gato/components/post-nav'
+import PostTags from '@gato/components/post-tags'
 import AppConfig from '@/app/app.config'
-import StunningBackground from '@gato/components/src/stunning-background'
-import Newsletter from '@gato/components/src/newsletter'
-// import ArticleNavigation from '@gato/components/src/ui/article-navigation'
+import StunningBackground from '@gato/components/stunning-background'
+import Newsletter from '@gato/components/newsletter'
+// import ArticleNavigation from '@gato/components/ui/article-navigation'
 import { sortByPublishedAt } from '@/utils/content/sort'
 // import { getPrevNextArticles } from '@/utils/content/document'
 import generateRssFeed from '@/utils/rss'
 import { getBlogPostURL } from '@/utils/content/application-urls'
-import BlogPostingSchemaJsonLdScript from '@gato/components/src/schema/blogposting-schema-json-ld';
+import BlogPostingSchemaJsonLdScript from '@gato/components/schema/blogposting-schema-json-ld';
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
-import CampaignBanner from '@gato/components/src/ui/campaigns/campaign-banner'
+import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
 
 export async function generateStaticParams() {
   // Generate the RSS feed

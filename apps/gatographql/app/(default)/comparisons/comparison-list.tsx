@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import Particles from '@gato/components/src/particles'
-import Highlighter, { HighlighterItem02 } from '@gato/components/src/highlighter'
+import Particles from '@gato/components/particles'
+import Highlighter, { HighlighterItem02 } from '@gato/components/highlighter'
 import { allComparisonPosts } from '@/.contentlayer/generated'
 import { sortByOrderAndTitle } from '@/utils/content/sort'
 import { getComparisonPostURLPath } from '@/utils/content/application-urls'
-import { getTestimonials } from '@gato/components/src/data/testimonials'
+import { getTestimonials } from '@gato/components/data/testimonials'
 import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
 
 export default function ComparisonList() {

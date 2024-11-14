@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Illustration from '@/public/assets/theme/pricing-illustration.svg'
 import IllustrationTop from '@/public/assets/theme/pricing-illustration-top.svg'
-import Particles from '@gato/components/src/particles'
+import Particles from '@gato/components/particles'
 import MoneyBackGuaranteePic from '@/public/assets/money-back-guarantee.svg'
 import SectionHeader from './section-header'
 

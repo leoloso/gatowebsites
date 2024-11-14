@@ -1,5 +1,5 @@
 
-import Particles from '@gato/components/src/particles'
+import Particles from '@gato/components/particles'
 // import Illustration from '@/public/assets/theme/cta-illustration.svg'
 import clsx from 'clsx';
 

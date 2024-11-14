@@ -1,6 +1,6 @@
 'use client'
 
-import DemoPostPostItem from '@gato/components/src/demo-post-item'
+import DemoPostPostItem from '@gato/components/demo-post-item'
 import AppSettings from '@/app/app.settings'
 
 import { useSearchParams } from 'next/navigation';

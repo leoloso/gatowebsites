@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import PostDate from '@gato/components/src/post-date'
+import PostDate from '@gato/components/post-date'
 import { BlogPost } from '@/.contentlayer/generated'
 import { getBlogPostURLPath } from '@/utils/content/application-urls'
 import PostTags from './post-tags'

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import PostDate from '@gato/components/src/post-date'
+import PostDate from '@gato/components/post-date'
 import PostTags from './post-tags'
 import { DemoPost } from '@/.contentlayer/generated'
 import { getDemoPostURLPath } from '@/utils/content/application-urls'

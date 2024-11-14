@@ -8,8 +8,8 @@ import { useState } from "react";
 import PricingTier from "./pricing-tier";
 import AppConfig from "@/app/app.config"
 import clsx from "clsx";
-import FullWidthDropdown from "@gato/components/src/standard/dropdown-full-width";
-import Tooltip from "@gato/components/src/standard/tooltip";
+import FullWidthDropdown from "@gato/components/standard/dropdown-full-width";
+import Tooltip from "@gato/components/standard/tooltip";
 
 export default function ExtensionDropdownPricing({
   fixedExtension,

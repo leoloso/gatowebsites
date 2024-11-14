@@ -1,10 +1,10 @@
-import Cta from '@gato/components/src/cta'
-import StunningBackground from '@gato/components/src/stunning-background'
+import Cta from '@gato/components/cta'
+import StunningBackground from '@gato/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import ExtensionsSection from './extensions-section'
 import ExtensionsPricingSection from './extensions-pricing-section'
-import PageHeader from '@gato/components/src/page-header'
-import CampaignBanner from '@gato/components/src/ui/campaigns/campaign-banner'
+import PageHeader from '@gato/components/page-header'
+import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
 
 const pageTitle = 'Extensions'
 export const metadata = {

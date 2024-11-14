@@ -1,9 +1,9 @@
-import StunningBackground from '@gato/components/src/stunning-background'
-import PageHeader from '@gato/components/src/page-header'
-import Cta from '@gato/components/src/cta-02'
+import StunningBackground from '@gato/components/stunning-background'
+import PageHeader from '@gato/components/page-header'
+import Cta from '@gato/components/cta-02'
 import ComparisonList from './comparison-list'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
-import CampaignBanner from '@gato/components/src/ui/campaigns/campaign-banner'
+import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
 
 const pageTitle = 'Comparisons'
 export const metadata = {

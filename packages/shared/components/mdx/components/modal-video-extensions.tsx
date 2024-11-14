@@ -4,7 +4,7 @@ import { useState } from 'react'
 import ModalVideoTransition from './modal-video-transition'
 import ModalVideoTitle from './modal-video-title'
 import ModalVideoButton from './modal-video-button'
-import WithLogoThumb from '@gato/components/src/thumbnails/with-logo-thumb'
+import WithLogoThumb from '@gato/components/thumbnails/with-logo-thumb'
 
 interface ModalVideoProps {
   video: string

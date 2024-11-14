@@ -1,11 +1,11 @@
 import { allHighlights } from '@/.contentlayer/generated'
 import HighlightItem from './highlight-item'
-import Cta from '@gato/components/src/cta-03'
+import Cta from '@gato/components/cta-03'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import { sortByOrder } from '@/utils/content/sort'
-import StunningBackground from '@gato/components/src/stunning-background'
-import PageHeader from '@gato/components/src/page-header'
-import CampaignBanner from '@gato/components/src/ui/campaigns/campaign-banner'
+import StunningBackground from '@gato/components/stunning-background'
+import PageHeader from '@gato/components/page-header'
+import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
 
 const pageTitle = 'Highlights'
 export const metadata = {

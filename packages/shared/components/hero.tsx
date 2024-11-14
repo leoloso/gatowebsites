@@ -9,7 +9,7 @@ import LogoPic from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
 // import BrowseHighlightsButton from './browse-highlights-button'
 // import TryPROPluginButton from './try-pro-plugin-button'
 // import graphQLImage from '@/public/assets/external-logos/graphql-logo.svg'
-import CampaignBanner from '@gato/components/src/ui/campaigns/campaign-banner'
+import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
 
 export default function Hero() {
   return (

@@ -1,7 +1,7 @@
 'use client'
 
-import { HighlightMdx } from '@gato/components/src/mdx/highlight-mdx'
-import WithTitleThumb from '@gato/components/src/thumbnails/with-title-thumb'
+import { HighlightMdx } from '@gato/components/mdx/highlight-mdx'
+import WithTitleThumb from '@gato/components/thumbnails/with-title-thumb'
 import { useRef } from 'react'
 import slugify from '@sindresorhus/slugify';
 import AppSettings from '@/app/app.settings'

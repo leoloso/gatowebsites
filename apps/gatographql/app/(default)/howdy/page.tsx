@@ -1,6 +1,6 @@
-import HowdyHero from '@gato/components/src/howdy-hero'
-import HowdyMain from '@gato/components/src/howdy-main'
-import Cta from '@gato/components/src/cta-02'
+import HowdyHero from '@gato/components/howdy-hero'
+import HowdyMain from '@gato/components/howdy-main'
+import Cta from '@gato/components/cta-02'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Howdy'
