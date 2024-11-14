@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import PageSection from '@/components/sections/page'
+import PageSection from '@gato/components/src/sections/page'
 import { getPage, getPageMetadata } from '@/utils/content/page'
 import { getPageSlugFromPageScriptFile } from '@/utils/content/path'
 

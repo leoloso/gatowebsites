@@ -5,9 +5,9 @@ import Theme from './theme-provider'
 import AppProvider from './app-provider'
 // import Image from 'next/image'
 // import Illustration from '@/public/assets/theme/hero-illustration.svg'
-import Sidebar from '@/components/ui/docs/sidebar'
-import Header from '@/components/ui/header'
-import StunningBackground from '@/components/stunning-background'
+import Sidebar from '@gato/components/src/ui/docs/sidebar'
+import Header from '@gato/components/src/ui/header'
+import StunningBackground from '@gato/components/src/stunning-background'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const nycd = Nothing_You_Could_Do({

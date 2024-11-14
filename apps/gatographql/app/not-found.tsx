@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import NotFoundImage from '@/public/assets/theme/404.jpg'
-import StunningBackground from '@/components/stunning-background';
+import StunningBackground from '@gato/components/src/stunning-background';
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = '404'

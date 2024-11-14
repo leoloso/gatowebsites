@@ -3,9 +3,9 @@ import './css/style.css'
 import { Inter } from 'next/font/google'
 import AppSettings from '@/app/app.settings'
 import PlausibleProvider from 'next-plausible'
-import LemonSqueezyScriptProvider from '@/components/scripts/lemonsqueezy'
+import LemonSqueezyScriptProvider from '@gato/components/src/scripts/lemonsqueezy'
 import { DOMAIN } from '@/data/env/domain'
-import InitializeShop from '@/components/shop/initialize-shop'
+import InitializeShop from '@gato/components/src/shop/initialize-shop'
 
 const inter = Inter({
   subsets: ['latin'],

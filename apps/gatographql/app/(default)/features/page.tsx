@@ -1,6 +1,6 @@
-import FeaturesSection from '@/components/features-section'
-import FeaturesList from '@/components/features-list'
-import Cta from '@/components/cta-02'
+import FeaturesSection from '@gato/components/src/features-section'
+import FeaturesList from '@gato/components/src/features-list'
+import Cta from '@gato/components/src/cta-02'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Features'

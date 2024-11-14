@@ -1,8 +1,8 @@
-import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
-import Particles from '@/components/particles'
-import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
-import RadiantGradient from '@/components/radial-gradient'
-import Testimonial from '@/components/testimonial'
+import ExtensionDropdownPricing from '@gato/components/src/pricing/extension-dropdown/pricing'
+import Particles from '@gato/components/src/particles'
+import PricingMoneyBackGuarantee from '@gato/components/src/pricing-moneyback-guarantee'
+import RadiantGradient from '@gato/components/src/radial-gradient'
+import Testimonial from '@gato/components/src/testimonial'
 
 export default function ExtensionsPricingSection() {
 

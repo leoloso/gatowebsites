@@ -1,8 +1,8 @@
-import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
-import SectionHeader from '@/components/section-header'
-import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
-import Particles from '@/components/particles'
-import Testimonial from '@/components/testimonial'
+import PricingMoneyBackGuarantee from '@gato/components/src/pricing-moneyback-guarantee'
+import SectionHeader from '@gato/components/src/section-header'
+import ExtensionDropdownPricing from '@gato/components/src/pricing/extension-dropdown/pricing'
+import Particles from '@gato/components/src/particles'
+import Testimonial from '@gato/components/src/testimonial'
 
 export default function PricingSection() {
   return (

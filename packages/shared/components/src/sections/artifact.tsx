@@ -2,14 +2,14 @@ import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png'
 import Star from '@/public/assets/theme/star.svg'
-import { ArtifactMdx } from '@/components/mdx/artifact-mdx'
-import StunningBackground from '@/components/stunning-background'
+import { ArtifactMdx } from '@gato/components/src/mdx/artifact-mdx'
+import StunningBackground from '@gato/components/src/stunning-background'
 import { Artifact } from '@/utils/content/types'
 import { getTestimonials } from '../data/testimonials'
 import WithTitleThumb from '../thumbnails/with-title-thumb'
 import clsx from 'clsx'
 import Cta from '../cta-02'
-import CampaignBanner from '@/components/ui/campaigns/campaign-banner'
+import CampaignBanner from '@gato/components/src/ui/campaigns/campaign-banner'
 
 export default function ArtifactSection({
   artifact,

@@ -8,7 +8,7 @@ import Icon04 from '@/public/assets/theme/pricing-icon-04.svg'
 import Icon05 from '@/public/assets/theme/pricing-icon-05.svg'
 import Icon06 from '@/public/assets/theme/pricing-icon-06.svg'
 import Icon07 from '@/public/assets/theme/pricing-icon-07.svg'
-import Particles from '@/components/particles'
+import Particles from '@gato/components/src/particles'
 
 export default function Features05() {
   return (

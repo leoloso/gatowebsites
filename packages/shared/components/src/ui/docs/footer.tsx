@@ -1,4 +1,4 @@
-import FooterLogo from '@/components/ui/docs/footer-logo'
+import FooterLogo from '@gato/components/src/ui/docs/footer-logo'
 import FooterMenu from '../footer-menu'
 
 export default function Footer() {

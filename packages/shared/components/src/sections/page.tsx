@@ -1,6 +1,6 @@
 import { Page } from '@/.contentlayer/generated'
-import { PostMdx } from '@/components/mdx/post-mdx'
-import StunningBackground from '@/components/stunning-background'
+import { PostMdx } from '@gato/components/src/mdx/post-mdx'
+import StunningBackground from '@gato/components/src/stunning-background'
 import Image from 'next/image'
 import PostDate from '../post-date'
 import PageHeader from '../page-header'

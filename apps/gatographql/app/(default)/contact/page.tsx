@@ -1,7 +1,7 @@
-import ContactForm from "@/components/forms/contact"
-import PageHeader from "@/components/page-header"
-import ContactPageSchemaJsonLdScript from "@/components/schema/contactpage-schema-json-ld"
-import StunningBackground from "@/components/stunning-background"
+import ContactForm from "@gato/components/src/forms/contact"
+import PageHeader from "@gato/components/src/page-header"
+import ContactPageSchemaJsonLdScript from "@gato/components/src/schema/contactpage-schema-json-ld"
+import StunningBackground from "@gato/components/src/stunning-background"
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Contact us'

@@ -5,8 +5,8 @@ import {
   getGuideDocuments,
   getPrevNextArticles,
 } from '@/utils/content/document'
-import DocSection from '@/components/sections/doc'
-import { topicTitleSVG1 } from '@/components/ui/docs/topic-title'
+import DocSection from '@gato/components/src/sections/doc'
+import { topicTitleSVG1 } from '@gato/components/src/ui/docs/topic-title'
 import { Doc } from '@/.contentlayer/generated'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 

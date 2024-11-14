@@ -1,5 +1,5 @@
 import AppSettings from '@/app/app.settings'
-import BlackFridayBanner from '@/components/ui/campaigns/black-friday-banner'
+import BlackFridayBanner from '@gato/components/src/ui/campaigns/black-friday-banner'
 import clsx from 'clsx'
 
 export default function CampaignBanner({

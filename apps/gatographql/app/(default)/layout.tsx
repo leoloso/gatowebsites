@@ -5,8 +5,8 @@ import { useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-import Footer from '@/components/ui/footer'
-import Header from '@/components/ui/header'
+import Footer from '@gato/components/src/ui/footer'
+import Header from '@gato/components/src/ui/header'
 import AppSettings from '@/app/app.settings'
 
 export default function DefaultLayout({
