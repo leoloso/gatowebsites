@@ -16,6 +16,7 @@
     "deploy-prod-with-algolia": "npm run deploy-prod && npm run deploy-algolia"
   },
   "dependencies": {
-    "@gato/components": "*"
+    "@gato/components": "*",
+    "next": "^14.1.3"
   }
 }
