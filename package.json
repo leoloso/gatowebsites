@@ -2,6 +2,11 @@
   "name": "gato-monorepo",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/config/*",
+    "packages/shared/*"
+  ],
   "scripts": {
     "dev": "export $(cat .env | xargs) && next dev",
     "build": "export $(cat .env | xargs) && NODE_OPTIONS=--max-old-space-size=8192 next build",
