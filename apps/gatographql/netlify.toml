@@ -1,0 +1,947 @@
+[build]
+  command = "npm run build --prefix apps/gatographql"
+  publish = ".next"
+  environment = { NODE_OPTIONS="--max-old-space-size=8192" }
+
+  
+[[redirects]]
+  from = "/gatographql-vs-wprestapi"
+  to = "/comparisons/gatographql-vs-wp-rest-api"
+  status = 301
+
+[[redirects]]
+  from = "/gatographql-vs-wp-rest-api"
+  to = "/comparisons/gatographql-vs-wp-rest-api"
+  status = 301
+
+[[redirects]]
+  from = "/gatographql-vs-wpgraphql"
+  to = "/comparisons/gatographql-vs-wpgraphql"
+  status = 301
+  
+[[redirects]]
+  from = "/tags"
+  to = "/blog"
+  status = 301
+  
+[[redirects]]
+  from = "/tags/*"
+  to = "/blog"
+  status = 301
+  
+[[redirects]]
+  from = "/recipes/*"
+  to = "/tutorial/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/demo"
+  to = "/tutorial/intro"
+  status = 301
+
+[[redirects]]
+  from = "/about-us"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/guides/special-features/*"
+  to = "/features/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/guides/intro"
+  to = "/guides/intro/intro-to-graphql-and-gato-graphql"
+  status = 301
+
+[[redirects]]
+  from = "/guides/query"
+  to = "/guides/query/executing-queries-and-mutations"
+  status = 301
+
+[[redirects]]
+  from = "/guides/use"
+  to = "/guides/use/creating-a-custom-endpoint"
+  status = 301
+
+[[redirects]]
+  from = "/guides/schema"
+  to = "/guides/schema/namespacing-the-schema"
+  status = 301
+
+[[redirects]]
+  from = "/guides/config"
+  to = "/guides/config/installing-and-upgrading-a-bundle-or-extension"
+  status = 301
+
+[[redirects]]
+  from = "/guides/augment"
+  to = "/guides/augment/schema-extensions-via-introspection"
+  status = 301
+
+[[redirects]]
+  from = "/guides/interact"
+  to = "/guides/interact/working-with-custom-posts"
+  status = 301
+
+[[redirects]]
+  from = "/guides/deep"
+  to = "/guides/deep/fetching-dynamically-structured-data"
+  status = 301
+
+[[redirects]]
+  from = "/guides/resources"
+  to = "/guides/resources/graphql-best-practices"
+  status = 301
+
+[[redirects]]
+  from = "/tutorial/complementing-wp-cli"
+  to = "/guides/code/complementing-wp-cli"
+  status = 301
+
+[[redirects]]
+  from = "/tutorial/dry-code-for-blocks-in-javascript-and-php"
+  to = "/guides/code/dry-code-for-blocks-in-javascript-and-php"
+  status = 301
+
+[[redirects]]
+  from = "/tutorial/exposing-public-and-private-endpoints"
+  to = "/guides/code/exposing-public-and-private-endpoints"
+  status = 301
+
+[[redirects]]
+  from = "/tutorial/feeding-data-to-blocks-in-the-editor"
+  to = "/guides/code/feeding-data-to-blocks-in-the-editor"
+  status = 301
+
+[[redirects]]
+  from = "/tutorial/injecting-multiple-resources-into-wp-cli"
+  to = "/guides/code/injecting-multiple-resources-into-wp-cli"
+  status = 301
+
+[[redirects]]
+  from = "/tutorial/mapping-js-components-to-gutenberg-blocks"
+  to = "/guides/code/mapping-js-components-to-gutenberg-blocks"
+  status = 301
+
+[[redirects]]
+  from = "/bundles"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/bundles/all-in-one-toolbox-for-wordpress"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/automated-content-translation-and-sync-for-wordpress-multisite"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/better-wordpress-webhooks"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/easy-wordpress-bulk-transform-and-update"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/private-graphql-server-for-wordpress"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/responsible-wordpress-public-api"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/selective-content-import-export-and-sync-for-wordpress"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/simplest-wordpress-content-translation"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/tailored-wordpress-automator"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/unhindered-wordpress-email-notifications"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/bundles/versatile-wordpress-request-api"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/bundles/content-translation"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/bundles/public-api"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/bundles/application-glue-and-automator"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/bundles/all-extensions"
+  to = "/"
+  status = 301
+
+# Campaigns
+[[redirects]]
+  from = "/raffle"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/black-friday"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/wpbuilds"
+  to = "/specials/wpbuilds"
+  status = 301
+
+# Docs migrated from graphql-by-pop.com
+[[redirects]]
+  from = "/docs/dynamic-schema/ifttt-through-directives.html"
+  to = "/architecture/ifttt-through-directives"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/dynamic-schema/field-directive-based-versioning.html"
+  to = "/architecture/field-directive-based-versioning"
+  status = 301
+
+[[redirects]]
+  from = "/docs/architecture/cms-agnosticism.html"
+  to = "/architecture/cms-agnosticism"
+  status = 301
+
+[[redirects]]
+  from = "/docs/architecture/solid.html"
+  to = "/architecture/solid"
+  status = 301
+
+[[redirects]]
+  from = "/docs/architecture/code-first.html"
+  to = "/architecture/code-first"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/dataloading-engine.html"
+  to = "/architecture/dataloading-engine"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/decoupling-queries.html"
+  to = "/architecture/decoupling-queries"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/directive-design.html"
+  to = "/architecture/directive-design"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/directive-pipeline.html"
+  to = "/architecture/directive-pipeline"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/manipulating-field-resolution-order.html"
+  to = "/architecture/manipulating-field-resolution-order"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/nested-mutations-single-source-of-code.html"
+  to = "/architecture/nested-mutations-single-source-of-code"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/schema-type-directives.html"
+  to = "/architecture/schema-type-directives"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/subscribing-fields-to-types.html"
+  to = "/architecture/subscribing-fields-to-types"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/suppressing-n-plus-one-problem.html"
+  to = "/architecture/suppressing-n-plus-one-problem"
+  status = 301
+  
+[[redirects]]
+  from = "/docs/architecture/using-components-instead-of-graphs.html"
+  to = "/architecture/using-components-instead-of-graphs"
+  status = 301
+  
+[[redirects]]
+  from = "/guides/rapid-iteration-on-the-schema.html"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/guides/versioning-fields-and-directives.html"
+  to = "/features/field-and-directive-based-versioning"
+  status = 301
+  
+[[redirects]]
+  from = "/guides/localized-newsletter.html"
+  to = "/"
+  status = 301
+  
+[[redirects]]
+  from = "/guides/building-cms-agnostic-api.html"
+  to = "/architecture/cms-agnosticism"
+  status = 301
+
+[[redirects]]
+  from = "/docs/architecture/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/caching/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/clients/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/dynamic-schema/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/extended/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/getting-started/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/going-further/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/operational/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/roadmap/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/schema-objects/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/troubleshooting/*"
+  to = "/"
+  status = 301
+
+# Renamed library pages
+[[redirects]]
+  from = "/library/import-post-from-wp-rss-feed"
+  to = "/library/import-post-from-wordpress-rss-feed"
+  status = 301
+
+[[redirects]]
+  from = "/library/import-post-from-wp-site"
+  to = "/library/import-post-from-wordpress-site"
+  status = 301
+
+[[redirects]]
+  from = "/library/export-post-to-wp-site"
+  to = "/library/export-post-to-wordpress-site"
+  status = 301
+
+# Converged features on v6.0
+[[redirects]]
+  from = "/features/graphical-clients"
+  to = "/features/interactive-clients-and-user-interface"
+  status = 301
+
+[[redirects]]
+  from = "/features/graphiql-client"
+  to = "/features/interactive-clients-and-user-interface"
+  status = 301
+
+[[redirects]]
+  from = "/features/voyager-client"
+  to = "/features/interactive-clients-and-user-interface"
+  status = 301
+
+[[redirects]]
+  from = "/features/predefined-persisted-queries"
+  to = "/features"
+  status = 301
+
+[[redirects]]
+  from = "/features/sensitive-data"
+  to = "/features/security"
+  status = 301
+
+[[redirects]]
+  from = "/features/enhanced-security"
+  to = "/features/security"
+  status = 301
+
+[[redirects]]
+  from = "/features/api-hierarchy"
+  to = "/features/api-hierarchy-and-endpoint-management"
+  status = 301
+
+[[redirects]]
+  from = "/features/endpoint-management"
+  to = "/features/api-hierarchy-and-endpoint-management"
+  status = 301
+
+[[redirects]]
+  from = "/features/schema-namespacing"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/global-fields"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/field-to-input"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/composable-directives"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/multifield-directives"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/field-and-directive-based-versioning"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/proactive-feedback"
+  to = "/features/custom-features"
+  status = 301
+
+[[redirects]]
+  from = "/features/public-private-schema"
+  to = "/features/access-control"
+  status = 301
+
+[[redirects]]
+  from = "/features/function-fields"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/function-directives"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/http-client"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/helper-fields"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/environment-fields"
+  to = "/features/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/features/mutation-return-type"
+  to = "/features"
+  status = 301
+
+[[redirects]]
+  from = "/features/automation"
+  to = "/features"
+  status = 301
+
+[[redirects]]
+  from = "/features/integrations-with-3rdparty-plugins"
+  to = "/features"
+  status = 301
+
+# Unmapped extensions starting from v6.0
+[[redirects]]
+  from = "/extensions/automation"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/extensions/events-manager"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/extensions/google-translate"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/extensions/multilingualpress"
+  to = "/"
+  status = 302
+
+# Extensions starting from v6.0
+[[redirects]]
+  from = "/extensions/access-control-visitor-ip"
+  to = "/extensions/access-control"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/cache-control"
+  to = "/extensions/caching"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-resolution-caching"
+  to = "/extensions/caching"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/deprecation-notifier"
+  to = "/extensions/deprecation"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-deprecation"
+  to = "/extensions/deprecation"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/low-level-persisted-query-editing"
+  to = "/extensions/persisted-queries"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/polylang"
+  to = "/extensions/polylang-integration"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/conditional-field-manipulation"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-default-value"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-on-field"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-response-removal"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-to-input"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/field-value-iteration-and-manipulation"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/response-error-trigger"
+  to = "/extensions/query-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/email-sender"
+  to = "/extensions/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/helper-function-collection"
+  to = "/extensions/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/http-client"
+  to = "/extensions/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/http-request-via-schema"
+  to = "/extensions/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/php-constants-and-environment-variables-via-schema"
+  to = "/extensions/schema-functions"
+  status = 301
+
+[[redirects]]
+  from = "/extensions/php-functions-via-schema"
+  to = "/extensions/schema-functions"
+  status = 301
+
+# Unmapped extensions reference starting from v6.0
+[[redirects]]
+  from = "/extensions-reference/automation"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/extensions-reference/events-manager"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/extensions-reference/google-translate"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/extensions-reference/multilingualpress"
+  to = "/"
+  status = 302
+
+# Extensions reference (topic organized by extensions) starting from v6.0
+[[redirects]]
+  from = "/extensions-reference/access-control-visitor-ip"
+  to = "/extensions-reference/access-control/access-control-visitor-ip"
+  status = 301
+
+# [[redirects]]
+#   from = "/extensions-reference/access-control"
+#   to = "/extensions-reference/access-control/access-control"
+#   status = 301
+
+[[redirects]]
+  from = "/extensions-reference/cache-control"
+  to = "/extensions-reference/caching/cache-control"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-resolution-caching"
+  to = "/extensions-reference/caching/field-resolution-caching"
+  status = 301
+
+# [[redirects]]
+#   from = "/extensions-references/custom-endpoints"
+#   to = "/extensions-reference/custom-endpoints/custom-endpoints"
+#   status = 301
+
+[[redirects]]
+  from = "/extensions-reference/deprecation-notifier"
+  to = "/extensions-reference/deprecation/deprecation-notifier"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-deprecation"
+  to = "/extensions-reference/deprecation/field-deprecation"
+  status = 301
+
+# [[redirects]]
+#   from = "/extensions-reference/internal-graphql-server"
+#   to = "/extensions-reference/internal-graphql-server/internal-graphql-server"
+#   status = 301
+
+# [[redirects]]
+#   from = "/extensions-reference/multiple-query-execution"
+#   to = "/extensions-reference/multiple-query-execution/multiple-query-execution"
+#   status = 301
+
+[[redirects]]
+  from = "/extensions-reference/low-level-persisted-query-editing"
+  to = "/extensions-reference/persisted-queries/low-level-persisted-query-editing"
+  status = 301
+
+# [[redirects]]
+#   from = "/extensions-reference/persisted-queries"
+#   to = "/extensions-reference/persisted-queries/persisted-queries"
+#   status = 301
+
+[[redirects]]
+  from = "/extensions-reference/polylang"
+  to = "/extensions-reference/polylang-integration/polylang"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/conditional-field-manipulation"
+  to = "/extensions-reference/query-functions/conditional-field-manipulation"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-default-value"
+  to = "/extensions-reference/query-functions/field-default-value"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-on-field"
+  to = "/extensions-reference/query-functions/field-on-field"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-response-removal"
+  to = "/extensions-reference/query-functions/field-response-removal"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-to-input"
+  to = "/extensions-reference/query-functions/field-to-input"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/field-value-iteration-and-manipulation"
+  to = "/extensions-reference/query-functions/field-value-iteration-and-manipulation"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/response-error-trigger"
+  to = "/extensions-reference/query-functions/response-error-trigger"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/email-sender"
+  to = "/extensions-reference/schema-functions/email-sender"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/helper-function-collection"
+  to = "/extensions-reference/schema-functions/helper-function-collection"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/http-client"
+  to = "/extensions-reference/schema-functions/http-client"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/http-request-via-schema"
+  to = "/extensions-reference/schema-functions/http-request-via-schema"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/php-constants-and-environment-variables-via-schema"
+  to = "/extensions-reference/schema-functions/php-constants-and-environment-variables-via-schema"
+  status = 301
+
+[[redirects]]
+  from = "/extensions-reference/php-functions-via-schema"
+  to = "/extensions-reference/schema-functions/php-functions-via-schema"
+  status = 301
+  
+# Ignore Polylang library docs
+[[redirects]]
+  from = "/library/create-missing-translation-categories-for-polylang"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/create-missing-translation-posts-for-polylang"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/create-missing-translation-tags-for-polylang"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/sync-post-featuredimage-for-polylang"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/sync-tags-and-categories-for-polylang"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-categories-for-polylang"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-posts-for-polylang-classic-editor"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-posts-for-polylang-gutenberg"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-tags-for-polylang"
+  to = "/"
+  status = 302
+
+# Ignore MultilingualPress library docs
+[[redirects]]
+  from = "/library/translate-categories-for-multilingualpress"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-posts-for-multilingualpress-classic-editor"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-posts-for-multilingualpress-gutenberg"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-tags-for-multilingualpress"
+  to = "/"
+  status = 302
+  
+# Ignore `@strTranslate` library docs
+[[redirects]]
+  from = "/library/translate-content-from-url"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-pages-for-multilingual-wordpress-site-classic-editor"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-pages-for-multilingual-wordpress-site-gutenberg"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-poedit-file-content"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-post-classic-editor"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-post-gutenberg"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-posts-classic-editor"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/library/translate-posts-gutenberg"
+  to = "/"
+  status = 302
+
+# Ignore `@strTranslate` tutorial docs
+[[redirects]]
+  from = "/tutorial/bulk-translating-block-content-in-multiple-posts-to-a-different-language"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/tutorial/translating-block-content-in-a-post-to-a-different-language"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/tutorial/translating-content-from-url"
+  to = "/"
+  status = 302
+
+# Ignore Automation guides
+[[redirects]]
+  from = "/guides/manage/automating-tasks"
+  to = "/"
+  status = 302
+
+# Proxying Plausible through Netlify
+# @see https://plausible.io/docs/proxy/guides/netlify
+[[redirects]]
+  from = "/masked-source/js/script.js"
+  to = "https://plausible.io/js/script.js"
+  status = 200
+
+[[redirects]]
+  from = "/masked-source/api/event"
+  to = "https://plausible.io/api/event"
+  status = 200
+
+# Download file redirects
+[[redirects]]
+  from = "/releases/latest/gatographql-testing-schema.zip"
+  to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/7.0.0/gatographql-testing-schema-7.0.0.zip"
+  force = true
+  status = 302
+
+[[redirects]]
+  from = "/releases/latest/gatographql-testing.zip"
+  to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/7.0.0/gatographql-testing-7.0.0.zip"
+  force = true
+  status = 302
+
+[[redirects]]
+  from = "/releases/latest/gatographql.zip"
+  to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/7.0.0/gatographql-7.0.0.zip"
+  force = true
+  status = 302
+
+[[redirects]]
+  from = "/releases/latest"
+  # to = "https://github.com/GatoGraphQL/GatoGraphQL/releases/download/7.0.0/gatographql-7.0.0.zip"
+  # to = "https://downloads.wordpress.org/plugin/gatographql.7.0.0.zip"
+  to = "https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip"
+  force = true
+  status = 302

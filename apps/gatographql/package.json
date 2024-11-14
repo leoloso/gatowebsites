@@ -1,0 +1,21 @@
+{
+  "name": "gatographql",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "export $(cat .env | xargs) && next dev",
+    "build": "export $(cat .env | xargs) && NODE_OPTIONS=--max-old-space-size=8192 next build",
+    "start": "export $(cat .env | xargs) && next start",
+    "lint": "next lint",
+    "build-staging": "npm run deploy-staging && npm run deploy-staging",
+    "deploy": "npm run deploy-staging",
+    "deploy-dev": "netlify dev",
+    "deploy-staging": "netlify deploy --build --context deploy-preview",
+    "deploy-prod": "netlify deploy --build --prod --context production",
+    "deploy-algolia": "curl https://gatographql.com/api/deploy-algolia?apiKey=Pf1GnIKlIAJthd0O0GwlCTJqxS0O9tIO",
+    "deploy-prod-with-algolia": "npm run deploy-prod && npm run deploy-algolia"
+  },
+  "dependencies": {
+    "@gato/components": "*"
+  }
+}
