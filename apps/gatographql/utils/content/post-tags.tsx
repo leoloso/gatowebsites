@@ -1,4 +1,4 @@
-import { allBlogPosts, allDemoPosts } from 'contentlayer/generated'
+import { allBlogPosts, allDemoPosts } from '@/.contentlayer/generated'
 import { sortAlphabetically } from './sort'
 import { Post } from './types'
 

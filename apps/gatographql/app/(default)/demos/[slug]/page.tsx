@@ -1,5 +1,5 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { allDemoPosts, DemoPost } from 'contentlayer/generated'
+import { allDemoPosts, DemoPost } from '@/.contentlayer/generated'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import PostDate from '@gato/components/src/post-date'

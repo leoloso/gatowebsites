@@ -1,4 +1,4 @@
-// import { Extension, allExtensions } from 'contentlayer/generated'
+// import { Extension, allExtensions } from '@/.contentlayer/generated'
 
 // export function getFeaturedExtensions(extensions: Array<Extension> | undefined = allExtensions) {
 //   return extensions.filter((extension) => extension.featured)

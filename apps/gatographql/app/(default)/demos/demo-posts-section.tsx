@@ -1,6 +1,6 @@
 'use client'
 
-import { allDemoPosts } from 'contentlayer/generated'
+import { allDemoPosts } from '@/.contentlayer/generated'
 import Link from 'next/link'
 import PostDate from '@gato/components/src/post-date'
 import PostTags from '@gato/components/src/post-tags'

@@ -1,4 +1,4 @@
-import { allHighlights } from 'contentlayer/generated'
+import { allHighlights } from '@/.contentlayer/generated'
 import HighlightItem from './highlight-item'
 import Cta from '@gato/components/src/cta-03'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'

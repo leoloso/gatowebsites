@@ -1,5 +1,5 @@
 import { Doc, DocTopic, RelatedGuide } from "@/.contentlayer/generated";
-import { allDocs, allDocTopics } from 'contentlayer/generated'
+import { allDocs, allDocTopics } from '@/.contentlayer/generated'
 import AppConfig from '@/app/app.config'
 import { sortByOrder, sortByOrderAndTitle } from "./sort";
 import { Article } from "./types";

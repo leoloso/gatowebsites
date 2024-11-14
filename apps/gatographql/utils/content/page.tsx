@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Page, allPages } from 'contentlayer/generated'
+import { Page, allPages } from '@/.contentlayer/generated'
 import { createSEOPageTitle, createOpenGraphPageTitle } from './metadata'
 
 export function getPage(slug: string): Page | undefined {

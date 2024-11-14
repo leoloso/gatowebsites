@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Particles from './particles'
 import Highlighter, { HighlighterItem } from './highlighter'
-import { allFeatures } from 'contentlayer/generated'
+import { allFeatures } from '@/.contentlayer/generated'
 
 import CarouselImg01 from '@/public/assets/theme/carousel-icon-01.svg'
 import CarouselImg02 from '@/public/assets/theme/carousel-icon-02.svg'

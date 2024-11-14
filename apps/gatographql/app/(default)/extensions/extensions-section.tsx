@@ -1,4 +1,4 @@
-import { allExtensions } from 'contentlayer/generated'
+import { allExtensions } from '@/.contentlayer/generated'
 import Link from 'next/link'
 import { getExtensionURLPath } from '@/utils/content/application-urls'
 import { sortByOrderAndTitle } from '@/utils/content/sort'

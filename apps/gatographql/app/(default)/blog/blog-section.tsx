@@ -1,6 +1,6 @@
 'use client'
 
-import { allBlogPosts } from 'contentlayer/generated'
+import { allBlogPosts } from '@/.contentlayer/generated'
 import PopularPosts from './popular-posts'
 import { sortByPublishedAt } from '@/utils/content/sort'
 import PageHeader from '@gato/components/src/page-header'

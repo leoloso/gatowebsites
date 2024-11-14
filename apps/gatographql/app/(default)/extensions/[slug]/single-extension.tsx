@@ -1,4 +1,4 @@
-import { Extension } from 'contentlayer/generated'
+import { Extension } from '@/.contentlayer/generated'
 import { PostMdx } from '@gato/components/src/mdx/post-mdx'
 import ExtensionThumb from '@gato/components/src/extension-thumb'
 import PageHeader from '@gato/components/src/page-header'

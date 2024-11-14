@@ -1,4 +1,4 @@
-import { Extension } from 'contentlayer/generated'
+import { Extension } from '@/.contentlayer/generated'
 import ExtensionDropdownPricing from '@gato/components/src/pricing/extension-dropdown/pricing'
 import Particles from '@gato/components/src/particles'
 import PricingMoneyBackGuarantee from '@gato/components/src/pricing-moneyback-guarantee'

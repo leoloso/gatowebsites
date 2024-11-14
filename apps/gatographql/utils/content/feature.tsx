@@ -1,4 +1,4 @@
-import { Feature, allFeatures } from 'contentlayer/generated'
+import { Feature, allFeatures } from '@/.contentlayer/generated'
 
 export function getFeatureCategories(features: Array<Feature> | undefined = allFeatures) {
   return features

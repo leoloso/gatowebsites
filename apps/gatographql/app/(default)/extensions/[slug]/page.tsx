@@ -1,5 +1,5 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { allExtensions } from 'contentlayer/generated'
+import { allExtensions } from '@/.contentlayer/generated'
 import { notFound } from 'next/navigation'
 import StunningBackground from '@gato/components/src/stunning-background'
 import { sortByOrderAndTitle } from '@/utils/content/sort'

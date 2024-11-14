@@ -1,4 +1,4 @@
-import { Snippet, allSnippets } from 'contentlayer/generated'
+import { Snippet, allSnippets } from '@/.contentlayer/generated'
 
 export function getSnippet(slug: string): Snippet {
 

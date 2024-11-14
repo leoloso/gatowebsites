@@ -1,5 +1,5 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { allFeatures, Feature } from 'contentlayer/generated'
+import { allFeatures, Feature } from '@/.contentlayer/generated'
 import { notFound } from 'next/navigation'
 import AppConfig from '@/app/app.config'
 import ArtifactSection from '@gato/components/src/sections/artifact'
