@@ -1,4 +1,4 @@
-import { useMDXComponent } from 'next-contentlayer/hooks'
+import { useMDXComponent } from 'next-contentlayer2/hooks'
 import PostLink from './components/link'
 import PostImage from './components/image'
 import PostBanner from './components/banner'
