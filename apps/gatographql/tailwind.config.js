@@ -4,7 +4,6 @@ module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
-    // @todo Review this!
     // './components/**/*.{js,ts,jsx,tsx}',
     '../../packages/shared/**/*.{js,ts,jsx,tsx}',
   ],
