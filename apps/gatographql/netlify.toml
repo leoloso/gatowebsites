@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npm run build --prefix apps/gatographql"
   publish = ".next"
   environment = { NODE_OPTIONS="--max-old-space-size=8192" }
 
