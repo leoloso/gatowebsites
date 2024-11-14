@@ -1,4 +1,4 @@
-const { withContentlayer } = require('next-contentlayer')
+const { withContentlayer } = require('next-contentlayer2')
 const { withPlausibleProxy } = require('next-plausible')
 
 /** @type {import('next').NextConfig} */
