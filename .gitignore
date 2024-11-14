@@ -44,3 +44,4 @@ next-env.d.ts
 
 # Automatically generated content
 /public/feed.xml
+/apps/*/public/feed.xml
