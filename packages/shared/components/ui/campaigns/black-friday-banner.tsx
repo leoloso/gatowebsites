@@ -6,17 +6,20 @@ export const style1 = 1;
 export const style2 = 2;
 export const style3 = 3;
 
+export interface BlackFridayBannerInterface {
+  applyStyle?: number,
+  dealLabel?: string,
+  discountCode?: string,
+  endDate?: string,
+}
+
 export default function BlackFridayBanner({
     applyStyle = style3,
     dealLabel = "50% off any product!",
     discountCode = "BF2024",
     endDate = "Until Nov 29th",
-  }: {
-    applyStyle?: number,
-    dealLabel?: string,
-    discountCode?: string,
-    endDate?: string,
-  }) {
+  }: BlackFridayBannerInterface)
+{
   return (
     <div className="flex items-center justify-center">
         <div>
