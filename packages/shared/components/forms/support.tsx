@@ -86,7 +86,7 @@ export default function SupportForm() {
             name="extensions-license-data"
             rows={4}
             className="form-textarea w-full text-gray-300"
-            placeholder="Copy/paste the license data, available in the plugin on the 'About > Support' form"
+            placeholder="Copy/paste the license data, available in the plugin in the Support form"
             required
             readOnly={!isFormEnabled}
           ></textarea>
