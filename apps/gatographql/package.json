@@ -18,6 +18,7 @@
   "dependencies": {
     "@gato/app": "*",
     "@gato/components": "*",
-    "@gato/data": "*"
+    "@gato/data": "*",
+    "@gato/public": "*"
   }
 }
