@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png'
-import Star from '@/public/assets/theme/star.svg'
 import { ArtifactMdx } from '@gato/components/mdx/artifact-mdx'
 import StunningBackground from '@gato/components/stunning-background'
 import { Artifact } from '@/utils/content/types'
@@ -116,9 +115,6 @@ export default function ArtifactSection({
                         <div className="mb-4">
                           <div className="relative inline-flex">
                             <Image src={/*artifact.icon || */defaultArtifactIcon || DefaultArtifactIcon} width={80} height={80} alt="Artifact icon" />
-                            {/* {!! artifact.featured && (
-                              <Image className="absolute top-0 -right-1" src={Star} width={24} height={24} alt="Star" aria-hidden="true" />
-                            )} */}
                           </div>
                         </div>
                         {widgetChildren}
