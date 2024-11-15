@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Alert from '../mdx/components/alert';
 import clsx from 'clsx';
 import { handleFormSubmit, canSubmitForm, FormStatus } from './form-handler';
+import AppConfig from '@/app/app.config'
 
 export default function ContactForm() {
   const formURL = '/__forms/contact.html'
@@ -25,7 +26,7 @@ export default function ContactForm() {
       <div className="flex flex-wrap -mx-3 mb-8">
         <div className="w-full px-3">
           <div className="text-slate-300">
-            Send us an email to <a className="font-medium text-purple-600 dark:text-purple-300 no-underline hover:no-underline hover:text-purple-500 hover:dark:text-purple-400" href="mailto:info@gatographql.com">info@gatographql.com</a>, or fill the form below.
+            Send us an email to <a className="font-medium text-purple-600 dark:text-purple-300 no-underline hover:no-underline hover:text-purple-500 hover:dark:text-purple-400" href={`mailto:${AppConfig.emails.info}`}>{AppConfig.emails.info}</a>, or fill the form below.
           </div>
         </div>
       </div>
