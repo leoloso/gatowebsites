@@ -1,5 +1,5 @@
 import { Extension } from '@/.contentlayer/generated'
-import ExtensionDropdownPricing from '@gato/components/pricing/extension-dropdown/pricing'
+import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 import Particles from '@gato/components/particles'
 import PricingMoneyBackGuarantee from '@gato/components/pricing-moneyback-guarantee'
 import RadiantGradient from '@gato/components/radial-gradient'

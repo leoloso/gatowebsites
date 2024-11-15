@@ -1,6 +1,6 @@
 import PricingMoneyBackGuarantee from '@gato/components/pricing-moneyback-guarantee'
 import SectionHeader from '@gato/components/section-header'
-import ExtensionDropdownPricing from '@gato/components/pricing/extension-dropdown/pricing'
+import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 import Particles from '@gato/components/particles'
 import Testimonial from '@gato/components/testimonial'
 import { getTestimonials } from '@/components/data/testimonials'
