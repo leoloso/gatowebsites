@@ -6,7 +6,16 @@ import clsx from 'clsx';
 import { handleFormSubmit, canSubmitForm, FormStatus } from './form-handler';
 import AppConfig from '@/app/app.config'
 
-export default function ContactForm() {
+export default function ContactForm({
+  options = [
+    'General',
+    'Sales',
+    'Affiliate Program',
+    'Say hi 👋',
+  ]
+}: {
+  options?: string[]
+}) {
   const formURL = '/__forms/contact.html'
 
   const [status, setStatus] = useState<FormStatus>('pending');
@@ -81,12 +90,9 @@ export default function ContactForm() {
             className="form-select w-full text-gray-300"
             disabled={!isFormEnabled}
           >
-            <option>General</option>
-            <option>Request extension</option>
-            <option>Sales</option>
-            <option>Affiliate Program</option>
-            <option>Developer Partnership Program</option>
-            <option>Say hi 👋</option>
+            {options.map((option, index) => (
+              <option key={index}>{option}</option>
+            ))}
           </select>
         </div>
       </div>
