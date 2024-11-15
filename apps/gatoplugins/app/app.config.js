@@ -78,5 +78,8 @@ module.exports = {
   },
   emails: {
     info: "info@gatoplugins.com"
+  },
+  meta: {
+    name: "Gato Plugins"
   }
 }

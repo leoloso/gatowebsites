@@ -137,5 +137,8 @@ module.exports = {
   },
   emails: {
     info: "info@gatographql.com"
+  },
+  meta: {
+    name: "Gato GraphQL"
   }
 }
