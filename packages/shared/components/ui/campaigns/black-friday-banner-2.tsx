@@ -1,7 +1,7 @@
 import BlackFridayImage from '@/public/assets/icons/black-friday/048-flash-sale-3.svg'
 import Image from 'next/image'
 
-export default function BlackFridayBanner4() {
+export default function BlackFridayBanner2() {
   return (
     <div className="flex items-center justify-center">
         <div>
