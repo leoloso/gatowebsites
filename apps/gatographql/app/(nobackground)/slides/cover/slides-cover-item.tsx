@@ -18,9 +18,7 @@ export default function SlidesCoverItem({
       className='aspect-video'
     >
       <Thumb
-        // paddingClassname={paddingClassname}
         bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
-        // extraThumbClassname={extraThumbClassname}
         numberParticles={20}
       >
         <div className={thumbClassname}>

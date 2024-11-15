@@ -18,7 +18,6 @@ export default function ExtensionCoverItem({
     >
       <ExtensionThumb
         bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
-        // numberParticles={20}
         extension={extension}
         isLandscape={true}
         printExtensionTitle={printExtensionTitle}
