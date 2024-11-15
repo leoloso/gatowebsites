@@ -1,5 +1,5 @@
 import { DOMAIN } from "@gato/data/env/domain";
-import AppConfig from '@/app/app.config'
+import AppConfig from '@gato/app/app.config'
 
 export function maybeAddDomain(urlOrPath: string) {
   if (urlOrPath.startsWith("http://") || urlOrPath.startsWith("https://")) {
