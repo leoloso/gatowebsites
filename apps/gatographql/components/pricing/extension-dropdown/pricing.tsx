@@ -5,7 +5,7 @@ import { allExtensions, Extension } from "@/.contentlayer/generated"
 import { sortByOrderAndTitle } from "@/utils/content/sort"
 
 import { useState } from "react";
-import PricingTier from "./pricing-tier";
+import PricingTier from "@gato/components/pricing/product-dropdown/pricing-tier";
 import AppConfig from "@/app/app.config"
 import clsx from "clsx";
 import FullWidthDropdown from "@gato/components/standard/dropdown-full-width";
