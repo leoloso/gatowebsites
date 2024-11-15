@@ -1,4 +1,4 @@
-import BlackFridayImage from '@/public/assets/icons/black-friday/048-flash-sale-3.svg'
+import BlackFridayImage from '@gato/public/assets/icons/black-friday/048-flash-sale-3.svg'
 import Image from 'next/image'
 
 export default function BlackFridayBanner2() {
