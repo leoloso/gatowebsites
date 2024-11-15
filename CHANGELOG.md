@@ -1,5 +1,9 @@
 # CHANGELOG.md
 
+## [3.0.0] - 2024-11-15
+
+- Renamed repo to "gatowebsites"
+
 ## [2.0.0] - 2023-12-11
 
 - Added 7 new pages
