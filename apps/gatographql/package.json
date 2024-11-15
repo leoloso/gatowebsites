@@ -19,6 +19,7 @@
     "@gato/app": "*",
     "@gato/components": "*",
     "@gato/data": "*",
-    "@gato/public": "*"
+    "@gato/public": "*",
+    "@gato/utils": "*"
   }
 }
