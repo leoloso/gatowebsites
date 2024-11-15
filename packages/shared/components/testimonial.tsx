@@ -1,14 +1,15 @@
 import Image from 'next/image'
-import { getTestimonials } from './data/testimonials'
 import Particles from './particles';
+import { TestimonialItem } from './data/testimonials';
 
 export default function Testimonial({
+  testimonials,
   testimonialIndex,
 }: {
+  testimonials: TestimonialItem[],
   testimonialIndex?: number,
 }) {
 
-  const testimonials = getTestimonials()
   const testimonial = testimonialIndex !== undefined ? testimonials[testimonialIndex] : testimonials[Math.floor(Math.random() * testimonials.length)]
 
   return (

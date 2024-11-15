@@ -4,7 +4,7 @@ import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png
 import { ArtifactMdx } from '@gato/components/mdx/artifact-mdx'
 import StunningBackground from '@gato/components/stunning-background'
 import { Artifact } from '@/utils/content/types'
-import { getTestimonials } from '../data/testimonials'
+import { TestimonialItem } from '../data/testimonials'
 import WithTitleThumb from '../thumbnails/with-title-thumb'
 import clsx from 'clsx'
 import Cta from '../cta-02'
@@ -15,6 +15,7 @@ export default function ArtifactSection({
   sectionURL,
   children,
   widgetChildren,
+  testimonials,
   testimonialIndex = 0,
   defaultArtifactIcon,
   bgClassname,
@@ -25,13 +26,14 @@ export default function ArtifactSection({
   sectionURL: string,
   children: React.ReactNode,
   widgetChildren?: React.ReactNode,
+  testimonials: TestimonialItem[],
   testimonialIndex?: number,
   defaultArtifactIcon?: StaticImageData,
   bgClassname?: string,
   thumbLeading?: string,
   showTestimonial?: boolean,
 }) {
-  const testimonial = getTestimonials()[testimonialIndex]
+  const testimonial = testimonials[testimonialIndex]
   return (
     <section className="relative">
 

@@ -3,8 +3,10 @@ import SectionHeader from '@gato/components/section-header'
 import ExtensionDropdownPricing from '@gato/components/pricing/extension-dropdown/pricing'
 import Particles from '@gato/components/particles'
 import Testimonial from '@gato/components/testimonial'
+import { getTestimonials } from '@/components/data/testimonials'
 
 export default function PricingSection() {
+  const testimonials = getTestimonials()
   return (
     <>
       <section className="relative">
@@ -47,7 +49,9 @@ export default function PricingSection() {
 
       <PricingMoneyBackGuarantee />
 
-      <Testimonial />
+      <Testimonial
+        testimonials={testimonials}
+      />
 
     </>
   )

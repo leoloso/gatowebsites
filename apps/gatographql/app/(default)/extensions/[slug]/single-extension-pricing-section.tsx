@@ -4,13 +4,14 @@ import Particles from '@gato/components/particles'
 import PricingMoneyBackGuarantee from '@gato/components/pricing-moneyback-guarantee'
 import RadiantGradient from '@gato/components/radial-gradient'
 import Testimonial from '@gato/components/testimonial'
+import { getTestimonials } from '@/components/data/testimonials'
 
 export default function SingleExtensionPricing({
   extension,
 }: {
   extension: Extension,
 }) {
-
+  const testimonials = getTestimonials()
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6">    
       
@@ -37,7 +38,9 @@ export default function SingleExtensionPricing({
       </div>
       <PricingMoneyBackGuarantee />
 
-      <Testimonial />
+      <Testimonial
+        testimonials={testimonials}
+      />
 
     </div>
   )

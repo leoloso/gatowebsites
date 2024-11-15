@@ -5,8 +5,8 @@ import Highlighter, { HighlighterItem02 } from '@gato/components/highlighter'
 import { allComparisonPosts } from '@/.contentlayer/generated'
 import { sortByOrderAndTitle } from '@/utils/content/sort'
 import { getComparisonPostURLPath } from '@/utils/content/application-urls'
-import { getTestimonials } from '@gato/components/data/testimonials'
 import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
+import { getTestimonials } from '@/components/data/testimonials'
 
 export default function ComparisonList() {
   const comparisonPosts = allComparisonPosts.sort(sortByOrderAndTitle)
