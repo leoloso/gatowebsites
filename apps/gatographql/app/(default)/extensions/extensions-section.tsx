@@ -6,6 +6,8 @@ import ExtensionThumb from '@gato/components/extension-thumb'
 import clsx from 'clsx'
 import LinkModalVideo from '@gato/components/mdx/components/modal-video-link'
 import ExtensionsModalVideo from '@/components/video/modal-video-extensions'
+import AppSettings from '@/app/app.settings'
+import { getCDNURL } from '@/utils/domain'
 
 export const svgEffect1 = 1;
 export const svgEffect2 = 2;
@@ -79,7 +81,7 @@ export default function ExtensionsSection({
               { !! extension.video && (
                 <LinkModalVideo
                   title="Tutorial video"
-                  video={extension.video}
+                  video={AppSettings.useCDNForMovies ? getCDNURL(extension.video) : extension.video}
                   videoWidth={1920}
                   videoHeight={1080}
                   duration={extension.videoDuration}

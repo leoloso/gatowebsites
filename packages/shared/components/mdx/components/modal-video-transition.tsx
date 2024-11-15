@@ -2,8 +2,6 @@
 
 import { useRef, Fragment, Dispatch, SetStateAction } from 'react'
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
-import AppSettings from '@/app/app.settings'
-import { getCDNURL } from '@/utils/domain'
 
 interface ModalVideoProps {
   video: string
@@ -54,7 +52,7 @@ export default function ModalVideoTransition({
           <div className="max-w-4xl mx-auto h-full flex items-center">
             <DialogPanel className="w-full max-h-full aspect-video bg-black overflow-hidden">
               <video ref={videoRef} width={videoWidth} height={videoHeight} controls>
-                <source src={AppSettings.useCDNForMovies ? getCDNURL(video) : video} type="video/mp4" />
+                <source src={video} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </DialogPanel>
