@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Alert from '../mdx/components/alert';
 import clsx from 'clsx';
 import { handleFormSubmit, canSubmitForm, FormStatus } from './form-handler';
-import AppConfig from '@/app/app.config'
+import AppConfig from '@gato/app/app.config'
 
 export default function RefundForm() {
   const formURL = '/__forms/refund.html'

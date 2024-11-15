@@ -72,11 +72,5 @@ module.exports = {
     shop: {
       affiliateTrackingShopSlug: "gato"
     }
-  },
-  emails: {
-    info: "info@gatoplugins.com"
-  },
-  meta: {
-    name: "Gato Plugins"
   }
 }

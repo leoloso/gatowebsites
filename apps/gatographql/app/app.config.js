@@ -131,11 +131,5 @@ module.exports = {
     shop: {
       affiliateTrackingShopSlug: "gato"
     }
-  },
-  emails: {
-    info: "info@gatographql.com"
-  },
-  meta: {
-    name: "Gato GraphQL"
   }
 }
