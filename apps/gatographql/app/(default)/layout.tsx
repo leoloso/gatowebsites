@@ -7,7 +7,7 @@ import 'aos/dist/aos.css'
 
 import Footer from '@gato/components/ui/footer'
 import Header from '@gato/components/ui/header'
-import AppSettings from '@/app/app.settings'
+import AppSettings from '@gato/app/app.settings'
 
 export default function DefaultLayout({
   children,

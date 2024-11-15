@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-import AppSettings from '@/app/app.settings'
+import AppSettings from '@gato/app/app.settings'
 
 export default function DefaultLayout({
   children,

@@ -6,7 +6,7 @@ import ThemeToggle from '@gato/components/ui/theme-toggle'
 import Link from 'next/link'
 import Dropdown from '@gato/components/utils/dropdown'
 import AppConfig from '@/app/app.config'
-import AppSettings from '@/app/app.settings'
+import AppSettings from '@gato/app/app.settings'
 import TryPROPluginButton from '../try-pro-plugin-button'
 // import DownloadFreePluginButton from '../download-free-button'
 

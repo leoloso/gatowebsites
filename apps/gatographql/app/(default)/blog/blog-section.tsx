@@ -7,7 +7,7 @@ import PageHeader from '@gato/components/page-header'
 import BlogPostList from '@gato/components/blog-post-list'
 import { Suspense } from 'react'
 import Pagination from '@gato/components/pagination'
-import AppSettings from '@/app/app.settings'
+import AppSettings from '@gato/app/app.settings'
 import { useSearchParams } from 'next/navigation';
 import PostTags from '@gato/components/post-tags'
 import Link from 'next/link'

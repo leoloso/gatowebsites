@@ -1,4 +1,4 @@
-import AppSettings from '@/app/app.settings'
+import AppSettings from '@gato/app/app.settings'
 import BlackFridayBanner from '@gato/components/ui/campaigns/black-friday-banner'
 import clsx from 'clsx'
 

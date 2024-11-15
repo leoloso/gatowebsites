@@ -3,7 +3,7 @@
 import AppConfig from '@/app/app.config'
 import Link from 'next/link'
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
-import AppSettings from '@/app/app.settings'
+import AppSettings from '@gato/app/app.settings'
 
 // import algoliasearch and InstantSearch
 import algoliasearch from "algoliasearch/lite"

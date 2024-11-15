@@ -1,7 +1,7 @@
 import './css/style.css'
 
 import { Inter } from 'next/font/google'
-import AppSettings from '@/app/app.settings'
+import AppSettings from '@gato/app/app.settings'
 import PlausibleProvider from 'next-plausible'
 import LemonSqueezyScriptProvider from '@gato/components/scripts/lemonsqueezy'
 import { DOMAIN } from '@gato/data/env/domain'

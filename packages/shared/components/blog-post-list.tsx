@@ -1,6 +1,6 @@
 'use client'
 
-import AppSettings from '@/app/app.settings'
+import AppSettings from '@gato/app/app.settings'
 
 import { useSearchParams } from 'next/navigation';
 import { BlogPost } from '@/.contentlayer/generated';
