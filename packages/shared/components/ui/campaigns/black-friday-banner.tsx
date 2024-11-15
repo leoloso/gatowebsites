@@ -14,12 +14,11 @@ export interface BlackFridayBannerInterface {
 }
 
 export default function BlackFridayBanner({
-    applyStyle = style3,
-    dealLabel = "50% off any product!",
-    discountCode = "BF2024",
-    endDate = "Until Nov 29th",
-  }: BlackFridayBannerInterface)
-{
+  applyStyle = style3,
+  dealLabel = "50% off any product!",
+  discountCode = "BF2024",
+  endDate = "Until Nov 29th",
+}: BlackFridayBannerInterface) {
   return (
     <div className="flex items-center justify-center">
         <div>
