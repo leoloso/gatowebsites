@@ -2,7 +2,7 @@ import fs from 'fs';
 import { Feed } from 'feed';
 import { allBlogPosts } from '@/.contentlayer/generated'
 import { sortByPublishedAt } from './content/sort';
-import { DOMAIN } from '@/data/env/domain';
+import { DOMAIN } from '@gato/data/env/domain';
 import { getBlogPostURL } from './content/application-urls';
 import slugify from '@sindresorhus/slugify';
 import { maybeAddDomain } from './domain';

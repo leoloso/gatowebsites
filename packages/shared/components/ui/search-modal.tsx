@@ -17,7 +17,7 @@ import {
 } from 'react-instantsearch';
 import type { Hit } from 'instantsearch.js';
 
-import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
+import { ALGOLIA_API_CREDENTIALS } from '@gato/data/env/algolia'
 import { SearchObject } from '../search/algolia'
 import { useRef, useState } from 'react'
 import { useSearchBox } from 'react-instantsearch';

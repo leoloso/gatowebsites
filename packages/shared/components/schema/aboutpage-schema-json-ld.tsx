@@ -1,5 +1,5 @@
 import { AboutPage, WithContext } from 'schema-dts';
-import { DOMAIN } from '@/data/env/domain'
+import { DOMAIN } from '@gato/data/env/domain'
 import SchemaJsonLdScript from './schema-json-ld';
 
 interface AboutPageJsonLdProps {
