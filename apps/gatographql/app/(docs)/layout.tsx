@@ -3,12 +3,10 @@ import './css/style.css'
 import { Nothing_You_Could_Do } from 'next/font/google'
 import Theme from './theme-provider'
 import AppProvider from './app-provider'
-// import Image from 'next/image'
-// import Illustration from '@/public/assets/theme/hero-illustration.svg'
 import Sidebar from '@gato/components/ui/docs/sidebar'
 import Header from '@gato/components/ui/header'
 import StunningBackground from '@gato/components/stunning-background'
-import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle } from '@/utils/content/metadata'
 
 const nycd = Nothing_You_Could_Do({
   subsets: ['latin'],
@@ -21,12 +19,6 @@ const pageTitle = 'Documentation'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Guides, tutorials, GraphQL queries, and reference docs, to learn how to use Gato GraphQL',
-  // openGraph: {
-  //   title: createOpenGraphPageTitle(pageTitle),
-  // },
-  // twitter: {
-  //   title: createOpenGraphPageTitle(pageTitle),
-  // },
 }
 
 export default function RootLayout({
@@ -46,10 +38,6 @@ export default function RootLayout({
             <main className="grow">
               <section className="relative">
                 
-                {/* <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none -z-10">
-                  <Image className="max-w-none" src={Illustration} priority alt="Page illustration" aria-hidden="true" />
-                </div> */}
-
                 <StunningBackground />
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
