@@ -92,12 +92,6 @@ export default async function SingleComparisonPost({ params }: {
                 {/* Article header */}
                 <PageHeader {...comparisonPost} />
 
-                {/* Article image */}
-                {/* {comparisonPost.image &&
-                  <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="200">
-                    <Image className="w-full" src={comparisonPost.image} width={1024} height={576} alt={comparisonPost.title} priority />
-                  </figure>
-                } */}
                 <div className="pb-12 md:pb-20">
                   <div className="relative h-full bg-purple-900/70 rounded-[inherit] z-20 overflow-hidden">
                     <div className="flex items-center justify-center">
@@ -136,7 +130,6 @@ export default async function SingleComparisonPost({ params }: {
 
                     {/* Article body */}
                     <PostMdx code={comparisonPost.body.code} />
-
 
                   </div>
 
