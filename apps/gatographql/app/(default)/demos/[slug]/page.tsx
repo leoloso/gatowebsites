@@ -112,13 +112,6 @@ export default async function SingleDemoPost({ params }: {
                   </div>
                 </header>
 
-                {/* Article image */}
-                {/* {demoPost.image &&
-                  <figure className="mb-8 lg:-ml-32 lg:-mr-32" data-aos="fade-up" data-aos-delay="600">
-                    <Image className="w-full" src={demoPost.image} width={1024} height={576} alt={demoPost.title} priority />
-                  </figure>
-                } */}
-
                 <div className="mb-8 lg:-ml-32 lg:-mr-32">
                   <DemoPostThumb demoPost={demoPost} />
                 </div>

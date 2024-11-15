@@ -56,11 +56,6 @@ export default async function SingleExtensionPage({ params }: {
 
   const extension = extensions[extensionIndex]
   
-  {/* Page navigation */}
-  // const paginationArticles = getPrevNextArticles(extensions, extensionIndex)
-  // const prevArticle = paginationArticles.prev as Extension
-  // const nextArticle = paginationArticles.next as Extension
-
   return (
     <>
       <section className="relative">
@@ -76,12 +71,9 @@ export default async function SingleExtensionPage({ params }: {
 
         </div>
         
-        {/* <div className="pb-12 md:pb-20">   */}
-
-          <SingleExtensionPricing
-            extension={extension}
-          />
-        {/* </div> */}
+        <SingleExtensionPricing
+          extension={extension}
+        />
         
       </section>
 

@@ -1,7 +1,7 @@
 import { allHighlights } from '@/.contentlayer/generated'
 import HighlightItem from './highlight-item'
 import Cta from '@gato/components/cta-03'
-import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle } from '@/utils/content/metadata'
 import { sortByOrder } from '@/utils/content/sort'
 import StunningBackground from '@gato/components/stunning-background'
 import PageHeader from '@gato/components/page-header'
@@ -11,12 +11,6 @@ const pageTitle = 'Highlights'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'Distinctive features from Gato GraphQL to power your application',
-  // openGraph: {
-  //   title: createOpenGraphPageTitle(pageTitle),
-  // },
-  // twitter: {
-  //   title: createOpenGraphPageTitle(pageTitle),
-  // },
 }
 
 export default function Highlights() {

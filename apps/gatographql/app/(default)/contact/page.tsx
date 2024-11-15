@@ -2,18 +2,12 @@ import ContactForm from "@gato/components/forms/contact"
 import PageHeader from "@gato/components/page-header"
 import ContactPageSchemaJsonLdScript from "@gato/components/schema/contactpage-schema-json-ld"
 import StunningBackground from "@gato/components/stunning-background"
-import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Contact us'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
   description: 'How can we help you?',
-  // openGraph: {
-  //   title: createOpenGraphPageTitle(pageTitle),
-  // },
-  // twitter: {
-  //   title: createOpenGraphPageTitle(pageTitle),
-  // },
 }
 
 export default function Contact() {
