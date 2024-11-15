@@ -1,5 +1,6 @@
 import FooterLogo from '@gato/components/ui/docs/footer-logo'
 import FooterMenu from '../footer-menu'
+import AppConfig from '@gato/app/app.config'
 
 export default function Footer() {
   return (
@@ -13,7 +14,7 @@ export default function Footer() {
             {/* Logo */}
             <FooterLogo />
             <div className="text-sm text-slate-500 ml-4">
-              Copyright © Gato GraphQL<span className="md:hidden lg:inline">. All rights reserved.</span>
+              Copyright © {AppConfig.meta.name}<span className="md:hidden lg:inline">. All rights reserved.</span>
             </div>
           </div>
         </div>
