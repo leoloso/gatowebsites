@@ -466,8 +466,6 @@ const Feature = defineDocumentType(() => ({
     category: {
       type: 'enum',
       options: [
-        // 'Free plugin',
-        // 'PRO plugin',
         'Standard',
       ],
       required: true,
