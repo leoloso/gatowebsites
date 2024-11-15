@@ -7,7 +7,6 @@
     }
   },
   "dependencies": {
-    "@gato/app": "*",
     "@headlessui/react": "^2.1.9",
     "@heroicons/react": "^2.1.5",
     "@sindresorhus/slugify": "^2.2.1",
