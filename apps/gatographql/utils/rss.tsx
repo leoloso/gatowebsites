@@ -5,7 +5,7 @@ import { sortByPublishedAt } from './content/sort';
 import { DOMAIN } from '@gato/data/env/domain';
 import { getBlogPostURL } from './content/application-urls';
 import slugify from '@sindresorhus/slugify';
-import { maybeAddDomain } from './domain';
+import { maybeAddDomain } from '@gato/utils/domain';
 
 export default async function generateRssFeed() {
   const posts = allBlogPosts.sort(sortByPublishedAt) 
