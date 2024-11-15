@@ -1,7 +1,7 @@
 import SupportForm from "@gato/components/forms/support"
 import PageHeader from "@gato/components/page-header"
 import StunningBackground from "@gato/components/stunning-background"
-import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import { createSEOPageTitle } from '@/utils/content/metadata'
 
 export const metadata = {
   title: createSEOPageTitle('Support'),
