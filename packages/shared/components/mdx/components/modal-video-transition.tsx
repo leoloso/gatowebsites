@@ -2,7 +2,7 @@
 
 import { useRef, Fragment, Dispatch, SetStateAction } from 'react'
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
-import AppSettings from '@/app/app.settings'
+import AppSettings from '@gato/app/app.settings'
 import { getCDNURL } from '@/utils/domain'
 
 interface ModalVideoProps {
