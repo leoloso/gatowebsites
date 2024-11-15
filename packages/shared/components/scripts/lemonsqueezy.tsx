@@ -1,7 +1,10 @@
 import Script from 'next/script'
-import AppConfig from '@/app/app.config'
 
-export default function LemonSqueezyScriptProvider() {
+export default function LemonSqueezyScriptProvider({
+  affiliateTrackingShopSlug
+}: {
+  affiliateTrackingShopSlug: string
+}) {
   return (
     <>
       {/* @see https://docs.lemonsqueezy.com/help/lemonjs/what-is-lemonjs#loading-lemon-js-in-next-js */}
@@ -21,7 +24,7 @@ export default function LemonSqueezyScriptProvider() {
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{__html: `
               window.lemonSqueezyAffiliateConfig = {
-                store: "${AppConfig.services.shop.affiliateTrackingShopSlug}",
+                store: "${affiliateTrackingShopSlug}",
                 trackOnLoad: false
               };
             `}}
