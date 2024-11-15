@@ -6,8 +6,6 @@ import PostItemIntegration from '@gato/components/post-item-integration'
 import ExtensionThumbModalVideo from '@/components/video/modal-video-extension-thumb'
 import BrowseExtensionReferenceDocButton from '@gato/components/browse-extension-reference-doc-button'
 import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
-import AppSettings from '@/app/app.settings'
-import { getCDNURL } from '@/utils/domain'
 
 export default function SingleExtension({
   extension,
@@ -45,7 +43,7 @@ export default function SingleExtension({
                 <ExtensionThumbModalVideo
                   title={`Click to watch tutorial video - ${extension.videoDuration}`}
                   extension={extension}
-                  video={AppSettings.useCDNForMovies ? getCDNURL(extension.video) : extension.video}
+                  video={extension.video}
                   videoWidth={1920}
                   videoHeight={1080}
                 />
