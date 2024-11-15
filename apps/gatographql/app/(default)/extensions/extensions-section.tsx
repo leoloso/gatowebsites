@@ -5,7 +5,7 @@ import { sortByOrderAndTitle } from '@/utils/content/sort'
 import ExtensionThumb from '@gato/components/extension-thumb'
 import clsx from 'clsx'
 import LinkModalVideo from '@gato/components/mdx/components/modal-video-link'
-import ExtensionsModalVideo from '@gato/components/mdx/components/modal-video-extensions'
+import ExtensionsModalVideo from '@/components/video/modal-video-extensions'
 
 export const svgEffect1 = 1;
 export const svgEffect2 = 2;

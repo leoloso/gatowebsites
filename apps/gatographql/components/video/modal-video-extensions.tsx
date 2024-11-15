@@ -1,31 +1,26 @@
 'use client'
 
 import { useState } from 'react'
-import ModalVideoTransition from './modal-video-transition'
-import ExtensionThumb from '@gato/components/extension-thumb'
-import { Extension } from '@/.contentlayer/generated'
-import ModalVideoTitle from './modal-video-title'
-import ModalVideoButton from './modal-video-button'
+import ModalVideoTransition from '@gato/components/mdx/components/modal-video-transition'
+import ModalVideoTitle from '@gato/components/mdx/components/modal-video-title'
+import ModalVideoButton from '@gato/components/mdx/components/modal-video-button'
+import WithLogoThumb from '@gato/components/thumbnails/with-logo-thumb'
 
 interface ModalVideoProps {
-  extension: Extension
   video: string
   videoWidth: number
   videoHeight: number,
   children?: React.ReactNode,
   title?: string
-  printExtensionTitle?: boolean,
   bgClassname?: string,
 }
 
-export default function ExtensionThumbModalVideo({
-  extension,
+export default function ExtensionsModalVideo({
   video,
   videoWidth,
   videoHeight,
   children,
   title,
-  printExtensionTitle,
   bgClassname,
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
@@ -34,11 +29,16 @@ export default function ExtensionThumbModalVideo({
     <>
       {/* Video thumbnail */}
       <div className="w-full h-full aspect-video object-cover relative flex justify-center items-center my-2 group hover:cursor-pointer" onClick={() => { setModalOpen(true) }}>
-        <ExtensionThumb
-          extension={extension}
+        <WithLogoThumb
           isLandscape={true}
-          printExtensionTitle={printExtensionTitle}
+          targetImageSources={[]}
+          skipPlusImage={true}
           bgClassname={bgClassname}
+
+          leadingTitle="Gato GraphQL"
+          title="Extensions"
+          extraTitleClassname="hidden md:block"
+          extraLeadingTitleClassname="text-slate-300 hidden md:block"
         />
         <ModalVideoTitle title={title} extraClassname='z-30' />
         <ModalVideoButton title={title} extraClassname='z-30 group-hover:scale-110 transition duration-700 ease-out' />
