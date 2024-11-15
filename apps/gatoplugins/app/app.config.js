@@ -14,9 +14,6 @@ module.exports = {
     shopClientOrders: "https://app.lemonsqueezy.com/my-orders",
     shopCustomerPortal: "https://shop.gatoplugins.com/billing",
   },
-  domains: {
-    cdn: 'https://d2nmpy6pnude6z.cloudfront.net',
-  },
   shop: {
     licenseDomainNumber: {
       tier1: 5,
