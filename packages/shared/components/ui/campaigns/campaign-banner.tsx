@@ -11,7 +11,7 @@ export default function CampaignBanner({
   return (
     <div className={clsx("mb-16", marginTopClassname)}>
       { AppSettings.campaigns.enableBlackFriday && (
-          <BlackFridayBanner />
+        <BlackFridayBanner />
       )}
     </div>
   )
