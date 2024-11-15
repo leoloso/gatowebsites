@@ -1,4 +1,4 @@
-import { DOMAIN } from "@/data/env/domain";
+import { DOMAIN } from "@gato/data/env/domain";
 import AppConfig from '@/app/app.config'
 
 export function maybeAddDomain(urlOrPath: string) {
