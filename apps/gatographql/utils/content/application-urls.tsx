@@ -7,7 +7,7 @@ import {
   Feature,
 } from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
-import AppConstants from "@/app/app.constants";
+import AppConstants from "@gato/app/app.constants";
 import { Article, Artifact, isDemoPost, isExtension, isBlogPost, isFeature } from "./types";
 import { DOMAIN } from '@/data/env/domain'
 
