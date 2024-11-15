@@ -1,6 +1,5 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import {
-  // BlogPost,
   allBlogPosts,
 } from '@/.contentlayer/generated'
 import { notFound } from 'next/navigation'
@@ -13,9 +12,7 @@ import PostTags from '@gato/components/post-tags'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@gato/components/stunning-background'
 import Newsletter from '@gato/components/newsletter'
-// import ArticleNavigation from '@gato/components/ui/article-navigation'
 import { sortByPublishedAt } from '@/utils/content/sort'
-// import { getPrevNextArticles } from '@/utils/content/document'
 import generateRssFeed from '@/utils/rss'
 import { getBlogPostURL } from '@/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from '@gato/components/schema/blogposting-schema-json-ld';
@@ -73,11 +70,6 @@ export default async function SinglePost({ params }: {
 
   const blogPost = blogPosts[blogPostIndex]
   
-  {/* Page navigation */}
-  // const paginationArticles = getPrevNextArticles(blogPosts, blogPostIndex)
-  // const prevPost = paginationArticles.prev as BlogPost
-  // const nextPost = paginationArticles.next as BlogPost
-
   const contentId = 'main-content'
 
   return (
@@ -145,11 +137,6 @@ export default async function SinglePost({ params }: {
                     <PostMdx code={blogPost.body.code} />
 
                     <hr className="w-full h-px pt-px mt-16 bg-gray-200 border-0" />
-
-                    {/* Page navigation */}
-                    {/* <div>
-                      <ArticleNavigation prevArticle={prevPost} nextArticle={nextPost} />
-                    </div> */}
 
                     <div className="text-lg text-gray-600">
                       <div className="mt-8">
