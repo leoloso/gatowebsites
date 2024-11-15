@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
+import LogoImg from '@gato/public/assets/Gato-logo-suki-rectangular.png'
 
 export default function FooterLogo() {
   return (

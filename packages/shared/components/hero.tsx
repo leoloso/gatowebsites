@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Particles from './particles'
 import Illustration from '@/public/assets/theme/glow-bottom.svg'
-import LogoPic from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
+import LogoPic from '@gato/public/assets/Gato-logo-suki-rectangular.png'
 // import PurchasePROPluginButton from './purchase-pro-plugin-button'
 // import DownloadFreePluginButton from './download-free-button'
 // import ThumbModalVideo from './mdx/components/modal-video-thumb'

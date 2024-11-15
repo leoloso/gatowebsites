@@ -1,4 +1,4 @@
-import Logo from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
+import Logo from '@gato/public/assets/Gato-logo-suki-rectangular.png'
 import PlusImage from '@/public/assets/theme/plus.svg'
 import Image, { StaticImageData } from 'next/image'
 import clsx from 'clsx';

@@ -10,7 +10,7 @@ import ArticleSchemaJsonLdScript from '@gato/components/schema/article-schema-js
 import Cta from '@gato/components/cta-02'
 import PageHeader from '@gato/components/page-header'
 import { allComparisonPosts } from '@/.contentlayer/generated'
-import Logo from '@/public/assets/GatoGraphQL-logo-suki.png'
+import Logo from '@gato/public/assets/Gato-logo-suki.png'
 import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
 import RelatedPosts from './related-posts'
 import Particles from '@gato/components/particles'
