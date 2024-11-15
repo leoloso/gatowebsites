@@ -1,6 +1,7 @@
 import type { BaseHit } from 'instantsearch.js';
 
 // The section label will be displayed on the search UI
+// List ALL sections for all apps: Gato GraphQL + Gato Plugins
 export const enum Sections {
   Blog = 'Blog',
   Changelog = 'Changelog',
@@ -26,6 +27,8 @@ export interface SearchObject extends BaseHit {
   urlPath: string,
   slug: string,
   content: string,
+  
+  // List ALL sections for all apps: Gato GraphQL + Gato Plugins
   section: Sections.Blog
     | Sections.Changelog
     | Sections.Comparisons
