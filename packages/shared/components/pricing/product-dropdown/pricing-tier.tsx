@@ -2,7 +2,7 @@ import clsx from "clsx"
 
 export default function PricingTier({
   tierName,
-  extensionName,
+  productName,
   price,
   originalPrice,
   tierDomainNumber,
@@ -12,10 +12,10 @@ export default function PricingTier({
   buttonURL,
   buttonTarget,
   buttonClassname,
-  extensionNameClassname="text-slate-200",
+  productNameClassname="text-slate-200",
 }: {
   tierName: string,
-  extensionName: string,
+  productName: string,
   price: number,
   originalPrice?: number,
   tierDomainNumber: number,
@@ -25,7 +25,7 @@ export default function PricingTier({
   buttonURL: string,
   buttonTarget?: string,
   buttonClassname?: string,
-  extensionNameClassname?: string,
+  productNameClassname?: string,
 }) {
   const isFree = price === 0
   return (
@@ -55,8 +55,8 @@ export default function PricingTier({
             </div>
           )}
         </div>
-        <div className={clsx("grow text-sm font-bold", extensionNameClassname)}>
-          { extensionName }
+        <div className={clsx("grow text-sm font-bold", productNameClassname)}>
+          { productName }
         </div>
         <div className="mb-4 grow text-sm text-slate-400">
           License for <span className="text-slate-200 font-bold">{tierDomainNumber} domains</span>
