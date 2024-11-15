@@ -32,9 +32,6 @@ export default function ExtensionsSection({
     "bg-cyan-900 group-hover:bg-cyan-700",
     "bg-violet-900 group-hover:bg-violet-700",
     "bg-indigo-900 group-hover:bg-indigo-700",
-    // "bg-fuchsia-900",
-    // "bg-pink-900",
-    // "bg-orange-900",
   ]
 
   return (
@@ -57,7 +54,6 @@ export default function ExtensionsSection({
             <Link
               href={getExtensionURLPath(extension)}
               className={clsx("relative block group", alternateColumns && index % 2 === 1 ? 'md:order-last' : '')}
-              // data-aos="fade-right" data-aos-delay="200"
             >
               { applyThumbEffect === svgEffect1 && (
                 <div className="absolute inset-0 bg-gray-700 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
@@ -68,14 +64,12 @@ export default function ExtensionsSection({
                   paddingClassname={clsx("py-5 px-4", applyStyle === style1 && "md:py-8 md:px-6", applyStyle === style2 && "md:py-6 md:px-5")}
                   isLandscape={true}
                   bgClassname={clsx(bgClassnames[index % bgClassnames.length], "transition duration-700 ease-out")}
-                  skipGatoGraphQLLogo={ true/*applyStyle === style2*/ }
+                  skipGatoGraphQLLogo={ true }
                   logoClassname={ clsx("transform group-hover:scale-110 transition duration-700 ease-out") }
                 />
               </div>
             </Link>
-            <div
-              // data-aos="fade-left" data-aos-delay="200"
-            >
+            <div>
               <header>
                 <h3 className={clsx(applyStyle === style1 && "h3 mb-2 text-2xl lg:text-3xl", applyStyle === style2 && "h3 mb-2 text-2xl")}>
                   <Link href={getExtensionURLPath(extension)} className="hover:text-purple-300 transition duration-150 ease-in-out">{extension.title}</Link>
