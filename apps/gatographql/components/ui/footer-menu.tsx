@@ -1,6 +1,5 @@
 import { allComparisonPosts } from '@/.contentlayer/generated'
 import AppConfig from '@/app/app.config'
-import { getShopAnchorClassname, getShopURL } from '@gato/utils/shop/shop'
 import {
   getComparisonPostURLPath,
 } from '@/utils/content/application-urls'
@@ -43,9 +42,6 @@ export default function FooterMenu({
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Try out</a>
           </li>
-          {/* <li>
-            <a className={`text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out ${getShopAnchorClassname()}`} href={getShopURL(AppConfig.urls.shopProducts.bundles.allExtensions.defaultTier)}>Purchase</a>
-          </li> */}
         </ul>
         <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Documentation</h6>
         <ul className="text-sm space-y-2">
