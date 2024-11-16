@@ -196,6 +196,14 @@ function CustomHits({...props}) {
       )}
       { (!results || results.query.trim() === '') && (
         <>
+          {
+          /**
+           * showPopular is set as `false`, keeping code to re-enable if needed.
+           *
+           * @todo If these links are ever needed, then inject them via props,
+           * to reuse the component by Gato GraphQL and Gato Plugins
+           */
+          }
           {/* Popular */}
           {showPopular && (
             <div>
