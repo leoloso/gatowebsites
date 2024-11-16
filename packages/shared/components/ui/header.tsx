@@ -1,12 +1,9 @@
 import Logo from './logo'
 import MobileMenu from './mobile-menu'
-import PurchasePROPluginButton from '../purchase-pro-plugin-button'
 import Search from './search'
 import ThemeToggle from '@gato/components/ui/theme-toggle'
 import HeaderMenu from './header-menu'
 import AppSettings from '@gato/app/app.settings'
-import TryPROPluginButton from '../try-pro-plugin-button'
-// import DownloadFreePluginButton from '../download-free-button'
 
 export default function Header({
   enableLightDarkThemeModeToggle = false,
@@ -45,12 +42,6 @@ export default function Header({
                 enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
               />
             </li>
-            {/* <li className="ml-2 hidden lg:block">
-              <TryPROPluginButton />
-            </li>
-            <li className="ml-2 hidden lg:block">
-              <PurchasePROPluginButton />
-            </li> */}
           </ul>
 
           <MobileMenu
