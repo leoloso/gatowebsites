@@ -1,6 +1,8 @@
-import { Snippet, allSnippets } from '@/.contentlayer/generated'
+import { Snippet } from '@gato/utils/content/types';
+import { useAppContentProvider } from '@gato/app/appcontent-provider'
 
 export function getSnippet(slug: string): Snippet {
+  const { allSnippets } = useAppContentProvider()
 
   const snippet = allSnippets.find((snippet) => snippet.slug === slug)
   if (!snippet) {

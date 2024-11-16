@@ -2,7 +2,7 @@ import Image from 'next/image'
 import clsx from "clsx";
 import GraphQLLogo from '@/public/assets/external-logos/graphql-logo.svg'
 import { SnippetMdx } from "../mdx/snippet-mdx";
-import { getSnippet } from "@/utils/content/snippet";
+import { getSnippet } from "@gato/utils/content/snippet";
 
 export default function UseCasesSlide1() {
   const codeBSnippet = getSnippet('use-cases/ask-for-what-you-want')
