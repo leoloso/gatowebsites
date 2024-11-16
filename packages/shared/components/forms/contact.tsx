@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Alert from '../mdx/components/alert';
 import clsx from 'clsx';
 import { handleFormSubmit, canSubmitForm, FormStatus } from './form-handler';
-import AppConfig from '@gato/app/app.config'
 import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function ContactForm({
