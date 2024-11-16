@@ -9,6 +9,7 @@ import StunningBackground from '@gato/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import FooterMenu from '@/components/ui/footer-menu'
 import AppComponentProvider from '@gato/app/appcomponent-provider'
+import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
 
 const nycd = Nothing_You_Could_Do({
   subsets: ['latin'],
@@ -35,7 +36,10 @@ export default function RootLayout({
     <div className={`${nycd.variable} text-slate-800 font-[350] bg-white dark:bg-transparent dark:text-slate-200`}>
       <Theme>
         <AppProvider>
-          <AppComponentProvider footerMenu={footerMenu}>
+          <AppComponentProvider
+            footerMenu={footerMenu}
+            logoImage={LogoImg}
+          >
             <div className="flex flex-col min-h-screen overflow-hidden">
 
               <Header enableLightDarkThemeModeToggle={true} />

@@ -12,6 +12,7 @@ import FooterMenu from '@/components/ui/footer-menu'
 import FooterLogo from '@gato/components/ui/footer-logo'
 import AppComponentProvider from '@gato/app/appcomponent-provider'
 import { useAppConfigProvider } from '@gato/app/appconfig-provider'
+import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
 
 export default function DefaultLayout({
   children,
@@ -71,10 +72,11 @@ export default function DefaultLayout({
 
       </main>
 
-      <AppComponentProvider footerMenu={footerMenu}>
-
+      <AppComponentProvider
+        footerMenu={footerMenu}
+        logoImage={LogoImg}
+      >
         <Footer />
-
       </AppComponentProvider>
     </div>
   )
