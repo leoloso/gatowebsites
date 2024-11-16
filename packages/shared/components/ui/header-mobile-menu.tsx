@@ -11,7 +11,7 @@ import ThemeToggle from './theme-toggle'
 import { usePathname } from 'next/navigation'
 import TryPROPluginButton from '../try-pro-plugin-button'
 
-export default function MobileMenu({
+export default function HeaderMobileMenu({
   enableLightDarkThemeModeToggle = false,
 }: {
   enableLightDarkThemeModeToggle?: boolean

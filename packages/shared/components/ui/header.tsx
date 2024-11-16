@@ -1,5 +1,5 @@
 import Logo from './logo'
-import MobileMenu from './mobile-menu'
+import HeaderMobileMenu from './header-mobile-menu'
 import Search from './search'
 import ThemeToggle from '@gato/components/ui/theme-toggle'
 import HeaderMenu from './header-menu'
@@ -44,7 +44,7 @@ export default function Header({
             </li>
           </ul>
 
-          <MobileMenu
+          <HeaderMobileMenu
             enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
           />
 
