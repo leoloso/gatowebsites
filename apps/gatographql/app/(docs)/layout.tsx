@@ -1,8 +1,8 @@
 import './css/style.css'
 
 import { Nothing_You_Could_Do } from 'next/font/google'
-import Theme from './theme-provider'
-import AppProvider from './app-provider'
+import Theme from '@gato/app/(docs)/theme-provider'
+import AppProvider from '@gato/app/(docs)/app-provider'
 import Sidebar from '@gato/components/ui/docs/sidebar'
 import Header from '@gato/components/ui/header'
 import StunningBackground from '@gato/components/stunning-background'
