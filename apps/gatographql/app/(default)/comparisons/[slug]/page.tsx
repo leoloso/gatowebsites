@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { PostMdx } from '@gato/components/mdx/post-mdx'
 import PostNav from '@gato/components/post-nav'
 import StunningBackground from '@gato/components/stunning-background'
-import { sortByOrderAndTitle } from '@/utils/content/sort'
+import { sortByOrderAndTitle } from '@gato/utils/content/sort'
 import { getComparisonPostURL } from '@/utils/content/application-urls'
 import ArticleSchemaJsonLdScript from '@gato/components/schema/article-schema-json-ld';
 import Cta from '@gato/components/cta-02'

@@ -1,5 +1,5 @@
 import { allBlogPosts, allDemoPosts } from '@/.contentlayer/generated'
-import { sortAlphabetically } from './sort'
+import { sortAlphabetically } from '@gato/utils/content/sort'
 import { Post } from './types'
 
 export function getPostTags(posts: Array<Post>): Array<string> {

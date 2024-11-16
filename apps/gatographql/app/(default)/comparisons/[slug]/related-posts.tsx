@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Particles from '@gato/components/particles'
 import Highlighter, { HighlighterItem02 } from '@gato/components/highlighter'
 import { ComparisonPost, allComparisonPosts } from '@/.contentlayer/generated'
-import { sortByOrderAndTitle } from '@/utils/content/sort'
+import { sortByOrderAndTitle } from '@gato/utils/content/sort'
 import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
 import { getComparisonPostURLPath } from '@/utils/content/application-urls'
 

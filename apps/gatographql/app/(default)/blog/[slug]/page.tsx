@@ -12,7 +12,7 @@ import PostTags from '@gato/components/post-tags'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@gato/components/stunning-background'
 import Newsletter from '@gato/components/newsletter'
-import { sortByPublishedAt } from '@/utils/content/sort'
+import { sortByPublishedAt } from '@gato/utils/content/sort'
 import generateRssFeed from '@/utils/rss'
 import { getBlogPostURL } from '@/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from '@gato/components/schema/blogposting-schema-json-ld';

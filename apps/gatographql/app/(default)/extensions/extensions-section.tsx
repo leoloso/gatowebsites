@@ -1,7 +1,7 @@
 import { allExtensions } from '@/.contentlayer/generated'
 import Link from 'next/link'
 import { getExtensionURLPath } from '@/utils/content/application-urls'
-import { sortByOrderAndTitle } from '@/utils/content/sort'
+import { sortByOrderAndTitle } from '@gato/utils/content/sort'
 import ExtensionThumb from '@gato/components/extension-thumb'
 import clsx from 'clsx'
 import LinkModalVideo from '@gato/components/mdx/components/modal-video-link'

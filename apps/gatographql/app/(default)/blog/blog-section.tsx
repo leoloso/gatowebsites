@@ -2,7 +2,7 @@
 
 import { allBlogPosts } from '@/.contentlayer/generated'
 import PopularPosts from './popular-posts'
-import { sortByPublishedAt } from '@/utils/content/sort'
+import { sortByPublishedAt } from '@gato/utils/content/sort'
 import PageHeader from '@gato/components/page-header'
 import BlogPostList from '@gato/components/blog-post-list'
 import { Suspense } from 'react'

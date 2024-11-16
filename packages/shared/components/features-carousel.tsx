@@ -17,7 +17,7 @@ import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
 import SectionHeader from './section-header'
 import { getFeatureURLPath } from '@/utils/content/application-urls'
-import { sortByOrder } from '@/utils/content/sort'
+import { sortByOrder } from '@gato/utils/content/sort'
 import AppConfig from '@/app/app.config'
 import BrowseFeaturesButton from './browse-features-button'
 Swiper.use([Navigation])
