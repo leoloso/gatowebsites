@@ -2,7 +2,7 @@
 
 import { getShopURL, getShopAnchorClassname } from "@/utils/shop/shop"
 import { allExtensions, Extension } from "@/.contentlayer/generated"
-import { sortByOrderAndTitle } from "@/utils/content/sort"
+import { sortByOrderAndTitle } from '@gato/utils/content/sort'
 
 import { useState } from "react";
 import PricingTier from "@gato/components/pricing/product-dropdown/pricing-tier";

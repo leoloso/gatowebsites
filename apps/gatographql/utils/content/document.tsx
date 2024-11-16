@@ -1,7 +1,7 @@
 import { Doc, DocTopic, RelatedGuide } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from '@/.contentlayer/generated'
 import AppConfig from '@/app/app.config'
-import { sortByOrder, sortByOrderAndTitle } from "./sort";
+import { sortByOrder, sortByOrderAndTitle } from '@gato/utils/content/sort';
 import { Article } from "./types";
 
 export function getDocTopic(doc: Doc) {

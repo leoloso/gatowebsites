@@ -4,7 +4,7 @@ import PricingGroup from "./pricing-group"
 import PricingItem from "./pricing-item"
 import { getShopURL, getShopAnchorClassname } from "@/utils/shop/shop"
 import { allExtensions } from "@/.contentlayer/generated"
-import { sortByOrderAndTitle } from "@/utils/content/sort"
+import { sortByOrderAndTitle } from '@gato/utils/content/sort'
 
 export default function ComparisonTablePricing() {
   const extensions = allExtensions.sort(sortByOrderAndTitle)
