@@ -7,7 +7,7 @@ import Sidebar from '@gato/components/ui/docs/sidebar'
 import Header from '@gato/components/ui/header'
 import StunningBackground from '@gato/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
-import FooterMenu from '@/components/ui/footer-menu'
+import LayoutFooterMenu from './footer-menu'
 import AppComponentProvider from '@gato/app/appcomponent-provider'
 import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
 
@@ -29,16 +29,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const footerMenu = (
-    <FooterMenu columnClassname="col-span-4 lg:col-span-2" />
-  );
   return (
     <div className={`${nycd.variable} text-slate-800 font-[350] bg-white dark:bg-transparent dark:text-slate-200`}>
       <Theme>
         <AppProvider>
           <AppComponentProvider
             footer={{
-              menu: footerMenu
+              menu: <LayoutFooterMenu />
             }}
             header={{
               logoImage: LogoImg
