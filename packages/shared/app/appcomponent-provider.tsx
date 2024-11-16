@@ -7,11 +7,11 @@ type ContextProps = {
   footerMenu: React.ReactNode
 }
 
-const FooterContext = createContext<ContextProps>({
+const AppComponentContext = createContext<ContextProps>({
   footerMenu: <div></div>
 })
 
-export default function FooterProvider({
+export default function AppComponentProvider({
   children,
   footerMenu,
 }: {
@@ -19,10 +19,10 @@ export default function FooterProvider({
   footerMenu: React.ReactNode
 }) {  
   return (
-    <FooterContext.Provider value={{ footerMenu }}>
+    <AppComponentContext.Provider value={{ footerMenu }}>
       {children}
-    </FooterContext.Provider>
+    </AppComponentContext.Provider>
   )
 }
 
-export const useFooterProvider = () => useContext(FooterContext)
+export const useAppComponentProvider = () => useContext(AppComponentContext)

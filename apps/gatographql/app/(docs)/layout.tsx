@@ -8,7 +8,7 @@ import Header from '@gato/components/ui/header'
 import StunningBackground from '@gato/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import FooterMenu from '@/components/ui/footer-menu'
-import FooterProvider from '@gato/app/footer-provider'
+import AppComponentProvider from '@gato/app/appcomponent-provider'
 
 const nycd = Nothing_You_Could_Do({
   subsets: ['latin'],
@@ -35,7 +35,7 @@ export default function RootLayout({
     <div className={`${nycd.variable} text-slate-800 font-[350] bg-white dark:bg-transparent dark:text-slate-200`}>
       <Theme>
         <AppProvider>
-          <FooterProvider footerMenu={footerMenu}>
+          <AppComponentProvider footerMenu={footerMenu}>
             <div className="flex flex-col min-h-screen overflow-hidden">
 
               <Header enableLightDarkThemeModeToggle={true} />
@@ -64,7 +64,7 @@ export default function RootLayout({
               </main>
 
             </div>
-          </FooterProvider>
+          </AppComponentProvider>
         </AppProvider>
       </Theme>
     </div>

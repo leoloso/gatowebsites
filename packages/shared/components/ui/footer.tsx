@@ -1,7 +1,7 @@
-import { useFooterProvider } from '@gato/app/footer-provider'
+import { useAppComponentProvider } from '@gato/app/appcomponent-provider'
 
 export default function Footer() {
-  const { footerMenu } = useFooterProvider()
+  const { footerMenu } = useAppComponentProvider()
   return (
     <footer>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">

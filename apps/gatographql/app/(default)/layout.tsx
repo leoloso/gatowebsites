@@ -10,7 +10,7 @@ import Header from '@gato/components/ui/header'
 import AppSettings from '@gato/app/app.settings'
 import FooterMenu from '@/components/ui/footer-menu'
 import FooterLogo from '@gato/components/ui/footer-logo'
-import FooterProvider from '@gato/app/footer-provider'
+import AppComponentProvider from '@gato/app/appcomponent-provider'
 import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function DefaultLayout({
@@ -71,11 +71,11 @@ export default function DefaultLayout({
 
       </main>
 
-      <FooterProvider footerMenu={footerMenu}>
+      <AppComponentProvider footerMenu={footerMenu}>
 
         <Footer />
 
-      </FooterProvider>
+      </AppComponentProvider>
     </div>
   )
 }

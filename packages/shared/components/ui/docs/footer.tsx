@@ -1,11 +1,11 @@
 'use client'
 
 import FooterLogo from '@gato/components/ui/docs/footer-logo'
-import { useFooterProvider } from '@gato/app/footer-provider'
+import { useAppComponentProvider } from '@gato/app/appcomponent-provider'
 import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function Footer() {
-  const { footerMenu } = useFooterProvider()
+  const { footerMenu } = useAppComponentProvider()
   const AppConfig = useAppConfigProvider()
   return (
     <footer className="border-t border-slate-200 pt-8 dark:border-slate-800">
