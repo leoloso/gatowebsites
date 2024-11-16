@@ -7,7 +7,7 @@ import Sidebar from '@gato/components/ui/docs/sidebar'
 import Header from '@gato/components/ui/header'
 import StunningBackground from '@gato/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
-import LayoutFooterMenu from './footer-menu'
+import LayoutFooterMenu from './layout-footer-menu'
 import AppComponentProvider from '@gato/app/appcomponent-provider'
 import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
 

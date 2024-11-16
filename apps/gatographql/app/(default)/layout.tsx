@@ -10,7 +10,7 @@ import Header from '@gato/components/ui/header'
 import AppSettings from '@gato/app/app.settings'
 import AppComponentProvider from '@gato/app/appcomponent-provider'
 import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
-import LayoutFooterMenu from './footer-menu'
+import LayoutFooterMenu from './layout-footer-menu'
 
 export default function DefaultLayout({
   children,
