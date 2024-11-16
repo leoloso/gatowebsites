@@ -1,6 +1,6 @@
 import { allComparisonPosts } from '@/.contentlayer/generated'
 import AppConfig from '@/app/app.config'
-import { getShopAnchorClassname, getShopURL } from '@/utils/shop/shop'
+import { getShopAnchorClassname, getShopURL } from '@gato/utils/shop/shop'
 import {
   getComparisonPostURLPath,
 } from '@/utils/content/application-urls'

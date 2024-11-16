@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import AppConfig from '@/app/app.config'
-import { getShopAnchorClassname, getShopURL } from '@/utils/shop/shop'
+import { getShopAnchorClassname, getShopURL } from '@gato/utils/shop/shop'
 
 export default function PurchasePROPluginButton({
   btnClassName = "btn-sm",
