@@ -73,8 +73,12 @@ export default function DefaultLayout({
       </main>
 
       <AppComponentProvider
-        footerMenu={footerMenu}
-        logoImage={LogoImg}
+        footer={{
+          menu: footerMenu
+        }}
+        header={{
+          logoImage: LogoImg
+        }}
       >
         <Footer />
       </AppComponentProvider>

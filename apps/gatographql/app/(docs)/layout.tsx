@@ -37,8 +37,12 @@ export default function RootLayout({
       <Theme>
         <AppProvider>
           <AppComponentProvider
-            footerMenu={footerMenu}
-            logoImage={LogoImg}
+            footer={{
+              menu: footerMenu
+            }}
+            header={{
+              logoImage: LogoImg
+            }}
           >
             <div className="flex flex-col min-h-screen overflow-hidden">
 

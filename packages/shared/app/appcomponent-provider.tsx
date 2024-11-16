@@ -6,13 +6,21 @@ import { StaticImageData } from 'next/image'
 import LogoImg from '@gato/public/assets/Gato-logo-suki-rectangular.png'
 
 type ContextProps = {
-  footerMenu: React.ReactNode,
-  logoImage: StaticImageData,
+  footer: {
+    menu: React.ReactNode,
+  },
+  header: {
+    logoImage: StaticImageData,
+  },
 }
 
 const AppComponentContext = createContext<ContextProps>({
-  footerMenu: <div></div>,
-  logoImage: LogoImg,
+  footer: {
+    menu: <div></div>,
+  },
+  header: {
+    logoImage: LogoImg,
+  },
 })
 
 export interface AppComponentProviderInterface extends ContextProps {
@@ -21,11 +29,11 @@ export interface AppComponentProviderInterface extends ContextProps {
 
 export default function AppComponentProvider({
   children,
-  footerMenu,
-  logoImage,
+  footer,
+  header,
 }: AppComponentProviderInterface) {  
   return (
-    <AppComponentContext.Provider value={{ footerMenu, logoImage }}>
+    <AppComponentContext.Provider value={{ footer, header }}>
       {children}
     </AppComponentContext.Provider>
   )
