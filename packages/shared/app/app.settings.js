@@ -1,4 +1,5 @@
 module.exports = {
+  showPopularItemsInSearch: false,
   useCDNForMovies: true,
   enableLightDarkThemeMode: false,
   useLemonSqueezyOverlay: true,

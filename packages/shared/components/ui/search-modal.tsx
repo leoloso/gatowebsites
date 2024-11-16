@@ -154,7 +154,6 @@ function CustomSearchBox(props: UseSearchBoxProps) {
 
 function CustomHits({...props}) {
   const { hits, results } = useHits<SearchObject>(props);
-  const showPopular = false
   // Group all hits under their section
   let sectionHits : { [key: string]: Hit<SearchObject>[] } = {}
   hits.forEach((hit) => {
@@ -198,14 +197,15 @@ function CustomHits({...props}) {
         <>
           {
           /**
-           * showPopular is set as `false`, keeping code to re-enable if needed.
+           * AppSettings.shoPopularItemsInSearch is set as `false`,
+           * keeping code to re-enable if needed.
            *
            * @todo If these links are ever needed, then inject them via props,
            * to reuse the component by Gato GraphQL and Gato Plugins
            */
           }
           {/* Popular */}
-          {showPopular && (
+          {AppSettings.showPopularItemsInSearch && (
             <div>
               <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
               <ul role='listbox'>
