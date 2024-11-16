@@ -31,7 +31,12 @@ export default function AppConfigProvider({
   emails,
 }: AppConfigProviderInterface) {  
   return (
-    <AppConfigContext.Provider value={{ meta: meta, emails: emails }}>
+    <AppConfigContext.Provider
+      value={{
+        meta: meta,
+        emails: emails,
+      }}
+    >
       {children}
     </AppConfigContext.Provider>
   )
