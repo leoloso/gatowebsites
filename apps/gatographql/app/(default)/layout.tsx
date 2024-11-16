@@ -63,25 +63,24 @@ export default function DefaultLayout({
   );
 
   return (
-    <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip ${AppSettings.enableLightDarkThemeMode ? 'dark' : '' }`}>
-      <Header />
-      
-      <main className="grow">
+    <AppComponentProvider
+      footer={{
+        menu: footerMenu
+      }}
+      header={{
+        logoImage: LogoImg
+      }}
+    >
+      <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip ${AppSettings.enableLightDarkThemeMode ? 'dark' : '' }`}>
+        <Header />
+        
+        <main className="grow">
 
-          {children}
+            {children}
 
-      </main>
-
-      <AppComponentProvider
-        footer={{
-          menu: footerMenu
-        }}
-        header={{
-          logoImage: LogoImg
-        }}
-      >
+        </main>
         <Footer />
-      </AppComponentProvider>
-    </div>
+      </div>
+    </AppComponentProvider>
   )
 }
