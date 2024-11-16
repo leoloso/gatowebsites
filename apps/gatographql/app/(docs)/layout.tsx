@@ -8,6 +8,8 @@ import Header from '@gato/components/ui/header'
 import StunningBackground from '@gato/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import LayoutFooterMenu from './layout-footer-menu'
+import HeaderMenu from '@/components/ui/header-menu'
+import HeaderMobileMenu from '@/components/ui/header-mobile-menu'
 import AppComponentProvider from '@gato/app/appcomponent-provider'
 import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
 
@@ -35,10 +37,12 @@ export default function RootLayout({
         <AppProvider>
           <AppComponentProvider
             footer={{
-              menu: <LayoutFooterMenu />
+              menu: <LayoutFooterMenu />,
             }}
             header={{
-              logoImage: LogoImg
+              logoImage: LogoImg,
+              menu: <HeaderMenu />,
+              mobileMenu: <HeaderMobileMenu />,
             }}
           >
             <div className="flex flex-col min-h-screen overflow-hidden">

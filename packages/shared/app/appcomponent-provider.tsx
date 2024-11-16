@@ -11,6 +11,8 @@ type ContextProps = {
   },
   header: {
     logoImage: StaticImageData,
+    menu: React.ReactNode,
+    mobileMenu: React.ReactNode,
   },
 }
 
@@ -20,6 +22,8 @@ const AppComponentContext = createContext<ContextProps>({
   },
   header: {
     logoImage: LogoImg,
+    menu: <div></div>,
+    mobileMenu: <div></div>,
   },
 })
 

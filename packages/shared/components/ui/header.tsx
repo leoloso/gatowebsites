@@ -1,15 +1,18 @@
+'use client'
+
 import Logo from './logo'
 import HeaderMobile from './header-mobile'
 import Search from './search'
 import ThemeToggle from '@gato/components/ui/theme-toggle'
-import HeaderMenu from './header-menu'
 import AppSettings from '@gato/app/app.settings'
+import { useAppComponentProvider } from '@gato/app/appcomponent-provider'
 
 export default function Header({
   enableLightDarkThemeModeToggle = false,
 }: {
   enableLightDarkThemeModeToggle?: boolean
 }) {
+  const AppComponent = useAppComponentProvider()
   return (
     <header className="fixed w-full z-50">
       <div
@@ -26,7 +29,7 @@ export default function Header({
 
           <nav className="hidden md:flex md:grow">
             {/* Desktop menu links */}
-            <HeaderMenu />
+            {AppComponent.header.menu}
           </nav>
 
           <ul className="hidden md:flex md:grow flex-1 flex justify-end items-center">

@@ -11,6 +11,8 @@ import AppSettings from '@gato/app/app.settings'
 import AppComponentProvider from '@gato/app/appcomponent-provider'
 import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
 import LayoutFooterMenu from './layout-footer-menu'
+import HeaderMenu from '@/components/ui/header-menu'
+import HeaderMobileMenu from '@/components/ui/header-mobile-menu'
 
 export default function DefaultLayout({
   children,
@@ -30,10 +32,12 @@ export default function DefaultLayout({
   return (
     <AppComponentProvider
       footer={{
-        menu: <LayoutFooterMenu />
+        menu: <LayoutFooterMenu />,
       }}
       header={{
-        logoImage: LogoImg
+        logoImage: LogoImg,
+        menu: <HeaderMenu />,
+        mobileMenu: <HeaderMobileMenu />,
       }}
     >
       <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip ${AppSettings.enableLightDarkThemeMode ? 'dark' : '' }`}>

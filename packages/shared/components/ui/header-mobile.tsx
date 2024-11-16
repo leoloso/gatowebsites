@@ -5,7 +5,7 @@ import AppSettings from '@gato/app/app.settings'
 import Search from './search'
 import ThemeToggle from './theme-toggle'
 import { usePathname } from 'next/navigation'
-import HeaderMobileMenu from './header-mobile-menu'
+import { useAppComponentProvider } from '@gato/app/appcomponent-provider'
 
 export default function HeaderMobile({
   enableLightDarkThemeModeToggle = false,
@@ -18,6 +18,8 @@ export default function HeaderMobile({
   const mobileNav = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
 
+  const AppComponent = useAppComponentProvider()
+  
   // close the mobile menu on click outside
   useEffect(() => {
     const clickHandler = ({ target }: { target: EventTarget | null }): void => {
@@ -81,7 +83,7 @@ export default function HeaderMobile({
         className="absolute top-full z-20 left-0 w-full px-4 sm:px-6 overflow-hidden transition-all duration-300 ease-in-out"
         style={mobileNavOpen ? { maxHeight: mobileNav.current?.scrollHeight, opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
       >
-        <HeaderMobileMenu />
+        {AppComponent.header.mobileMenu}
       </nav>
     </div>
   )
