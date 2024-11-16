@@ -1,6 +1,6 @@
 "use client";
 
-import { getShopURL, getShopAnchorClassname } from "@/utils/shop/shop"
+import { getShopURL, getShopAnchorClassname } from "@gato/utils/shop/shop"
 import { allExtensions, Extension } from "@/.contentlayer/generated"
 import { sortByOrderAndTitle } from '@gato/utils/content/sort'
 
