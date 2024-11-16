@@ -5,6 +5,7 @@ import Alert from '../mdx/components/alert';
 import clsx from 'clsx';
 import { handleFormSubmit, canSubmitForm, FormStatus } from './form-handler';
 import AppConfig from '@gato/app/app.config'
+import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function ContactForm({
   options = [
@@ -21,6 +22,7 @@ export default function ContactForm({
   const [status, setStatus] = useState<FormStatus>('pending');
   const [error, setError] = useState<string|null>(null);
   const isFormEnabled = canSubmitForm(status)
+  const { meta, emails } = useAppConfigProvider()
 
   return (
     <form
@@ -35,7 +37,7 @@ export default function ContactForm({
       <div className="flex flex-wrap -mx-3 mb-8">
         <div className="w-full px-3">
           <div className="text-slate-300">
-            Send us an email to <a className="font-medium text-purple-600 dark:text-purple-300 no-underline hover:no-underline hover:text-purple-500 hover:dark:text-purple-400" href={`mailto:${AppConfig.emails.info}`}>{AppConfig.emails.info}</a>, or fill the form below.
+            Send us an email to <a className="font-medium text-purple-600 dark:text-purple-300 no-underline hover:no-underline hover:text-purple-500 hover:dark:text-purple-400" href={`mailto:${emails.info}`}>{emails.info}</a>, or fill the form below.
           </div>
         </div>
       </div>
@@ -150,7 +152,7 @@ export default function ContactForm({
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <div className="text-sm text-gray-600 mt-4">
-            By clicking "send" you consent to allow {AppConfig.meta.name} to store and process the personal information submitted above.
+            By clicking "send" you consent to allow {meta.name} to store and process the personal information submitted above.
             {/* By clicking "send" you consent to allow Gato GraphQL to store and process the personal information submitted above and agree to our <a className="underline" href="#0">terms and conditions</a> as well as our <a className="underline" href="#0">Privacy Policy</a>. */}
           </div>
         </div>

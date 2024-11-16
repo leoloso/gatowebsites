@@ -7,6 +7,7 @@ import LemonSqueezyScriptProvider from '@gato/components/scripts/lemonsqueezy'
 import { DOMAIN } from '@gato/data/env/domain'
 import InitializeShop from '@gato/components/shop/initialize-shop'
 import AppConfig from '@/app/app.config'
+import AppConfigProvider from '@gato/app/appconfig-provider'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -14,8 +15,9 @@ const inter = Inter({
   display: 'swap'
 })
 
+const appName = 'Gato GraphQL'
 export const metadata = {
-  title: 'Gato GraphQL',
+  title: appName,
   description: 'Powerful and flexible GraphQL server for WordPress',
   
   // metadataBase: first check if env var from Netlify is defined. If not, from Vercel.
@@ -40,7 +42,9 @@ export default function RootLayout({
         <InitializeShop />
       </head>
       <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
-        {children}
+        <AppConfigProvider meta={{name: appName}} emails={{info: "info@gatographql.com"}}>
+          {children}
+        </AppConfigProvider>
       </body>
     </html>
   )

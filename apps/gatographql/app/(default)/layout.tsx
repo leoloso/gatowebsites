@@ -10,8 +10,8 @@ import Header from '@gato/components/ui/header'
 import AppSettings from '@gato/app/app.settings'
 import FooterMenu from '@/components/ui/footer-menu'
 import FooterLogo from '@gato/components/ui/footer-logo'
-import AppConfig from '@gato/app/app.config'
 import FooterProvider from '@gato/app/footer-provider'
+import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function DefaultLayout({
   children,
@@ -28,6 +28,8 @@ export default function DefaultLayout({
     })
   })
 
+  const { meta } = useAppConfigProvider()
+
   const footerMenu = (
     <FooterMenu>
       {/* 1st block */}
@@ -37,7 +39,7 @@ export default function DefaultLayout({
             {/* <div className="mb-4"> */}
               <FooterLogo />
             {/* </div> */}
-            <div className="text-sm text-slate-500">© {AppConfig.meta.name} <span className="text-slate-600">-</span> All rights reserved.</div>
+            <div className="text-sm text-slate-500">© {meta.name} <span className="text-slate-600">-</span> All rights reserved.</div>
           </div>
           {/* Social links */}
           {/* <ul className="flex">

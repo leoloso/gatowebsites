@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Alert from '../mdx/components/alert';
 import clsx from 'clsx';
 import { handleFormSubmit, canSubmitForm, FormStatus } from './form-handler';
-import AppConfig from '@gato/app/app.config'
+import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function SupportForm() {
   const formURL = '/__forms/support.html'
@@ -12,6 +12,7 @@ export default function SupportForm() {
   const [status, setStatus] = useState<FormStatus>('pending');
   const [error, setError] = useState<string|null>(null);
   const isFormEnabled = canSubmitForm(status)
+  const { meta } = useAppConfigProvider()
 
   return (
     <form
@@ -133,7 +134,7 @@ export default function SupportForm() {
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <div className="text-sm text-gray-600 mt-4">
-            By clicking "send" you consent to allow {AppConfig.meta.name} to store and process the personal information submitted above.
+            By clicking "send" you consent to allow {meta.name} to store and process the personal information submitted above.
             {/* By clicking "send" you consent to allow Gato GraphQL to store and process the personal information submitted above and agree to our <a className="underline" href="#0">terms and conditions</a> as well as our <a className="underline" href="#0">Privacy Policy</a>. */}
           </div>
         </div>
