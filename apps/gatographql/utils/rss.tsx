@@ -15,7 +15,7 @@ export default async function generateRssFeed() {
     description: 'Stay up to date on the latest from Gato GraphQL',
     id: DOMAIN,
     link: DOMAIN,
-    image: `${DOMAIN}/assets/GatoGraphQL-logo-suki.png`,
+    image: `${DOMAIN}/assets/Gato-logo-suki.png`,
     favicon: `${DOMAIN}/favicon.ico`,
     copyright: `All rights reserved ${new Date().getFullYear()}, Gato GraphQL`,
     generator: 'Feed for Node.js',
