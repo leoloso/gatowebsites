@@ -15,15 +15,15 @@ const AppComponentContext = createContext<ContextProps>({
   logoImage: LogoImg,
 })
 
+export interface AppComponentProviderInterface extends ContextProps {
+  children: React.ReactNode,
+}
+
 export default function AppComponentProvider({
   children,
   footerMenu,
   logoImage,
-}: {
-  children: React.ReactNode,
-  footerMenu: React.ReactNode,
-  logoImage: StaticImageData,
-}) {  
+}: AppComponentProviderInterface) {  
   return (
     <AppComponentContext.Provider value={{ footerMenu, logoImage }}>
       {children}
