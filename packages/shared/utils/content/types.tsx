@@ -104,11 +104,3 @@ export type ShopURLs = {
   tier4: ShopURLByLicense
 
 }  
-
-export type DataExports = {
-  allBlogPosts: BlogPost[]
-  allPages: Page[]
-  allSnippets: Snippet[]
-  allDocs: Doc[]
-  allDocTopics: DocTopic[]
-}
