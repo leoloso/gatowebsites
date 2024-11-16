@@ -154,7 +154,7 @@ function CustomSearchBox(props: UseSearchBoxProps) {
 
 function CustomHits({...props}) {
   const { hits, results } = useHits<SearchObject>(props);
-  const showPopular = true
+  const showPopular = false
   // Group all hits under their section
   let sectionHits : { [key: string]: Hit<SearchObject>[] } = {}
   hits.forEach((hit) => {
