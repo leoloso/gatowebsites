@@ -1,7 +1,5 @@
 import Link from 'next/link'
-import PurchasePROPluginButton from '../purchase-pro-plugin-button'
 import AppConfig from '@/app/app.config'
-// import DownloadFreePluginButton from '../download-free-button'
 import TryPROPluginButton from '../try-pro-plugin-button'
 
 export default function HeaderMobileMenu() {
@@ -36,15 +34,9 @@ export default function HeaderMobileMenu() {
           </li>
         </ul>
       </li>
-      {/* <li className="py-2 my-2 border-b border-slate-300 dark:border-gray-700">
-        <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.blog}`}>Blog</Link>
-      </li> */}
       <li className="py-1">
         <TryPROPluginButton btnClassName="btn" />
       </li>
-      {/* <li className="py-1">
-        <PurchasePROPluginButton btnClassName="btn" />
-      </li> */}
     </ul>
   )
 }
