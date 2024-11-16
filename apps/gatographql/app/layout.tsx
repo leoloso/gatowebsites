@@ -42,7 +42,17 @@ export default function RootLayout({
         <InitializeShop />
       </head>
       <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
-        <AppConfigProvider meta={{name: appName}} emails={{info: "info@gatographql.com"}}>
+        <AppConfigProvider
+          meta={{
+            name: appName,
+          }}
+          emails={{
+            info: "info@gatographql.com",
+          }}
+          domains={{
+            cdn: 'https://d2nmpy6pnude6z.cloudfront.net',
+          }}
+        >
           {children}
         </AppConfigProvider>
       </body>

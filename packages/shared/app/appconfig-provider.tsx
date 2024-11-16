@@ -10,6 +10,9 @@ type ContextProps = {
   emails: {
     info: string,
   },
+  domains: {
+    cdn: string,
+  },
 }
 
 const AppConfigContext = createContext<ContextProps>({
@@ -18,6 +21,9 @@ const AppConfigContext = createContext<ContextProps>({
   },
   emails: {
     info: ""
+  },
+  domains: {
+    cdn: ""
   },
 })
 
@@ -29,12 +35,14 @@ export default function AppConfigProvider({
   children,
   meta,
   emails,
+  domains,
 }: AppConfigProviderInterface) {  
   return (
     <AppConfigContext.Provider
       value={{
         meta: meta,
         emails: emails,
+        domains: domains,
       }}
     >
       {children}

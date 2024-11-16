@@ -1,5 +1,5 @@
 import { DOMAIN } from "@gato/data/env/domain";
-import AppConfig from '@gato/app/app.config'
+import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export function maybeAddDomain(urlOrPath: string) {
   if (urlOrPath.startsWith("http://") || urlOrPath.startsWith("https://")) {
@@ -9,5 +9,6 @@ export function maybeAddDomain(urlOrPath: string) {
 }
 
 export function getCDNURL(path: string) {
+  const AppConfig = useAppConfigProvider()
   return `${AppConfig.domains.cdn}${path}`
 }
