@@ -8,6 +8,7 @@ import { DOMAIN } from '@gato/data/env/domain'
 import InitializeShop from '@gato/components/shop/initialize-shop'
 import AppConfig from '@/app/app.config'
 import AppConfigProvider from '@gato/app/appconfig-provider'
+import AppSettingsProvider from '@gato/app/appsettings-provider'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -53,7 +54,13 @@ export default function RootLayout({
             cdn: 'https://d2nmpy6pnude6z.cloudfront.net',
           }}
         >
-          {children}
+          <AppSettingsProvider
+            campaigns={{
+              enableBlackFriday: true,
+            }}
+          >
+            {children}
+          </AppSettingsProvider>
         </AppConfigProvider>
       </body>
     </html>
