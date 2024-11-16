@@ -21,19 +21,15 @@ const AppConfigContext = createContext<ContextProps>({
   },
 })
 
+export interface AppConfigProviderInterface extends ContextProps {
+  children: React.ReactNode,
+}
+
 export default function AppConfigProvider({
   children,
   meta,
   emails,
-}: {
-  children: React.ReactNode,
-  meta: {
-    name: string,
-  },
-  emails: {
-    info: string,
-  }
-}) {  
+}: AppConfigProviderInterface) {  
   return (
     <AppConfigContext.Provider value={{ meta: meta, emails: emails }}>
       {children}
