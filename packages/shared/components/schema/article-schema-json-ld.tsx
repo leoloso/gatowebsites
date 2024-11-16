@@ -1,5 +1,5 @@
 import { Article, WithContext } from 'schema-dts';
-import { maybeAddDomain } from '@/utils/domain'
+import { maybeAddDomain } from '@gato/utils/domain'
 import { DOMAIN } from '@gato/data/env/domain'
 import SchemaJsonLdScript from './schema-json-ld';
 
