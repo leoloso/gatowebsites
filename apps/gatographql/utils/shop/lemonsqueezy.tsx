@@ -1,4 +1,4 @@
-import AppSettings from "@/app/app.settings"
+import AppSettings from "@gato/app/app.settings"
 
 export function getLemonSqueezyShopURL(url: string) {
   if (AppSettings.useLemonSqueezyOverlay) {
