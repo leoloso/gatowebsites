@@ -1,7 +1,12 @@
 const isProd = process.env.NODE_ENV === 'production'
 const allExtensionsDevShopURL = "https://shop.gatographql.com/buy/5ae830bc-93c5-475c-9370-b3d13bf12619"
+
 module.exports = {
   paths: {
+    /**
+     * Watch out! This value is a duplicate from the shared AppConfig!
+     * @see packages/shared/app/app.config.js
+     */
     blog: "blog",
     highlights: "highlights",
     comparisonPosts: "comparisons",
