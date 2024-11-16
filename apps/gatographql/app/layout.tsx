@@ -9,6 +9,8 @@ import InitializeShop from '@gato/components/shop/initialize-shop'
 import AppConfig from '@/app/app.config'
 import AppConfigProvider from '@gato/app/appconfig-provider'
 import AppSettingsProvider from '@gato/app/appsettings-provider'
+import AppContentProvider from '@gato/app/appcontent-provider'
+import { allDocs, allDocTopics } from '@/.contentlayer/generated'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -59,7 +61,12 @@ export default function RootLayout({
               enableBlackFriday: true,
             }}
           >
-            {children}
+            <AppContentProvider
+              allDocs={allDocs}
+              allDocTopics={allDocTopics}
+            >
+              {children}
+            </AppContentProvider>
           </AppSettingsProvider>
         </AppConfigProvider>
       </body>

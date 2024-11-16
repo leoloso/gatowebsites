@@ -11,8 +11,8 @@ import {
   getDocumentsByTopic,
   sortDocuments,
   getDocumentTopicsBySection,
-} from '@/utils/content/document'
-import { getDocURLPath } from '@/utils/content/application-urls'
+} from '@gato/utils/content/document'
+import { getDocURLPath } from '@gato/utils/content/application-urls'
 import AppConstants from '@gato/app/app.constants'
 import SidebarDocTopicSVG, { sidebarDocTopicSVG1, sidebarDocTopicSVG2, sidebarDocTopicSVG3 } from './sidebar-doctopic-svg'
 

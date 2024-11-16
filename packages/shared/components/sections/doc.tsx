@@ -1,3 +1,5 @@
+'use client'
+
 import { DocMdx } from '@gato/components/mdx/doc-mdx'
 import TopicTitle from '@gato/components/ui/docs/topic-title'
 import Hamburger from '@gato/components/ui/docs/hamburger'
@@ -6,7 +8,7 @@ import ArticleNavigation from '@gato/components/ui/article-navigation'
 import Footer from '@gato/components/ui/docs/footer'
 import SecondaryNav from '@gato/components/ui/docs/secondary-nav'
 import { Doc } from '@/.contentlayer/generated'
-import { getDocTopic } from '@/utils/content/document'
+import { getDocTopic } from '@gato/utils/content/document'
 import ArticleSchemaJsonLdScript from '../schema/article-schema-json-ld'
 import { getDocURL } from '@/utils/content/application-urls'
 
