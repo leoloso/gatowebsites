@@ -118,7 +118,6 @@ export type Feature = {
   seoDescription?: string | undefined
   featured?: boolean | undefined
   relatedGuides?: RelatedGuide[] | undefined
-  category: 'Standard'
   order: number
   image?: string | undefined
   icon?: string | undefined
