@@ -11,7 +11,7 @@ export default function ExtensionCoverItem({
 }) {
   const searchParams = useSearchParams();
   const printExtensionTitle = searchParams.has('title') || false
-  const includeGatoGraphQLLogo = searchParams.has('logo') || false
+  const includeGatoLogo = searchParams.has('logo') || false
   return (
     <header
       className='aspect-video'
@@ -21,7 +21,7 @@ export default function ExtensionCoverItem({
         extension={extension}
         isLandscape={true}
         printExtensionTitle={printExtensionTitle}
-        skipGatoGraphQLLogo={!includeGatoGraphQLLogo}
+        skipGatoLogo={!includeGatoLogo}
       />
     </header>
   )

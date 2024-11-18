@@ -15,7 +15,7 @@ export default function WithLogoThumb({
   reverseItems = false,
   svgClassname = "mx-2 my-4",
   numberParticles,
-  skipGatoGraphQLLogo=false,
+  skipGatoLogo=false,
   skipPlusImage=false,
   title,
   titleClassname="h1 lg:leading-[5rem] lg:text-[4.5rem] mb-8",
@@ -35,7 +35,7 @@ export default function WithLogoThumb({
   reverseItems?: boolean,
   svgClassname?: string,
   numberParticles?: number,
-  skipGatoGraphQLLogo?: boolean,
+  skipGatoLogo?: boolean,
   skipPlusImage?: boolean,
   title?: string,
   titleClassname?: string,
@@ -68,7 +68,7 @@ export default function WithLogoThumb({
           )}
         </div>
       <div className={clsx("flex items-center justify-center", !isLandscape && "flex-col", isLandscape && reverseItems && "flex-row-reverse", !isLandscape && reverseItems && "flex-col-reverse", isLandscape && "aspect-video", logoClassname)}>
-        { !skipGatoGraphQLLogo && (
+        { !skipGatoLogo && (
           <>
             <div className={clsx(!isLandscape && "mb-2 md:mb-4", isLandscape &&  'mx-2')}>
               <Image src={logoImage || Logo} alt="Logo" width={250} height={175} />

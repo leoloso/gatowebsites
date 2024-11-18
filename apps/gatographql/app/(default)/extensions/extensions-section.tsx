@@ -64,7 +64,7 @@ export default function ExtensionsSection({
                   paddingClassname={clsx("py-5 px-4", applyStyle === style1 && "md:py-8 md:px-6", applyStyle === style2 && "md:py-6 md:px-5")}
                   isLandscape={true}
                   bgClassname={clsx(bgClassnames[index % bgClassnames.length], "transition duration-700 ease-out")}
-                  skipGatoGraphQLLogo={ true }
+                  skipGatoLogo={ true }
                   logoClassname={ clsx("transform group-hover:scale-110 transition duration-700 ease-out") }
                 />
               </div>
