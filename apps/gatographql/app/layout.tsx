@@ -9,6 +9,8 @@ import InitializeShop from 'gatoapp/components/shop/initialize-shop'
 import AppConfig from '@/app/app.config'
 import AppConfigProvider from 'gatoapp/app/appconfig-provider'
 import AppSettingsProvider from 'gatoapp/app/appsettings-provider'
+import AppStyleProvider from 'gatoapp/app/appstyle-provider'
+import { LightDarkColorTheme } from 'gatoapp/app/appstyle-provider'
 import AppContentProvider from 'gatoapp/app/appcontent-provider'
 import { allBlogPosts, allDemoPosts, allDocs, allDocTopics, allFeatures, allPages, allSnippets } from '@/.contentlayer/generated'
 
@@ -77,17 +79,25 @@ export default function RootLayout({
               }
             }
           >
-            <AppContentProvider
-              allBlogPosts={allBlogPosts}
-              allDemoPosts={allDemoPosts}
-              allDocs={allDocs}
-              allDocTopics={allDocTopics}
-              allFeatures={allFeatures}
-              allPages={allPages}
-              allSnippets={allSnippets}
+            <AppStyleProvider
+              style={
+                {
+                  lightDarkColorTheme: LightDarkColorTheme.Dark
+                }
+              }
             >
-              {children}
-            </AppContentProvider>
+              <AppContentProvider
+                allBlogPosts={allBlogPosts}
+                allDemoPosts={allDemoPosts}
+                allDocs={allDocs}
+                allDocTopics={allDocTopics}
+                allFeatures={allFeatures}
+                allPages={allPages}
+                allSnippets={allSnippets}
+              >
+                {children}
+              </AppContentProvider>
+            </AppStyleProvider>
           </AppSettingsProvider>
         </AppConfigProvider>
       </body>
