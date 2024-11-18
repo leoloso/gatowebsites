@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import AppSettings from 'gatoapp/app/app.settings'
 import Search from './search'
 import ThemeToggle from './theme-toggle'
 import { usePathname } from 'next/navigation'
@@ -50,7 +49,7 @@ export default function HeaderMobile({
   return (
     <div className="md:hidden flex items-center ml-4">
       {/* Lights switch */}
-      {AppSettings.enableLightDarkThemeMode && enableLightDarkThemeModeToggle && (
+      {enableLightDarkThemeModeToggle && (
         <ThemeToggle />
       )}
 
