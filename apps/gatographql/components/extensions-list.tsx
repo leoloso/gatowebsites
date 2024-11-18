@@ -1,7 +1,7 @@
 import { Extension } from '@/.contentlayer/generated'
 import ArtifactsList from 'gatoapp/components/artifacts-list';
 import { allExtensions } from '@/.contentlayer/generated'
-import DefaultArtifactIcon from 'gatoapp/public/assets/theme/default/artifact-icon-01.png'
+import DefaultFeatureIcon from 'gatoapp/public/assets/theme/default/feature-icon-01.png'
 
 export default function ExtensionsList({
   extensions = allExtensions,
@@ -13,7 +13,7 @@ export default function ExtensionsList({
       artifacts={extensions}
       showTopbar={true}
       showSearch={false}
-      defaultArtifactIcon={DefaultArtifactIcon}
+      defaultArtifactIcon={DefaultFeatureIcon}
       bgClassname="bg-gradient-to-tr from-slate-800 to-violet-800/25"
     />
   )

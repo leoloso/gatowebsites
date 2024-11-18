@@ -3,7 +3,7 @@ import { allFeatures, Feature } from '@/.contentlayer/generated'
 import { notFound } from 'next/navigation'
 import AppConfig from '@/app/app.config'
 import FeatureSection from 'gatoapp/components/sections/feature'
-import DefaultArtifactIcon02 from 'gatoapp/public/assets/theme/default/artifact-icon-02.png'
+import DefaultFeatureIcon02 from 'gatoapp/public/assets/theme/default/feature-icon-02.png'
 import { getGuideDocument, getPrevNextArticles } from '@/utils/content/document'
 import { getDocURLPath } from '@/utils/content/application-urls'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
@@ -75,7 +75,7 @@ export default async function SingleFeature({ params }: {
       testimonials={testimonials}
       testimonialIndex={1}
       showTestimonial={false}
-      defaultArtifactIcon={DefaultArtifactIcon02}
+      defaultArtifactIcon={DefaultFeatureIcon02}
       bgClassname={clsx("bg-gradient-to-tr", "from-slate-900 to-fuchsia-900")}
       thumbLeading='Feature:'
     >

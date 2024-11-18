@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
-import DefaultArtifactIcon from 'gatoapp/public/assets/theme/default/artifact-icon.png'
+import DefaultFeatureIcon from 'gatoapp/public/assets/theme/default/feature-icon.png'
 import { ArtifactMdx } from 'gatoapp/components/mdx/artifact-mdx'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import { Artifact } from '@/utils/content/types'
@@ -116,7 +116,7 @@ export default function FeatureSection({
                       <div className="text-center mb-5">
                         <div className="mb-4">
                           <div className="relative inline-flex">
-                            <Image src={/*artifact.icon || */defaultArtifactIcon || DefaultArtifactIcon} width={80} height={80} alt="Artifact icon" />
+                            <Image src={/*artifact.icon || */defaultArtifactIcon || DefaultFeatureIcon} width={80} height={80} alt="Artifact icon" />
                           </div>
                         </div>
                         {widgetChildren}
