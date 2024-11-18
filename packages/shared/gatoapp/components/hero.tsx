@@ -35,7 +35,7 @@ export default function Hero() {
           <div className="max-w-3xl mx-auto text-center">
             <div className="-mb-12">
               <div className="flex w-full items-center justify-center pb-1">
-                <Image src={LogoPic} width={250} height={175} alt="Gato GraphQL logo" />
+                <Image src={LogoPic} width={250} height={175} alt="Logo" />
               </div>
             </div>
             <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4" data-aos="fade-down">Powerful and flexible GraphQL server for WordPress</h1>
