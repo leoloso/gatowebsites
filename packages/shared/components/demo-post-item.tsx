@@ -3,7 +3,7 @@ import PostDate from '@gato/components/post-date'
 import PostTags from '@gato/components/post-tags'
 import { DemoPost } from '@/.contentlayer/generated'
 import { getDemoPostURLPath } from '@/utils/content/application-urls'
-import DemoPostThumb from './demo-post-thumb'
+import DemoPostThumb from '../../../apps/gatographql/components/demo-post-thumb'
 import AppConfig from '@/app/app.config'
 
 export default function DemoPostPostItem({
