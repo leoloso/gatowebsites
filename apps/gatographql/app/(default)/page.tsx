@@ -21,6 +21,7 @@ export default function Home() {
       <UseCases />
       <FeaturesCarousel
         linkURL={`/${AppConfig.paths.features}`}
+        lastSlideText='Browse the list of all features, discover how Gato GraphQL can empower and protect your application.'
       />
       <HomeExtensionsSection />
       <Pricing />

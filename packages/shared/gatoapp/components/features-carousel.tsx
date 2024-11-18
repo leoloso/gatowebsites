@@ -23,8 +23,10 @@ Swiper.use([Navigation])
 
 export default function FeaturesCarousel({
   linkURL,
+  lastSlideText = "Browse the list of all features.",
 }: {
   linkURL: string
+  lastSlideText?: string,
 }) {
 
   const { allFeatures } = useAppContentProvider()
@@ -155,7 +157,7 @@ export default function FeaturesCarousel({
                       <Image className="mb-3" src={itemPics[itemPics.length - 1]} width={56} height={56} alt="Carousel Icon" />
                       <div className="grow">
                         <div className="font-bold text-lg mb-1">And much more!</div>
-                        <div className="text-slate-400 mb-3">Browse the list of all features, discover how Gato GraphQL can empower and protect your application.</div>
+                        <div className="text-slate-400 mb-3">{lastSlideText}</div>
                       </div>
                       <div className="text-right">
                         <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={linkURL}>Browse all features <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
