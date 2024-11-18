@@ -4,7 +4,7 @@ import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png
 import { ArtifactMdx } from '@gato/components/mdx/artifact-mdx'
 import StunningBackground from '@gato/components/stunning-background'
 import { Artifact } from '@/utils/content/types'
-import { TestimonialItem } from '../data/testimonials'
+import { TestimonialItem } from '../data/testimonial-item'
 import WithTitleThumb from '../thumbnails/with-title-thumb'
 import clsx from 'clsx'
 import Cta from '../cta-02'

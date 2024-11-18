@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Particles from './particles';
-import { TestimonialItem } from './data/testimonials';
+import { TestimonialItem } from './data/testimonial-item';
 
 export default function Testimonial({
   testimonials,

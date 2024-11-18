@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import RadiantGradient from './radial-gradient'
 import SectionHeader from './section-header'
-import { TestimonialItem } from './data/testimonials'
+import { TestimonialItem } from './data/testimonial-item'
 
 export default function Customers({
   testimonials,

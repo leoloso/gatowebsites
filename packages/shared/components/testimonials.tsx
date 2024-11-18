@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { Transition } from '@headlessui/react'
 import Particles from './particles'
-import { TestimonialItem } from './data/testimonials'
+import { TestimonialItem } from './data/testimonial-item'
 
 export default function Testimonials({
   testimonials,
