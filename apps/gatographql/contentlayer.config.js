@@ -47,7 +47,11 @@ const Highlight = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.highlights + '/?'), ''),
-    },    
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => `${AppConfig.paths.highlights}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.highlights + '/?'), '')}`,
+    },
   },
 }))
 
@@ -94,7 +98,11 @@ const ComparisonPost = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.comparisonPosts + '/?'), ''),
-    },    
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => `${AppConfig.paths.comparisonPosts}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.comparisonPosts + '/?'), '')}`,
+    },
   },
 }))
 
@@ -150,7 +158,11 @@ const Extension = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.extensions + '/?'), ''),
-    },    
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => `${AppConfig.paths.extensions}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.extensions + '/?'), '')}`,
+    },
   },
 }))
 

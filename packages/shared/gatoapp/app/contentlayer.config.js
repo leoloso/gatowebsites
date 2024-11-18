@@ -50,7 +50,11 @@ const BlogPost = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.blog + '/?'), ''),
-    },    
+    },
+    slug: {
+      type: 'string',
+      resolve: (doc) => `${AppConfig.paths.blog}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.blog + '/?'), '')}`,
+    },
   },
 }))
 
@@ -110,7 +114,11 @@ const DemoPost = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.demoPosts + '/?'), ''),
-    },    
+    },
+    slug: {
+      type: 'string',
+      resolve: (doc) => `${AppConfig.paths.demoPosts}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.demoPosts + '/?'), '')}`,
+    },
   },
 }))
 
@@ -165,7 +173,11 @@ const Page = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/pages\/?/, ''),
-    },    
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/pages\/?/, ''),
+    },
   },
 }))
 
@@ -229,7 +241,11 @@ const Feature = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.features + '/?'), ''),
-    },    
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => `${AppConfig.paths.features}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.features + '/?'), '')}`,
+    },
   },
 }))
 
@@ -283,7 +299,11 @@ const Doc = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\//, ''),
-    },  
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/?/, ''),
+    },
   },
 }))
 
