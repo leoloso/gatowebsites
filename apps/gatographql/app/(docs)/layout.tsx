@@ -1,7 +1,6 @@
 import './css/style.css'
 
 import { Nothing_You_Could_Do } from 'next/font/google'
-import Theme from 'gatoapp/app/(docs)/theme-provider'
 import AppProvider from 'gatoapp/app/(docs)/app-provider'
 import Sidebar from 'gatoapp/components/ui/docs/sidebar'
 import Header from 'gatoapp/components/ui/header'
@@ -33,49 +32,47 @@ export default function RootLayout({
 }) {
   return (
     <div className={`${nycd.variable} text-slate-800 font-[350] bg-white dark:bg-transparent dark:text-slate-200`}>
-      <Theme>
-        <AppProvider>
-          <AppComponentProvider
-            footer={{
-              menu: <LayoutFooterMenu />,
-            }}
-            header={{
-              logoImage: LogoImg,
-              menu: <HeaderMenu />,
-              mobileMenu: <HeaderMobileMenu />,
-            }}
-          >
-            <div className="flex flex-col min-h-screen overflow-hidden">
+      <AppProvider>
+        <AppComponentProvider
+          footer={{
+            menu: <LayoutFooterMenu />,
+          }}
+          header={{
+            logoImage: LogoImg,
+            menu: <HeaderMenu />,
+            mobileMenu: <HeaderMobileMenu />,
+          }}
+        >
+          <div className="flex flex-col min-h-screen overflow-hidden">
 
-              <Header enableLightDarkThemeModeToggle={false} />
+            <Header />
 
-              {/*  Page content */}
-              <main className="grow">
-                <section className="relative">
-                  
-                  <StunningBackground />
+            {/*  Page content */}
+            <main className="grow">
+              <section className="relative">
+                
+                <StunningBackground />
 
-                  <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    {/* Main content */}
-                    <div>
-                      {/* Sidebar */}
-                      <Sidebar />
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                  {/* Main content */}
+                  <div>
+                    {/* Sidebar */}
+                    <Sidebar />
 
-                      {/* Page container */}
-                      <div className="md:grow md:pl-64 lg:pr-6 xl:pr-0">
-                        <div className="pt-24 md:pt-28 pb-8 md:pl-6 lg:pl-12">
-                          {children}
-                        </div>
+                    {/* Page container */}
+                    <div className="md:grow md:pl-64 lg:pr-6 xl:pr-0">
+                      <div className="pt-24 md:pt-28 pb-8 md:pl-6 lg:pl-12">
+                        {children}
                       </div>
                     </div>
                   </div>
-                </section>
-              </main>
+                </div>
+              </section>
+            </main>
 
-            </div>
-          </AppComponentProvider>
-        </AppProvider>
-      </Theme>
+          </div>
+        </AppComponentProvider>
+      </AppProvider>
     </div>
   )
 }
