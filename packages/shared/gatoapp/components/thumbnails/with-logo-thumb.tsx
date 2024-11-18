@@ -71,7 +71,7 @@ export default function WithLogoThumb({
         { !skipGatoGraphQLLogo && (
           <>
             <div className={clsx(!isLandscape && "mb-2 md:mb-4", isLandscape &&  'mx-2')}>
-              <Image src={logoImage || Logo} alt="Gato GraphQL logo" width={250} height={175} />
+              <Image src={logoImage || Logo} alt="Logo" width={250} height={175} />
             </div>
             { !skipPlusImage && (
               <div className={svgClassname}>

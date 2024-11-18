@@ -10,7 +10,13 @@ import LogoPic from 'gatoapp/public/assets/Gato-logo-suki-rectangular.png'
 // import TryPROPluginButton from './try-pro-plugin-button'
 import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
 
-export default function Hero() {
+export default function Hero({
+  title,
+  description,
+}: {
+  title: string,
+  description: React.ReactNode
+}) {
   return (
     <section>
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
@@ -35,19 +41,19 @@ export default function Hero() {
           <div className="max-w-3xl mx-auto text-center">
             <div className="-mb-12">
               <div className="flex w-full items-center justify-center pb-1">
-                <Image src={LogoPic} width={250} height={175} alt="Gato GraphQL logo" />
+                <Image src={LogoPic} width={250} height={175} alt="Logo" />
               </div>
             </div>
-            <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4" data-aos="fade-down">Powerful and flexible GraphQL server for WordPress</h1>
-            <p className="text-lg text-slate-300 mb-8" data-aos="fade-down" data-aos-delay="200">Use <strong>Gato GraphQL</strong> to interact with all your data in your <strong>WordPress</strong> site.</p>
+            <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4" data-aos="fade-down">{title}</h1>
+            <p className="text-lg text-slate-300 mb-8" data-aos="fade-down" data-aos-delay="200">{description}</p>
 
             {/* <div className="mx-auto space-y-4" data-aos="fade-down" data-aos-delay="200">
               <ThumbModalVideo
-                title="Click Play to learn what you can do with Gato GraphQL"
+                title="Click Play to learn what you can do with our plugins"
                 thumb={VideoThumb}
                 thumbWidth={768}
                 thumbHeight={432}
-                thumbAlt="Gato GraphQL intro video"
+                thumbAlt="Intro video"
                 video="/videos/GatoGraphQL-intro.mp4"
                 videoWidth={1920}
                 videoHeight={1080}

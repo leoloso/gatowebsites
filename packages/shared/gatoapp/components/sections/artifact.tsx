@@ -135,7 +135,9 @@ export default function ArtifactSection({
         </div>
       </div>
 
-      <Cta />
+      <Cta
+        tryoutProduct='@todo Fix this name!'
+      />
     </section>
   )
 }

@@ -4,7 +4,11 @@ import Particles from './particles'
 import SectionHeader from './section-header'
 import { useAppConfigProvider } from 'gatoapp/app/appconfig-provider'
 
-export default function Cta02() {
+export default function Cta02({
+  tryoutProduct,
+}: {
+  tryoutProduct: string
+}) {
   const { config: AppConfig } = useAppConfigProvider()
   return (
     <section className="relative">
@@ -32,7 +36,7 @@ export default function Cta02() {
           <SectionHeader
             leading='Discover the power'
             title="Try demo now!"
-            description="Play with Gato GraphQL + all extensions in your own sandbox site, for free"
+            description={`Play with ${tryoutProduct} in your own sandbox site, for free`}
             paddingClassname=''
           >
             <div className="mt-8">

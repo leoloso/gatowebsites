@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
-import Cta from 'gatoapp/components/cta'
+import Cta from '@/components/cta'
 import SingleExtension from './single-extension'
 import SingleExtensionPricing from './single-extension-pricing-section'
 
