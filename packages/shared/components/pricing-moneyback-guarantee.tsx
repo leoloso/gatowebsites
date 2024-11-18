@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Illustration from '@gato/public/assets/theme/pricing-illustration.svg'
 import IllustrationTop from '@gato/public/assets/theme/pricing-illustration-top.svg'
 import Particles from '@gato/components/particles'
-import MoneyBackGuaranteePic from '@/public/assets/money-back-guarantee.svg'
+import MoneyBackGuaranteePic from '@gato/public/assets/money-back-guarantee.svg'
 import SectionHeader from './section-header'
 
 export default function PricingMoneyBackGuarantee() {
