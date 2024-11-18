@@ -1,5 +1,5 @@
 import { sortByOrderAndTitle } from '@gato/utils/content/sort';
-import ArtifactsList from './artifacts-list';
+import ArtifactsList from '@gato/components/artifacts-list';
 import { allFeatures } from '@/.contentlayer/generated'
 import DefaultArtifactIcon02 from '@/public/assets/theme/default/artifact-icon-02.png'
 import DefaultArtifactIcon04 from '@/public/assets/theme/default/artifact-icon-04.png'

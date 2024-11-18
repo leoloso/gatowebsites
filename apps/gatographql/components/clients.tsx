@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import Image from 'next/image'
-import Particles from './particles'
+import Particles from '@gato/components/particles'
 
 import Client01 from '@/public/assets/client-logos/grayscale/agendaurbana-logo.png'
 import Client02 from '@/public/assets/client-logos/grayscale/mesym-logo-inverse.png'

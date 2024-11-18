@@ -1,7 +1,7 @@
 
 import { Extension } from '@/.contentlayer/generated';
 import { StaticImageData } from 'next/image'
-import WithLogoThumb from './thumbnails/with-logo-thumb';
+import WithLogoThumb from '@gato/components/thumbnails/with-logo-thumb';
 
 export default function ExtensionThumb({
   extension,

@@ -1,5 +1,5 @@
-import PageHeader from './page-header'
-import StunningBackground from './stunning-background'
+import PageHeader from '@gato/components/page-header'
+import StunningBackground from '@gato/components/stunning-background'
 import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
 
 export default function FeaturesSection() {

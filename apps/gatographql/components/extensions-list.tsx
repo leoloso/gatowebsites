@@ -1,5 +1,5 @@
 import { Extension } from '@/.contentlayer/generated'
-import ArtifactsList from './artifacts-list';
+import ArtifactsList from '@gato/components/artifacts-list';
 import { allExtensions } from '@/.contentlayer/generated'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon-01.png'
 

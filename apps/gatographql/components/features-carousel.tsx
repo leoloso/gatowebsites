@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import Particles from './particles'
-import Highlighter, { HighlighterItem } from './highlighter'
+import Particles from '@gato/components/particles'
+import Highlighter, { HighlighterItem } from '@gato/components/highlighter'
 import { allFeatures } from '@/.contentlayer/generated'
 
 import CarouselImg01 from '@/public/assets/theme/carousel-icon-01.svg'
@@ -15,7 +15,7 @@ import CarouselImg05 from '@/public/assets/theme/carousel-icon-05.svg'
 // Import Swiper
 import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
-import SectionHeader from './section-header'
+import SectionHeader from '@gato/components/section-header'
 import { getFeatureURLPath } from '@/utils/content/application-urls'
 import { sortByOrder } from '@gato/utils/content/sort'
 import AppConfig from '@/app/app.config'

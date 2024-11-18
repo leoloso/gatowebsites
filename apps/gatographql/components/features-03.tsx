@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import Highlighter, { HighlighterItem } from './highlighter'
-import Particles from './particles'
+import Highlighter, { HighlighterItem } from '@gato/components/highlighter'
+import Particles from '@gato/components/particles'
 
 import FeatureImg04 from '@/public/assets/theme/feature-image-04.png'
-import SectionHeader from './section-header'
+import SectionHeader from '@gato/components/section-header'
 
 export default function Features03() {
   return (

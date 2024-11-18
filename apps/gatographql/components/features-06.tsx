@@ -1,6 +1,6 @@
-import Particles from './particles'
+import Particles from '@gato/components/particles'
 
-import SectionHeader from './section-header'
+import SectionHeader from '@gato/components/section-header'
 import Image from 'next/image'
 import Illustration from '@/public/assets/theme/glow-top.svg'
 

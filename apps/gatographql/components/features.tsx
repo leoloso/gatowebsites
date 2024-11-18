@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import Image from 'next/image'
 import { Transition } from '@headlessui/react'
-import Particles from './particles'
+import Particles from '@gato/components/particles'
 import Pic1 from '@/public/assets/theme/heros/remain-in-control-access-control.png'
 import Pic2 from '@/public/assets/theme/heros/remain-in-control-persisted-queries.png'
 import Pic3 from '@/public/assets/theme/heros/remain-in-control-custom-endpoints.png'

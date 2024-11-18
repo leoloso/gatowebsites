@@ -1,6 +1,6 @@
-import SectionHeader from './section-header'
+import SectionHeader from '@gato/components/section-header'
 import Image from 'next/image'
-import Particles from './particles'
+import Particles from '@gato/components/particles'
 import Logo from '@gato/public/assets/Gato-logo-face.png'
 import ComparisonTargetBg01 from '@/public/assets/theme/customer-bg-01.png'
 import ComparisonTargetBg02 from '@/public/assets/theme/customer-bg-02.png'
@@ -14,7 +14,7 @@ import ToLogoImg01 from '@/public/assets/components/automator/logos/airtable-ico
 import ToLogoImg02 from '@/public/assets/components/automator/logos/hubspot-icon.svg'
 import ToLogoImg03 from '@/public/assets/components/automator/logos/zapier-icon.svg'
 import ToLogoImg04 from '@/public/assets/components/automator/logos/mailchimp-bg-icon.svg'
-import Highlighter, { HighlighterItem02 } from './highlighter'
+import Highlighter, { HighlighterItem02 } from '@gato/components/highlighter'
 
 export default function Features07() {
   const automationEntries = [
