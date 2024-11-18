@@ -1,3 +1,5 @@
+'use client'
+
 import { getAllPostTagColors } from 'gatoapp/utils/content/post-tags'
 import clsx from 'clsx'
 import Link from 'next/link'
