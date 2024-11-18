@@ -176,7 +176,7 @@ const Page = defineDocumentType(() => ({
     },
     urlPath: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/pages\/?/, ''),
+      resolve: (doc) => `/${doc._raw.flattenedPath.replace(/pages\/?/, '')}`,
     },
   },
 }))
@@ -244,7 +244,7 @@ const Feature = defineDocumentType(() => ({
     },
     urlPath: {
       type: 'string',
-      resolve: (doc) => `${AppConfig.paths.features}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.features + '/?'), '')}`,
+      resolve: (doc) => `/${AppConfig.paths.features}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.features + '/?'), '')}`,
     },
   },
 }))
@@ -302,7 +302,7 @@ const Doc = defineDocumentType(() => ({
     },
     urlPath: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/?/, ''),
+      resolve: (doc) => `/${doc._raw.flattenedPath.replace(/docs\/?/, '')}`,
     },
   },
 }))
