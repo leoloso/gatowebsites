@@ -21,7 +21,8 @@ export type BlogPost = {
   image?: string | undefined
   /** MDX file body */
   body: MDX
-  slug: string
+  slug: string,
+  urlPath: string,
 }
 
 export type DemoPost = {
@@ -43,7 +44,8 @@ export type DemoPost = {
   integrations?: PostIntegration[] | undefined
   /** MDX file body */
   body: MDX
-  slug: string
+  slug: string,
+  urlPath: string,
 }
 
 export type Doc = {
@@ -60,7 +62,8 @@ export type Doc = {
   body: MDX
   section: string
   topicSlug: string
-  slug: string
+  slug: string,
+  urlPath: string,
 }
 
 export type DocTopic = {
@@ -90,7 +93,8 @@ export type Page = {
   image?: string | undefined
   /** MDX file body */
   body: MDX
-  slug: string
+  slug: string,
+  urlPath: string,
 }
 
 export type Snippet = {
@@ -120,7 +124,8 @@ export type Feature = {
   icon?: string | undefined
   /** MDX file body */
   body: MDX
-  slug: string
+  slug: string,
+  urlPath: string,
 }
 
 export type RelatedGuide = {
