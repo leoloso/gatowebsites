@@ -34,47 +34,38 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <AppConfigProvider
-      config={
-        {
-          meta: {
-            name: AppConfig.meta.name,
-          },
-          emails: {
-            info: AppConfig.emails.info,
-          },
-          domains: {
-            cdn: AppConfig.domains.cdn,
-          },
-          urls: {
-            instawpSandboxDemo: AppConfig.urls.instawpSandboxDemo
-          },
-          services: {
-            newsletter: {
-              formActionURL: AppConfig.services.newsletter.formActionURL,
-              emailFieldName: AppConfig.services.newsletter.emailFieldName,
-            }
-          },
-        }
+  const appConfig = {
+    meta: {
+      name: AppConfig.meta.name,
+    },
+    emails: {
+      info: AppConfig.emails.info,
+    },
+    domains: {
+      cdn: AppConfig.domains.cdn,
+    },
+    urls: {
+      instawpSandboxDemo: AppConfig.urls.instawpSandboxDemo
+    },
+    services: {
+      newsletter: {
+        formActionURL: AppConfig.services.newsletter.formActionURL,
+        emailFieldName: AppConfig.services.newsletter.emailFieldName,
       }
-    >
-      <AppSettingsProvider
-        settings={
-          {
-            campaigns: {
-              enableBlackFriday: true,
-            }
-          }
-        }
-      >
-        <AppStyleProvider
-          style={
-            {
-              lightDarkColorTheme: LightDarkColorTheme.Dark
-            }
-          }
-        >
+    },
+  }
+  const appSettings = {
+    campaigns: {
+      enableBlackFriday: true,
+    }
+  }
+  const appStyle = {
+    lightDarkColorTheme: LightDarkColorTheme.Dark
+  }
+  return (
+    <AppConfigProvider config={ appConfig }>
+      <AppSettingsProvider settings={ appSettings }>
+        <AppStyleProvider style={ appStyle }>
           <AppContentProvider
             allBlogPosts={allBlogPosts}
             allDemoPosts={allDemoPosts}
