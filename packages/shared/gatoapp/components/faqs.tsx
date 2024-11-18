@@ -1,5 +1,6 @@
 import { FAQItem } from "./data/faq-item";
 import SectionHeader from "./section-header";
+import React from 'react'
 
 export default function Faqs({
   faqItems,
