@@ -6,10 +6,8 @@ import { usePathname } from 'next/navigation';
 
 export default function Search({
   showSearchInput = true,
-  enableLightDarkThemeModeToggle = false,
 }: {
   showSearchInput?: boolean,
-  enableLightDarkThemeModeToggle?: boolean
 }) {
 
   const [searchModalOpen, setSearchModalOpen] = useState<boolean>(false)
@@ -53,7 +51,6 @@ export default function Search({
         <SearchModal
           isOpen={searchModalOpen}
           setIsOpen={setSearchModalOpen}
-          enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
         />
       </div>
     </div>

@@ -6,11 +6,7 @@ import ThemeToggle from './theme-toggle'
 import { usePathname } from 'next/navigation'
 import { useAppComponentProvider } from 'gatoapp/app/appcomponent-provider'
 
-export default function HeaderMobile({
-  enableLightDarkThemeModeToggle = false,
-}: {
-  enableLightDarkThemeModeToggle?: boolean
-}) {
+export default function HeaderMobile() {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
 
   const trigger = useRef<HTMLButtonElement>(null)
@@ -48,15 +44,9 @@ export default function HeaderMobile({
 
   return (
     <div className="md:hidden flex items-center ml-4">
-      {/* Lights switch */}
-      {enableLightDarkThemeModeToggle && (
-        <ThemeToggle />
-      )}
-
       {/* Search button */}
       <Search
         showSearchInput={false}
-        enableLightDarkThemeModeToggle={enableLightDarkThemeModeToggle}
       />
 
       {/* Hamburger button */}

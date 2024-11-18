@@ -439,14 +439,12 @@ interface SearchModalProps {
   isOpen: boolean
   setIsOpen: (value: boolean) => void,
   placeholder?: string,
-  enableLightDarkThemeModeToggle?: boolean
 }
 
 export default function SearchModal({
   isOpen,
   setIsOpen,
   placeholder = "Search in all docs…",
-  enableLightDarkThemeModeToggle = false,
 }: SearchModalProps) {  
   const [initialSearchQuery, setInitialSearchQuery] = useState<string>('')
   let initialUiState: { [key: string]: { [key: string]: string }} = {}
@@ -479,7 +477,7 @@ export default function SearchModal({
         />
         <TransitionChild
           as="div"
-          className={`${enableLightDarkThemeModeToggle ? '' : 'dark' } fixed inset-0 z-50 overflow-hidden flex items-start top-20 mb-4 justify-center px-4 sm:px-6`}
+          className={`fixed inset-0 z-50 overflow-hidden flex items-start top-20 mb-4 justify-center px-4 sm:px-6 dark`}
           enter="transition ease-in-out duration-200"
           enterFrom="opacity-0 translate-y-4"
           enterTo="opacity-100 translate-y-0"
