@@ -1,33 +1,33 @@
 import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
 import DefaultFeatureIcon from 'gatoapp/public/assets/theme/default/feature-icon.png'
-import { getArtifactURLPath } from '@/utils/content/application-urls'
-import { Artifact } from '@/utils/content/types'
+import { getFeatureURLPath } from 'gatoapp/utils/content/application-urls'
+import { Feature } from 'gatoapp/types/types'
 import clsx from 'clsx'
 
-type ArtifactCardProps = {
-  artifact: Artifact,
+type FeatureCardProps = {
+  feature: Feature,
   defaultFeatureIcon?: StaticImageData,
   bgClassname?: string,
 }
 
-export default function ArtifactCard({
-  artifact,
+export default function FeatureCard({
+  feature,
   defaultFeatureIcon,
   bgClassname = "bg-gradient-to-tr from-slate-800 to-slate-800/25"
-}: ArtifactCardProps) {
-  const artifactIcon = /*artifact.icon || */defaultFeatureIcon || DefaultFeatureIcon
+}: FeatureCardProps) {
+  const featureIcon = /*feature.icon || */defaultFeatureIcon || DefaultFeatureIcon
   return (
     <div className={clsx(bgClassname, "rounded-3xl border border-slate-800 hover:border-slate-700/60 transition-colors group relative")}>
       <div className="flex flex-col p-5 h-full">
         <div className="flex items-center space-x-3 mb-3">
           <div className="relative">
-            <Image src={artifactIcon} width="40" height="40" alt={artifact.title} />
+            <Image src={featureIcon} width="40" height="40" alt={feature.title} />
           </div>
-          <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href={getArtifactURLPath(artifact)}>{artifact.title}</Link>
+          <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href={getFeatureURLPath(feature)}>{feature.title}</Link>
         </div>
         <div className="grow">
-          <div className="text-sm text-slate-400">{artifact.description}</div>
+          <div className="text-sm text-slate-400">{feature.description}</div>
         </div>
       </div>
     </div>

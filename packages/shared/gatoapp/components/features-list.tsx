@@ -1,7 +1,7 @@
 'use client'
 
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort';
-import ArtifactsList from 'gatoapp/components/artifacts-list';
+import UnstyledFeaturesList from 'gatoapp/components/features-list-unstyled';
 import DefaultFeatureIcon02 from 'gatoapp/public/assets/theme/default/feature-icon-02.png'
 import { useAppContentProvider } from 'gatoapp/app/appcontent-provider'
 
@@ -10,8 +10,8 @@ export default function FeaturesList() {
   const features = allFeatures.sort(sortByOrderAndTitle)
   
   return (
-    <ArtifactsList
-      artifacts={features}
+    <UnstyledFeaturesList
+      features={features}
       showTopbar={false}
       showSearch={false}
       showHeading={false}
