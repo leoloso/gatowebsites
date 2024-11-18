@@ -9,9 +9,7 @@ module.exports = {
      */
     blog: "blog",
     demoPosts: "demos",
-    /**
-     * ----------------------------------------
-     */
+    // ----------------------------------------
 
     highlights: "highlights",
     comparisonPosts: "comparisons",

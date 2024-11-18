@@ -6,13 +6,11 @@ module.exports = {
      */
     blog: "blog",
     demoPosts: "demos",
-    /**
-     * ----------------------------------------
-     */
+    // ----------------------------------------
     
     docs: {
-      pluginsReference: "plugins-reference",
       guides: "guides",
+      pluginsReference: "plugins-reference",
       queryLibrary: "library",
     },
     plugins: "plugins",
