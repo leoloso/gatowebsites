@@ -82,10 +82,10 @@ export default function SupportForm() {
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
-          <label className="block text-gray-300 font-medium mb-1" htmlFor="extensions-license-data">License data <span className="text-red-600">*</span></label>
+          <label className="block text-gray-300 font-medium mb-1" htmlFor="products-license-data">License data <span className="text-red-600">*</span></label>
           <textarea
-            id="extensions-license-data"
-            name="extensions-license-data"
+            id="products-license-data"
+            name="products-license-data"
             rows={4}
             className="form-textarea w-full text-gray-300"
             placeholder="Copy/paste the license data, available in the plugin in the Support form"
