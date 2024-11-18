@@ -1,7 +1,6 @@
 import { Doc, DocTopic, RelatedGuide } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from '@/.contentlayer/generated'
 import AppConfig from '@/app/app.config'
-import { Article } from "./types";
 import { sortByOrder, sortByOrderAndTitle } from "gatoapp/utils/content/sort";
 
 /**
@@ -74,7 +73,7 @@ export function getArchitectureDocuments() {
   return getGroupDocuments(AppConfig.paths.docs.architecture)
 }
 
-export function getPrevNextArticles(articles: Array<Article>, articleIndex: number) {
+export function getPrevNextArticles(articles: Array<any>, articleIndex: number) {
   // Calculate the prev/next items
   const prevArticle = articleIndex === 0 ? undefined : articles[articleIndex - 1]
   const nextArticle = articleIndex === (articles.length - 1) ? undefined : articles[articleIndex + 1]
