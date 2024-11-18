@@ -1,4 +1,4 @@
-import { Page } from '@/.contentlayer/generated'
+import { Page } from '@gato/types/types'
 import { PostMdx } from '@gato/components/mdx/post-mdx'
 import StunningBackground from '@gato/components/stunning-background'
 import Image from 'next/image'
