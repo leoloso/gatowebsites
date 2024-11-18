@@ -1,7 +1,10 @@
+'use client'
+
 import SectionHeader from "./section-header"
-import AppConfig from '@/app/app.config'
+import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function Cta() {
+  const AppConfig = useAppConfigProvider()
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
