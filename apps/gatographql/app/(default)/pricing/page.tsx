@@ -1,7 +1,7 @@
 import PricingSection from './pricing-section'
 import Customers from 'gatoapp/components/customers'
 import Faqs from 'gatoapp/components/faqs'
-import Cta from 'gatoapp/components/cta'
+import Cta from '@/components/cta'
 import PricingMoneyBackGuarantee from 'gatoapp/components/pricing-moneyback-guarantee'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import { getTestimonials } from '@/components/data/testimonials'
@@ -26,9 +26,7 @@ export default function Pricing() {
       <Faqs
         faqItems={faqItems}
       />
-      <Cta
-        tryoutProduct='Gato GraphQL + all extensions'
-      />
+      <Cta />
     </>
   )
 }

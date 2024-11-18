@@ -1,6 +1,6 @@
 import FeaturesSection from '@/components/features-section'
 import FeaturesList from '@/components/features-list'
-import Cta from 'gatoapp/components/cta-02'
+import Cta from '@/components/cta-02'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Features'
@@ -14,9 +14,7 @@ export default function Features() {
     <>
       <FeaturesSection />
       <FeaturesList/>
-      <Cta
-        tryoutProduct='Gato GraphQL + all extensions'
-      />
+      <Cta />
     </>
   )
 }

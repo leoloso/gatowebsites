@@ -1,4 +1,4 @@
-import Cta from 'gatoapp/components/cta'
+import Cta from '@/components/cta'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import ExtensionsSection from './extensions-section'
@@ -41,9 +41,7 @@ export default function Extensions() {
 
       </section>
 
-      <Cta
-        tryoutProduct='Gato GraphQL + all extensions'
-      />
+      <Cta />
     </>
   )
 }
