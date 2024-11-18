@@ -1,6 +1,11 @@
+import { FAQItem } from "./data/faq-item";
 import SectionHeader from "./section-header";
 
-export default function Faqs() {
+export default function Faqs({
+  faqItems,
+}: {
+  faqItems: FAQItem[],
+}) {
   return (
   <section className="relative">
 
@@ -32,53 +37,26 @@ export default function Faqs() {
           {/* Column */}
           <div className="w-full md:w-1/2 space-y-8">
 
-            {/* Item */}
-            <div className="space-y-2">
-              <h4 className="font-semibold">What is Gato GraphQL?</h4>
-              <p className="text-slate-400">Gato GraphQL is a plugin for WordPress that converts the site into a GraphQL server, allowing you to fetch and modify data from WordPress via a GraphQL API.</p>
-            </div>
-
-            {/* Item */}
-            <div className="space-y-2">
-              <h4 className="font-semibold">Can I ask for a refund?</h4>
-              <p className="text-slate-400">If you purchased a Gato GraphQL product and it does not solve your problem, you have 30 days to <a className="text-purple-500 font-medium hover:underline" href="/refund-policy">request a refund</a>.</p>
-            </div>
-
-            {/* Item */}
-            <div className="space-y-2">
-              <h4 className="font-semibold">What's the Life Time Deal?</h4>
-              <p className="text-slate-400">If you purchase the Life Time Deal license, you can request support and download/install product updates forever.</p>
-            </div>
-
-            {/* Item */}
-            <div className="space-y-2">
-              <h4 className="font-semibold">How does Gato GraphQL compare against the WP REST API?</h4>
-              <p className="text-slate-400">Check out the <a className="text-purple-500 font-medium hover:underline" href="/comparisons/gatographql-vs-wp-rest-api">Gato GraphQL vs WP REST API comparison</a>.</p>
-            </div>
+            {/* Items */}
+            {faqItems.filter((faqItem) => faqItem.column === 1).map((faqItem, index) => (
+              <div className="space-y-2" key={index}>
+                <h4 className="font-semibold">{faqItem.question}</h4>
+                <p className="text-slate-400">{faqItem.answer}</p>
+              </div>
+            ))}
 
           </div>
 
           {/* Column */}
           <div className="w-full md:w-1/2 space-y-8">
 
-            {/* Item */}
-            <div className="space-y-2">
-              <h4 className="font-semibold">What are extensions needed for?</h4>
-              {/* <p className="text-slate-400">The Gato GraphQL plugin maps the WordPress schema, and is enough to use GraphQL as an API, such as for building headless sites.</p> */}
-              <p className="text-slate-400">Extensions are needed to enhance the security of public APIs, add HTTP caching to speed up the application, execute multiple queries in a single request, connect to external services, send emails, and others.</p>
-            </div>
-
-            {/* Item */}
-            <div className="space-y-2">
-              <h4 className="font-semibold">What happens if I don't renew the yearly license?</h4>
-              <p className="text-slate-400">If you do not renew the yearly license, you can keep using the plugin, however you won't be able to request support, or download/install product updates.</p>
-            </div>
-
-            {/* Item */}
-            <div className="space-y-2">
-              <h4 className="font-semibold">How does Gato GraphQL compare against WPGraphQL?</h4>
-              <p className="text-slate-400">Check out the <a className="text-purple-500 font-medium hover:underline" href="/comparisons/gatographql-vs-wpgraphql">Gato GraphQL vs WPGraphQL comparison</a>.</p>
-            </div>
+            {/* Items */}
+            {faqItems.filter((faqItem) => faqItem.column === 2).map((faqItem, index) => (
+              <div className="space-y-2" key={index}>
+                <h4 className="font-semibold">{faqItem.question}</h4>
+                <p className="text-slate-400">{faqItem.answer}</p>
+              </div>
+            ))}
 
           </div>
 

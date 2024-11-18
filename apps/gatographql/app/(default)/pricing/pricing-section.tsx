@@ -1,5 +1,5 @@
 import PageHeader from '@gato/components/page-header'
-import ExtensionDropdownPricing from '@gato/components/pricing/extension-dropdown/pricing'
+import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 import StunningBackground from '@gato/components/stunning-background'
 import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
 

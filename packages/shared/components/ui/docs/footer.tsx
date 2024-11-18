@@ -1,11 +1,16 @@
+'use client'
+
 import FooterLogo from '@gato/components/ui/docs/footer-logo'
-import FooterMenu from '../footer-menu'
+import { useAppComponentProvider } from '@gato/app/appcomponent-provider'
+import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function Footer() {
+  const AppComponent = useAppComponentProvider()
+  const AppConfig = useAppConfigProvider()
   return (
     <footer className="border-t border-slate-200 pt-8 dark:border-slate-800">
       <div className="grid sm:grid-cols-8 gap-8 py-8 md:py-12">
-        <FooterMenu columnClassname="col-span-4 lg:col-span-2" />
+        {AppComponent.footer.menu}
       </div>
       <div className="flex flex-col md:flex-row items-center justify-center md:justify-between">
         <div className="mb-4 md:mb-0">
@@ -13,7 +18,7 @@ export default function Footer() {
             {/* Logo */}
             <FooterLogo />
             <div className="text-sm text-slate-500 ml-4">
-              Copyright © Gato GraphQL<span className="md:hidden lg:inline">. All rights reserved.</span>
+              Copyright © {AppConfig.meta.name}<span className="md:hidden lg:inline">. All rights reserved.</span>
             </div>
           </div>
         </div>

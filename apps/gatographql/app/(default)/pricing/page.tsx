@@ -4,6 +4,8 @@ import Faqs from '@gato/components/faqs'
 import Cta from '@gato/components/cta'
 import PricingMoneyBackGuarantee from '@gato/components/pricing-moneyback-guarantee'
 import { createSEOPageTitle } from '@/utils/content/metadata'
+import { getTestimonials } from '@/components/data/testimonials'
+import { getFAQs } from '@/components/data/faqs'
 
 const pageTitle = 'Pricing'
 export const metadata = {
@@ -12,12 +14,18 @@ export const metadata = {
 }
 
 export default function Pricing() {
+  const testimonials = getTestimonials()
+  const faqItems = getFAQs()
   return (
     <>
       <PricingSection />
       <PricingMoneyBackGuarantee />
-      <Customers />
-      <Faqs />
+      <Customers
+        testimonials={testimonials}
+      />
+      <Faqs
+        faqItems={faqItems}
+      />
       <Cta />
     </>
   )

@@ -1,8 +1,11 @@
-import AppConfig from '@/app/app.config'
+'use client'
+
 import Particles from './particles'
 import SectionHeader from './section-header'
+import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function Cta02() {
+  const AppConfig = useAppConfigProvider()
   return (
     <section className="relative">
 

@@ -31,7 +31,16 @@ export default function Contact() {
               description="Send us a message, and we'll contact you shortly."
             />
 
-            <ContactForm />
+            <ContactForm
+              options={[
+                'General',
+                'Request extension',
+                'Sales',
+                'Affiliate Program',
+                'Developer Partnership Program',
+                'Say hi 👋',
+              ]}
+            />
 
           </div>
         </div>

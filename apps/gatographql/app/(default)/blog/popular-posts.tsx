@@ -1,6 +1,6 @@
 import { getBlogPostURLPath } from "@/utils/content/application-urls";
 import { getFeaturedBlogPosts } from "@/utils/content/post";
-import { sortByPublishedAt } from "@/utils/content/sort";
+import { sortByPublishedAt } from '@gato/utils/content/sort';
 import Link from "next/link";
 
 export default function PopularPosts() {

@@ -12,8 +12,8 @@ import PostTags from '@gato/components/post-tags'
 import AppConfig from '@/app/app.config'
 import StunningBackground from '@gato/components/stunning-background'
 import Newsletter from '@gato/components/newsletter'
-import { sortByPublishedAt } from '@/utils/content/sort'
-import generateRssFeed from '@/utils/rss'
+import { sortByPublishedAt } from '@gato/utils/content/sort'
+import generateAppRssFeed from '@/utils/rss'
 import { getBlogPostURL } from '@/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from '@gato/components/schema/blogposting-schema-json-ld';
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
@@ -21,7 +21,7 @@ import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
 
 export async function generateStaticParams() {
   // Generate the RSS feed
-  await generateRssFeed();
+  await generateAppRssFeed();
 
   return allBlogPosts.map((blogPost) => ({
     slug: blogPost.slug,

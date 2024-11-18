@@ -7,7 +7,12 @@ import 'aos/dist/aos.css'
 
 import Footer from '@gato/components/ui/footer'
 import Header from '@gato/components/ui/header'
-import AppSettings from '@/app/app.settings'
+import AppSettings from '@gato/app/app.settings'
+import AppComponentProvider from '@gato/app/appcomponent-provider'
+import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
+import LayoutFooterMenu from './layout-footer-menu'
+import HeaderMenu from '@/components/ui/header-menu'
+import HeaderMobileMenu from '@/components/ui/header-mobile-menu'
 
 export default function DefaultLayout({
   children,
@@ -25,16 +30,26 @@ export default function DefaultLayout({
   })
 
   return (
-    <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip ${AppSettings.enableLightDarkThemeMode ? 'dark' : '' }`}>
-      <Header />
-      
-      <main className="grow">
+    <AppComponentProvider
+      footer={{
+        menu: <LayoutFooterMenu />,
+      }}
+      header={{
+        logoImage: LogoImg,
+        menu: <HeaderMenu />,
+        mobileMenu: <HeaderMobileMenu />,
+      }}
+    >
+      <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip ${AppSettings.enableLightDarkThemeMode ? 'dark' : '' }`}>
+        <Header />
+        
+        <main className="grow">
 
-        {children}
+            {children}
 
-      </main>
-
-      <Footer />
-    </div>
+        </main>
+        <Footer />
+      </div>
+    </AppComponentProvider>
   )
 }

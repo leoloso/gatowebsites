@@ -9,7 +9,8 @@ import { getDocURLPath } from '@/utils/content/application-urls'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import clsx from 'clsx'
 import ArticleNavigation from '@gato/components/ui/article-navigation'
-import { sortByOrderAndTitle } from '@/utils/content/sort'
+import { sortByOrderAndTitle } from '@gato/utils/content/sort'
+import { getTestimonials } from '@/components/data/testimonials'
 
 export async function generateStaticParams() {
   return allFeatures.map((feature) => ({
@@ -65,11 +66,13 @@ export default async function SingleFeature({ params }: {
   const nextFeature = paginationFeatures.next ? paginationFeatures.next as Feature : features[0]
 
   const relatedGuides = feature.relatedGuides ? feature.relatedGuides.map((guide) => getGuideDocument(guide)) : null
+  const testimonials = getTestimonials()
 
   return (
     <ArtifactSection
       artifact={feature}
       sectionURL={`/${AppConfig.paths.features}`}
+      testimonials={testimonials}
       testimonialIndex={1}
       showTestimonial={false}
       defaultArtifactIcon={DefaultArtifactIcon02}

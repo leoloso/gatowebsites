@@ -1,11 +1,12 @@
-import ExtensionDropdownPricing from '@gato/components/pricing/extension-dropdown/pricing'
+import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 import Particles from '@gato/components/particles'
 import PricingMoneyBackGuarantee from '@gato/components/pricing-moneyback-guarantee'
 import RadiantGradient from '@gato/components/radial-gradient'
 import Testimonial from '@gato/components/testimonial'
+import { getTestimonials } from '@/components/data/testimonials'
 
 export default function ExtensionsPricingSection() {
-
+  const testimonials = getTestimonials()
   return (
     <div className="relative">
       <div className="relative pb-12 md:pb-20 pt-16 md:pt-32">
@@ -29,7 +30,9 @@ export default function ExtensionsPricingSection() {
 
       <PricingMoneyBackGuarantee />
       
-      <Testimonial />
+      <Testimonial
+        testimonials={testimonials}
+      />
 
     </div>
   )

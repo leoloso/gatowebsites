@@ -1,5 +1,5 @@
-import FeaturesSection from '@gato/components/features-section'
-import FeaturesList from '@gato/components/features-list'
+import FeaturesSection from '@/components/features-section'
+import FeaturesList from '@/components/features-list'
 import Cta from '@gato/components/cta-02'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 

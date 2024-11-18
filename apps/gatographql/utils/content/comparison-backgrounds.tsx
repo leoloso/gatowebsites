@@ -1,5 +1,5 @@
 import { allComparisonPosts } from '@/.contentlayer/generated'
-import { sortByOrderAndTitle } from './sort'
+import { sortByOrderAndTitle } from '@gato/utils/content/sort'
 import ComparisonTargetBg01 from '@/public/assets/theme/customer-bg-01.png'
 import ComparisonTargetBg02 from '@/public/assets/theme/customer-bg-02.png'
 import ComparisonTargetBg03 from '@/public/assets/theme/customer-bg-03.png'

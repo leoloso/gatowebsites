@@ -1,14 +1,13 @@
 import Image from 'next/image'
 import Particles from './particles'
-import Illustration from '@/public/assets/theme/glow-bottom.svg'
-import LogoPic from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
+import Illustration from '@gato/public/assets/theme/glow-bottom.svg'
+import LogoPic from '@gato/public/assets/Gato-logo-suki-rectangular.png'
 // import PurchasePROPluginButton from './purchase-pro-plugin-button'
 // import DownloadFreePluginButton from './download-free-button'
 // import ThumbModalVideo from './mdx/components/modal-video-thumb'
-// import VideoThumb from '@/public/assets/GatoGraphQL-intro-video-background.png'
+// import VideoThumb from '@gato/public/assets/GatoGraphQL-intro-video-background.png'
 // import BrowseHighlightsButton from './browse-highlights-button'
 // import TryPROPluginButton from './try-pro-plugin-button'
-// import graphQLImage from '@/public/assets/external-logos/graphql-logo.svg'
 import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
 
 export default function Hero() {
@@ -39,9 +38,6 @@ export default function Hero() {
                 <Image src={LogoPic} width={250} height={175} alt="Gato GraphQL logo" />
               </div>
             </div>
-            {/* <div className="flex w-full items-center justify-center">
-              <Image className='inline-block' src={graphQLImage} alt="GraphQL logo" width={90} height={90} />
-            </div> */}
             <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4" data-aos="fade-down">Powerful and flexible GraphQL server for WordPress</h1>
             <p className="text-lg text-slate-300 mb-8" data-aos="fade-down" data-aos-delay="200">Use <strong>Gato GraphQL</strong> to interact with all your data in your <strong>WordPress</strong> site.</p>
 

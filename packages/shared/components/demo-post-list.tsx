@@ -1,10 +1,10 @@
 'use client'
 
 import DemoPostPostItem from '@gato/components/demo-post-item'
-import AppSettings from '@/app/app.settings'
+import AppSettings from '@gato/app/app.settings'
 
 import { useSearchParams } from 'next/navigation';
-import { DemoPost } from '@/.contentlayer/generated';
+import { DemoPost } from '@gato/types/types';
 import clsx from 'clsx';
 
 export default function DemoPostList({

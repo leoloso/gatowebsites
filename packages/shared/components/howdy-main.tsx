@@ -1,6 +1,8 @@
+'use client'
+
 import Image from 'next/image'
-import FounderPic from '@/public/assets/team/Leo-square.jpg'
-import { getSnippet } from '@/utils/content/snippet'
+import FounderPic from '@gato/public/assets/team/Leo-square.jpg'
+import { getSnippet } from '@gato/utils/content/snippet'
 import { SnippetMdx } from './mdx/snippet-mdx'
 
 export default function HowdyMain() {

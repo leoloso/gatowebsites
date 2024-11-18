@@ -1,9 +1,8 @@
 'use client'
 
-import AppConfig from '@/app/app.config'
 import Link from 'next/link'
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
-import AppSettings from '@/app/app.settings'
+import AppSettings from '@gato/app/app.settings'
 
 // import algoliasearch and InstantSearch
 import algoliasearch from "algoliasearch/lite"
@@ -17,7 +16,7 @@ import {
 } from 'react-instantsearch';
 import type { Hit } from 'instantsearch.js';
 
-import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
+import { ALGOLIA_API_CREDENTIALS } from '@gato/data/env/algolia'
 import { SearchObject } from '../search/algolia'
 import { useRef, useState } from 'react'
 import { useSearchBox } from 'react-instantsearch';
@@ -155,7 +154,6 @@ function CustomSearchBox(props: UseSearchBoxProps) {
 
 function CustomHits({...props}) {
   const { hits, results } = useHits<SearchObject>(props);
-  const showPopular = true
   // Group all hits under their section
   let sectionHits : { [key: string]: Hit<SearchObject>[] } = {}
   hits.forEach((hit) => {
@@ -197,8 +195,17 @@ function CustomHits({...props}) {
       )}
       { (!results || results.query.trim() === '') && (
         <>
+          {
+          /**
+           * AppSettings.shoPopularItemsInSearch is set as `false`,
+           * keeping code to re-enable if needed.
+           *
+           * @todo If these links are ever needed, then inject them via props,
+           * to reuse the component by Gato GraphQL and Gato Plugins
+           */
+          }
           {/* Popular */}
-          {showPopular && (
+          {AppSettings.showPopularItemsInSearch && (
             <div>
               <div className="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
               <ul role='listbox'>
@@ -323,24 +330,6 @@ function CustomHits({...props}) {
           <div>
             <div className="text-sm font-medium text-slate-500 px-2 mb-2">Actions</div>
             <ul role='listbox'>
-              <li role='option'>
-                <TabbedHitLink
-                  extraclassname="py-1"
-                  href={AppConfig.urls.instawpSandboxDemo}
-                  target='_blank'
-                >
-                  <svg
-                    className="w-3 h-3 fill-teal-500 shrink-0 mr-3"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 12 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M6 0a6 6 0 1 0 0 12A6 6 0 0 0 6 0Zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
-                  </svg>
-                  <span className="font-medium">Try out Gato GraphQL + all extensions</span>
-                </TabbedHitLink>
-              </li>
               <li role='option'>
                 <TabbedHitLink
                   extraclassname="py-1"

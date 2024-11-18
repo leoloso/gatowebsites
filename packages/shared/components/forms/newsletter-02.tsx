@@ -1,12 +1,13 @@
 'use client';
 
-import AppConfig from '@/app/app.config'
 import { useState } from 'react';
 import Alert from '../mdx/components/alert';
 import clsx from 'clsx';
 import { handleFormSubmit, canSubmitForm, FormStatus } from './form-handler';
+import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function NewsletterForm() {
+  const AppConfig = useAppConfigProvider()
   const formURL = AppConfig.services.newsletter.formActionURL
 
   const [status, setStatus] = useState<FormStatus>('pending');

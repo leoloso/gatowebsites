@@ -4,8 +4,8 @@ import { HighlightMdx } from '@gato/components/mdx/highlight-mdx'
 import WithTitleThumb from '@gato/components/thumbnails/with-title-thumb'
 import { useRef } from 'react'
 import slugify from '@sindresorhus/slugify';
-import AppSettings from '@/app/app.settings'
-import { getCDNURL } from '@/utils/domain';
+import AppSettings from '@gato/app/app.settings'
+import { getCDNURL } from '@gato/utils/domain';
 
 export default function HighlightItem({ ...props }) {
   const videoRef = useRef<HTMLVideoElement>(null)

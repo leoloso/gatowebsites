@@ -1,7 +1,7 @@
 
-import { DemoPost } from '@/.contentlayer/generated';
+import { DemoPost } from '@gato/types/types';
 import { StaticImageData } from 'next/image'
-import WithLogoThumb from './thumbnails/with-logo-thumb';
+import WithLogoThumb from '@gato/components/thumbnails/with-logo-thumb';
 
 export default function DemoPostThumb({
   demoPost,

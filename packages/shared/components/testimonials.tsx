@@ -4,17 +4,22 @@ import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { Transition } from '@headlessui/react'
 import Particles from './particles'
-import { getTestimonials } from './data/testimonials'
+import { TestimonialItem } from './data/testimonial-item'
+import React from 'react'
 
-export default function Testimonials() {
+export default function Testimonials({
+  testimonials,
+}: {
+  testimonials: TestimonialItem[],
+}) {
 
   const [active, setActive] = useState<number>(0)
   const [autorotate, setAutorotate] = useState<boolean>(true)
   const [autorotateTiming] = useState<number>(7000)
 
-  const items = getTestimonials().slice(0, 3)
+  const items = testimonials.slice(0, 3)
 
-  const testimonials = useRef<HTMLDivElement>(null)
+  const testimonialsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!autorotate) return
@@ -25,7 +30,7 @@ export default function Testimonials() {
   }, [active, autorotate])
 
   const heightFix = () => {
-    if (testimonials.current && testimonials.current.parentElement) testimonials.current.parentElement.style.height = `${testimonials.current.clientHeight}px`
+    if (testimonialsRef.current && testimonialsRef.current.parentElement) testimonialsRef.current.parentElement.style.height = `${testimonialsRef.current.clientHeight}px`
   }
 
   useEffect(() => {
@@ -82,7 +87,7 @@ export default function Testimonials() {
             </div>
             {/* Text */}
             <div className="mb-10 transition-all duration-150 delay-300 ease-in-out">
-              <div className="relative flex flex-col h-full" ref={testimonials}>
+              <div className="relative flex flex-col h-full" ref={testimonialsRef}>
 
                 {items.map((item, index) => (
                   <Transition

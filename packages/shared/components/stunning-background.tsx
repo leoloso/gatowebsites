@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Particles from '@gato/components/particles'
-import Illustration from '@/public/assets/theme/page-illustration.svg'
-import Illustration02 from '@/public/assets/theme/page-illustration-02.svg'
+import Illustration from '@gato/public/assets/theme/page-illustration.svg'
+import Illustration02 from '@gato/public/assets/theme/page-illustration-02.svg'
 
 export default function StunningBackground({
   addOpacityLayer = false,

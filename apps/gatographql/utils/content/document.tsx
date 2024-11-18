@@ -1,9 +1,21 @@
 import { Doc, DocTopic, RelatedGuide } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from '@/.contentlayer/generated'
 import AppConfig from '@/app/app.config'
-import { sortByOrder, sortByOrderAndTitle } from "./sort";
 import { Article } from "./types";
+import { sortByOrder, sortByOrderAndTitle } from "@gato/utils/content/sort";
 
+/**
+ * Watch out! These methods are repeated:
+ *
+ * @see packages/shared/utils/content/document.tsx
+ * 
+ * That's because, for some reason, `sortDocuments` fails
+ * at sorting the Doc and DocTopic, and then calling /guides will
+ * redirect to /guides/augment/dynamic-variables instead of
+ * /guides/intro/intro-to-graphql-and-gato-graphql
+ * 
+ * ----------------------------------------------------------------
+ */
 export function getDocTopic(doc: Doc) {
   const docTopic = allDocTopics.find((docTopic) => doc.section === docTopic.section && docTopic.slug === doc.topicSlug);
   if (!docTopic) {
@@ -29,6 +41,14 @@ export function sortDocuments(a: Doc, b: Doc) {
 
   return sortDocumentTopics(getDocTopic(a), getDocTopic(b));
 }
+
+export function getDocumentTopicsBySection(section: string) {
+  return allDocTopics.filter((docTopic) => docTopic.section === section)
+}
+/**
+ * ----------------------------------------------------------------
+ */
+
 
 function getGroupDocuments(docSection: string) {
   return allDocs.filter((doc) => doc.section === docSection)
@@ -62,10 +82,6 @@ export function getPrevNextArticles(articles: Array<Article>, articleIndex: numb
     prev: prevArticle,
     next: nextArticle
   }
-}
-
-export function getDocumentTopicsBySection(section: string) {
-  return allDocTopics.filter((docTopic) => docTopic.section === section)
 }
 
 export function getGuideDocument(relatedGuide: RelatedGuide) {

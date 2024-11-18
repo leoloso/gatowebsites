@@ -4,13 +4,24 @@ import { useState } from 'react';
 import Alert from '../mdx/components/alert';
 import clsx from 'clsx';
 import { handleFormSubmit, canSubmitForm, FormStatus } from './form-handler';
+import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
-export default function ContactForm() {
+export default function ContactForm({
+  options = [
+    'General',
+    'Sales',
+    'Affiliate Program',
+    'Say hi 👋',
+  ]
+}: {
+  options?: string[]
+}) {
   const formURL = '/__forms/contact.html'
 
   const [status, setStatus] = useState<FormStatus>('pending');
   const [error, setError] = useState<string|null>(null);
   const isFormEnabled = canSubmitForm(status)
+  const AppConfig = useAppConfigProvider()
 
   return (
     <form
@@ -25,7 +36,7 @@ export default function ContactForm() {
       <div className="flex flex-wrap -mx-3 mb-8">
         <div className="w-full px-3">
           <div className="text-slate-300">
-            Send us an email to <a className="font-medium text-purple-600 dark:text-purple-300 no-underline hover:no-underline hover:text-purple-500 hover:dark:text-purple-400" href="mailto:info@gatographql.com">info@gatographql.com</a>, or fill the form below.
+            Send us an email to <a className="font-medium text-purple-600 dark:text-purple-300 no-underline hover:no-underline hover:text-purple-500 hover:dark:text-purple-400" href={`mailto:${AppConfig.emails.info}`}>{AppConfig.emails.info}</a>, or fill the form below.
           </div>
         </div>
       </div>
@@ -80,12 +91,9 @@ export default function ContactForm() {
             className="form-select w-full text-gray-300"
             disabled={!isFormEnabled}
           >
-            <option>General</option>
-            <option>Request extension</option>
-            <option>Sales</option>
-            <option>Affiliate Program</option>
-            <option>Developer Partnership Program</option>
-            <option>Say hi 👋</option>
+            {options.map((option, index) => (
+              <option key={index}>{option}</option>
+            ))}
           </select>
         </div>
       </div>
@@ -143,7 +151,7 @@ export default function ContactForm() {
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
           <div className="text-sm text-gray-600 mt-4">
-            By clicking "send" you consent to allow Gato GraphQL to store and process the personal information submitted above.
+            By clicking "send" you consent to allow {AppConfig.meta.name} to store and process the personal information submitted above.
             {/* By clicking "send" you consent to allow Gato GraphQL to store and process the personal information submitted above and agree to our <a className="underline" href="#0">terms and conditions</a> as well as our <a className="underline" href="#0">Privacy Policy</a>. */}
           </div>
         </div>

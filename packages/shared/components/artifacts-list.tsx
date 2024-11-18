@@ -1,7 +1,7 @@
 import ArtifactCard from './artifact-card'
 // import { getArtifactCategories } from '@/utils/content/artifact'
 // import slugify from '@sindresorhus/slugify';
-// import { sortAlphabetically } from '@/utils/content/sort';
+// import { sortAlphabetically } from '@gato/utils/content/sort';
 import { Artifact } from '@/utils/content/types';
 import RadiantGradient from './radial-gradient';
 import { StaticImageData } from 'next/image';

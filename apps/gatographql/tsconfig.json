@@ -31,6 +31,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated"
-  ],
+, "../../packages/shared/utils/rss.tsx"  ],
   "exclude": ["node_modules"]
 }

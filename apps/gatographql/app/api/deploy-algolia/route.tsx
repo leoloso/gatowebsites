@@ -7,7 +7,7 @@ import {
   allFeatures,
   Doc,
 } from '@/.contentlayer/generated'
-import { ALGOLIA_API_CREDENTIALS } from '@/data/env/algolia'
+import { ALGOLIA_API_CREDENTIALS } from '@gato/data/env/algolia'
 import {
   getDocURLPath,
   getExtensionURLPath,

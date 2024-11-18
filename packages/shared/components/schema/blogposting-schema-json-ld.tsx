@@ -1,6 +1,6 @@
 import { BlogPosting, WithContext } from 'schema-dts';
-import { maybeAddDomain } from '@/utils/domain'
-import { DOMAIN } from '@/data/env/domain'
+import { maybeAddDomain } from '@gato/utils/domain'
+import { DOMAIN } from '@gato/data/env/domain'
 import SchemaJsonLdScript from './schema-json-ld';
 
 interface BlogPostingJsonLdProps {

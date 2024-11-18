@@ -1,8 +1,16 @@
 const isProd = process.env.NODE_ENV === 'production'
 const allExtensionsDevShopURL = "https://shop.gatographql.com/buy/5ae830bc-93c5-475c-9370-b3d13bf12619"
+
 module.exports = {
   paths: {
+    /**
+     * Watch out! These values are a duplicate from the shared AppConfig!
+     * @see packages/shared/app/app.config.js
+     */
     blog: "blog",
+    demoPosts: "demos",
+    // ----------------------------------------
+
     highlights: "highlights",
     comparisonPosts: "comparisons",
     docs: {
@@ -13,8 +21,7 @@ module.exports = {
       architecture: "architecture",
     },
     extensions: "extensions",
-    features: "features",
-    demoPosts: "demos"
+    features: "features"
   },
   urls: {
     githubExtensionStarter: "https://github.com/GatoGraphQL/ExtensionStarter",
@@ -72,9 +79,6 @@ module.exports = {
     },
     wpDirectory: "https://wordpress.org/plugins/gatographql/",
     wpDownload: "https://downloads.wordpress.org/plugin/gatographql.latest-stable.zip",
-  },
-  domains: {
-    cdn: 'https://d2nmpy6pnude6z.cloudfront.net',
   },
   shop: {
     licenseDomainNumber: {
@@ -134,5 +138,14 @@ module.exports = {
     shop: {
       affiliateTrackingShopSlug: "gato"
     }
+  },
+  domains: {
+    cdn: 'https://d2nmpy6pnude6z.cloudfront.net',
+  },
+  emails: {
+    info: "info@gatographql.com",
+  },
+  meta: {
+    name: 'Gato GraphQL',
   }
 }

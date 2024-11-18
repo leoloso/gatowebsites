@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import PageSection from '@gato/components/sections/page'
 import { getPage, getPageMetadata } from '@/utils/content/page'
-import { getPageSlugFromPageScriptFile } from '@/utils/content/path'
+import { getPageSlugFromPageScriptFile } from '@gato/utils/content/path'
 import RefundForm from '@gato/components/forms/refund'
 
 // Get the page slug from the folder name

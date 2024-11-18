@@ -1,4 +1,4 @@
-import Logo from '@/public/assets/GatoGraphQL-logo-suki-rectangular.png'
+import Logo from '@gato/public/assets/Gato-logo-suki-rectangular.png'
 import Image from 'next/image'
 import Thumb from './thumb';
 import clsx from 'clsx';

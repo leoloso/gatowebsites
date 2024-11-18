@@ -1,12 +1,17 @@
 import './css/style.css'
 
 import { Nothing_You_Could_Do } from 'next/font/google'
-import Theme from './theme-provider'
-import AppProvider from './app-provider'
+import Theme from '@gato/app/(docs)/theme-provider'
+import AppProvider from '@gato/app/(docs)/app-provider'
 import Sidebar from '@gato/components/ui/docs/sidebar'
 import Header from '@gato/components/ui/header'
 import StunningBackground from '@gato/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
+import LayoutFooterMenu from './layout-footer-menu'
+import HeaderMenu from '@/components/ui/header-menu'
+import HeaderMobileMenu from '@/components/ui/header-mobile-menu'
+import AppComponentProvider from '@gato/app/appcomponent-provider'
+import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
 
 const nycd = Nothing_You_Could_Do({
   subsets: ['latin'],
@@ -30,34 +35,45 @@ export default function RootLayout({
     <div className={`${nycd.variable} text-slate-800 font-[350] bg-white dark:bg-transparent dark:text-slate-200`}>
       <Theme>
         <AppProvider>
-          <div className="flex flex-col min-h-screen overflow-hidden">
+          <AppComponentProvider
+            footer={{
+              menu: <LayoutFooterMenu />,
+            }}
+            header={{
+              logoImage: LogoImg,
+              menu: <HeaderMenu />,
+              mobileMenu: <HeaderMobileMenu />,
+            }}
+          >
+            <div className="flex flex-col min-h-screen overflow-hidden">
 
-            <Header enableLightDarkThemeModeToggle={true} />
+              <Header enableLightDarkThemeModeToggle={true} />
 
-            {/*  Page content */}
-            <main className="grow">
-              <section className="relative">
-                
-                <StunningBackground />
+              {/*  Page content */}
+              <main className="grow">
+                <section className="relative">
+                  
+                  <StunningBackground />
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                  {/* Main content */}
-                  <div>
-                    {/* Sidebar */}
-                    <Sidebar />
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    {/* Main content */}
+                    <div>
+                      {/* Sidebar */}
+                      <Sidebar />
 
-                    {/* Page container */}
-                    <div className="md:grow md:pl-64 lg:pr-6 xl:pr-0">
-                      <div className="pt-24 md:pt-28 pb-8 md:pl-6 lg:pl-12">
-                        {children}
+                      {/* Page container */}
+                      <div className="md:grow md:pl-64 lg:pr-6 xl:pr-0">
+                        <div className="pt-24 md:pt-28 pb-8 md:pl-6 lg:pl-12">
+                          {children}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </section>
-            </main>
+                </section>
+              </main>
 
-          </div>
+            </div>
+          </AppComponentProvider>
         </AppProvider>
       </Theme>
     </div>

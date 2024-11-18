@@ -1,7 +1,9 @@
+'use client'
+
 import Image from 'next/image'
-import FounderPic from '@/public/assets/team/Leo-square.jpg'
+import FounderPic from '@gato/public/assets/team/Leo-square.jpg'
 import SectionHeader from './section-header'
-import { getSnippet } from '@/utils/content/snippet'
+import { getSnippet } from '@gato/utils/content/snippet'
 import { SnippetMdx } from './mdx/snippet-mdx'
 
 export default function Story({

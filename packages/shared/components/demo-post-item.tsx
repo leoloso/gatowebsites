@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import PostDate from '@gato/components/post-date'
-import PostTags from './post-tags'
-import { DemoPost } from '@/.contentlayer/generated'
-import { getDemoPostURLPath } from '@/utils/content/application-urls'
-import DemoPostThumb from './demo-post-thumb'
-import AppConfig from '@/app/app.config'
+import PostTags from '@gato/components/post-tags'
+import { DemoPost } from '@gato/types/types'
+import { getDemoPostURLPath } from '@gato/utils/content/application-urls'
+import DemoPostThumb from '@gato/components/demo-post-thumb'
+import AppConfig from '@gato/app/app.config'
 
 export default function DemoPostPostItem({
   demoPost,
