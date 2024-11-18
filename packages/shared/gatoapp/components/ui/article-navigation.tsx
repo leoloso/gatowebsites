@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { getArticleURLPath } from '@/utils/content/application-urls'
 
 type Article = {
   title: string,

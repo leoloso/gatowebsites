@@ -69,21 +69,3 @@ export function getBlogPostURLPath(post: BlogPost) {
 export function getBlogPostURL(post: BlogPost) {
   return `${DOMAIN}${getBlogPostURLPath(post)}`
 }
-
-export function getArticleURLPath(article: Article) {
-  return isBlogPost(article)
-    ? getBlogPostURLPath(article)
-    : (
-      isDemoPost(article)
-      ? getDemoPostURLPath(article)
-      : (
-        isFeature(article)
-        ? getFeatureURLPath(article)
-        : getDocURLPath(article)
-    )
-  )
-}
-
-export function getArticleURL(article: Article) {
-  return `${DOMAIN}${getArticleURLPath(article)}`
-}
