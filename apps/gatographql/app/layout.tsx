@@ -57,6 +57,12 @@ export default function RootLayout({
           urls={{
             instawpSandboxDemo: AppConfig.urls.instawpSandboxDemo
           }}
+          services={{
+            newsletter: {
+              formActionURL: AppConfig.services.newsletter.formActionURL,
+              emailFieldName: AppConfig.services.newsletter.emailFieldName,
+            }
+          }}
         >
           <AppSettingsProvider
             campaigns={{
