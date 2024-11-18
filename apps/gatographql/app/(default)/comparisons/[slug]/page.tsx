@@ -145,7 +145,9 @@ export default async function SingleComparisonPost({ params }: {
           </div>
         </div>
       </section>
-      <Cta />
+      <Cta
+        tryoutProduct='Gato GraphQL + all extensions'
+      />
     </>
   )
 }

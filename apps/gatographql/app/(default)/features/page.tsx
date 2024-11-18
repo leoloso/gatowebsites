@@ -14,7 +14,9 @@ export default function Features() {
     <>
       <FeaturesSection />
       <FeaturesList/>
-      <Cta />
+      <Cta
+        tryoutProduct='Gato GraphQL + all extensions'
+      />
     </>
   )
 }

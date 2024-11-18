@@ -21,7 +21,9 @@ export default function Home() {
       <FeaturesCarousel />
       <HomeExtensionsSection />
       <Pricing />
-      <Cta />
+      <Cta
+        tryoutProduct='Gato GraphQL + all extensions'
+      />
     </>
   )
 }

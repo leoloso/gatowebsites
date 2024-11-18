@@ -26,7 +26,9 @@ export default function Pricing() {
       <Faqs
         faqItems={faqItems}
       />
-      <Cta />
+      <Cta
+        tryoutProduct='Gato GraphQL + all extensions'
+      />
     </>
   )
 }

@@ -77,7 +77,9 @@ export default async function SingleExtensionPage({ params }: {
         
       </section>
 
-      <Cta />
+      <Cta
+        tryoutProduct='Gato GraphQL + all extensions'
+      />
     </>
   )
 }

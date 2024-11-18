@@ -3,7 +3,11 @@
 import SectionHeader from "./section-header"
 import { useAppConfigProvider } from 'gatoapp/app/appconfig-provider'
 
-export default function Cta() {
+export default function Cta({
+  tryoutProduct,
+}: {
+  tryoutProduct: string
+}) {
   const { config: AppConfig } = useAppConfigProvider()
   return (
     <section>
@@ -30,7 +34,7 @@ export default function Cta() {
           <SectionHeader
             leading='Discover the power'
             title="Try demo now!"
-            description="Play with Gato GraphQL + all extensions in your own sandbox site, for free"
+            description={`Play with ${tryoutProduct} in your own sandbox site, for free`}
           >
             <div className="mt-8">
               <a className="btn text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group" href={AppConfig.urls.instawpSandboxDemo} target='_blank'>

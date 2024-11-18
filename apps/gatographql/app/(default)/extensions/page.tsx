@@ -41,7 +41,9 @@ export default function Extensions() {
 
       </section>
 
-      <Cta />
+      <Cta
+        tryoutProduct='Gato GraphQL + all extensions'
+      />
     </>
   )
 }

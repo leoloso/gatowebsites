@@ -28,7 +28,9 @@ export default async function SinglePage() {
       <PageSection
         page={page}
       />
-      <Cta />
+      <Cta
+        tryoutProduct='Gato GraphQL + all extensions'
+      />
     </>
   )
 }

@@ -13,7 +13,9 @@ export default function Howdy() {
     <>
       <HowdyHero />
       <HowdyMain />
-      <Cta />
+      <Cta
+        tryoutProduct='Gato GraphQL + all extensions'
+      />
     </>
   )
 }

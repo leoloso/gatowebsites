@@ -37,7 +37,9 @@ export default function ComparisonsPage() {
         </div>
 
       </section>
-      <Cta />
+      <Cta
+        tryoutProduct='Gato GraphQL + all extensions'
+      />
     </>
   )
 }
