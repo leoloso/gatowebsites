@@ -16,7 +16,7 @@ module.exports = {
     plugins: "plugins",
   },
   urls: {
-    instawpSandboxDemo: "https://app.instawp.io/launch?t=gatographql-demo&d=v2&via=leonardo",
+    instawpSandboxDemo: "@todo Complete here!!!",
     shopAffiliateProgram: "https://shop.gatoplugins.com/affiliates",
     shopClientOrders: "https://app.lemonsqueezy.com/my-orders",
     shopCustomerPortal: "https://shop.gatoplugins.com/billing",
@@ -79,5 +79,14 @@ module.exports = {
     shop: {
       affiliateTrackingShopSlug: "gato"
     }
+  },
+  domains: {
+    cdn: '@todo Complete here!!!',
+  },
+  emails: {
+    info: "info@gatoplugins.com",
+  },
+  meta: {
+    name: 'Gato Plugins',
   }
 }
