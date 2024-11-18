@@ -8,7 +8,7 @@ import {
 } from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
 import AppConstants from "gatoapp/app/app.constants";
-import { Article, Artifact, isDemoPost, isExtension, isBlogPost, isFeature } from "./types";
+import { Article, isDemoPost, isExtension, isBlogPost, isFeature } from "./types";
 import { DOMAIN } from 'gatoapp/data/env/domain'
 
 export function getExtensionURLPath(extension: Extension) {
@@ -25,14 +25,6 @@ export function getFeatureURLPath(feature: Feature) {
 
 export function getFeatureURL(feature: Feature) {
   return `${DOMAIN}${getFeatureURLPath(feature)}`
-}
-
-export function getArtifactURLPath(artifact: Artifact) {
-  return isExtension(artifact) ? getExtensionURLPath(artifact) : getFeatureURLPath(artifact)
-}
-
-export function getArtifactURL(artifact: Artifact) {
-  return `${DOMAIN}${getArtifactURLPath(artifact)}`
 }
 
 export function getExtensionDocumentationURLPath(extension: Extension) {

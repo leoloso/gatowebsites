@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
 import DefaultFeatureIcon from 'gatoapp/public/assets/theme/default/feature-icon.png'
-import { ArtifactMdx } from 'gatoapp/components/mdx/artifact-mdx'
+import { FeatureMdx } from 'gatoapp/components/mdx/feature-mdx'
 import StunningBackground from 'gatoapp/components/stunning-background'
-import { Artifact } from '@/utils/content/types'
+import { Feature } from 'gatoapp/types/types'
 import { TestimonialItem } from '../data/testimonial-item'
 import WithTitleThumb from '../thumbnails/with-title-thumb'
 import clsx from 'clsx'
@@ -22,7 +22,7 @@ export default function FeatureSection({
   thumbLeading,
   showTestimonial=true,
 }: {
-  artifact: Artifact,
+  artifact: Feature,
   sectionURL: string,
   children: React.ReactNode,
   widgetChildren?: React.ReactNode,
@@ -46,7 +46,7 @@ export default function FeatureSection({
 
           <div className="md:flex md:justify-between">
 
-            {/* Artifact content */}
+            {/* Feature content */}
             <div className="md:grow pb-12 md:pb-20">
               <div className="max-w-[720px]">
 
@@ -80,8 +80,8 @@ export default function FeatureSection({
 
                       <h1 className="sr-only">{artifact.title}</h1>
 
-                      {/* Artifact content */}
-                      <ArtifactMdx code={artifact.body.code} />
+                      {/* Feature content */}
+                      <FeatureMdx code={artifact.body.code} />
                     </article>
 
                     { showTestimonial && (
@@ -116,7 +116,7 @@ export default function FeatureSection({
                       <div className="text-center mb-5">
                         <div className="mb-4">
                           <div className="relative inline-flex">
-                            <Image src={/*artifact.icon || */defaultFeatureIcon || DefaultFeatureIcon} width={80} height={80} alt="Artifact icon" />
+                            <Image src={/*artifact.icon || */defaultFeatureIcon || DefaultFeatureIcon} width={80} height={80} alt="Feature icon" />
                           </div>
                         </div>
                         {widgetChildren}
