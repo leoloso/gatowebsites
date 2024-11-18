@@ -43,11 +43,11 @@ export default function Hero() {
 
             {/* <div className="mx-auto space-y-4" data-aos="fade-down" data-aos-delay="200">
               <ThumbModalVideo
-                title="Click Play to learn what you can do with Gato GraphQL"
+                title="Click Play to learn what you can do with our plugins"
                 thumb={VideoThumb}
                 thumbWidth={768}
                 thumbHeight={432}
-                thumbAlt="Gato GraphQL intro video"
+                thumbAlt="Intro video"
                 video="/videos/GatoGraphQL-intro.mp4"
                 videoWidth={1920}
                 videoHeight={1080}
