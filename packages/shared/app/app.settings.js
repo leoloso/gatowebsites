@@ -4,6 +4,7 @@ module.exports = {
   enableLightDarkThemeMode: false,
   useLemonSqueezyOverlay: true,
   postsPerPage: {
-    blog: 12
+    blog: 12,
+    demos: 12,
   }
 }
