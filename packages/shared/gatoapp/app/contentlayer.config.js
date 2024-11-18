@@ -220,13 +220,6 @@ const Feature = defineDocumentType(() => ({
       type: 'list',
       of: RelatedGuide,
     },
-    category: {
-      type: 'enum',
-      options: [
-        'Standard',
-      ],
-      required: true,
-    },
     order: {
       type: 'number',
       required: true,
