@@ -2,7 +2,7 @@ import { Doc, DocTopic, RelatedGuide } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from '@/.contentlayer/generated'
 import AppConfig from '@/app/app.config'
 import { Article } from "./types";
-import { sortByOrder, sortByOrderAndTitle } from "@gato/utils/content/sort";
+import { sortByOrder, sortByOrderAndTitle } from "gatoapp/utils/content/sort";
 
 /**
  * Watch out! These methods are repeated:

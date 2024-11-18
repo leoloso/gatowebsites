@@ -1,7 +1,7 @@
 import { Extension } from '@/.contentlayer/generated'
-import StunningBackground from '@gato/components/stunning-background'
-import ArtifactsCarousel from '@gato/components/artifacts-carousel'
-import PageHeader from '@gato/components/page-header'
+import StunningBackground from 'gatoapp/components/stunning-background'
+import ArtifactsCarousel from 'gatoapp/components/artifacts-carousel'
+import PageHeader from 'gatoapp/components/page-header'
 import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon-01.png'
 
 export default function ExtensionsSection({ extensions }: {

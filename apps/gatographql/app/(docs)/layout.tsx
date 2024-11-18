@@ -1,16 +1,16 @@
 import './css/style.css'
 
 import { Nothing_You_Could_Do } from 'next/font/google'
-import Theme from '@gato/app/(docs)/theme-provider'
-import AppProvider from '@gato/app/(docs)/app-provider'
-import Sidebar from '@gato/components/ui/docs/sidebar'
-import Header from '@gato/components/ui/header'
-import StunningBackground from '@gato/components/stunning-background'
+import Theme from 'gatoapp/app/(docs)/theme-provider'
+import AppProvider from 'gatoapp/app/(docs)/app-provider'
+import Sidebar from 'gatoapp/components/ui/docs/sidebar'
+import Header from 'gatoapp/components/ui/header'
+import StunningBackground from 'gatoapp/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import LayoutFooterMenu from './layout-footer-menu'
 import HeaderMenu from '@/components/ui/header-menu'
 import HeaderMobileMenu from '@/components/ui/header-mobile-menu'
-import AppComponentProvider from '@gato/app/appcomponent-provider'
+import AppComponentProvider from 'gatoapp/app/appcomponent-provider'
 import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
 
 const nycd = Nothing_You_Could_Do({

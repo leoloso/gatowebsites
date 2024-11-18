@@ -1,15 +1,15 @@
 import './css/style.css'
 
 import { Inter } from 'next/font/google'
-import AppSettings from '@gato/app/app.settings'
+import AppSettings from 'gatoapp/app/app.settings'
 import PlausibleProvider from 'next-plausible'
-import LemonSqueezyScriptProvider from '@gato/components/scripts/lemonsqueezy'
-import { DOMAIN } from '@gato/data/env/domain'
-import InitializeShop from '@gato/components/shop/initialize-shop'
+import LemonSqueezyScriptProvider from 'gatoapp/components/scripts/lemonsqueezy'
+import { DOMAIN } from 'gatoapp/data/env/domain'
+import InitializeShop from 'gatoapp/components/shop/initialize-shop'
 import AppConfig from '@/app/app.config'
-import AppConfigProvider from '@gato/app/appconfig-provider'
-import AppSettingsProvider from '@gato/app/appsettings-provider'
-import AppContentProvider from '@gato/app/appcontent-provider'
+import AppConfigProvider from 'gatoapp/app/appconfig-provider'
+import AppSettingsProvider from 'gatoapp/app/appsettings-provider'
+import AppContentProvider from 'gatoapp/app/appcontent-provider'
 import { allBlogPosts, allDemoPosts, allDocs, allDocTopics, allPages, allSnippets } from '@/.contentlayer/generated'
 
 const inter = Inter({

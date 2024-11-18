@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import Particles from '@gato/components/particles'
-import Highlighter, { HighlighterItem02 } from '@gato/components/highlighter'
+import Particles from 'gatoapp/components/particles'
+import Highlighter, { HighlighterItem02 } from 'gatoapp/components/highlighter'
 import { ComparisonPost, allComparisonPosts } from '@/.contentlayer/generated'
-import { sortByOrderAndTitle } from '@gato/utils/content/sort'
+import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
 import { getComparisonPostURLPath } from '@/utils/content/application-urls'
 

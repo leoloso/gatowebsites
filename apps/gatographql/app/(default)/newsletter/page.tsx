@@ -1,6 +1,6 @@
-import StunningBackground from '@gato/components/stunning-background'
-import Newsletter from '@gato/components/newsletter'
-import PageHeader from '@gato/components/page-header'
+import StunningBackground from 'gatoapp/components/stunning-background'
+import Newsletter from 'gatoapp/components/newsletter'
+import PageHeader from 'gatoapp/components/page-header'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Newsletter'

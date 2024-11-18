@@ -1,7 +1,7 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation';
-import Thumb from '@gato/components/thumbnails/thumb'
+import Thumb from 'gatoapp/components/thumbnails/thumb'
 import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
 import Image from 'next/image'
 

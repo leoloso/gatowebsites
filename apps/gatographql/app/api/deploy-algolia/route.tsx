@@ -7,7 +7,7 @@ import {
   allFeatures,
   Doc,
 } from '@/.contentlayer/generated'
-import { ALGOLIA_API_CREDENTIALS } from '@gato/data/env/algolia'
+import { ALGOLIA_API_CREDENTIALS } from 'gatoapp/data/env/algolia'
 import {
   getDocURLPath,
   getExtensionURLPath,
@@ -17,7 +17,7 @@ import {
   getComparisonPostURLPath,
 } from "@/utils/content/application-urls"
 import { isAdminUser } from "@/utils/admin"
-import { SearchObject, Sections } from "@gato/components/search/algolia"
+import { SearchObject, Sections } from "gatoapp/components/search/algolia"
 import AppSettings from "@/app/app.settings"
 import {
   getGuideDocuments,

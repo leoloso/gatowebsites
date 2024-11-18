@@ -1,15 +1,15 @@
 "use client";
 
-import { getShopURL, getShopAnchorClassname } from "@gato/utils/shop/shop"
+import { getShopURL, getShopAnchorClassname } from "gatoapp/utils/shop/shop"
 import { allExtensions, Extension } from "@/.contentlayer/generated"
-import { sortByOrderAndTitle } from '@gato/utils/content/sort'
+import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 
 import { useState } from "react";
-import PricingTier from "@gato/components/pricing/product-dropdown/pricing-tier";
+import PricingTier from "gatoapp/components/pricing/product-dropdown/pricing-tier";
 import AppConfig from "@/app/app.config"
 import clsx from "clsx";
-import FullWidthDropdown from "@gato/components/standard/dropdown-full-width";
-import Tooltip from "@gato/components/standard/tooltip";
+import FullWidthDropdown from "gatoapp/components/standard/dropdown-full-width";
+import Tooltip from "gatoapp/components/standard/tooltip";
 
 export default function ExtensionDropdownPricing({
   fixedExtension,

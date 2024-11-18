@@ -1,7 +1,7 @@
-import PageHeader from '@gato/components/page-header'
+import PageHeader from 'gatoapp/components/page-header'
 import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
-import StunningBackground from '@gato/components/stunning-background'
-import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
+import StunningBackground from 'gatoapp/components/stunning-background'
+import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
 
 export default function PricingSection() {
   return (

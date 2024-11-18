@@ -1,5 +1,5 @@
 import { allBlogPosts, allDemoPosts } from '@/.contentlayer/generated'
-import { getPostTags, getAllPostTagColors } from '@gato/utils/content/post-tags'
+import { getPostTags, getAllPostTagColors } from 'gatoapp/utils/content/post-tags'
 
 export function getAllPostTags(): Array<string> {
   return [

@@ -5,8 +5,8 @@ import {
   getQueryLibraryDocuments,
   getPrevNextArticles,
 } from '@/utils/content/document'
-import DocSection from '@gato/components/sections/doc'
-import { topicTitleSVG2 } from '@gato/components/ui/docs/topic-title'
+import DocSection from 'gatoapp/components/sections/doc'
+import { topicTitleSVG2 } from 'gatoapp/components/ui/docs/topic-title'
 import { Doc } from '@/.contentlayer/generated'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 

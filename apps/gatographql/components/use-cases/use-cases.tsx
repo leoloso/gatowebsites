@@ -1,6 +1,6 @@
 "use client";
 
-import Particles from '@gato/components/particles'
+import Particles from 'gatoapp/components/particles'
 import { useState, Fragment } from "react";
 import { TabGroup, Tab, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { Transition } from "@headlessui/react";

@@ -1,5 +1,5 @@
 import FooterMenu from '@/components/ui/footer-menu'
-import FooterLogo from '@gato/components/ui/footer-logo'
+import FooterLogo from 'gatoapp/components/ui/footer-logo'
 import AppConfig from '@/app/app.config'
 
 export default function LayoutFooterMenu() {  

@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import ModalVideoTransition from '@gato/components/mdx/components/modal-video-transition'
-import ExtensionThumb from '@gato/components/extension-thumb'
+import ModalVideoTransition from 'gatoapp/components/mdx/components/modal-video-transition'
+import ExtensionThumb from 'gatoapp/components/extension-thumb'
 import { Extension } from '@/.contentlayer/generated'
-import ModalVideoTitle from '@gato/components/mdx/components/modal-video-title'
-import ModalVideoButton from '@gato/components/mdx/components/modal-video-button'
+import ModalVideoTitle from 'gatoapp/components/mdx/components/modal-video-title'
+import ModalVideoButton from 'gatoapp/components/mdx/components/modal-video-button'
 
 interface ModalVideoProps {
   extension: Extension

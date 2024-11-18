@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Dropdown from '@gato/components/utils/dropdown'
+import Dropdown from 'gatoapp/components/utils/dropdown'
 import AppConfig from '@/app/app.config'
 
 export default function HeaderMenu() {

@@ -1,10 +1,10 @@
 import { allExtensions } from '@/.contentlayer/generated'
 import Link from 'next/link'
 import { getExtensionURLPath } from '@/utils/content/application-urls'
-import { sortByOrderAndTitle } from '@gato/utils/content/sort'
+import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 import ExtensionThumb from '@/components/extension-thumb'
 import clsx from 'clsx'
-import LinkModalVideo from '@gato/components/mdx/components/modal-video-link'
+import LinkModalVideo from 'gatoapp/components/mdx/components/modal-video-link'
 import ExtensionsModalVideo from '@/components/video/modal-video-extensions'
 
 export const svgEffect1 = 1;
