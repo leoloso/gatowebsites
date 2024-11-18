@@ -8,7 +8,6 @@ import {
 } from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
 import AppConstants from "gatoapp/app/app.constants";
-import { Article, isDemoPost, isBlogPost, isFeature } from "./types";
 import { DOMAIN } from 'gatoapp/data/env/domain'
 
 export function getExtensionURLPath(extension: Extension) {
