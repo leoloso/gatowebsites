@@ -47,7 +47,7 @@ export default function RootLayout({
           >
             <div className="flex flex-col min-h-screen overflow-hidden">
 
-              <Header enableLightDarkThemeModeToggle={true} />
+              <Header enableLightDarkThemeModeToggle={false} />
 
               {/*  Page content */}
               <main className="grow">
