@@ -9,5 +9,5 @@ export function getAllPostTags(): Array<string> {
 }
 
 export function getPostTagColors(colors: Array<string>) {
-  return getAllPostTagColors(getAllPostTags(), colors)
+  return getAllPostTagColors(colors, getAllPostTags())
 }

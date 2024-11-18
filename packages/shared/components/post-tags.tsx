@@ -1,4 +1,4 @@
-import { getPostTagColors } from '@/utils/content/post-tags'
+import { getAllPostTagColors } from '@gato/utils/content/post-tags'
 import clsx from 'clsx'
 import Link from 'next/link'
 
@@ -51,7 +51,7 @@ export default function PostTags(
       'bg-pink-600 hover:bg-pink-500',
       'bg-rose-600 hover:bg-rose-500',
     ]
-    const postTagColors = getPostTagColors(colors)
+    const postTagColors = getAllPostTagColors(colors)
     return `text-gray-100 ${postTagColors[tag.toLowerCase()]}`
   }
 
