@@ -13,7 +13,10 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <Hero />
+      <Hero
+        title="Powerful and flexible GraphQL server for WordPress"
+        description={<span>Use <strong>Gato GraphQL</strong> to interact with all your data in your <strong>WordPress</strong> site.</span>}
+      />
       <UseCases />
       <FeaturesCarousel />
       <HomeExtensionsSection />
