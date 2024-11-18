@@ -1,9 +1,12 @@
+'use client'
+
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort';
 import ArtifactsList from 'gatoapp/components/artifacts-list';
-import { allFeatures } from '@/.contentlayer/generated'
 import DefaultArtifactIcon02 from '@/public/assets/theme/default/artifact-icon-02.png'
+import { useAppContentProvider } from 'gatoapp/app/appcontent-provider'
 
 export default function FeaturesList() {
+  const { allFeatures } = useAppContentProvider()
   const features = allFeatures.sort(sortByOrderAndTitle)
   
   return (
