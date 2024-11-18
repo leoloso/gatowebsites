@@ -21,6 +21,7 @@ export default function FeatureSection({
   bgClassname,
   thumbLeading,
   showTestimonial=true,
+  tryoutProduct,
 }: {
   feature: Feature,
   sectionURL: string,
@@ -32,6 +33,7 @@ export default function FeatureSection({
   bgClassname?: string,
   thumbLeading?: string,
   showTestimonial?: boolean,
+  tryoutProduct: string
 }) {
   const testimonial = testimonials[testimonialIndex]
   return (
@@ -136,7 +138,7 @@ export default function FeatureSection({
       </div>
 
       <Cta
-        tryoutProduct='@todo Fix this name!'
+        tryoutProduct={tryoutProduct}
       />
     </section>
   )
