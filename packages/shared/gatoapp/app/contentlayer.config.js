@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import AppConfig from './app.config'
+import AppConstants from './app.constants'
 
 const BlogPost = defineDocumentType(() => ({
   name: 'BlogPost',
@@ -50,7 +51,11 @@ const BlogPost = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.blog + '/?'), ''),
-    },    
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => `${AppConfig.paths.blog}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.blog + '/?'), '')}`,
+    },
   },
 }))
 
@@ -110,7 +115,11 @@ const DemoPost = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.demoPosts + '/?'), ''),
-    },    
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => `${AppConfig.paths.demoPosts}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.demoPosts + '/?'), '')}`,
+    },
   },
 }))
 
@@ -165,7 +174,11 @@ const Page = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/pages\/?/, ''),
-    },    
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => `/${doc._raw.flattenedPath.replace(/pages\/?/, '')}`,
+    },
   },
 }))
 
@@ -229,7 +242,11 @@ const Feature = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.features + '/?'), ''),
-    },    
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => `/${AppConfig.paths.features}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.features + '/?'), '')}`,
+    },
   },
 }))
 
@@ -283,7 +300,18 @@ const Doc = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\//, ''),
-    },  
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => {
+        const maybeURLPath = `/${doc._raw.flattenedPath.replace(/docs\/?/, '')}`
+        const topicSlug = doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1')
+        if (topicSlug === AppConstants.implicitDocTopicSlug) {
+          return maybeURLPath.replace(`/${AppConstants.implicitDocTopicSlug}/`, '/')
+        }
+        return maybeURLPath
+      }
+    },
   },
 }))
 
