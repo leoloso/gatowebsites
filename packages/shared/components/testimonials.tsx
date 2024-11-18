@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Transition } from '@headlessui/react'
 import Particles from './particles'
 import { TestimonialItem } from './data/testimonial-item'
+import React from 'react'
 
 export default function Testimonials({
   testimonials,
