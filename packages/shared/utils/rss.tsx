@@ -4,7 +4,7 @@ import { sortByPublishedAt } from '@gato/utils/content/sort';
 import { DOMAIN } from '@gato/data/env/domain';
 import slugify from '@sindresorhus/slugify';
 import { maybeAddDomain } from '@gato/utils/domain';
-import { BlogPost } from '@gato/utils/content/types';
+import { BlogPost } from '@gato/types/types';
 import { getBlogPostURL } from './content/application-urls';
 
 export default async function generateRssFeed(

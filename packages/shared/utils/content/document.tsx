@@ -1,6 +1,6 @@
 'use client'
 
-import { Doc, DocTopic } from '@gato/utils/content/types';
+import { Doc, DocTopic } from '@gato/types/types';
 import { sortByOrder, sortByOrderAndTitle } from '@gato/utils/content/sort';
 import { useAppContentProvider } from '@gato/app/appcontent-provider'
 

@@ -1,4 +1,4 @@
-import { Snippet } from '@gato/utils/content/types';
+import { Snippet } from '@gato/types/types';
 import { useAppContentProvider } from '@gato/app/appcontent-provider'
 
 export function getSnippet(slug: string): Snippet {

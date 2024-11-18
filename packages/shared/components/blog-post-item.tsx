@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from '@gato/components/post-date'
-import { BlogPost } from '@/.contentlayer/generated'
-import { getBlogPostURLPath } from '@/utils/content/application-urls'
+import { BlogPost } from '@gato/types/types'
+import { getBlogPostURLPath } from '@gato/utils/content/application-urls'
 import PostTags from './post-tags'
-import AppConfig from '@/app/app.config'
+import AppConfig from '@gato/app/app.config'
 
 export default function BlogPostItem({ post }: {
   post: BlogPost

@@ -1,4 +1,4 @@
-import { Doc, BlogPost } from '@gato/utils/content/types';
+import { Doc, BlogPost } from '@gato/types/types';
 import AppConstants from "@gato/app/app.constants";
 import AppConfig from '@gato/app/app.config'
 import { DOMAIN } from '@gato/data/env/domain'

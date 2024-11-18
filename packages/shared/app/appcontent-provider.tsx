@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { createContext, useContext } from 'react'
-import { BlogPost, Doc, DocTopic, Page, Snippet } from '@gato/utils/content/types';
+import { BlogPost, Doc, DocTopic, Page, Snippet } from '@gato/types/types';
 
 type ContextProps = {
   allBlogPosts: BlogPost[],
