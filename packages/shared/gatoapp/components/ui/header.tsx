@@ -3,7 +3,6 @@
 import Logo from './logo'
 import HeaderMobile from './header-mobile'
 import Search from './search'
-import ThemeToggle from 'gatoapp/components/ui/theme-toggle'
 import { useAppComponentProvider } from 'gatoapp/app/appcomponent-provider'
 
 export default function Header() {
