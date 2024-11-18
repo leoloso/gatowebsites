@@ -9,9 +9,9 @@ import AppConfig from '@/app/app.config'
 import AppConfigProvider from 'gatoapp/app/appconfig-provider'
 import AppSettingsProvider from 'gatoapp/app/appsettings-provider'
 import AppStyleProvider from 'gatoapp/app/appstyle-provider'
-import { LightDarkColorTheme } from 'gatoapp/app/appstyle-provider'
 import AppContentProvider from 'gatoapp/app/appcontent-provider'
 import { allBlogPosts, allDemoPosts, allDocs, allDocTopics, allFeatures, allPages, allSnippets } from '@/.contentlayer/generated'
+import { LightDarkColorTheme } from 'gatoapp/utils/style/light-dark-theme-mode'
 import { getBackgroundColorStyle } from 'gatoapp/utils/style/light-dark-theme-mode'
 
 const inter = Inter({
@@ -85,7 +85,7 @@ export default function RootLayout({
                 />
                 <InitializeShop />
               </head>
-              <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${getBackgroundColorStyle()}`}>
+              <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${getBackgroundColorStyle(appStyle.lightDarkColorTheme)}`}>
                 {children}
               </body>
             </html>

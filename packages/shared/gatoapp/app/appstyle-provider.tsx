@@ -2,12 +2,7 @@
 
 import React from 'react'
 import { createContext, useContext } from 'react'
-
-export const enum LightDarkColorTheme {
-  Light = 'light',
-  Dark = 'dark',
-  Configurable = 'configurable',
-}
+import { LightDarkColorTheme } from 'gatoapp/utils/style/light-dark-theme-mode'
 
 type ContextProps = {
   style: {
