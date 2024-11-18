@@ -1,19 +1,20 @@
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import AboutIllustration from '@/public/assets/theme/about-illustration.svg'
 import Icon from '@/public/assets/theme/about-icon.png'
 import StunningBackground from '@gato/components/stunning-background'
 import WithLogoThumb from '@gato/components/thumbnails/with-logo-thumb'
-import CircledEqualsSvgImage from '@/public/assets/theme/equals-circled.svg'
 import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
-import WordPressLogo from '@/public/assets/external-logos/wordpress-logo.svg'
-import GraphQLLogo from '@/public/assets/external-logos/graphql-logo.svg'
 
 export default function HeroAbout({
   includeAnimation = true,
-  includeThumbnail = false
+  includeThumbnail = false,
+  targetImageSources,
+  svgImage,
 }: {
   includeAnimation?: boolean,
   includeThumbnail?: boolean,
+  targetImageSources: Array<string>,
+  svgImage?: StaticImageData,
 }) {
   return (
     <section className="relative">
@@ -45,10 +46,10 @@ export default function HeroAbout({
               <div className="mb-8 aspect-video">
                 <WithLogoThumb
                   bgClassname="h-full bg-gradient-to-tr from-slate-900 to-blue-900 rounded border-transparent rounded-2xl shadow-2xl"
-                  targetImageSources={[WordPressLogo, GraphQLLogo]}
+                  targetImageSources={targetImageSources}
                   reverseItems={true}
                   logoImage={Logo}
-                  svgImage={CircledEqualsSvgImage}
+                  svgImage={svgImage}
                   svgClassname="px-8 opacity-70"
                   isLandscape={true}
                 />
