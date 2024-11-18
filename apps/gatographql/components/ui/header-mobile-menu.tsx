@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import AppConfig from '@/app/app.config'
-import TryPROPluginButton from '@gato/components/try-pro-plugin-button'
+import TryPROPluginButton from '@/components/try-pro-plugin-button'
 
 export default function HeaderMobileMenu() {
   return (
