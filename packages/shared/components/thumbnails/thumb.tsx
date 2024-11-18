@@ -1,6 +1,6 @@
 
 import Particles from '@gato/components/particles'
-// import Illustration from '@/public/assets/theme/cta-illustration.svg'
+// import Illustration from '@gato/public/assets/theme/cta-illustration.svg'
 import clsx from 'clsx';
 
 export default function Thumb({

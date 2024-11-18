@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from 'next/image'
-import AboutIllustration from '@/public/assets/theme/about-illustration.svg'
-import Icon from '@/public/assets/theme/about-icon.png'
+import AboutIllustration from '@gato/public/assets/theme/about-illustration.svg'
+import Icon from '@gato/public/assets/theme/about-icon.png'
 import StunningBackground from '@gato/components/stunning-background'
 import WithLogoThumb from '@gato/components/thumbnails/with-logo-thumb'
 

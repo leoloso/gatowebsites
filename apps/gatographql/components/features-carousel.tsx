@@ -6,11 +6,11 @@ import Particles from '@gato/components/particles'
 import Highlighter, { HighlighterItem } from '@gato/components/highlighter'
 import { allFeatures } from '@/.contentlayer/generated'
 
-import CarouselImg01 from '@/public/assets/theme/carousel-icon-01.svg'
-import CarouselImg02 from '@/public/assets/theme/carousel-icon-02.svg'
-import CarouselImg03 from '@/public/assets/theme/carousel-icon-03.svg'
-import CarouselImg04 from '@/public/assets/theme/carousel-icon-04.svg'
-import CarouselImg05 from '@/public/assets/theme/carousel-icon-05.svg'
+import CarouselImg01 from '@gato/public/assets/theme/carousel-icon-01.svg'
+import CarouselImg02 from '@gato/public/assets/theme/carousel-icon-02.svg'
+import CarouselImg03 from '@gato/public/assets/theme/carousel-icon-03.svg'
+import CarouselImg04 from '@gato/public/assets/theme/carousel-icon-04.svg'
+import CarouselImg05 from '@gato/public/assets/theme/carousel-icon-05.svg'
 
 // Import Swiper
 import Swiper, { Navigation } from 'swiper'

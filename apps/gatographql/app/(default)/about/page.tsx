@@ -5,7 +5,7 @@ import AboutPageSchemaJsonLdScript from '@gato/components/schema/aboutpage-schem
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import WordPressLogo from '@/public/assets/external-logos/wordpress-logo.svg'
 import GraphQLLogo from '@/public/assets/external-logos/graphql-logo.svg'
-import CircledEqualsSvgImage from '@/public/assets/theme/equals-circled.svg'
+import CircledEqualsSvgImage from '@gato/public/assets/theme/equals-circled.svg'
 import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
 
 const pageTitle = 'About us'

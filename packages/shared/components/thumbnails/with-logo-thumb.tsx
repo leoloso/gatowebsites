@@ -1,5 +1,5 @@
 import Logo from '@gato/public/assets/Gato-logo-suki-rectangular.png'
-import PlusImage from '@/public/assets/theme/plus.svg'
+import PlusImage from '@gato/public/assets/theme/plus.svg'
 import Image, { StaticImageData } from 'next/image'
 import clsx from 'clsx';
 import Thumb from './thumb';

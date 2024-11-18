@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import NotFoundImage from '@/public/assets/theme/404.jpg'
+import NotFoundImage from '@gato/public/assets/theme/404.jpg'
 import StunningBackground from '@gato/components/stunning-background';
 import { createSEOPageTitle } from '@/utils/content/metadata'
 

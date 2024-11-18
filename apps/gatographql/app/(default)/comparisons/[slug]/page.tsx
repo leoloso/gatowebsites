@@ -14,7 +14,7 @@ import Logo from '@gato/public/assets/Gato-logo-suki.png'
 import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
 import RelatedPosts from './related-posts'
 import Particles from '@gato/components/particles'
-import VsImage from '@/public/assets/theme/vs.svg'
+import VsImage from '@gato/public/assets/theme/vs.svg'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
 
