@@ -1,6 +1,6 @@
 import { Mdx } from './mdx'
 
-export function ArtifactMdx({
+export function FeatureMdx({
   code,
 }: {
   code: string,

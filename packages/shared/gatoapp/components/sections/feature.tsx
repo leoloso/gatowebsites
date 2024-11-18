@@ -1,34 +1,34 @@
 import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
-import DefaultArtifactIcon from 'gatoapp/public/assets/theme/default/artifact-icon.png'
-import { ArtifactMdx } from 'gatoapp/components/mdx/artifact-mdx'
+import DefaultFeatureIcon from 'gatoapp/public/assets/theme/default/feature-icon.png'
+import { FeatureMdx } from 'gatoapp/components/mdx/feature-mdx'
 import StunningBackground from 'gatoapp/components/stunning-background'
-import { Artifact } from '@/utils/content/types'
+import { Feature } from 'gatoapp/types/types'
 import { TestimonialItem } from '../data/testimonial-item'
 import WithTitleThumb from '../thumbnails/with-title-thumb'
 import clsx from 'clsx'
 import Cta from '../cta-02'
 import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
 
-export default function ArtifactSection({
-  artifact,
+export default function FeatureSection({
+  feature,
   sectionURL,
   children,
   widgetChildren,
   testimonials,
   testimonialIndex = 0,
-  defaultArtifactIcon,
+  defaultFeatureIcon,
   bgClassname,
   thumbLeading,
   showTestimonial=true,
 }: {
-  artifact: Artifact,
+  feature: Feature,
   sectionURL: string,
   children: React.ReactNode,
   widgetChildren?: React.ReactNode,
   testimonials: TestimonialItem[],
   testimonialIndex?: number,
-  defaultArtifactIcon?: StaticImageData,
+  defaultFeatureIcon?: StaticImageData,
   bgClassname?: string,
   thumbLeading?: string,
   showTestimonial?: boolean,
@@ -46,7 +46,7 @@ export default function ArtifactSection({
 
           <div className="md:flex md:justify-between">
 
-            {/* Artifact content */}
+            {/* Feature content */}
             <div className="md:grow pb-12 md:pb-20">
               <div className="max-w-[720px]">
 
@@ -70,7 +70,7 @@ export default function ArtifactSection({
 
                       <div className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
                         <WithTitleThumb
-                          title={artifact.title}
+                          title={feature.title}
                           leading={thumbLeading}
                           // titleClassname="h1"
                           extraThumbClassname="rounded-2xl"
@@ -78,10 +78,10 @@ export default function ArtifactSection({
                         />
                       </div>
 
-                      <h1 className="sr-only">{artifact.title}</h1>
+                      <h1 className="sr-only">{feature.title}</h1>
 
-                      {/* Artifact content */}
-                      <ArtifactMdx code={artifact.body.code} />
+                      {/* Feature content */}
+                      <FeatureMdx code={feature.body.code} />
                     </article>
 
                     { showTestimonial && (
@@ -116,7 +116,7 @@ export default function ArtifactSection({
                       <div className="text-center mb-5">
                         <div className="mb-4">
                           <div className="relative inline-flex">
-                            <Image src={/*artifact.icon || */defaultArtifactIcon || DefaultArtifactIcon} width={80} height={80} alt="Artifact icon" />
+                            <Image src={/*feature.icon || */defaultFeatureIcon || DefaultFeatureIcon} width={80} height={80} alt="Feature icon" />
                           </div>
                         </div>
                         {widgetChildren}
