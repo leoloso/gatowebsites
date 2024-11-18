@@ -7,7 +7,6 @@ import { Feature } from 'gatoapp/types/types'
 import { TestimonialItem } from '../data/testimonial-item'
 import WithTitleThumb from '../thumbnails/with-title-thumb'
 import clsx from 'clsx'
-import Cta from '../cta-02'
 import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
 
 export default function FeatureSection({
@@ -21,6 +20,7 @@ export default function FeatureSection({
   bgClassname,
   thumbLeading,
   showTestimonial=true,
+  tryoutProduct,
 }: {
   feature: Feature,
   sectionURL: string,
@@ -32,6 +32,7 @@ export default function FeatureSection({
   bgClassname?: string,
   thumbLeading?: string,
   showTestimonial?: boolean,
+  tryoutProduct: string
 }) {
   const testimonial = testimonials[testimonialIndex]
   return (
@@ -134,10 +135,6 @@ export default function FeatureSection({
 
         </div>
       </div>
-
-      <Cta
-        tryoutProduct='@todo Fix this name!'
-      />
     </section>
   )
 }
