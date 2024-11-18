@@ -1,10 +1,15 @@
 module.exports = {
   paths: {
     /**
-     * Watch out! This value is a duplicate from the shared AppConfig!
+     * Watch out! These values are a duplicate from the shared AppConfig!
      * @see packages/shared/app/app.config.js
      */
     blog: "blog",
+    demoPosts: "demos",
+    /**
+     * ----------------------------------------
+     */
+    
     docs: {
       pluginsReference: "plugins-reference",
       guides: "guides",
