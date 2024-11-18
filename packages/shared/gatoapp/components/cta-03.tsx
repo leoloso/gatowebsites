@@ -1,7 +1,11 @@
+'use client';
+
 import NewsletterForm from "./forms/newsletter-02";
 import SectionHeader from "./section-header";
+import { useAppConfigProvider } from 'gatoapp/app/appconfig-provider'
 
 export default function Cta03() {
+  const { config: AppConfig } = useAppConfigProvider()
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -27,7 +31,7 @@ export default function Cta03() {
           <SectionHeader
             leading='Never miss an update'
             title='Stay connected with us'
-            description='Find out about our latest product updates as we continue improving Gato GraphQL.'
+            description={`Find out about our latest product updates as we continue improving ${AppConfig.meta.name}.`}
           >
             <NewsletterForm />
           </SectionHeader>
