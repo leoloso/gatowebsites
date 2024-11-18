@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { Extension } from '@/.contentlayer/generated'
-import ExtensionThumb from '@gato/components/extension-thumb'
+import ExtensionThumb from '@/components/extension-thumb'
 
 export default function ExtensionCoverItem({
   extension,
