@@ -35,72 +35,72 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>{/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}{/* Comment: Added for the Docs template */}
-      <head>
-        {/* @see https://github.com/4lejandrito/next-plausible?tab=readme-ov-file#usage */}
-        <PlausibleProvider domain="gatographql.com" />
-
-        <LemonSqueezyScriptProvider
-          affiliateTrackingShopSlug={AppConfig.services.shop.affiliateTrackingShopSlug}
-        />
-        <InitializeShop />
-      </head>
-      <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
-        <AppConfigProvider
-          config={
+    <AppConfigProvider
+      config={
+        {
+          meta: {
+            name: AppConfig.meta.name,
+          },
+          emails: {
+            info: AppConfig.emails.info,
+          },
+          domains: {
+            cdn: AppConfig.domains.cdn,
+          },
+          urls: {
+            instawpSandboxDemo: AppConfig.urls.instawpSandboxDemo
+          },
+          services: {
+            newsletter: {
+              formActionURL: AppConfig.services.newsletter.formActionURL,
+              emailFieldName: AppConfig.services.newsletter.emailFieldName,
+            }
+          },
+        }
+      }
+    >
+      <AppSettingsProvider
+        settings={
+          {
+            campaigns: {
+              enableBlackFriday: true,
+            }
+          }
+        }
+      >
+        <AppStyleProvider
+          style={
             {
-              meta: {
-                name: AppConfig.meta.name,
-              },
-              emails: {
-                info: AppConfig.emails.info,
-              },
-              domains: {
-                cdn: AppConfig.domains.cdn,
-              },
-              urls: {
-                instawpSandboxDemo: AppConfig.urls.instawpSandboxDemo
-              },
-              services: {
-                newsletter: {
-                  formActionURL: AppConfig.services.newsletter.formActionURL,
-                  emailFieldName: AppConfig.services.newsletter.emailFieldName,
-                }
-              },
+              lightDarkColorTheme: LightDarkColorTheme.Dark
             }
           }
         >
-          <AppSettingsProvider
-            settings={
-              {
-                campaigns: {
-                  enableBlackFriday: true,
-                }
-              }
-            }
+          <AppContentProvider
+            allBlogPosts={allBlogPosts}
+            allDemoPosts={allDemoPosts}
+            allDocs={allDocs}
+            allDocTopics={allDocTopics}
+            allFeatures={allFeatures}
+            allPages={allPages}
+            allSnippets={allSnippets}
           >
-            <AppStyleProvider
-              style={
-                {
-                  lightDarkColorTheme: LightDarkColorTheme.Dark
-                }
-              }
-            >
-              <AppContentProvider
-                allBlogPosts={allBlogPosts}
-                allDemoPosts={allDemoPosts}
-                allDocs={allDocs}
-                allDocTopics={allDocTopics}
-                allFeatures={allFeatures}
-                allPages={allPages}
-                allSnippets={allSnippets}
-              >
+            <html lang="en" className="scroll-smooth" suppressHydrationWarning>{/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}{/* Comment: Added for the Docs template */}
+              <head>
+                {/* @see https://github.com/4lejandrito/next-plausible?tab=readme-ov-file#usage */}
+                <PlausibleProvider domain="gatographql.com" />
+
+                <LemonSqueezyScriptProvider
+                  affiliateTrackingShopSlug={AppConfig.services.shop.affiliateTrackingShopSlug}
+                />
+                <InitializeShop />
+              </head>
+              <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
                 {children}
-              </AppContentProvider>
-            </AppStyleProvider>
-          </AppSettingsProvider>
-        </AppConfigProvider>
-      </body>
-    </html>
+              </body>
+            </html>
+          </AppContentProvider>
+        </AppStyleProvider>
+      </AppSettingsProvider>
+    </AppConfigProvider>
   )
 }
