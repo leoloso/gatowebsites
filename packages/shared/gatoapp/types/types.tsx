@@ -103,6 +103,36 @@ export type Snippet = {
   slug: string
 }
 
+export type Feature = {
+  // /** File path relative to `contentDirPath` */
+  // _id: string
+  // _raw: Local.RawDocumentData
+  type: 'Feature'
+  title: string
+  seoTitle?: string | undefined
+  description: string
+  seoDescription?: string | undefined
+  featured?: boolean | undefined
+  relatedGuides?: RelatedGuide[] | undefined
+  category: 'Standard'
+  order: number
+  image?: string | undefined
+  icon?: string | undefined
+  /** MDX file body */
+  body: MDX
+  slug: string
+}
+
+export type RelatedGuide = {
+  // /** File path relative to `contentDirPath` */
+  // _id: string
+  // _raw: Local.RawDocumentData
+  type: 'RelatedGuide'
+  topic: string
+  slug: string
+
+}
+
 export type ShopURLByLicense = {
   /** File path relative to `contentDirPath` */
   // _id: string
