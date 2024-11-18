@@ -2,7 +2,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import { allFeatures, Feature } from '@/.contentlayer/generated'
 import { notFound } from 'next/navigation'
 import AppConfig from '@/app/app.config'
-import ArtifactSection from 'gatoapp/components/sections/artifact'
+import FeatureSection from 'gatoapp/components/sections/artifact'
 import DefaultArtifactIcon02 from 'gatoapp/public/assets/theme/default/artifact-icon-02.png'
 import { getGuideDocument, getPrevNextArticles } from '@/utils/content/document'
 import { getDocURLPath } from '@/utils/content/application-urls'
@@ -69,7 +69,7 @@ export default async function SingleFeature({ params }: {
   const testimonials = getTestimonials()
 
   return (
-    <ArtifactSection
+    <FeatureSection
       artifact={feature}
       sectionURL={`/${AppConfig.paths.features}`}
       testimonials={testimonials}
@@ -108,6 +108,6 @@ export default async function SingleFeature({ params }: {
           </div>
         </li>
       </ul>
-    </ArtifactSection>
+    </FeatureSection>
   )
 }

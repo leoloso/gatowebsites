@@ -10,7 +10,7 @@ import clsx from 'clsx'
 import Cta from '../cta-02'
 import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
 
-export default function ArtifactSection({
+export default function FeatureSection({
   artifact,
   sectionURL,
   children,
