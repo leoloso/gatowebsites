@@ -70,7 +70,7 @@ export default async function SingleFeature({ params }: {
 
   return (
     <FeatureSection
-      artifact={feature}
+      feature={feature}
       sectionURL={`/${AppConfig.paths.features}`}
       testimonials={testimonials}
       testimonialIndex={1}

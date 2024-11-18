@@ -11,7 +11,7 @@ import Cta from '../cta-02'
 import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
 
 export default function FeatureSection({
-  artifact,
+  feature,
   sectionURL,
   children,
   widgetChildren,
@@ -22,7 +22,7 @@ export default function FeatureSection({
   thumbLeading,
   showTestimonial=true,
 }: {
-  artifact: Feature,
+  feature: Feature,
   sectionURL: string,
   children: React.ReactNode,
   widgetChildren?: React.ReactNode,
@@ -70,7 +70,7 @@ export default function FeatureSection({
 
                       <div className="bg-slate-700/20 border border-slate-300/10 p-4 rounded-3xl mb-8">
                         <WithTitleThumb
-                          title={artifact.title}
+                          title={feature.title}
                           leading={thumbLeading}
                           // titleClassname="h1"
                           extraThumbClassname="rounded-2xl"
@@ -78,10 +78,10 @@ export default function FeatureSection({
                         />
                       </div>
 
-                      <h1 className="sr-only">{artifact.title}</h1>
+                      <h1 className="sr-only">{feature.title}</h1>
 
                       {/* Feature content */}
-                      <FeatureMdx code={artifact.body.code} />
+                      <FeatureMdx code={feature.body.code} />
                     </article>
 
                     { showTestimonial && (
@@ -116,7 +116,7 @@ export default function FeatureSection({
                       <div className="text-center mb-5">
                         <div className="mb-4">
                           <div className="relative inline-flex">
-                            <Image src={/*artifact.icon || */defaultFeatureIcon || DefaultFeatureIcon} width={80} height={80} alt="Feature icon" />
+                            <Image src={/*feature.icon || */defaultFeatureIcon || DefaultFeatureIcon} width={80} height={80} alt="Feature icon" />
                           </div>
                         </div>
                         {widgetChildren}
