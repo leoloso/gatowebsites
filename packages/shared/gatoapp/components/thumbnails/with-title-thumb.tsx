@@ -37,7 +37,7 @@ export default function WithTitleThumb({
     >
       <div className={thumbClassname}>
         <div className={logoClassname}>
-          <Image src={Logo} alt="Gato GraphQL logo" width={250} height={175} />
+          <Image src={Logo} alt="Logo" width={250} height={175} />
         </div>
         {leading && (
           <h4 className={clsx('text-center', leadingClassname)} data-aos={titleAOS}>
