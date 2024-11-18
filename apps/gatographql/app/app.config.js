@@ -138,5 +138,14 @@ module.exports = {
     shop: {
       affiliateTrackingShopSlug: "gato"
     }
+  },
+  domains: {
+    cdn: 'https://d2nmpy6pnude6z.cloudfront.net',
+  },
+  emails: {
+    info: "info@gatographql.com",
+  },
+  meta: {
+    name: 'Gato GraphQL',
   }
 }

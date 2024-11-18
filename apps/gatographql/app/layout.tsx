@@ -18,9 +18,8 @@ const inter = Inter({
   display: 'swap'
 })
 
-const appName = 'Gato GraphQL'
 export const metadata = {
-  title: appName,
+  title: 'Gato GraphQL',
   description: 'Powerful and flexible GraphQL server for WordPress',
   
   // metadataBase: first check if env var from Netlify is defined. If not, from Vercel.
@@ -47,13 +46,13 @@ export default function RootLayout({
       <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
         <AppConfigProvider
           meta={{
-            name: appName,
+            name: AppConfig.meta.name,
           }}
           emails={{
-            info: "info@gatographql.com",
+            info: AppConfig.emails.info,
           }}
           domains={{
-            cdn: 'https://d2nmpy6pnude6z.cloudfront.net',
+            cdn: AppConfig.domains.cdn,
           }}
           urls={{
             instawpSandboxDemo: AppConfig.urls.instawpSandboxDemo
