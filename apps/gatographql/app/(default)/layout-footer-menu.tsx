@@ -1,10 +1,9 @@
 import FooterMenu from '@/components/ui/footer-menu'
 import FooterLogo from '@gato/components/ui/footer-logo'
-import { useAppConfigProvider } from '@gato/app/appconfig-provider'
+import AppConfig from '@/app/app.config'
 
 export default function LayoutFooterMenu() {  
-  const AppConfig = useAppConfigProvider()
-
+  
   return (
     <FooterMenu>
       {/* 1st block */}

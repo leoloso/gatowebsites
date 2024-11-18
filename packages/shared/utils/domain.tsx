@@ -9,6 +9,6 @@ export function maybeAddDomain(urlOrPath: string) {
 }
 
 export function getCDNURL(path: string) {
-  const AppConfig = useAppConfigProvider()
+  const { config: AppConfig } = useAppConfigProvider()
   return `${AppConfig.domains.cdn}${path}`
 }

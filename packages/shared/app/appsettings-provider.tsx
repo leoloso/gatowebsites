@@ -4,14 +4,18 @@ import React from 'react'
 import { createContext, useContext } from 'react'
 
 type ContextProps = {
-  campaigns: {
-    enableBlackFriday: boolean,
+  settings: {
+    campaigns: {
+      enableBlackFriday: boolean,
+    },
   },
 }
 
 const AppSettingsContext = createContext<ContextProps>({
-  campaigns: {
-    enableBlackFriday: false,
+  settings: {
+    campaigns: {
+      enableBlackFriday: false,
+    },
   },
 })
 
@@ -21,12 +25,12 @@ export interface AppSettingsProviderInterface extends ContextProps {
 
 export default function AppSettingsProvider({
   children,
-  campaigns,
+  settings,
 }: AppSettingsProviderInterface) {  
   return (
     <AppSettingsContext.Provider
       value={{
-        campaigns: campaigns,
+        settings,
       }}
     >
       {children}

@@ -12,7 +12,7 @@ export default function SupportForm() {
   const [status, setStatus] = useState<FormStatus>('pending');
   const [error, setError] = useState<string|null>(null);
   const isFormEnabled = canSubmitForm(status)
-  const AppConfig = useAppConfigProvider()
+  const { config: AppConfig } = useAppConfigProvider()
 
   return (
     <form

@@ -16,7 +16,7 @@ export default function CampaignBanner({
   discountCode,
   endDate,
 }: CampaignBannerInterface) {
-  const AppSettings = useAppSettingsProvider()
+  const { settings: AppSettings } = useAppSettingsProvider()
 
   return (
     <div className={clsx("mb-16", marginTopClassname)}>
