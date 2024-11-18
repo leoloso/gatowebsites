@@ -63,9 +63,9 @@ export default function RootLayout({
     lightDarkColorTheme: LightDarkColorTheme.Dark
   }
   return (
-    <AppConfigProvider config={ appConfig }>
-      <AppSettingsProvider settings={ appSettings }>
-        <AppStyleProvider style={ appStyle }>
+    <AppConfigProvider config={appConfig}>
+      <AppSettingsProvider settings={appSettings}>
+        <AppStyleProvider style={appStyle}>
           <AppContentProvider
             allBlogPosts={allBlogPosts}
             allDemoPosts={allDemoPosts}
