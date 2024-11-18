@@ -18,6 +18,7 @@ import { getBlogPostURL } from '@/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from 'gatoapp/components/schema/blogposting-schema-json-ld';
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
+import AppSettings from 'gatoapp/app/app.settings'
 
 export async function generateStaticParams() {
   // Generate the RSS feed
@@ -88,7 +89,9 @@ export default async function SinglePost({ params }: {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
-            <CampaignBanner />
+            { AppSettings.addCampaignBannerToBlog && (
+              <CampaignBanner />
+            )}
 
             <div className="max-w-3xl mx-auto lg:max-w-none">
 
