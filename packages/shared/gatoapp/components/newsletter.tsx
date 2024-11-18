@@ -1,10 +1,14 @@
+'use client'
+
 import NewsletterForm from "./forms/newsletter"
+import { useAppConfigProvider } from 'gatoapp/app/appconfig-provider'
 
 export default function Newsletter({
   label = "Tutorials, updates, & more"
 }: {
   label?: string
 }) {
+  const { config: AppConfig } = useAppConfigProvider()
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -44,7 +48,7 @@ export default function Newsletter({
               {/* CTA content */}
               <div className="text-center lg:text-left lg:max-w-xl">
                 <h3 className="h3 text-white mb-2">{label}</h3>
-                <p className="text-purple-300 text-lg mb-6">Receive timely updates as we keep improving Gato GraphQL.</p>
+                <p className="text-purple-300 text-lg mb-6">Receive timely updates as we keep improving {AppConfig.meta.name}.</p>
 
                 {/* CTA form */}
                 <NewsletterForm />
