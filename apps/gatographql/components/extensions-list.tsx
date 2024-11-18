@@ -13,7 +13,7 @@ export default function ExtensionsList({
       artifacts={extensions}
       showTopbar={true}
       showSearch={false}
-      defaultArtifactIcon={DefaultFeatureIcon}
+      defaultFeatureIcon={DefaultFeatureIcon}
       bgClassname="bg-gradient-to-tr from-slate-800 to-violet-800/25"
     />
   )

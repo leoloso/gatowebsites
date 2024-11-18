@@ -7,16 +7,16 @@ import clsx from 'clsx'
 
 type ArtifactCardProps = {
   artifact: Artifact,
-  defaultArtifactIcon?: StaticImageData,
+  defaultFeatureIcon?: StaticImageData,
   bgClassname?: string,
 }
 
 export default function ArtifactCard({
   artifact,
-  defaultArtifactIcon,
+  defaultFeatureIcon,
   bgClassname = "bg-gradient-to-tr from-slate-800 to-slate-800/25"
 }: ArtifactCardProps) {
-  const artifactIcon = /*artifact.icon || */defaultArtifactIcon || DefaultFeatureIcon
+  const artifactIcon = /*artifact.icon || */defaultFeatureIcon || DefaultFeatureIcon
   return (
     <div className={clsx(bgClassname, "rounded-3xl border border-slate-800 hover:border-slate-700/60 transition-colors group relative")}>
       <div className="flex flex-col p-5 h-full">

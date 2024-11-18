@@ -12,12 +12,12 @@ Swiper.use([Navigation])
 
 type ArtifactsSectionProps = {
   artifacts: Array<Artifact>
-  defaultArtifactIcon?: StaticImageData,
+  defaultFeatureIcon?: StaticImageData,
 }
 
 export default function ArtifactsCarousel({
   artifacts,
-  defaultArtifactIcon,
+  defaultFeatureIcon,
 }: ArtifactsSectionProps) {
 
   const [swiperInitialized, setSwiperInitialized] = useState<boolean>(false)
@@ -57,7 +57,7 @@ export default function ArtifactsCarousel({
             <div key={extensionIndex} className="swiper-slide h-auto">
               <ArtifactCard
                 artifact={extension}
-                defaultArtifactIcon={defaultArtifactIcon}
+                defaultFeatureIcon={defaultFeatureIcon}
                 bgClassname="bg-gradient-to-tr from-slate-800 to-blue-800/25"
               />
             </div>

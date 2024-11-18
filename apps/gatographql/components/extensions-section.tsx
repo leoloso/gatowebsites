@@ -24,7 +24,7 @@ export default function ExtensionsSection({ extensions }: {
 
           <ArtifactsCarousel
             artifacts={ extensions }
-            defaultArtifactIcon={DefaultFeatureIcon}
+            defaultFeatureIcon={DefaultFeatureIcon}
           />
 
         </div>

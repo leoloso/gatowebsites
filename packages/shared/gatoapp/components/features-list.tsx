@@ -15,7 +15,7 @@ export default function FeaturesList() {
       showTopbar={false}
       showSearch={false}
       showHeading={false}
-      defaultArtifactIcon={DefaultFeatureIcon02}
+      defaultFeatureIcon={DefaultFeatureIcon02}
       bgClassname="bg-gradient-to-tr from-slate-800 to-purple-800/25"
     />
   )

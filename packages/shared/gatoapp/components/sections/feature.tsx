@@ -17,7 +17,7 @@ export default function FeatureSection({
   widgetChildren,
   testimonials,
   testimonialIndex = 0,
-  defaultArtifactIcon,
+  defaultFeatureIcon,
   bgClassname,
   thumbLeading,
   showTestimonial=true,
@@ -28,7 +28,7 @@ export default function FeatureSection({
   widgetChildren?: React.ReactNode,
   testimonials: TestimonialItem[],
   testimonialIndex?: number,
-  defaultArtifactIcon?: StaticImageData,
+  defaultFeatureIcon?: StaticImageData,
   bgClassname?: string,
   thumbLeading?: string,
   showTestimonial?: boolean,
@@ -116,7 +116,7 @@ export default function FeatureSection({
                       <div className="text-center mb-5">
                         <div className="mb-4">
                           <div className="relative inline-flex">
-                            <Image src={/*artifact.icon || */defaultArtifactIcon || DefaultFeatureIcon} width={80} height={80} alt="Artifact icon" />
+                            <Image src={/*artifact.icon || */defaultFeatureIcon || DefaultFeatureIcon} width={80} height={80} alt="Artifact icon" />
                           </div>
                         </div>
                         {widgetChildren}

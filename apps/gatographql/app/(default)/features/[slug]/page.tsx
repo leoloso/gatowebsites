@@ -75,7 +75,7 @@ export default async function SingleFeature({ params }: {
       testimonials={testimonials}
       testimonialIndex={1}
       showTestimonial={false}
-      defaultArtifactIcon={DefaultFeatureIcon02}
+      defaultFeatureIcon={DefaultFeatureIcon02}
       bgClassname={clsx("bg-gradient-to-tr", "from-slate-900 to-fuchsia-900")}
       thumbLeading='Feature:'
     >
