@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Particles from 'gatoapp/components/particles'
 import Highlighter, { HighlighterItem } from 'gatoapp/components/highlighter'
-import { allFeatures } from '@/.contentlayer/generated'
+import { useAppContentProvider } from 'gatoapp/app/appcontent-provider'
 
 import CarouselImg01 from 'gatoapp/public/assets/theme/carousel-icon-01.svg'
 import CarouselImg02 from 'gatoapp/public/assets/theme/carousel-icon-02.svg'
@@ -27,6 +27,8 @@ export default function FeaturesCarousel({
 }: {
   linkURL: string
 }) {
+
+  const { allFeatures } = useAppContentProvider()
 
   const [swiperInitialized, setSwiperInitialized] = useState<boolean>(false)
 
