@@ -9,6 +9,7 @@ module.exports = {
      */
     blog: "blog",
     demoPosts: "demos",
+    features: "features",
     // ----------------------------------------
 
     highlights: "highlights",
@@ -21,7 +22,6 @@ module.exports = {
       architecture: "architecture",
     },
     extensions: "extensions",
-    features: "features"
   },
   urls: {
     githubExtensionStarter: "https://github.com/GatoGraphQL/ExtensionStarter",
