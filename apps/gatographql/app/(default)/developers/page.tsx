@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import PageSection from '@gato/components/sections/page'
+import PageSection from 'gatoapp/components/sections/page'
 import { getPage, getPageMetadata } from '@/utils/content/page'
-import { getPageSlugFromPageScriptFile } from '@gato/utils/content/path'
-import Cta from '@gato/components/cta-03'
+import { getPageSlugFromPageScriptFile } from 'gatoapp/utils/content/path'
+import Cta from 'gatoapp/components/cta-03'
 
 // Get the page slug from the folder name
 const pageSlug = getPageSlugFromPageScriptFile(__filename)

@@ -1,4 +1,4 @@
-import { DOMAIN } from '@gato/data/env/domain'
+import { DOMAIN } from 'gatoapp/data/env/domain'
 import { MetadataRoute } from 'next'
 import AppConfig from '@/app/app.config'
 import {
@@ -18,7 +18,7 @@ import {
   getComparisonPostURL,
   getDocURL,
 } from '@/utils/content/application-urls'
-import { getReleaseData } from '@gato/data/release'
+import { getReleaseData } from 'gatoapp/data/release'
  
 export default function sitemap(): MetadataRoute.Sitemap {
   const releaseDateV2_2 = new Date(getReleaseData('2.2'))

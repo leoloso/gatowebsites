@@ -1,7 +1,7 @@
 import ExtensionsSection, { style2, svgEffect2 } from "@/app/(default)/extensions/extensions-section";
-import SectionHeader from "@gato/components/section-header";
-import Particles from "@gato/components/particles";
-import RadiantGradient from "@gato/components/radial-gradient";
+import SectionHeader from "gatoapp/components/section-header";
+import Particles from "gatoapp/components/particles";
+import RadiantGradient from "gatoapp/components/radial-gradient";
 
 export default function HomeExtensionsSection() {
   return (

@@ -7,9 +7,9 @@ import {
   Feature,
 } from "@/.contentlayer/generated";
 import AppConfig from '@/app/app.config'
-import AppConstants from "@gato/app/app.constants";
+import AppConstants from "gatoapp/app/app.constants";
 import { Article, Artifact, isDemoPost, isExtension, isBlogPost, isFeature } from "./types";
-import { DOMAIN } from '@gato/data/env/domain'
+import { DOMAIN } from 'gatoapp/data/env/domain'
 
 export function getExtensionURLPath(extension: Extension) {
   return `/${AppConfig.paths.extensions}/${extension.slug}`

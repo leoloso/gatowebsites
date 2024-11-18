@@ -1,10 +1,10 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import { allExtensions } from '@/.contentlayer/generated'
 import { notFound } from 'next/navigation'
-import StunningBackground from '@gato/components/stunning-background'
-import { sortByOrderAndTitle } from '@gato/utils/content/sort'
+import StunningBackground from 'gatoapp/components/stunning-background'
+import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
-import Cta from '@gato/components/cta'
+import Cta from 'gatoapp/components/cta'
 import SingleExtension from './single-extension'
 import SingleExtensionPricing from './single-extension-pricing-section'
 

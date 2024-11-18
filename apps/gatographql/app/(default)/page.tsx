@@ -1,8 +1,8 @@
-import Hero from '@gato/components/hero'
+import Hero from 'gatoapp/components/hero'
 import UseCases from '@/components/use-cases/use-cases'
 import FeaturesCarousel from '@/components/features-carousel'
 import Pricing from './pricing-section'
-import Cta from '@gato/components/cta'
+import Cta from 'gatoapp/components/cta'
 import HomeExtensionsSection from '@/components/home-extensions-section'
 
 export const metadata = {

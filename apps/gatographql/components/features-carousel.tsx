@@ -2,22 +2,22 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import Particles from '@gato/components/particles'
-import Highlighter, { HighlighterItem } from '@gato/components/highlighter'
+import Particles from 'gatoapp/components/particles'
+import Highlighter, { HighlighterItem } from 'gatoapp/components/highlighter'
 import { allFeatures } from '@/.contentlayer/generated'
 
-import CarouselImg01 from '@gato/public/assets/theme/carousel-icon-01.svg'
-import CarouselImg02 from '@gato/public/assets/theme/carousel-icon-02.svg'
-import CarouselImg03 from '@gato/public/assets/theme/carousel-icon-03.svg'
-import CarouselImg04 from '@gato/public/assets/theme/carousel-icon-04.svg'
-import CarouselImg05 from '@gato/public/assets/theme/carousel-icon-05.svg'
+import CarouselImg01 from 'gatoapp/public/assets/theme/carousel-icon-01.svg'
+import CarouselImg02 from 'gatoapp/public/assets/theme/carousel-icon-02.svg'
+import CarouselImg03 from 'gatoapp/public/assets/theme/carousel-icon-03.svg'
+import CarouselImg04 from 'gatoapp/public/assets/theme/carousel-icon-04.svg'
+import CarouselImg05 from 'gatoapp/public/assets/theme/carousel-icon-05.svg'
 
 // Import Swiper
 import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
-import SectionHeader from '@gato/components/section-header'
+import SectionHeader from 'gatoapp/components/section-header'
 import { getFeatureURLPath } from '@/utils/content/application-urls'
-import { sortByOrder } from '@gato/utils/content/sort'
+import { sortByOrder } from 'gatoapp/utils/content/sort'
 import AppConfig from '@/app/app.config'
 import BrowseFeaturesButton from './browse-features-button'
 Swiper.use([Navigation])

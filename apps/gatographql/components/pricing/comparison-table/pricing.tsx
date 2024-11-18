@@ -2,9 +2,9 @@ import AppConfig from "@/app/app.config"
 import PricingTier from "./pricing-tier"
 import PricingGroup from "./pricing-group"
 import PricingItem from "./pricing-item"
-import { getShopURL, getShopAnchorClassname } from "@gato/utils/shop/shop"
+import { getShopURL, getShopAnchorClassname } from "gatoapp/utils/shop/shop"
 import { allExtensions } from "@/.contentlayer/generated"
-import { sortByOrderAndTitle } from '@gato/utils/content/sort'
+import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 
 export default function ComparisonTablePricing() {
   const extensions = allExtensions.sort(sortByOrderAndTitle)

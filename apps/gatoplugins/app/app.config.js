@@ -2,7 +2,7 @@ module.exports = {
   paths: {
     /**
      * Watch out! These values are a duplicate from the shared AppConfig!
-     * @see packages/shared/app/app.config.js
+     * @see packages/shared/gatoapp/app/app.config.js
      */
     blog: "blog",
     demoPosts: "demos",

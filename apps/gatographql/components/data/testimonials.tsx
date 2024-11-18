@@ -4,7 +4,7 @@ import CustomerImg04 from '@/public/assets/theme/customer-04.jpg'
 import CustomerImg06 from '@/public/assets/theme/customer-06.jpg'
 import CustomerImg08 from '@/public/assets/theme/customer-08.jpg'
 import CustomerImg09 from '@/public/assets/theme/customer-09.jpg'
-import { TestimonialItem } from '@gato/components/data/testimonial-item'
+import { TestimonialItem } from 'gatoapp/components/data/testimonial-item'
 
 export function getTestimonials(): TestimonialItem[] {
 

@@ -2,17 +2,17 @@
 
 import { allBlogPosts } from '@/.contentlayer/generated'
 import PopularPosts from './popular-posts'
-import { sortByPublishedAt } from '@gato/utils/content/sort'
-import PageHeader from '@gato/components/page-header'
-import BlogPostList from '@gato/components/blog-post-list'
+import { sortByPublishedAt } from 'gatoapp/utils/content/sort'
+import PageHeader from 'gatoapp/components/page-header'
+import BlogPostList from 'gatoapp/components/blog-post-list'
 import { Suspense } from 'react'
-import Pagination from '@gato/components/pagination'
-import AppSettings from '@gato/app/app.settings'
+import Pagination from 'gatoapp/components/pagination'
+import AppSettings from 'gatoapp/app/app.settings'
 import { useSearchParams } from 'next/navigation';
-import PostTags from '@gato/components/post-tags'
+import PostTags from 'gatoapp/components/post-tags'
 import Link from 'next/link'
 import AppConfig from '@/app/app.config'
-import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
+import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
 
 export default function BlogSection() {
 

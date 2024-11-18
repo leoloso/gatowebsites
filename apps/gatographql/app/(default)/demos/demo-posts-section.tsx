@@ -2,19 +2,19 @@
 
 import { allDemoPosts } from '@/.contentlayer/generated'
 import Link from 'next/link'
-import PostDate from '@gato/components/post-date'
-import PostTags from '@gato/components/post-tags'
+import PostDate from 'gatoapp/components/post-date'
+import PostTags from 'gatoapp/components/post-tags'
 import { getDemoPostURLPath } from '@/utils/content/application-urls'
-import { sortByPublishedAt } from '@gato/utils/content/sort'
-import PageHeader from '@gato/components/page-header'
-import Pagination from '@gato/components/pagination'
-import AppSettings from '@gato/app/app.settings'
-import DemoPostList from '@gato/components/demo-post-list'
-import DemoPostThumb from '@gato/components/demo-post-thumb'
+import { sortByPublishedAt } from 'gatoapp/utils/content/sort'
+import PageHeader from 'gatoapp/components/page-header'
+import Pagination from 'gatoapp/components/pagination'
+import AppSettings from 'gatoapp/app/app.settings'
+import DemoPostList from 'gatoapp/components/demo-post-list'
+import DemoPostThumb from 'gatoapp/components/demo-post-thumb'
 import { Suspense } from 'react'
 import AppConfig from '@/app/app.config'
 import { useSearchParams } from 'next/navigation';
-import CampaignBanner from '@gato/components/ui/campaigns/campaign-banner'
+import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
 
 export default function DemoPostsSection() {
 
