@@ -23,7 +23,6 @@ export default function DefaultLayout({
   })
 
   return (
-    // <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip ${AppSettings.enableLightDarkThemeMode ? 'dark' : '' }`}>
     <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip`}>
       
       <main className="grow">

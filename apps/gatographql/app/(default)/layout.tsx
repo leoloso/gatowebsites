@@ -39,8 +39,6 @@ export default function DefaultLayout({
         mobileMenu: <HeaderMobileMenu />,
       }}
     >
-      {/* @todo Check this is really not needed */}
-      {/* <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip ${AppSettings.enableLightDarkThemeMode ? 'dark' : '' }`}> */}
       <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip`}>
         <Header />
         
