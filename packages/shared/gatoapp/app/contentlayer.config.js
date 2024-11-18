@@ -181,6 +181,72 @@ const Snippet = defineDocumentType(() => ({
   },
 }))
 
+const Feature = defineDocumentType(() => ({
+  name: 'Feature',
+  filePathPattern: `${AppConfig.paths.features}/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    seoTitle: {
+      type: 'string',
+    },
+    description: {
+      type: 'string',
+      required: true,
+    },
+    seoDescription: {
+      type: 'string',
+    },
+    featured: {
+      type: 'boolean',
+    },
+    relatedGuides: {
+      type: 'list',
+      of: RelatedGuide,
+    },
+    category: {
+      type: 'enum',
+      options: [
+        'Standard',
+      ],
+      required: true,
+    },
+    order: {
+      type: 'number',
+      required: true,
+    },
+    image: {
+      type: 'string',
+    },
+    icon: {
+      type: 'string',
+    },
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.features + '/?'), ''),
+    },    
+  },
+}))
+
+const RelatedGuide = defineNestedType(() => ({
+  name: 'RelatedGuide',
+  fields: {
+    topic: {
+      type: 'string',
+      required: true
+    },
+    slug: {
+      type: 'string',
+      required: true
+    },  
+  },
+}))
+
 const Doc = defineDocumentType(() => ({
   name: 'Doc',
   filePathPattern: `docs/**/*.mdx`,
@@ -333,6 +399,7 @@ module.exports = {
     DemoPost: DemoPost,
     Page: Page,
     Snippet: Snippet,
+    Feature: Feature,
     Doc: Doc,
     DocTopic: DocTopic,
     ShopURLs: ShopURLs,
