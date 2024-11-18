@@ -1,6 +1,6 @@
 import Hero from 'gatoapp/components/hero'
 import UseCases from '@/components/use-cases/use-cases'
-import FeaturesCarousel from '@/components/features-carousel'
+import FeaturesCarousel from 'gatoapp/components/features-carousel'
 import Pricing from './pricing-section'
 import Cta from '@/components/cta'
 import HomeExtensionsSection from '@/components/home-extensions-section'
