@@ -13,6 +13,9 @@ type ContextProps = {
   domains: {
     cdn: string,
   },
+  urls: {
+    instawpSandboxDemo: string,
+  },
 }
 
 const AppConfigContext = createContext<ContextProps>({
@@ -25,6 +28,9 @@ const AppConfigContext = createContext<ContextProps>({
   domains: {
     cdn: ""
   },
+  urls: {
+    instawpSandboxDemo: "",
+  },
 })
 
 export interface AppConfigProviderInterface extends ContextProps {
@@ -36,6 +42,7 @@ export default function AppConfigProvider({
   meta,
   emails,
   domains,
+  urls,
 }: AppConfigProviderInterface) {  
   return (
     <AppConfigContext.Provider
@@ -43,6 +50,7 @@ export default function AppConfigProvider({
         meta: meta,
         emails: emails,
         domains: domains,
+        urls: urls,
       }}
     >
       {children}

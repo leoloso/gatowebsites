@@ -55,6 +55,9 @@ export default function RootLayout({
           domains={{
             cdn: 'https://d2nmpy6pnude6z.cloudfront.net',
           }}
+          urls={{
+            instawpSandboxDemo: AppConfig.urls.instawpSandboxDemo
+          }}
         >
           <AppSettingsProvider
             campaigns={{
