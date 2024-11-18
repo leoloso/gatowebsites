@@ -4,6 +4,7 @@ import ContentLayerConfig from '../../packages/shared/app/contentlayer.config.js
 
 const ContentLayerBaseConfig = ContentLayerConfig.config.ContentLayerBaseConfig
 const BlogPost = ContentLayerConfig.types.BlogPost
+const DemoPost = ContentLayerConfig.types.DemoPost
 const Page = ContentLayerConfig.types.Page
 const Snippet = ContentLayerConfig.types.Snippet
 const Doc = ContentLayerConfig.types.Doc
@@ -44,66 +45,6 @@ const Highlight = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.highlights + '/?'), ''),
-    },    
-  },
-}))
-
-const DemoPost = defineDocumentType(() => ({
-  name: 'DemoPost',
-  filePathPattern: `${AppConfig.paths.demoPosts}/**/*.mdx`,
-  contentType: 'mdx',
-  fields: {
-    title: {
-      type: 'string',
-      required: true
-    },
-    seoTitle: {
-      type: 'string',
-    },
-    publishedAt: {
-      type: 'date',
-      required: true
-    },
-    leading: {
-      type: 'string',
-      required: true,
-    },
-    description: {
-      type: 'string',
-      required: true,
-    },
-    seoDescription: {
-      type: 'string',
-    },
-    author: {
-      type: 'string',
-      required: true,
-    },
-    authorImg: {
-      type: 'string',
-      required: true,
-    },
-    tags: {
-      type: 'list',
-      of: { type: 'string' },
-    },
-    image: {
-      type: 'string',
-    },   
-    targetImages: {
-      type: 'list',
-      of: { type: 'string' },
-      required: true,
-    },   
-    integrations: {
-      type: 'list',
-      of: PostIntegration,
-    },  
-  },
-  computedFields: {
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.demoPosts + '/?'), ''),
     },    
   },
 }))

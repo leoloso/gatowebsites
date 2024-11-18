@@ -54,6 +54,66 @@ const BlogPost = defineDocumentType(() => ({
   },
 }))
 
+const DemoPost = defineDocumentType(() => ({
+  name: 'DemoPost',
+  filePathPattern: `${AppConfig.paths.demoPosts}/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    seoTitle: {
+      type: 'string',
+    },
+    publishedAt: {
+      type: 'date',
+      required: true
+    },
+    leading: {
+      type: 'string',
+      required: true,
+    },
+    description: {
+      type: 'string',
+      required: true,
+    },
+    seoDescription: {
+      type: 'string',
+    },
+    author: {
+      type: 'string',
+      required: true,
+    },
+    authorImg: {
+      type: 'string',
+      required: true,
+    },
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
+    },
+    image: {
+      type: 'string',
+    },   
+    targetImages: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },   
+    integrations: {
+      type: 'list',
+      of: PostIntegration,
+    },  
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.demoPosts + '/?'), ''),
+    },    
+  },
+}))
+
 const Page = defineDocumentType(() => ({
   name: 'Page',
   filePathPattern: `pages/**/*.mdx`,
@@ -252,6 +312,7 @@ const ContentLayerBaseConfig = {
 module.exports = {
   types: {
     BlogPost: BlogPost,
+    DemoPost: DemoPost,
     Page: Page,
     Snippet: Snippet,
     Doc: Doc,
