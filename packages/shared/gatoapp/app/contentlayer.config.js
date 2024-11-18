@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import AppConfig from './app.config'
+import AppConstants from './app.constants'
 
 const BlogPost = defineDocumentType(() => ({
   name: 'BlogPost',
@@ -51,7 +52,7 @@ const BlogPost = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.blog + '/?'), ''),
     },
-    slug: {
+    urlPath: {
       type: 'string',
       resolve: (doc) => `${AppConfig.paths.blog}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.blog + '/?'), '')}`,
     },
@@ -115,7 +116,7 @@ const DemoPost = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.demoPosts + '/?'), ''),
     },
-    slug: {
+    urlPath: {
       type: 'string',
       resolve: (doc) => `${AppConfig.paths.demoPosts}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.demoPosts + '/?'), '')}`,
     },
@@ -302,7 +303,14 @@ const Doc = defineDocumentType(() => ({
     },
     urlPath: {
       type: 'string',
-      resolve: (doc) => `/${doc._raw.flattenedPath.replace(/docs\/?/, '')}`,
+      resolve: (doc) => {
+        const maybeURLPath = `/${doc._raw.flattenedPath.replace(/docs\/?/, '')}`
+        const topicSlug = doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1')
+        if (topicSlug === AppConstants.implicitDocTopicSlug) {
+          return maybeURLPath.replace(`/${AppConstants.implicitDocTopicSlug}/`, '/')
+        }
+        return maybeURLPath
+      }
     },
   },
 }))
