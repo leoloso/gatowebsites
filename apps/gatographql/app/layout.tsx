@@ -45,23 +45,25 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
         <AppConfigProvider
-          meta={{
-            name: AppConfig.meta.name,
-          }}
-          emails={{
-            info: AppConfig.emails.info,
-          }}
-          domains={{
-            cdn: AppConfig.domains.cdn,
-          }}
-          urls={{
-            instawpSandboxDemo: AppConfig.urls.instawpSandboxDemo
-          }}
-          services={{
-            newsletter: {
-              formActionURL: AppConfig.services.newsletter.formActionURL,
-              emailFieldName: AppConfig.services.newsletter.emailFieldName,
-            }
+          config={{
+            meta: {
+              name: AppConfig.meta.name,
+            },
+            emails: {
+              info: AppConfig.emails.info,
+            },
+            domains: {
+              cdn: AppConfig.domains.cdn,
+            },
+            urls: {
+              instawpSandboxDemo: AppConfig.urls.instawpSandboxDemo
+            },
+            services: {
+              newsletter: {
+                formActionURL: AppConfig.services.newsletter.formActionURL,
+                emailFieldName: AppConfig.services.newsletter.emailFieldName,
+              }
+            },
           }}
         >
           <AppSettingsProvider

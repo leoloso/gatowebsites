@@ -5,7 +5,7 @@ import SectionHeader from './section-header'
 import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function Cta02() {
-  const AppConfig = useAppConfigProvider()
+  const { config: AppConfig } = useAppConfigProvider()
   return (
     <section className="relative">
 

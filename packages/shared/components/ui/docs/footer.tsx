@@ -6,7 +6,7 @@ import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function Footer() {
   const AppComponent = useAppComponentProvider()
-  const AppConfig = useAppConfigProvider()
+  const { config: AppConfig } = useAppConfigProvider()
   return (
     <footer className="border-t border-slate-200 pt-8 dark:border-slate-800">
       <div className="grid sm:grid-cols-8 gap-8 py-8 md:py-12">

@@ -7,7 +7,7 @@ import { handleFormSubmit, canSubmitForm, FormStatus } from './form-handler';
 import { useAppConfigProvider } from '@gato/app/appconfig-provider'
 
 export default function NewsletterForm() {
-  const AppConfig = useAppConfigProvider()
+  const { config: AppConfig } = useAppConfigProvider()
   const formURL = AppConfig.services.newsletter.formActionURL
 
   const [status, setStatus] = useState<FormStatus>('pending');
