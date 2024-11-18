@@ -1,10 +1,11 @@
-import { defineNestedType, defineDocumentType, makeSource } from 'contentlayer2/source-files'
+import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import AppConfig from './app/app.config'
 import ContentLayerConfig from '../../packages/shared/gatoapp/app/contentlayer.config.js'
 
 const ContentLayerBaseConfig = ContentLayerConfig.config.ContentLayerBaseConfig
 const BlogPost = ContentLayerConfig.types.BlogPost
 const DemoPost = ContentLayerConfig.types.DemoPost
+const Feature = ContentLayerConfig.types.Feature
 const Page = ContentLayerConfig.types.Page
 const Snippet = ContentLayerConfig.types.Snippet
 const Doc = ContentLayerConfig.types.Doc
