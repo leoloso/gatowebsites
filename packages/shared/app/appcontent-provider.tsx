@@ -2,10 +2,11 @@
 
 import React from 'react'
 import { createContext, useContext } from 'react'
-import { BlogPost, Doc, DocTopic, Page, Snippet } from '@gato/types/types';
+import { BlogPost, DemoPost, Doc, DocTopic, Page, Snippet } from '@gato/types/types';
 
 type ContextProps = {
   allBlogPosts: BlogPost[],
+  allDemoPosts: DemoPost[],
   allDocs: Doc[],
   allDocTopics: DocTopic[],
   allPages: Page[],
@@ -14,6 +15,7 @@ type ContextProps = {
 
 const AppContentContext = createContext<ContextProps>({
   allBlogPosts: [],
+  allDemoPosts: [],
   allDocs: [],
   allDocTopics: [],
   allPages: [],
@@ -27,6 +29,7 @@ export interface AppContentProviderInterface extends ContextProps {
 export default function AppContentProvider({
   children,
   allBlogPosts,
+  allDemoPosts,
   allDocs,
   allDocTopics,
   allPages,
@@ -36,6 +39,7 @@ export default function AppContentProvider({
     <AppContentContext.Provider
       value={{
         allBlogPosts: allBlogPosts,
+        allDemoPosts: allDemoPosts,
         allDocs: allDocs,
         allDocTopics: allDocTopics,
         allPages: allPages,

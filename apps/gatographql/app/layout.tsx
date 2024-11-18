@@ -10,7 +10,7 @@ import AppConfig from '@/app/app.config'
 import AppConfigProvider from '@gato/app/appconfig-provider'
 import AppSettingsProvider from '@gato/app/appsettings-provider'
 import AppContentProvider from '@gato/app/appcontent-provider'
-import { allBlogPosts, allDocs, allDocTopics, allPages, allSnippets } from '@/.contentlayer/generated'
+import { allBlogPosts, allDemoPosts, allDocs, allDocTopics, allPages, allSnippets } from '@/.contentlayer/generated'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -63,6 +63,7 @@ export default function RootLayout({
           >
             <AppContentProvider
               allBlogPosts={allBlogPosts}
+              allDemoPosts={allDemoPosts}
               allDocs={allDocs}
               allDocTopics={allDocTopics}
               allPages={allPages}
