@@ -114,6 +114,24 @@ const DemoPost = defineDocumentType(() => ({
   },
 }))
 
+const PostIntegration = defineNestedType(() => ({
+  name: 'PostIntegration',
+  fields: {
+    name: {
+      type: 'string',
+      required: true
+    },
+    image: {
+      type: 'string',
+      required: true
+    }, 
+    url: {
+      type: 'string',
+      required: true
+    },  
+  },
+}))
+
 const Page = defineDocumentType(() => ({
   name: 'Page',
   filePathPattern: `pages/**/*.mdx`,
@@ -319,6 +337,7 @@ module.exports = {
     DocTopic: DocTopic,
     ShopURLs: ShopURLs,
     ShopURLByLicense: ShopURLByLicense,
+    PostIntegration: PostIntegration,
   },
   config: {
     ContentLayerBaseConfig: ContentLayerBaseConfig

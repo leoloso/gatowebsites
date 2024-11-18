@@ -40,10 +40,7 @@ export type DemoPost = {
   tags?: string[] | undefined
   image?: string | undefined
   targetImages: string[]
-  /**
-   * Watch out! This one is enabled for Gato GraphQL!
-   */
-  // integrations?: PostIntegration[] | undefined
+  integrations?: PostIntegration[] | undefined
   /** MDX file body */
   body: MDX
   slug: string
@@ -113,6 +110,18 @@ export type ShopURLByLicense = {
   type: 'ShopURLByLicense'
   yearly: string
   ltd: string
+
+}
+
+/** Nested types */
+export type PostIntegration = {
+  // /** File path relative to `contentDirPath` */
+  // _id: string
+  // _raw: Local.RawDocumentData
+  type: 'PostIntegration'
+  name: string
+  image: string
+  url: string
 
 }
 

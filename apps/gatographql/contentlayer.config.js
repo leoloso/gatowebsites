@@ -10,6 +10,7 @@ const Snippet = ContentLayerConfig.types.Snippet
 const Doc = ContentLayerConfig.types.Doc
 const DocTopic = ContentLayerConfig.types.DocTopic
 const ShopURLs = ContentLayerConfig.types.ShopURLs
+const PostIntegration = ContentLayerConfig.types.PostIntegration
 
 const Highlight = defineDocumentType(() => ({
   name: 'Highlight',
@@ -46,24 +47,6 @@ const Highlight = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.highlights + '/?'), ''),
     },    
-  },
-}))
-
-const PostIntegration = defineNestedType(() => ({
-  name: 'PostIntegration',
-  fields: {
-    name: {
-      type: 'string',
-      required: true
-    },
-    image: {
-      type: 'string',
-      required: true
-    }, 
-    url: {
-      type: 'string',
-      required: true
-    },  
   },
 }))
 

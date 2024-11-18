@@ -4,12 +4,13 @@ import ContentLayerConfig from '../../packages/shared/app/contentlayer.config.js
 
 const ContentLayerBaseConfig = ContentLayerConfig.config.ContentLayerBaseConfig
 const BlogPost = ContentLayerConfig.types.BlogPost
-const DemoPost = ContentLayerConfig.types.DemoPost
+// const DemoPost = ContentLayerConfig.types.DemoPost
 const Page = ContentLayerConfig.types.Page
 const Snippet = ContentLayerConfig.types.Snippet
 const Doc = ContentLayerConfig.types.Doc
 const DocTopic = ContentLayerConfig.types.DocTopic
 const ShopURLs = ContentLayerConfig.types.ShopURLs
+const PostIntegration = ContentLayerConfig.types.PostIntegration
 
 const Plugin = defineDocumentType(() => ({
   name: 'Plugin',
