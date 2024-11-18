@@ -136,7 +136,7 @@ export default function ArtifactSection({
       </div>
 
       <Cta
-        tryoutProduct='Gato GraphQL + all extensions'
+        tryoutProduct='@todo Fix this name!'
       />
     </section>
   )
