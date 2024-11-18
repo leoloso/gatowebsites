@@ -1,4 +1,4 @@
-import { Doc, BlogPost } from '@gato/types/types';
+import { Doc, BlogPost, DemoPost } from '@gato/types/types';
 import AppConstants from "@gato/app/app.constants";
 import AppConfig from '@gato/app/app.config'
 import { DOMAIN } from '@gato/data/env/domain'
@@ -20,4 +20,12 @@ export function getBlogPostURLPath(post: BlogPost) {
 
 export function getBlogPostURL(post: BlogPost) {
   return `${DOMAIN}${getBlogPostURLPath(post)}`
+}
+
+export function getDemoPostURLPath(demoPost: DemoPost) {
+  return `/${AppConfig.paths.demoPosts}/${demoPost.slug}`
+}
+
+export function getDemoPostURL(demoPost: DemoPost) {
+  return `${DOMAIN}${getDemoPostURLPath(demoPost)}`
 }
