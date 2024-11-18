@@ -1,7 +1,7 @@
 import { Extension } from '@/.contentlayer/generated'
 import ArtifactsList from 'gatoapp/components/artifacts-list';
 import { allExtensions } from '@/.contentlayer/generated'
-import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon-01.png'
+import DefaultArtifactIcon from 'gatoapp/public/assets/theme/default/artifact-icon-01.png'
 
 export default function ExtensionsList({
   extensions = allExtensions,

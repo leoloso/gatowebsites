@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
-import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png'
+import DefaultArtifactIcon from 'gatoapp/public/assets/theme/default/artifact-icon.png'
 import { getArtifactURLPath } from '@/utils/content/application-urls'
 import { Artifact } from '@/utils/content/types'
 import clsx from 'clsx'

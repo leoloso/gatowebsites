@@ -2,7 +2,7 @@
 
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort';
 import ArtifactsList from 'gatoapp/components/artifacts-list';
-import DefaultArtifactIcon02 from '@/public/assets/theme/default/artifact-icon-02.png'
+import DefaultArtifactIcon02 from 'gatoapp/public/assets/theme/default/artifact-icon-02.png'
 import { useAppContentProvider } from 'gatoapp/app/appcontent-provider'
 
 export default function FeaturesList() {
