@@ -3,7 +3,7 @@
 import AppSettings from '@gato/app/app.settings'
 
 import { useSearchParams } from 'next/navigation';
-import { BlogPost } from '@/.contentlayer/generated';
+import { BlogPost } from '@gato/types/types';
 import BlogPostItem from './blog-post-item';
 
 export default function BlogPostList({
