@@ -22,7 +22,11 @@ import AppConfig from '@/app/app.config'
 import BrowseFeaturesButton from './browse-features-button'
 Swiper.use([Navigation])
 
-export default function FeaturesCarousel() {
+export default function FeaturesCarousel({
+  linkURL,
+}: {
+  linkURL: string
+}) {
 
   const [swiperInitialized, setSwiperInitialized] = useState<boolean>(false)
 
@@ -179,7 +183,9 @@ export default function FeaturesCarousel() {
               </button>
             </div>
             <div className="relative z-20 flex items-center justify-center group ml-6">
-              <BrowseFeaturesButton />
+              <BrowseFeaturesButton
+                linkURL={linkURL}
+              />
             </div>
           </div>
 
