@@ -479,7 +479,7 @@ export default function SearchModal({
         />
         <TransitionChild
           as="div"
-          className={`${AppSettings.enableLightDarkThemeMode && enableLightDarkThemeModeToggle ? '' : 'dark' } fixed inset-0 z-50 overflow-hidden flex items-start top-20 mb-4 justify-center px-4 sm:px-6`}
+          className={`${enableLightDarkThemeModeToggle ? '' : 'dark' } fixed inset-0 z-50 overflow-hidden flex items-start top-20 mb-4 justify-center px-4 sm:px-6`}
           enter="transition ease-in-out duration-200"
           enterFrom="opacity-0 translate-y-4"
           enterTo="opacity-100 translate-y-0"
