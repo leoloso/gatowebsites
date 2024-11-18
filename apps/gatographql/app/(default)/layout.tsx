@@ -7,7 +7,6 @@ import 'aos/dist/aos.css'
 
 import Footer from 'gatoapp/components/ui/footer'
 import Header from 'gatoapp/components/ui/header'
-import AppSettings from 'gatoapp/app/app.settings'
 import AppComponentProvider from 'gatoapp/app/appcomponent-provider'
 import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
 import LayoutFooterMenu from './layout-footer-menu'
@@ -40,7 +39,9 @@ export default function DefaultLayout({
         mobileMenu: <HeaderMobileMenu />,
       }}
     >
-      <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip ${AppSettings.enableLightDarkThemeMode ? 'dark' : '' }`}>
+      {/* @todo Check this is really not needed */}
+      {/* <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip ${AppSettings.enableLightDarkThemeMode ? 'dark' : '' }`}> */}
+      <div className={`flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip`}>
         <Header />
         
         <main className="grow">
