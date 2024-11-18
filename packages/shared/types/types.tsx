@@ -24,6 +24,31 @@ export type BlogPost = {
   slug: string
 }
 
+export type DemoPost = {
+  // /** File path relative to `contentDirPath` */
+  // _id: string
+  // _raw: Local.RawDocumentData
+  type: 'DemoPost'
+  title: string
+  seoTitle?: string | undefined
+  publishedAt: IsoDateTimeString
+  leading: string
+  description: string
+  seoDescription?: string | undefined
+  author: string
+  authorImg: string
+  tags?: string[] | undefined
+  image?: string | undefined
+  targetImages: string[]
+  /**
+   * Watch out! This one is enabled for Gato GraphQL!
+   */
+  // integrations?: PostIntegration[] | undefined
+  /** MDX file body */
+  body: MDX
+  slug: string
+}
+
 export type Doc = {
   /** File path relative to `contentDirPath` */
   // _id: string
