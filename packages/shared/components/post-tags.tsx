@@ -3,10 +3,10 @@ import clsx from 'clsx'
 import Link from 'next/link'
 
 export default function PostTags(
-  {
-    tags,
-    baseURL,
-    tagClassName = 'text-xs',
+{
+  tags,
+  baseURL,
+  tagClassName = 'text-xs',
 }: {
   tags: string[],
   baseURL?: string,
