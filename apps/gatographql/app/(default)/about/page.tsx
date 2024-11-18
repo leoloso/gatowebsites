@@ -6,6 +6,7 @@ import { createSEOPageTitle } from '@/utils/content/metadata'
 import WordPressLogo from '@/public/assets/external-logos/wordpress-logo.svg'
 import GraphQLLogo from '@/public/assets/external-logos/graphql-logo.svg'
 import CircledEqualsSvgImage from '@/public/assets/theme/equals-circled.svg'
+import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
 
 const pageTitle = 'About us'
 export const metadata = {
@@ -26,6 +27,7 @@ export default function About() {
         includeThumbnail={true}
         targetImageSources={[WordPressLogo, GraphQLLogo]}
         svgImage={CircledEqualsSvgImage}
+        logoImage={Logo}
       />
 
       <Story includeHeader={true} />
