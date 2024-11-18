@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Particles from 'gatoapp/components/particles'
 import Highlighter, { HighlighterItem } from 'gatoapp/components/highlighter'
-import { allFeatures } from '@/.contentlayer/generated'
+import { useAppContentProvider } from 'gatoapp/app/appcontent-provider'
 
 import CarouselImg01 from 'gatoapp/public/assets/theme/carousel-icon-01.svg'
 import CarouselImg02 from 'gatoapp/public/assets/theme/carousel-icon-02.svg'
@@ -16,13 +16,20 @@ import CarouselImg05 from 'gatoapp/public/assets/theme/carousel-icon-05.svg'
 import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
 import SectionHeader from 'gatoapp/components/section-header'
-import { getFeatureURLPath } from '@/utils/content/application-urls'
+import { getFeatureURLPath } from 'gatoapp/utils/content/application-urls'
 import { sortByOrder } from 'gatoapp/utils/content/sort'
-import AppConfig from '@/app/app.config'
 import BrowseFeaturesButton from './browse-features-button'
 Swiper.use([Navigation])
 
-export default function FeaturesCarousel() {
+export default function FeaturesCarousel({
+  linkURL,
+  lastSlideText = "Browse the list of all features.",
+}: {
+  linkURL: string
+  lastSlideText?: string,
+}) {
+
+  const { allFeatures } = useAppContentProvider()
 
   const [swiperInitialized, setSwiperInitialized] = useState<boolean>(false)
 
@@ -150,10 +157,10 @@ export default function FeaturesCarousel() {
                       <Image className="mb-3" src={itemPics[itemPics.length - 1]} width={56} height={56} alt="Carousel Icon" />
                       <div className="grow">
                         <div className="font-bold text-lg mb-1">And much more!</div>
-                        <div className="text-slate-400 mb-3">Browse the list of all features, discover how Gato GraphQL can empower and protect your application.</div>
+                        <div className="text-slate-400 mb-3">{lastSlideText}</div>
                       </div>
                       <div className="text-right">
-                        <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={`/${AppConfig.paths.features}`}>Browse all features <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
+                        <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={linkURL}>Browse all features <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
                       </div>
                     </div>
                   </div>
@@ -179,7 +186,9 @@ export default function FeaturesCarousel() {
               </button>
             </div>
             <div className="relative z-20 flex items-center justify-center group ml-6">
-              <BrowseFeaturesButton />
+              <BrowseFeaturesButton
+                linkURL={linkURL}
+              />
             </div>
           </div>
 

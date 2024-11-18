@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
-import DefaultArtifactIcon from '@/public/assets/theme/default/artifact-icon.png'
+import DefaultArtifactIcon from 'gatoapp/public/assets/theme/default/artifact-icon.png'
 import { ArtifactMdx } from 'gatoapp/components/mdx/artifact-mdx'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import { Artifact } from '@/utils/content/types'

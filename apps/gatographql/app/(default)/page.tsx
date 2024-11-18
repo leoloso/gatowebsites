@@ -1,9 +1,10 @@
 import Hero from 'gatoapp/components/hero'
 import UseCases from '@/components/use-cases/use-cases'
-import FeaturesCarousel from '@/components/features-carousel'
+import FeaturesCarousel from 'gatoapp/components/features-carousel'
 import Pricing from './pricing-section'
 import Cta from '@/components/cta'
 import HomeExtensionsSection from '@/components/home-extensions-section'
+import AppConfig from '@/app/app.config'
 
 export const metadata = {
   title: 'Gato GraphQL',
@@ -18,7 +19,10 @@ export default function Home() {
         description={<span>Use <strong>Gato GraphQL</strong> to interact with all your data in your <strong>WordPress</strong> site.</span>}
       />
       <UseCases />
-      <FeaturesCarousel />
+      <FeaturesCarousel
+        linkURL={`/${AppConfig.paths.features}`}
+        lastSlideText='Browse the list of all features, discover how Gato GraphQL can empower and protect your application.'
+      />
       <HomeExtensionsSection />
       <Pricing />
       <Cta />

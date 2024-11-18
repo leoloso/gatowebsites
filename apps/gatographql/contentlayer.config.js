@@ -1,10 +1,11 @@
-import { defineNestedType, defineDocumentType, makeSource } from 'contentlayer2/source-files'
+import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import AppConfig from './app/app.config'
 import ContentLayerConfig from '../../packages/shared/gatoapp/app/contentlayer.config.js'
 
 const ContentLayerBaseConfig = ContentLayerConfig.config.ContentLayerBaseConfig
 const BlogPost = ContentLayerConfig.types.BlogPost
 const DemoPost = ContentLayerConfig.types.DemoPost
+const Feature = ContentLayerConfig.types.Feature
 const Page = ContentLayerConfig.types.Page
 const Snippet = ContentLayerConfig.types.Snippet
 const Doc = ContentLayerConfig.types.Doc
@@ -150,72 +151,6 @@ const Extension = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.extensions + '/?'), ''),
     },    
-  },
-}))
-
-const Feature = defineDocumentType(() => ({
-  name: 'Feature',
-  filePathPattern: `${AppConfig.paths.features}/**/*.mdx`,
-  contentType: 'mdx',
-  fields: {
-    title: {
-      type: 'string',
-      required: true
-    },
-    seoTitle: {
-      type: 'string',
-    },
-    description: {
-      type: 'string',
-      required: true,
-    },
-    seoDescription: {
-      type: 'string',
-    },
-    featured: {
-      type: 'boolean',
-    },
-    relatedGuides: {
-      type: 'list',
-      of: RelatedGuide,
-    },
-    category: {
-      type: 'enum',
-      options: [
-        'Standard',
-      ],
-      required: true,
-    },
-    order: {
-      type: 'number',
-      required: true,
-    },
-    image: {
-      type: 'string',
-    },
-    icon: {
-      type: 'string',
-    },
-  },
-  computedFields: {
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.features + '/?'), ''),
-    },    
-  },
-}))
-
-const RelatedGuide = defineNestedType(() => ({
-  name: 'RelatedGuide',
-  fields: {
-    topic: {
-      type: 'string',
-      required: true
-    },
-    slug: {
-      type: 'string',
-      required: true
-    },  
   },
 }))
 

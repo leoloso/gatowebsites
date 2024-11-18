@@ -2,13 +2,14 @@
 
 import React from 'react'
 import { createContext, useContext } from 'react'
-import { BlogPost, DemoPost, Doc, DocTopic, Page, Snippet } from 'gatoapp/types/types';
+import { BlogPost, DemoPost, Doc, DocTopic, Feature, Page, Snippet } from 'gatoapp/types/types';
 
 type ContextProps = {
   allBlogPosts: BlogPost[],
   allDemoPosts: DemoPost[],
   allDocs: Doc[],
   allDocTopics: DocTopic[],
+  allFeatures: Feature[],
   allPages: Page[],
   allSnippets: Snippet[],
 }
@@ -18,6 +19,7 @@ const AppContentContext = createContext<ContextProps>({
   allDemoPosts: [],
   allDocs: [],
   allDocTopics: [],
+  allFeatures: [],
   allPages: [],
   allSnippets: [],
 })
@@ -32,18 +34,20 @@ export default function AppContentProvider({
   allDemoPosts,
   allDocs,
   allDocTopics,
+  allFeatures,
   allPages,
   allSnippets,
 }: AppContentProviderInterface) {  
   return (
     <AppContentContext.Provider
       value={{
-        allBlogPosts: allBlogPosts,
-        allDemoPosts: allDemoPosts,
-        allDocs: allDocs,
-        allDocTopics: allDocTopics,
-        allPages: allPages,
-        allSnippets: allSnippets,
+        allBlogPosts,
+        allDemoPosts,
+        allDocs,
+        allDocTopics,
+        allFeatures,
+        allPages,
+        allSnippets,
       }}
     >
       {children}
