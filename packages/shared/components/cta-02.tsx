@@ -1,3 +1,5 @@
+'use client'
+
 import Particles from './particles'
 import SectionHeader from './section-header'
 import { useAppConfigProvider } from '@gato/app/appconfig-provider'
