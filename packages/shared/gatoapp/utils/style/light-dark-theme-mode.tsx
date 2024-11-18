@@ -1,3 +1,5 @@
+'use client'
+
 import { useAppStyleProvider } from 'gatoapp/app/appstyle-provider'
 import { LightDarkColorTheme } from 'gatoapp/app/appstyle-provider'
 
