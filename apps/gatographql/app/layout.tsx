@@ -13,6 +13,7 @@ import AppStyleProvider from 'gatoapp/app/appstyle-provider'
 import { LightDarkColorTheme } from 'gatoapp/app/appstyle-provider'
 import AppContentProvider from 'gatoapp/app/appcontent-provider'
 import { allBlogPosts, allDemoPosts, allDocs, allDocTopics, allFeatures, allPages, allSnippets } from '@/.contentlayer/generated'
+import { getBackgroundColorStyle } from 'gatoapp/utils/style/light-dark-theme-mode'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -85,7 +86,7 @@ export default function RootLayout({
                 />
                 <InitializeShop />
               </head>
-              <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${AppSettings.enableLightDarkThemeMode ? '' : 'dark' }`}>
+              <body className={`${inter.variable} font-inter antialiased bg-slate-900 text-slate-100 tracking-tight ${getBackgroundColorStyle()}`}>
                 {children}
               </body>
             </html>
