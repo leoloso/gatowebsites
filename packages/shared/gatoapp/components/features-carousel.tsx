@@ -18,7 +18,6 @@ import 'swiper/swiper.min.css'
 import SectionHeader from 'gatoapp/components/section-header'
 import { getFeatureURLPath } from 'gatoapp/utils/content/application-urls'
 import { sortByOrder } from 'gatoapp/utils/content/sort'
-import AppConfig from '@/app/app.config'
 import BrowseFeaturesButton from './browse-features-button'
 Swiper.use([Navigation])
 
@@ -159,7 +158,7 @@ export default function FeaturesCarousel({
                         <div className="text-slate-400 mb-3">Browse the list of all features, discover how Gato GraphQL can empower and protect your application.</div>
                       </div>
                       <div className="text-right">
-                        <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={`/${AppConfig.paths.features}`}>Browse all features <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
+                        <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={linkURL}>Browse all features <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
                       </div>
                     </div>
                   </div>
