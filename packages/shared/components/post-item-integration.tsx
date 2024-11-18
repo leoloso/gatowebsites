@@ -1,5 +1,5 @@
 import Link from 'next/link'
-// import { DemoPostIntegration } from '@/.contentlayer/generated'
+// import { PostIntegration } from '@gato/types/types'
 
 export default function PostItemIntegration({
   ...postIntegration
