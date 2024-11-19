@@ -7,9 +7,11 @@ import React from 'react'
 export default function SlidesCoverItem({
   logo,
   thumbClassname,
+  bgClassname,
 }: {
   logo: React.ReactNode,
   thumbClassname?: string,
+  bgClassname?: string,
 }) {
   const searchParams = useSearchParams();
   const title = searchParams.get('title') || '(Undefined title / Please pass param ?title=...)'
@@ -19,7 +21,7 @@ export default function SlidesCoverItem({
       className='aspect-video'
     >
       <Thumb
-        bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
+        bgClassname={bgClassname}
         numberParticles={20}
       >
         <div className={thumbClassname}>
