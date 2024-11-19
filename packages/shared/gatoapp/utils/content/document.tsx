@@ -4,6 +4,20 @@ import { Doc, DocTopic } from 'gatoapp/types/types';
 import { sortByOrder, sortByOrderAndTitle } from 'gatoapp/utils/content/sort';
 import { useAppContentProvider } from 'gatoapp/app/appcontent-provider'
 
+/**
+ * Watch out! These methods are repeated:
+ *
+ * @see packages/shared/gatoapp/utils/content/document.tsx
+ * @see apps/gatographql/utils/content/document.tsx
+ * @see apps/gatoplugins/utils/content/document.tsx
+ * 
+ * That's because, for some reason, `sortDocuments` fails
+ * at sorting the Doc and DocTopic, and then calling /guides will
+ * redirect to /guides/augment/dynamic-variables instead of
+ * /guides/intro/intro-to-graphql-and-gato-graphql
+ * 
+ * ----------------------------------------------------------------
+ */
 export function getDocTopic(doc: Doc) {
   const { allDocTopics } = useAppContentProvider()
   const docTopic = allDocTopics.find((docTopic) => doc.section === docTopic.section && docTopic.slug === doc.topicSlug);
@@ -36,3 +50,4 @@ export function getDocumentTopicsBySection(section: string) {
   const { allDocTopics } = useAppContentProvider()
   return allDocTopics.filter((docTopic) => docTopic.section === section)
 }
+// ----------------------------------------------------------------

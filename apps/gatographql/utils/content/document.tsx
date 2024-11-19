@@ -6,7 +6,9 @@ import { sortByOrder, sortByOrderAndTitle } from "gatoapp/utils/content/sort";
 /**
  * Watch out! These methods are repeated:
  *
- * @see packages/shared/utils/content/document.tsx
+ * @see packages/shared/gatoapp/utils/content/document.tsx
+ * @see apps/gatographql/utils/content/document.tsx
+ * @see apps/gatoplugins/utils/content/document.tsx
  * 
  * That's because, for some reason, `sortDocuments` fails
  * at sorting the Doc and DocTopic, and then calling /guides will
@@ -44,9 +46,7 @@ export function sortDocuments(a: Doc, b: Doc) {
 export function getDocumentTopicsBySection(section: string) {
   return allDocTopics.filter((docTopic) => docTopic.section === section)
 }
-/**
- * ----------------------------------------------------------------
- */
+// ----------------------------------------------------------------
 
 
 function getGroupDocuments(docSection: string) {
