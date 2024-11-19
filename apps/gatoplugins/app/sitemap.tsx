@@ -10,7 +10,6 @@ import {
 } from '@/.contentlayer/generated'
 import {
   getBlogPostURL,
-  getPluginDocumentationURL,
   getDemoPostURL,
 } from '@/utils/content/application-urls'
 import { getURL } from 'gatoapp/utils/content/application-urls'
@@ -36,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const pluginDocumentationSitemapEntries = allPlugins.map((plugin) => (
     {
-      url: getPluginDocumentationURL(plugin),
+      url: getURL(plugin),
       lastModified: releaseDateV3_3,
       changeFrequency: 'monthly',
       priority: 0.5,
