@@ -5,6 +5,7 @@ import { DOMAIN } from 'gatoapp/data/env/domain'
 import RootLayoutHeader from 'gatoapp/app/layout-header'
 import AppConfig from '@/app/app.config'
 import AppConfigProvider from 'gatoapp/app/appconfig-provider'
+import AppSettings from '@/app/app.settings'
 import AppSettingsProvider from 'gatoapp/app/appsettings-provider'
 import AppStyleProvider from 'gatoapp/app/appstyle-provider'
 import AppContentProvider from 'gatoapp/app/appcontent-provider'
@@ -54,7 +55,7 @@ export default function RootLayout({
   }
   const appSettings = {
     campaigns: {
-      enableBlackFriday: true,
+      enableBlackFriday: AppSettings.campaigns.enableBlackFriday,
     }
   }
   const appStyle = {
