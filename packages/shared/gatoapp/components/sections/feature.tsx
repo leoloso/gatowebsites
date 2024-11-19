@@ -20,7 +20,6 @@ export default function FeatureSection({
   bgClassname,
   thumbLeading,
   showTestimonial=true,
-  tryoutProduct,
 }: {
   feature: Feature,
   sectionURL: string,
@@ -32,7 +31,6 @@ export default function FeatureSection({
   bgClassname?: string,
   thumbLeading?: string,
   showTestimonial?: boolean,
-  tryoutProduct: string
 }) {
   const testimonial = testimonials[testimonialIndex]
   return (

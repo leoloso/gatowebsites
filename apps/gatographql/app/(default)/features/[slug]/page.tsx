@@ -79,7 +79,6 @@ export default async function SingleFeature({ params }: {
         defaultFeatureIcon={DefaultFeatureIcon02}
         bgClassname={clsx("bg-gradient-to-tr", "from-slate-900 to-fuchsia-900")}
         thumbLeading='Feature:'
-        tryoutProduct='Gato GraphQL + all extensions'
       >
         <ul className="text-sm">
           <li className="flex items-center justify-between space-x-4 py-3 border-t [border-image:linear-gradient(to_right,theme(colors.slate.700/.3),theme(colors.slate.700),theme(colors.slate.700/.3))1]">
