@@ -17,14 +17,6 @@ export function getExtensionDocumentationURL(extension: Extension) {
   return `${DOMAIN}${getExtensionDocumentationURLPath(extension)}`
 }
 
-export function getDemoPostURLPath(demoPost: DemoPost) {
-  return `/${AppConfig.paths.demoPosts}/${demoPost.slug}`
-}
-
-export function getDemoPostURL(demoPost: DemoPost) {
-  return `${DOMAIN}${getDemoPostURLPath(demoPost)}`
-}
-
 export function getComparisonPostURLPath(comparisonPost: ComparisonPost) {
   return `/${AppConfig.paths.comparisonPosts}/${comparisonPost.slug}`
 }

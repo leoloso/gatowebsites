@@ -14,11 +14,3 @@ export function getBlogPostURLPath(post: BlogPost) {
 export function getBlogPostURL(post: BlogPost) {
   return `${DOMAIN}${getBlogPostURLPath(post)}`
 }
-
-export function getDemoPostURLPath(demoPost: DemoPost) {
-  return `/${AppConfig.paths.demoPosts}/${demoPost.slug}`
-}
-
-export function getDemoPostURL(demoPost: DemoPost) {
-  return `${DOMAIN}${getDemoPostURLPath(demoPost)}`
-}
