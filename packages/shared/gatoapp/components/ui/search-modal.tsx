@@ -5,7 +5,9 @@ import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/re
 import AppSettings from 'gatoapp/app/app.settings'
 
 // import algoliasearch and InstantSearch
-import algoliasearch from "algoliasearch/lite"
+	
+
+import { algoliasearch } from "algoliasearch";
 import { InstantSearchNext } from 'react-instantsearch-nextjs';
 import {
   SearchBox,

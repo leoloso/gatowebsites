@@ -1,4 +1,4 @@
-import algoliaSearch from "algoliasearch"
+import { algoliasearch, MultipleBatchRequest } from "algoliasearch";
 import {
   allBlogPosts,
   allDemoPosts,
@@ -170,6 +170,17 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
   )
 }
 
+/**
+ * @see https://www.algolia.com/doc/libraries/javascript/v5/methods/search/multiple-batch/?client=javascript
+ */
+function transformSearchObjectToBatchRequest(searchObject: SearchObject): MultipleBatchRequest {
+  return {
+    action: 'addObject',
+    indexName: ALGOLIA_API_CREDENTIALS.indexName,
+    body: {...searchObject}
+  }
+}
+
 export async function GET(request: Request) {
   const url = request.url || ''
   const { searchParams } = new URL(url);
@@ -185,19 +196,20 @@ export async function GET(request: Request) {
     const docs = await getAllDocsTransformed()
     const extensions = await getAllExtensionsTransformed()
     const features = await getAllFeaturesTransformed()
-    const client = algoliaSearch(
+    const client = algoliasearch(
       ALGOLIA_API_CREDENTIALS.appId,
       ALGOLIA_API_CREDENTIALS.searchAdminKey
     )
-    const searchIndex = client.initIndex(ALGOLIA_API_CREDENTIALS.indexName)
-    const algoliaSearchIndexResponse = await searchIndex.saveObjects([
-      ...posts,
-      ...demoPosts,
-      ...comparisonPosts,
-      ...docs,
-      ...extensions,
-      ...features
-    ])
+    const algoliaSearchIndexResponse = await client.multipleBatch({
+      requests: [
+        ...posts,
+        ...demoPosts,
+        ...comparisonPosts,
+        ...docs,
+        ...extensions,
+        ...features
+      ].map((searchObject) => transformSearchObjectToBatchRequest(searchObject))
+    });
     
     return new Response(`⭐️⭐️ Successfully added ${algoliaSearchIndexResponse.objectIDs.length} records to Algolia search. ⭐️⭐️`)
   } catch (err) {
