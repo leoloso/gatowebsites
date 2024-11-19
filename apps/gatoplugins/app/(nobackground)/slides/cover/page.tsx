@@ -1,4 +1,4 @@
-import SlidesCover from 'gatoapp/app/(nobackground)/slides/cover/slides-cover'
+import SlidesCover from 'gatoapp/components/slides/cover/slides-cover'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import Logo from '@/public/assets/GatoPlugins-logo-suki-text-square.webp'
 import Image from 'next/image'

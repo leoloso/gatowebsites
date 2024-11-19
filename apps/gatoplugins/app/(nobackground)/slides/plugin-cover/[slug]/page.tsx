@@ -1,5 +1,5 @@
 import { allPlugins } from '@/.contentlayer/generated'
-import ProductCover from 'gatoapp/app/(nobackground)/slides/product-cover/[slug]/product-cover'
+import ProductCover from 'gatoapp/components/slides/product-cover/product-cover'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import { notFound } from 'next/navigation'
 
