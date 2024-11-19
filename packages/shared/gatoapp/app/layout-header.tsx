@@ -3,7 +3,7 @@ import LemonSqueezyScriptProvider from 'gatoapp/components/scripts/lemonsqueezy'
 import InitializeShop from 'gatoapp/components/shop/initialize-shop'
 import React from 'react'
 
-export default function RootLayout({
+export default function RootLayoutHeader({
   analyticsDomain,
   shopAffiliateTrackingShopSlug,
 }: {
