@@ -18,6 +18,7 @@ import {
 } from "@/utils/content/document"
 import {
   getStructuredDataObject,
+  assertCanExecuteGET,
   executeGET,
 } from 'gatoapp/app/api/deploy-algolia/route'
 
@@ -122,11 +123,9 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
 }
 
 export async function GET(request: Request) {
-  const url = request.url || ''
-  const { searchParams } = new URL(url);
-  const apiKey = searchParams.get('apiKey');
-  if (!apiKey || typeof apiKey !== 'string' || !isAdminUser(apiKey)) {
-    return new Response(`⛔️ You are not allowed here`, { status: 500 })
+  const maybeResponse = assertCanExecuteGET(request)
+  if (maybeResponse) {
+    return maybeResponse
   }
 
   const searchDemoPosts = AppSettings.searchDemoPosts

@@ -62,13 +62,16 @@ function transformSearchObjectToBatchRequest(searchObject: SearchObject): Multip
   }
 }
 
-export async function executeGET(request: Request, searchObjects: SearchObject[]) {
+export function assertCanExecuteGET(request: Request): Response|undefined {
   const url = request.url || ''
   const { searchParams } = new URL(url);
   const apiKey = searchParams.get('apiKey');
   if (!apiKey || typeof apiKey !== 'string' || !isAdminUser(apiKey)) {
     return new Response(`⛔️ You are not allowed here`, { status: 500 })
   }
+};
+
+export async function executeGET(request: Request, searchObjects: SearchObject[]) {
   try {
     const client = algoliasearch(
       ALGOLIA_API_CREDENTIALS.appId,
