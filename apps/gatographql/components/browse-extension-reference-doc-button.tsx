@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { Extension } from '@/.contentlayer/generated'
-import { getExtensionDocumentationURLPath } from '@/utils/content/application-urls'
 
 export default function BrowseExtensionReferenceDocButton({
   btnClassName = "btn",
@@ -12,7 +11,7 @@ export default function BrowseExtensionReferenceDocButton({
   extension: Extension
 }) {
   return (
-    <Link className={`${btnClassName} ${styleClassname}`} href={getExtensionDocumentationURLPath(extension)}>
+    <Link className={`${btnClassName} ${styleClassname}`} href={extension.urlPath}>
       <span className="relative inline-flex items-center">
         Browse the Extension Reference docs
       </span>

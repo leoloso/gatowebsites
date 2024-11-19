@@ -10,7 +10,6 @@ import {
   allFeatures,
 } from '@/.contentlayer/generated'
 import {
-  getExtensionDocumentationURL,
   getComparisonPostURL,
 } from '@/utils/content/application-urls'
 import { getURL } from 'gatoapp/utils/content/application-urls'
@@ -40,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const extensionDocumentationSitemapEntries = allExtensions.map((extension) => (
     {
-      url: getExtensionDocumentationURL(extension),
+      url: getURL(extension),
       lastModified: releaseDateV2_2,
       changeFrequency: 'monthly',
       priority: 0.5,
