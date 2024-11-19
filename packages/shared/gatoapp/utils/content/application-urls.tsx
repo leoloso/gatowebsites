@@ -3,6 +3,10 @@ import AppConstants from "gatoapp/app/app.constants";
 import AppConfig from 'gatoapp/app/app.config'
 import { DOMAIN } from 'gatoapp/data/env/domain'
 
+export function getURL(entity: { urlPath: string }) {
+  return `${DOMAIN}${entity.urlPath}`
+}
+
 export function getDocURLPath(doc: Doc) {
   if (doc.topicSlug === AppConstants.implicitDocTopicSlug) {
     return `/${doc.section}/${doc.slug}`
