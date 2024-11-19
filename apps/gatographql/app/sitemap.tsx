@@ -14,7 +14,6 @@ import {
   getExtensionDocumentationURL,
   getDemoPostURL,
   getComparisonPostURL,
-  getDocURL,
 } from '@/utils/content/application-urls'
 import { getURL } from 'gatoapp/utils/content/application-urls'
 import { getReleaseData } from 'gatoapp/data/release'
@@ -75,7 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const docSitemapEntries = allDocs.map((doc) => (
     {
-      url: getDocURL(doc),
+      url: getURL(doc),
       lastModified: releaseDateV2_2,
       changeFrequency: 'weekly',
       priority: 0.5,

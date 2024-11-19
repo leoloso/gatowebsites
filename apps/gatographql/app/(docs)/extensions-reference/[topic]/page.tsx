@@ -1,6 +1,5 @@
 import { notFound, redirect } from 'next/navigation'
 import { getExtensionReferenceDocuments, sortDocuments } from '@/utils/content/document'
-import { getDocURLPath } from '@/utils/content/application-urls'
 
 // Redirect to the first item on the doc topic collection
 export default function RedirectToFirstDocTopicItem({ params }: {
@@ -17,5 +16,5 @@ export default function RedirectToFirstDocTopicItem({ params }: {
 
   // Redirect to the first one
   const doc = docs[docIndex];
-  redirect(getDocURLPath(doc))
+  redirect(doc.urlPath)
 }

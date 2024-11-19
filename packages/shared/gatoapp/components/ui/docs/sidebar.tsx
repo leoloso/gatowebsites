@@ -12,7 +12,6 @@ import {
   sortDocuments,
   getDocumentTopicsBySection,
 } from 'gatoapp/utils/content/document'
-import { getDocURLPath } from 'gatoapp/utils/content/application-urls'
 import AppConstants from 'gatoapp/app/app.constants'
 import SidebarDocTopicSVG, { sidebarDocTopicSVG1, sidebarDocTopicSVG2, sidebarDocTopicSVG3 } from './sidebar-doctopic-svg'
 
@@ -135,7 +134,7 @@ export default function SupportSidebar() {
                                 <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
                                   {docsByTopic.map((doc, docIndex) => (
                                     <li className="mt-3" key={docIndex}>
-                                      <SidebarLink href={getDocURLPath(doc)}>
+                                      <SidebarLink href={doc.urlPath}>
                                         {doc.title}
                                       </SidebarLink>
                                     </li>

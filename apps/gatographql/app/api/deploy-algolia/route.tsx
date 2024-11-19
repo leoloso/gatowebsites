@@ -9,7 +9,6 @@ import {
 } from '@/.contentlayer/generated'
 import { ALGOLIA_API_CREDENTIALS } from 'gatoapp/data/env/algolia'
 import {
-  getDocURLPath,
   getBlogPostURLPath,
   getDemoPostURLPath,
   getComparisonPostURLPath,
@@ -122,7 +121,7 @@ function getDocStructuredDataObject(
   return getStructuredDataObject(
     doc.title,
     doc.description,
-    getDocURLPath(doc),
+    doc.urlPath,
     doc.slug,
     doc.body.raw,
     section
