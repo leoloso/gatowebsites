@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react'
+import React, { createContext, Dispatch, SetStateAction, useContext, useState } from 'react'
 
 type ContextProps = {
   sidebarOpen: boolean,
