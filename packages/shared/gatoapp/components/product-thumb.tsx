@@ -21,6 +21,7 @@ export default function ProductThumb({
   printExtensionTitle=false,
   skipGatoLogo=false,
   logoClassname,
+  leadingTitle,
 }: {
   product: Product,
   paddingClassname?: string,
@@ -34,12 +35,14 @@ export default function ProductThumb({
   printExtensionTitle?: boolean,
   skipGatoLogo?: boolean,
   logoClassname?: string,
+  leadingTitle?: string,
 }) {
   return (
     <WithLogoThumb
       skipGatoLogo={skipGatoLogo}
       skipPlusImage={true}
 
+      leadingTitle={leadingTitle}
       extraLeadingTitleClassname="text-slate-300"
       title={printExtensionTitle ? product.title : ''}
       targetImageSources={product.targetImages}
