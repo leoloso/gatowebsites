@@ -75,7 +75,7 @@ export default function RootLayout({
           >
             <html lang="en" className="scroll-smooth" suppressHydrationWarning>{/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}{/* Comment: Added for the Docs template */}
               <RootLayoutHeader
-                analyticsDomain="gatoplugins.com"
+                analyticsDomain={AppConfig.services.analytics.domain}
                 shopAffiliateTrackingShopSlug={AppConfig.services.shop.affiliateTrackingShopSlug}
               />
               <body className={`${inter.variable} font-inter antialiased bg-slate-200 text-slate-800 tracking-tight ${getBackgroundColorStyle(appStyle.lightDarkColorTheme)}`}>

@@ -137,6 +137,9 @@ module.exports = {
     },
     shop: {
       affiliateTrackingShopSlug: "gato"
+    },
+    analytics: {
+      domain: "gatographql.com"
     }
   },
   domains: {

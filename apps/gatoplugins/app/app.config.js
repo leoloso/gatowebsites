@@ -59,6 +59,9 @@ module.exports = {
     },
     shop: {
       affiliateTrackingShopSlug: "gato"
+    },
+    analytics: {
+      domain: "gatoplugins.com"
     }
   },
   domains: {
