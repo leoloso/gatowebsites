@@ -46,3 +46,31 @@ export function getDocumentTopicsBySection(section: string) {
   return allDocTopics.filter((docTopic) => docTopic.section === section)
 }
 // ----------------------------------------------------------------
+
+
+/**
+ * Watch out! These methods cannot be moved to the shared package,
+ * hence they are repeated in all apps:
+ *
+ * @see apps/gatographql/utils/content/document.tsx
+ * @see apps/gatoplugins/utils/content/document.tsx
+ * 
+ * That's because, for some reason, loading `architecture/cms-agnosticism`
+ * gives an error:
+ *
+ *   `Error: (0 , gatoapp_utils_content_document__WEBPACK_IMPORTED_MODULE_3__.getPrevNextArticles) is not a function`
+ *
+ * and even adding `'use client'` doesn't solve it
+ * 
+ * ----------------------------------------------------------------
+ */
+export function getPrevNextArticles(articles: Array<any>, articleIndex: number) {
+  // Calculate the prev/next items
+  const prevArticle = articleIndex === 0 ? undefined : articles[articleIndex - 1]
+  const nextArticle = articleIndex === (articles.length - 1) ? undefined : articles[articleIndex + 1]
+  return {
+    prev: prevArticle,
+    next: nextArticle
+  }
+}
+// ----------------------------------------------------------------
