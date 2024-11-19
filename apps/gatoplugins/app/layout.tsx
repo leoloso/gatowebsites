@@ -85,7 +85,7 @@ export default function RootLayout({
                 />
                 <InitializeShop />
               </head>
-              <body className={`${inter.variable} font-inter antialiased bg-slate-200 text-slate-800 dark:bg-slate-900 dark:text-slate-100 tracking-tight ${getBackgroundColorStyle(appStyle.lightDarkColorTheme)}`}>
+              <body className={`${inter.variable} font-inter antialiased bg-slate-200 text-slate-800 tracking-tight ${getBackgroundColorStyle(appStyle.lightDarkColorTheme)}`}>
                 {children}
               </body>
             </html>
