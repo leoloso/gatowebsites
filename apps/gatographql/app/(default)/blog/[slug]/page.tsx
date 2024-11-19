@@ -14,7 +14,7 @@ import StunningBackground from 'gatoapp/components/stunning-background'
 import Newsletter from 'gatoapp/components/newsletter'
 import { sortByPublishedAt } from 'gatoapp/utils/content/sort'
 import generateAppRssFeed from '@/utils/rss'
-import { getBlogPostURL } from '@/utils/content/application-urls'
+import { getURL } from 'gatoapp/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from 'gatoapp/components/schema/blogposting-schema-json-ld';
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
@@ -77,7 +77,7 @@ export default async function SinglePost({ params }: {
     <>
       <BlogPostingSchemaJsonLdScript
         headline={blogPost.title}
-        url={getBlogPostURL(blogPost)}
+        url={getURL(blogPost)}
         image={blogPost.image}
         description={blogPost.description}
         datePublished={blogPost.publishedAt}
