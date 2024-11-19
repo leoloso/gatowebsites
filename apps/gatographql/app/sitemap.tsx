@@ -11,13 +11,13 @@ import {
 } from '@/.contentlayer/generated'
 import {
   getBlogPostURL,
-  getExtensionURL,
   getFeatureURL,
   getExtensionDocumentationURL,
   getDemoPostURL,
   getComparisonPostURL,
   getDocURL,
 } from '@/utils/content/application-urls'
+import { getURL } from 'gatoapp/utils/content/application-urls'
 import { getReleaseData } from 'gatoapp/data/release'
  
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -36,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const extensionSitemapEntries = allExtensions.map((extension) => (
     {
-      url: getExtensionURL(extension),
+      url: getURL(extension),
       lastModified: releaseDateV2_2,
       changeFrequency: 'monthly',
       priority: 0.5,
