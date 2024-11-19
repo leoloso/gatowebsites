@@ -16,7 +16,7 @@ import {
   getDemoPostURLPath,
   getComparisonPostURLPath,
 } from "@/utils/content/application-urls"
-import { isAdminUser } from "@/utils/admin"
+import { isAdminUser } from "gatoapp/utils/admin"
 import { SearchObject, Sections } from "gatoapp/components/search/algolia"
 import AppSettings from "@/app/app.settings"
 import {
