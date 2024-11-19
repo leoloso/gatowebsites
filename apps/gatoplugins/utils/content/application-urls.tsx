@@ -9,14 +9,6 @@ import AppConfig from '@/app/app.config'
 import AppConstants from "gatoapp/app/app.constants";
 import { DOMAIN } from 'gatoapp/data/env/domain'
 
-export function getPluginURLPath(plugin: Plugin) {
-  return `/${AppConfig.paths.plugins}/${plugin.slug}`
-}
-
-export function getPluginURL(plugin: Plugin) {
-  return `${DOMAIN}${getPluginURLPath(plugin)}`
-}
-
 export function getPluginDocumentationURLPath(plugin: Plugin) {
   return `/${AppConfig.paths.docs.pluginsReference}/${plugin.slug}`
 }
