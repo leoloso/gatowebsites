@@ -4,7 +4,8 @@ import ContentLayerConfig from '../../packages/shared/gatoapp/app/contentlayer.c
 
 const ContentLayerBaseConfig = ContentLayerConfig.config.ContentLayerBaseConfig
 const BlogPost = ContentLayerConfig.types.BlogPost
-// const DemoPost = ContentLayerConfig.types.DemoPost
+const DemoPost = ContentLayerConfig.types.DemoPost
+const Feature = ContentLayerConfig.types.Feature
 const Page = ContentLayerConfig.types.Page
 const Snippet = ContentLayerConfig.types.Snippet
 const Doc = ContentLayerConfig.types.Doc
@@ -75,5 +76,5 @@ const Plugin = defineDocumentType(() => ({
 
 export default makeSource({
   ...ContentLayerBaseConfig,
-  documentTypes: [BlogPost, Page, Snippet, Doc, DocTopic, Plugin],
+  documentTypes: [BlogPost, Page, Snippet, Doc, DocTopic, DemoPost, Feature, Plugin],
 })
