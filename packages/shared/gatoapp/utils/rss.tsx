@@ -5,7 +5,7 @@ import { DOMAIN } from 'gatoapp/data/env/domain';
 import slugify from '@sindresorhus/slugify';
 import { maybeAddDomain } from 'gatoapp/utils/domain';
 import { BlogPost } from 'gatoapp/types/types';
-import { getBlogPostURL } from './content/application-urls';
+import { getURL } from 'gatoapp/utils/content/application-urls';
 
 export default async function generateRssFeed(
   name: string,
@@ -32,8 +32,8 @@ export default async function generateRssFeed(
   posts.forEach((post) => {
     feed.addItem({
       title: post.title,
-      id: slugify(getBlogPostURL(post)),
-      link: getBlogPostURL(post),
+      id: slugify(getURL(post)),
+      link: getURL(post),
       description: post.description,
       date: new Date(post.publishedAt),
       ...(post.image ? {image: maybeAddDomain(post.image)} : {})
