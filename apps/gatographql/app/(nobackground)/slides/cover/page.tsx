@@ -1,6 +1,7 @@
-import { Suspense } from 'react'
-import SlidesCoverItem from './slides-cover-item'
+import SlidesCover from 'gatoapp/app/(nobackground)/slides/cover/slides-cover'
 import { createSEOPageTitle } from '@/utils/content/metadata'
+import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
+import Image from 'next/image'
 
 const pageTitle = 'Slides Cover'
 export const metadata = {
@@ -8,25 +9,11 @@ export const metadata = {
   description: 'Gato GraphQL Slides Cover',
 }
 
-export default function SlidesCover() {
-
+export default function AppSlidesCover() {
+  const logo = (
+    <Image src={Logo} alt="Logo" width={375} height={375} />
+  )
   return (
-    <>
-
-      {/* Content */}
-      <section className="relative">
-
-        <div>
-          <div className="relative">
-            <Suspense>
-              <SlidesCoverItem />
-            </Suspense>
-          </div>
-
-        </div>
-
-      </section>
-
-    </>
+    <SlidesCover logo={logo} />
   )
 }
