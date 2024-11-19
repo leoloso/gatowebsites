@@ -7,7 +7,7 @@ import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 
 export default function Thumb({
   paddingClassname = "py-10 px-8 md:py-16 md:px-12",
-  bgClassname = "bg-gradient-to-tr from-slate-900 to-violet-900",
+  bgClassname,
   extraThumbClassname,
   numberParticles = 10,
   children,
@@ -21,7 +21,7 @@ export default function Thumb({
   const isDarkColorThemeMode = usingDarkColorThemeMode()
   return (
     <div
-      className={clsx("relative w-full h-full z-20 overflow-hidden", bgClassname, paddingClassname, extraThumbClassname)}
+      className={clsx("relative w-full h-full z-20 overflow-hidden", bgClassname, !bgClassname && isDarkColorThemeMode && "bg-gradient-to-tr from-slate-900 to-violet-900", !bgClassname && !isDarkColorThemeMode && "bg-gradient-to-tr from-teal-600 to-violet-600 text-indigo-100", paddingClassname, extraThumbClassname)}
     >
       <Particles className="absolute inset-0 -z-10" quantity={numberParticles} />
 
