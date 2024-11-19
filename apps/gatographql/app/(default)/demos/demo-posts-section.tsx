@@ -4,7 +4,6 @@ import { allDemoPosts } from '@/.contentlayer/generated'
 import Link from 'next/link'
 import PostDate from 'gatoapp/components/post-date'
 import PostTags from 'gatoapp/components/post-tags'
-import { getDemoPostURLPath } from '@/utils/content/application-urls'
 import { sortByPublishedAt } from 'gatoapp/utils/content/sort'
 import PageHeader from 'gatoapp/components/page-header'
 import Pagination from 'gatoapp/components/pagination'
@@ -51,7 +50,7 @@ export default function DemoPostsSection() {
         {!tag && (
           <div className="pb-12 md:pb-20">
             <article className="max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
-              <Link href={getDemoPostURLPath(featuredDemoPost)} className="relative block group" data-aos="fade-right" data-aos-delay="200">
+              <Link href={featuredDemoPost.urlPath} className="relative block group" data-aos="fade-right" data-aos-delay="200">
                 <div className="absolute inset-0 bg-gray-700 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
                 <div className="relative overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
                   <DemoPostThumb
@@ -70,7 +69,7 @@ export default function DemoPostsSection() {
                     }
                   </div>
                   <h3 className="h3 text-2xl lg:text-3xl mb-2">
-                    <Link href={getDemoPostURLPath(featuredDemoPost)} className="hover:text-purple-300 transition duration-150 ease-in-out">{featuredDemoPost.title}</Link>
+                    <Link href={featuredDemoPost.urlPath} className="hover:text-purple-300 transition duration-150 ease-in-out">{featuredDemoPost.title}</Link>
                   </h3>
                 </header>
                 <p className="text-lg text-gray-400 grow">{featuredDemoPost.description}</p>

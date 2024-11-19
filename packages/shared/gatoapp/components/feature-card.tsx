@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image, { StaticImageData } from 'next/image'
 import DefaultFeatureIcon from 'gatoapp/public/assets/theme/default/feature-icon.png'
-import { getFeatureURLPath } from 'gatoapp/utils/content/application-urls'
 import { Feature } from 'gatoapp/types/types'
 import clsx from 'clsx'
 
@@ -24,7 +23,7 @@ export default function FeatureCard({
           <div className="relative">
             <Image src={featureIcon} width="40" height="40" alt={feature.title} />
           </div>
-          <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href={getFeatureURLPath(feature)}>{feature.title}</Link>
+          <Link className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 group-hover:before:absolute group-hover:before:inset-0" href={feature.urlPath}>{feature.title}</Link>
         </div>
         <div className="grow">
           <div className="text-sm text-slate-400">{feature.description}</div>

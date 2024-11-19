@@ -10,7 +10,7 @@ import SecondaryNav from 'gatoapp/components/ui/docs/secondary-nav'
 import { Doc } from 'gatoapp/types/types'
 import { getDocTopic } from 'gatoapp/utils/content/document'
 import ArticleSchemaJsonLdScript from '../schema/article-schema-json-ld'
-import { getDocURL } from 'gatoapp/utils/content/application-urls'
+import { getURL } from 'gatoapp/utils/content/application-urls'
 
 export default function DocSection({
   svgOption,
@@ -29,7 +29,7 @@ export default function DocSection({
     <>
       <ArticleSchemaJsonLdScript
         headline={doc.title}
-        url={getDocURL(doc)}
+        url={getURL(doc)}
         description={doc.description}
       />
 

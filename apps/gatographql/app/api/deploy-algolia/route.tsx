@@ -8,14 +8,6 @@ import {
   Doc,
 } from '@/.contentlayer/generated'
 import { ALGOLIA_API_CREDENTIALS } from 'gatoapp/data/env/algolia'
-import {
-  getDocURLPath,
-  getExtensionURLPath,
-  getFeatureURLPath,
-  getBlogPostURLPath,
-  getDemoPostURLPath,
-  getComparisonPostURLPath,
-} from "@/utils/content/application-urls"
 import { isAdminUser } from "gatoapp/utils/admin"
 import { SearchObject, Sections } from "gatoapp/components/search/algolia"
 import AppSettings from "@/app/app.settings"
@@ -76,7 +68,7 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
     allBlogPosts?.map((post) => getStructuredDataObject(
       post.title,
       post.description,
-      getBlogPostURLPath(post),
+      post.urlPath,
       post.slug,
       post.body.raw,
       Sections.Blog
@@ -90,7 +82,7 @@ async function getAllDemoPostsTransformed(): Promise<SearchObject[]> {
     allDemoPosts?.map((demoPost) => getStructuredDataObject(
       demoPost.title,
       demoPost.description,
-      getDemoPostURLPath(demoPost),
+      demoPost.urlPath,
       demoPost.slug,
       demoPost.body.raw,
       Sections.Demos
@@ -104,7 +96,7 @@ async function getAllComparisonPostsTransformed(): Promise<SearchObject[]> {
     allComparisonPosts?.map((comparisonPost) => getStructuredDataObject(
       comparisonPost.title,
       comparisonPost.description,
-      getComparisonPostURLPath(comparisonPost),
+      comparisonPost.urlPath,
       comparisonPost.slug,
       comparisonPost.body.raw,
       Sections.Comparisons
@@ -124,7 +116,7 @@ function getDocStructuredDataObject(
   return getStructuredDataObject(
     doc.title,
     doc.description,
-    getDocURLPath(doc),
+    doc.urlPath,
     doc.slug,
     doc.body.raw,
     section
@@ -148,7 +140,7 @@ async function getAllExtensionsTransformed(): Promise<SearchObject[]> {
     allExtensions?.map((extension) => getStructuredDataObject(
       extension.title,
       extension.description,
-      getExtensionURLPath(extension),
+      extension.urlPath,
       extension.slug,
       extension.body.raw,
       Sections.Extensions
@@ -162,7 +154,7 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
     allFeatures?.map((feature) => getStructuredDataObject(
       feature.title,
       feature.description,
-      getFeatureURLPath(feature),
+      feature.urlPath,
       feature.slug,
       feature.body.raw,
       Sections.Features

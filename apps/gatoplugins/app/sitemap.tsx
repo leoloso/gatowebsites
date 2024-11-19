@@ -8,21 +8,14 @@ import {
   allPlugins,
   allFeatures,
 } from '@/.contentlayer/generated'
-import {
-  getBlogPostURL,
-  getPluginURL,
-  getFeatureURL,
-  getPluginDocumentationURL,
-  getDemoPostURL,
-  getDocURL,
-} from '@/utils/content/application-urls'
+import { getURL } from 'gatoapp/utils/content/application-urls'
 import { getReleaseData } from 'gatoapp/data/release'
  
 export default function sitemap(): MetadataRoute.Sitemap {
   const releaseDateV3_3 = new Date(getReleaseData('3.3.0'))
   const blogPostSitemapEntries = allBlogPosts.map((blogPost) => (
     {
-      url: getBlogPostURL(blogPost),
+      url: getURL(blogPost),
       lastModified: new Date(blogPost.publishedAt),
       changeFrequency: 'weekly',
       priority: 0.5,
@@ -30,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const pluginSitemapEntries = allPlugins.map((plugin) => (
     {
-      url: getPluginURL(plugin),
+      url: getURL(plugin),
       lastModified: releaseDateV3_3,
       changeFrequency: 'monthly',
       priority: 0.5,
@@ -38,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const pluginDocumentationSitemapEntries = allPlugins.map((plugin) => (
     {
-      url: getPluginDocumentationURL(plugin),
+      url: getURL(plugin),
       lastModified: releaseDateV3_3,
       changeFrequency: 'monthly',
       priority: 0.5,
@@ -46,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const featureSitemapEntries = allFeatures.map((feature) => (
     {
-      url: getFeatureURL(feature),
+      url: getURL(feature),
       lastModified: releaseDateV3_3,
       changeFrequency: 'monthly',
       priority: 0.5,
@@ -54,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const demoPostSitemapEntries = allDemoPosts.map((demoPost) => (
     {
-      url: getDemoPostURL(demoPost),
+      url: getURL(demoPost),
       lastModified: new Date(demoPost.publishedAt),
       changeFrequency: 'weekly',
       priority: 0.8,
@@ -62,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const docSitemapEntries = allDocs.map((doc) => (
     {
-      url: getDocURL(doc),
+      url: getURL(doc),
       lastModified: releaseDateV3_3,
       changeFrequency: 'weekly',
       priority: 0.5,

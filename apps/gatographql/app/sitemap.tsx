@@ -9,15 +9,7 @@ import {
   allExtensions,
   allFeatures,
 } from '@/.contentlayer/generated'
-import {
-  getBlogPostURL,
-  getExtensionURL,
-  getFeatureURL,
-  getExtensionDocumentationURL,
-  getDemoPostURL,
-  getComparisonPostURL,
-  getDocURL,
-} from '@/utils/content/application-urls'
+import { getURL } from 'gatoapp/utils/content/application-urls'
 import { getReleaseData } from 'gatoapp/data/release'
  
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -28,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const releaseDateV2_2_4 = new Date(getReleaseData('2.2.4'))
   const blogPostSitemapEntries = allBlogPosts.map((blogPost) => (
     {
-      url: getBlogPostURL(blogPost),
+      url: getURL(blogPost),
       lastModified: new Date(blogPost.publishedAt),
       changeFrequency: 'weekly',
       priority: 0.5,
@@ -36,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const extensionSitemapEntries = allExtensions.map((extension) => (
     {
-      url: getExtensionURL(extension),
+      url: getURL(extension),
       lastModified: releaseDateV2_2,
       changeFrequency: 'monthly',
       priority: 0.5,
@@ -44,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const extensionDocumentationSitemapEntries = allExtensions.map((extension) => (
     {
-      url: getExtensionDocumentationURL(extension),
+      url: getURL(extension),
       lastModified: releaseDateV2_2,
       changeFrequency: 'monthly',
       priority: 0.5,
@@ -52,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const featureSitemapEntries = allFeatures.map((feature) => (
     {
-      url: getFeatureURL(feature),
+      url: getURL(feature),
       lastModified: releaseDateV2_2,
       changeFrequency: 'monthly',
       priority: 0.5,
@@ -60,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const demoPostSitemapEntries = allDemoPosts.map((demoPost) => (
     {
-      url: getDemoPostURL(demoPost),
+      url: getURL(demoPost),
       lastModified: new Date(demoPost.publishedAt),
       changeFrequency: 'weekly',
       priority: 0.8,
@@ -68,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const comparisonPostSitemapEntries = allComparisonPosts.map((comparisonPost) => (
     {
-      url: getComparisonPostURL(comparisonPost),
+      url: getURL(comparisonPost),
       lastModified: releaseDateV2_2_2,
       changeFrequency: 'weekly',
       priority: 0.8,
@@ -76,7 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const docSitemapEntries = allDocs.map((doc) => (
     {
-      url: getDocURL(doc),
+      url: getURL(doc),
       lastModified: releaseDateV2_2,
       changeFrequency: 'weekly',
       priority: 0.5,

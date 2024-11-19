@@ -5,7 +5,6 @@ import AppConfig from '@/app/app.config'
 import FeatureSection from 'gatoapp/components/sections/feature'
 import DefaultFeatureIcon02 from 'gatoapp/public/assets/theme/default/feature-icon-02.png'
 import { getGuideDocument, getPrevNextArticles } from '@/utils/content/document'
-import { getDocURLPath } from '@/utils/content/application-urls'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import clsx from 'clsx'
 import ArticleNavigation from 'gatoapp/components/ui/article-navigation'
@@ -92,7 +91,7 @@ export default async function SingleFeature({ params }: {
               <ul className="mt-1">
                 {relatedGuides.map((relatedGuide, index) => (
                   <li key={index}>
-                    <a className="text-purple-500 font-medium flex items-center pl-2 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5" href={getDocURLPath(relatedGuide)}>
+                    <a className="text-purple-500 font-medium flex items-center pl-2 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5" href={relatedGuide.urlPath}>
                       <svg className="fill-slate-400 shrink-0 mr-2 dark:fill-slate-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
                         <path d="M7.3 9.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM7.3 15.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM.3 10.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0Z" />
                       </svg>

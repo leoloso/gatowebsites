@@ -1,4 +1,3 @@
-import { getBlogPostURLPath } from "@/utils/content/application-urls";
 import { getFeaturedBlogPosts } from "@/utils/content/post";
 import { sortByPublishedAt } from 'gatoapp/utils/content/sort';
 import Link from "next/link";
@@ -16,7 +15,7 @@ export default function PopularPosts() {
             </svg>
             <article>
               <h3 className="font-medium mb-1">
-                <Link href={getBlogPostURLPath(post)} className="text-slate-300 hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
+                <Link href={post.urlPath} className="text-slate-300 hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
               </h3>
               <div className="text-sm text-slate-500">
                 <span className="text-slate-400">By </span>

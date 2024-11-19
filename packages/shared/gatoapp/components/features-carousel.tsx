@@ -16,7 +16,6 @@ import CarouselImg05 from 'gatoapp/public/assets/theme/carousel-icon-05.svg'
 import Swiper, { Navigation } from 'swiper'
 import 'swiper/swiper.min.css'
 import SectionHeader from 'gatoapp/components/section-header'
-import { getFeatureURLPath } from 'gatoapp/utils/content/application-urls'
 import { sortByOrder } from 'gatoapp/utils/content/sort'
 import BrowseFeaturesButton from './browse-features-button'
 Swiper.use([Navigation])
@@ -134,11 +133,11 @@ export default function FeaturesCarousel({
                       <div className="flex flex-col p-6 h-full">
                         <Image className="mb-3" src={itemPics[index % itemPics.length]} width={56} height={56} alt="Carousel Icon" />
                         <div className="grow">
-                          <div className="font-bold text-lg mb-1"><a className="group-hover:before:absolute group-hover:before:inset-0" href={getFeatureURLPath(feature)}>{feature.title}</a></div>
+                          <div className="font-bold text-lg mb-1"><a className="group-hover:before:absolute group-hover:before:inset-0" href={feature.urlPath}>{feature.title}</a></div>
                           <div className="text-slate-400 mb-3">{feature.description}</div>
                         </div>
                         <div className="text-right">
-                          <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={getFeatureURLPath(feature)}>Learn More <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
+                          <a className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group" href={feature.urlPath}>Learn More <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></a>
                         </div>
                       </div>
                     </div>
