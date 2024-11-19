@@ -6,7 +6,6 @@ import {
   allFeatures,
   Doc,
 } from '@/.contentlayer/generated'
-import { isAdminUser } from "gatoapp/utils/admin"
 import { SearchObject, Sections } from "gatoapp/components/search/algolia"
 import AppSettings from "@/app/app.settings"
 import {
