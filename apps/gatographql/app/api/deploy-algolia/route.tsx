@@ -31,9 +31,9 @@ import {
 function removeUnneededContent(content: string): string {
   return content
     // Remove all ``` except the last one
-    .replace(/```[a-zA-Z_-]+\n[^```]*```/igs,'')
+    .replace(/```[a-zA-Z_-]+\n[^```]*```/ig,'')
     // Remove the last ```
-    .replace(/```[a-zA-Z_-]+\n.*```/igs,'')
+    .replace(/```[a-zA-Z_-]+\n.*```/ig,'')
     // Remove <Banner> and </Banner>
     .replace(/<Banner[^>]*>/g,'')
     .replace(/<\/Banner[^>]*>/g,'')
