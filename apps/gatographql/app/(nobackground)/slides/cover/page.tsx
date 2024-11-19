@@ -14,6 +14,9 @@ export default function AppSlidesCover() {
     <Image src={Logo} alt="Logo" width={375} height={375} />
   )
   return (
-    <SlidesCover logo={logo} />
+    <SlidesCover
+      logo={logo}
+      bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
+    />
   )
 }
