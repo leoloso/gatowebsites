@@ -10,7 +10,6 @@ import {
 import { ALGOLIA_API_CREDENTIALS } from 'gatoapp/data/env/algolia'
 import {
   getDocURLPath,
-  getExtensionURLPath,
   getFeatureURLPath,
   getBlogPostURLPath,
   getDemoPostURLPath,
@@ -148,7 +147,7 @@ async function getAllExtensionsTransformed(): Promise<SearchObject[]> {
     allExtensions?.map((extension) => getStructuredDataObject(
       extension.title,
       extension.description,
-      getExtensionURLPath(extension),
+      extension.urlPath,
       extension.slug,
       extension.body.raw,
       Sections.Extensions

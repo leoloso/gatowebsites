@@ -1,6 +1,5 @@
 import { allExtensions } from '@/.contentlayer/generated'
 import Link from 'next/link'
-import { getExtensionURLPath } from '@/utils/content/application-urls'
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 import ExtensionThumb from '@/components/extension-thumb'
 import clsx from 'clsx'
@@ -52,7 +51,7 @@ export default function ExtensionsSection({
         <div className={clsx(applyStyle === style1 && "pb-12 md:pb-20", applyStyle === style2 && "pb-8 md:pb-12")} key={index}>
           <article className="max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
             <Link
-              href={getExtensionURLPath(extension)}
+              href={extension.urlPath}
               className={clsx("relative block group", alternateColumns && index % 2 === 1 ? 'md:order-last' : '')}
             >
               { applyThumbEffect === svgEffect1 && (
@@ -72,7 +71,7 @@ export default function ExtensionsSection({
             <div>
               <header>
                 <h3 className={clsx(applyStyle === style1 && "h3 mb-2 text-2xl lg:text-3xl", applyStyle === style2 && "h3 mb-2 text-2xl")}>
-                  <Link href={getExtensionURLPath(extension)} className="hover:text-purple-300 transition duration-150 ease-in-out">{extension.title}</Link>
+                  <Link href={extension.urlPath} className="hover:text-purple-300 transition duration-150 ease-in-out">{extension.title}</Link>
                 </h3>
               </header>
               <p className="text-lg text-gray-300 grow">{extension.description}</p>

@@ -10,14 +10,6 @@ import AppConfig from '@/app/app.config'
 import AppConstants from "gatoapp/app/app.constants";
 import { DOMAIN } from 'gatoapp/data/env/domain'
 
-export function getExtensionURLPath(extension: Extension) {
-  return `/${AppConfig.paths.extensions}/${extension.slug}`
-}
-
-export function getExtensionURL(extension: Extension) {
-  return `${DOMAIN}${getExtensionURLPath(extension)}`
-}
-
 export function getFeatureURLPath(feature: Feature) {
   return `/${AppConfig.paths.features}/${feature.slug}`
 }
