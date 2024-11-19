@@ -40,7 +40,6 @@ export default function ProductThumb({
       skipGatoLogo={skipGatoLogo}
       skipPlusImage={true}
 
-      leadingTitle="Extension:"
       extraLeadingTitleClassname="text-slate-300"
       title={printExtensionTitle ? product.title : ''}
       targetImageSources={product.targetImages}
