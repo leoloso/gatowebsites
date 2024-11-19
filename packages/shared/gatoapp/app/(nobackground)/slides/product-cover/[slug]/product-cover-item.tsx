@@ -1,7 +1,7 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation';
-import { Product } from 'gatoapp/components/product-thumb'
+import { ProductProps } from 'gatoapp/components/product-thumb'
 import ProductThumb from 'gatoapp/components/product-thumb'
 import React from 'react';
 
@@ -9,7 +9,7 @@ export default function ProductCoverItem({
   product,
   leadingTitle,
 }: {
-  product: Product,
+  product: ProductProps,
   leadingTitle?: string,
 }) {
   const searchParams = useSearchParams();

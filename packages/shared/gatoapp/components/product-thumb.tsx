@@ -3,7 +3,7 @@ import { StaticImageData } from 'next/image'
 import WithLogoThumb from 'gatoapp/components/thumbnails/with-logo-thumb';
 import React from 'react';
 
-export type Product = {
+export type ProductProps = {
   title: string
   targetImages: string[]
 }
@@ -23,7 +23,7 @@ export default function ProductThumb({
   logoClassname,
   leadingTitle,
 }: {
-  product: Product,
+  product: ProductProps,
   paddingClassname?: string,
   bgClassname?: string,
   extraThumbClassname?: string,
