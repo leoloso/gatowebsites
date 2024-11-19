@@ -13,7 +13,6 @@ export default function ExtensionCover({ params }: {
   params: { slug: string }
 }) {
 
-  // Sort posts. Needed to find the prev/next items below
   const extension = allExtensions.find((extension) => extension.slug === params.slug)
 
   if (!extension) notFound()
