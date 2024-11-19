@@ -22,7 +22,7 @@ export default function NotFound() {
               </div>
               {/* 404 content */}
               <h1 className="h1 mb-4">Uh oh. That page doesn’t exist.</h1>
-              <p className="text-lg text-gray-400">Head to our <Link href="/" className="text-purple-500 hover:text-purple-400 transition duration-150 ease-in-out">homepage</Link> that does exist, or try double-checking the URL.</p>
+              <p className="text-lg text-gray-600 dark:text-gray-400">Head to our <Link href="/" className="text-purple-500 hover:text-purple-400 transition duration-150 ease-in-out">homepage</Link> that does exist, or try double-checking the URL.</p>
             </div>
           </div>
         </div>
