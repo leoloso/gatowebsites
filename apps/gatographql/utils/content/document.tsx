@@ -74,9 +74,6 @@ export function getPrevNextArticles(articles: Array<any>, articleIndex: number) 
     next: nextArticle
   }
 }
-// ----------------------------------------------------------------
-
-
 
 function getGroupDocuments(docSection: string) {
   return allDocs.filter((doc) => doc.section === docSection)
@@ -85,6 +82,16 @@ function getGroupDocuments(docSection: string) {
 export function getGuideDocuments() {
   return getGroupDocuments(AppConfig.paths.docs.guides)
 }
+
+export function getGuideDocument(relatedGuide: RelatedGuide) {
+  const guide = getGuideDocuments().find((doc) => doc.slug === relatedGuide?.slug && doc.topicSlug === relatedGuide?.topic)
+  if (!guide) {
+    throw new Error(`There is no guide with topic '${relatedGuide.topic}' and slug '${relatedGuide.slug}'`)
+  }
+  return guide
+}
+// ----------------------------------------------------------------
+
 
 export function getExtensionReferenceDocuments() {
   return getGroupDocuments(AppConfig.paths.docs.extensionsReference)
@@ -100,12 +107,4 @@ export function getTutorialDocuments() {
 
 export function getArchitectureDocuments() {
   return getGroupDocuments(AppConfig.paths.docs.architecture)
-}
-
-export function getGuideDocument(relatedGuide: RelatedGuide) {
-  const guide = getGuideDocuments().find((doc) => doc.slug === relatedGuide?.slug && doc.topicSlug === relatedGuide?.topic)
-  if (!guide) {
-    throw new Error(`There is no guide with topic '${relatedGuide.topic}' and slug '${relatedGuide.slug}'`)
-  }
-  return guide
 }
