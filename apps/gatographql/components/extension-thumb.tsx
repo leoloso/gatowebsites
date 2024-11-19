@@ -13,8 +13,8 @@ export default function ExtensionThumb({
   logoImage,
   reverseItems,
   svgClassname,
-  printExtensionTitle=false,
-  skipGatoLogo=false,
+  printExtensionTitle,
+  skipGatoLogo,
   logoClassname,
 }: {
   extension: Extension,
