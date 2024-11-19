@@ -1,7 +1,7 @@
 
 import { Extension } from '@/.contentlayer/generated';
 import { StaticImageData } from 'next/image'
-import WithLogoThumb from 'gatoapp/components/thumbnails/with-logo-thumb';
+import ProductThumb from 'gatoapp/components/product-thumb';
 
 export default function ExtensionThumb({
   extension,
@@ -31,14 +31,8 @@ export default function ExtensionThumb({
   logoClassname?: string,
 }) {
   return (
-    <WithLogoThumb
-      skipGatoLogo={skipGatoLogo}
-      skipPlusImage={true}
-
-      leadingTitle="Extension:"
-      extraLeadingTitleClassname="text-slate-300"
-      title={printExtensionTitle ? extension.title : ''}
-      targetImageSources={extension.targetImages}
+    <ProductThumb
+      product={extension}
       paddingClassname={paddingClassname}
       bgClassname={bgClassname}
       extraThumbClassname={extraThumbClassname}
@@ -47,7 +41,10 @@ export default function ExtensionThumb({
       logoImage={logoImage}
       reverseItems={reverseItems}
       svgClassname={svgClassname}
+      printExtensionTitle={printExtensionTitle}
+      skipGatoLogo={skipGatoLogo}
       logoClassname={logoClassname}
+      leadingTitle="Extension:"
     />
   )
 }
