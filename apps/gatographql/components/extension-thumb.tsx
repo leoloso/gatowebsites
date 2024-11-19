@@ -41,7 +41,7 @@ export default function ExtensionThumb({
       logoImage={logoImage}
       reverseItems={reverseItems}
       svgClassname={svgClassname}
-      printExtensionTitle={printExtensionTitle}
+      printProductTitle={printExtensionTitle}
       skipGatoLogo={skipGatoLogo}
       logoClassname={logoClassname}
       leadingTitle="Extension:"
