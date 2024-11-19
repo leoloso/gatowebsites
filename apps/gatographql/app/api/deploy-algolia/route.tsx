@@ -8,9 +8,6 @@ import {
   Doc,
 } from '@/.contentlayer/generated'
 import { ALGOLIA_API_CREDENTIALS } from 'gatoapp/data/env/algolia'
-import {
-  getComparisonPostURLPath,
-} from "@/utils/content/application-urls"
 import { isAdminUser } from "gatoapp/utils/admin"
 import { SearchObject, Sections } from "gatoapp/components/search/algolia"
 import AppSettings from "@/app/app.settings"
@@ -99,7 +96,7 @@ async function getAllComparisonPostsTransformed(): Promise<SearchObject[]> {
     allComparisonPosts?.map((comparisonPost) => getStructuredDataObject(
       comparisonPost.title,
       comparisonPost.description,
-      getComparisonPostURLPath(comparisonPost),
+      comparisonPost.urlPath,
       comparisonPost.slug,
       comparisonPost.body.raw,
       Sections.Comparisons

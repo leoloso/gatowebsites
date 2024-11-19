@@ -9,9 +9,6 @@ import {
   allExtensions,
   allFeatures,
 } from '@/.contentlayer/generated'
-import {
-  getComparisonPostURL,
-} from '@/utils/content/application-urls'
 import { getURL } from 'gatoapp/utils/content/application-urls'
 import { getReleaseData } from 'gatoapp/data/release'
  
@@ -63,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const comparisonPostSitemapEntries = allComparisonPosts.map((comparisonPost) => (
     {
-      url: getComparisonPostURL(comparisonPost),
+      url: getURL(comparisonPost),
       lastModified: releaseDateV2_2_2,
       changeFrequency: 'weekly',
       priority: 0.8,

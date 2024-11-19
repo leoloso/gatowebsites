@@ -4,7 +4,6 @@ import Particles from 'gatoapp/components/particles'
 import Highlighter, { HighlighterItem02 } from 'gatoapp/components/highlighter'
 import { allComparisonPosts } from '@/.contentlayer/generated'
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
-import { getComparisonPostURLPath } from '@/utils/content/application-urls'
 import { getComparisonPostBackground } from '@/utils/content/comparison-backgrounds'
 import { getTestimonials } from '@/components/data/testimonials'
 
@@ -24,7 +23,7 @@ export default function ComparisonList() {
 
         {comparisonPosts.map((comparisonPost, index) => (
           <div key={index}>
-            <Link href={getComparisonPostURLPath(comparisonPost)}>
+            <Link href={comparisonPost.urlPath}>
               <HighlighterItem02>
                 <div className="relative h-full bg-purple-900/50 rounded-[inherit] z-20 overflow-hidden">
                   {/* Particles animation */}
