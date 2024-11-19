@@ -1,5 +1,5 @@
 import { allExtensions } from '@/.contentlayer/generated'
-import ExtensionCoverItem from './extension-cover-item'
+import ProductCover from 'gatoapp/app/(nobackground)/slides/product-cover/[slug]/product-cover'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import { notFound } from 'next/navigation'
 
@@ -13,21 +13,14 @@ export default function ExtensionCover({ params }: {
   params: { slug: string }
 }) {
 
-  // Sort posts. Needed to find the prev/next items below
   const extension = allExtensions.find((extension) => extension.slug === params.slug)
 
   if (!extension) notFound()
 
   return (
-    <>
-
-      {/* Content */}
-      <section className="relative">
-
-        <ExtensionCoverItem extension={extension} />
-
-      </section>
-
-    </>
+    <ProductCover
+      product={extension}
+      leadingTitle='Extension:'
+    />
   )
 }

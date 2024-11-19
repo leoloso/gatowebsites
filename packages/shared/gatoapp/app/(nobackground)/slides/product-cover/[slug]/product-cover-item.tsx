@@ -1,0 +1,32 @@
+'use client'
+
+import { useSearchParams } from 'next/navigation';
+import { Product } from 'gatoapp/components/product-thumb'
+import ProductThumb from 'gatoapp/components/product-thumb'
+import React from 'react';
+
+export default function ProductCoverItem({
+  product,
+  leadingTitle,
+}: {
+  product: Product,
+  leadingTitle?: string,
+}) {
+  const searchParams = useSearchParams();
+  const printProductTitle = searchParams.has('title') || false
+  const includeGatoLogo = searchParams.has('logo') || false
+  return (
+    <header
+      className='aspect-video'
+    >
+      <ProductThumb
+        bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
+        product={product}
+        isLandscape={true}
+        printProductTitle={printProductTitle}
+        skipGatoLogo={!includeGatoLogo}
+        leadingTitle={leadingTitle}
+      />
+    </header>
+  )
+}
