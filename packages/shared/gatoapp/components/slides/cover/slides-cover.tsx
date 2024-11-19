@@ -4,10 +4,8 @@ import React from 'react'
 
 export default function SlidesCover({
   logo,
-  bgClassname,
 }: {
   logo: React.ReactNode,
-  bgClassname?: string,
 }) {
 
   return (
@@ -21,7 +19,6 @@ export default function SlidesCover({
             <Suspense>
               <SlidesCoverItem
                 logo={logo}
-                bgClassname={bgClassname}
               />
             </Suspense>
           </div>

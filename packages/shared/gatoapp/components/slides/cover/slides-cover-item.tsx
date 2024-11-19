@@ -3,6 +3,8 @@
 import { useSearchParams } from 'next/navigation';
 import Thumb from 'gatoapp/components/thumbnails/thumb'
 import React from 'react'
+import clsx from 'clsx';
+import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 
 export default function SlidesCoverItem({
   logo,
@@ -16,12 +18,13 @@ export default function SlidesCoverItem({
   const searchParams = useSearchParams();
   const title = searchParams.get('title') || '(Undefined title / Please pass param ?title=...)'
   const logoClassname = 'flex items-center justify-center h-full'
+  const isDarkColorThemeMode = usingDarkColorThemeMode()
   return (
     <header
       className='aspect-video'
     >
       <Thumb
-        bgClassname={bgClassname}
+        bgClassname={bgClassname || clsx('bg-gradient-to-tr', isDarkColorThemeMode && 'from-slate-900 to-blue-900', !isDarkColorThemeMode && 'from-teal-500 to-violet-500 text-indigo-100')}
         numberParticles={20}
       >
         <div className={thumbClassname}>

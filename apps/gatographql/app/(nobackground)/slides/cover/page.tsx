@@ -16,7 +16,6 @@ export default function AppSlidesCover() {
   return (
     <SlidesCover
       logo={logo}
-      bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
     />
   )
 }
