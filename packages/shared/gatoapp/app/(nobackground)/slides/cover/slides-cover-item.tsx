@@ -2,12 +2,13 @@
 
 import { useSearchParams } from 'next/navigation';
 import Thumb from 'gatoapp/components/thumbnails/thumb'
-import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
-import Image from 'next/image'
+import React from 'react'
 
 export default function SlidesCoverItem({
+  logo,
   thumbClassname,
 }: {
+  logo: React.ReactNode,
   thumbClassname?: string,
 }) {
   const searchParams = useSearchParams();
@@ -26,7 +27,7 @@ export default function SlidesCoverItem({
             {title}
           </h1>
           <div className={logoClassname}>
-            <Image src={Logo} alt="Gato GraphQL logo" width={375} height={375} />
+            {logo}
           </div>
         </div>
       </Thumb>
