@@ -1,3 +1,4 @@
+'use client'
 
 import Particles from 'gatoapp/components/particles'
 // import Illustration from 'gatoapp/public/assets/theme/cta-illustration.svg'
