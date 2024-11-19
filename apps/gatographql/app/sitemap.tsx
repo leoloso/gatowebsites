@@ -11,7 +11,6 @@ import {
 } from '@/.contentlayer/generated'
 import {
   getBlogPostURL,
-  getFeatureURL,
   getExtensionDocumentationURL,
   getDemoPostURL,
   getComparisonPostURL,
@@ -52,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const featureSitemapEntries = allFeatures.map((feature) => (
     {
-      url: getFeatureURL(feature),
+      url: getURL(feature),
       lastModified: releaseDateV2_2,
       changeFrequency: 'monthly',
       priority: 0.5,

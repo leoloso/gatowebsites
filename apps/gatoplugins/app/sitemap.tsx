@@ -11,11 +11,11 @@ import {
 import {
   getBlogPostURL,
   getPluginURL,
-  getFeatureURL,
   getPluginDocumentationURL,
   getDemoPostURL,
   getDocURL,
 } from '@/utils/content/application-urls'
+import { getURL } from 'gatoapp/utils/content/application-urls'
 import { getReleaseData } from 'gatoapp/data/release'
  
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ))
   const featureSitemapEntries = allFeatures.map((feature) => (
     {
-      url: getFeatureURL(feature),
+      url: getURL(feature),
       lastModified: releaseDateV3_3,
       changeFrequency: 'monthly',
       priority: 0.5,

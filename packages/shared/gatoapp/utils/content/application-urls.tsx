@@ -33,11 +33,3 @@ export function getDemoPostURLPath(demoPost: DemoPost) {
 export function getDemoPostURL(demoPost: DemoPost) {
   return `${DOMAIN}${getDemoPostURLPath(demoPost)}`
 }
-
-export function getFeatureURLPath(feature: Feature) {
-  return `/${AppConfig.paths.features}/${feature.slug}`
-}
-
-export function getFeatureURL(feature: Feature) {
-  return `${DOMAIN}${getFeatureURLPath(feature)}`
-}

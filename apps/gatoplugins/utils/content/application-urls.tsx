@@ -17,14 +17,6 @@ export function getPluginURL(plugin: Plugin) {
   return `${DOMAIN}${getPluginURLPath(plugin)}`
 }
 
-// export function getFeatureURLPath(feature: Feature) {
-//   return `/${AppConfig.paths.features}/${feature.slug}`
-// }
-
-// export function getFeatureURL(feature: Feature) {
-//   return `${DOMAIN}${getFeatureURLPath(feature)}`
-// }
-
 export function getPluginDocumentationURLPath(plugin: Plugin) {
   return `/${AppConfig.paths.docs.pluginsReference}/${plugin.slug}`
 }

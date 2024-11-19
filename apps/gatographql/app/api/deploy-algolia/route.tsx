@@ -10,7 +10,6 @@ import {
 import { ALGOLIA_API_CREDENTIALS } from 'gatoapp/data/env/algolia'
 import {
   getDocURLPath,
-  getFeatureURLPath,
   getBlogPostURLPath,
   getDemoPostURLPath,
   getComparisonPostURLPath,
@@ -161,7 +160,7 @@ async function getAllFeaturesTransformed(): Promise<SearchObject[]> {
     allFeatures?.map((feature) => getStructuredDataObject(
       feature.title,
       feature.description,
-      getFeatureURLPath(feature),
+      feature.urlPath,
       feature.slug,
       feature.body.raw,
       Sections.Features
