@@ -20,7 +20,7 @@ export default function PluginCover({ params }: {
   return (
     <ProductCover
       product={plugin}
-      leadingTitle='Plugin:'
+      // leadingTitle='Plugin:'
     />
   )
 }
