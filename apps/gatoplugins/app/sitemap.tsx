@@ -8,9 +8,6 @@ import {
   allPlugins,
   allFeatures,
 } from '@/.contentlayer/generated'
-import {
-  getBlogPostURL,
-} from '@/utils/content/application-urls'
 import { getURL } from 'gatoapp/utils/content/application-urls'
 import { getReleaseData } from 'gatoapp/data/release'
  
@@ -18,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const releaseDateV3_3 = new Date(getReleaseData('3.3.0'))
   const blogPostSitemapEntries = allBlogPosts.map((blogPost) => (
     {
-      url: getBlogPostURL(blogPost),
+      url: getURL(blogPost),
       lastModified: new Date(blogPost.publishedAt),
       changeFrequency: 'weekly',
       priority: 0.5,

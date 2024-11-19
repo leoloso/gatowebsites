@@ -9,7 +9,6 @@ import {
 } from '@/.contentlayer/generated'
 import { ALGOLIA_API_CREDENTIALS } from 'gatoapp/data/env/algolia'
 import {
-  getBlogPostURLPath,
   getComparisonPostURLPath,
 } from "@/utils/content/application-urls"
 import { isAdminUser } from "gatoapp/utils/admin"
@@ -72,7 +71,7 @@ async function getAllPostsTransformed(): Promise<SearchObject[]> {
     allBlogPosts?.map((post) => getStructuredDataObject(
       post.title,
       post.description,
-      getBlogPostURLPath(post),
+      post.urlPath,
       post.slug,
       post.body.raw,
       Sections.Blog

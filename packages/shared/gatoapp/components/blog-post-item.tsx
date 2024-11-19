@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import PostDate from 'gatoapp/components/post-date'
 import { BlogPost } from 'gatoapp/types/types'
-import { getBlogPostURLPath } from 'gatoapp/utils/content/application-urls'
 import PostTags from './post-tags'
 import AppConfig from 'gatoapp/app/app.config'
 
@@ -14,7 +13,7 @@ export default function BlogPostItem({ post }: {
       <div className='w-full'>
         <header>
           <h2 className="h4 mb-2">
-            <Link href={getBlogPostURLPath(post)} className="text-slate-300 hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
+            <Link href={post.urlPath} className="text-slate-300 hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
           </h2>
         </header>
         <div className="text-lg text-slate-400 mb-4">{post.description}</div>
@@ -40,7 +39,7 @@ export default function BlogPostItem({ post }: {
           </div>
         </footer>
       </div>
-      <Link href={getBlogPostURLPath(post)} className="block shrink-0 ml-6">
+      <Link href={post.urlPath} className="block shrink-0 ml-6">
         <span className="sr-only">Read more</span>
         <svg className="w-4 h-4 fill-current text-purple-400" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
           <path d="M9.3 14.7l-1.4-1.4L12.2 9H0V7h12.2L7.9 2.7l1.4-1.4L16 8z" />

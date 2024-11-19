@@ -24,11 +24,3 @@ export function getComparisonPostURLPath(comparisonPost: ComparisonPost) {
 export function getComparisonPostURL(comparisonPost: ComparisonPost) {
   return `${DOMAIN}${getComparisonPostURLPath(comparisonPost)}`
 }
-
-export function getBlogPostURLPath(post: BlogPost) {
-  return `/${AppConfig.paths.blog}/${post.slug}`
-}
-
-export function getBlogPostURL(post: BlogPost) {
-  return `${DOMAIN}${getBlogPostURLPath(post)}`
-}

@@ -10,7 +10,6 @@ import {
   allFeatures,
 } from '@/.contentlayer/generated'
 import {
-  getBlogPostURL,
   getExtensionDocumentationURL,
   getComparisonPostURL,
 } from '@/utils/content/application-urls'
@@ -25,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const releaseDateV2_2_4 = new Date(getReleaseData('2.2.4'))
   const blogPostSitemapEntries = allBlogPosts.map((blogPost) => (
     {
-      url: getBlogPostURL(blogPost),
+      url: getURL(blogPost),
       lastModified: new Date(blogPost.publishedAt),
       changeFrequency: 'weekly',
       priority: 0.5,
