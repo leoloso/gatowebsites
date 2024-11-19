@@ -1,4 +1,4 @@
-import './css/style.css'
+import 'gatoapp/app/(docs)/css/style.css'
 
 import { Nothing_You_Could_Do } from 'next/font/google'
 import AppProvider from 'gatoapp/app/(docs)/app-provider'
