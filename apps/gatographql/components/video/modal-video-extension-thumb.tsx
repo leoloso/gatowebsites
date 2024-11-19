@@ -1,11 +1,5 @@
-'use client'
-
-import { useState } from 'react'
-import ModalVideoTransition from 'gatoapp/components/mdx/components/modal-video-transition'
-import ExtensionThumb from '@/components/extension-thumb'
 import { Extension } from '@/.contentlayer/generated'
-import ModalVideoTitle from 'gatoapp/components/mdx/components/modal-video-title'
-import ModalVideoButton from 'gatoapp/components/mdx/components/modal-video-button'
+import ProductThumbModalVideo from 'gatoapp/components/video/modal-video-product-thumb'
 
 interface ModalVideoProps {
   extension: Extension
@@ -28,32 +22,16 @@ export default function ExtensionThumbModalVideo({
   printExtensionTitle,
   bgClassname,
 }: ModalVideoProps) {
-  const [modalOpen, setModalOpen] = useState<boolean>(false)
-
   return (
-    <>
-      {/* Video thumbnail */}
-      <div className="w-full h-full aspect-video object-cover relative flex justify-center items-center my-2 group hover:cursor-pointer" onClick={() => { setModalOpen(true) }}>
-        <ExtensionThumb
-          extension={extension}
-          isLandscape={true}
-          printExtensionTitle={printExtensionTitle}
-          bgClassname={bgClassname}
-        />
-        <ModalVideoTitle title={title} extraClassname='z-30' />
-        <ModalVideoButton title={title} extraClassname='z-30 group-hover:scale-110 transition duration-700 ease-out' />
-        {children}
-      </div>
-      {/* End: Video thumbnail */}
-
-      <ModalVideoTransition
-        video={video}
-        videoWidth={videoWidth}
-        videoHeight={videoHeight}
-        modalOpen={modalOpen}
-        setModalOpen={setModalOpen}
-      />
-
-    </>
+    <ProductThumbModalVideo
+      product={extension}
+      video={video}
+      videoWidth={videoWidth}
+      videoHeight={videoHeight}
+      children={children}
+      title={title}
+      printProductTitle={printExtensionTitle}
+      bgClassname={bgClassname}
+    />
   )
 }
