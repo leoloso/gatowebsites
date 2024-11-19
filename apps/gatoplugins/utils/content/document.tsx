@@ -91,3 +91,7 @@ export function getGuideDocument(relatedGuide: RelatedGuide) {
   return guide
 }
 // ----------------------------------------------------------------
+
+export function getPluginReferenceDocuments() {
+  return getGroupDocuments(AppConfig.paths.docs.pluginsReference)
+}
