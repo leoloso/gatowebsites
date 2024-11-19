@@ -5,7 +5,7 @@ import { PostMdx } from 'gatoapp/components/mdx/post-mdx'
 import PostNav from 'gatoapp/components/post-nav'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
-import { getComparisonPostURL } from '@/utils/content/application-urls'
+import { getURL } from 'gatoapp/utils/content/application-urls'
 import ArticleSchemaJsonLdScript from 'gatoapp/components/schema/article-schema-json-ld';
 import Cta from '@/components/cta-02'
 import PageHeader from 'gatoapp/components/page-header'
@@ -72,7 +72,7 @@ export default async function SingleComparisonPost({ params }: {
     <>
       <ArticleSchemaJsonLdScript
         headline={comparisonPost.title}
-        url={getComparisonPostURL(comparisonPost)}
+        url={getURL(comparisonPost)}
         image={comparisonPost.image}
         description={comparisonPost.description}
       />
