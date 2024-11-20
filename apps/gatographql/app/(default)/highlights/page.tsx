@@ -5,7 +5,7 @@ import { createSEOPageTitle } from '@/utils/content/metadata'
 import { sortByOrder } from 'gatoapp/utils/content/sort'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import PageHeader from 'gatoapp/components/page-header'
-import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
+import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 
 const pageTitle = 'Highlights'
 export const metadata = {

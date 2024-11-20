@@ -3,7 +3,7 @@ import PageHeader from 'gatoapp/components/page-header'
 import Cta from '@/components/cta-02'
 import ComparisonList from './comparison-list'
 import { createSEOPageTitle } from '@/utils/content/metadata'
-import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
+import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 
 const pageTitle = 'Comparisons'
 export const metadata = {

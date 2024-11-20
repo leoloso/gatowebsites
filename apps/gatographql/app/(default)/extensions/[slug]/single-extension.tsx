@@ -5,7 +5,7 @@ import PageHeader from 'gatoapp/components/page-header'
 import PostItemIntegration from 'gatoapp/components/post-item-integration'
 import ExtensionThumbModalVideo from '@/components/video/modal-video-extension-thumb'
 import BrowseExtensionReferenceDocButton from '@/components/browse-extension-reference-doc-button'
-import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
+import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 
 export default function SingleExtension({
   extension,

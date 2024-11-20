@@ -7,7 +7,7 @@ import { Feature } from 'gatoapp/types/types'
 import { TestimonialItem } from '../data/testimonial-item'
 import WithTitleThumb from '../thumbnails/with-title-thumb'
 import clsx from 'clsx'
-import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
+import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 
 export default function FeatureSection({
   feature,

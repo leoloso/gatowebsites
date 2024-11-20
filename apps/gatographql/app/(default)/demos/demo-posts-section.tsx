@@ -13,7 +13,7 @@ import DemoPostThumb from 'gatoapp/components/demo-post-thumb'
 import { Suspense } from 'react'
 import AppConfig from '@/app/app.config'
 import { useSearchParams } from 'next/navigation';
-import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
+import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 
 export default function DemoPostsSection() {
 

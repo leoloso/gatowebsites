@@ -4,7 +4,7 @@ import { createSEOPageTitle } from '@/utils/content/metadata'
 import ExtensionsSection from './extensions-section'
 import ExtensionsPricingSection from './extensions-pricing-section'
 import PageHeader from 'gatoapp/components/page-header'
-import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
+import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 
 const pageTitle = 'Extensions'
 export const metadata = {
