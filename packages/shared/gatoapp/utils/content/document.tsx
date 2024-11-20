@@ -1,7 +1,7 @@
 'use client'
 
 import { Doc, DocTopic } from 'gatoapp/types/types';
-import { sortByOrder, sortByOrderAndTitle } from 'gatoapp/utils/content/sort';
+import { sortAlphabetically, sortByOrder, sortByOrderAndTitle } from 'gatoapp/utils/content/sort';
 import { useAppContentProvider } from 'gatoapp/app/appcontent-provider'
 
 /**
@@ -40,10 +40,7 @@ export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
 // of their topics (to find the next/prev items for pagination)
 export function sortDocuments(a: Doc, b: Doc) {
   if (a.section !== b.section) {
-    if (a.section > b.section) {
-      return a
-    }
-    return b
+    return sortAlphabetically(a.section, b.section)
   }
   
   if (a.topicSlug !== b.topicSlug) {
