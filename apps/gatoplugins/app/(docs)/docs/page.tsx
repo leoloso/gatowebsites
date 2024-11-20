@@ -1,5 +1,6 @@
 import { notFound, redirect } from 'next/navigation'
-import { getGuideDocuments, sortDocuments } from '@/utils/content/document'
+import { sortDocuments } from '@/utils/content/document'
+import { allDocs } from '@/.contentlayer/generated'
 
 // @todo Do this page!
 
@@ -7,7 +8,7 @@ import { getGuideDocuments, sortDocuments } from '@/utils/content/document'
 export default function RedirectToFirstDocItem() {
 
   // Sort docs (this already takes into account the DocTopic)
-  const docs = getGuideDocuments().sort(sortDocuments);
+  const docs = allDocs.sort(sortDocuments);
 
   if (docs.length === 0) notFound()
 
