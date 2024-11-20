@@ -73,8 +73,59 @@ const Plugin = defineDocumentType(() => ({
   },
 }))
 
+const PluginDoc = defineDocumentType(() => ({
+  name: 'PluginDoc',
+  filePathPattern: `docs/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    seoTitle: {
+      type: 'string',
+    },
+    description: {
+      type: 'string',
+      required: true,
+    },
+    seoDescription: {
+      type: 'string',
+    },
+    order: {
+      type: 'number',
+      required: true,
+    },   
+  },
+  computedFields: {
+    section: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/([a-zA-Z_-]+)\/(.+)/, '$1'),
+    },
+    topicSlug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1'),
+    },
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\//, ''),
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => {
+        const maybeURLPath = `/${doc._raw.flattenedPath.replace(/docs\/?/, '')}`
+        const topicSlug = doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1')
+        if (topicSlug === AppConstants.implicitDocTopicSlug) {
+          return maybeURLPath.replace(`/${AppConstants.implicitDocTopicSlug}/`, '/')
+        }
+        return maybeURLPath
+      }
+    },
+  },
+}))
+
 
 export default makeSource({
   ...ContentLayerBaseConfig,
-  documentTypes: [BlogPost, Page, Snippet, Doc, DocTopic, DemoPost, Feature, Plugin],
+  documentTypes: [BlogPost, Page, Snippet, PluginDoc, DocTopic, DemoPost, Feature, Plugin],
 })
