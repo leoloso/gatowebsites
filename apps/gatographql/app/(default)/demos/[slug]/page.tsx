@@ -15,7 +15,7 @@ import PageHeader from 'gatoapp/components/page-header'
 import PostItemIntegration from 'gatoapp/components/post-item-integration'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 import AppConfig from '@/app/app.config'
-import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
+import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 
 export async function generateStaticParams() {
   return allDemoPosts.map((demoPost) => ({

@@ -16,7 +16,7 @@ import RelatedPosts from './related-posts'
 import Particles from 'gatoapp/components/particles'
 import VsImage from 'gatoapp/public/assets/theme/vs.svg'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
-import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
+import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 
 export async function generateStaticParams() {
   return allComparisonPosts.map((comparisonPost) => ({

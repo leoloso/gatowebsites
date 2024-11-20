@@ -8,7 +8,7 @@ import LogoPic from 'gatoapp/public/assets/Gato-logo-suki-rectangular.png'
 // import VideoThumb from 'gatoapp/public/assets/GatoGraphQL-intro-video-background.png'
 // import BrowseHighlightsButton from './browse-highlights-button'
 // import TryPROPluginButton from './try-pro-plugin-button'
-import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
+import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 
 export default function Hero({
   title,

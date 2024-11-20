@@ -17,7 +17,7 @@ import generateAppRssFeed from '@/utils/rss'
 import { getURL } from 'gatoapp/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from 'gatoapp/components/schema/blogposting-schema-json-ld';
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
-import CampaignBanner from 'gatoapp/components/ui/campaigns/campaign-banner'
+import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 import AppSettings from 'gatoapp/app/app.settings'
 
 export async function generateStaticParams() {

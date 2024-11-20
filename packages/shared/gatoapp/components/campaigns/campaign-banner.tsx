@@ -1,7 +1,7 @@
 'use client'
 
-import BlackFridayBanner from 'gatoapp/components/ui/campaigns/black-friday-banner'
-import {BlackFridayBannerInterface} from 'gatoapp/components/ui/campaigns/black-friday-banner'
+import BlackFridayBanner from 'gatoapp/components/campaigns/black-friday-banner'
+import {BlackFridayBannerInterface} from 'gatoapp/components/campaigns/black-friday-banner'
 import clsx from 'clsx'
 import { useAppSettingsProvider } from 'gatoapp/app/appsettings-provider'
 
