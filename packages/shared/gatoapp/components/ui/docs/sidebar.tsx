@@ -40,6 +40,11 @@ export default function SupportSidebar() {
     document.addEventListener('keydown', keyHandler)
     return () => document.removeEventListener('keydown', keyHandler)
   })
+
+  // If using "docs/" (i.e.: Gato Plugins), then remove it (i.e.: as in Gato GraphQL)
+  if (segments[0] === 'docs') {
+    segments.splice(0, 1)
+  }
   
   // Filter only needed docs (guides, extensions reference, tutorial, etc)
   // If the docTopic is not provided in the URL, then it's implicit as "_default",

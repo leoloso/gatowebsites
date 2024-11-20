@@ -2,17 +2,19 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 import {
   sortDocuments,
-  getQueryLibraryDocuments,
+  getGroupDocuments,
   getPrevNextArticles,
   getDocTopic,
 } from '@/utils/content/document'
 import DocSection from 'gatoapp/components/sections/doc'
-import { topicTitleSVG2 } from 'gatoapp/components/ui/docs/topic-title'
+import { topicTitleSVG1 } from 'gatoapp/components/ui/docs/topic-title'
 import { Doc } from '@/.contentlayer/generated'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import { getPluginSlugFromPageScriptFile } from '@/utils/content/path'
 
+const pluginSlug = getPluginSlugFromPageScriptFile(__filename)
 export async function generateStaticParams() {
-  return getQueryLibraryDocuments().map((doc) => ({
+  return getGroupDocuments(pluginSlug).map((doc) => ({
     slug: doc.slug,
   }))
 }
@@ -22,7 +24,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata | undefined> {
 
-  const doc = getQueryLibraryDocuments().find((doc) => doc.slug === params.slug)
+  const doc = getGroupDocuments(pluginSlug).find((doc) => doc.slug === params.slug)
 
   if (!doc) return
 
@@ -49,12 +51,13 @@ export async function generateMetadata(
 
 export default async function SingleDoc({ params }: {
   params: {
+    topic: string,
     slug: string
   }
 }) {
   // Sort docs. Needed to find the prev/next items below
-  const docs = getQueryLibraryDocuments().sort(sortDocuments)
-  const docIndex = docs.findIndex((doc) => doc.slug === params.slug)
+  const docs = getGroupDocuments(pluginSlug).sort(sortDocuments)
+  const docIndex = docs.findIndex((doc) => doc.topicSlug === params.topic && doc.slug === params.slug)
 
   if (docIndex === -1) notFound()
 
@@ -70,7 +73,7 @@ export default async function SingleDoc({ params }: {
       docTopic={getDocTopic(doc)}
       prevDoc={prevDoc}
       nextDoc={nextDoc}
-      svgOption={topicTitleSVG2}
+      svgOption={topicTitleSVG1}
     />
   )
 }

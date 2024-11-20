@@ -1,5 +1,3 @@
-'use client'
-
 import { DocMdx } from 'gatoapp/components/mdx/doc-mdx'
 import TopicTitle from 'gatoapp/components/ui/docs/topic-title'
 import Hamburger from 'gatoapp/components/ui/docs/hamburger'
@@ -7,23 +5,23 @@ import Hamburger from 'gatoapp/components/ui/docs/hamburger'
 import ArticleNavigation from 'gatoapp/components/ui/article-navigation'
 import Footer from 'gatoapp/components/ui/docs/footer'
 import SecondaryNav from 'gatoapp/components/ui/docs/secondary-nav'
-import { Doc } from 'gatoapp/types/types'
-import { getDocTopic } from 'gatoapp/utils/content/document'
+import { Doc, DocTopic } from 'gatoapp/types/types'
 import ArticleSchemaJsonLdScript from '../schema/article-schema-json-ld'
 import { getURL } from 'gatoapp/utils/content/application-urls'
 
 export default function DocSection({
   svgOption,
   doc,
+  docTopic,
   prevDoc,
   nextDoc,
 }: {
   svgOption?: number
   doc: Doc,
+  docTopic: DocTopic,
   prevDoc?: Doc,
   nextDoc?: Doc,
 }) {
-  const docTopic = getDocTopic(doc)
 
   return (
     <>

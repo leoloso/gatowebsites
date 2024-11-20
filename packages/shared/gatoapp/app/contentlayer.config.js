@@ -3,7 +3,6 @@ import remarkGfm from 'remark-gfm'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import AppConfig from './app.config'
-import AppConstants from './app.constants'
 
 const BlogPost = defineDocumentType(() => ({
   name: 'BlogPost',
@@ -257,57 +256,6 @@ const RelatedGuide = defineNestedType(() => ({
   },
 }))
 
-const Doc = defineDocumentType(() => ({
-  name: 'Doc',
-  filePathPattern: `docs/**/*.mdx`,
-  contentType: 'mdx',
-  fields: {
-    title: {
-      type: 'string',
-      required: true
-    },
-    seoTitle: {
-      type: 'string',
-    },
-    description: {
-      type: 'string',
-      required: true,
-    },
-    seoDescription: {
-      type: 'string',
-    },
-    order: {
-      type: 'number',
-      required: true,
-    },   
-  },
-  computedFields: {
-    section: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/([a-zA-Z_-]+)\/(.+)/, '$1'),
-    },
-    topicSlug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1'),
-    },
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\//, ''),
-    },
-    urlPath: {
-      type: 'string',
-      resolve: (doc) => {
-        const maybeURLPath = `/${doc._raw.flattenedPath.replace(/docs\/?/, '')}`
-        const topicSlug = doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1')
-        if (topicSlug === AppConstants.implicitDocTopicSlug) {
-          return maybeURLPath.replace(`/${AppConstants.implicitDocTopicSlug}/`, '/')
-        }
-        return maybeURLPath
-      }
-    },
-  },
-}))
-
 const DocTopic = defineDocumentType(() => ({
   name: 'DocTopic',
   filePathPattern: 'doc-topics/**/*.mdx',
@@ -421,7 +369,6 @@ module.exports = {
     Page: Page,
     Snippet: Snippet,
     Feature: Feature,
-    Doc: Doc,
     DocTopic: DocTopic,
     ShopURLs: ShopURLs,
     ShopURLByLicense: ShopURLByLicense,
