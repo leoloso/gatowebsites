@@ -4,6 +4,7 @@ import {
   sortDocuments,
   getTutorialDocuments,
   getPrevNextArticles,
+  getDocTopic,
 } from '@/utils/content/document'
 import DocSection from 'gatoapp/components/sections/doc'
 import { topicTitleSVG2 } from 'gatoapp/components/ui/docs/topic-title'
@@ -66,6 +67,7 @@ export default async function SingleDoc({ params }: {
   return (
     <DocSection
       doc={doc}
+      docTopic={getDocTopic(doc)}
       prevDoc={prevDoc}
       nextDoc={nextDoc}
       svgOption={topicTitleSVG2}
