@@ -113,7 +113,7 @@ const PluginDoc = defineDocumentType(() => ({
     urlPath: {
       type: 'string',
       resolve: (doc) => {
-        const maybeURLPath = `/${doc._raw.flattenedPath.replace(/docs\/?/, '')}`
+        const maybeURLPath = `/${doc._raw.flattenedPath}`
         const topicSlug = doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1')
         if (topicSlug === AppConstants.implicitDocTopicSlug) {
           return maybeURLPath.replace(`/${AppConstants.implicitDocTopicSlug}/`, '/')
