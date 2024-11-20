@@ -1,5 +1,8 @@
 import { notFound, redirect } from 'next/navigation'
-import { getGuideDocuments, sortDocuments } from '@/utils/content/document'
+import { getGroupDocuments, sortDocuments } from '@/utils/content/document'
+import { getPluginSlugFromPageScriptFile } from '@/utils/content/path'
+
+const pluginSlug = getPluginSlugFromPageScriptFile(__filename)
 
 // Redirect to the first item on the doc topic collection
 export default function RedirectToFirstDocTopicItem({ params }: {
@@ -9,7 +12,7 @@ export default function RedirectToFirstDocTopicItem({ params }: {
 }) {
 
   // Sort docs (this already takes into account the DocTopic)
-  const docs = getGuideDocuments().sort(sortDocuments);
+  const docs = getGroupDocuments(pluginSlug).sort(sortDocuments);
   const docIndex = docs.findIndex((doc) => doc.topicSlug === params.topic)
 
   if (docIndex === -1) notFound()
