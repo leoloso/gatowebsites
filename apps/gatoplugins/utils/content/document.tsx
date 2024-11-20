@@ -40,11 +40,11 @@ export function sortDocuments(a: Doc, b: Doc) {
     return sortByTitle(a, b)
   }
   
-  if (a.topicSlug === b.topicSlug) {
-    return sortByOrderAndTitle(a, b)
+  if (a.topicSlug !== b.topicSlug) {
+    return sortDocumentTopics(getDocTopic(a), getDocTopic(b));
   }
 
-  return sortDocumentTopics(getDocTopic(a), getDocTopic(b));
+  return sortByOrderAndTitle(a, b)
 }
 
 export function getDocumentTopicsBySection(section: string) {
