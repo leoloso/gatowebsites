@@ -98,7 +98,7 @@ const PluginDoc = defineDocumentType(() => ({
     },   
   },
   computedFields: {
-    section: {
+    pluginSlug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/([a-zA-Z_-]+)\/(.+)/, '$1'),
     },
