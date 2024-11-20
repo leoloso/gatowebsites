@@ -37,7 +37,10 @@ export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
 // of their topics (to find the next/prev items for pagination)
 export function sortDocuments(a: Doc, b: Doc) {
   if (a.section !== b.section) {
-    return sortByTitle(a, b)
+    if (a.section > b.section) {
+      return a
+    }
+    return b
   }
   
   if (a.topicSlug !== b.topicSlug) {
