@@ -2,8 +2,6 @@ import { notFound, redirect } from 'next/navigation'
 import { sortDocuments } from '@/utils/content/document'
 import { allDocs } from '@/.contentlayer/generated'
 
-// @todo Do this page!
-
 // Redirect to the first item on the docs collection
 export default function RedirectToFirstDocItem() {
 
