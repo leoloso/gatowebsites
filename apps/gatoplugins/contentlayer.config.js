@@ -8,7 +8,6 @@ const DemoPost = ContentLayerConfig.types.DemoPost
 const Feature = ContentLayerConfig.types.Feature
 const Page = ContentLayerConfig.types.Page
 const Snippet = ContentLayerConfig.types.Snippet
-const Doc = ContentLayerConfig.types.Doc
 const DocTopic = ContentLayerConfig.types.DocTopic
 const ShopURLs = ContentLayerConfig.types.ShopURLs
 const PostIntegration = ContentLayerConfig.types.PostIntegration
