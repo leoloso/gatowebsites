@@ -72,8 +72,8 @@ const Plugin = defineDocumentType(() => ({
   },
 }))
 
-const PluginDoc = defineDocumentType(() => ({
-  name: 'PluginDoc',
+const Doc = defineDocumentType(() => ({
+  name: 'Doc',
   filePathPattern: `docs/**/*.mdx`,
   contentType: 'mdx',
   fields: {
@@ -97,7 +97,7 @@ const PluginDoc = defineDocumentType(() => ({
     },   
   },
   computedFields: {
-    pluginSlug: {
+    section: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/([a-zA-Z_-]+)\/(.+)/, '$1'),
     },
@@ -126,5 +126,5 @@ const PluginDoc = defineDocumentType(() => ({
 
 export default makeSource({
   ...ContentLayerBaseConfig,
-  documentTypes: [BlogPost, Page, Snippet, PluginDoc, DocTopic, DemoPost, Feature, Plugin],
+  documentTypes: [BlogPost, Page, Snippet, Doc, DocTopic, DemoPost, Feature, Plugin],
 })
