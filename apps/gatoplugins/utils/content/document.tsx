@@ -1,7 +1,7 @@
 import { Doc, DocTopic, RelatedGuide } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics } from '@/.contentlayer/generated'
 import AppConfig from '@/app/app.config'
-import { sortByOrder, sortByOrderAndTitle } from "gatoapp/utils/content/sort";
+import { sortByOrder, sortByOrderAndTitle, sortByTitle } from "gatoapp/utils/content/sort";
 
 /**
  * Watch out! These methods are repeated:
@@ -36,6 +36,10 @@ export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
 // Make sure that all documents respect the order
 // of their topics (to find the next/prev items for pagination)
 export function sortDocuments(a: Doc, b: Doc) {
+  if (a.section !== b.section) {
+    return sortByTitle(a, b)
+  }
+  
   if (a.topicSlug === b.topicSlug) {
     return sortByOrderAndTitle(a, b)
   }
