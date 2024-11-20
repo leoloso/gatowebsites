@@ -2,7 +2,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 import {
   sortDocuments,
-  getGuideDocuments,
+  getGroupDocuments,
   getPrevNextArticles,
 } from '@/utils/content/document'
 import DocSection from 'gatoapp/components/sections/doc'
@@ -10,8 +10,9 @@ import { topicTitleSVG1 } from 'gatoapp/components/ui/docs/topic-title'
 import { Doc } from '@/.contentlayer/generated'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
 
+const pluginSlug = 'multilingual-polylang'
 export async function generateStaticParams() {
-  return getGuideDocuments().map((doc) => ({
+  return getGroupDocuments(pluginSlug).map((doc) => ({
     slug: doc.slug,
   }))
 }
@@ -21,7 +22,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata | undefined> {
 
-  const doc = getGuideDocuments().find((doc) => doc.slug === params.slug)
+  const doc = getGroupDocuments(pluginSlug).find((doc) => doc.slug === params.slug)
 
   if (!doc) return
 
@@ -53,7 +54,7 @@ export default async function SingleDoc({ params }: {
   }
 }) {
   // Sort docs. Needed to find the prev/next items below
-  const docs = getGuideDocuments().sort(sortDocuments)
+  const docs = getGroupDocuments(pluginSlug).sort(sortDocuments)
   const docIndex = docs.findIndex((doc) => doc.topicSlug === params.topic && doc.slug === params.slug)
 
   if (docIndex === -1) notFound()

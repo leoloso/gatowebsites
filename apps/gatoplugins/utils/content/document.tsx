@@ -75,7 +75,7 @@ export function getPrevNextArticles(articles: Array<any>, articleIndex: number) 
   }
 }
 
-function getGroupDocuments(docSection: string) {
+export function getGroupDocuments(docSection: string) {
   return allDocs.filter((doc) => doc.section === docSection)
 }
 
