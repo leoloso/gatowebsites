@@ -9,8 +9,9 @@ import DocSection from 'gatoapp/components/sections/doc'
 import { topicTitleSVG1 } from 'gatoapp/components/ui/docs/topic-title'
 import { Doc } from '@/.contentlayer/generated'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
+import { getPluginSlugFromPageScriptFile } from '@/utils/content/path'
 
-const pluginSlug = 'multilingual-polylang'
+const pluginSlug = getPluginSlugFromPageScriptFile(__filename)
 export async function generateStaticParams() {
   return getGroupDocuments(pluginSlug).map((doc) => ({
     slug: doc.slug,
