@@ -31,18 +31,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className={`${nycd.variable} text-slate-800 font-[350] bg-white dark:bg-transparent dark:text-slate-200`}>
-      <AppProvider>
-        <AppComponentProvider
-          footer={{
-            menu: <LayoutFooterMenu />,
-          }}
-          header={{
-            logoImage: LogoImg,
-            menu: <HeaderMenu />,
-            mobileMenu: <HeaderMobileMenu />,
-          }}
-        >
+    <AppProvider>
+      <AppComponentProvider
+        footer={{
+          menu: <LayoutFooterMenu />,
+        }}
+        header={{
+          logoImage: LogoImg,
+          menu: <HeaderMenu />,
+          mobileMenu: <HeaderMobileMenu />,
+        }}
+      >
+        <div className={`${nycd.variable} text-slate-800 font-[350] bg-white dark:bg-transparent dark:text-slate-200`}>
           <div className="flex flex-col min-h-screen overflow-hidden">
 
             <Header />
@@ -71,8 +71,8 @@ export default function RootLayout({
             </main>
 
           </div>
-        </AppComponentProvider>
-      </AppProvider>
-    </div>
+        </div>
+      </AppComponentProvider>
+    </AppProvider>
   )
 }
