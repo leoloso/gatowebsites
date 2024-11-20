@@ -1,4 +1,4 @@
-import FooterMenu from '@/components/ui/footer-menu'
+import FooterMenu from '@/components/menu/footer-menu'
 import FooterLogo from 'gatoapp/components/ui/footer-logo'
 import AppConfig from '@/app/app.config'
 

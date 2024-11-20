@@ -1,4 +1,4 @@
-import FooterMenu from '@/components/ui/footer-menu'
+import FooterMenu from '@/components/menu/footer-menu'
 
 export default function LayoutFooterMenu() {  
   return (
