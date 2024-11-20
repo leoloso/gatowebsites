@@ -10,8 +10,8 @@ import Header from 'gatoapp/components/ui/header'
 import AppComponentProvider from 'gatoapp/app/appcomponent-provider'
 import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
 import LayoutFooterMenu from './layout-footer-menu'
-import HeaderMenu from '@/components/ui/header-menu'
-import HeaderMobileMenu from '@/components/ui/header-mobile-menu'
+import HeaderMenu from '@/components/menu/header-menu'
+import HeaderMobileMenu from '@/components/menu/header-mobile-menu'
 
 export default function DefaultLayout({
   children,
