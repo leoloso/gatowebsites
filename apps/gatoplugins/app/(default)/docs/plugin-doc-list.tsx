@@ -21,8 +21,8 @@ export default function PluginDocList() {
                   {/* Particles animation */}
                   <Particles className="absolute inset-0 -z-10" quantity={3} />
                   <div className="flex items-center justify-center">
-                    <Image className="w-full h-full aspect-video object-cover" src={getPluginBackground(plugin.title)} width={352} height={198} alt="Plugin Background" aria-hidden="true" />
-                    <Image className="absolute" src={plugin.targetImages[0]} alt={plugin.title} width={352} height={198} />
+                    <Image className="w-full h-full aspect-video object-cover" src={getPluginBackground(plugin.title)} width={175} height={175} alt="Plugin Background" aria-hidden="true" />
+                    <Image className="absolute" src={plugin.targetImages[0]} alt={plugin.title} width={175} height={175} />
                     <div className="absolute bottom-0 text-center text-sm font-medium font-inter antialiased bg-slate-900/70 text-slate-100 tracking-tight px-2">
                       {plugin.title}
                     </div>
