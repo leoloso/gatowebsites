@@ -36,7 +36,7 @@ export default function PluginsSection({
   return (
     <div className="pb-12 md:pb-20">
 
-      <div className="pb-12 md:pb-20 mb-12 md:mb-20 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
+      {/* <div className="pb-12 md:pb-20 mb-12 md:mb-20 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
         <PluginsModalVideo
           title="Click to watch a clip of Gato Plugins"
           video="/videos/GatoGraphQL-plugins.mp4"
@@ -44,7 +44,7 @@ export default function PluginsSection({
           videoHeight={1080}
           bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
         />
-      </div>
+      </div> */}
 
       {/* Plugins */}
       {plugins.map((plugin, index) => (
