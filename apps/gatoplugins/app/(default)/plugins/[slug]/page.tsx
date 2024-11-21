@@ -66,7 +66,7 @@ export default async function SinglePluginPage({ params }: {
 
           <SinglePlugin
             plugin={plugin}
-            printIntegrations={false}
+            // printIntegrations={false}
           />
 
         </div>
