@@ -13,56 +13,9 @@ const DocTopic = ContentLayerConfig.types.DocTopic
 const ShopURLs = ContentLayerConfig.types.ShopURLs
 const PostIntegration = ContentLayerConfig.types.PostIntegration
 
-const Doc = defineDocumentType(() => ({
-  name: 'Doc',
-  filePathPattern: `docs/**/*.mdx`,
-  contentType: 'mdx',
-  fields: {
-    title: {
-      type: 'string',
-      required: true
-    },
-    seoTitle: {
-      type: 'string',
-    },
-    description: {
-      type: 'string',
-      required: true,
-    },
-    seoDescription: {
-      type: 'string',
-    },
-    order: {
-      type: 'number',
-      required: true,
-    },   
-  },
-  computedFields: {
-    section: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/([a-zA-Z_-]+)\/(.+)/, '$1'),
-    },
-    topicSlug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1'),
-    },
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\//, ''),
-    },
-    urlPath: {
-      type: 'string',
-      resolve: (doc) => {
-        const maybeURLPath = `/${doc._raw.flattenedPath/*.replace(/docs\/?/, '')*/}`
-        const topicSlug = doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1')
-        if (topicSlug === AppConstants.implicitDocTopicSlug) {
-          return maybeURLPath.replace(`/${AppConstants.implicitDocTopicSlug}/`, '/')
-        }
-        return maybeURLPath
-      }
-    },
-  },
-}))
+const DocConfig = ContentLayerConfig.typeConfigs.Doc
+
+const Doc = defineDocumentType(() => (DocConfig(true)))
 
 const Plugin = defineDocumentType(() => ({
   name: 'Plugin',
