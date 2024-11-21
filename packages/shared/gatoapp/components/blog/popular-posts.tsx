@@ -1,14 +1,15 @@
 import { BlogPost } from 'gatoapp/types/types'
 import { sortByPublishedAt } from 'gatoapp/utils/content/sort';
 import Link from "next/link";
-import React from "react";
+import { getFeaturedBlogPosts } from "gatoapp/utils/content/post";
 
 export default function PopularPosts({
   blogPosts,
 }: {
   blogPosts: BlogPost[]
 }) {
-  const sortedBlogPosts = blogPosts.sort(sortByPublishedAt)
+  const featuredBlogPosts = getFeaturedBlogPosts(blogPosts)
+  const sortedBlogPosts = featuredBlogPosts.sort(sortByPublishedAt)
   return (
     <div className="mb-8">
       <h4 className="text-lg font-bold leading-snug tracking-tight mb-4">Popular on the blog</h4>
