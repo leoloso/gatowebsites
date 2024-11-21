@@ -23,9 +23,9 @@ export default function DocumentationPage() {
 
             {/* Section header */}
             <PageHeader
-              // leading='Comparing against plugins for WordPress'
+              leading='Browse the docs'
               title='Documentation'
-              description='Browse the docs for all plugins by Gato Plugins'
+              description='Learn how to use your chosen plugin by Gato Plugins'
             />
 
             <PluginDocList />
