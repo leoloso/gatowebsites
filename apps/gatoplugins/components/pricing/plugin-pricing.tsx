@@ -10,10 +10,8 @@ import AppConfig from "@/app/app.config"
 
 export default function PluginDropdownPricing({
   fixedPlugin,
-  preselectBundle = false,
 }: {
   fixedPlugin?: Plugin,
-  preselectBundle?: boolean
 }) {
   const plugins = allPlugins.sort(sortByOrderAndTitle)
 
