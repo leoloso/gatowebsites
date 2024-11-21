@@ -365,7 +365,7 @@ const ContentLayerBaseConfig = {
 
 const DocConfig = (useFullPath) => ({
   name: 'Doc',
-  filePathPattern: `docs/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.docs}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -390,21 +390,21 @@ const DocConfig = (useFullPath) => ({
   computedFields: {
     section: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/([a-zA-Z_-]+)\/(.+)/, '$1'),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(`${AppConfig.paths.docs}/([a-zA-Z_-]+)/(.+)`), '$1'),
     },
     topicSlug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1'),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(`${AppConfig.paths.docs}/[a-zA-Z_-]+/([a-zA-Z_-]+)/(.+)`), '$1'),
     },
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\//, ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace(new RegExp(`${AppConfig.paths.docs}/[a-zA-Z_-]+/([a-zA-Z_-]+)/`), ''),
     },
     urlPath: {
       type: 'string',
       resolve: (doc) => {
-        const maybeURLPath = `/${ useFullPath ? doc._raw.flattenedPath : doc._raw.flattenedPath.replace(/docs\/?/, '') }`
-        const topicSlug = doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1')
+        const maybeURLPath = `/${ useFullPath ? doc._raw.flattenedPath : doc._raw.flattenedPath.replace(new RegExp(`${AppConfig.paths.docs}/?`), '') }`
+        const topicSlug = doc._raw.flattenedPath.replace(new RegExp(`${AppConfig.paths.docs}/[a-zA-Z_-]+/([a-zA-Z_-]+)/(.+)`), '$1')
         if (topicSlug === AppConstants.implicitDocTopicSlug) {
           return maybeURLPath.replace(`/${AppConstants.implicitDocTopicSlug}/`, '/')
         }

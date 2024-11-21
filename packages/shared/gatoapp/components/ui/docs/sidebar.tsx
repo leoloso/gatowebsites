@@ -13,7 +13,9 @@ import {
   getDocumentTopicsBySection,
 } from 'gatoapp/utils/content/document'
 import AppConstants from 'gatoapp/app/app.constants'
+import AppConfig from 'gatoapp/app/app.config'
 import SidebarDocTopicSVG, { sidebarDocTopicSVG1, sidebarDocTopicSVG2, sidebarDocTopicSVG3 } from './sidebar-doctopic-svg'
+import React from 'react'
 
 export default function SupportSidebar() {
   const sidebar = useRef<HTMLDivElement>(null)
@@ -42,7 +44,7 @@ export default function SupportSidebar() {
   })
 
   // If using "docs/" (i.e.: Gato Plugins), then remove it (i.e.: as in Gato GraphQL)
-  if (segments[0] === 'docs') {
+  if (segments[0] === AppConfig.paths.docs) {
     segments.splice(0, 1)
   }
   
