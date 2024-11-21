@@ -15,8 +15,14 @@ import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 
 export default function BlogSection({
   blogPosts,
+  title = "Blog",
+  leading,
+  description,
 }: {
-  blogPosts: BlogPost[]
+  blogPosts: BlogPost[],
+  title?: string,
+  leading?: string,
+  description: string,
 }) {
 
   // Filter posts by tag
@@ -37,9 +43,9 @@ export default function BlogSection({
 
         {/* Page header */}
         <PageHeader
-          leading="query { posts { content } }"
-          title="Blog"
-          description='Stay up to date on the latest from Gato GraphQL'
+          leading={leading}
+          title={title}
+          description={description}
         />
         {/* Main content */}
         <div className="md:flex md:justify-between">

@@ -11,7 +11,7 @@ import { sortByPublishedAt } from 'gatoapp/utils/content/sort'
 const pageTitle = 'Blog'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
-  description: 'Stay up to date on the latest from Gato GraphQL',
+  description: 'Stay up to date on the latest from Gato Plugins',
   alternates: {
     canonical: `/${AppConfig.paths.blog}`,
   },
@@ -31,8 +31,8 @@ export default function Blog() {
         <StunningBackground />    
         <Suspense>
           <BlogSection
-            leading="query { posts { content } }"
-            description='Stay up to date on the latest from Gato GraphQL'
+            leading="Building Gato Plugins"
+            description='Stay up to date with our latest news'
             blogPosts={sortedBlogPosts}
           />
         </Suspense>
