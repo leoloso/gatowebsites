@@ -98,6 +98,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    // Docs
+    {
+      url: `${DOMAIN}/${AppConfig.paths.docs}`,
+      lastModified: releaseDateV3_3,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
     // Refund policy
     {
       url: `${DOMAIN}/refund-policy`,
