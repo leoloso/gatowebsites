@@ -13,6 +13,7 @@ export default function PricingTier({
   buttonTarget,
   buttonClassname,
   productNameClassname="text-slate-200",
+  printProductName=false,
 }: {
   tierName: string,
   productName: string,
@@ -26,6 +27,7 @@ export default function PricingTier({
   buttonTarget?: string,
   buttonClassname?: string,
   productNameClassname?: string,
+  printProductName?: boolean,
 }) {
   const isFree = price === 0
   return (
@@ -55,9 +57,11 @@ export default function PricingTier({
             </div>
           )}
         </div>
-        <div className={clsx("grow text-sm font-bold", productNameClassname)}>
-          { productName }
-        </div>
+        { printProductName && (
+          <div className={clsx("grow text-sm font-bold", productNameClassname)}>
+            { productName }
+          </div>
+        )}
         <div className="mb-4 grow text-sm text-slate-400">
           License for <span className="text-slate-200 font-bold">{tierDomainNumber} domains</span>
         </div>

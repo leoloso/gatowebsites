@@ -139,6 +139,7 @@ export default function ExtensionDropdownPricing({
           buttonClassname={ getShopAnchorClassname() }
           productNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
           isLTD={ selectLTD }
+          printProductName={ true }
         />
         {/* Pricing table 2 */}
         <PricingTier
@@ -151,6 +152,7 @@ export default function ExtensionDropdownPricing({
           buttonClassname={ getShopAnchorClassname() }
           productNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
           isLTD={ selectLTD }
+          printProductName={ true }
         />
         {/* Pricing table 3 */}
         <PricingTier
@@ -163,6 +165,7 @@ export default function ExtensionDropdownPricing({
           buttonClassname={ getShopAnchorClassname() }
           productNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
           isLTD={ selectLTD }
+          printProductName={ true }
           highlight={true}
         />
         {/* Pricing table 4 */}
@@ -176,6 +179,7 @@ export default function ExtensionDropdownPricing({
           buttonClassname={ getShopAnchorClassname() }
           productNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
           isLTD={ selectLTD }
+          printProductName={ true }
         />
       </div>
       <p className="text-sm text-slate-500 pt-4 pb-4 font-bold text-center">
