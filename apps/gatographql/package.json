@@ -16,7 +16,6 @@
     "deploy-prod-with-algolia": "npm run deploy-prod && npm run deploy-algolia"
   },
   "dependencies": {
-    "gatoapp": "*",
-    "@netlify/plugin-nextjs": "^4.41.3"
+    "gatoapp": "*"
   }
 }
