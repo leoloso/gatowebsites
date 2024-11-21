@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import AppConfig from './app.config'
+import AppConstants from './app.constants'
 
 const BlogPost = defineDocumentType(() => ({
   name: 'BlogPost',
@@ -362,6 +363,57 @@ const ContentLayerBaseConfig = {
   },
 }
 
+const DocConfig = (useFullPath) => ({
+  name: 'Doc',
+  filePathPattern: `docs/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    seoTitle: {
+      type: 'string',
+    },
+    description: {
+      type: 'string',
+      required: true,
+    },
+    seoDescription: {
+      type: 'string',
+    },
+    order: {
+      type: 'number',
+      required: true,
+    },   
+  },
+  computedFields: {
+    section: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/([a-zA-Z_-]+)\/(.+)/, '$1'),
+    },
+    topicSlug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1'),
+    },
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\//, ''),
+    },
+    urlPath: {
+      type: 'string',
+      resolve: (doc) => {
+        const maybeURLPath = `/${ useFullPath ? doc._raw.flattenedPath : doc._raw.flattenedPath.replace(/docs\/?/, '') }`
+        const topicSlug = doc._raw.flattenedPath.replace(/docs\/[a-zA-Z_-]+\/([a-zA-Z_-]+)\/(.+)/, '$1')
+        if (topicSlug === AppConstants.implicitDocTopicSlug) {
+          return maybeURLPath.replace(`/${AppConstants.implicitDocTopicSlug}/`, '/')
+        }
+        return maybeURLPath
+      }
+    },
+  },
+})
+
 module.exports = {
   types: {
     BlogPost: BlogPost,
@@ -373,6 +425,9 @@ module.exports = {
     ShopURLs: ShopURLs,
     ShopURLByLicense: ShopURLByLicense,
     PostIntegration: PostIntegration,
+  },
+  typeConfigs: {
+    Doc: DocConfig,
   },
   config: {
     ContentLayerBaseConfig: ContentLayerBaseConfig
