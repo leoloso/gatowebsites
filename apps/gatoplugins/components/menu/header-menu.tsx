@@ -35,6 +35,9 @@ export default function HeaderMenu() {
           </li>
         ))}
       </Dropdown>
+      <li>
+        <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out" href="/contact">Contact</Link>
+      </li>
       {/* <li>
         <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out" href={`/${AppConfig.paths.blog}`}>Blog</Link>
       </li> */}
