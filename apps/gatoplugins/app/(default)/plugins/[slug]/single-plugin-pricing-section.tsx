@@ -1,15 +1,15 @@
-import { Extension } from '@/.contentlayer/generated'
-import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
+import { Plugin } from '@/.contentlayer/generated'
+import PluginDropdownPricing from '@/components/pricing/plugin-dropdown/pricing'
 import Particles from 'gatoapp/components/particles'
 import PricingMoneyBackGuarantee from 'gatoapp/components/pricing-moneyback-guarantee'
 import RadiantGradient from 'gatoapp/components/radial-gradient'
 import Testimonial from 'gatoapp/components/testimonial'
 import { getTestimonials } from '@/components/data/testimonials'
 
-export default function SingleExtensionPricing({
-  extension,
+export default function SinglePluginPricing({
+  plugin,
 }: {
-  extension: Extension,
+  plugin: Plugin,
 }) {
   const testimonials = getTestimonials()
   return (
@@ -27,12 +27,12 @@ export default function SingleExtensionPricing({
         
         <div className="mb-8 text-center">
           <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-2 md:pb-4">
-            Get your extension
+            Get your plugin
           </h2>
-          <p className="text-lg text-slate-400">Purchase the <span className='font-bold'>{ extension.title }</span> extension, or a <span className='font-bold'>bundle with all the extensions</span></p>
+          <p className="text-lg text-slate-400">Purchase the <span className='font-bold'>{ plugin.title }</span> plugin, or a <span className='font-bold'>bundle with all the plugins</span></p>
         </div>
-        <ExtensionDropdownPricing
-          fixedExtension={ extension }
+        <PluginDropdownPricing
+          fixedPlugin={ plugin }
         />
 
       </div>
