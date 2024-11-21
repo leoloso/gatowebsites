@@ -1,5 +1,5 @@
 import { Plugin } from '@/.contentlayer/generated'
-import PluginDropdownPricing from '@/components/pricing/plugin-dropdown/pricing'
+import PluginPricing from '@/components/pricing/plugin-pricing'
 import Particles from 'gatoapp/components/particles'
 import PricingMoneyBackGuarantee from 'gatoapp/components/pricing-moneyback-guarantee'
 import RadiantGradient from 'gatoapp/components/radial-gradient'
@@ -31,7 +31,7 @@ export default function SinglePluginPricing({
           </h2>
           <p className="text-lg text-slate-400">Purchase the <span className='font-bold'>{ plugin.title }</span> plugin, or a <span className='font-bold'>bundle with all the plugins</span></p>
         </div>
-        <PluginDropdownPricing
+        <PluginPricing
           fixedPlugin={ plugin }
         />
 
