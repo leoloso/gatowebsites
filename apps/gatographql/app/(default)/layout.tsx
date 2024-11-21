@@ -1,6 +1,7 @@
 import AppComponentProvider from 'gatoapp/app/appcomponent-provider'
 import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
-import LayoutFooterMenu from './layout-footer-menu'
+import FooterMenu from '@/components/menu/footer-menu'
+import FooterMenuFirstColumn from 'gatoapp/components/menus/footer-menu-1st-column'
 import HeaderMenu from '@/components/menu/header-menu'
 import HeaderMobileMenu from '@/components/menu/header-mobile-menu'
 import DefaultLayout from 'gatoapp/app/(default)/layout'
@@ -14,7 +15,11 @@ export default function AppDefaultLayout({
   return (
     <AppComponentProvider
       footer={{
-        menu: <LayoutFooterMenu />,
+        menu: (
+          <FooterMenu>
+            <FooterMenuFirstColumn />
+          </FooterMenu>
+        ),
       }}
       header={{
         logoImage: LogoImg,

@@ -1,11 +1,11 @@
 import AppProvider from 'gatoapp/app/(docs)/app-provider'
 import RootLayout from 'gatoapp/app/(docs)/layout'
 import { createSEOPageTitle } from '@/utils/content/metadata'
-import LayoutFooterMenu from './layout-footer-menu'
 import HeaderMenu from '@/components/menu/header-menu'
 import HeaderMobileMenu from '@/components/menu/header-mobile-menu'
 import AppComponentProvider from 'gatoapp/app/appcomponent-provider'
 import LogoImg from '@/public/assets/GatoGraphQL-logo-suki-text-rectangular.png'
+import FooterMenu from '@/components/menu/footer-menu'
 
 const pageTitle = 'Documentation'
 export const metadata = {
@@ -22,7 +22,7 @@ export default function AppRootLayout({
     <AppProvider>
       <AppComponentProvider
         footer={{
-          menu: <LayoutFooterMenu />,
+          menu: <FooterMenu columnClassname="col-span-4 lg:col-span-2" />,
         }}
         header={{
           logoImage: LogoImg,
