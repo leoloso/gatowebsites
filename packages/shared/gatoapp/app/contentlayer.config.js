@@ -373,7 +373,6 @@ module.exports = {
     Snippet: Snippet,
     Feature: Feature,
     DocTopic: DocTopic,
-    ShopURLByLicense: ShopURLByLicense,
     PostIntegration: PostIntegration,
   },
   typeConfigs: {
