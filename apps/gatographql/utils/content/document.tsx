@@ -25,10 +25,6 @@ export function getDocTopic(doc: Doc) {
   return docTopic
 }
 
-export function getDocumentsByTopic(docTopic: DocTopic) {
-  return allDocs.filter((doc) => doc.section === docTopic.section && doc.topicSlug === docTopic.slug)
-}
-
 export function sortDocumentTopics(a: DocTopic, b: DocTopic) {
   return sortByOrder(a, b)
 }
