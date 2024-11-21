@@ -34,7 +34,6 @@ export default function Contact() {
             <ContactForm
               options={[
                 'General',
-                'Request extension',
                 'Sales',
                 'Affiliate Program',
                 'Developer Partnership Program',
