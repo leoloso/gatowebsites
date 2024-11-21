@@ -6,7 +6,7 @@ import React from "react";
 export default function PopularPosts({
   blogPosts,
 }: {
-  blogPosts: [BlogPost]
+  blogPosts: BlogPost[]
 }) {
   const sortedBlogPosts = blogPosts.sort(sortByPublishedAt)
   return (
