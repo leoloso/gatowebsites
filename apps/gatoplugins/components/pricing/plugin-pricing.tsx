@@ -23,7 +23,6 @@ export default function PluginPricing({
           buttonURL={ getShopURL(isProd ? plugin.shopURLs.tier1.yearly : plugin.shopURLs.dev) }
           buttonClassname={ getShopAnchorClassname() }
           productNameClassname={ "text-blue-300" }
-          isLTD={ false }
         />
         {/* Pricing table 2 */}
         <PricingTier
@@ -35,7 +34,6 @@ export default function PluginPricing({
           buttonURL={ getShopURL(isProd ? plugin.shopURLs.tier2.yearly : plugin.shopURLs.dev) }
           buttonClassname={ getShopAnchorClassname() }
           productNameClassname={ "text-blue-300" }
-          isLTD={ false }
         />
         {/* Pricing table 3 */}
         <PricingTier
@@ -47,7 +45,6 @@ export default function PluginPricing({
           buttonURL={ getShopURL(isProd ? plugin.shopURLs.tier3.yearly : plugin.shopURLs.dev) }
           buttonClassname={ getShopAnchorClassname() }
           productNameClassname={ "text-blue-300" }
-          isLTD={ false }
           highlight={true}
         />
         {/* Pricing table 4 */}
@@ -60,7 +57,6 @@ export default function PluginPricing({
           buttonURL={ getShopURL(isProd ? plugin.shopURLs.tier4.yearly : plugin.shopURLs.dev) }
           buttonClassname={ getShopAnchorClassname() }
           productNameClassname={ "text-blue-300" }
-          isLTD={ false }
         />
       </div>
       <p className="text-sm text-slate-500 pt-4 pb-4 font-bold text-center">
