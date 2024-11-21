@@ -2,17 +2,20 @@
 
 import { useState } from 'react'
 import { Transition } from '@headlessui/react'
+import clsx from 'clsx'
 
 type DropdownProps = {
   children: React.ReactNode
   title: string,
-  link?: string
+  link?: string,
+  dropdownWidthClassname?: string
 }
 
 export default function Dropdown({
   children,
   title,
-  link
+  link,
+  dropdownWidthClassname = '-left-5 w-48'
 }: DropdownProps) {
 
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false)
@@ -44,7 +47,7 @@ export default function Dropdown({
       <Transition
         show={dropdownOpen}
         as="ul"
-        className="origin-top-right absolute top-full -left-5 w-48 bg-slate-100 dark:bg-slate-800 py-2 ml-4 rounded shadow-lg"
+        className={clsx("origin-top-right absolute top-full bg-slate-100 dark:bg-slate-800 py-2 ml-4 rounded shadow-lg", dropdownWidthClassname)}
         enter="transition ease-out duration-200 transform"
         enterFrom="opacity-0 -translate-y-2"
         enterTo="opacity-100 translate-y-0"
