@@ -17,6 +17,9 @@ export default function HeaderMobileMenu() {
       <li className="py-2 my-2 border-t border-b border-slate-300 dark:border-gray-700">
         <span className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5 pointer-events-none">Documentation</span>
         <ul className="pl-4">
+          <li>
+            <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={`/${AppConfig.paths.docs}`}>Overview</Link>
+          </li>
           {allPlugins.map((plugin, index) => (
             <li key={index}>
               <Link className="flex font-medium text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white py-1.5" href={plugin.docUrlPath}>{plugin.title}</Link>
