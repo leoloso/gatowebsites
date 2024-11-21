@@ -6,8 +6,5 @@
     "apps/*",
     "packages/config/*",
     "packages/shared/*"
-  ],
-  "dependencies": {
-    "@netlify/plugin-nextjs": "^5.8.1"
-  }
+  ]
 }
