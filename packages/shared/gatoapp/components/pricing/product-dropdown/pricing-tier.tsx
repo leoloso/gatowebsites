@@ -53,9 +53,9 @@ export default function PricingTier({
             </div>
           )}
         </div>
-        <div className={clsx("grow text-sm font-bold", productNameClassname)}>
+        {/* <div className={clsx("grow text-sm font-bold", productNameClassname)}>
           { productName }
-        </div>
+        </div> */}
         <div className="mb-4 grow text-sm text-slate-400">
           License for <span className="text-slate-200 font-bold">{tierDomainNumber} domains</span>
         </div>
