@@ -66,7 +66,7 @@ export default function PluginsSection({
               <p className="text-lg text-gray-300 grow">{plugin.description}</p>
               { !! plugin.video && (
                 <LinkModalVideo
-                  title="Tutorial video"
+                  // title="Tutorial video"
                   video={plugin.video}
                   videoWidth={1920}
                   videoHeight={1080}
