@@ -98,27 +98,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
-    // // Guides
-    {
-      url: `${DOMAIN}/${AppConfig.paths.docs.guides}`,
-      lastModified: releaseDateV3_3,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    // Plugins reference
-    {
-      url: `${DOMAIN}/${AppConfig.paths.docs.pluginsReference}`,
-      lastModified: releaseDateV3_3,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    // Queries library
-    {
-      url: `${DOMAIN}/${AppConfig.paths.docs.queryLibrary}`,
-      lastModified: releaseDateV3_3,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
     // Refund policy
     {
       url: `${DOMAIN}/refund-policy`,
