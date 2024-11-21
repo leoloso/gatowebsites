@@ -29,7 +29,7 @@ export default function SinglePluginPricing({
           <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-2 md:pb-4">
             Get your plugin
           </h2>
-          <p className="text-lg text-slate-400">Purchase the <span className='font-bold'>{ plugin.title }</span> plugin, or a <span className='font-bold'>bundle with all the plugins</span></p>
+          <p className="text-lg text-slate-400">Purchase <span className='font-bold'>{ plugin.title }</span></p>
         </div>
         <PluginPricing
           plugin={ plugin }
