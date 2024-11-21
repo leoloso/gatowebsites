@@ -46,10 +46,6 @@ export function sortDocuments(a: Doc, b: Doc) {
 
   return sortByOrderAndTitle(a, b)
 }
-
-export function getDocumentTopicsBySection(section: string) {
-  return allDocTopics.filter((docTopic) => docTopic.section === section)
-}
 // ----------------------------------------------------------------
 
 
