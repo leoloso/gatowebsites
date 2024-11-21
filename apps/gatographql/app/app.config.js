@@ -10,7 +10,6 @@ module.exports = {
     blog: "blog",
     demoPosts: "demos",
     features: "features",
-    docs: "docs",
     // ----------------------------------------
 
     highlights: "highlights",
