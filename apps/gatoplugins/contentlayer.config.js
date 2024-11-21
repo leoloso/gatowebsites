@@ -61,6 +61,11 @@ const Plugin = defineDocumentType(() => ({
       of: ShopURLs,
       required: true
     },
+    prices: {
+      type: 'nested',
+      of: PluginPrices,
+      required: true
+    },
   },
   computedFields: {
     slug: {
@@ -118,6 +123,47 @@ const ShopURLByLicense = defineNestedType(() => ({
   fields: {
     yearly: {
       type: 'string',
+      required: true
+    },
+  },
+}))
+
+const PluginPrices = defineNestedType(() => ({
+  name: 'PluginPrices',
+  fields: {
+    defaultTier: {
+      type: 'nested',
+      of: PluginPriceByLicense,
+      required: true
+    }, 
+    tier1: {
+      type: 'nested',
+      of: PluginPriceByLicense,
+      required: true
+    }, 
+    tier2: {
+      type: 'nested',
+      of: PluginPriceByLicense,
+      required: true
+    }, 
+    tier3: {
+      type: 'nested',
+      of: PluginPriceByLicense,
+      required: true
+    }, 
+    tier4: {
+      type: 'nested',
+      of: PluginPriceByLicense,
+      required: true
+    }, 
+  },
+}))
+
+const PluginPriceByLicense = defineNestedType(() => ({
+  name: 'PluginPriceByLicense',
+  fields: {
+    yearly: {
+      type: 'number',
       required: true
     },
   },

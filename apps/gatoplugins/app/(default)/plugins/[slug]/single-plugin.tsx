@@ -1,18 +1,17 @@
-import { Extension } from '@/.contentlayer/generated'
+import { Plugin } from '@/.contentlayer/generated'
 import { PostMdx } from 'gatoapp/components/mdx/post-mdx'
-import ExtensionThumb from '@/components/extension-thumb'
+import PluginThumb from '@/components/plugin-thumb'
 import PageHeader from 'gatoapp/components/page-header'
-import PostItemIntegration from 'gatoapp/components/post-item-integration'
-import ExtensionThumbModalVideo from '@/components/video/modal-video-extension-thumb'
-import BrowseExtensionReferenceDocButton from '@/components/browse-extension-reference-doc-button'
+import PluginThumbModalVideo from '@/components/video/modal-video-plugin-thumb'
+import BrowsePluginDocButton from '@/components/browse-plugin-doc-button'
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 
-export default function SingleExtension({
-  extension,
-  printIntegrations = true,
+export default function SinglePlugin({
+  plugin,
+  // printIntegrations = true,
 }: {
-  extension: Extension,
-  printIntegrations?: boolean,
+  plugin: Plugin,
+  // printIntegrations?: boolean,
 }) {
 
   return (
@@ -27,48 +26,48 @@ export default function SingleExtension({
 
             {/* Title and excerpt */}
             <PageHeader
-              {...extension}
+              {...plugin}
               // headerClassname="md:text-left"
-              leading='Extension'
+              leading='Plugin'
             />
 
             <div className="mb-8 lg:-ml-32 lg:-mr-32">
-              {! extension.video && (
-                <ExtensionThumb
-                  extension={extension}
+              {! plugin.video && (
+                <PluginThumb
+                  plugin={plugin}
                   isLandscape={true}
                 />
               )}
-              {!! extension.video && (
-                <ExtensionThumbModalVideo
-                  title={`Click to watch tutorial video - ${extension.videoDuration}`}
-                  extension={extension}
-                  video={extension.video}
+              {!! plugin.video && (
+                <PluginThumbModalVideo
+                  title={`Click to watch video - ${plugin.videoDuration}`}
+                  plugin={plugin}
+                  video={plugin.video}
                   videoWidth={1920}
                   videoHeight={1080}
                 />
               )}
             </div>
 
-            { printIntegrations && !! extension.integrations && (
+            {/* { printIntegrations && !! plugin.integrations && (
               <div className="mb-8">
                 <h4 className="text-2xl font-bold font-inter mb-8">Integrations</h4>
                 <div className="flex flex-col border-t border-gray-200">
-                  {extension.integrations.map((integration, index) => (
+                  {plugin.integrations.map((integration, index) => (
                     <PostItemIntegration key={index} {...integration} />
                   ))}
                 </div>
               </div>
-            )}
+            )} */}
 
             {/* Article content */}
-            <PostMdx code={extension.body.code} />
+            <PostMdx code={plugin.body.code} />
           </article>
 
           <div className="sm:mt-12 mt-24 flex items-center">
             <div className="max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <BrowseExtensionReferenceDocButton
-                extension={extension}
+              <BrowsePluginDocButton
+                plugin={plugin}
               />
             </div>
           </div>

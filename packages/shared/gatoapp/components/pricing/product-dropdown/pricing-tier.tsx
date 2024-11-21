@@ -7,7 +7,6 @@ export default function PricingTier({
   originalPrice,
   tierDomainNumber,
   highlight,
-  isLTD = false,
   buttonLabel="Purchase",
   buttonURL,
   buttonTarget,
@@ -20,7 +19,6 @@ export default function PricingTier({
   originalPrice?: number,
   tierDomainNumber: number,
   highlight?: boolean,
-  isLTD?: boolean,
   buttonLabel?: string,
   buttonURL: string,
   buttonTarget?: string,
@@ -55,9 +53,9 @@ export default function PricingTier({
             </div>
           )}
         </div>
-        <div className={clsx("grow text-sm font-bold", productNameClassname)}>
+        {/* <div className={clsx("grow text-sm font-bold", productNameClassname)}>
           { productName }
-        </div>
+        </div> */}
         <div className="mb-4 grow text-sm text-slate-400">
           License for <span className="text-slate-200 font-bold">{tierDomainNumber} domains</span>
         </div>
@@ -86,9 +84,6 @@ export default function PricingTier({
           </svg>
           <span>
             Support
-            { isLTD && (
-              <span className="text-purple-400"> (forever)</span>
-            )}
           </span>
         </li>
         <li className="flex items-center">
@@ -99,10 +94,8 @@ export default function PricingTier({
           >
             <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
           </svg>
-          <span>Product updates
-            { isLTD && (
-              <span className="text-purple-400"> (forever)</span>
-            )}
+          <span>
+            Product updates
           </span>
         </li>
       </ul>

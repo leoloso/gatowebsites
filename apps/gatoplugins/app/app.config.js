@@ -25,28 +25,6 @@ module.exports = {
       tier3: 100,
       tier4: 500,
     },
-    prices: {
-      plugins: {
-        gatoMultilingualForPolylang: {
-          tier1: {
-            yearly: 99,
-            // ltd: 249,
-          },
-          tier2: {
-            yearly: 199,
-            // ltd: 499,
-          },
-          tier3: {
-            yearly: 299,
-            // ltd: 749,
-          },
-          tier4: {
-            yearly: 399,
-            // ltd: 999,
-          },
-        },
-      },
-    }
   },
   services: {
     newsletter: {

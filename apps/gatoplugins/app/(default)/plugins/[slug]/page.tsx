@@ -1,16 +1,16 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { allExtensions } from '@/.contentlayer/generated'
+import { allPlugins } from '@/.contentlayer/generated'
 import { notFound } from 'next/navigation'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
-import Cta from '@/components/cta'
-import SingleExtension from './single-extension'
-import SingleExtensionPricing from './single-extension-pricing-section'
+// import Cta from '@/components/cta'
+import SinglePlugin from './single-plugin'
+import SinglePluginPricing from './single-plugin-pricing-section'
 
 export async function generateStaticParams() {
-  return allExtensions.map((extension) => ({
-    slug: extension.slug,
+  return allPlugins.map((plugin) => ({
+    slug: plugin.slug,
   }))
 }
 
@@ -19,11 +19,11 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata | undefined> {
 
-  const extension = allExtensions.find((extension) => extension.slug === params.slug)
+  const plugin = allPlugins.find((plugin) => plugin.slug === params.slug)
 
-  if (!extension) return
+  if (!plugin) return
 
-  const { title, seoTitle, description, seoDescription } = extension
+  const { title, seoTitle, description, seoDescription } = plugin
 
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || []
@@ -34,27 +34,27 @@ export async function generateMetadata(
     openGraph: {
       title: createOpenGraphPageTitle(title),
       description,
-      images: extension.image ? [extension.image] : previousImages,
+      images: plugin.image ? [plugin.image] : previousImages,
     },
     twitter: {
       title: createOpenGraphPageTitle(title),
       description,
-      images: extension.image ? [extension.image] : previousImages,
+      images: plugin.image ? [plugin.image] : previousImages,
     },
   }
 }
 
-export default async function SingleExtensionPage({ params }: {
+export default async function SinglePluginPage({ params }: {
   params: { slug: string }
 }) {
 
   // Sort posts. Needed to find the prev/next items below
-  const extensions = allExtensions.sort(sortByOrderAndTitle)
-  const extensionIndex = extensions.findIndex((extension) => extension.slug === params.slug)
+  const plugins = allPlugins.sort(sortByOrderAndTitle)
+  const pluginIndex = plugins.findIndex((plugin) => plugin.slug === params.slug)
 
-  if (extensionIndex === -1) notFound()
+  if (pluginIndex === -1) notFound()
 
-  const extension = extensions[extensionIndex]
+  const plugin = plugins[pluginIndex]
   
   return (
     <>
@@ -64,20 +64,20 @@ export default async function SingleExtensionPage({ params }: {
 
         <div className="pb-12 md:pb-20"> 
 
-          <SingleExtension
-            extension={extension}
+          <SinglePlugin
+            plugin={plugin}
             printIntegrations={false}
           />
 
         </div>
         
-        <SingleExtensionPricing
-          extension={extension}
+        <SinglePluginPricing
+          plugin={plugin}
         />
         
       </section>
 
-      <Cta />
+      {/* <Cta /> */}
     </>
   )
 }
