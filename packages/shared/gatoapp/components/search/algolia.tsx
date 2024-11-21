@@ -16,7 +16,7 @@ export const enum Sections {
   Demos = 'Demos',
 
   // Gato Plugins
-  PluginsReference = 'Plugins reference',
+  Docs = 'Docs',
   Plugins = 'Plugins',
 }
 
@@ -42,6 +42,6 @@ export interface SearchObject extends BaseHit {
     | Sections.Demos
     
     // Gato Plugins
-    | Sections.PluginsReference
+    | Sections.Docs
     | Sections.Plugins
 }

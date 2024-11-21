@@ -35,7 +35,7 @@ export function getStructuredDataObject(
     | Sections.Demos
     
     // Gato Plugins
-    | Sections.PluginsReference
+    | Sections.Docs
     | Sections.Plugins
 ): SearchObject {
   // return an object to be added to Algolia.

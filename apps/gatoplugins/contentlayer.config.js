@@ -72,6 +72,10 @@ const Plugin = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => `/${AppConfig.paths.plugins}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.plugins + '/?'), '')}`,
     },
+    docUrlPath: {
+      type: 'string',
+      resolve: (doc) => `/${AppConfig.paths.docs}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.plugins + '/?'), '')}`,
+    },
   },
 }))
 

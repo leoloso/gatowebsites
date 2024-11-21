@@ -82,20 +82,5 @@ export function getPrevNextArticles(articles: Array<any>, articleIndex: number) 
 export function getGroupDocuments(docSection: string) {
   return allDocs.filter((doc) => doc.section === docSection)
 }
-
-export function getGuideDocuments() {
-  return getGroupDocuments(AppConfig.paths.docs.guides)
-}
-
-export function getGuideDocument(relatedGuide: RelatedGuide) {
-  const guide = getGuideDocuments().find((doc) => doc.slug === relatedGuide?.slug && doc.topicSlug === relatedGuide?.topic)
-  if (!guide) {
-    throw new Error(`There is no guide with topic '${relatedGuide.topic}' and slug '${relatedGuide.slug}'`)
-  }
-  return guide
-}
 // ----------------------------------------------------------------
 
-export function getPluginReferenceDocuments() {
-  return getGroupDocuments(AppConfig.paths.docs.pluginsReference)
-}
