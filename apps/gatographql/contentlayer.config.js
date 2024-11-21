@@ -1,4 +1,4 @@
-import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
+import { defineNestedType, defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import AppConfig from './app/app.config'
 import ContentLayerConfig from '../../packages/shared/gatoapp/app/contentlayer.config.js'
 
