@@ -283,55 +283,6 @@ const DocTopic = defineDocumentType(() => ({
   },
 }))
 
-const ShopURLs = defineNestedType(() => ({
-  name: 'ShopURLs',
-  fields: {
-    dev: {
-      type: 'string',
-      required: true
-    },
-    defaultTier: {
-      type: 'nested',
-      of: ShopURLByLicense,
-      required: true
-    }, 
-    tier1: {
-      type: 'nested',
-      of: ShopURLByLicense,
-      required: true
-    }, 
-    tier2: {
-      type: 'nested',
-      of: ShopURLByLicense,
-      required: true
-    }, 
-    tier3: {
-      type: 'nested',
-      of: ShopURLByLicense,
-      required: true
-    }, 
-    tier4: {
-      type: 'nested',
-      of: ShopURLByLicense,
-      required: true
-    }, 
-  },
-}))
-
-const ShopURLByLicense = defineNestedType(() => ({
-  name: 'ShopURLByLicense',
-  fields: {
-    yearly: {
-      type: 'string',
-      required: true
-    },
-    ltd: {
-      type: 'string',
-      required: true
-    }, 
-  },
-}))
-
 const ContentLayerBaseConfig = {
   contentDirPath: 'content',
   mdx: {
@@ -422,7 +373,6 @@ module.exports = {
     Snippet: Snippet,
     Feature: Feature,
     DocTopic: DocTopic,
-    ShopURLs: ShopURLs,
     ShopURLByLicense: ShopURLByLicense,
     PostIntegration: PostIntegration,
   },
