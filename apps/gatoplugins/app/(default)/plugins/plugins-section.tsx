@@ -4,7 +4,6 @@ import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 import PluginThumb from '@/components/plugin-thumb'
 import clsx from 'clsx'
 import LinkModalVideo from 'gatoapp/components/mdx/components/modal-video-link'
-import PluginsModalVideo from '@/components/video/modal-video-plugins'
 
 export const svgEffect1 = 1;
 export const svgEffect2 = 2;
@@ -35,16 +34,6 @@ export default function PluginsSection({
 
   return (
     <div className="pb-12 md:pb-20">
-
-      {/* <div className="pb-12 md:pb-20 mb-12 md:mb-20 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
-        <PluginsModalVideo
-          title="Click to watch a clip of Gato Plugins"
-          video="/videos/GatoGraphQL-plugins.mp4"
-          videoWidth={1920}
-          videoHeight={1080}
-          bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
-        />
-      </div> */}
 
       {/* Plugins */}
       {plugins.map((plugin, index) => (
