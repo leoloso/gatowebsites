@@ -23,6 +23,7 @@ export default function About() {
       />
 
       <Hero
+        title="Building the most powerful GraphQL server for WordPress"
         includeAnimation={false}
         includeThumbnail={true}
         targetImageSources={[WordPressLogo, GraphQLLogo]}

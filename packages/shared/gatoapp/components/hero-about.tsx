@@ -5,12 +5,14 @@ import StunningBackground from 'gatoapp/components/stunning-background'
 import WithLogoThumb from 'gatoapp/components/thumbnails/with-logo-thumb'
 
 export default function HeroAbout({
+  title,
   includeAnimation = true,
   includeThumbnail = false,
   targetImageSources,
   svgImage,
   logoImage,
 }: {
+  title: string,
   includeAnimation?: boolean,
   includeThumbnail?: boolean,
   targetImageSources: Array<string>,
@@ -28,7 +30,7 @@ export default function HeroAbout({
           {/* Hero content */}
           <div className="text-center">
             <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">The folks behind the product</div>
-            <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-6">Building the most powerful GraphQL server for WordPress</h1>
+            <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-6">{title}</h1>
             {/* Rings illustration */}
             {includeAnimation && (
               <div className="inline-flex items-center justify-center relative">
