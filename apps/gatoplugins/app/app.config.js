@@ -27,7 +27,7 @@ module.exports = {
     },
     prices: {
       plugins: {
-        gatoMultilingualForPolylang: {
+        multilingualPolylang: {
           tier1: {
             yearly: 99,
             // ltd: 249,
