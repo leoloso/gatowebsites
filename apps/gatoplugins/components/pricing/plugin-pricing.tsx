@@ -3,7 +3,7 @@ import { Plugin } from "@/.contentlayer/generated"
 import PricingTier from "gatoapp/components/pricing/product-dropdown/pricing-tier";
 import AppConfig from "@/app/app.config"
 
-export default function PluginDropdownPricing({
+export default function PluginPricing({
   plugin,
 }: {
   plugin: Plugin,
