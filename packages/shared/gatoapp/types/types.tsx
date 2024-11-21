@@ -137,16 +137,6 @@ export type RelatedGuide = {
 
 }
 
-export type ShopURLByLicense = {
-  /** File path relative to `contentDirPath` */
-  // _id: string
-  // _raw: Local.RawDocumentData
-  type: 'ShopURLByLicense'
-  yearly: string
-  ltd: string
-
-}
-
 /** Nested types */
 export type PostIntegration = {
   // /** File path relative to `contentDirPath` */
@@ -158,17 +148,3 @@ export type PostIntegration = {
   url: string
 
 }
-
-export type ShopURLs = {
-  /** File path relative to `contentDirPath` */
-  // _id: string
-  // _raw: Local.RawDocumentData
-  type: 'ShopURLs'
-  dev: string
-  defaultTier: ShopURLByLicense
-  tier1: ShopURLByLicense
-  tier2: ShopURLByLicense
-  tier3: ShopURLByLicense
-  tier4: ShopURLByLicense
-
-}  

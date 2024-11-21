@@ -1,0 +1,74 @@
+---
+title: 'Gato Multilingual: Automatic Translations for Polylang'
+description: "Automatically translate your Polylang posts upon publishing."
+order: 0
+image: /images/thumbnails/extensions/polylang-integration.png
+targetImages:
+  - /images/icons/extensions/polylang-integration.png
+# integrations: 
+#   - { name: Polylang, image: /images/logos/polylang.png, url: https://wordpress.org/plugins/polylang/ }
+# video: /videos/extensions/polylang-integration.mp4
+# videoDuration: 02:56
+shopURLs:
+  dev: https://shop.gatographql.com/buy/897b9058-2385-48e7-b69e-3e237812d24b
+  defaultTier:
+    yearly: "https://shop.gatographql.com/buy/897b9058-2385-48e7-b69e-3e237812d24b"
+  tier1:
+    yearly: "https://shop.gatographql.com/buy/897b9058-2385-48e7-b69e-3e237812d24b"
+  tier2:
+    yearly: "https://shop.gatographql.com/buy/897b9058-2385-48e7-b69e-3e237812d24b"
+  tier3:
+    yearly: "https://shop.gatographql.com/buy/897b9058-2385-48e7-b69e-3e237812d24b"
+  tier4:
+    yearly: "https://shop.gatographql.com/buy/897b9058-2385-48e7-b69e-3e237812d24b"
+---
+
+Integration with the <a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a> plugin (and also <a href="https://polylang.pro" target="_blank">Polylang PRO</a>).
+
+When Polylang is installed in the WordPress site, fetching data using GraphQL would retrieve results for all languages. For instance, field `posts` might fetch posts in English, Spanish and French.
+
+With the Polylang integration, fields get an extra argument `polylangLanguagesBy`, to fetch data for some specific language only:
+
+```graphql
+{
+  posts(
+    filter: {
+      polylangLanguagesBy: {
+        codes: ["en"]
+      }
+    }
+  ) {
+    title
+    polylangLanguage {
+      code
+    }
+  }
+
+  pages(
+    filter: {
+      polylangLanguagesBy: {
+        locales: ["en_US"]
+      }
+    }
+  ) {
+    title
+    polylangLanguage {
+      locale
+    }
+  }
+
+  customPosts(
+    filter: {
+      polylangLanguagesBy: {
+        predefined: DEFAULT
+      }
+      customPostTypes: "some-cpt"
+    }
+  ) {
+    title
+    polylangLanguage {
+      code
+    }
+  }
+}
+```

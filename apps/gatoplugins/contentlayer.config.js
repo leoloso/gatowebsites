@@ -1,4 +1,4 @@
-import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
+import { defineNestedType, defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import AppConfig from './app/app.config'
 import ContentLayerConfig from '../../packages/shared/gatoapp/app/contentlayer.config.js'
 
@@ -9,7 +9,6 @@ const Feature = ContentLayerConfig.types.Feature
 const Page = ContentLayerConfig.types.Page
 const Snippet = ContentLayerConfig.types.Snippet
 const DocTopic = ContentLayerConfig.types.DocTopic
-const ShopURLs = ContentLayerConfig.types.ShopURLs
 const PostIntegration = ContentLayerConfig.types.PostIntegration
 const DocConfig = ContentLayerConfig.typeConfigs.Doc
 
@@ -75,6 +74,51 @@ const Plugin = defineDocumentType(() => ({
     docUrlPath: {
       type: 'string',
       resolve: (doc) => `/${AppConfig.paths.docs}/${doc._raw.flattenedPath.replace(new RegExp('^' + AppConfig.paths.plugins + '/?'), '')}`,
+    },
+  },
+}))
+
+const ShopURLs = defineNestedType(() => ({
+  name: 'ShopURLs',
+  fields: {
+    dev: {
+      type: 'string',
+      required: true
+    },
+    defaultTier: {
+      type: 'nested',
+      of: ShopURLByLicense,
+      required: true
+    }, 
+    tier1: {
+      type: 'nested',
+      of: ShopURLByLicense,
+      required: true
+    }, 
+    tier2: {
+      type: 'nested',
+      of: ShopURLByLicense,
+      required: true
+    }, 
+    tier3: {
+      type: 'nested',
+      of: ShopURLByLicense,
+      required: true
+    }, 
+    tier4: {
+      type: 'nested',
+      of: ShopURLByLicense,
+      required: true
+    }, 
+  },
+}))
+
+const ShopURLByLicense = defineNestedType(() => ({
+  name: 'ShopURLByLicense',
+  fields: {
+    yearly: {
+      type: 'string',
+      required: true
     },
   },
 }))
