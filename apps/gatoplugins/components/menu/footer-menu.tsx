@@ -36,7 +36,11 @@ export default function FooterMenu({
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.instawpSandboxDemo} target="_blank">Try out</a>
           </li> */}
         </ul>
-        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Documentation</h6>
+      </div>
+
+      {/* 3rd block */}
+      <div className={columnClassname}>
+        <h6 className="text-sm text-slate-50 font-medium mb-2">Documentation</h6>
         <ul className="text-sm space-y-2">
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs}`}>Overview</a>
@@ -47,11 +51,7 @@ export default function FooterMenu({
             </li>
           ))}
         </ul>
-      </div>
-
-      {/* 3rd block */}
-      <div className={columnClassname}>
-        <h6 className="text-sm text-slate-50 font-medium mb-2">Resources</h6>
+        <h6 className="text-sm text-slate-50 font-medium mb-2 mt-8 lg:mt-6">Resources</h6>
         <ul className="text-sm space-y-2">
           <li>
             <a className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="https://www.youtube.com/@GatoGraphQL" target="_blank">@GatoGraphQL YouTube channel</a>
