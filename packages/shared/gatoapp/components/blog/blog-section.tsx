@@ -1,8 +1,7 @@
 'use client'
 
-import { allBlogPosts } from '@/.contentlayer/generated'
+import { BlogPost } from 'gatoapp/types/types'
 import PopularPosts from 'gatoapp/components/blog/popular-posts'
-import { sortByPublishedAt } from 'gatoapp/utils/content/sort'
 import PageHeader from 'gatoapp/components/page-header'
 import BlogPostList from 'gatoapp/components/blog-post-list'
 import { Suspense } from 'react'
@@ -13,13 +12,13 @@ import PostTags from 'gatoapp/components/post-tags'
 import Link from 'next/link'
 import AppConfig from '@/app/app.config'
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
-import { getFeaturedBlogPosts } from "@/utils/content/post";
 
-export default function BlogSection() {
+export default function BlogSection({
+  blogPosts,
+}: {
+  blogPosts: BlogPost[]
+}) {
 
-  // Sort posts by date
-  const blogPosts = allBlogPosts.sort(sortByPublishedAt) 
-  
   // Filter posts by tag
   const searchParams = useSearchParams();
   const tag = searchParams.get('tag');
@@ -70,7 +69,7 @@ export default function BlogSection() {
           {/* Sidebar */}
           <aside className="hidden sm:block relative mt-12 md:mt-0 md:w-64 md:ml-12 lg:ml-20 md:shrink-0">
             <PopularPosts
-              blogPosts={getFeaturedBlogPosts()}
+              blogPosts={blogPosts}
             />
           </aside>
 

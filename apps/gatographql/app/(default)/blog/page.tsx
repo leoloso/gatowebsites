@@ -2,9 +2,11 @@ import StunningBackground from 'gatoapp/components/stunning-background'
 import Newsletter from 'gatoapp/components/newsletter'
 import BlogSchemaJsonLdScript from 'gatoapp/components/schema/blog-schema-json-ld'
 import { createSEOPageTitle } from '@/utils/content/metadata'
-import BlogSection from './blog-section'
+import BlogSection from 'gatoapp/components/blog/blog-section'
 import { Suspense } from 'react'
 import AppConfig from '@/app/app.config'
+import { allBlogPosts } from '@/.contentlayer/generated'
+import { sortByPublishedAt } from 'gatoapp/utils/content/sort'
 
 const pageTitle = 'Blog'
 export const metadata = {
@@ -16,6 +18,7 @@ export const metadata = {
 }
 
 export default function Blog() {
+  const sortedBlogPosts = allBlogPosts.sort(sortByPublishedAt)
 
   return (
     <>
@@ -27,7 +30,9 @@ export default function Blog() {
       <section className="relative">
         <StunningBackground />    
         <Suspense>
-          <BlogSection />
+          <BlogSection
+            blogPosts={sortedBlogPosts}
+          />
         </Suspense>
       </section>
       <Newsletter label="Want more posts & tutorials?" />
