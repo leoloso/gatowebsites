@@ -17,8 +17,6 @@ export default function PluginDropdownPricing({
 }) {
   const plugins = allPlugins.sort(sortByOrderAndTitle)
 
-  const [selectBundle, setSelectBundle] = useState<boolean>(preselectBundle);
-  const [selectLTD, setLTD] = useState<boolean>(false);
   const [selectedPluginIndex, setSelectedPluginIndex] = useState<number>(fixedPlugin === undefined ? 0 : plugins.findIndex((ext) => ext.slug === fixedPlugin.slug))
 
   const selectedPlugin = plugins[selectedPluginIndex]
@@ -37,8 +35,8 @@ export default function PluginDropdownPricing({
           tierDomainNumber={ AppConfig.shop.licenseDomainNumber.tier1 }
           buttonURL={ getShopURL(isProd ? selectedPlugin.shopURLs.tier1.yearly : selectedPlugin.shopURLs.dev) }
           buttonClassname={ getShopAnchorClassname() }
-          productNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
-          isLTD={ selectLTD }
+          productNameClassname={ "text-blue-300" }
+          isLTD={ false }
         />
         {/* Pricing table 2 */}
         <PricingTier
@@ -49,8 +47,8 @@ export default function PluginDropdownPricing({
           tierDomainNumber={ AppConfig.shop.licenseDomainNumber.tier2 }
           buttonURL={ getShopURL(isProd ? selectedPlugin.shopURLs.tier2.yearly : selectedPlugin.shopURLs.dev) }
           buttonClassname={ getShopAnchorClassname() }
-          productNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
-          isLTD={ selectLTD }
+          productNameClassname={ "text-blue-300" }
+          isLTD={ false }
         />
         {/* Pricing table 3 */}
         <PricingTier
@@ -61,8 +59,8 @@ export default function PluginDropdownPricing({
           tierDomainNumber={ AppConfig.shop.licenseDomainNumber.tier3 }
           buttonURL={ getShopURL(isProd ? selectedPlugin.shopURLs.tier3.yearly : selectedPlugin.shopURLs.dev) }
           buttonClassname={ getShopAnchorClassname() }
-          productNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
-          isLTD={ selectLTD }
+          productNameClassname={ "text-blue-300" }
+          isLTD={ false }
           highlight={true}
         />
         {/* Pricing table 4 */}
@@ -74,21 +72,12 @@ export default function PluginDropdownPricing({
           tierDomainNumber={ AppConfig.shop.licenseDomainNumber.tier4 }
           buttonURL={ getShopURL(isProd ? selectedPlugin.shopURLs.tier4.yearly : selectedPlugin.shopURLs.dev) }
           buttonClassname={ getShopAnchorClassname() }
-          productNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
-          isLTD={ selectLTD }
+          productNameClassname={ "text-blue-300" }
+          isLTD={ false }
         />
       </div>
       <p className="text-sm text-slate-500 pt-4 pb-4 font-bold text-center">
-        { selectLTD && (
-          <span>
-            The license never expires. Prices are in USD.
-          </span>
-        )}
-        { !selectLTD && (
-          <span>
-            The license is for 1 year (renewable every year). Prices are in USD.
-          </span>
-        )}
+        The license is for 1 year (renewable every year). Prices are in USD.
       </p>
     </div>
   );
