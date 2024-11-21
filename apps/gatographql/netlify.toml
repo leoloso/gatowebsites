@@ -1,7 +1,11 @@
 [build]
-  command = "npm run build --prefix apps/gatographql"
-  publish = ".next"
-  environment = { NODE_OPTIONS="--max-old-space-size=8192" }
+  command = "npm run build -w gatographql"
+  publish = "./apps/gatographql/.next/"
+  [build.environment]
+    NODE_OPTIONS = "--max-old-space-size=8192"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
   
 [[redirects]]
