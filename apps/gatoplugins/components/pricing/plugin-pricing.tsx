@@ -21,18 +21,6 @@ export default function PluginDropdownPricing({
   const [selectLTD, setLTD] = useState<boolean>(false);
   const [selectedPluginIndex, setSelectedPluginIndex] = useState<number>(fixedPlugin === undefined ? 0 : plugins.findIndex((ext) => ext.slug === fixedPlugin.slug))
 
-  const aggregatedPluginsPriceTier1Yearly = AppConfig.shop.prices.plugins._shared.tier1.yearly * plugins.length
-  const aggregatedPluginsPriceTier2Yearly = AppConfig.shop.prices.plugins._shared.tier2.yearly * plugins.length
-  const aggregatedPluginsPriceTier3Yearly = AppConfig.shop.prices.plugins._shared.tier3.yearly * plugins.length
-  const aggregatedPluginsPriceTier4Yearly = AppConfig.shop.prices.plugins._shared.tier4.yearly * plugins.length
-
-  const aggregatedPluginsPriceTier1LTD = AppConfig.shop.prices.plugins._shared.tier1.ltd * plugins.length
-  const aggregatedPluginsPriceTier2LTD = AppConfig.shop.prices.plugins._shared.tier2.ltd * plugins.length
-  const aggregatedPluginsPriceTier3LTD = AppConfig.shop.prices.plugins._shared.tier3.ltd * plugins.length
-  const aggregatedPluginsPriceTier4LTD = AppConfig.shop.prices.plugins._shared.tier4.ltd * plugins.length
-
-  const allPluginsBundleName = "“All Plugins” bundle"
-
   const selectedPlugin = plugins[selectedPluginIndex]
 
   const isProd = process.env.NODE_ENV === 'production'
@@ -45,9 +33,9 @@ export default function PluginDropdownPricing({
           tierName='Personal'
           productName={ selectedPlugin.title }
           price={ selectedPlugin.prices.tier1.yearly }
-          originalPrice={ selectBundle ? ( selectLTD ? aggregatedPluginsPriceTier1LTD : aggregatedPluginsPriceTier1Yearly ) : undefined }
+          originalPrice={  undefined }
           tierDomainNumber={ AppConfig.shop.licenseDomainNumber.tier1 }
-          buttonURL={ getShopURL(selectBundle ? ( selectLTD ? AppConfig.urls.shopProducts.bundles.allPlugins.tier1.ltd : AppConfig.urls.shopProducts.bundles.allPlugins.tier1.yearly ) : ( isProd ? ( selectLTD ? selectedPlugin.shopURLs.tier1.ltd : selectedPlugin.shopURLs.tier1.yearly ) : selectedPlugin.shopURLs.dev ) )}
+          buttonURL={ getShopURL(isProd ? selectedPlugin.shopURLs.tier1.yearly : selectedPlugin.shopURLs.dev) }
           buttonClassname={ getShopAnchorClassname() }
           productNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
           isLTD={ selectLTD }
@@ -57,9 +45,9 @@ export default function PluginDropdownPricing({
           tierName='Organization'
           productName={ selectedPlugin.title }
           price={ selectedPlugin.prices.tier2.yearly }
-          originalPrice={ selectBundle ? ( selectLTD ? aggregatedPluginsPriceTier2LTD : aggregatedPluginsPriceTier2Yearly ) : undefined }
+          originalPrice={  undefined }
           tierDomainNumber={ AppConfig.shop.licenseDomainNumber.tier2 }
-          buttonURL={ getShopURL(selectBundle ? ( selectLTD ? AppConfig.urls.shopProducts.bundles.allPlugins.tier2.ltd : AppConfig.urls.shopProducts.bundles.allPlugins.tier2.yearly ) : ( isProd ? ( selectLTD ? selectedPlugin.shopURLs.tier2.ltd : selectedPlugin.shopURLs.tier2.yearly ) : selectedPlugin.shopURLs.dev ) )}
+          buttonURL={ getShopURL(isProd ? selectedPlugin.shopURLs.tier2.yearly : selectedPlugin.shopURLs.dev) }
           buttonClassname={ getShopAnchorClassname() }
           productNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
           isLTD={ selectLTD }
@@ -69,9 +57,9 @@ export default function PluginDropdownPricing({
           tierName='Professional'
           productName={ selectedPlugin.title }
           price={ selectedPlugin.prices.tier3.yearly }
-          originalPrice={ selectBundle ? ( selectLTD ? aggregatedPluginsPriceTier3LTD : aggregatedPluginsPriceTier3Yearly ) : undefined }
+          originalPrice={  undefined }
           tierDomainNumber={ AppConfig.shop.licenseDomainNumber.tier3 }
-          buttonURL={ getShopURL(selectBundle ? ( selectLTD ? AppConfig.urls.shopProducts.bundles.allPlugins.tier3.ltd : AppConfig.urls.shopProducts.bundles.allPlugins.tier3.yearly ) : ( isProd ? ( selectLTD ? selectedPlugin.shopURLs.tier3.ltd : selectedPlugin.shopURLs.tier3.yearly ) : selectedPlugin.shopURLs.dev ) )}
+          buttonURL={ getShopURL(isProd ? selectedPlugin.shopURLs.tier3.yearly : selectedPlugin.shopURLs.dev) }
           buttonClassname={ getShopAnchorClassname() }
           productNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
           isLTD={ selectLTD }
@@ -82,9 +70,9 @@ export default function PluginDropdownPricing({
           tierName='Agency'
           productName={ selectedPlugin.title }
           price={ selectedPlugin.prices.tier4.yearly }
-          originalPrice={ selectBundle ? ( selectLTD ? aggregatedPluginsPriceTier4LTD : aggregatedPluginsPriceTier4Yearly ) : undefined }
+          originalPrice={  undefined }
           tierDomainNumber={ AppConfig.shop.licenseDomainNumber.tier4 }
-          buttonURL={ getShopURL(selectBundle ? ( selectLTD ? AppConfig.urls.shopProducts.bundles.allPlugins.tier4.ltd : AppConfig.urls.shopProducts.bundles.allPlugins.tier4.yearly ) : ( isProd ? ( selectLTD ? selectedPlugin.shopURLs.tier4.ltd : selectedPlugin.shopURLs.tier4.yearly ) : selectedPlugin.shopURLs.dev ) )}
+          buttonURL={ getShopURL(isProd ? selectedPlugin.shopURLs.tier4.yearly : selectedPlugin.shopURLs.dev) }
           buttonClassname={ getShopAnchorClassname() }
           productNameClassname={ selectBundle ? "text-cyan-300" : "text-blue-300" }
           isLTD={ selectLTD }
