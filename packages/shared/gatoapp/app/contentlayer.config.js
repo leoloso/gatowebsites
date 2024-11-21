@@ -365,7 +365,7 @@ const ContentLayerBaseConfig = {
 
 const DocConfig = (useFullPath) => ({
   name: 'Doc',
-  filePathPattern: `docs/**/*.mdx`,
+  filePathPattern: `${AppConfig.paths.docs}/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
