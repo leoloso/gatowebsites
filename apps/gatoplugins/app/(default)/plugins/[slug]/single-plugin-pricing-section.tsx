@@ -32,7 +32,7 @@ export default function SinglePluginPricing({
           <p className="text-lg text-slate-400">Purchase the <span className='font-bold'>{ plugin.title }</span> plugin, or a <span className='font-bold'>bundle with all the plugins</span></p>
         </div>
         <PluginPricing
-          fixedPlugin={ plugin }
+          plugin={ plugin }
         />
 
       </div>
