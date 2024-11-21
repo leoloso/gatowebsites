@@ -15,7 +15,7 @@ export default function PluginDocList() {
 
         {plugins.map((plugin, index) => (
           <div key={index}>
-            <Link href={plugin.urlPath}>
+            <Link href={plugin.docUrlPath}>
               <HighlighterItem02>
                 <div className="relative h-full bg-purple-900/50 rounded-[inherit] z-20 overflow-hidden">
                   {/* Particles animation */}
