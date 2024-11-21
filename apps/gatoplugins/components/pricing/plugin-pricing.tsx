@@ -1,5 +1,3 @@
-"use client";
-
 import { getShopURL, getShopAnchorClassname } from "gatoapp/utils/shop/shop"
 import { Plugin } from "@/.contentlayer/generated"
 import PricingTier from "gatoapp/components/pricing/product-dropdown/pricing-tier";
