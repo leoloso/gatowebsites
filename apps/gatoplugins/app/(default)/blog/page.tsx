@@ -31,6 +31,8 @@ export default function Blog() {
         <StunningBackground />    
         <Suspense>
           <BlogSection
+            leading="query { posts { content } }"
+            description='Stay up to date on the latest from Gato GraphQL'
             blogPosts={sortedBlogPosts}
           />
         </Suspense>
