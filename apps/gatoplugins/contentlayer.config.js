@@ -1,7 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import AppConfig from './app/app.config'
 import ContentLayerConfig from '../../packages/shared/gatoapp/app/contentlayer.config.js'
-import AppConstants from '../../packages/shared/gatoapp/app/app.constants.js'
 
 const ContentLayerBaseConfig = ContentLayerConfig.config.ContentLayerBaseConfig
 const BlogPost = ContentLayerConfig.types.BlogPost
@@ -12,7 +11,6 @@ const Snippet = ContentLayerConfig.types.Snippet
 const DocTopic = ContentLayerConfig.types.DocTopic
 const ShopURLs = ContentLayerConfig.types.ShopURLs
 const PostIntegration = ContentLayerConfig.types.PostIntegration
-
 const DocConfig = ContentLayerConfig.typeConfigs.Doc
 
 const Doc = defineDocumentType(() => (DocConfig(true)))
