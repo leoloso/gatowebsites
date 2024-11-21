@@ -6,7 +6,6 @@ import PostNav from 'gatoapp/components/post-nav'
 import PostTags from 'gatoapp/components/post-tags'
 import AppConfig from '@/app/app.config'
 import StunningBackground from 'gatoapp/components/stunning-background'
-import Newsletter from 'gatoapp/components/newsletter'
 import { getURL } from 'gatoapp/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from 'gatoapp/components/schema/blogposting-schema-json-ld';
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
@@ -112,7 +111,6 @@ export default function BlogSinglePost({
           </div>
         </div>
       </section>
-      <Newsletter label="Want more posts & tutorials?" />
     </>
   )
 }
