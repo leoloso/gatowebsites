@@ -14,7 +14,11 @@ export default function HeaderMenu() {
         <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out" href={`/${AppConfig.paths.demoPosts}`}>Demos</Link>
       </li> */}
       {/* 1st level: hover */}
-      <Dropdown title="Documentation" link={`/${AppConfig.paths.docs}`}>
+      <Dropdown
+        title="Documentation"
+        link={`/${AppConfig.paths.docs}`}
+        dropdownWidthClassname='-left-32 w-104'
+      >
         {/* 2nd level: hover */}
         {allPlugins.map((plugin, index) => (
           <li key={index}>
