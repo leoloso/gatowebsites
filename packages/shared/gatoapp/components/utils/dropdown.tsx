@@ -5,12 +5,14 @@ import { Transition } from '@headlessui/react'
 
 type DropdownProps = {
   children: React.ReactNode
-  title: string
+  title: string,
+  link?: string
 }
 
 export default function Dropdown({
   children,
-  title
+  title,
+  link
 }: DropdownProps) {
 
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false)
@@ -25,9 +27,14 @@ export default function Dropdown({
     >
       <a
         className="font-medium text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white text-sm px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out"
-        href="#"
+        href={link || "#"}
         aria-expanded={dropdownOpen}
-        onClick={(e) => e.preventDefault()}
+        onClick={(e) => function() {
+          if (link) {
+            return
+          }
+          e.preventDefault()
+        }}
       >
         {title}
         <svg className="w-3 h-3 fill-current text-gray-500 cursor-pointer ml-1 shrink-0" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
