@@ -1,16 +1,40 @@
-import { notFound, redirect } from 'next/navigation'
-import { sortDocuments } from '@/utils/content/document'
-import { allDocs } from '@/.contentlayer/generated'
+import StunningBackground from 'gatoapp/components/stunning-background'
+import PageHeader from 'gatoapp/components/page-header'
+// import Cta from '@/components/cta-02'
+import PluginDocList from './plugin-doc-list'
+import { createSEOPageTitle } from '@/utils/content/metadata'
 
-// Redirect to the first item on the docs collection
-export default function RedirectToFirstDocItem() {
+const pageTitle = 'Documentation'
+export const metadata = {
+  title: createSEOPageTitle(pageTitle),
+  description: 'Browse the documentation for all plugins by Gato Plugins',
+}
 
-  // Sort docs (this already takes into account the DocTopic)
-  const docs = allDocs.sort(sortDocuments);
+export default function DocumentationPage() {
 
-  if (docs.length === 0) notFound()
+  return (
+    <>
+      <section className="relative">
 
-  // Redirect to the first one
-  const doc = docs[0];
-  redirect(doc.urlPath)
+        <StunningBackground />
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="pt-32 md:pt-40">
+
+            {/* Section header */}
+            <PageHeader
+              // leading='Comparing against plugins for WordPress'
+              title='Documentation'
+              description='Browse the docs for all plugins by Gato Plugins'
+            />
+
+            <PluginDocList />
+
+          </div>
+        </div>
+
+      </section>
+      {/* <Cta /> */}
+    </>
+  )
 }
