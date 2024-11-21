@@ -10,11 +10,6 @@ module.exports = {
     docs: "docs",
     // ----------------------------------------
     
-    docs: {
-      guides: "guides",
-      pluginsReference: "plugins-reference",
-      queryLibrary: "library",
-    },
     plugins: "plugins",
   },
   urls: {
