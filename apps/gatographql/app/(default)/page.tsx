@@ -1,7 +1,7 @@
 import Hero from 'gatoapp/components/hero'
 import UseCases from '@/components/use-cases/use-cases'
 import FeaturesCarousel from 'gatoapp/components/features-carousel'
-import Pricing from './pricing-section'
+import PricingSection from '@/components/pricing-section'
 import Cta from '@/components/cta'
 import HomeExtensionsSection from '@/components/home-extensions-section'
 import AppConfig from '@/app/app.config'
@@ -24,7 +24,7 @@ export default function Home() {
         lastSlideText='Browse the list of all features, discover how Gato GraphQL can empower and protect your application.'
       />
       <HomeExtensionsSection />
-      <Pricing />
+      <PricingSection />
       <Cta />
     </>
   )
