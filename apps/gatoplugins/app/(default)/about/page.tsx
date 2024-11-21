@@ -4,14 +4,12 @@ import Cta from 'gatoapp/components/cta-03'
 import AboutPageSchemaJsonLdScript from 'gatoapp/components/schema/aboutpage-schema-json-ld'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import WordPressLogo from '@/public/assets/external-logos/wordpress-logo.svg'
-import GraphQLLogo from '@/public/assets/external-logos/graphql-logo.svg'
-import CircledEqualsSvgImage from 'gatoapp/public/assets/theme/equals-circled.svg'
-import Logo from '@/public/assets/GatoGraphQL-logo-suki-text-square.png'
+import Logo from '@/public/assets/GatoPlugins-logo-suki-text-square.webp'
 
 const pageTitle = 'About us'
 export const metadata = {
   title: createSEOPageTitle(pageTitle),
-  description: 'Meet the Gato GraphQL team, and learn about the history of Gato GraphQL',
+  description: 'Meet the Gato Plugins team, and learn about the history of Gato Plugins',
 }
 
 export default function About() {
@@ -23,11 +21,10 @@ export default function About() {
       />
 
       <Hero
-        title="Building the most powerful GraphQL server for WordPress"
+        title="Building a collection of super useful plugins for WordPress"
         includeAnimation={false}
         includeThumbnail={true}
-        targetImageSources={[WordPressLogo, GraphQLLogo]}
-        svgImage={CircledEqualsSvgImage}
+        targetImageSources={[WordPressLogo]}
         logoImage={Logo}
       />
 
