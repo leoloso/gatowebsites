@@ -56,6 +56,9 @@ module.exports = {
           '100%': { transform: 'translateY(3%)' }
         },
       },
+      spacing: {
+        '104': '26rem',
+      }
     },
   },
   darkMode: 'class',
