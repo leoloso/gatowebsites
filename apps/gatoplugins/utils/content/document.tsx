@@ -84,6 +84,3 @@ export function getGroupDocuments(docSection: string) {
 }
 // ----------------------------------------------------------------
 
-export function getPluginReferenceDocuments() {
-  return getGroupDocuments(AppConfig.paths.docs.pluginsReference)
-}
