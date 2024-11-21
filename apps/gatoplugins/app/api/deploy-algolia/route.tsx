@@ -1,4 +1,5 @@
 import {
+  allDocs,
   allBlogPosts,
   allDemoPosts,
   allPlugins,
@@ -7,10 +8,6 @@ import {
 } from '@/.contentlayer/generated'
 import { SearchObject, Sections } from "gatoapp/components/search/algolia"
 import AppSettings from "@/app/app.settings"
-import {
-  getGuideDocuments,
-  getPluginReferenceDocuments,
-} from "@/utils/content/document"
 import {
   getStructuredDataObject,
   assertCanExecuteGET,
@@ -45,28 +42,16 @@ async function getAllDemoPostsTransformed(): Promise<SearchObject[]> {
   )
 }
 
-function getDocStructuredDataObject(
-  doc: Doc,
-  section: Sections.PluginsReference
-    | Sections.Guides
-  ): SearchObject {
+async function getAllDocsTransformed(): Promise<SearchObject[]> {
   // return an array of objects to be added to Algolia.
-  return getStructuredDataObject(
+  return allDocs?.map((doc) => getStructuredDataObject(
     doc.title,
     doc.description,
     doc.urlPath,
     doc.slug,
     doc.body.raw,
-    section
-  )
-}
-
-async function getAllDocsTransformed(): Promise<SearchObject[]> {
-  // return an array of objects to be added to Algolia.
-  return ([
-    ...(getGuideDocuments().map((doc) => getDocStructuredDataObject(doc, Sections.Guides)) || []),
-    ...(getPluginReferenceDocuments().map((doc) => getDocStructuredDataObject(doc, Sections.PluginsReference)) || []),
-  ])
+    Sections.Docs
+  )) || []
 }
 
 async function getAllPluginsTransformed(): Promise<SearchObject[]> {
