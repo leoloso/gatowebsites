@@ -24,8 +24,7 @@ export default function LemonSqueezyScriptProvider({
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{__html: `
               window.lemonSqueezyAffiliateConfig = {
-                store: "${affiliateTrackingShopSlug}",
-                trackOnLoad: false
+                store: "${affiliateTrackingShopSlug}"
               };
             `}}
           />
