@@ -47,7 +47,7 @@ module.exports = {
               ? "https://shop.gatographql.com/buy/ad364899-4a2e-4b72-b615-4a83d546c95c"
               : allExtensionsDevShopURL,
             ltd: isProd
-              ? "https://shop.gatographql.com/buy/570ed7a0-9ef6-44b1-a4bd-0ce3bad5682c"
+              ? "https://shop.gatographql.com/buy/006d9a02-d218-41b9-bde1-4c6938094b8d"
               : allExtensionsDevShopURL,
           },
           tier2: {
