@@ -3,6 +3,7 @@ import { createSEOPageTitle } from '@/utils/content/metadata'
 import PluginsSection from './plugins-section'
 import PageHeader from 'gatoapp/components/page-header'
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
+import Cta from 'gatoapp/components/cta-03'
 
 const pageTitle = 'Plugins'
 export const metadata = {
@@ -36,6 +37,8 @@ export default function Extensions() {
         </div>
 
       </section>
+
+      <Cta />
 
     </>
   )
