@@ -1,7 +1,6 @@
 import Hero from 'gatoapp/components/hero'
 // import Cta from '@/components/cta'
 import HomeExtensionsSection from '@/components/home-extensions-section'
-import AppConfig from '@/app/app.config'
 
 export const metadata = {
   title: 'Gato Plugins',
