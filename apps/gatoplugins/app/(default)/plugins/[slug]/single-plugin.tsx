@@ -62,6 +62,8 @@ export default function SinglePlugin({
                   video={plugin.video}
                   videoWidth={1920}
                   videoHeight={1080}
+                  printPluginTitle={true}
+                  titleClassname = "h2"
                 />
               </div>
             )}

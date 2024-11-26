@@ -9,6 +9,7 @@ interface ModalVideoProps {
   children?: React.ReactNode,
   title?: string
   printPluginTitle?: boolean,
+  titleClassname?: string
   bgClassname?: string,
 }
 
@@ -20,6 +21,7 @@ export default function PluginThumbModalVideo({
   children,
   title,
   printPluginTitle,
+  titleClassname,
   bgClassname,
 }: ModalVideoProps) {
   return (
@@ -32,6 +34,7 @@ export default function PluginThumbModalVideo({
       title={title}
       printProductTitle={printPluginTitle}
       bgClassname={bgClassname}
+      titleClassname={titleClassname}
     />
   )
 }
