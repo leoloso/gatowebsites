@@ -6,6 +6,7 @@ import PluginThumbModalVideo from '@/components/video/modal-video-plugin-thumb'
 import BrowsePluginDocButton from '@/components/browse-plugin-doc-button'
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 import { getPluginSectionsForPlugin } from '@/utils/content/document'
+import SectionHeader from 'gatoapp/components/section-header'
 
 export default function SinglePlugin({
   plugin,
@@ -68,7 +69,7 @@ export default function SinglePlugin({
             { getPluginSectionsForPlugin(plugin.slug).map((pluginSection, index) => (
               <div className="pt-32 pb-12 md:pt-40 md:pb-20" key={index}>
                 {/* Title and excerpt */}
-                <PageHeader
+                <SectionHeader
                   {...pluginSection}
                   // headerClassname="md:text-left"
                   // leading='Plugin'
