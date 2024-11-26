@@ -13,6 +13,7 @@ module.exports = {
     plugins: "plugins",
   },
   urls: {
+    gatoGraphQL: "https://gatographql.com",
     instawpSandboxDemo: "@todo Complete here!!!",
     shopAffiliateProgram: "https://shop.gatoplugins.com/affiliates",
     shopClientOrders: "https://app.lemonsqueezy.com/my-orders",
