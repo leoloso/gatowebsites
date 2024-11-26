@@ -1,7 +1,6 @@
-import { Doc, DocTopic, RelatedGuide } from "@/.contentlayer/generated";
+import { Doc, DocTopic } from "@/.contentlayer/generated";
 import { allDocs, allDocTopics, allPluginSections } from '@/.contentlayer/generated'
-import AppConfig from '@/app/app.config'
-import { sortAlphabetically, sortByOrder, sortByOrderAndTitle, sortByTitle } from "gatoapp/utils/content/sort";
+import { sortAlphabetically, sortByOrder, sortByOrderAndTitle } from "gatoapp/utils/content/sort";
 
 /**
  * Watch out! These methods are repeated:
