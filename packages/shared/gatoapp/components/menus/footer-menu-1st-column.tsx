@@ -16,7 +16,7 @@ export default function FooterMenuFirstColumn() {
             {/* <div className="mb-4"> */}
               <FooterLogo />
             {/* </div> */}
-            <div className="text-sm text-slate-500">© {AppConfig.meta.name} <span className="text-slate-600">-</span> All rights reserved.</div>
+            <div className="text-sm text-slate-200 dark:text-slate-500">© {AppConfig.meta.name} <span className="text-slate-300 dark:text-slate-600">-</span> All rights reserved.</div>
           </div>
           {/* Social links */}
           {/* <ul className="flex">

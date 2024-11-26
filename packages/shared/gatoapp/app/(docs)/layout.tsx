@@ -38,7 +38,7 @@ export default function RootLayout({
 
                 {/* Page container */}
                 <div className="md:grow md:pl-64 lg:pr-6 xl:pr-0">
-                  <div className="pt-24 md:pt-28 pb-8 md:pl-6 lg:pl-12">
+                  <div className="pt-24 md:pt-28 md:pl-6 lg:pl-12">
                     {children}
                   </div>
                 </div>
