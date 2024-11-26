@@ -1,6 +1,6 @@
 import Hero from 'gatoapp/components/hero'
 // import Cta from '@/components/cta'
-import HomeExtensionsSection from '@/components/home-extensions-section'
+import HomePluginsSection from '@/components/home-plugins-section'
 
 export const metadata = {
   title: 'Gato Plugins',
@@ -14,7 +14,7 @@ export default function Home() {
         title="A collection of super useful plugins for WordPress"
         description={<span>Empower your <strong>WordPress</strong> site with <strong>Gato Plugins</strong>.</span>}
       />
-      <HomeExtensionsSection />
+      <HomePluginsSection />
       {/* <Cta /> */}
     </>
   )
