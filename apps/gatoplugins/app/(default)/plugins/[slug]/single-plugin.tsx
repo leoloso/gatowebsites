@@ -71,7 +71,7 @@ export default function SinglePlugin({
             )}
 
             {!! plugin.features && (
-              <div className="pt-16 md:pt-32">
+              <div className="pt-16 md:pt-32 lg:-ml-32 lg:-mr-32">
                 <SectionHeader
                   title="Features"
                 />
