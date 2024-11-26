@@ -2,6 +2,7 @@ import PluginsSection, { style2, svgEffect2 } from "@/app/(default)/plugins/plug
 import SectionHeader from "gatoapp/components/section-header";
 import Particles from "gatoapp/components/particles";
 import RadiantGradient from "gatoapp/components/radial-gradient";
+import HomePricingSection from "./home-pricing-section";
 
 export default function HomePluginsSection() {
   return (
@@ -28,6 +29,8 @@ export default function HomePluginsSection() {
             applyThumbEffect={svgEffect2}
             applyStyle={style2}
           />
+
+          <HomePricingSection />
 
         </div>
       </div>
