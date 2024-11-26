@@ -75,6 +75,6 @@ export function getGroupDocuments(docSection: string) {
 }
 // ----------------------------------------------------------------
 
-export function getPluginsFromPluginSlug(pluginSlug: string) {
+export function getPluginSectionsForPlugin(pluginSlug: string) {
   return allPluginSections.filter((pluginSection) => pluginSection.pluginSlug === pluginSlug)
 }
