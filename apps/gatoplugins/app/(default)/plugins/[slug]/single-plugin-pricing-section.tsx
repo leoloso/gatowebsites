@@ -1,7 +1,7 @@
 import { Plugin } from '@/.contentlayer/generated'
 import PluginPricing from '@/components/pricing/plugin-pricing'
 import Particles from 'gatoapp/components/particles'
-import PricingMoneyBackGuarantee from 'gatoapp/components/pricing-moneyback-guarantee'
+import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
 import RadiantGradient from 'gatoapp/components/radial-gradient'
 import Testimonial from 'gatoapp/components/testimonial'
 import { getTestimonials } from '@/components/data/testimonials'

@@ -5,7 +5,11 @@ import Particles from 'gatoapp/components/particles'
 import MoneyBackGuaranteePic from 'gatoapp/public/assets/money-back-guarantee.svg'
 import SectionHeader from './section-header'
 
-export default function PricingMoneyBackGuarantee() {
+export default function PricingMoneyBackGuarantee({
+  description,
+}: {
+  description: string,
+}) {
   return (
     <section className="relative">
 
@@ -33,7 +37,7 @@ export default function PricingMoneyBackGuarantee() {
           {/* Section header */}
           <SectionHeader
             title='30-day money back guarantee'
-            description='Purchase any extensions with the confidence that you can request a refund'
+            description={description}
             paddingClassname="pb-8"
           />
 
