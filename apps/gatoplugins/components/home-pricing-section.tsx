@@ -1,4 +1,4 @@
-import PricingMoneyBackGuarantee from 'gatoapp/components/pricing-moneyback-guarantee'
+import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
 import Testimonial from 'gatoapp/components/testimonial'
 import { getTestimonials } from '@/components/data/testimonials'
 

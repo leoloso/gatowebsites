@@ -1,4 +1,4 @@
-import PricingMoneyBackGuarantee from 'gatoapp/components/pricing-moneyback-guarantee'
+import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
 import SectionHeader from 'gatoapp/components/section-header'
 import ExtensionDropdownPricing from '@/components/pricing/extension-dropdown/pricing'
 import Particles from 'gatoapp/components/particles'
