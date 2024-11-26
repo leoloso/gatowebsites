@@ -5,6 +5,7 @@ import PageHeader from 'gatoapp/components/page-header'
 import PluginThumbModalVideo from '@/components/video/modal-video-plugin-thumb'
 import BrowsePluginDocButton from '@/components/browse-plugin-doc-button'
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
+import { getPluginSectionsForPlugin } from '@/utils/content/document'
 
 export default function SinglePlugin({
   plugin,
@@ -62,6 +63,33 @@ export default function SinglePlugin({
 
             {/* Article content */}
             <PostMdx code={plugin.body.code} />
+
+            {/* Plugin Sections */}
+            { getPluginSectionsForPlugin(plugin.slug).map((pluginSection, index) => (
+              <div key={index}>
+                {/* Title and excerpt */}
+                <PageHeader
+                  {...pluginSection}
+                  // headerClassname="md:text-left"
+                  // leading='Plugin'
+                />
+
+                {!! pluginSection.video && (
+                  <div className="mb-8 lg:-ml-32 lg:-mr-32">
+                    <PluginThumbModalVideo
+                      title={`Click to watch video - ${pluginSection.videoDuration}`}
+                      plugin={plugin}
+                      video={pluginSection.video}
+                      videoWidth={1920}
+                      videoHeight={1080}
+                    />
+                  </div>
+                )}
+
+                {/* Article content */}
+                <PostMdx code={pluginSection.body.code} />
+              </div>
+            ))}
           </article>
 
           <div className="sm:mt-12 mt-24 flex items-center">
