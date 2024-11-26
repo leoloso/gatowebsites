@@ -26,7 +26,7 @@ export default function FeatureCard({
     <div className={clsx(bgClassname, "rounded-3xl border border-slate-800 hover:border-slate-700/60 transition-colors group relative")}>
       <div className="flex flex-col p-5 h-full">
         <div className="flex items-center space-x-3 mb-3">
-          <div className="relative">
+          <div className="relative flex-none">
             <Image src={featureIcon} width="40" height="40" alt={feature.title} />
           </div>
           { !! feature.urlPath && (
