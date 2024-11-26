@@ -79,7 +79,9 @@ export default function DocSection({
           </div>
 
           {/* Content footer */}
-          <Footer />
+          <div className='bg-purple-500 dark:bg-transparent -mr-12 -ml-12 pr-12 pl-12'>
+            <Footer />
+          </div>
 
         </div>
 
