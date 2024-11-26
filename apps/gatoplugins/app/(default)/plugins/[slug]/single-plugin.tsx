@@ -8,7 +8,7 @@ import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 import { getPluginSectionsForPlugin } from '@/utils/content/document'
 import SectionHeader from 'gatoapp/components/section-header'
 import UnstyledFeaturesList from 'gatoapp/components/features-list-unstyled';
-import DefaultFeatureIcon02 from 'gatoapp/public/assets/theme/default/feature-icon-02.png'
+import TickImage from 'gatoapp/public/assets/theme/tick-03.svg'
 
 export default function SinglePlugin({
   plugin,
@@ -81,7 +81,7 @@ export default function SinglePlugin({
                   showTopbar={false}
                   showSearch={false}
                   showHeading={false}
-                  defaultFeatureIcon={DefaultFeatureIcon02}
+                  defaultFeatureIcon={TickImage}
                   bgClassname="bg-gradient-to-tr from-slate-800 to-purple-800/25"
                 />
               </div>
