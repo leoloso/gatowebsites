@@ -14,6 +14,7 @@ interface ModalVideoProps {
   children?: React.ReactNode,
   title?: string
   printProductTitle?: boolean,
+  titleClassname?: string,
   bgClassname?: string,
 }
 
@@ -25,6 +26,7 @@ export default function ProductThumbModalVideo({
   children,
   title,
   printProductTitle,
+  titleClassname,
   bgClassname,
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
@@ -37,6 +39,7 @@ export default function ProductThumbModalVideo({
           product={product}
           isLandscape={true}
           printProductTitle={printProductTitle}
+          titleClassname={titleClassname}
           bgClassname={bgClassname}
         />
         <ModalVideoTitle title={title} extraClassname='z-30' />

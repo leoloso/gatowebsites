@@ -83,6 +83,44 @@ const Plugin = defineDocumentType(() => ({
   },
 }))
 
+const PluginSection = defineDocumentType(() => ({
+  name: 'PluginSection',
+  filePathPattern: 'plugin-sections/**/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    description: {
+      type: 'string',
+    },
+    leading: {
+      type: 'string',
+    },
+    order: {
+      type: 'number',
+      required: true,
+    },   
+    video: {
+      type: 'string',
+    }, 
+    videoDuration: {
+      type: 'string',
+    },
+  },
+  computedFields: {
+    pluginSlug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/plugin-sections\/([a-zA-Z_-]+)\/(.+)?/, '$1'),
+    },
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/plugin-sections\/[a-zA-Z_-]+\/?/, ''),
+    },
+  },
+}))
+
 const ShopURLs = defineNestedType(() => ({
   name: 'ShopURLs',
   fields: {
@@ -172,5 +210,5 @@ const PluginPriceByLicense = defineNestedType(() => ({
 
 export default makeSource({
   ...ContentLayerBaseConfig,
-  documentTypes: [BlogPost, Page, Snippet, Doc, DocTopic, DemoPost, Feature, Plugin],
+  documentTypes: [BlogPost, Page, Snippet, Doc, DocTopic, DemoPost, Feature, Plugin, PluginSection],
 })

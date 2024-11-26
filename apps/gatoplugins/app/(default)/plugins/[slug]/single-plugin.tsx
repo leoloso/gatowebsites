@@ -5,6 +5,8 @@ import PageHeader from 'gatoapp/components/page-header'
 import PluginThumbModalVideo from '@/components/video/modal-video-plugin-thumb'
 import BrowsePluginDocButton from '@/components/browse-plugin-doc-button'
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
+import { getPluginSectionsForPlugin } from '@/utils/content/document'
+import SectionHeader from 'gatoapp/components/section-header'
 
 export default function SinglePlugin({
   plugin,
@@ -32,21 +34,10 @@ export default function SinglePlugin({
             />
 
             <div className="mb-8 lg:-ml-32 lg:-mr-32">
-              {! plugin.video && (
-                <PluginThumb
-                  plugin={plugin}
-                  isLandscape={true}
-                />
-              )}
-              {!! plugin.video && (
-                <PluginThumbModalVideo
-                  title={`Click to watch video - ${plugin.videoDuration}`}
-                  plugin={plugin}
-                  video={plugin.video}
-                  videoWidth={1920}
-                  videoHeight={1080}
-                />
-              )}
+              <PluginThumb
+                plugin={plugin}
+                isLandscape={true}
+              />
             </div>
 
             {/* { printIntegrations && !! plugin.integrations && (
@@ -62,6 +53,47 @@ export default function SinglePlugin({
 
             {/* Article content */}
             <PostMdx code={plugin.body.code} />
+
+            {!! plugin.video && (
+              <div className="mt-8 md:mt-12 lg:-ml-32 lg:-mr-32">
+                <PluginThumbModalVideo
+                  title={`Click to watch video - ${plugin.videoDuration}`}
+                  plugin={plugin}
+                  video={plugin.video}
+                  videoWidth={1920}
+                  videoHeight={1080}
+                  printPluginTitle={true}
+                  titleClassname = "h2"
+                />
+              </div>
+            )}
+
+            {/* Plugin Sections */}
+            { getPluginSectionsForPlugin(plugin.slug).map((pluginSection, index) => (
+              <div className="pt-16 md:pt-32" key={index}>
+                {/* Title and excerpt */}
+                <SectionHeader
+                  {...pluginSection}
+                  // headerClassname="md:text-left"
+                  // leading='Plugin'
+                />
+
+                {/* Article content */}
+                <PostMdx code={pluginSection.body.code} />
+
+                {!! pluginSection.video && (
+                  <div className="mt-8 md:mt-12 lg:-ml-16 lg:-mr-16">
+                    <PluginThumbModalVideo
+                      title={`Click to watch video - ${pluginSection.videoDuration}`}
+                      plugin={plugin}
+                      video={pluginSection.video}
+                      videoWidth={1920}
+                      videoHeight={1080}
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
           </article>
 
           <div className="sm:mt-12 mt-24 flex items-center">

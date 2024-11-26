@@ -1,7 +1,6 @@
-import { Doc, DocTopic, RelatedGuide } from "@/.contentlayer/generated";
-import { allDocs, allDocTopics } from '@/.contentlayer/generated'
-import AppConfig from '@/app/app.config'
-import { sortAlphabetically, sortByOrder, sortByOrderAndTitle, sortByTitle } from "gatoapp/utils/content/sort";
+import { Doc, DocTopic } from "@/.contentlayer/generated";
+import { allDocs, allDocTopics, allPluginSections } from '@/.contentlayer/generated'
+import { sortAlphabetically, sortByOrder, sortByOrderAndTitle } from "gatoapp/utils/content/sort";
 
 /**
  * Watch out! These methods are repeated:
@@ -76,3 +75,6 @@ export function getGroupDocuments(docSection: string) {
 }
 // ----------------------------------------------------------------
 
+export function getPluginSectionsForPlugin(pluginSlug: string) {
+  return allPluginSections.filter((pluginSection) => pluginSection.pluginSlug === pluginSlug)
+}

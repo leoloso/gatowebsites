@@ -11,6 +11,7 @@ export type ProductProps = {
 export default function ProductThumb({
   product,
   paddingClassname,
+  titleClassname,
   bgClassname,
   extraThumbClassname,
   isLandscape,
@@ -25,6 +26,7 @@ export default function ProductThumb({
 }: {
   product: ProductProps,
   paddingClassname?: string,
+  titleClassname?: string,
   bgClassname?: string,
   extraThumbClassname?: string,
   isLandscape?: boolean,
@@ -47,6 +49,7 @@ export default function ProductThumb({
       title={printProductTitle ? product.title : ''}
       targetImageSources={product.targetImages}
       paddingClassname={paddingClassname}
+      titleClassname={titleClassname}
       bgClassname={bgClassname}
       extraThumbClassname={extraThumbClassname}
       isLandscape={isLandscape}
