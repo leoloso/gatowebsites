@@ -34,21 +34,10 @@ export default function SinglePlugin({
             />
 
             <div className="mb-8 lg:-ml-32 lg:-mr-32">
-              {! plugin.video && (
-                <PluginThumb
-                  plugin={plugin}
-                  isLandscape={true}
-                />
-              )}
-              {!! plugin.video && (
-                <PluginThumbModalVideo
-                  title={`Click to watch video - ${plugin.videoDuration}`}
-                  plugin={plugin}
-                  video={plugin.video}
-                  videoWidth={1920}
-                  videoHeight={1080}
-                />
-              )}
+              <PluginThumb
+                plugin={plugin}
+                isLandscape={true}
+              />
             </div>
 
             {/* { printIntegrations && !! plugin.integrations && (
@@ -65,6 +54,18 @@ export default function SinglePlugin({
             {/* Article content */}
             <PostMdx code={plugin.body.code} />
 
+            {!! plugin.video && (
+              <div className="mt-8 lg:-ml-32 lg:-mr-32">
+                <PluginThumbModalVideo
+                  title={`Click to watch video - ${plugin.videoDuration}`}
+                  plugin={plugin}
+                  video={plugin.video}
+                  videoWidth={1920}
+                  videoHeight={1080}
+                />
+              </div>
+            )}
+
             {/* Plugin Sections */}
             { getPluginSectionsForPlugin(plugin.slug).map((pluginSection, index) => (
               <div className="pt-32 pb-12 md:pt-40 md:pb-20" key={index}>
@@ -75,8 +76,11 @@ export default function SinglePlugin({
                   // leading='Plugin'
                 />
 
+                {/* Article content */}
+                <PostMdx code={pluginSection.body.code} />
+
                 {!! pluginSection.video && (
-                  <div className="mb-8 lg:-ml-32 lg:-mr-32">
+                  <div className="mt-8 lg:-ml-32 lg:-mr-32">
                     <PluginThumbModalVideo
                       title={`Click to watch video - ${pluginSection.videoDuration}`}
                       plugin={plugin}
@@ -86,9 +90,6 @@ export default function SinglePlugin({
                     />
                   </div>
                 )}
-
-                {/* Article content */}
-                <PostMdx code={pluginSection.body.code} />
               </div>
             ))}
           </article>
