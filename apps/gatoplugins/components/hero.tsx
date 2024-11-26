@@ -1,8 +1,6 @@
 import Image from 'next/image'
-import Particles from 'gatoapp/components/particles'
 import LogoPic from 'gatoapp/public/assets/Gato-logo-suki-rectangular.png'
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
-import Illustration from 'gatoapp/public/assets/theme/glow-top.svg'
 
 export default function Hero({
   title,
