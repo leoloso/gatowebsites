@@ -7,6 +7,8 @@ import BrowsePluginDocButton from '@/components/browse-plugin-doc-button'
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 import { getPluginSectionsForPlugin } from '@/utils/content/document'
 import SectionHeader from 'gatoapp/components/section-header'
+import UnstyledFeaturesList from 'gatoapp/components/features-list-unstyled';
+import DefaultFeatureIcon02 from 'gatoapp/public/assets/theme/default/feature-icon-02.png'
 
 export default function SinglePlugin({
   plugin,
@@ -64,6 +66,23 @@ export default function SinglePlugin({
                   videoHeight={1080}
                   printPluginTitle={true}
                   titleClassname = "h2"
+                />
+              </div>
+            )}
+
+            {!! plugin.features && (
+              <div className="pt-16 md:pt-32">
+                <SectionHeader
+                  title="Features"
+                />
+                
+                <UnstyledFeaturesList
+                  features={plugin.features}
+                  showTopbar={false}
+                  showSearch={false}
+                  showHeading={false}
+                  defaultFeatureIcon={DefaultFeatureIcon02}
+                  bgClassname="bg-gradient-to-tr from-slate-800 to-purple-800/25"
                 />
               </div>
             )}
