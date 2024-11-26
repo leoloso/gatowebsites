@@ -99,7 +99,7 @@ export default function SinglePlugin({
             ))}
           </article>
 
-          <div className="sm:mt-12 mt-24 flex items-center">
+          <div className="sm:mt-20 mt-32 flex items-center">
             <div className="max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <BrowsePluginDocButton
                 plugin={plugin}
