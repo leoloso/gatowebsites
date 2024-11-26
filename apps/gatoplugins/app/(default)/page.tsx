@@ -1,4 +1,4 @@
-import Hero from 'gatoapp/components/hero'
+import Hero from '@/components/hero'
 // import Cta from '@/components/cta'
 import HomePluginsSection from '@/components/home-plugins-section'
 
