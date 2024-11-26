@@ -70,7 +70,7 @@ export default function SinglePlugin({
 
             {/* Plugin Sections */}
             { getPluginSectionsForPlugin(plugin.slug).map((pluginSection, index) => (
-              <div className="pt-12 md:pt-20" key={index}>
+              <div className="pt-16 md:pt-32" key={index}>
                 {/* Title and excerpt */}
                 <SectionHeader
                   {...pluginSection}
