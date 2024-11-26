@@ -12,7 +12,7 @@ interface ModalVideoProps {
   videoWidth: number
   videoHeight: number,
   children?: React.ReactNode,
-  title?: string
+  clickTitle?: string
   productTitle?: string,
   printProductTitle?: boolean,
   titleClassname?: string,
@@ -25,7 +25,7 @@ export default function ProductThumbModalVideo({
   videoWidth,
   videoHeight,
   children,
-  title,
+  clickTitle,
   productTitle,
   printProductTitle,
   titleClassname,
@@ -45,8 +45,8 @@ export default function ProductThumbModalVideo({
           titleClassname={titleClassname}
           bgClassname={bgClassname}
         />
-        <ModalVideoTitle title={title} extraClassname='z-30' />
-        <ModalVideoButton title={title} extraClassname='z-30 group-hover:scale-110 transition duration-700 ease-out' />
+        <ModalVideoTitle title={clickTitle} extraClassname='z-30' />
+        <ModalVideoButton title={clickTitle} extraClassname='z-30 group-hover:scale-110 transition duration-700 ease-out' />
         {children}
       </div>
       {/* End: Video thumbnail */}

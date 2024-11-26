@@ -57,7 +57,7 @@ export default function SinglePlugin({
             {!! plugin.video && (
               <div className="mt-8 md:mt-12 lg:-ml-32 lg:-mr-32">
                 <PluginThumbModalVideo
-                  title={`Click to watch video - ${plugin.videoDuration}`}
+                  clickTitle={`Click to watch video - ${plugin.videoDuration}`}
                   plugin={plugin}
                   video={plugin.video}
                   videoWidth={1920}
@@ -84,7 +84,7 @@ export default function SinglePlugin({
                 {!! pluginSection.video && (
                   <div className="mt-8 md:mt-12 lg:-ml-16 lg:-mr-16">
                     <PluginThumbModalVideo
-                      title={`Click to watch video - ${pluginSection.videoDuration}`}
+                      clickTitle={`Click to watch video - ${pluginSection.videoDuration}`}
                       plugin={plugin}
                       video={pluginSection.video}
                       videoWidth={1920}

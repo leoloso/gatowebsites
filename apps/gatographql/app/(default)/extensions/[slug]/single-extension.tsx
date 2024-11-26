@@ -41,7 +41,7 @@ export default function SingleExtension({
               )}
               {!! extension.video && (
                 <ExtensionThumbModalVideo
-                  title={`Click to watch tutorial video - ${extension.videoDuration}`}
+                  clickTitle={`Click to watch tutorial video - ${extension.videoDuration}`}
                   extension={extension}
                   video={extension.video}
                   videoWidth={1920}
