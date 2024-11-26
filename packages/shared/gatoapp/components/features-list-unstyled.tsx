@@ -1,4 +1,4 @@
-import FeatureCard from './feature-card'
+import FeatureCard, { FeatureProps } from './feature-card'
 import { Feature } from 'gatoapp/types/types';
 import RadiantGradient from './radial-gradient';
 import { StaticImageData } from 'next/image';
@@ -13,7 +13,7 @@ export default function UnstyledFeaturesList({
   defaultFeatureIcon,
   bgClassname,
 }: {
-  features: Array<Feature>,
+  features: Array<Feature | FeatureProps>,
   showTopbar?: boolean
   showSearch?: boolean
   showHeading?: boolean

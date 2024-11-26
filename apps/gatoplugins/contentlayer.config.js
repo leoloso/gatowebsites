@@ -47,6 +47,10 @@ const Plugin = defineDocumentType(() => ({
     videoDuration: {
       type: 'string',
     },
+    features: {
+      type: 'list',
+      of: SectionFeature,
+    },
     integrations: {
       type: 'list',
       of: PostIntegration,
@@ -117,6 +121,20 @@ const PluginSection = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/plugin-sections\/[a-zA-Z_-]+\/?/, ''),
+    },
+  },
+}))
+
+const SectionFeature = defineNestedType(() => ({
+  name: 'SectionFeature',
+  fields: {
+    title: {
+      type: 'string',
+      required: true
+    },
+    description: {
+      type: 'string',
+      required: true
     },
   },
 }))
