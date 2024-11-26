@@ -80,7 +80,7 @@ export default function SinglePlugin({
                 <PostMdx code={pluginSection.body.code} />
 
                 {!! pluginSection.video && (
-                  <div className="mt-8 md:mt-12 lg:-ml-32 lg:-mr-32">
+                  <div className="mt-8 md:mt-12 lg:-ml-16 lg:-mr-16">
                     <PluginThumbModalVideo
                       title={`Click to watch video - ${pluginSection.videoDuration}`}
                       plugin={plugin}
