@@ -82,7 +82,7 @@ export default function SinglePlugin({
                   showSearch={false}
                   showHeading={false}
                   defaultFeatureIcon={TickImage}
-                  bgClassname="bg-gradient-to-tr from-slate-800 to-purple-800/25"
+                  bgClassname="bg-gradient-to-tr from-slate-300 to-blue-300/25"
                 />
               </div>
             )}
