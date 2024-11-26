@@ -32,7 +32,9 @@ export default function DefaultLayout({
           {children}
 
       </main>
-      <Footer />
+      <div className="bg-purple-500 dark:bg-transparent">
+        <Footer />
+      </div>
     </div>
   )
 }
