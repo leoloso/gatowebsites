@@ -1,5 +1,5 @@
 import { Doc, DocTopic, RelatedGuide } from "@/.contentlayer/generated";
-import { allDocs, allDocTopics } from '@/.contentlayer/generated'
+import { allDocs, allDocTopics, allPluginSections } from '@/.contentlayer/generated'
 import AppConfig from '@/app/app.config'
 import { sortAlphabetically, sortByOrder, sortByOrderAndTitle, sortByTitle } from "gatoapp/utils/content/sort";
 
@@ -76,3 +76,6 @@ export function getGroupDocuments(docSection: string) {
 }
 // ----------------------------------------------------------------
 
+export function getPluginsFromPluginSlug(pluginSlug: string) {
+  return allPluginSections.filter((pluginSection) => pluginSection.pluginSlug === pluginSlug)
+}
