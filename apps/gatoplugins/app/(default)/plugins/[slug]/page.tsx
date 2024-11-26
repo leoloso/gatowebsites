@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
-// import Cta from '@/components/cta'
+import Cta from 'gatoapp/components/cta-03'
 import SinglePlugin from './single-plugin'
 import SinglePluginPricing from './single-plugin-pricing-section'
 
@@ -77,7 +77,7 @@ export default async function SinglePluginPage({ params }: {
         
       </section>
 
-      {/* <Cta /> */}
+      <Cta />
     </>
   )
 }
