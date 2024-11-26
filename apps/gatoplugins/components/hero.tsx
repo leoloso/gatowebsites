@@ -17,9 +17,11 @@ export default function Hero({
 
         <div className="pt-32 pb-16 md:pt-32 md:pb-24">
 
-          <CampaignBanner
-            marginTopClassname="-mt-8"
-          />
+          <div className="mb-8">
+            <CampaignBanner
+              marginTopClassname="-mt-8"
+            />
+          </div>
 
           {/* Hero content */}
           <div className="max-w-3xl mx-auto text-center">
