@@ -13,6 +13,7 @@ interface ModalVideoProps {
   videoHeight: number,
   children?: React.ReactNode,
   title?: string
+  productTitle?: string,
   printProductTitle?: boolean,
   titleClassname?: string,
   bgClassname?: string,
@@ -25,6 +26,7 @@ export default function ProductThumbModalVideo({
   videoHeight,
   children,
   title,
+  productTitle,
   printProductTitle,
   titleClassname,
   bgClassname,
@@ -38,6 +40,7 @@ export default function ProductThumbModalVideo({
         <ProductThumb
           product={product}
           isLandscape={true}
+          productTitle={productTitle}
           printProductTitle={printProductTitle}
           titleClassname={titleClassname}
           bgClassname={bgClassname}

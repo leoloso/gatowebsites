@@ -89,7 +89,10 @@ export default function SinglePlugin({
                       video={pluginSection.video}
                       videoWidth={1920}
                       videoHeight={1080}
-                    />
+                      pluginTitle={pluginSection.title}
+                      printPluginTitle={true}
+                      titleClassname = "h2"
+                  />
                   </div>
                 )}
               </div>

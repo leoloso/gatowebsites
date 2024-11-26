@@ -19,6 +19,7 @@ export default function ProductThumb({
   logoImage,
   reverseItems,
   svgClassname,
+  productTitle,
   printProductTitle=false,
   skipGatoLogo=false,
   logoClassname,
@@ -34,6 +35,7 @@ export default function ProductThumb({
   logoImage?: StaticImageData,
   reverseItems?: boolean,
   svgClassname?: string,
+  productTitle?: string,
   printProductTitle?: boolean,
   skipGatoLogo?: boolean,
   logoClassname?: string,
@@ -46,7 +48,7 @@ export default function ProductThumb({
 
       leadingTitle={leadingTitle}
       extraLeadingTitleClassname="text-slate-300"
-      title={printProductTitle ? product.title : ''}
+      title={printProductTitle ? (productTitle || product.title) : ''}
       targetImageSources={product.targetImages}
       paddingClassname={paddingClassname}
       titleClassname={titleClassname}
