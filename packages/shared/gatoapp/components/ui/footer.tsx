@@ -3,7 +3,9 @@ import { useAppComponentProvider } from 'gatoapp/app/appcomponent-provider'
 export default function Footer() {
   const AppComponent = useAppComponentProvider()
   return (
-    <footer>
+    <footer
+      className="bg-purple-500 dark:bg-transparent"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Blocks */}

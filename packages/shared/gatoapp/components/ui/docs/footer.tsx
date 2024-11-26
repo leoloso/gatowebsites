@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="shrink-0 flex flex-col md:flex-row items-center">
             {/* Logo */}
             <FooterLogo />
-            <div className="text-sm text-slate-500 ml-4">
+            <div className="text-sm text-slate-200 dark:text-slate-500 ml-4">
               Copyright © {AppConfig.meta.name}<span className="md:hidden lg:inline">. All rights reserved.</span>
             </div>
           </div>
