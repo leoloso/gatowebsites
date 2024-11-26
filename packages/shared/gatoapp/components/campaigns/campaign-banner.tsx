@@ -19,15 +19,17 @@ export default function CampaignBanner({
   const { settings: AppSettings } = useAppSettingsProvider()
 
   return (
-    <div className={clsx("mb-16", marginTopClassname)}>
+    <>
       { AppSettings.campaigns.enableBlackFriday && (
-        <BlackFridayBanner
-          applyStyle={applyStyle}
-          dealLabel={dealLabel}
-          discountCode={discountCode}
-          endDate={endDate}
-        />
+        <div className={clsx("mb-16", marginTopClassname)}>
+          <BlackFridayBanner
+            applyStyle={applyStyle}
+            dealLabel={dealLabel}
+            discountCode={discountCode}
+            endDate={endDate}
+          />
+        </div>
       )}
-    </div>
+    </>
   )
 }
