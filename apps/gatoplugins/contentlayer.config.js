@@ -92,6 +92,10 @@ const PluginSection = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
+    description: {
+      type: 'string',
+      required: true,
+    },
     order: {
       type: 'number',
       required: true,
