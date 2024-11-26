@@ -20,9 +20,9 @@ export default function HomePluginsSection() {
           
           {/* Section header */}
           <SectionHeader
-            leading='Plugins'
-            title="Empower your WordPress site"
-            description='Browse the collection of super useful plugins for WordPress'
+            leading='Our collection of plugins for WordPress'
+            title="Plugins"
+            description='Browse the list of plugins, and choose the one you need'
           />
 
           <PluginsSection
