@@ -10,7 +10,7 @@ import AppSettings from 'gatoapp/app/app.settings'
 import { useSearchParams } from 'next/navigation';
 import PostTags from 'gatoapp/components/post-tags'
 import Link from 'next/link'
-import AppConfig from '@/app/app.config'
+import AppConfig from 'gatoapp/app/app.config'
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 
 export default function BlogSection({

@@ -4,13 +4,13 @@ import PostDate from 'gatoapp/components/post-date'
 import { PostMdx } from 'gatoapp/components/mdx/post-mdx'
 import PostNav from 'gatoapp/components/post-nav'
 import PostTags from 'gatoapp/components/post-tags'
-import AppConfig from '@/app/app.config'
+import AppConfig from 'gatoapp/app/app.config'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import { getURL } from 'gatoapp/utils/content/application-urls'
 import BlogPostingSchemaJsonLdScript from 'gatoapp/components/schema/blogposting-schema-json-ld';
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 import AppSettings from 'gatoapp/app/app.settings'
-import { BlogPost } from '@/types/types'
+import { BlogPost } from 'gatoapp/types/types'
 
 export default function BlogSinglePost({
   blogPost
