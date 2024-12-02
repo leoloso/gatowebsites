@@ -29,9 +29,9 @@ In addition, you can override the default value for variables `$model` (`"gpt-3.
 
 ```graphql
 query GetProductContent(
-  $id: ID!
+  $productId: ID!
 ) {
-  customPost(by: {id: $id}, customPostTypes: "product") {
+  customPost(by: { id: $productId }, customPostTypes: "product") {
     content
       @export(as: "content")
   }
@@ -82,12 +82,12 @@ query RewriteProductContentWithChatGPT(
 }
 
 mutation UpdateProduct(
-  $id: ID!
+  $productId: ID!
 )
   @depends(on: "RewriteProductContentWithChatGPT")
 {
   updateCustomPost(input: {
-    id: $id,
+    id: $productId,
     customPostType: "product"
     contentAs: {
       html: $rewrittenContent
@@ -115,11 +115,23 @@ mutation UpdateProduct(
 
 We can use the [Internal GraphQL Server](/extensions-reference/internal-graphql-server/internal-graphql-server) to automatically execute the query whenever a new WooCommerce product is created.
 
-To do this, first [create a new persisted query](/guides/use/creating-a-persisted-query) with the GraphQL query above, and title `"Improve Product Content With ChatGPT"` (this will assign it slug `improve-product-content-with-chatgpt`).
+To do this, first [create a new persisted query](/guides/use/creating-a-persisted-query) with title `"Improve Product Content With ChatGPT"` (this will assign it slug `improve-product-content-with-chatgpt`), and the GraphQL query above.
 
-Then, anywhere in your application (eg: in your `functions.php` file, a plugin, or a code snippet), add the following PHP code:
+Then, anywhere in your application (eg: in your `functions.php` file, a plugin, or a code snippet), add the following PHP code, which executes the query on hook ``:
 
 ```php
+use GatoGraphQL\InternalGraphQLServer\GraphQLServer;
+use WP_Post;
 
+add_action(
+  'draft_post',
+  function (int $productId): void {
+    GraphQLServer::executePersistedQuery(
+      'improve-product-content-with-chatgpt',
+      [
+        'productId' => $productId,
+      ]
+    );
+  }
+);
 ```
-
