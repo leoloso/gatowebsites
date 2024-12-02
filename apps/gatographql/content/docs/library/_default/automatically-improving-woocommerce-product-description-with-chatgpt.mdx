@@ -131,10 +131,15 @@ add_action(
       return;
     }
 
-    // Provide your Open AI's API Key, and customize any of the other variables
+    // Provide your Open AI's API Key
     $openAI_api_key = '...';
-    $model = '';
-    $maxTokens = 500;
+
+    // (You can provide it via a constant `OPENAI_API_KEY` defined in `wp-config.php`:
+    // $openAI_api_key = constant('OPENAI_API_KEY');
+
+    // Customize any of the other variables
+    $model = 'gpt-4o';
+    $maxTokens = 5000;
 
     GraphQLServer::executePersistedQuery('improve-product-content-with-chatgpt', [
       'productId' => $productId,
