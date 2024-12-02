@@ -6,7 +6,15 @@ order: 0
 
 This query fetches the WooCommerce product with the provided ID, rewrites its content using ChatGPT, and stores it again.
 
-In the next section, we will automate the execution of this query, whenever the product is created.
+(In the next section, we will automate the execution of this query, whenever the product is created.)
+
+<Banner type="info">
+
+WooCommerce's `product` Custom Post Type must be made queryable via the GraphQL schema, as explained in guide [Allowing access to Custom Post Types](/guides/config/allowing-access-to-custom-post-types).
+
+For that, go to the Settings page, click on the "Schema Elements Configuration > Custom Posts" tab, and select `product` from the list of queryable CPTs.
+
+</Banner>
 
 To connect to the OpenAI API, you must provide variables `$openAIAPIKey` with the API key.
 
