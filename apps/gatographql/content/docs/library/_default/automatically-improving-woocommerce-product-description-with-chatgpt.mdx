@@ -117,7 +117,7 @@ We can use the [Internal GraphQL Server](/extensions-reference/internal-graphql-
 
 To do this, first [create a new persisted query](/guides/use/creating-a-persisted-query) with title `"Improve Product Content With ChatGPT"` (this will assign it slug `improve-product-content-with-chatgpt`), and the GraphQL query above.
 
-Then, anywhere in your application (eg: in your `functions.php` file, a plugin, or a code snippet), add the following PHP code, which executes the query on hook ``:
+Then, anywhere in your application (eg: in your `functions.php` file, a plugin, or a code snippet), add the following PHP code, which executes the query on hook `save_post_product`:
 
 ```php
 use GatoGraphQL\InternalGraphQLServer\GraphQLServer;
@@ -126,7 +126,7 @@ use WP_Post;
 add_action(
   'save_post_product',
   function (int $productId, WP_Post $post, bool $isUpdate): void {
-    // Only execute when it's a new entry
+    // Only execute when it's a new product
     if ($isUpdate) {
       return;
     }
