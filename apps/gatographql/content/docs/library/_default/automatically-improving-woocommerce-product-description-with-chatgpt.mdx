@@ -1,0 +1,145 @@
+---
+title: Automatically improving a new WooCommerce product's description with ChatGPT
+description: Whenever publishing a new WooCommerce product, automatically have its content rewritten using ChatGPT
+order: 0
+---
+
+This query fetches the WooCommerce product with the provided ID, rewrites its content using ChatGPT, and stores it again.
+
+(In the next section, we will automate the execution of this query, whenever the product is created.)
+
+<Banner type="info">
+
+WooCommerce's `product` Custom Post Type must be made queryable via the GraphQL schema, as explained in guide [Allowing access to Custom Post Types](/guides/config/allowing-access-to-custom-post-types).
+
+For that, go to the Settings page, click on the "Schema Elements Configuration > Custom Posts" tab, and select `product` from the list of queryable CPTs (if it's not already selected).
+
+</Banner>
+
+To connect to the OpenAI API, you must provide variables `$openAIAPIKey` with the API key.
+
+You can optionally provide the system message and prompt to rewrite the post's content. If not provided, the following values are used:
+
+- System message (`$systemMessage`): "You are an English Content rewriter and a grammar checker"
+- Prompt (`$prompt`): "Please rewrite the following English text, by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
+
+(The content string is appended at the end of the prompt.)
+
+In addition, you can override the default value for variables `$model` (`"gpt-4o"`, check the <a href="https://platform.openai.com/docs/models" target="_blank">list of OpenAI models</a>) and `$temperature` (`0.7`), and be aware to provide `$maxTokens` with a suitable number for the length of the content (`50` by default).
+
+```graphql
+query GetProductContent(
+  $productId: ID!
+) {
+  customPost(by: { id: $productId }, customPostTypes: "product") {
+    content
+      @export(as: "content")
+  }
+}
+
+query RewriteProductContentWithChatGPT(
+  $openAIAPIKey: String!
+  $systemMessage: String! = "You are an English Content rewriter and a grammar checker"
+  $prompt: String! = "Please rewrite the following English text, by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
+  $model: String! = "gpt-4o"
+  $temperature: Float! = 0.7
+  $maxTokens: Int! = 50
+)
+  @depends(on: "GetProductContent")
+{
+  promptWithContent: _strAppend(
+    after: $prompt
+    append: $content  
+  )
+  openAIResponse: _sendJSONObjectItemHTTPRequest(input: {
+    url: "https://api.openai.com/v1/chat/completions",
+    method: POST,
+    options: {
+      auth: {
+        password: $openAIAPIKey
+      },
+      json: {
+        model: $model,
+        temperature: $temperature,
+        max_tokens: $maxTokens,
+        messages: [
+          {
+            role: "system",
+            content: $systemMessage
+          },
+          {
+            role: "user",
+            content: $__promptWithContent
+          }
+        ]
+      }
+    }
+  })
+    @underJSONObjectProperty(by: { key: "choices" })
+      @underArrayItem(index: 0)
+        @underJSONObjectProperty(by: { path: "message.content" })
+          @export(as: "rewrittenContent")
+}
+
+mutation UpdateProduct(
+  $productId: ID!
+)
+  @depends(on: "RewriteProductContentWithChatGPT")
+{
+  updateCustomPost(input: {
+    id: $productId,
+    customPostType: "product"
+    contentAs: {
+      html: $rewrittenContent
+    }
+  }) {
+    status
+    errors {
+      __typename
+      ...on ErrorPayload {
+        message
+      }
+    }
+    customPost {
+      __typename
+      ...on CustomPost {
+        id
+        content
+      }
+    }
+  }
+}
+```
+
+## Automating the process
+
+We can use the [Internal GraphQL Server](/extensions-reference/internal-graphql-server/internal-graphql-server) to automatically execute the query whenever a new WooCommerce product is created.
+
+To do this, first [create a new persisted query](/guides/use/creating-a-persisted-query) with title `"Improve Product Content With ChatGPT"` (this will assign it slug `improve-product-content-with-chatgpt`), and the GraphQL query above.
+
+Then, anywhere in your application (eg: in your `functions.php` file, a plugin, or a code snippet), add the following PHP code, which executes the query on hook `publish_product`:
+
+```php
+use GatoGraphQL\InternalGraphQLServer\GraphQLServer;
+use WP_Post;
+
+add_action(
+  'publish_product',
+  function (int $productId, WP_Post $post, string $oldStatus): void {
+    // Only execute when it's a newly-published product
+    if ($oldStatus === 'publish') {
+      return;
+    }
+
+    GraphQLServer::executePersistedQuery('improve-product-content-with-chatgpt', [
+      'productId' => $productId,
+
+      // Provide your Open AI's API Key
+      'openAIAPIKey' => '{ OPENAI_API_KEY }',
+
+      // Customize any of the other variables, for instance:
+      'maxTokens' => 5000,
+    ]);
+  }, 10, 3
+);
+```
