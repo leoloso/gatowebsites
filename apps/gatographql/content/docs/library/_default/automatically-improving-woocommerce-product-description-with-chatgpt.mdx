@@ -45,7 +45,7 @@ query RewriteProductContentWithChatGPT(
   $temperature: Float! = 0.7
   $maxTokens: Int! = 50
 )
-  @depends(on: "GetPostFromRSSFeed")
+  @depends(on: "GetProductContent")
 {
   promptWithContent: _strAppend(
     after: $prompt
