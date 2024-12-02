@@ -19,7 +19,7 @@ To connect to the OpenAI API, you must provide variables `$openAIAPIKey` with th
 You can optionally provide the system message and prompt to rewrite the post's content. If not provided, the following values are used:
 
 - System message (`$systemMessage`): "You are an English Content rewriter and a grammar checker"
-- Prompt (`$prompt`): "Please rewrite the following English text (contained within HTML), by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
+- Prompt (`$prompt`): "Please rewrite the following English text, by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
 
 (The content string is appended at the end of the prompt.)
 
@@ -76,7 +76,7 @@ query GetPostFromRSSFeed(
 query RewriteContentWithChatGPT(
   $openAIAPIKey: String!
   $systemMessage: String! = "You are an English Content rewriter and a grammar checker"
-  $prompt: String! = "Please rewrite the following English text (contained within HTML), by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
+  $prompt: String! = "Please rewrite the following English text, by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
   $model: String! = "gpt-4o"
   $temperature: Float! = 0.7
   $maxTokens: Int! = 50
