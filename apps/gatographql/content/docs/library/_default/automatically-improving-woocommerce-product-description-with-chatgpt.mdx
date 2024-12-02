@@ -131,8 +131,16 @@ add_action(
       return;
     }
 
+    // Provide your Open AI's API Key, and customize any of the other variables
+    $openAI_api_key = '...';
+    $model = '';
+    $maxTokens = 500;
+
     GraphQLServer::executePersistedQuery('improve-product-content-with-chatgpt', [
       'productId' => $productId,
+      'openAIAPIKey' => $openAI_api_key,
+      'model' => $model,
+      'maxTokens' => $maxTokens,
     ]);
   }
 );
