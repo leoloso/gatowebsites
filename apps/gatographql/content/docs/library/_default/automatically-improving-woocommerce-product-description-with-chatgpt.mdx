@@ -124,14 +124,16 @@ use GatoGraphQL\InternalGraphQLServer\GraphQLServer;
 use WP_Post;
 
 add_action(
-  'draft_post',
-  function (int $productId): void {
-    GraphQLServer::executePersistedQuery(
-      'improve-product-content-with-chatgpt',
-      [
-        'productId' => $productId,
-      ]
-    );
+  'save_post_product',
+  function (int $productId, WP_Post $post, bool $isUpdate): void {
+    // Only execute when it's a new entry
+    if ($isUpdate) {
+      return;
+    }
+
+    GraphQLServer::executePersistedQuery('improve-product-content-with-chatgpt', [
+      'productId' => $productId,
+    ]);
   }
 );
 ```
