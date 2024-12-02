@@ -28,50 +28,12 @@ You can optionally provide the system message and prompt to rewrite the post's c
 In addition, you can override the default value for variables `$model` (`"gpt-3.5-turbo-instruct"`) and `$temperature` (`0.7`), and be aware to provide `$maxTokens` with a suitable number for the length of the content (`50` by default).
 
 ```graphql
-query GetPostFromRSSFeed(
-  $url: URL!
+query GetProductContent(
+  $id: ID!
 ) {
-  _sendHTTPRequest(input: {
-    url: $url,
-    method: GET
-  }) {
-    body
-    rssJSON: _strDecodeXMLAsJSON(
-      xml: $__body
-    )
-
-    # Fields to be imported
-    authorUsername: _objectProperty(
-      object: $__rssJSON,
-      by: {
-        path: "rss.channel.item.dc:creator"
-      }
-    )
-      @export(as: "authorUsername")
-
-    content:  _objectProperty(
-      object: $__rssJSON,
-      by: {
-        path: "rss.channel.item.content:encoded"
-      }
-    )
+  customPost(by: {id: $id}, customPostTypes: "product") {
+    content
       @export(as: "content")
-
-    excerpt:  _objectProperty(
-      object: $__rssJSON,
-      by: {
-        path: "rss.channel.item.description"
-      }
-    )
-      @export(as: "excerpt")
-
-    title:  _objectProperty(
-      object: $__rssJSON,
-      by: {
-        path: "rss.channel.item.title"
-      }
-    )
-      @export(as: "title")
   }
 }
 
@@ -119,40 +81,17 @@ query RewriteContentWithChatGPT(
           @export(as: "rewrittenContent")
 }
 
-# If the author's username exists in this site, keep it
-# Otherwise, use the default one
-query CheckAuthorExistsOrChange(
-  $defaultAuthorUsername: String! = "admin"
+mutation UpdateProduct(
+  $id: ID!
 )
   @depends(on: "RewriteContentWithChatGPT")
 {
-  existingUserByUsername: user(by: { username: $authorUsername })
-  {
-    id
-    username
-  }
-  userExists: _notNull(value: $__existingUserByUsername)
-  username: _if(
-    condition: $__userExists,
-    then: $authorUsername,
-    else: $defaultAuthorUsername
-  )
-    @export(as: "existingAuthorUsername")
-}
-
-mutation ImportPostFromWordPressRSSFeedAndRewriteContent
-  @depends(on: "CheckAuthorExistsOrChange")
-{
-  createPost(input: {
-    status: draft,
-    authorBy: {
-      username: $existingAuthorUsername
-    },
+  updateCustomPost(input: {
+    id: $id,
+    customPostType: "product"
     contentAs: {
       html: $rewrittenContent
-    },
-    excerpt: $excerpt
-    title: $title
+    }
   }) {
     status
     errors {
@@ -161,19 +100,12 @@ mutation ImportPostFromWordPressRSSFeedAndRewriteContent
         message
       }
     }
-    post {
-      id
-      slug
-      date
-      status
-
-      author {
+    customPost {
+      __typename
+      ...on CustomPost {
         id
-        username
+        content
       }
-      content
-      excerpt
-      title
     }
   }
 }
