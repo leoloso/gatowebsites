@@ -37,7 +37,7 @@ query GetProductContent(
   }
 }
 
-query RewriteContentWithChatGPT(
+query RewriteProductContentWithChatGPT(
   $openAIAPIKey: String!
   $systemMessage: String! = "You are an English Content rewriter and a grammar checker"
   $prompt: String! = "Please rewrite the following English text (contained within HTML), by changing the simple A0-level words and sentences with more beautiful and elegant upper-level English words and sentences, while maintaining the original meaning: "
@@ -84,7 +84,7 @@ query RewriteContentWithChatGPT(
 mutation UpdateProduct(
   $id: ID!
 )
-  @depends(on: "RewriteContentWithChatGPT")
+  @depends(on: "RewriteProductContentWithChatGPT")
 {
   updateCustomPost(input: {
     id: $id,
@@ -110,3 +110,16 @@ mutation UpdateProduct(
   }
 }
 ```
+
+## Automating the process
+
+We can use the [Internal GraphQL Server](/extensions-reference/internal-graphql-server/internal-graphql-server) to automatically execute the query whenever a new WooCommerce product is created.
+
+To do this, first [create a new persisted query](/guides/use/creating-a-persisted-query) with the GraphQL query above, and title `"Improve Product Content With ChatGPT"` (this will assign it slug `improve-product-content-with-chatgpt`).
+
+Then, anywhere in your application (eg: in your `functions.php` file, a plugin, or a code snippet), add the following PHP code:
+
+```php
+
+```
+
