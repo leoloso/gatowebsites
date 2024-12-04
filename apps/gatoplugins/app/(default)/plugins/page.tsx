@@ -26,9 +26,9 @@ export default function Extensions() {
 
             {/*  Page header */}
             <PageHeader
-              leading='Satisfy your requirements'
+              leading='Solve your problems'
               title='Plugins'
-              description='Browse all the plugins by Gato Plugins'
+              description='Our collection of super userful plugins for WordPress'
             />
 
             <PluginsSection />
