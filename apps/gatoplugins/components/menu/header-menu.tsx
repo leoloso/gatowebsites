@@ -10,7 +10,7 @@ export default function HeaderMenu() {
       <Dropdown
         title="Plugins"
         link={`/${AppConfig.paths.plugins}`}
-        dropdownWidthClassname='-left-40 w-104'
+        dropdownWidthClassname='-left-24 w-64'
       >
         {/* 2nd level: hover */}
         {allPlugins.map((plugin, index) => (
@@ -26,7 +26,7 @@ export default function HeaderMenu() {
       <Dropdown
         title="Documentation"
         link={`/${AppConfig.paths.docs}`}
-        dropdownWidthClassname='-left-36 w-104'
+        dropdownWidthClassname='-left-16 w-64'
       >
         {/* 2nd level: hover */}
         {allPlugins.map((plugin, index) => (
