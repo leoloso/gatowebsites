@@ -25,7 +25,7 @@ export default function Cta03() {
         </>
       )}
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className={clsx("relative py-12 md:py-20", isDarkColorThemeMode && "px-8 pt-16 md:pt-32 rounded-[3rem] overflow-hidden")}>
+        <div className={clsx("relative", !isDarkColorThemeMode && "pt-12 md:pt-20 pb-4", isDarkColorThemeMode && "py-12 md:py-20 px-8 pt-16 md:pt-32 rounded-[3rem] overflow-hidden")}>
           { isDarkColorThemeMode && (
             <>
               {/* Radial gradient */}
@@ -50,7 +50,7 @@ export default function Cta03() {
 
           {/* Content */}
           <SectionHeader
-            leading='Never miss an update'
+            leading={isDarkColorThemeMode ? 'Never miss an update' : ''}
             title='Stay connected with us'
             description={`Find out about our latest product updates as we continue improving ${AppConfig.meta.name}.`}
           >
