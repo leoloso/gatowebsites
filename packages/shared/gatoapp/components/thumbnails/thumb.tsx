@@ -5,6 +5,7 @@ import Particles from 'gatoapp/components/particles'
 import clsx from 'clsx';
 import StunningBackground from '../stunning-background';
 import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
+import { LightDarkColorTheme } from 'gatoapp/utils/style/light-dark-theme-mode';
 
 export default function Thumb({
   paddingClassname = "py-10 px-8 md:py-16 md:px-12",
@@ -27,7 +28,9 @@ export default function Thumb({
       <Particles className="absolute inset-0 -z-10" quantity={numberParticles} />
 
       { !isDarkColorThemeMode && (
-        <StunningBackground />
+        <StunningBackground
+          colorTheme={LightDarkColorTheme.Dark}
+        />
       )}
       <div className="flex items-center justify-center h-full">
         {/* <div className="absolute right-0 top-1/2 -translate-y-1/2 mt-8 -z-10" aria-hidden="true">
