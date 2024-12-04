@@ -1,6 +1,10 @@
+'use client'
+
 import Image from 'next/image'
 import Particles from './particles';
 import { TestimonialItem } from './data/testimonial-item';
+import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
+import Illustration from '@/public/images/layout/testimonial-illustration.svg'
 
 export default function Testimonial({
   testimonials,
@@ -11,16 +15,29 @@ export default function Testimonial({
 }) {
 
   const testimonial = testimonialIndex !== undefined ? testimonials[testimonialIndex] : testimonials[Math.floor(Math.random() * testimonials.length)]
+  const isDarkColorThemeMode = usingDarkColorThemeMode()
 
   return (
-    <section>
+    <section className='relative'>
+      { !isDarkColorThemeMode && (
+        <>
+          {/* Illustration */}
+          <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none -z-10 mt-5" aria-hidden="true">
+            <Image className="max-w-none" src={Illustration} alt="Illustration" />
+          </div>
+        </>
+      )}
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="relative px-8 py-12 md:py-20 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
-          {/* Particles animation */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 w-80 h-80 -mt-6">
-            <Particles className="absolute inset-0 -z-10" quantity={10} staticity={40} /> 
-          </div>
+        { isDarkColorThemeMode && (
+          <>
+            {/* Particles animation */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 w-80 h-80 -mt-6">
+              <Particles className="absolute inset-0 -z-10" quantity={10} staticity={40} /> 
+            </div>
+          </>
+        )}
           
           <div className="text-center">
             <Image
