@@ -32,17 +32,15 @@ export default function Hero({
 
           {/* Hero content */}
           <div className="max-w-3xl mx-auto text-center">
-            <div className="-mb-12">
-              <div className="flex w-full items-center justify-center pb-1">
-                <Image src={LogoPic} width={250} height={175} alt="Logo" />
-              </div>
-            </div>
             <h1 className="h1 font-cabinet-grotesk text-white mb-2" data-aos="fade-up">
               {title}
             </h1>
             <p className="text-lg md:text-xl text-white text-opacity-80 mb-8" data-aos="fade-up" data-aos-delay="100">
               {description}
             </p>
+            <div className="flex w-full items-center justify-center pb-1">
+              <Image src={LogoPic} width={250} height={175} alt="Logo" />
+            </div>
 
           </div>
         </div>
