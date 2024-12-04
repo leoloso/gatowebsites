@@ -13,7 +13,7 @@ export default function SinglePluginPricing({
   const testimonials = getTestimonials()
   return (
     <>
-      <section className="relative">
+      <section className="relative overflow-hidden">
         {/* Bg */}
         <div className="absolute inset-0 bg-blue-600 -z-10" aria-hidden="true" />
 
