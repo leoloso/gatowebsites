@@ -1,6 +1,5 @@
 import PluginsSection, { style2, svgEffect2 } from "@/app/(default)/plugins/plugins-section";
 import SectionHeader from "gatoapp/components/section-header";
-import RadiantGradient from "gatoapp/components/radial-gradient";
 import HomePricingSection from "./home-pricing-section";
 
 export default function HomePluginsSection() {
@@ -13,15 +12,14 @@ export default function HomePluginsSection() {
       </div> */}
       
       {/* Radial gradient */}
-      <RadiantGradient />      
+      {/* <RadiantGradient />       */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-16 md:pt-32">
           
           {/* Section header */}
           <SectionHeader
-            leading='Our collection of plugins for WordPress'
             title="Plugins"
-            description='Browse the list of plugins, and choose the one you need'
+            // description='Browse our collection of plugins for WordPress'
           />
 
           <PluginsSection
