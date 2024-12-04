@@ -15,12 +15,12 @@ export default function HeaderMenu() {
         {/* 2nd level: hover */}
         {allPlugins.map((plugin, index) => (
           <li key={index}>
-            <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out py-0.5" href={plugin.urlPath}>{plugin.title}</Link>
+            <Link className="flex font-medium text-sm text-gray-500 hover:text-gray-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out py-0.5" href={plugin.urlPath}>{plugin.title}</Link>
           </li>
         ))}
       </Dropdown>
       {/* <li>
-        <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out" href={`/${AppConfig.paths.demoPosts}`}>Demos</Link>
+        <Link className="font-medium text-sm text-gray-500 hover:text-gray-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out" href={`/${AppConfig.paths.demoPosts}`}>Demos</Link>
       </li> */}
       {/* 1st level: hover */}
       <Dropdown
@@ -31,15 +31,15 @@ export default function HeaderMenu() {
         {/* 2nd level: hover */}
         {allPlugins.map((plugin, index) => (
           <li key={index}>
-            <Link className="flex font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out py-0.5" href={plugin.docUrlPath}>{plugin.title}</Link>
+            <Link className="flex font-medium text-sm text-gray-500 hover:text-gray-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out py-0.5" href={plugin.docUrlPath}>{plugin.title}</Link>
           </li>
         ))}
       </Dropdown>
       <li>
-        <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out" href="/contact">Contact</Link>
+        <Link className="font-medium text-sm text-gray-500 hover:text-gray-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out" href="/contact">Contact</Link>
       </li>
       {/* <li>
-        <Link className="font-medium text-sm text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out" href={`/${AppConfig.paths.blog}`}>Blog</Link>
+        <Link className="font-medium text-sm text-gray-500 hover:text-gray-800 dark:text-slate-300 dark:hover:text-white mx-5 lg:mx-6 transition duration-150 ease-in-out" href={`/${AppConfig.paths.blog}`}>Blog</Link>
       </li> */}
     </ul>
   )

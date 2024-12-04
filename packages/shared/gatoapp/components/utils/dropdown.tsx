@@ -29,7 +29,7 @@ export default function Dropdown({
       onBlur={() => setDropdownOpen(false)}
     >
       <a
-        className="font-medium text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white text-sm px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out"
+        className="font-medium text-gray-500 hover:text-gray-800 dark:text-slate-300 dark:hover:text-white text-sm px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out"
         href={link || "#"}
         aria-expanded={dropdownOpen}
         onClick={(e) => function() {
