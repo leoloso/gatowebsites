@@ -1,6 +1,6 @@
 module.exports = {
   campaigns: {
-    enableBlackFriday: true,
+    enableBlackFriday: false,
   },
   searchDemoPosts: false,
 }
