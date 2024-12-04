@@ -6,25 +6,26 @@ import { useAppConfigProvider } from 'gatoapp/app/appconfig-provider'
 import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 import Image from 'next/image'
 import Illustration from '@/public/images/layout/cta-illustration.svg'
+import clsx from "clsx";
 
 export default function Cta03() {
   const { config: AppConfig } = useAppConfigProvider()
   const isDarkColorThemeMode = usingDarkColorThemeMode()
   return (
     <section className="relative overflow-hidden">
-    { !isDarkColorThemeMode && (
-      <>
-        {/* Bg */}
-        <div className="absolute inset-0 bg-blue-600 pointer-events-none -z-10" aria-hidden="true" />
+      { !isDarkColorThemeMode && (
+        <>
+          {/* Bg */}
+          <div className="absolute inset-0 bg-blue-600 pointer-events-none -z-10" aria-hidden="true" />
 
-        {/* Illustration */}
-        <div className="absolute left-1/2 -translate-x-1/2 pointer-events-none -z-10" aria-hidden="true">
-          <Image className="max-w-none" src={Illustration} alt="Illustration" />
-        </div>
-      </>
-    )}
+          {/* Illustration */}
+          <div className="absolute left-1/2 -translate-x-1/2 pointer-events-none -z-10" aria-hidden="true">
+            <Image className="max-w-none" src={Illustration} alt="Illustration" />
+          </div>
+        </>
+      )}
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="relative px-8 py-12 md:py-20 pt-16 md:pt-32 rounded-[3rem] overflow-hidden">
+        <div className={clsx("relative py-12 md:py-20", isDarkColorThemeMode && "px-8 pt-16 md:pt-32 rounded-[3rem] overflow-hidden")}>
           { isDarkColorThemeMode && (
             <>
               {/* Radial gradient */}
