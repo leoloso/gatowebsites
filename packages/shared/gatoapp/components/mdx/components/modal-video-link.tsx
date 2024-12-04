@@ -23,7 +23,7 @@ export default function LinkModalVideo({
   return (
     <>
       {/* Video thumbnail */}
-      <button className="group p-2.5 my-4 btn inset-0 rounded-full bg-slate-950 hover:bg-slate-950/50 duration-300 hover:scale-105" onClick={() => { setModalOpen(true) }} aria-label={title}>
+      <button className="group p-2.5 my-4 btn inset-0 rounded-full bg-slate-950 hover:bg-blue-800 dark:hover:bg-slate-950/50 duration-300 hover:scale-105" onClick={() => { setModalOpen(true) }} aria-label={title}>
         {/* Play icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
