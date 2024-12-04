@@ -79,7 +79,7 @@ export default function RootLayout({
                 analyticsDomain={AppConfig.services.analytics.domain}
                 shopAffiliateTrackingShopSlug={AppConfig.services.shop.affiliateTrackingShopSlug}
               />
-              <body className={`${inter.variable} font-inter antialiased bg-purple-200 text-slate-800 tracking-tight ${getBackgroundColorStyle(appStyle.lightDarkColorTheme)}`}>
+              <body className={`${inter.variable} font-inter antialiased bg-white text-slate-800 tracking-tight ${getBackgroundColorStyle(appStyle.lightDarkColorTheme)}`}>
                 {children}
               </body>
             </html>
