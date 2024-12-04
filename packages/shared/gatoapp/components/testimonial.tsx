@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Particles from './particles';
 import { TestimonialItem } from './data/testimonial-item';
 import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
-import Illustration from '@/public/images/layout/testimonial-illustration.svg'
+import Illustration from 'gatoapp/public/images/layout/lightmode/testimonial-illustration.svg'
 
 export default function Testimonial({
   testimonials,

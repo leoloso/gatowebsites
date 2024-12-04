@@ -1,7 +1,7 @@
 import { useAppComponentProvider } from 'gatoapp/app/appcomponent-provider'
 import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 import Image from 'next/image'
-import Illustration from '@/public/images/layout/footer-illustration.svg'
+import Illustration from 'gatoapp/public/images/layout/lightmode/footer-illustration.svg'
 import clsx from 'clsx'
 
 export default function Footer() {

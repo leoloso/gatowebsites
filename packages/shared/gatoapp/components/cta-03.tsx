@@ -5,7 +5,7 @@ import SectionHeader from "./section-header";
 import { useAppConfigProvider } from 'gatoapp/app/appconfig-provider'
 import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 import Image from 'next/image'
-import Illustration from '@/public/images/layout/cta-illustration.svg'
+import Illustration from 'gatoapp/public/images/layout/lightmode/cta-illustration.svg'
 import clsx from "clsx";
 
 export default function Cta03() {
