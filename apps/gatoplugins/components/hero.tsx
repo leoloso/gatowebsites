@@ -22,11 +22,11 @@ export default function Hero({
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pt-28 pb-16 md:pt-40 md:pb-20">
+        <div className="pt-32 pb-16 md:pt-40 md:pb-20">
 
           <div className="mb-8">
             <CampaignBanner
-              marginTopClassname="-mt-8"
+              marginTopClassname="-mt-8 md:-mt-16"
             />
           </div>
 
