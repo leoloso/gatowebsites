@@ -26,7 +26,7 @@ export default function SinglePluginPricing({
           <div className="py-12 md:py-20">
             {/* Section header */}
             <div className="pb-12 md:pb-16 text-center">
-              <h2 className="h2 font-cabinet-grotesk text-white pb-2 md:pb-4">Get your plugin</h2>
+              <h2 className="h2 text-white pb-2 md:pb-4">Get your plugin</h2>
               <p className="text-lg md:text-xl text-white text-opacity-80 mb-8">Purchase <span className='font-bold'>{ plugin.title }</span></p>
             </div>
           
