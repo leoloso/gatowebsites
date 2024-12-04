@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import ModalVideoTransition from './modal-video-transition'
+import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 
 interface ModalVideoProps {
   video: string
@@ -20,6 +21,7 @@ export default function LinkModalVideo({
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
+  const isDarkColorThemeMode = usingDarkColorThemeMode()
   return (
     <>
       {/* Video thumbnail */}
@@ -32,6 +34,7 @@ export default function LinkModalVideo({
           fill="none"
         >
           <path
+            className={isDarkColorThemeMode ? "" : "fill-blue-200"}
             fill="url(#pla)"
             fillRule="evenodd"
             d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10Zm3.5-10-5-3.5v7l5-3.5Z"
