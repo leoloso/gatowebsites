@@ -1,4 +1,4 @@
-import Hero from 'gatoapp/components/hero'
+import Hero from '@/components/hero'
 import UseCases from '@/components/use-cases/use-cases'
 import FeaturesCarousel from 'gatoapp/components/features-carousel'
 import PricingSection from '@/components/pricing-section'
