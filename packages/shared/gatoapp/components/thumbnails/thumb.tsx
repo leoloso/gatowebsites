@@ -1,7 +1,7 @@
 'use client'
 
 import Particles from 'gatoapp/components/particles'
-// import Illustration from 'gatoapp/public/assets/theme/cta-illustration.svg'
+// import Illustration from 'gatoapp/public/assets/theme/darkmode/cta-illustration.svg'
 import clsx from 'clsx';
 import StunningBackground from '../stunning-background';
 import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
