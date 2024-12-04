@@ -53,6 +53,8 @@ export default function Cta03() {
             leading={isDarkColorThemeMode ? 'Never miss an update' : ''}
             title='Stay connected with us'
             description={`Find out about our latest product updates as we continue improving ${AppConfig.meta.name}.`}
+            titleColorClassname={clsx(!isDarkColorThemeMode && "text-white")}
+            descriptionColorClassname={clsx(!isDarkColorThemeMode && "text-white")}
           >
             <NewsletterForm />
           </SectionHeader>
