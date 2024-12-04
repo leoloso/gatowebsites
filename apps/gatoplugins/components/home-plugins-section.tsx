@@ -1,6 +1,5 @@
 import PluginsSection, { style2, svgEffect2 } from "@/app/(default)/plugins/plugins-section";
 import SectionHeader from "gatoapp/components/section-header";
-import Particles from "gatoapp/components/particles";
 import RadiantGradient from "gatoapp/components/radial-gradient";
 import HomePricingSection from "./home-pricing-section";
 
