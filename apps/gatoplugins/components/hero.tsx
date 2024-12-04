@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import LogoPic from 'gatoapp/public/assets/Gato-logo-suki-rectangular.png'
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
-import Illustration from 'gatoapp/public/images/layout/lightmode/hero-illustration.svg'
+import Illustration from 'gatoapp/public/assets/theme/lightmode/hero-illustration.svg'
 
 export default function Hero({
   title,

@@ -4,7 +4,7 @@ import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
 import Testimonial from 'gatoapp/components/testimonial'
 import { getTestimonials } from '@/components/data/testimonials'
 import Image from 'next/image'
-import Illustration from 'gatoapp/public/images/layout/lightmode/features-illustration.svg'
+import Illustration from 'gatoapp/public/assets/theme/lightmode/features-illustration.svg'
 export default function SinglePluginPricing({
   plugin,
 }: {
