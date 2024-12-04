@@ -60,10 +60,10 @@ export default function PluginsSection({
             <div>
               <header>
                 <h3 className={clsx(applyStyle === style1 && "h3 mb-2 text-2xl lg:text-3xl", applyStyle === style2 && "h3 mb-2 text-2xl")}>
-                  <Link href={plugin.urlPath} className="hover:text-purple-300 transition duration-150 ease-in-out">{plugin.title}</Link>
+                  <Link href={plugin.urlPath} className="hover:text-blue-400 transition duration-150 ease-in-out">{plugin.title}</Link>
                 </h3>
               </header>
-              <p className="text-lg text-gray-300 grow">{plugin.description}</p>
+              <p className="text-lg text-gray-600 grow">{plugin.description}</p>
               { !! plugin.video && (
                 <LinkModalVideo
                   // title="Tutorial video"
