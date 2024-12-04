@@ -11,7 +11,7 @@ export function getTestimonials(): TestimonialItem[] {
   return [
     {
       img: CustomerImg01,
-      quote: "I use Gato Multilingual to automatically translate new posts from english to several other languages with Polylang Pro + Google Translate API. Leo’s support has been next level.",
+      quote: "I use Gato Multilingual to automatically translate new posts from English to several other languages with Polylang Pro + Google Translate API. Leo’s support has been next level.",
       name: 'Thomas D.',
       role: 'Agency dev'
     },

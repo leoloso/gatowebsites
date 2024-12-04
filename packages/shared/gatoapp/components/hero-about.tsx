@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from 'next/image'
-import AboutIllustration from 'gatoapp/public/assets/theme/about-illustration.svg'
+import AboutIllustration from 'gatoapp/public/assets/theme/darkmode/about-illustration.svg'
 import Icon from 'gatoapp/public/assets/theme/about-icon.png'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import WithLogoThumb from 'gatoapp/components/thumbnails/with-logo-thumb'

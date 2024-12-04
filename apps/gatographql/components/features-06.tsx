@@ -2,7 +2,7 @@ import Particles from 'gatoapp/components/particles'
 
 import SectionHeader from 'gatoapp/components/section-header'
 import Image from 'next/image'
-import Illustration from 'gatoapp/public/assets/theme/glow-top.svg'
+import Illustration from 'gatoapp/public/assets/theme/darkmode/glow-top.svg'
 
 export default function Features06() {
   return (

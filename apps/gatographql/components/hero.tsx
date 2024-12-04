@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import Particles from './particles'
-import Illustration from 'gatoapp/public/assets/theme/glow-bottom.svg'
+import Particles from 'gatoapp/components/particles'
+import Illustration from 'gatoapp/public/assets/theme/darkmode/glow-bottom.svg'
 import LogoPic from 'gatoapp/public/assets/Gato-logo-suki-rectangular.png'
 // import PurchasePROPluginButton from './purchase-pro-plugin-button'
 // import DownloadFreePluginButton from './download-free-button'

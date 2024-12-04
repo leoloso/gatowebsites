@@ -11,7 +11,6 @@ export default function AppDefaultLayout({
 }: {
   children: React.ReactNode
 }) {  
-
   return (
     <AppComponentProvider
       footer={{

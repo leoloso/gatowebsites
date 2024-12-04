@@ -1,11 +1,10 @@
 import { Plugin } from '@/.contentlayer/generated'
 import PluginPricing from '@/components/pricing/plugin-pricing'
-import Particles from 'gatoapp/components/particles'
 import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
-import RadiantGradient from 'gatoapp/components/radial-gradient'
 import Testimonial from 'gatoapp/components/testimonial'
 import { getTestimonials } from '@/components/data/testimonials'
-
+import Image from 'next/image'
+import Illustration from 'gatoapp/public/assets/theme/lightmode/features-illustration.svg'
 export default function SinglePluginPricing({
   plugin,
 }: {
@@ -13,35 +12,43 @@ export default function SinglePluginPricing({
 }) {
   const testimonials = getTestimonials()
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6">    
-      
-      <div className="relative pb-12 md:pb-20 pt-16 md:pt-32">
+    <>
+      <section className="relative overflow-hidden">
+        {/* Bg */}
+        <div className="absolute inset-0 bg-blue-600 -z-10" aria-hidden="true" />
 
-        {/* Particles animation */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 w-80 h-80 -mt-24 -ml-32">
-          <Particles className="absolute inset-0 -z-10" quantity={6} staticity={30} />    
+        {/* Illustration */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none -z-10" aria-hidden="true">
+          <Image className="max-w-none" src={Illustration} alt="Illsutration" />
         </div>
 
-        {/* Radial gradient */}
-        <RadiantGradient />
-        
-        <div className="mb-8 text-center">
-          <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-2 md:pb-4">
-            Get your plugin
-          </h2>
-          <p className="text-lg text-slate-400">Purchase <span className='font-bold'>{ plugin.title }</span></p>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="py-12 md:py-20">
+            {/* Section header */}
+            <div className="pb-12 md:pb-16 text-center">
+              <h2 className="h2 text-white pb-2 md:pb-4">Get your plugin</h2>
+              <p className="text-lg md:text-xl text-white text-opacity-80 mb-8">Purchase <span className='font-bold'>{ plugin.title }</span></p>
+            </div>
+          
+            <PluginPricing
+              plugin={ plugin }
+            />
+
+          </div>
+
         </div>
-        <PluginPricing
-          plugin={ plugin }
-        />
+      </section>
 
-      </div>
-      <PricingMoneyBackGuarantee />
+      <section className="relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <PricingMoneyBackGuarantee />
 
-      <Testimonial
-        testimonials={testimonials}
-      />
+          <Testimonial
+            testimonials={testimonials}
+          />
 
-    </div>
+        </div>
+      </section>
+    </>
   )
 }
