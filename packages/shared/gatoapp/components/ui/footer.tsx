@@ -2,6 +2,7 @@ import { useAppComponentProvider } from 'gatoapp/app/appcomponent-provider'
 import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 import Image from 'next/image'
 import Illustration from '@/public/images/layout/footer-illustration.svg'
+import clsx from 'clsx'
 
 export default function Footer() {
   const AppComponent = useAppComponentProvider()
@@ -22,7 +23,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Blocks */}
-        <div className="grid sm:grid-cols-12 gap-8 py-8 md:py-12">
+        <div className={clsx("grid sm:grid-cols-12 gap-8 py-8 md:py-12", !isDarkColorThemeMode && "border-t border-blue-500")}>
           {AppComponent.footer.menu}
         </div>
 
