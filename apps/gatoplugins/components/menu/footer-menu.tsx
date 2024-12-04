@@ -16,7 +16,7 @@ export default function FooterMenu({
 
       {/* 2nd block */}
       <div className={columnClassname}>
-        <h6 className="text-sm text-white font-medium mb-2">Plugins</h6>
+        <h6 className="text-sm text-white font-bold mb-2">Plugins</h6>
         <ul className="text-sm space-y-2">
           <li>
             <a className="text-fuchsia-100 dark:text-slate-400 hover:text-amber-200 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.plugins}`}>Overview</a>
@@ -40,7 +40,7 @@ export default function FooterMenu({
 
       {/* 3rd block */}
       <div className={columnClassname}>
-        <h6 className="text-sm text-white font-medium mb-2">Documentation</h6>
+        <h6 className="text-sm text-white font-bold mb-2">Documentation</h6>
         <ul className="text-sm space-y-2">
           <li>
             <a className="text-fuchsia-100 dark:text-slate-400 hover:text-amber-200 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.docs}`}>Overview</a>
@@ -51,7 +51,7 @@ export default function FooterMenu({
             </li>
           ))}
         </ul>
-        <h6 className="text-sm text-white font-medium mb-2 mt-8 lg:mt-6">Resources</h6>
+        <h6 className="text-sm text-white font-bold mb-2 mt-8 lg:mt-6">Resources</h6>
         <ul className="text-sm space-y-2">
           <li>
             <a className="text-fuchsia-100 dark:text-slate-400 hover:text-amber-200 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={AppConfig.urls.gatoGraphQL} target="_blank">Gato GraphQL</a>
@@ -64,7 +64,7 @@ export default function FooterMenu({
 
       {/* 4th block */}
       <div className={columnClassname}>
-        <h6 className="text-sm text-white font-medium mb-2">Company</h6>
+        <h6 className="text-sm text-white font-bold mb-2">Company</h6>
         <ul className="text-sm space-y-2">
           <li>
             <a className="text-fuchsia-100 dark:text-slate-400 hover:text-amber-200 dark:hover:text-slate-200 transition duration-150 ease-in-out" href={`/${AppConfig.paths.blog}`}>Blog</a>
@@ -86,7 +86,7 @@ export default function FooterMenu({
 
       {/* 5th block */}
       <div className={columnClassname}>
-        <h6 className="text-sm text-white font-medium mb-2">Support</h6>
+        <h6 className="text-sm text-white font-bold mb-2">Support</h6>
         <ul className="text-sm space-y-2">
           <li>
             <a className="text-fuchsia-100 dark:text-slate-400 hover:text-amber-200 dark:hover:text-slate-200 transition duration-150 ease-in-out" href="/shop/my-orders">My orders</a>
