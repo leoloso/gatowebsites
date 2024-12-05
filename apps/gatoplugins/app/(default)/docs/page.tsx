@@ -1,6 +1,6 @@
 import StunningBackground from 'gatoapp/components/stunning-background'
 import PageHeader from 'gatoapp/components/page-header'
-import Cta from 'gatoapp/components/cta-03'
+import Cta from 'gatoapp/components/cta-newsletter'
 import PluginDocList from './plugin-doc-list'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 

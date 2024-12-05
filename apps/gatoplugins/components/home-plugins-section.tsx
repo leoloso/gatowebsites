@@ -2,7 +2,7 @@ import PluginsSection, { style2, svgEffect2 } from "@/app/(default)/plugins/plug
 import SectionHeader from "gatoapp/components/section-header";
 import Customers from 'gatoapp/components/customers'
 import { getTestimonials } from '@/components/data/testimonials'
-import Cta from 'gatoapp/components/cta-03'
+import Cta from 'gatoapp/components/cta-newsletter'
 
 export default function HomePluginsSection() {
   const testimonials = getTestimonials().slice(0, 6)

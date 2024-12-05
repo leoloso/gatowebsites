@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Illustration from 'gatoapp/public/assets/theme/lightmode/cta-illustration.svg'
 import clsx from "clsx";
 
-export default function Cta03() {
+export default function CtaNewsletter() {
   const { config: AppConfig } = useAppConfigProvider()
   const isDarkColorThemeMode = usingDarkColorThemeMode()
   return (
