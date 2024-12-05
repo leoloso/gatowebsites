@@ -1,6 +1,6 @@
 import PluginsSection, { style2, svgEffect2 } from "@/app/(default)/plugins/plugins-section";
 import SectionHeader from "gatoapp/components/section-header";
-import Testimonial from 'gatoapp/components/testimonial'
+import Customers from 'gatoapp/components/customers'
 import { getTestimonials } from '@/components/data/testimonials'
 
 export default function HomePluginsSection() {
@@ -31,9 +31,9 @@ export default function HomePluginsSection() {
             applyStyle={style2}
           />
 
-          <Testimonial
+          <Customers
             testimonials={testimonials}
-          />
+           />
 
         </div>
       </div>
