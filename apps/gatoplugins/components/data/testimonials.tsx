@@ -1,9 +1,6 @@
 import CustomerImg01 from '@/public/assets/theme/customer-01.jpg'
 import CustomerImg02 from '@/public/assets/theme/customer-02.jpg'
-import CustomerImg04 from '@/public/assets/theme/customer-04.jpg'
-import CustomerImg06 from '@/public/assets/theme/customer-06.jpg'
-import CustomerImg08 from '@/public/assets/theme/customer-08.jpg'
-import CustomerImg09 from '@/public/assets/theme/customer-09.jpg'
+import CustomerImg03 from '@/public/assets/theme/customer-03.jpg'
 import { TestimonialItem } from 'gatoapp/components/data/testimonial-item'
 
 export function getTestimonials(): TestimonialItem[] {
@@ -16,17 +13,18 @@ export function getTestimonials(): TestimonialItem[] {
       role: 'Agency dev',
       productSlug: 'multilingual-polylang'
     },
-    // {
-    //   img: CustomerImg08,
-    //   quote: "We loved this plugin and are annoyed that it’s better than a similar thing we are working on 😂 (we have a network of news sites and Gato GraphQL will save us a lot of time!)",
-    //   name: 'Joebe W.',
-    //   role: 'Developer'
-    // },
     {
-      img: CustomerImg04,
+      img: CustomerImg03,
       quote: "Amazing! I have translated most of my posts and pages, this was brilliant. It saved me a fortune and hours of time and effort.",
       name: 'Patrick T.',
       role: 'Agency dev',
+      productSlug: 'multilingual-polylang'
+    },
+    {
+      img: CustomerImg02,
+      quote: "The support we’ve received from the team has been nothing short of fantastic. They are highly responsive, knowledgeable and truly willing to help when issues arise, providing detailed assistance that gets to the root of any problems.",
+      name: 'Korry N.',
+      role: 'Developer',
       productSlug: 'multilingual-polylang'
     },
     // {
