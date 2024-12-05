@@ -52,7 +52,7 @@ export default function Customers({
                     <Image className="shrink-0 rounded-full" src={testimonial.img} width={44} height={44} alt={testimonial.name} />
                     <div className="grow truncate">
                       <div className="font-bold text-gray-700 dark:text-slate-100 truncate">{testimonial.name}</div>
-                      <div className="text-sm text-blue-600 dark:text-slate-400 truncate">{testimonial.role}</div>
+                      <div className="text-sm text-blue-500 dark:text-slate-400 truncate">{testimonial.role}</div>
                       {/* <a className="text-sm text-slate-500 hover:text-slate-300 font-medium truncate transition-colors" href={testimonial.twitter.link}>{testimonial.twitter.handle}</a> */}
                     </div>
                   </div>
