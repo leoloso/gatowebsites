@@ -4,8 +4,10 @@ import React from 'react'
 
 export default function Faqs({
   faqItems,
+  leading,
 }: {
   faqItems: FAQItem[],
+  leading?: string,
 }) {
   return (
   <section className="relative">
@@ -28,7 +30,7 @@ export default function Faqs({
 
         {/* Section header */}
         <SectionHeader
-          leading="Purchasing extensions"
+          leading={leading}
           title='Frequently Asked Questions'
         />
 

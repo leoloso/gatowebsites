@@ -1,6 +1,6 @@
 import PricingSection from './pricing-section'
 import Customers from 'gatoapp/components/customers'
-import Faqs from 'gatoapp/components/faqs'
+import Faqs from '@/components/faqs'
 import Cta from '@/components/cta'
 import PricingMoneyBackGuarantee from '@/components/pricing-moneyback-guarantee'
 import { createSEOPageTitle } from '@/utils/content/metadata'
