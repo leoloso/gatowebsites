@@ -22,12 +22,13 @@ export function getTestimonials(): TestimonialItem[] {
     //   name: 'Joebe W.',
     //   role: 'Developer'
     // },
-    // {
-    //   img: CustomerImg04,
-    //   quote: "Amazing! I have translated most of my posts and pages, this was brilliant. Gato GraphQL saved me a fortune and hours of time and effort.",
-    //   name: 'Patrick T.',
-    //   role: 'Agency dev'
-    // },
+    {
+      img: CustomerImg04,
+      quote: "Amazing! I have translated most of my posts and pages, this was brilliant. It saved me a fortune and hours of time and effort.",
+      name: 'Patrick T.',
+      role: 'Agency dev',
+      productSlug: 'multilingual-polylang'
+    },
     // {
     //   img: CustomerImg06,
     //   quote: "This plugin is extraordinary, it unlocks a new world of possibilities within WordPress.",
