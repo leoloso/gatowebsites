@@ -22,7 +22,7 @@ export default function Accordion({
   }, []);
 
   return (
-    <div className="bg-cyan-100 dark:bg-gradient-to-b dark:from-gray-700/50 dark:to-gray-700/40 rounded-lg shadow shadow-black/5 py-1">
+    <div className="bg-gradient-to-tr from-cyan-200/60 to-cyan-200/30 dark:bg-gradient-to-b dark:from-gray-700/50 dark:to-gray-700/40 rounded-lg shadow shadow-black/5 py-1">
       <h2>
         <button
           className="flex items-center justify-between w-full text-left font-medium text-gray-800 dark:text-gray-200 px-4 py-2"
