@@ -54,7 +54,7 @@ export default function LinkModalVideo({
             </linearGradient>
           </defs>
         </svg>
-        <span className="text-sm font-medium leading-tight text-gray-300 ml-2">
+        <span className="text-sm font-medium leading-tight text-gray-100 dark:text-gray-300 ml-2">
           { title }
           { !! duration && (
             <>
