@@ -7,6 +7,7 @@ import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/me
 import Cta from 'gatoapp/components/cta-03'
 import SinglePlugin from './single-plugin'
 import SinglePluginPricing from './single-plugin-pricing-section'
+import { getFAQs } from '@/components/data/faqs'
 
 export async function generateStaticParams() {
   return allPlugins.map((plugin) => ({
@@ -55,6 +56,7 @@ export default async function SinglePluginPage({ params }: {
   if (pluginIndex === -1) notFound()
 
   const plugin = plugins[pluginIndex]
+  const faqItems = getFAQs()
   
   return (
     <>
@@ -73,6 +75,7 @@ export default async function SinglePluginPage({ params }: {
         
         <SinglePluginPricing
           plugin={plugin}
+          faqItems={faqItems}
         />
         
       </section>

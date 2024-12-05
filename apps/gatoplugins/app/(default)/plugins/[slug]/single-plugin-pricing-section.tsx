@@ -5,10 +5,15 @@ import Testimonial from 'gatoapp/components/testimonial'
 import { getTestimonials } from '@/components/data/testimonials'
 import Image from 'next/image'
 import Illustration from 'gatoapp/public/assets/theme/lightmode/features-illustration.svg'
+import Faqs from 'gatoapp/components/faqs'
+import FAQItem from 'gatoapp/components/data/faq-item'
+
 export default function SinglePluginPricing({
   plugin,
+  faqItems,
 }: {
   plugin: Plugin,
+  faqItems: FAQItem[],
 }) {
   const testimonials = getTestimonials()
   return (
@@ -42,6 +47,10 @@ export default function SinglePluginPricing({
       <section className="relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <PricingMoneyBackGuarantee />
+        
+          <Faqs
+            faqItems={faqItems}
+          />
 
           <Testimonial
             testimonials={testimonials}
