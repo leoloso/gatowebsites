@@ -35,6 +35,8 @@ export default function HomePluginsSection() {
 
             <Customers
               testimonials={testimonials}
+              title="People love our plugins"
+              description="Developers, plugin business owners, and agency owners say this about our plugins..."
             />
 
           </div>

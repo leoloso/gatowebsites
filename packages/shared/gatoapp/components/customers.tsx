@@ -9,8 +9,12 @@ import Illustration from 'gatoapp/public/assets/theme/lightmode/testimonial-illu
 
 export default function Customers({
   testimonials,
+  title,
+  description,
 }: {
   testimonials: TestimonialItem[],
+  title: string,
+  description: string,
 }) {
 
   const isDarkColorThemeMode = usingDarkColorThemeMode()
@@ -34,8 +38,8 @@ export default function Customers({
         <div className="py-12 md:py-20 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.blue.200),transparent)1] dark:[border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
           {/* Content */}
           <SectionHeader
-            title='People love our plugins'
-            description="Developers, plugin business owners, and agency owners say this about our plugins..."
+            title={title}
+            description={description}
           />
           
           {/* Customers */}

@@ -22,6 +22,8 @@ export default function Pricing() {
       <PricingMoneyBackGuarantee />
       <Customers
         testimonials={testimonials}
+        title="Meet our customers"
+        description='Developers, plugin business owners, and agency owners say this about our product...'
       />
       <Faqs
         faqItems={faqItems}
