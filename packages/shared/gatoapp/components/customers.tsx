@@ -5,7 +5,6 @@ import RadiantGradient from './radial-gradient'
 import SectionHeader from './section-header'
 import { TestimonialItem } from './data/testimonial-item'
 import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
-import Illustration from 'gatoapp/public/assets/theme/lightmode/testimonial-illustration.svg'
 
 export default function Customers({
   testimonials,
@@ -20,14 +19,6 @@ export default function Customers({
   const isDarkColorThemeMode = usingDarkColorThemeMode()
   return (
     <section className="relative overflow-hidden">
-      { !isDarkColorThemeMode && (
-        <>
-          {/* Illustration */}
-          <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none -z-10 mt-5" aria-hidden="true">
-            <Image className="max-w-none" src={Illustration} alt="Illustration" />
-          </div>
-        </>
-      )}
       { isDarkColorThemeMode && (
         <>
           {/* Radial gradient */}
