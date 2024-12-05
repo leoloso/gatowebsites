@@ -70,7 +70,7 @@ export default function PluginsSection({
                   video={plugin.video}
                   videoWidth={1920}
                   videoHeight={1080}
-                  duration={plugin.videoDuration}
+                  // duration={plugin.videoDuration}
                 />
               )}
             </div>
