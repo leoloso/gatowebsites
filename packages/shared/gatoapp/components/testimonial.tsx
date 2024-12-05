@@ -14,7 +14,7 @@ export default function Testimonial({
   testimonialIndex?: number,
 }) {
 
-  const testimonial = testimonialIndex !== undefined ? testimonials[testimonialIndex] : testimonials[Math.floor(Math.random() * testimonials.length)]
+  const testimonial = testimonials[testimonialIndex !== undefined ? testimonialIndex : 0/*Math.floor(Math.random() * testimonials.length)*/]
   const isDarkColorThemeMode = usingDarkColorThemeMode()
 
   return (
