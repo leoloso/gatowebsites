@@ -23,9 +23,9 @@ export default function DocumentationPage() {
 
             {/* Section header */}
             <PageHeader
-              leading='Browse the docs'
+              // leading='Browse the docs'
               title='Documentation'
-              description='Learn how to use your chosen plugin by Gato Plugins'
+              description='Browse the docs for the plugins by Gato Plugins'
             />
 
             <PluginDocList />
