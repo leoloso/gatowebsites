@@ -1,6 +1,5 @@
 import FeatureCard, { FeatureProps } from './feature-card'
 import { Feature } from 'gatoapp/types/types';
-import RadiantGradient from './radial-gradient';
 import { StaticImageData } from 'next/image';
 
 export default function UnstyledFeaturesList({
@@ -8,7 +7,6 @@ export default function UnstyledFeaturesList({
   showTopbar = true,
   showSearch = false,
   showHeading = true,
-  addRadialGradient = false,
   children,
   defaultFeatureIcon,
   bgClassname,
@@ -17,17 +15,12 @@ export default function UnstyledFeaturesList({
   showTopbar?: boolean
   showSearch?: boolean
   showHeading?: boolean
-  addRadialGradient?: boolean
   children?: React.ReactNode
   defaultFeatureIcon?: StaticImageData,
   bgClassname?: string,
 }) {
   return (
     <section className="relative">
-      {/* Radial gradient */}
-      { addRadialGradient && (
-        <RadiantGradient />
-      )}
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pb-12 md:pb-20">
           {/* Header */}
