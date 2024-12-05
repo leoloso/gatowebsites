@@ -13,6 +13,7 @@ export default function Faqs({
   leading?: string,
 }) {
   const isDarkColorThemeMode = usingDarkColorThemeMode()
+  const hasColumns = faqItems[0].column !== undefined
   return (
     <section className="relative">
       { isDarkColorThemeMode && (
@@ -41,36 +42,52 @@ export default function Faqs({
             title='Frequently Asked Questions'
           />
 
-          {/* Columns */}
-          <div className="md:flex md:space-x-12 space-y-8 md:space-y-0">
+          { hasColumns && (
+            <>
+              {/* Columns */}
+              <div className="md:flex md:space-x-12 space-y-8 md:space-y-0">
 
-            {/* Column */}
-            <div className="w-full md:w-1/2 space-y-8">
+                {/* Column */}
+                <div className="w-full md:w-1/2 space-y-8">
 
+                  {/* Items */}
+                  {faqItems.filter((faqItem) => faqItem.column === 1).map((faqItem, index) => (
+                    <div className="space-y-2" key={index}>
+                      <h4 className="font-semibold">{faqItem.question}</h4>
+                      <p className="text-gray-500 dark:text-slate-400">{faqItem.answer}</p>
+                    </div>
+                  ))}
+
+                </div>
+
+                {/* Column */}
+                <div className="w-full md:w-1/2 space-y-8">
+
+                  {/* Items */}
+                  {faqItems.filter((faqItem) => faqItem.column === 2).map((faqItem, index) => (
+                    <div className="space-y-2" key={index}>
+                      <h4 className="font-semibold">{faqItem.question}</h4>
+                      <p className="text-gray-500 dark:text-slate-400">{faqItem.answer}</p>
+                    </div>
+                  ))}
+
+                </div>
+
+              </div>
+            </>
+          )}
+
+          { !hasColumns && (
+            <div className="max-w-3xl mx-auto space-y-6">
               {/* Items */}
-              {faqItems.filter((faqItem) => faqItem.column === 1).map((faqItem, index) => (
+              {faqItems.map((faqItem, index) => (
                 <div className="space-y-2" key={index}>
                   <h4 className="font-semibold">{faqItem.question}</h4>
                   <p className="text-gray-500 dark:text-slate-400">{faqItem.answer}</p>
                 </div>
               ))}
-
             </div>
-
-            {/* Column */}
-            <div className="w-full md:w-1/2 space-y-8">
-
-              {/* Items */}
-              {faqItems.filter((faqItem) => faqItem.column === 2).map((faqItem, index) => (
-                <div className="space-y-2" key={index}>
-                  <h4 className="font-semibold">{faqItem.question}</h4>
-                  <p className="text-gray-500 dark:text-slate-400">{faqItem.answer}</p>
-                </div>
-              ))}
-
-            </div>
-
-          </div>
+          )}
 
         </div>
       </div>
