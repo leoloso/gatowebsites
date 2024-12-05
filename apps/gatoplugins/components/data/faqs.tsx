@@ -1,4 +1,4 @@
-import { FAQItem } from 'gatoapp/components/data/faq-item'
+import FAQItem from 'gatoapp/components/data/faq-item'
 
 export function getFAQs(): FAQItem[] {
 
