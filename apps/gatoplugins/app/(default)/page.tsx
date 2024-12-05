@@ -1,5 +1,4 @@
 import Hero from '@/components/hero'
-// import Cta from '@/components/cta'
 import HomePluginsSection from '@/components/home-plugins-section'
 
 export const metadata = {
@@ -15,7 +14,6 @@ export default function Home() {
         description={<span>Empower your <strong>WordPress</strong> site with <strong>Gato Plugins</strong>.</span>}
       />
       <HomePluginsSection />
-      {/* <Cta /> */}
     </>
   )
 }

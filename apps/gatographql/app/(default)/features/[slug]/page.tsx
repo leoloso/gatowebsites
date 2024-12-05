@@ -10,7 +10,7 @@ import clsx from 'clsx'
 import ArticleNavigation from 'gatoapp/components/ui/article-navigation'
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 import { getTestimonials } from '@/components/data/testimonials'
-import Cta from '@/components/cta-02'
+import CtaTryout02 from '@/components/cta-tryout-02'
 
 export async function generateStaticParams() {
   return allFeatures.map((feature) => ({
@@ -111,7 +111,7 @@ export default async function SingleFeature({ params }: {
         </ul>
       </FeatureSection>
 
-      <Cta />
+      <CtaTryout02 />
     </>
   )
 }

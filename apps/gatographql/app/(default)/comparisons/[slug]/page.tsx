@@ -7,7 +7,7 @@ import StunningBackground from 'gatoapp/components/stunning-background'
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 import { getURL } from 'gatoapp/utils/content/application-urls'
 import ArticleSchemaJsonLdScript from 'gatoapp/components/schema/article-schema-json-ld';
-import Cta from '@/components/cta-02'
+import CtaTryout02 from '@/components/cta-tryout-02'
 import PageHeader from 'gatoapp/components/page-header'
 import { allComparisonPosts } from '@/.contentlayer/generated'
 import Logo from 'gatoapp/public/assets/Gato-logo-suki.png'
@@ -145,7 +145,7 @@ export default async function SingleComparisonPost({ params }: {
           </div>
         </div>
       </section>
-      <Cta />
+      <CtaTryout02 />
     </>
   )
 }

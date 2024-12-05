@@ -5,7 +5,7 @@ import SectionHeader from './section-header'
 import { useAppConfigProvider } from 'gatoapp/app/appconfig-provider'
 import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 
-export default function Cta02({
+export default function CtaTryout02({
   tryoutProduct,
 }: {
   tryoutProduct: string
