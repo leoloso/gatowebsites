@@ -56,7 +56,7 @@ export default async function SinglePluginPage({ params }: {
   if (pluginIndex === -1) notFound()
 
   const plugin = plugins[pluginIndex]
-  const faqItems = getFAQs()
+  const faqItems = getFAQs({plugin: plugin})
   
   return (
     <>
