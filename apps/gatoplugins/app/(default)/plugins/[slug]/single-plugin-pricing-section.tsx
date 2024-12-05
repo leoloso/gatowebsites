@@ -6,15 +6,16 @@ import { getTestimonials } from '@/components/data/testimonials'
 import Image from 'next/image'
 import Illustration from 'gatoapp/public/assets/theme/lightmode/features-illustration.svg'
 import Faqs from 'gatoapp/components/faqs'
-import { getFAQs } from '@/components/data/faqs'
+import FAQItem from 'gatoapp/components/data/faq-item'
 
 export default function SinglePluginPricing({
   plugin,
+  faqItems,
 }: {
   plugin: Plugin,
+  faqItems: FAQItem[],
 }) {
   const testimonials = getTestimonials()
-  const faqItems = getFAQs()
   return (
     <>
       <section className="relative overflow-hidden">
