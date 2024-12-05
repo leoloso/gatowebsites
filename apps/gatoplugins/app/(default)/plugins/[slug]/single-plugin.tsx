@@ -7,7 +7,7 @@ import BrowsePluginDocButton from '@/components/browse-plugin-doc-button'
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 import { getPluginSectionsForPlugin } from '@/utils/content/document'
 import SectionHeader from 'gatoapp/components/section-header'
-import UnstyledFeaturesList from 'gatoapp/components/features-list-unstyled';
+import FeaturesList from 'gatoapp/components/features-list-02';
 import TickImage from 'gatoapp/public/assets/theme/tick-03.svg'
 
 export default function SinglePlugin({
@@ -76,13 +76,9 @@ export default function SinglePlugin({
                   title="Features"
                 />
                 
-                <UnstyledFeaturesList
+                <FeaturesList
                   features={plugin.features}
-                  showTopbar={false}
-                  showSearch={false}
-                  showHeading={false}
-                  defaultFeatureIcon={TickImage}
-                  bgClassname="bg-gradient-to-tr from-slate-300 to-blue-300/25"
+                  featureIcon={TickImage}
                 />
               </div>
             )}
