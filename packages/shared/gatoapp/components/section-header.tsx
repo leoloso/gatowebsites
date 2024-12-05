@@ -3,6 +3,7 @@ import clsx from "clsx";
 
 export default function SectionHeader({
   leading,
+  icon,
   title,
   description,
   children,
@@ -11,9 +12,11 @@ export default function SectionHeader({
   leadingColorClassname = "bg-clip-text text-transparent bg-gradient-to-r from-amber-100 to-amber-400 dark:from-purple-500 dark:to-purple-200",
   titleColorClassname = "text-gray-900 dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-r dark:from-slate-200/60 dark:via-slate-200 dark:to-slate-200/60",
   descriptionColorClassname = "text-gray-900 dark:text-slate-400",
+  titleClassname,
   divClassname,
 }: {
   leading?: string,
+  icon?: React.ReactNode,
   title: string,
   description?: string,
   children?: React.ReactNode,
@@ -22,6 +25,7 @@ export default function SectionHeader({
   leadingColorClassname?: string,
   titleColorClassname?: string,
   descriptionColorClassname?: string,
+  titleClassname?: string,
   divClassname?: string,
 }) {
   return (
@@ -34,7 +38,8 @@ export default function SectionHeader({
           <div className={clsx("inline-flex font-medium pb-3", leadingColorClassname)}>{leading}</div>
         </div>
       )}
-      <h2 className={clsx("h2 pb-4", titleColorClassname)}>
+      {icon}
+      <h2 className={clsx("h2 pb-4", titleColorClassname, titleClassname)}>
         {title}
       </h2>
       {description && (
