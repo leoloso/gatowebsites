@@ -1,4 +1,4 @@
-import Cta from '@/components/cta'
+import CtaTryout01 from '@/components/cta-tryout-01'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import ExtensionsSection from './extensions-section'
@@ -41,7 +41,7 @@ export default function Extensions() {
 
       </section>
 
-      <Cta />
+      <CtaTryout01 />
     </>
   )
 }

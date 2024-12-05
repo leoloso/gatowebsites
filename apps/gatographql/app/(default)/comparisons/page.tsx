@@ -1,6 +1,6 @@
 import StunningBackground from 'gatoapp/components/stunning-background'
 import PageHeader from 'gatoapp/components/page-header'
-import Cta from '@/components/cta-02'
+import CtaTryout02 from '@/components/cta-tryout-02'
 import ComparisonList from './comparison-list'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
@@ -37,7 +37,7 @@ export default function ComparisonsPage() {
         </div>
 
       </section>
-      <Cta />
+      <CtaTryout02 />
     </>
   )
 }

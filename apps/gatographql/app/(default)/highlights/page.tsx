@@ -1,6 +1,6 @@
 import { allHighlights } from '@/.contentlayer/generated'
 import HighlightItem from './highlight-item'
-import Cta from 'gatoapp/components/cta-03'
+import Cta from 'gatoapp/components/cta-newsletter'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import { sortByOrder } from 'gatoapp/utils/content/sort'
 import StunningBackground from 'gatoapp/components/stunning-background'

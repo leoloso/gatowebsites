@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import PageSection from 'gatoapp/components/sections/page'
 import { getPage, getPageMetadata } from '@/utils/content/page'
 import { getPageSlugFromPageScriptFile } from 'gatoapp/utils/content/path'
-import Cta from '@/components/cta-02'
+import CtaTryout02 from '@/components/cta-tryout-02'
 
 // Get the page slug from the folder name
 const pageSlug = getPageSlugFromPageScriptFile(__filename)
@@ -28,7 +28,7 @@ export default async function SinglePage() {
       <PageSection
         page={page}
       />
-      <Cta />
+      <CtaTryout02 />
     </>
   )
 }

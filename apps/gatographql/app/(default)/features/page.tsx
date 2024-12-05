@@ -1,6 +1,6 @@
 import FeaturesSection from './features-section'
 import FeaturesList from 'gatoapp/components/features-list'
-import Cta from '@/components/cta-02'
+import CtaTryout02 from '@/components/cta-tryout-02'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
 const pageTitle = 'Features'
@@ -14,7 +14,7 @@ export default function Features() {
     <>
       <FeaturesSection />
       <FeaturesList/>
-      <Cta />
+      <CtaTryout02 />
     </>
   )
 }
