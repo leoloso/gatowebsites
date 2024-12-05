@@ -51,7 +51,7 @@ export default function Faqs({
               {faqItems.filter((faqItem) => faqItem.column === 1).map((faqItem, index) => (
                 <div className="space-y-2" key={index}>
                   <h4 className="font-semibold">{faqItem.question}</h4>
-                  <p className="text-slate-400">{faqItem.answer}</p>
+                  <p className="text-gray-500 dark:text-slate-400">{faqItem.answer}</p>
                 </div>
               ))}
 
@@ -64,7 +64,7 @@ export default function Faqs({
               {faqItems.filter((faqItem) => faqItem.column === 2).map((faqItem, index) => (
                 <div className="space-y-2" key={index}>
                   <h4 className="font-semibold">{faqItem.question}</h4>
-                  <p className="text-slate-400">{faqItem.answer}</p>
+                  <p className="text-gray-500 dark:text-slate-400">{faqItem.answer}</p>
                 </div>
               ))}
 
