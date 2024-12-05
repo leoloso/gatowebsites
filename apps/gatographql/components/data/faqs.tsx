@@ -30,7 +30,7 @@ export function getFAQs(): FAQItem[] {
     },
     {
       question: 'What happens if I don\'t renew the yearly license?',
-      answer: <span>If you do not renew the yearly license, you can keep using the plugin, however you won\'t be able to request support, or download/install product updates.</span>,
+      answer: <span>If you do not renew the yearly license, you can keep using the plugin, however you won't be able to request support, or download/install product updates.</span>,
       column: 2,
     },
     {
