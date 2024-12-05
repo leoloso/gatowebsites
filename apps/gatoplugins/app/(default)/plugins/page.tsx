@@ -26,7 +26,7 @@ export default function Extensions() {
 
             {/*  Page header */}
             <PageHeader
-              leading='Solve your problems'
+              // leading='Solve your problems'
               title='Plugins'
               description='Our collection of super userful plugins for WordPress'
             />
