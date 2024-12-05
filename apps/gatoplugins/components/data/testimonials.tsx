@@ -13,7 +13,8 @@ export function getTestimonials(): TestimonialItem[] {
       img: CustomerImg01,
       quote: "I use Gato Multilingual to automatically translate new posts from English to several other languages with Polylang Pro + Google Translate API. Leo’s support has been next level.",
       name: 'Thomas D.',
-      role: 'Agency dev'
+      role: 'Agency dev',
+      productSlug: 'multilingual-polylang'
     },
     // {
     //   img: CustomerImg08,

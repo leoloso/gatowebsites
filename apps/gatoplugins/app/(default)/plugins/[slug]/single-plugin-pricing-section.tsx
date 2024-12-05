@@ -15,7 +15,7 @@ export default function SinglePluginPricing({
   plugin: Plugin,
   faqItems: FAQItem[],
 }) {
-  const testimonials = getTestimonials()
+  const testimonials = getTestimonials().filter((testimonial) => testimonial.productSlug === plugin.slug)
   return (
     <>
       <section className="relative overflow-hidden">
