@@ -6,7 +6,7 @@ import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 import Image from 'next/image'
 import Illustration from 'gatoapp/public/assets/theme/lightmode/cta-illustration.svg'
 
-export default function Cta({
+export default function CtaTryout01({
   tryoutProduct,
 }: {
   tryoutProduct: string

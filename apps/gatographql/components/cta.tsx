@@ -1,4 +1,4 @@
-import AppCta from 'gatoapp/components/cta'
+import AppCta from 'gatoapp/components/cta-tryout-01'
 
 export default function Cta() {
   return (
