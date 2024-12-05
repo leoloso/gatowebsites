@@ -5,7 +5,7 @@ import { getTestimonials } from '@/components/data/testimonials'
 import Cta from 'gatoapp/components/cta-03'
 
 export default function HomePluginsSection() {
-  const testimonials = getTestimonials()
+  const testimonials = getTestimonials().slice(0, 6)
   return (
     <>
       <section className="relative">
