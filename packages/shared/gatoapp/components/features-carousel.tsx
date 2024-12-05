@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Particles from 'gatoapp/components/particles'
 import Highlighter, { HighlighterItem } from 'gatoapp/components/highlighter'
 import { useAppContentProvider } from 'gatoapp/app/appcontent-provider'
+import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 
 import CarouselImg01 from 'gatoapp/public/assets/theme/carousel-icon-01.svg'
 import CarouselImg02 from 'gatoapp/public/assets/theme/carousel-icon-02.svg'
@@ -18,7 +19,6 @@ import 'swiper/swiper.min.css'
 import SectionHeader from 'gatoapp/components/section-header'
 import { sortByOrder } from 'gatoapp/utils/content/sort'
 import BrowseFeaturesButton from './browse-features-button'
-import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 
 Swiper.use([Navigation])
 
