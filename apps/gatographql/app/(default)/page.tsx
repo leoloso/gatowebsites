@@ -2,7 +2,7 @@ import Hero from '@/components/hero'
 import UseCases from '@/components/use-cases/use-cases'
 import FeaturesCarousel from 'gatoapp/components/features-carousel'
 import PricingSection from '@/components/pricing-section'
-import Cta from '@/components/cta'
+import CtaTryout01 from '@/components/cta-tryout-01'
 import HomeExtensionsSection from '@/components/home-extensions-section'
 import AppConfig from '@/app/app.config'
 
@@ -25,7 +25,7 @@ export default function Home() {
       />
       <HomeExtensionsSection />
       <PricingSection />
-      <Cta />
+      <CtaTryout01 />
     </>
   )
 }
