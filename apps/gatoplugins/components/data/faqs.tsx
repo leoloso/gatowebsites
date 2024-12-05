@@ -47,5 +47,5 @@ export function getFAQs({
     ]
   }
 
-  return []
+  throw new Error(`There are no FAQs for Plugin with slug '${plugin.slug}'`)
 }
