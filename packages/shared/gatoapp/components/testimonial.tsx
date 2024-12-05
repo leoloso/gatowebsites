@@ -30,14 +30,14 @@ export default function Testimonial({
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="relative px-8 py-12 md:py-20 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.cyan.200),transparent)1] dark:[border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
-        { isDarkColorThemeMode && (
-          <>
-            {/* Particles animation */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 w-80 h-80 -mt-6">
-              <Particles className="absolute inset-0 -z-10" quantity={10} staticity={40} /> 
-            </div>
-          </>
-        )}
+          { isDarkColorThemeMode && (
+            <>
+              {/* Particles animation */}
+              <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 w-80 h-80 -mt-6">
+                <Particles className="absolute inset-0 -z-10" quantity={10} staticity={40} /> 
+              </div>
+            </>
+          )}
           
           <div className="text-center">
             <Image
