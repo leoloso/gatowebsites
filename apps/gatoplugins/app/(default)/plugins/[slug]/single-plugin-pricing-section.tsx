@@ -50,6 +50,7 @@ export default function SinglePluginPricing({
         
           <Faqs
             faqItems={faqItems}
+            foldable={true}
           />
 
           <Testimonial

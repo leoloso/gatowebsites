@@ -4,13 +4,16 @@ import FAQItem from "./data/faq-item";
 import SectionHeader from "./section-header";
 import React from 'react'
 import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
+import Accordion from "./mdx/components/accordion-02";
 
 export default function Faqs({
   faqItems,
   leading,
+  foldable,
 }: {
   faqItems: FAQItem[],
   leading?: string,
+  foldable?: boolean
 }) {
   const isDarkColorThemeMode = usingDarkColorThemeMode()
   const hasColumns = faqItems[0].column !== undefined
@@ -82,8 +85,23 @@ export default function Faqs({
               {/* Items */}
               {faqItems.map((faqItem, index) => (
                 <div className="space-y-2" key={index}>
-                  <h4 className="font-semibold">{faqItem.question}</h4>
-                  <p className="text-gray-500 dark:text-slate-400">{faqItem.answer}</p>
+                  <>
+                    { foldable && (
+                      <Accordion
+                        title={faqItem.question}
+                        id={`faqs-${index}`}
+                        active={false}
+                      >
+                        {faqItem.answer}
+                      </Accordion>
+                    )}
+                    { !foldable && (
+                      <>
+                        <h4 className="font-semibold">{faqItem.question}</h4>
+                        <p className="text-gray-500 dark:text-slate-400">{faqItem.answer}</p>
+                      </>
+                    )}
+                  </>
                 </div>
               ))}
             </div>
