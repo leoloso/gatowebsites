@@ -11,6 +11,7 @@ import BlogPostingSchemaJsonLdScript from 'gatoapp/components/schema/blogposting
 import CampaignBanner from 'gatoapp/components/campaigns/campaign-banner'
 import AppSettings from 'gatoapp/app/app.settings'
 import { BlogPost } from 'gatoapp/types/types'
+import PageHeader from '../page-header'
 
 export default function BlogSinglePost({
   blogPost
@@ -45,10 +46,11 @@ export default function BlogSinglePost({
               <article>
 
                 {/* Article header */}
-                <header className="max-w-3xl mx-auto mb-20">
-                  {/* Title */}
-                  <h1 className="h1 text-center mb-4">{blogPost.title}</h1>
-                </header>
+                <PageHeader
+                  leading="Blog"
+                  title={blogPost.title}
+                  titleClassname="" // Pass empty so that the emojis are not cut
+                />
 
                 {/* Article content */}
                 <div className="lg:flex lg:justify-between">
