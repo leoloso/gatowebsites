@@ -3,7 +3,7 @@ import { Plugin } from '@/.contentlayer/generated'
 
 export default function BrowsePluginDocButton({
   btnClassName = "btn",
-  styleClassname = "text-slate-900 bg-slate-200 hover:bg-white transition duration-150 ease-in-out group w-full",
+  styleClassname = "text-slate-100 bg-slate-700 hover:bg-blue-700 transition duration-150 ease-in-out group w-full",
   plugin,
 }: {
   btnClassName?: string
