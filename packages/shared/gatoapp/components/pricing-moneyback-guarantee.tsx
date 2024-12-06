@@ -51,23 +51,24 @@ export default function PricingMoneyBackGuarantee({
 
           {/* Rings illustration */}
           <div className="text-center">
+            { isDarkColorThemeMode && (
               <div className="inline-flex items-center justify-center relative">
-                { isDarkColorThemeMode && (
-                  <>
-                    {/* Particles animation */}
-                    <Particles className="absolute inset-0 -z-10" quantity={10} />
-                  </>
-                )}
+                {/* Particles animation */}
+                <Particles className="absolute inset-0 -z-10" quantity={10} />
                 <div className="inline-flex">
                   <Image src={Illustration} width="334" height="334" alt="Features illustration" />
                 </div>
-                { isDarkColorThemeMode && (
-                  <Image className="absolute -mt-[40%]" src={IllustrationTop} width="396" height="328" alt="Features illustration top" aria-hidden="true" />
-                )}
+                <Image className="absolute -mt-[40%]" src={IllustrationTop} width="396" height="328" alt="Features illustration top" aria-hidden="true" />
                 <div className="absolute w-[200%] flex items-center justify-center space-x-5">
                   <Image src={MoneyBackGuaranteePic} width={175} height={129} alt="Money back guarantee" />
                 </div>
               </div>
+            )}
+            { !isDarkColorThemeMode && (
+              <div className="flex items-center justify-center space-x-5">
+                <Image src={MoneyBackGuaranteePic} width={175} height={129} alt="Money back guarantee" />
+              </div>
+            )}
           </div>
 
         </div>
