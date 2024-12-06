@@ -32,8 +32,7 @@ export default function HeroAbout({
             leading="The folks behind the product"
             title={title}
             paddingClassname='pb-6'
-          />
-            
+          />            
 
           {/* Hero content */}
           <div className="text-center">
