@@ -16,7 +16,7 @@ export default function BlogPostItem({ post }: {
             <Link href={post.urlPath} className="dark:text-slate-300 hover:text-blue-600 dark:hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
           </h2>
         </header>
-        <div className="text-lg text-slate-400 mb-4">{post.description}</div>
+        <div className="text-lg text-cyan-800 dark:text-slate-400 mb-4">{post.description}</div>
         <footer className="text-sm md:flex md:items-center md:justify-between">
           <div className="flex items-center">
             <div className="flex shrink-0 mr-3">
