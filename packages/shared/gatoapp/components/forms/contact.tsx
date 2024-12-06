@@ -42,12 +42,12 @@ export default function ContactForm({
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
-          <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1" htmlFor="name">Name <span className="text-red-600">*</span></label>
+          <label className="block text-gray-600 dark:text-gray-300 font-medium mb-1" htmlFor="name">Name <span className="text-red-600">*</span></label>
           <input
             id="name"
             name="name"
             type="text"
-            className="form-input w-full text-gray-700 dark:text-gray-300"
+            className="form-input w-full text-gray-600 dark:text-gray-300"
             placeholder="Enter your name"
             required
             readOnly={!isFormEnabled}
@@ -56,12 +56,12 @@ export default function ContactForm({
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
-          <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
+          <label className="block text-gray-600 dark:text-gray-300 font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
           <input
             id="email"
             name="email"
             type="email"
-            className="form-input w-full text-gray-700 dark:text-gray-300"
+            className="form-input w-full text-gray-600 dark:text-gray-300"
             placeholder="Enter your email address"
             required
             readOnly={!isFormEnabled}
@@ -70,12 +70,12 @@ export default function ContactForm({
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
-          <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1" htmlFor="subject">Subject <span className="text-red-600">*</span></label>
+          <label className="block text-gray-600 dark:text-gray-300 font-medium mb-1" htmlFor="subject">Subject <span className="text-red-600">*</span></label>
           <input
             id="subject"
             name="subject"
             type="text"
-            className="form-input w-full text-gray-700 dark:text-gray-300"
+            className="form-input w-full text-gray-600 dark:text-gray-300"
             placeholder="How can we help you?"
             required
             readOnly={!isFormEnabled}
@@ -84,11 +84,11 @@ export default function ContactForm({
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
-          <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1" htmlFor="topic">Topic</label>
+          <label className="block text-gray-600 dark:text-gray-300 font-medium mb-1" htmlFor="topic">Topic</label>
           <select
             id="topic"
             name="topic"
-            className="form-select w-full text-gray-700 dark:text-gray-300"
+            className="form-select w-full text-gray-600 dark:text-gray-300"
             disabled={!isFormEnabled}
           >
             {options.map((option, index) => (
@@ -99,12 +99,12 @@ export default function ContactForm({
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
-          <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1" htmlFor="message">Message <span className="text-red-600">*</span></label>
+          <label className="block text-gray-600 dark:text-gray-300 font-medium mb-1" htmlFor="message">Message <span className="text-red-600">*</span></label>
           <textarea
             id="message"
             name="message"
             rows={4}
-            className="form-textarea w-full text-gray-700 dark:text-gray-300"
+            className="form-textarea w-full text-gray-600 dark:text-gray-300"
             placeholder="Write your message"
             required
             readOnly={!isFormEnabled}
