@@ -62,17 +62,17 @@ export default function PricingTier({
             { productName }
           </div>
         )}
-        <div className="mb-4 grow text-sm text-slate-400">
+        <div className="mb-4 grow text-sm text-slate-300 dark:text-slate-400">
           License for <span className="text-slate-200 font-bold">{tierDomainNumber} domains</span>
         </div>
-        <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-purple-700 hover:bg-purple-800' : (isFree ? 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white' : 'text-white bg-purple-500 hover:bg-purple-600')} ${buttonClassname}`} href={buttonURL} target={buttonTarget}>
-          {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-purple-500' : (isFree ? 'text-purple-500' : 'text-purple-300')}`}>-&gt;</span>
+        <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-blue-700 hover:bg-blue-800 dark:bg-purple-700 dark:hover:bg-purple-800' : (isFree ? 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white' : 'text-white bg-blue-500 hover:bg-blue-600 dark:bg-purple-500 dark:hover:bg-purple-600')} ${buttonClassname}`} href={buttonURL} target={buttonTarget}>
+          {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-blue-500 dark:text-purple-500' : (isFree ? 'text-blue-500 dark:text-purple-500' : 'text-blue-700 dark:text-purple-300')}`}>-&gt;</span>
         </a>
       </div>
-      <ul className="grow space-y-2 text-sm text-slate-400">
+      <ul className="grow space-y-2 text-sm text-slate-300 dark:text-slate-400">
         <li className="flex items-center">
           <svg
-            className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-emerald-500 dark:text-purple-500"
             viewBox="0 0 12 12"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -82,7 +82,7 @@ export default function PricingTier({
         </li>
         <li className="flex items-center">
           <svg
-            className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-emerald-500 dark:text-purple-500"
             viewBox="0 0 12 12"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -97,7 +97,7 @@ export default function PricingTier({
         </li>
         <li className="flex items-center">
           <svg
-            className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-emerald-500 dark:text-purple-500"
             viewBox="0 0 12 12"
             xmlns="http://www.w3.org/2000/svg"
           >
