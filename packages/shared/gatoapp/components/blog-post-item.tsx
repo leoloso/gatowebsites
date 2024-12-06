@@ -26,9 +26,9 @@ export default function BlogPostItem({ post }: {
               </span>
             </div>
             <div>
-              <span className="text-slate-400">By </span>
+              <span className="text-gray-500 dark:text-slate-400">By </span>
               <span className="font-medium">{post.author}</span>
-              <span className="text-slate-400"> · <PostDate dateString={post.publishedAt} /></span>
+              <span className="text-gray-500 dark:text-slate-400"> · <PostDate dateString={post.publishedAt} /></span>
             </div>
           </div>
           <div className="flex md:justify-center mt-4 md:mt-0 items-center mb-6 md:mb-0 md:ml-4">
