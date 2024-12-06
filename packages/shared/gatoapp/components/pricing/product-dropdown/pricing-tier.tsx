@@ -91,7 +91,7 @@ export default function PricingTier({
           <span>
             Support
             { isLTD && (
-              <span className="text-purple-400"> (forever)</span>
+              <span className="text-blue-400 dark:text-purple-400"> (forever)</span>
             )}
           </span>
         </li>
@@ -105,7 +105,7 @@ export default function PricingTier({
           </svg>
           <span>Product updates
             { isLTD && (
-              <span className="text-purple-400"> (forever)</span>
+              <span className="text-blue-400 dark:text-purple-400"> (forever)</span>
             )}
           </span>
         </li>
