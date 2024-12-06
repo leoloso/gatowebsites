@@ -25,7 +25,9 @@ export default function Thumb({
     <div
       className={clsx("relative w-full h-full z-20 overflow-hidden", bgClassname, !bgClassname && isDarkColorThemeMode && "bg-gradient-to-tr from-slate-900 to-violet-900", !bgClassname && !isDarkColorThemeMode && "bg-gradient-to-tr from-blue-400 to-violet-500 text-white", paddingClassname, extraThumbClassname)}
     >
-      <Particles className="absolute inset-0 -z-10" quantity={numberParticles} />
+      { isDarkColorThemeMode && (
+        <Particles className="absolute inset-0 -z-10" quantity={numberParticles} />
+      )}
 
       { !isDarkColorThemeMode && (
         <StunningBackground
