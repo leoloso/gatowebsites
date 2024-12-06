@@ -1,9 +1,13 @@
+'use client'
+
 import Image, { StaticImageData } from 'next/image'
 import AboutIllustration from 'gatoapp/public/assets/theme/darkmode/about-illustration.svg'
 import Icon from 'gatoapp/public/assets/theme/about-icon.png'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import WithLogoThumb from 'gatoapp/components/thumbnails/with-logo-thumb'
 import PageHeader from './page-header'
+import { style1, style2 } from './thumbnails/thumb'
+import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 
 export default function HeroAbout({
   title,
@@ -20,6 +24,7 @@ export default function HeroAbout({
   svgImage?: StaticImageData,
   logoImage?: StaticImageData,
 }) {
+  const isDarkColorThemeMode = usingDarkColorThemeMode()
   return (
     <section className="relative">
 
@@ -53,13 +58,14 @@ export default function HeroAbout({
             {includeThumbnail && (
               <div className="mb-8 aspect-video">
                 <WithLogoThumb
-                  bgClassname="h-full bg-gradient-to-tr from-slate-800 to-blue-800 dark:from-slate-900 dark:to-blue-900 rounded border-transparent rounded-2xl shadow-2xl"
+                  bgClassname="h-full dark:bg-gradient-to-tr dark:from-slate-900 dark:to-blue-900 rounded border-transparent rounded-2xl shadow-2xl"
                   targetImageSources={targetImageSources}
                   reverseItems={true}
                   logoImage={logoImage}
                   svgImage={svgImage}
                   svgClassname="px-8 opacity-70"
                   isLandscape={true}
+                  applyStyle={isDarkColorThemeMode ? style1 : style2}
                 />
               </div>
             )}
