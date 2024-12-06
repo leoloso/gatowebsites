@@ -9,7 +9,7 @@ export default function BlogPostItem({ post }: {
   post: BlogPost
 }) {
   return (
-    <article className="flex items-center pt-4 pb-8 mb-4 border-b border-gray-300 dark:border-slate-200 [&:last-child]:border-b-0">
+    <article className="flex items-center pt-4 pb-8 mb-4 border-b border-sky-200 dark:border-slate-200 [&:last-child]:border-b-0">
       <div className='w-full'>
         <header>
           <h2 className="h4 mb-2">
