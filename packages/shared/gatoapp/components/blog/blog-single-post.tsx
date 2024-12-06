@@ -92,8 +92,8 @@ export default function BlogSinglePost({
 
                     <div className="text-lg text-gray-600">
                       <div className="mt-8">
-                        <Link href={`/${AppConfig.paths.blog}`} className="inline-flex items-center text-base text-blue-600 font-medium hover:underline">
-                          <svg className="w-3 h-3 fill-current text-blue-400 shrink-0 mr-2" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                        <Link href={`/${AppConfig.paths.blog}`} className="inline-flex items-center text-base text-purple-500 hover:text-purple-700 dark:text-blue-500 dark:hover:text-blue-400 font-medium">
+                          <svg className="w-3 h-3 fill-current text-purple-400 dark:text-blue-400 shrink-0 mr-2" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                             <path d="M.293 5.282L5 .5l1.414 1.436-3 3.048H12v2.032H3.414l3 3.048L5 11.5.293 6.718a1.027 1.027 0 010-1.436z" />
                           </svg>
                           <span>Back to all posts</span>
