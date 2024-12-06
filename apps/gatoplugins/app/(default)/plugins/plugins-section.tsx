@@ -47,7 +47,7 @@ export default function PluginsSection({
 
   return (
     <div className={clsx("pb-12 md:pb-20", applyStyle === style3 && "max-w-[352px] mx-auto sm:max-w-[728px] lg:max-w-none")}>
-      <div className={clsx(applyStyle === style3 && "grid gap-6 sm:grid-cols-2 lg:grid-cols-3")}>
+      <div className={clsx(applyStyle === style3 && "grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3")}>
 
         {/* Plugins */}
         {plugins.map((plugin, index) => (
