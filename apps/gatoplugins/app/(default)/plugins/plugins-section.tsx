@@ -58,7 +58,7 @@ export default function PluginsSection({
                 className={clsx("relative block group", alternateColumns && index % 2 === 1 ? 'md:order-last' : '')}
               >
                 { applyThumbEffect === svgEffect1 && (
-                  <div className="absolute inset-0 bg-gray-700 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
+                  <div className="absolute inset-0 bg-gray-300 dark:bg-gray-700 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
                 )}
                 <div className={clsx("relative", applyThumbEffect === svgEffect1 && "overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out")}>
                   <PluginThumb
