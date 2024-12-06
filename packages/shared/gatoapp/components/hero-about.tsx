@@ -53,7 +53,7 @@ export default function HeroAbout({
             {includeThumbnail && (
               <div className="mb-8 aspect-video">
                 <WithLogoThumb
-                  bgClassname="h-full bg-gradient-to-tr from-slate-900 to-blue-900 rounded border-transparent rounded-2xl shadow-2xl"
+                  bgClassname="h-full bg-gradient-to-tr from-slate-800 to-blue-800 dark:from-slate-900 dark:to-blue-900 rounded border-transparent rounded-2xl shadow-2xl"
                   targetImageSources={targetImageSources}
                   reverseItems={true}
                   logoImage={logoImage}
