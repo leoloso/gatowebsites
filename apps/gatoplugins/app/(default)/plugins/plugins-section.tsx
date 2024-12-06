@@ -1,4 +1,4 @@
-import { allPlugins } from '@/.contentlayer/generated'
+import { allPlugins, Plugin } from '@/.contentlayer/generated'
 import Link from 'next/link'
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 import PluginThumb from '@/components/plugin-thumb'
@@ -12,14 +12,19 @@ export const style1 = 1;
 export const style2 = 2;
 export const style3 = 3;
 
+export const linkToPlugin = 1;
+export const linkToPluginDoc = 2;
+
 export default function PluginsSection({
   alternateColumns = false,
   applyThumbEffect = svgEffect1,
   applyStyle = style1,
+  linkTarget = linkToPlugin,
 }: {
   alternateColumns?: boolean,
   applyThumbEffect?: number,
   applyStyle?: number,
+  linkTarget?: number,
 }) {
 
   const plugins = allPlugins.sort(sortByOrderAndTitle)
@@ -33,6 +38,13 @@ export default function PluginsSection({
     "bg-indigo-900 group-hover:bg-indigo-700",
   ]
 
+  function getPluginLink(plugin: Plugin) {
+    if (linkTarget === linkToPlugin) {
+      return plugin.urlPath;
+    }
+    return plugin.docUrlPath;
+  }
+
   return (
     <div className={clsx("pb-12 md:pb-20", applyStyle === style3 && "max-w-[352px] mx-auto sm:max-w-[728px] lg:max-w-none")}>
       <div className={clsx(applyStyle === style3 && "grid gap-6 sm:grid-cols-2 lg:grid-cols-3")}>
@@ -42,7 +54,7 @@ export default function PluginsSection({
           <div className={clsx(applyStyle === style1 && "pb-12 md:pb-20", applyStyle === style2 && "pb-8 md:pb-12")} key={index}>
             <article className={clsx((applyStyle === style1 || applyStyle === style2) && "max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center")}>
               <Link
-                href={plugin.urlPath}
+                href={getPluginLink(plugin)}
                 className={clsx("relative block group", alternateColumns && index % 2 === 1 ? 'md:order-last' : '')}
               >
                 { applyThumbEffect === svgEffect1 && (
@@ -62,7 +74,7 @@ export default function PluginsSection({
               <div>
                 <header>
                   <h3 className={clsx(applyStyle === style1 && "h3 mb-2 text-2xl lg:text-3xl", applyStyle === style2 && "h3 mb-2 text-2xl", applyStyle === style3 && "h3 mt-2 text-2xl")}>
-                    <Link href={plugin.urlPath} className="hover:text-blue-400 transition duration-150 ease-in-out">{plugin.title}</Link>
+                    <Link href={getPluginLink(plugin)} className="hover:text-blue-400 transition duration-150 ease-in-out">{plugin.title}</Link>
                   </h3>
                 </header>
                 { (applyStyle === style1 || applyStyle === style2) && (
