@@ -13,7 +13,7 @@ export default function BlogPostItem({ post }: {
       <div className='w-full'>
         <header>
           <h2 className="h4 mb-2">
-            <Link href={post.urlPath} className="text-slate-300 hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
+            <Link href={post.urlPath} className="dark:text-slate-300 hover:text-blue-600 dark:hover:text-purple-400 transition duration-150 ease-in-out">{post.title}</Link>
           </h2>
         </header>
         <div className="text-lg text-slate-400 mb-4">{post.description}</div>
