@@ -30,12 +30,12 @@ export default function PluginsSection({
   const plugins = allPlugins.sort(sortByOrderAndTitle)
 
   const bgClassnames = [
-    "bg-purple-900 group-hover:bg-purple-700",
-    "bg-sky-900 group-hover:bg-sky-700",
-    "bg-blue-900 group-hover:bg-blue-700",
-    "bg-cyan-900 group-hover:bg-cyan-700",
-    "bg-violet-900 group-hover:bg-violet-700",
-    "bg-indigo-900 group-hover:bg-indigo-700",
+    "bg-purple-500 group-hover:bg-purple-400",
+    "bg-sky-500 group-hover:bg-sky-400",
+    "bg-blue-500 group-hover:bg-blue-400",
+    "bg-cyan-500 group-hover:bg-cyan-400",
+    "bg-violet-500 group-hover:bg-violet-400",
+    "bg-indigo-500 group-hover:bg-indigo-400",
   ]
 
   function getPluginLink(plugin: Plugin) {
