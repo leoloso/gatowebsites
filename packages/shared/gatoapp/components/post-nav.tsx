@@ -71,10 +71,10 @@ export default function PostNav({
             <li key={linkIndex} className="py-1">
               <a
                 data-scrollspy-link
-                className="flex items-center hover:text-slate-600 dark:hover:text-white"
+                className="flex items-center"
                 href={`#${link.id}`}
               >
-                <svg className="w-4 h-4 fill-current text-gray-400 mr-3 shrink-0" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-4 h-4 fill-current text-gray-400 dark:text-slate-400 mr-3 shrink-0" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7.3 8.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0zM7.3 14.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0zM.3 9.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0z" />
                 </svg>                
                 <span>{link.innerText}</span>
