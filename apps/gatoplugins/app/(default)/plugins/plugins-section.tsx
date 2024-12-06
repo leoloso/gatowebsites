@@ -35,12 +35,12 @@ export default function PluginsSection({
 
   return (
     <div className={clsx("pb-12 md:pb-20", applyStyle === style3 && "max-w-[352px] mx-auto sm:max-w-[728px] lg:max-w-none")}>
-      <div className={clsx(applyStyle === style3 && "grid gap-6 sm:grid-cols-2 lg:grid-cols-3 group")}>
+      <div className={clsx(applyStyle === style3 && "grid gap-6 sm:grid-cols-2 lg:grid-cols-3")}>
 
         {/* Plugins */}
         {plugins.map((plugin, index) => (
           <div className={clsx(applyStyle === style1 && "pb-12 md:pb-20", applyStyle === style2 && "pb-8 md:pb-12")} key={index}>
-            <article className="max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
+            <article className={clsx((applyStyle === style1 || applyStyle === style2) && "max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center")}>
               <Link
                 href={plugin.urlPath}
                 className={clsx("relative block group", alternateColumns && index % 2 === 1 ? 'md:order-last' : '')}
