@@ -59,7 +59,7 @@ export default function PluginPricing({
           productNameClassname={ "text-blue-300" }
         />
       </div>
-      <p className="text-sm text-slate-500 pt-4 pb-4 font-bold text-center">
+      <p className="text-sm text-gray-300 pt-4 pb-4 font-bold text-center">
         The license is for 1 year (renewable every year). Prices are in USD.
       </p>
     </div>
