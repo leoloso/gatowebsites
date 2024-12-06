@@ -20,12 +20,12 @@ export default function DemoPostList({
   const firstPostPos = (currentPage - 1) * AppSettings.postsPerPage.demos
 
   const bgClassnames = [
-    "bg-purple-900",
-    "bg-sky-700",
-    "bg-blue-900",
-    "bg-cyan-700",
-    "bg-indigo-900",
-    "bg-violet-700",
+    "bg-purple-600 dark:bg-purple-900",
+    "bg-sky-500 dark:bg-sky-700",
+    "bg-blue-600 dark:bg-blue-900",
+    "bg-cyan-500 dark:bg-cyan-700",
+    "bg-indigo-600 dark:bg-indigo-900",
+    "bg-violet-500 dark:bg-violet-700",
   ]
 
 // Pagination

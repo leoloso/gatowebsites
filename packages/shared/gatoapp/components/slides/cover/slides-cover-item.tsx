@@ -24,7 +24,7 @@ export default function SlidesCoverItem({
       className='aspect-video'
     >
       <Thumb
-        bgClassname={bgClassname || clsx('bg-gradient-to-tr', isDarkColorThemeMode && 'from-slate-900 to-blue-900', !isDarkColorThemeMode && 'from-teal-500 to-violet-500 text-indigo-100')}
+        bgClassname={bgClassname || clsx('bg-gradient-to-tr', isDarkColorThemeMode && 'from-slate-900 to-blue-900', !isDarkColorThemeMode && 'from-blue-600 to-cyan-300 text-white')}
         numberParticles={20}
       >
         <div className={thumbClassname}>

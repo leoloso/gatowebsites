@@ -30,12 +30,13 @@ export default function PluginsSection({
   const plugins = allPlugins.sort(sortByOrderAndTitle)
 
   const bgClassnames = [
-    "bg-purple-900 group-hover:bg-purple-700",
-    "bg-sky-900 group-hover:bg-sky-700",
-    "bg-blue-900 group-hover:bg-blue-700",
-    "bg-cyan-900 group-hover:bg-cyan-700",
-    "bg-violet-900 group-hover:bg-violet-700",
-    "bg-indigo-900 group-hover:bg-indigo-700",
+    "bg-purple-500 group-hover:bg-purple-400",
+    "bg-indigo-500 group-hover:bg-indigo-400",
+    "bg-blue-500 group-hover:bg-blue-400",
+    "bg-sky-500 group-hover:bg-sky-400",
+    "bg-cyan-500 group-hover:bg-cyan-400",
+    "bg-teal-500 group-hover:bg-teal-400",
+    "bg-violet-500 group-hover:bg-violet-400",
   ]
 
   function getPluginLink(plugin: Plugin) {
@@ -58,7 +59,7 @@ export default function PluginsSection({
                 className={clsx("relative block group", alternateColumns && index % 2 === 1 ? 'md:order-last' : '')}
               >
                 { applyThumbEffect === svgEffect1 && (
-                  <div className="absolute inset-0 bg-gray-700 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
+                  <div className="absolute inset-0 bg-gray-300 dark:bg-gray-700 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
                 )}
                 <div className={clsx("relative", applyThumbEffect === svgEffect1 && "overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out")}>
                   <PluginThumb
