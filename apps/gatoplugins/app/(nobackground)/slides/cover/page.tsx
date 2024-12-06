@@ -2,6 +2,7 @@ import SlidesCover from 'gatoapp/components/slides/cover/slides-cover'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import Logo from '@/public/assets/GatoPlugins-logo-suki-text-square.webp'
 import Image from 'next/image'
+import { style2 } from 'gatoapp/components/thumbnails/thumb'
 
 const pageTitle = 'Slides Cover'
 export const metadata = {
@@ -16,6 +17,7 @@ export default function AppSlidesCover() {
   return (
     <SlidesCover
       logo={logo}
+      applyStyle={style2}
     />
   )
 }

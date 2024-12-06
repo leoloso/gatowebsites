@@ -24,6 +24,7 @@ export default function ProductThumb({
   skipGatoLogo=false,
   logoClassname,
   leadingTitle,
+  applyStyle,
 }: {
   product: ProductProps,
   paddingClassname?: string,
@@ -40,6 +41,7 @@ export default function ProductThumb({
   skipGatoLogo?: boolean,
   logoClassname?: string,
   leadingTitle?: string,
+  applyStyle?: number,
 }) {
   return (
     <WithLogoThumb
@@ -60,6 +62,7 @@ export default function ProductThumb({
       reverseItems={reverseItems}
       svgClassname={svgClassname}
       logoClassname={logoClassname}
+      applyStyle={applyStyle}
     />
   )
 }

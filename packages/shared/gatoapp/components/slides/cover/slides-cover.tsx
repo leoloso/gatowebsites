@@ -4,8 +4,10 @@ import React from 'react'
 
 export default function SlidesCover({
   logo,
+  applyStyle,
 }: {
   logo: React.ReactNode,
+  applyStyle?: number,
 }) {
 
   return (
@@ -19,6 +21,7 @@ export default function SlidesCover({
             <Suspense>
               <SlidesCoverItem
                 logo={logo}
+                applyStyle={applyStyle}
               />
             </Suspense>
           </div>
