@@ -1,6 +1,5 @@
 import Hero from 'gatoapp/components/hero-about'
 import Story from 'gatoapp/components/story'
-import Cta from 'gatoapp/components/cta-newsletter'
 import AboutPageSchemaJsonLdScript from 'gatoapp/components/schema/aboutpage-schema-json-ld'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import WordPressLogo from '@/public/assets/external-logos/wordpress-logo.svg'
@@ -33,7 +32,6 @@ export default function About() {
 
       <Story includeHeader={true} />
       
-      <Cta />
     </>
   )
 }

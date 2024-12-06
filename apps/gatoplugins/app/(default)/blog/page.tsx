@@ -1,5 +1,4 @@
 import StunningBackground from 'gatoapp/components/stunning-background'
-import Newsletter from 'gatoapp/components/newsletter'
 import BlogSchemaJsonLdScript from 'gatoapp/components/schema/blog-schema-json-ld'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import BlogSection from 'gatoapp/components/blog/blog-section'
@@ -37,7 +36,6 @@ export default function Blog() {
           />
         </Suspense>
       </section>
-      <Newsletter label="Want more posts & tutorials?" />
     </>
   )
 }

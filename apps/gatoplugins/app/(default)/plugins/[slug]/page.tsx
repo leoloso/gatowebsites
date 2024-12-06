@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import { sortByOrderAndTitle } from 'gatoapp/utils/content/sort'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
-import Cta from 'gatoapp/components/cta-newsletter'
 import SinglePlugin from './single-plugin'
 import SinglePluginPricing from './single-plugin-pricing-section'
 import { getFAQs } from '@/components/data/faqs'
@@ -59,28 +58,24 @@ export default async function SinglePluginPage({ params }: {
   const faqItems = getFAQs({plugin: plugin})
   
   return (
-    <>
-      <section className="relative">
+    <section className="relative">
 
-        <StunningBackground />
+      <StunningBackground />
 
-        <div className="pb-12 md:pb-20"> 
+      <div className="pb-12 md:pb-20"> 
 
-          <SinglePlugin
-            plugin={plugin}
-            // printIntegrations={false}
-          />
-
-        </div>
-        
-        <SinglePluginPricing
+        <SinglePlugin
           plugin={plugin}
-          faqItems={faqItems}
+          // printIntegrations={false}
         />
-        
-      </section>
 
-      <Cta />
-    </>
+      </div>
+      
+      <SinglePluginPricing
+        plugin={plugin}
+        faqItems={faqItems}
+      />
+      
+    </section>
   )
 }

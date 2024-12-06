@@ -4,7 +4,6 @@ import {
 } from '@/.contentlayer/generated'
 import { notFound } from 'next/navigation'
 import BlogSinglePost from 'gatoapp/components/blog/blog-single-post'
-import Newsletter from 'gatoapp/components/newsletter'
 import { sortByPublishedAt } from 'gatoapp/utils/content/sort'
 import generateAppRssFeed from '@/utils/rss'
 import { createSEOPageTitle, createOpenGraphPageTitle } from '@/utils/content/metadata'
@@ -61,11 +60,8 @@ export default async function SinglePost({ params }: {
   const blogPost = blogPosts[blogPostIndex]
   
   return (
-    <>
-      <BlogSinglePost
-        blogPost={blogPost}
-      />
-      <Newsletter label="Want more posts & tutorials?" />
-    </>
+    <BlogSinglePost
+      blogPost={blogPost}
+    />
   )
 }
