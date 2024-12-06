@@ -38,7 +38,7 @@ export default function PricingTier({
             Popular
           </div>
         )} */}
-        <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-200 dark:from-purple-500 dark:to-purple-200 pb-0.5">
+        <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-100 dark:from-purple-500 dark:to-purple-200 pb-0.5">
           {tierName}
         </div>
         <div className="flex items-baseline gap-2">
