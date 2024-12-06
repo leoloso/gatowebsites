@@ -61,7 +61,7 @@ export default function PluginsSection({
               </Link>
               <div>
                 <header>
-                  <h3 className={clsx(applyStyle === style1 && "h3 mb-2 text-2xl lg:text-3xl", applyStyle === style2 && "h3 mb-2 text-2xl")}>
+                  <h3 className={clsx(applyStyle === style1 && "h3 mb-2 text-2xl lg:text-3xl", (applyStyle === style2 || applyStyle === style3) && "h3 mb-2 text-2xl")}>
                     <Link href={plugin.urlPath} className="hover:text-blue-400 transition duration-150 ease-in-out">{plugin.title}</Link>
                   </h3>
                 </header>
