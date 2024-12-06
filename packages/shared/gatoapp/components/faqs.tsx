@@ -37,7 +37,7 @@ export default function Faqs({
       )}
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="py-12 md:py-20 mb-8 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.cyan.200),transparent)1] dark:[border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
+        <div className="py-12 md:py-20 mb-8 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.cyan.400),transparent)1] dark:[border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
           {/* Section header */}
           <SectionHeader

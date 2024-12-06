@@ -28,7 +28,7 @@ export default function Testimonial({
         </>
       )}
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <div className="relative px-8 py-12 md:py-20 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.cyan.200),transparent)1] dark:[border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
+        <div className="relative px-8 py-12 md:py-20 border-t [border-image:linear-gradient(to_right,transparent,theme(colors.cyan.400),transparent)1] dark:[border-image:linear-gradient(to_right,transparent,theme(colors.slate.800),transparent)1]">
 
           { isDarkColorThemeMode && (
             <>
