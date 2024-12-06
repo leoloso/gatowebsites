@@ -11,7 +11,7 @@ export default function ModalVideoTitle({
     <>
       {!! title && (
         <p
-          className={clsx("absolute bottom-0 text-slate-300 mb-4 sm:text-lg md:text-xl sm:mb-8 md:mb-12", extraClassname)}
+          className={clsx("absolute bottom-0 text-slate-100 dark:text-slate-300 mb-4 sm:text-lg md:text-xl sm:mb-8 md:mb-12", extraClassname)}
           // data-aos="fade-down"
           // data-aos-delay="200"
         >
