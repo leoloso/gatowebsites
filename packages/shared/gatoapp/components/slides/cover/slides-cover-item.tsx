@@ -10,10 +10,12 @@ export default function SlidesCoverItem({
   logo,
   thumbClassname,
   bgClassname,
+  applyStyle,
 }: {
   logo: React.ReactNode,
   thumbClassname?: string,
   bgClassname?: string,
+  applyStyle?: number,
 }) {
   const searchParams = useSearchParams();
   const title = searchParams.get('title') || '(Undefined title / Please pass param ?title=...)'
@@ -26,6 +28,7 @@ export default function SlidesCoverItem({
       <Thumb
         bgClassname={bgClassname || clsx('bg-gradient-to-tr', isDarkColorThemeMode && 'from-slate-900 to-blue-900', !isDarkColorThemeMode && 'from-blue-600 to-cyan-300 text-white')}
         numberParticles={20}
+        applyStyle={applyStyle}
       >
         <div className={thumbClassname}>
           <h1 className='h1 text-center leading-[5rem] text-[4.5rem] mb-16 max-w-5xl'>
