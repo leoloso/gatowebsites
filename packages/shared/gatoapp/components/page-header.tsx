@@ -19,7 +19,7 @@ export default function PageHeader({
     <div className={`max-w-3xl mx-auto text-center ${clsx(paddingClassname, headerClassname)}`}>
       {leading && (
         <div>
-          <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-700 to-fuchsia-400 dark:from-purple-500 dark:to-purple-200 pb-3">{leading}</div>
+          <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-cyan-700 to-cyan-400 dark:from-purple-500 dark:to-purple-200 pb-3">{leading}</div>
         </div>
       )}
       <h1 className="h1 pb-4 dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-r dark:from-slate-200/60 dark:via-slate-200 dark:to-slate-200/60">{title}</h1>
