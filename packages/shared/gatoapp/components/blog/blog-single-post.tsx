@@ -71,9 +71,9 @@ export default function BlogSinglePost({
                           </span>
                         </div>
                         <div>
-                          <span className="text-gray-500">By </span>
+                          <span className="text-gray-500 dark:text-slate-400">By </span>
                           <span className="font-medium">{blogPost.author}</span>
-                          <span className="text-gray-500"> · <PostDate dateString={blogPost.publishedAt} /></span>
+                          <span className="text-gray-500 dark:text-slate-400"> · <PostDate dateString={blogPost.publishedAt} /></span>
                         </div>
                       </div>
                       {/* Article tags */}
