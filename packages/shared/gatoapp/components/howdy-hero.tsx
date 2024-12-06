@@ -1,3 +1,4 @@
+import PageHeader from './page-header'
 import StunningBackground from './stunning-background'
 
 export default function HowdyHero() {
@@ -10,10 +11,11 @@ export default function HowdyHero() {
         <div className="pt-32 pb-10 md:pt-40">
 
           {/* Hero content */}
-          <div className="text-center">
-            <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">It's been a pleasure to meet you</div>
-            <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-6">Howdy, my friend!</h1>
-          </div>
+          <PageHeader
+            leading="It's been a pleasure to meet you"
+            title="Howdy, my friend!"
+            paddingClassname='pb-6'
+          />
 
         </div>
       </div>

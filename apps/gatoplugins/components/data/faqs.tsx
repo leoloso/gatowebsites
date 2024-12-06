@@ -19,7 +19,7 @@ export function getFAQs({
       },
       {
         question: 'Can I ask for a refund?',
-        answer: <span>If you are not happy with the purchased plugin, you have 30 days to <a className="text-blue-500 font-medium hover:underline" href="/refund-policy">request a refund</a>.</span>,
+        answer: <span>If you are not happy with the purchased plugin, you have 30 days to <a className="text-blue-600 font-medium hover:text-blue-500" href="/refund-policy">request a refund</a>.</span>,
       },
       {
         question: 'What happens if I don\'t renew the yearly license?',
