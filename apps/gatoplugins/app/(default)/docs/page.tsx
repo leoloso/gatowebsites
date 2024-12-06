@@ -1,6 +1,5 @@
 import StunningBackground from 'gatoapp/components/stunning-background'
 import PageHeader from 'gatoapp/components/page-header'
-import Cta from 'gatoapp/components/cta-newsletter'
 import PluginDocList from './plugin-doc-list'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 
@@ -13,28 +12,25 @@ export const metadata = {
 export default function DocumentationPage() {
 
   return (
-    <>
-      <section className="relative">
+    <section className="relative">
 
-        <StunningBackground />
+      <StunningBackground />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="pt-32 md:pt-40">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="pt-32 md:pt-40">
 
-            {/* Section header */}
-            <PageHeader
-              leading='Gato Plugins'
-              title='Documentation'
-              description='Browse the docs for the plugins by Gato Plugins'
-            />
+          {/* Section header */}
+          <PageHeader
+            leading='Gato Plugins'
+            title='Documentation'
+            description='Browse the docs for the plugins by Gato Plugins'
+          />
 
-            <PluginDocList />
+          <PluginDocList />
 
-          </div>
         </div>
+      </div>
 
-      </section>
-      <Cta />
-    </>
+    </section>
   )
 }
