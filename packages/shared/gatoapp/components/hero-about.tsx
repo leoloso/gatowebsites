@@ -3,6 +3,7 @@ import AboutIllustration from 'gatoapp/public/assets/theme/darkmode/about-illust
 import Icon from 'gatoapp/public/assets/theme/about-icon.png'
 import StunningBackground from 'gatoapp/components/stunning-background'
 import WithLogoThumb from 'gatoapp/components/thumbnails/with-logo-thumb'
+import PageHeader from './page-header'
 
 export default function HeroAbout({
   title,
@@ -27,10 +28,15 @@ export default function HeroAbout({
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-32 pb-10 md:pt-40">
 
+          <PageHeader
+            leading="The folks behind the product"
+            title={title}
+            paddingClassname='pb-6'
+          />
+            
+
           {/* Hero content */}
           <div className="text-center">
-            <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">The folks behind the product</div>
-            <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-6">{title}</h1>
             {/* Rings illustration */}
             {includeAnimation && (
               <div className="inline-flex items-center justify-center relative">
