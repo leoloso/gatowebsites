@@ -35,7 +35,7 @@ export default function ContactForm({
       <input type="hidden" name="form-name" value="contact" />
       <div className="flex flex-wrap -mx-3 mb-8">
         <div className="w-full px-3">
-          <div className="text-slate-300">
+          <div className="text-gray-700 dark:text-slate-300">
             Send us an email to <a className="font-medium text-blue-600 dark:text-purple-300 no-underline hover:no-underline hover:text-blue-500 hover:dark:text-purple-400" href={`mailto:${AppConfig.emails.info}`}>{AppConfig.emails.info}</a>, or fill the form below.
           </div>
         </div>
