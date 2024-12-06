@@ -24,6 +24,7 @@ export default function WithLogoThumb({
   extraTitleClassname,
   extraLeadingTitleClassname,
   logoClassname,
+  applyStyle,
 }: {
   targetImageSources: Array<string>,
   paddingClassname?: string,
@@ -44,6 +45,7 @@ export default function WithLogoThumb({
   extraTitleClassname?: string,
   extraLeadingTitleClassname?: string,
   logoClassname?: string,
+  applyStyle?: number,
 }) {
   return (
     <Thumb
@@ -51,6 +53,7 @@ export default function WithLogoThumb({
       bgClassname={bgClassname}
       extraThumbClassname={extraThumbClassname}
       numberParticles={numberParticles}
+      applyStyle={applyStyle}
     >
       <div className={clsx(title && "flex items-center justify-center flex-col")}>
         <div>

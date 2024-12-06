@@ -8,9 +8,11 @@ import React from 'react';
 export default function ProductCoverItem({
   product,
   leadingTitle,
+  applyStyle,
 }: {
   product: ProductProps,
   leadingTitle?: string,
+  applyStyle?: number,
 }) {
   const searchParams = useSearchParams();
   const printProductTitle = searchParams.has('title') || false
@@ -26,6 +28,7 @@ export default function ProductCoverItem({
         printProductTitle={printProductTitle}
         skipGatoLogo={!includeGatoLogo}
         leadingTitle={leadingTitle}
+        applyStyle={applyStyle}
       />
     </header>
   )

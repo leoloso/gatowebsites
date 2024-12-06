@@ -5,9 +5,11 @@ import React from 'react'
 export default function ProductCover({
   product,
   leadingTitle,
+  applyStyle,
 }: {
   product: ProductProps
   leadingTitle?: string,
+  applyStyle?: number,
 }) {
 
   return (
@@ -19,6 +21,7 @@ export default function ProductCover({
         <ProductCoverItem
           product={product}
           leadingTitle={leadingTitle}
+          applyStyle={applyStyle}
         />
 
       </section>

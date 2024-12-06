@@ -2,6 +2,7 @@ import { allPlugins } from '@/.contentlayer/generated'
 import ProductCover from 'gatoapp/components/slides/product-cover/product-cover'
 import { createSEOPageTitle } from '@/utils/content/metadata'
 import { notFound } from 'next/navigation'
+import { style2 } from 'gatoapp/components/thumbnails/thumb'
 
 const pageTitle = 'Plugin Cover'
 export const metadata = {
@@ -20,6 +21,7 @@ export default function PluginCover({ params }: {
   return (
     <ProductCover
       product={plugin}
+      applyStyle={style2}
       // leadingTitle='Plugin:'
     />
   )
