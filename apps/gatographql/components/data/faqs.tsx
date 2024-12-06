@@ -10,7 +10,7 @@ export function getFAQs(): FAQItem[] {
     },
     {
       question: 'Can I ask for a refund?',
-      answer: <span>If you purchased a Gato GraphQL product and it does not solve your problem, you have 30 days to <a className="text-purple-500 font-medium hover:underline" href="/refund-policy">request a refund</a>.</span>,
+      answer: <span>If you purchased a Gato GraphQL product and it does not solve your problem, you have 30 days to <a className="text-purple-500 font-medium hover:text-purple-400" href="/refund-policy">request a refund</a>.</span>,
       column: 1,
     },
     {
@@ -20,7 +20,7 @@ export function getFAQs(): FAQItem[] {
     },
     {
       question: 'How does Gato GraphQL compare against the WP REST API?',
-      answer: <span>Check out the <a className="text-purple-500 font-medium hover:underline" href="/comparisons/gatographql-vs-wp-rest-api">Gato GraphQL vs WP REST API comparison</a>.</span>,
+      answer: <span>Check out the <a className="text-purple-500 font-medium hover:text-purple-400" href="/comparisons/gatographql-vs-wp-rest-api">Gato GraphQL vs WP REST API comparison</a>.</span>,
       column: 1,
     },
     {
@@ -35,7 +35,7 @@ export function getFAQs(): FAQItem[] {
     },
     {
       question: 'How does Gato GraphQL compare against WPGraphQL?',
-      answer: <span>Check out the <a className="text-purple-500 font-medium hover:underline" href="/comparisons/gatographql-vs-wpgraphql">Gato GraphQL vs WPGraphQL comparison</a>.</span>,
+      answer: <span>Check out the <a className="text-purple-500 font-medium hover:text-purple-400" href="/comparisons/gatographql-vs-wpgraphql">Gato GraphQL vs WPGraphQL comparison</a>.</span>,
       column: 2,
     },
   ]
