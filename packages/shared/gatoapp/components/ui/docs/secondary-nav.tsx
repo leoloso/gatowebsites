@@ -58,13 +58,13 @@ export default function SecondaryNav() {
         <nav>
           <div className="fixed bottom-0 h-[calc(100vh-5rem)] w-48 overflow-y-auto pt-32 pb-8 no-scrollbar">
             <div className="border-l border-slate-200 dark:border-slate-800">
-              <div className="text-xs font-[650] text-slate-400 uppercase pl-4 py-1.5 dark:text-slate-200">On this page</div>
+              <div className="text-xs font-[650] text-slate-600 dark:text-gray-400 uppercase pl-4 py-1.5 dark:text-slate-200">On this page</div>
               <ul className="text-sm">
                 {links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <a
                       data-scrollspy-link
-                      className="relative block font-normal text-slate-600 hover:text-slate-800 dark:hover:text-slate-300 pl-4 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5"
+                      className="relative block font-normal text-gray-500 dark:text-slate-500 hover:text-gray-800 dark:hover:text-slate-300 pl-4 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5"
                       href={`#${link.id}`}
                     >
                       {link.innerText}
