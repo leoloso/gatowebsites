@@ -30,14 +30,14 @@ export default function NewsletterForm() {
           id={AppConfig.services.newsletter.emailFieldName}
           name={AppConfig.services.newsletter.emailFieldName}
           type="email"
-          className="form-input w-full appearance-none bg-purple-800 border border-purple-700 focus:border-purple-600 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-purple-500"
+          className="form-input w-full appearance-none bg-blue-800 dark:bg-purple-800 border border-blue-700 dark:border-purple-700 focus:border-blue-600 dark:focus:border-purple-600 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-blue-500 dark:placeholder-purple-500"
           placeholder="Your email…"
           aria-label="Your email…"
           required
           readOnly={!isFormEnabled}
         />
         <button
-          className={clsx("btn text-white bg-blue-600 shadow", isFormEnabled && 'hover:bg-blue-700')}
+          className={clsx("btn text-white bg-amber-700 dark:bg-blue-600 shadow", isFormEnabled && 'hover:bg-amber-600 dark:hover:bg-blue-700')}
           type="submit"
           disabled={!isFormEnabled}
         >
@@ -60,7 +60,7 @@ export default function NewsletterForm() {
       )}
       {/* Success message */}
       {/* <p className="text-sm text-purple-400 mt-3">Thanks for subscribing!</p> */}
-      <p className="text-sm text-purple-400 mt-3">No spam. You can unsubscribe at any time.</p>
+      <p className="text-sm text-blue-300 dark:text-purple-400 mt-3">No spam. You can unsubscribe at any time.</p>
     </form>
   )
 }
