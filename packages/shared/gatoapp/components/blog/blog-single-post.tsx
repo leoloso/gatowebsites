@@ -83,12 +83,12 @@ export default function BlogSinglePost({
                         </div>
                       }
                     </div>
-                    <hr className="w-16 h-px pt-px bg-gray-200 border-0 mb-6" />
+                    <hr className="w-16 h-px pt-px bg-gray-300 dark:bg-gray-200 border-0 mb-6" />
 
                     {/* Article body */}
                     <PostMdx code={blogPost.body.code} />
 
-                    <hr className="w-full h-px pt-px mt-16 bg-gray-200 border-0" />
+                    <hr className="w-full h-px pt-px mt-16 bg-gray-300 dark:bg-gray-200 border-0" />
 
                     <div className="text-lg text-gray-600">
                       <div className="mt-8">
