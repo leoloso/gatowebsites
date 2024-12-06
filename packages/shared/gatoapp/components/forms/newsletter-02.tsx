@@ -31,7 +31,7 @@ export default function NewsletterForm() {
             id={AppConfig.services.newsletter.emailFieldName}
             name={AppConfig.services.newsletter.emailFieldName}
             type="email"
-            className="form-input py-1.5 w-full mb-3 sm:mb-0 sm:mr-2 rounded-full bg-slate-800/30 border-slate-700"
+            className="form-input py-1.5 w-full mb-3 sm:mb-0 sm:mr-2 rounded-full bg-blue-400/30 border-blue-500 dark:bg-slate-800/30 dark:border-slate-700 placeholder-blue-200 dark:placeholder-slate-500 text-white dark:text-slate-100"
             placeholder="Your email…"
             aria-label="Your email…"
             required
@@ -42,7 +42,7 @@ export default function NewsletterForm() {
             type="submit"
             disabled={!isFormEnabled}
           >
-            Subscribe <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+            Subscribe <span className="tracking-normal text-blue-500 dark:text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
           </button>
         </div>
       </div>
