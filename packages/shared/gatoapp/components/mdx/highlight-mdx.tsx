@@ -8,7 +8,7 @@ export function HighlightMdx({
   return (
     <Mdx
       code={code}
-      mdxClassName="text-slate-400 prose-p:leading-relaxed prose-strong:text-slate-50 prose-strong:font-medium"
+      mdxClassName="text-gray-600 dark:text-slate-400 prose-p:leading-relaxed prose-strong:text-gray-900 dark:prose-strong:text-slate-50 prose-strong:font-medium"
     />
   )
 }
