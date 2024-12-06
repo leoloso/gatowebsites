@@ -65,8 +65,8 @@ export default function PricingTier({
         <div className="mb-4 grow text-sm text-slate-300 dark:text-slate-400">
           License for <span className="text-slate-200 font-bold">{tierDomainNumber} domains</span>
         </div>
-        <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-blue-700 hover:bg-blue-800 dark:bg-purple-700 dark:hover:bg-purple-800' : (isFree ? 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white' : 'text-white bg-blue-500 hover:bg-blue-600 dark:bg-purple-500 dark:hover:bg-purple-600')} ${buttonClassname}`} href={buttonURL} target={buttonTarget}>
-          {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-blue-500 dark:text-purple-500' : (isFree ? 'text-blue-500 dark:text-purple-500' : 'text-blue-700 dark:text-purple-300')}`}>-&gt;</span>
+        <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-yellow-700 hover:bg-yellow-600 dark:bg-purple-700 dark:hover:bg-purple-800' : (isFree ? 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white' : 'text-white bg-blue-600 hover:bg-blue-500 dark:bg-purple-500 dark:hover:bg-purple-600')} ${buttonClassname}`} href={buttonURL} target={buttonTarget}>
+          {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-yellow-300 dark:text-purple-500' : (isFree ? 'text-blue-500 dark:text-purple-500' : 'text-blue-300 dark:text-purple-300')}`}>-&gt;</span>
         </a>
       </div>
       <ul className="grow space-y-2 text-sm text-slate-300 dark:text-slate-400">
