@@ -65,15 +65,19 @@ export default function PluginsSection({
                     <Link href={plugin.urlPath} className="hover:text-blue-400 transition duration-150 ease-in-out">{plugin.title}</Link>
                   </h3>
                 </header>
-                <p className="text-lg text-gray-600 grow">{plugin.description}</p>
-                { !! plugin.video && (
-                  <LinkModalVideo
-                    // title="Tutorial video"
-                    video={plugin.video}
-                    videoWidth={1920}
-                    videoHeight={1080}
-                    // duration={plugin.videoDuration}
-                  />
+                { (applyStyle === style1 || applyStyle === style2) && (
+                  <>
+                    <p className="text-lg text-gray-600 grow">{plugin.description}</p>
+                    { !! plugin.video && (
+                      <LinkModalVideo
+                        // title="Tutorial video"
+                        video={plugin.video}
+                        videoWidth={1920}
+                        videoHeight={1080}
+                        // duration={plugin.videoDuration}
+                      />
+                    )}
+                  </>
                 )}
               </div>
             </article>
