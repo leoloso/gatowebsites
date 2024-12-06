@@ -31,11 +31,12 @@ export default function PluginsSection({
 
   const bgClassnames = [
     "bg-purple-500 group-hover:bg-purple-400",
-    "bg-sky-500 group-hover:bg-sky-400",
-    "bg-blue-500 group-hover:bg-blue-400",
-    "bg-cyan-500 group-hover:bg-cyan-400",
-    "bg-violet-500 group-hover:bg-violet-400",
     "bg-indigo-500 group-hover:bg-indigo-400",
+    "bg-blue-500 group-hover:bg-blue-400",
+    "bg-sky-500 group-hover:bg-sky-400",
+    "bg-cyan-500 group-hover:bg-cyan-400",
+    "bg-teal-500 group-hover:bg-teal-400",
+    "bg-violet-500 group-hover:bg-violet-400",
   ]
 
   function getPluginLink(plugin: Plugin) {
