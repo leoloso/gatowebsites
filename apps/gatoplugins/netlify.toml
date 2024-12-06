@@ -3,3 +3,8 @@
   publish = ".next"
   environment = { NODE_OPTIONS="--max-old-space-size=8192" }
 
+# Redirect plugins
+[[redirects]]
+  from = "/multilingual-polylang"
+  to = "/plugins/multilingual-polylang"
+  status = 301
