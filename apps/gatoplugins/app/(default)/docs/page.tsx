@@ -23,7 +23,7 @@ export default function DocumentationPage() {
 
             {/* Section header */}
             <PageHeader
-              // leading='Browse the docs'
+              leading='Gato Plugins'
               title='Documentation'
               description='Browse the docs for the plugins by Gato Plugins'
             />
