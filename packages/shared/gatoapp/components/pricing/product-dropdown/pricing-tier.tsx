@@ -31,14 +31,14 @@ export default function PricingTier({
 }) {
   const isFree = price === 0
   return (
-    <div className={clsx("relative flex h-full flex-col rounded-2xl bg-gradient-to-br from-gray-900/50 via-gray-800/25 to-gray-900/50 p-5 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]", !highlight && "before:[background:linear-gradient(to_right,theme(colors.gray.800),theme(colors.gray.700),theme(colors.gray.800))_border-box]", highlight && "before:[background:linear-gradient(to_right,theme(colors.purple.500/.7),theme(colors.purple.500),theme(colors.purple.500/.7))_border-box]")}>
+    <div className={clsx("relative flex h-full flex-col rounded-2xl bg-gradient-to-br from-gray-900/80 via-gray-800/65 to-gray-900/80 dark:from-gray-900/50 dark:via-gray-800/25 dark:to-gray-900/50 p-5 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]", !highlight && "before:[background:linear-gradient(to_right,theme(colors.sky.800),theme(colors.sky.700),theme(colors.sky.800))_border-box] dark:before:[background:linear-gradient(to_right,theme(colors.gray.800),theme(colors.gray.700),theme(colors.gray.800))_border-box]", highlight && "before:[background:linear-gradient(to_right,theme(colors.yellow.500/.7),theme(colors.yellow.500),theme(colors.yellow.500/.7))_border-box] dark:before:[background:linear-gradient(to_right,theme(colors.purple.500/.7),theme(colors.purple.500),theme(colors.purple.500/.7))_border-box]")}>
       <div className="relative mb-4 border-b pb-5 [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1]">
         {/* { highlight && (
           <div className="absolute right-0 top-0 inline-flex items-center rounded-full bg-slate-500/[.5] px-2 py-0.5 text-xs font-medium text-slate-100 shadow-sm">
             Popular
           </div>
         )} */}
-        <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">
+        <div className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-100 dark:from-purple-500 dark:to-purple-200 pb-0.5">
           {tierName}
         </div>
         <div className="flex items-baseline gap-2">
@@ -62,17 +62,17 @@ export default function PricingTier({
             { productName }
           </div>
         )}
-        <div className="mb-4 grow text-sm text-slate-400">
+        <div className="mb-4 grow text-sm text-slate-300 dark:text-slate-400">
           License for <span className="text-slate-200 font-bold">{tierDomainNumber} domains</span>
         </div>
-        <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-purple-700 hover:bg-purple-800' : (isFree ? 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white' : 'text-white bg-purple-500 hover:bg-purple-600')} ${buttonClassname}`} href={buttonURL} target={buttonTarget}>
-          {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-purple-500' : (isFree ? 'text-purple-500' : 'text-purple-300')}`}>-&gt;</span>
+        <a className={`btn-sm w-full transition duration-150 ease-in-out group ${highlight ? 'text-white bg-yellow-700 hover:bg-yellow-600 dark:bg-purple-700 dark:hover:bg-purple-800' : (isFree ? 'text-slate-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white' : 'text-white bg-blue-600 hover:bg-blue-500 dark:bg-purple-500 dark:hover:bg-purple-600')} ${buttonClassname}`} href={buttonURL} target={buttonTarget}>
+          {buttonLabel} <span className={`tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1 ${highlight ? 'text-yellow-300 dark:text-purple-500' : (isFree ? 'text-blue-500 dark:text-purple-500' : 'text-blue-300 dark:text-purple-300')}`}>-&gt;</span>
         </a>
       </div>
-      <ul className="grow space-y-2 text-sm text-slate-400">
+      <ul className="grow space-y-2 text-sm text-slate-300 dark:text-slate-400">
         <li className="flex items-center">
           <svg
-            className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-emerald-500 dark:text-purple-500"
             viewBox="0 0 12 12"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -82,7 +82,7 @@ export default function PricingTier({
         </li>
         <li className="flex items-center">
           <svg
-            className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-emerald-500 dark:text-purple-500"
             viewBox="0 0 12 12"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -91,13 +91,13 @@ export default function PricingTier({
           <span>
             Support
             { isLTD && (
-              <span className="text-purple-400"> (forever)</span>
+              <span className="text-blue-400 dark:text-purple-400"> (forever)</span>
             )}
           </span>
         </li>
         <li className="flex items-center">
           <svg
-            className="mr-2 h-3 w-3 shrink-0 fill-current text-purple-500"
+            className="mr-2 h-3 w-3 shrink-0 fill-current text-emerald-500 dark:text-purple-500"
             viewBox="0 0 12 12"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -105,7 +105,7 @@ export default function PricingTier({
           </svg>
           <span>Product updates
             { isLTD && (
-              <span className="text-purple-400"> (forever)</span>
+              <span className="text-blue-400 dark:text-purple-400"> (forever)</span>
             )}
           </span>
         </li>
