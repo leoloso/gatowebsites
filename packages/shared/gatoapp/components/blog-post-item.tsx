@@ -21,7 +21,7 @@ export default function BlogPostItem({ post }: {
           <div className="flex items-center">
             <div className="flex shrink-0 mr-3">
               <span className="relative">
-                <span className="absolute inset-0 -m-px" aria-hidden="true"><span className="absolute inset-0 -m-px bg-white rounded-full"></span></span>
+                <span className="absolute inset-0 -m-px" aria-hidden="true"><span className="absolute inset-0 -m-px bg-blue-400 dark:bg-white rounded-full"></span></span>
                 <Image className="relative rounded-full" src={post.authorImg} width={32} height={32} alt={post.author} />
               </span>
             </div>
