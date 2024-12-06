@@ -20,7 +20,7 @@ export default function ProductCoverItem({
       className='aspect-video'
     >
       <ProductThumb
-        bgClassname='bg-gradient-to-tr from-slate-900 to-blue-900'
+        bgClassname='bg-gradient-to-tr from-blue-600 to-cyan-300 text-white dark:from-slate-900 dark:to-blue-900'
         product={product}
         isLandscape={true}
         printProductTitle={printProductTitle}
