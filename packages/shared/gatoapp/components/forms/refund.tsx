@@ -119,7 +119,7 @@ export default function RefundForm() {
       )}
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
-          <div className="text-sm text-gray-600 mt-4">
+          <div className="text-sm text-gray-500 dark:text-gray-600 mt-4">
             By clicking "send" you consent to allow {AppConfig.meta.name} to store and process the personal information submitted above.
             {/* By clicking "send" you consent to allow {AppConfig.meta.name} to store and process the personal information submitted above and agree to our <a className="underline" href="#0">terms and conditions</a> as well as our <a className="underline" href="#0">Privacy Policy</a>. */}
           </div>
