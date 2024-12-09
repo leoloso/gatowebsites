@@ -17,7 +17,7 @@ export default function Newsletter({
         <div className="pb-12 md:pb-20">
 
           {/* CTA box */}
-          <div className="relative bg-blue-700 dark:bg-purple-900/70 rounded py-10 px-8 md:py-16 md:px-12 shadow-2xl overflow-hidden" data-aos="zoom-y-out">
+          <div className="relative bg-teal-700 dark:bg-purple-900/70 rounded py-10 px-8 md:py-16 md:px-12 shadow-2xl overflow-hidden" data-aos="zoom-y-out">
 
             {/* Background illustration */}
             <div className="absolute right-0 bottom-0 pointer-events-none hidden lg:block" aria-hidden="true">
@@ -50,7 +50,7 @@ export default function Newsletter({
               {/* CTA content */}
               <div className="text-center lg:text-left lg:max-w-xl">
                 <h3 className="h3 text-white mb-2">{label}</h3>
-                <p className="text-blue-200 dark:text-purple-300 text-lg mb-6">{ description || `Receive timely updates as we keep improving ${AppConfig.meta.name}.`}</p>
+                <p className="text-teal-200 dark:text-purple-300 text-lg mb-6">{ description || `Receive timely updates as we keep improving ${AppConfig.meta.name}.`}</p>
 
                 {/* CTA form */}
                 <NewsletterForm />
