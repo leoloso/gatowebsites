@@ -7,8 +7,8 @@ export default function CtaNewsletter() {
   const { config: AppConfig } = useAppConfigProvider()
   return (
     <AppCtaNewsletter
-      title="New plugins coming soon: Subscribe to learn first"
-      description={`Subscribe to receive a notification when a new plugin by ${AppConfig.meta.name} is released.`}
+      title="New plugins coming soon"
+      description={`Subscribe to receive a notification when the next plugin by ${AppConfig.meta.name} is released.`}
     />
   )
 }
