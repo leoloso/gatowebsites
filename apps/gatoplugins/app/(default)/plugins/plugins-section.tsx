@@ -51,7 +51,6 @@ export default function PluginsSection({
 
   const morePluginsComingSoonProps = {
     title: "More plugins coming soon. Stay tuned!",
-    description: "We are working on several new plugins. Be notified when there is a new release by subscribing to our newsletter (form below).",
     targetImages: [
       '/images/icons/coming-soon.png'
     ]
@@ -138,7 +137,9 @@ export default function PluginsSection({
                 </header>
                 { (applyStyle === style1 || applyStyle === style2) && (
                   <>
-                    <p className="text-gray-500 grow">{morePluginsComingSoonProps.description}</p>
+                    <p className="text-gray-500 grow">
+                      We are working on several new plugins. <Link className="text-blue-600 hover:text-blue-500 transition duration-150 ease-in-out" href="/newsletter">Subscribe to our newsletter</Link> to be notified of our new releases.
+                    </p>
                   </>
                 )}
               </div>
