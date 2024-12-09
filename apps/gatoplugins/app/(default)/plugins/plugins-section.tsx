@@ -132,7 +132,7 @@ export default function PluginsSection({
               </header>
               { (applyStyle === style1 || applyStyle === style2) && (
                 <>
-                  <p className="text-lg text-gray-500 grow">{morePluginsComingSoonProps.description}</p>
+                  <p className="text-gray-500 grow">{morePluginsComingSoonProps.description}</p>
                 </>
               )}
             </div>
