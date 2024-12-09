@@ -21,7 +21,7 @@ export default function Newsletter({
         <div className="pb-12 md:pb-20">
 
           {/* CTA box */}
-          <div className="relative bg-gradient-to-b from-cyan-800 to-transparent opacity-25 h-[25rem] dark:bg-purple-900/70 rounded py-10 px-8 md:py-16 md:px-12 shadow-2xl overflow-hidden" data-aos="zoom-y-out">
+          <div className="relative bg-gradient-to-b from-cyan-800 to-transparent opacity-25 dark:opacity-100 h-[25rem] dark:h-auto dark:bg-purple-900/70 dark:bg-none rounded py-10 px-8 md:py-16 md:px-12 shadow-2xl overflow-hidden" data-aos="zoom-y-out">
 
             {/* Background illustration */}
             <div className="absolute right-0 bottom-0 pointer-events-none hidden lg:block" aria-hidden="true">
