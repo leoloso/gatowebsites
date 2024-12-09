@@ -4,9 +4,11 @@ import NewsletterForm from "./forms/newsletter"
 import { useAppConfigProvider } from 'gatoapp/app/appconfig-provider'
 
 export default function Newsletter({
-  label = "Tutorials, updates, & more"
+  label = "Tutorials, updates, & more",
+  description,
 }: {
-  label?: string
+  label?: string,
+  description?: string,
 }) {
   const { config: AppConfig } = useAppConfigProvider()
   return (
@@ -48,7 +50,7 @@ export default function Newsletter({
               {/* CTA content */}
               <div className="text-center lg:text-left lg:max-w-xl">
                 <h3 className="h3 text-white mb-2">{label}</h3>
-                <p className="text-blue-200 dark:text-purple-300 text-lg mb-6">Receive timely updates as we keep improving {AppConfig.meta.name}.</p>
+                <p className="text-blue-200 dark:text-purple-300 text-lg mb-6">{ description || `Receive timely updates as we keep improving ${AppConfig.meta.name}.`}</p>
 
                 {/* CTA form */}
                 <NewsletterForm />

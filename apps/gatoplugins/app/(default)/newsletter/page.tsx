@@ -27,7 +27,8 @@ export default function NewsletterPage() {
             />
 
             <Newsletter
-              label="Be the first to learn when we release a new plugin"
+              label="Be the first to know!"
+              description="Receive timely updates as we release new plugins"
             />
 
           </div>
