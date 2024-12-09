@@ -2,14 +2,20 @@
 
 import NewsletterForm from "./forms/newsletter-02";
 import SectionHeader from "./section-header";
-import { useAppConfigProvider } from 'gatoapp/app/appconfig-provider'
 import { usingDarkColorThemeMode } from 'gatoapp/utils/context/style'
 import Image from 'next/image'
 import Illustration from 'gatoapp/public/assets/theme/lightmode/cta-illustration.svg'
 import clsx from "clsx";
 
-export default function CtaNewsletter() {
-  const { config: AppConfig } = useAppConfigProvider()
+export default function CtaNewsletter({
+  title,
+  leading,
+  description,
+}: {
+  title: string,
+  leading?: string,
+  description?: string,
+}) {
   const isDarkColorThemeMode = usingDarkColorThemeMode()
   return (
     <section className="relative overflow-hidden">
@@ -50,9 +56,9 @@ export default function CtaNewsletter() {
 
           {/* Content */}
           <SectionHeader
-            leading={isDarkColorThemeMode ? 'Never miss an update' : ''}
-            title='Stay connected with us'
-            description={`Find out about our latest product updates as we continue improving ${AppConfig.meta.name}.`}
+            leading={leading}
+            title={title}
+            description={description}
             titleColorClassname={clsx(!isDarkColorThemeMode && "text-white")}
             descriptionColorClassname={clsx(!isDarkColorThemeMode && "text-white")}
           >

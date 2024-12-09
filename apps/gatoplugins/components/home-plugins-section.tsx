@@ -32,6 +32,7 @@ export default function HomePluginsSection() {
             <PluginsSection
               applyThumbEffect={svgEffect2}
               applyStyle={style2}
+              showMorePluginsComingSoon={true}
             />
 
             <Customers

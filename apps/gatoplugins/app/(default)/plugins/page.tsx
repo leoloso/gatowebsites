@@ -29,7 +29,9 @@ export default function Extensions() {
             description='Our collection of super userful plugins for WordPress'
           />
 
-          <PluginsSection />
+          <PluginsSection
+            showMorePluginsComingSoon={true}
+          />
         </div>
 
       </div>

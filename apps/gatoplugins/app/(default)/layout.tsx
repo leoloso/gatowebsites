@@ -5,7 +5,7 @@ import FooterMenuFirstColumn from 'gatoapp/components/menus/footer-menu-1st-colu
 import HeaderMenu from '@/components/menu/header-menu'
 import HeaderMobileMenu from '@/components/menu/header-mobile-menu'
 import DefaultLayout from 'gatoapp/app/(default)/layout'
-import Cta from 'gatoapp/components/cta-newsletter'
+import Cta from '@/components/cta-newsletter'
 
 export default function AppDefaultLayout({
   children,
