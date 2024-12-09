@@ -107,7 +107,7 @@ export default function PluginsSection({
         ))}
 
         {/* Coming soon plugin. Remove when all new plugins delivered */}
-        <div className={clsx(applyStyle === style1 && "pb-12 md:pb-20", applyStyle === style2 && "pb-8 md:pb-12")}>
+        <div className={clsx("pt-12 md:pt-20", applyStyle === style1 && "pb-12 md:pb-20", applyStyle === style2 && "pb-8 md:pb-12")}>
           <article className={clsx((applyStyle === style1 || applyStyle === style2) && "max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center")}>
             <div
               className={clsx("relative block group", alternateColumns && plugins.length % 2 === 1 ? 'md:order-last' : '')}
@@ -123,6 +123,7 @@ export default function PluginsSection({
                   bgClassname={clsx(bgClassnames[plugins.length % bgClassnames.length], "transition duration-700 ease-out")}
                   skipGatoLogo={ true }
                   logoClassname={ clsx("transform group-hover:scale-110 transition duration-700 ease-out") }
+                  applyStyle={style2}
                 />
               </div>
             </div>
