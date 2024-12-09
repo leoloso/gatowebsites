@@ -104,7 +104,7 @@ export default function PluginsSection({
           </div>
         ))}
 
-        {/* Coming soon plugin */}
+        {/* Coming soon plugin. Remove when all new plugins delivered */}
         <div className={clsx(applyStyle === style1 && "pb-12 md:pb-20", applyStyle === style2 && "pb-8 md:pb-12")}>
           <article className={clsx((applyStyle === style1 || applyStyle === style2) && "max-w-3xl mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center")}>
             <div
