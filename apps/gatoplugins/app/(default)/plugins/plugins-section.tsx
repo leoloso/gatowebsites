@@ -48,7 +48,7 @@ export default function PluginsSection({
   }
 
   const morePluginsComingSoonProps = {
-    title: "More plugins coming soon",
+    title: "More plugins coming soon. Stay tuned!",
     description: "We are working on several new plugins. Be notified when there is a new release by subscribing to our newsletter (form below).",
     targetImages: [
       '/images/icons/coming-soon.png'
