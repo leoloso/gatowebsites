@@ -30,7 +30,7 @@ export default function NewsletterForm() {
           id={AppConfig.services.newsletter.emailFieldName}
           name={AppConfig.services.newsletter.emailFieldName}
           type="email"
-          className="form-input w-full appearance-none bg-slate-800 dark:bg-purple-800 border border-slate-700 dark:border-purple-700 focus:border-blue-600 dark:focus:border-purple-600 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-slate-200 dark:placeholder-purple-500"
+          className="form-input w-full appearance-none bg-cyan-800 dark:bg-purple-800 border border-cyan-700 dark:border-purple-700 focus:border-cyan-500 dark:focus:border-purple-600 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-cyan-200 dark:placeholder-purple-500"
           placeholder="Your email…"
           aria-label="Your email…"
           required
@@ -60,7 +60,7 @@ export default function NewsletterForm() {
       )}
       {/* Success message */}
       {/* <p className="text-sm text-purple-400 mt-3">Thanks for subscribing!</p> */}
-      <p className="text-sm text-slate-200 dark:text-purple-400 mt-3">No spam. You can unsubscribe at any time.</p>
+      <p className="text-sm text-gray-100 dark:text-purple-400 mt-3">No spam. You can unsubscribe at any time.</p>
     </form>
   )
 }
