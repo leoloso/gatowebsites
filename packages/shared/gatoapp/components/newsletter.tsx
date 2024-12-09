@@ -59,7 +59,7 @@ export default function Newsletter({
               {/* CTA content */}
               <div className="text-center lg:text-left lg:max-w-xl">
                 <h3 className="h3 text-white mb-2">{label}</h3>
-                <p className="text-blue-100 dark:text-purple-300 text-lg mb-6">{ description || `Receive timely updates as we keep improving ${AppConfig.meta.name}.`}</p>
+                <p className="text-cyan-100 dark:text-purple-300 text-lg mb-6">{ description || `Receive timely updates as we keep improving ${AppConfig.meta.name}.`}</p>
 
                 {/* CTA form */}
                 <NewsletterForm />

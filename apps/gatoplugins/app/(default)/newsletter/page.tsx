@@ -21,9 +21,9 @@ export default function NewsletterPage() {
 
             {/* Section header */}
             <PageHeader
-              leading='Receive news on your email inbox'
+              leading='Do not miss an update!'
               title='Subscribe to our newsletter'
-              description='Stay in the loop on all new things concerning Gato Plugins.'
+              description='Stay in the loop on all new products by Gato Plugins.'
             />
 
             <Newsletter
