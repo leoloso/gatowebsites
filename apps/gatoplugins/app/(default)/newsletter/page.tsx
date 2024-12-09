@@ -26,7 +26,9 @@ export default function NewsletterPage() {
               description='Stay in the loop on all new things concerning Gato Plugins.'
             />
 
-            <Newsletter />
+            <Newsletter
+              label="Be the first to learn when we release a new plugin"
+            />
 
           </div>
         </div>
