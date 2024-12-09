@@ -8,7 +8,11 @@ import Image from 'next/image'
 import Illustration from 'gatoapp/public/assets/theme/lightmode/cta-illustration.svg'
 import clsx from "clsx";
 
-export default function CtaNewsletter() {
+export default function CtaNewsletter({
+  title = 'Stay connected with us',
+}: {
+  title?: string,
+}) {
   const { config: AppConfig } = useAppConfigProvider()
   const isDarkColorThemeMode = usingDarkColorThemeMode()
   return (
@@ -51,7 +55,7 @@ export default function CtaNewsletter() {
           {/* Content */}
           <SectionHeader
             leading={isDarkColorThemeMode ? 'Never miss an update' : ''}
-            title='Stay connected with us'
+            title={title}
             description={`Find out about our latest product updates as we continue improving ${AppConfig.meta.name}.`}
             titleColorClassname={clsx(!isDarkColorThemeMode && "text-white")}
             descriptionColorClassname={clsx(!isDarkColorThemeMode && "text-white")}
