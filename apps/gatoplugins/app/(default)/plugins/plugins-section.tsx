@@ -127,7 +127,7 @@ export default function PluginsSection({
             <div>
               <header>
                 <h3 className={clsx(applyStyle === style1 && "h3 mb-2 text-2xl lg:text-3xl", applyStyle === style2 && "h3 mb-2 text-2xl", applyStyle === style3 && "h3 mt-4 text-2xl")}>
-                  <div className="hover:text-blue-500 transition duration-150 ease-in-out">{morePluginsComingSoonProps.title}</div>
+                  <div className="">{morePluginsComingSoonProps.title}</div>
                 </h3>
               </header>
               { (applyStyle === style1 || applyStyle === style2) && (
