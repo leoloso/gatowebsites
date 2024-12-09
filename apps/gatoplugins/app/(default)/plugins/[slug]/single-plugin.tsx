@@ -9,6 +9,7 @@ import { getPluginSectionsForPlugin } from '@/utils/content/document'
 import SectionHeader from 'gatoapp/components/section-header'
 import FeaturesList from 'gatoapp/components/features-list-02';
 import TickImage from 'gatoapp/public/assets/theme/tick-03.svg'
+import { style2 } from 'gatoapp/components/thumbnails/thumb'
 
 export default function SinglePlugin({
   plugin,
@@ -39,6 +40,7 @@ export default function SinglePlugin({
               <PluginThumb
                 plugin={plugin}
                 isLandscape={true}
+                applyStyle={style2}
               />
             </div>
 

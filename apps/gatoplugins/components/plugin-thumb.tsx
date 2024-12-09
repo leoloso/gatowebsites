@@ -16,6 +16,7 @@ export default function PluginThumb({
   printPluginTitle,
   skipGatoLogo,
   logoClassname,
+  applyStyle,
 }: {
   plugin: Plugin,
   paddingClassname?: string,
@@ -29,6 +30,7 @@ export default function PluginThumb({
   printPluginTitle?: boolean,
   skipGatoLogo?: boolean,
   logoClassname?: string,
+  applyStyle?: number,
 }) {
   return (
     <ProductThumb
@@ -44,6 +46,7 @@ export default function PluginThumb({
       printProductTitle={printPluginTitle}
       skipGatoLogo={skipGatoLogo}
       logoClassname={logoClassname}
+      applyStyle={applyStyle}
       // leadingTitle="Plugin:"
     />
   )
