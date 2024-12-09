@@ -49,7 +49,7 @@ export default function PluginsSection({
 
   const morePluginsComingSoonProps = {
     title: "More plugins coming soon",
-    description: "Several new plugins will be released soon. Subscribe to our newsletter below to be notified when a new plugin arrives",
+    description: "Several new plugins will be released soon. Subscribe to our newsletter to be notified when a new plugin arrives.",
     targetImages: []
   }
 
@@ -126,7 +126,7 @@ export default function PluginsSection({
             </div>
             <div>
               <header>
-                <h3 className={clsx(applyStyle === style1 && "h3 mb-2 text-2xl lg:text-3xl", applyStyle === style2 && "h3 mb-2 text-2xl", applyStyle === style3 && "h3 mt-4 text-2xl")}>
+                <h3 className={clsx("text-amber-700", applyStyle === style1 && "h3 mb-2 text-2xl lg:text-3xl", applyStyle === style2 && "h3 mb-2 text-2xl", applyStyle === style3 && "h3 mt-4 text-2xl")}>
                   <div className="">{morePluginsComingSoonProps.title}</div>
                 </h3>
               </header>
