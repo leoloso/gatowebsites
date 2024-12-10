@@ -46,7 +46,7 @@ class GraphQLServer {
   }
 
   public static function executePersistedQuery(
-    string|int $persistedQueryIDOrSlug,
+    WP_Post|string|int $persistedQuery,
     array $variables = [],
     ?string $operationName = null,
 +   // Schema Configuration is taken directly from the Persisted Query
